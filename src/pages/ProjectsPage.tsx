@@ -1,6 +1,7 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import Navbar from './Navbar.tsx'
+import Navbar from '../components/Navbar'
+import useScrollReveal from '../hooks/useScrollReveal'
 
 interface Project {
   title: string
@@ -58,47 +59,6 @@ const projects: Project[] = [
 
 const filters = ['Tous', 'Branding', 'Content Creation', 'Social Media', 'Stratégie']
 
-function useScrollReveal() {
-  useEffect(() => {
-    const prefersReduced =
-      typeof window !== 'undefined' &&
-      window.matchMedia &&
-      window.matchMedia('(prefers-reduced-motion: reduce)').matches
-
-    const elements = Array.from(document.querySelectorAll('[data-reveal]')) as HTMLElement[]
-    elements.forEach((el) => {
-      const delay = el.getAttribute('data-reveal-delay') || '0'
-      el.classList.add('opacity-0', 'translate-y-8', 'transition-all', 'duration-700', 'ease-out')
-      el.style.transitionDelay = `${delay}ms`
-    })
-
-    if (prefersReduced) {
-      elements.forEach((el) => {
-        el.classList.remove('opacity-0', 'translate-y-8')
-        el.classList.add('opacity-100', 'translate-y-0')
-        el.style.transitionDelay = '0ms'
-      })
-      return
-    }
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) return
-          const target = entry.target as HTMLElement
-          target.classList.remove('opacity-0', 'translate-y-8')
-          target.classList.add('opacity-100', 'translate-y-0')
-          observer.unobserve(target)
-        })
-      },
-      { threshold: 0.15 },
-    )
-
-    elements.forEach((el) => observer.observe(el))
-    return () => observer.disconnect()
-  }, [])
-}
-
 export default function ProjectsPage() {
   const [activeFilter, setActiveFilter] = useState('Tous')
   useScrollReveal()
@@ -108,7 +68,7 @@ export default function ProjectsPage() {
   )
 
   return (
-    <div className="min-h-screen bg-[#F1F1F1]">
+    <div className="min-h-screen bg-[#F1F1F1] overflow-hidden w-full">
       <Navbar />
 
       <main className="bg-[#F1F1F1] min-h-screen pt-24">
@@ -164,6 +124,8 @@ export default function ProjectsPage() {
                         className="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-103"
                         src={project.image}
                         loading="lazy"
+                        width={800}
+                        height={520}
                       />
                     </div>
                     <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent flex flex-col justify-end p-10 opacity-100 md:translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
@@ -198,6 +160,8 @@ export default function ProjectsPage() {
                         className="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-103"
                         src={project.image}
                         loading="lazy"
+                        width={800}
+                        height={520}
                       />
                     </div>
                     <div className="absolute inset-0 bg-secondary/90 opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col items-center justify-center text-white text-center p-8 backdrop-blur-sm">
@@ -283,6 +247,8 @@ export default function ProjectsPage() {
               className="h-12 w-fit object-contain"
               src="/logo.jpg"
               loading="lazy"
+              width={100}
+              height={48}
             />
             <p className="font-body text-on-surface-variant leading-relaxed">
               Agence digitale premium spécialisée dans l'innovation créative et la stratégie d'impact pour le marché marocain et international.

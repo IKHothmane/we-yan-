@@ -1,47 +1,7 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import Navbar from './Navbar.tsx'
-
-function useScrollReveal() {
-  useEffect(() => {
-    const prefersReduced =
-      typeof window !== 'undefined' &&
-      window.matchMedia &&
-      window.matchMedia('(prefers-reduced-motion: reduce)').matches
-
-    const elements = Array.from(document.querySelectorAll('[data-reveal]')) as HTMLElement[]
-    elements.forEach((el) => {
-      const delay = el.getAttribute('data-reveal-delay') || '0'
-      el.classList.add('opacity-0', 'translate-y-8', 'transition-all', 'duration-700', 'ease-out')
-      el.style.transitionDelay = `${delay}ms`
-    })
-
-    if (prefersReduced) {
-      elements.forEach((el) => {
-        el.classList.remove('opacity-0', 'translate-y-8')
-        el.classList.add('opacity-100', 'translate-y-0')
-        el.style.transitionDelay = '0ms'
-      })
-      return
-    }
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) return
-          const target = entry.target as HTMLElement
-          target.classList.remove('opacity-0', 'translate-y-8')
-          target.classList.add('opacity-100', 'translate-y-0')
-          observer.unobserve(target)
-        })
-      },
-      { threshold: 0.15 },
-    )
-
-    elements.forEach((el) => observer.observe(el))
-    return () => observer.disconnect()
-  }, [])
-}
+import Navbar from '../components/Navbar'
+import useScrollReveal from '../hooks/useScrollReveal'
 
 export default function ContactPage() {
   useScrollReveal()
@@ -56,7 +16,7 @@ export default function ContactPage() {
   }
 
   return (
-    <div className="bg-[#f1f1f1] min-h-screen font-body-md text-on-surface selection:bg-primary-container selection:text-on-primary-container">
+    <div className="bg-[#f1f1f1] min-h-screen font-body-md text-on-surface selection:bg-primary-container selection:text-on-primary-container overflow-hidden w-full">
       <Navbar />
 
       <main className="max-w-7xl mx-auto px-8 md:px-16 py-32">
@@ -132,24 +92,27 @@ export default function ContactPage() {
                   href="https://linkedin.com"
                   target="_blank"
                   rel="noreferrer"
+                  aria-label="Visitez notre LinkedIn"
                 >
-                  <span className="material-symbols-outlined">share</span>
+                  <span className="material-symbols-outlined" aria-hidden="true">share</span>
                 </a>
                 <a
                   className="w-12 h-12 rounded-lg border border-outline-variant flex items-center justify-center hover:bg-primary hover:text-white transition-all duration-300"
                   href="https://instagram.com"
                   target="_blank"
                   rel="noreferrer"
+                  aria-label="Visitez notre Instagram"
                 >
-                  <span className="material-symbols-outlined">camera</span>
+                  <span className="material-symbols-outlined" aria-hidden="true">camera</span>
                 </a>
                 <a
                   className="w-12 h-12 rounded-lg border border-outline-variant flex items-center justify-center hover:bg-primary hover:text-white transition-all duration-300"
                   href="https://twitter.com"
                   target="_blank"
                   rel="noreferrer"
+                  aria-label="Visitez notre Twitter"
                 >
-                  <span className="material-symbols-outlined">link</span>
+                  <span className="material-symbols-outlined" aria-hidden="true">link</span>
                 </a>
               </div>
             </div>
@@ -192,20 +155,24 @@ export default function ContactPage() {
                 <div className="space-y-2">
                   <label className="text-sm font-semibold text-on-surface-variant">Service souhaité</label>
                   <div className="flex flex-wrap gap-3">
-                    {['Design UI/UX', 'Développement', 'Marketing Digital', 'Autre'].map((s) => (
-                      <label key={s} className="cursor-pointer">
-                        <input
-                          checked={service === s}
-                          className="hidden peer"
-                          name="service"
-                          type="radio"
-                          onChange={() => setService(s)}
-                        />
-                        <span className="px-6 py-3 rounded-lg border border-outline-variant peer-checked:bg-primary-container peer-checked:border-primary-container peer-checked:text-on-primary-container text-sm font-semibold transition-all inline-block">
-                          {s}
-                        </span>
-                      </label>
-                    ))}
+                    {['Design UI/UX', 'Développement', 'Marketing Digital', 'Autre'].map((s) => {
+                      const id = `service-${s.toLowerCase().replace(/\s+/g, '-')}`
+                      return (
+                        <label key={s} htmlFor={id} className="cursor-pointer">
+                          <input
+                            id={id}
+                            checked={service === s}
+                            className="hidden peer"
+                            name="service"
+                            type="radio"
+                            onChange={() => setService(s)}
+                          />
+                          <span className="px-6 py-3 rounded-lg border border-outline-variant peer-checked:bg-primary-container peer-checked:border-primary-container peer-checked:text-on-primary-container text-sm font-semibold transition-all inline-block">
+                            {s}
+                          </span>
+                        </label>
+                      )
+                    })}
                   </div>
                 </div>
 
@@ -243,6 +210,8 @@ export default function ContactPage() {
               className="w-full h-full object-cover"
               src="https://lh3.googleusercontent.com/aida-public/AB6AXuDq3SVMlJH5rvKmas1N4jlXA9e2UrV9-pCs4xy7wYc6olT-M-pNNUOmfYjrEycxY7wBWERmaWpmv3aMoLdBM76icOQMMlvCGTjTL7RJRcqmqi9wGgiXFQvUU3IzZ3mDettLYqmk-gE9MbfKpAvtBvumj_W3kK_aN3355uKC4ZwhSKynO2GY7ksXrNdNg3qn4PlI67DCKmbzSB3gz1kqbFtb7PBORdYFkObbAkpjcbiiQXJAx_zg1zUm0f_uTt3HlJy6zY62ez2pGPg"
               loading="lazy"
+              width={1200}
+              height={500}
             />
           </div>
           <div className="relative z-10 bg-white/90 backdrop-blur-xl border border-black/5 p-10 max-w-md mx-8 text-center rounded-2xl">

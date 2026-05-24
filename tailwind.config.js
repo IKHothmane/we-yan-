@@ -5,6 +5,8 @@ export default {
       colors: {
         primary: '#6483F0',
         secondary: '#FC9700',
+        'agency-orange': '#FC9700',
+        'agency-dark': '#0F172A',
         background: '#F1F1F1',
         surface: '#ffffff',
         'on-background': '#0A0A0A',
@@ -37,6 +39,8 @@ export default {
         'margin-tablet': '40px',
       },
       fontFamily: {
+        sans: ['Poppins', 'sans-serif'],
+        heading: ['Rigot', 'sans-serif'],
         headline: ['Syne', 'Bricolage Grotesque', 'sans-serif'],
         body: ['Poppins', 'sans-serif'],
       },

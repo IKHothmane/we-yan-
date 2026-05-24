@@ -1,46 +1,6 @@
 import { useEffect } from 'react'
-import Navbar from './Navbar.tsx'
-
-function useScrollReveal() {
-  useEffect(() => {
-    const prefersReduced =
-      typeof window !== 'undefined' &&
-      window.matchMedia &&
-      window.matchMedia('(prefers-reduced-motion: reduce)').matches
-
-    const elements = Array.from(document.querySelectorAll('[data-reveal]')) as HTMLElement[]
-    elements.forEach((el) => {
-      const delay = el.getAttribute('data-reveal-delay') || '0'
-      el.classList.add('opacity-0', 'translate-y-8', 'transition-all', 'duration-700', 'ease-out')
-      el.style.transitionDelay = `${delay}ms`
-    })
-
-    if (prefersReduced) {
-      elements.forEach((el) => {
-        el.classList.remove('opacity-0', 'translate-y-8')
-        el.classList.add('opacity-100', 'translate-y-0')
-        el.style.transitionDelay = '0ms'
-      })
-      return
-    }
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) return
-          const target = entry.target as HTMLElement
-          target.classList.remove('opacity-0', 'translate-y-8')
-          target.classList.add('opacity-100', 'translate-y-0')
-          observer.unobserve(target)
-        })
-      },
-      { threshold: 0.15 },
-    )
-
-    elements.forEach((el) => observer.observe(el))
-    return () => observer.disconnect()
-  }, [])
-}
+import Navbar from '../components/Navbar'
+import useScrollReveal from '../hooks/useScrollReveal'
 
 export default function AgencyPage() {
   useScrollReveal()
@@ -62,7 +22,7 @@ export default function AgencyPage() {
   }, [])
 
   return (
-    <div className="bg-background text-on-background">
+    <div className="bg-background text-on-background overflow-hidden w-full">
       <Navbar />
 
       <main>
@@ -98,6 +58,8 @@ export default function AgencyPage() {
                   className="w-full h-full object-cover"
                   src="https://lh3.googleusercontent.com/aida-public/AB6AXuAXanOiulfk8KwYBo42gYSatoWmknKg7L5Vu_Wm8CIqGXka1ScAIWQDwGerHTb8E6YtZlRcfDTghyIoDE8M5Px5r9dDcwbDRv7i42pCxGPxZda8xChiGC1D1DWaT2JV5fmkCYLXUlVR1bBuRWX5qVPBuLB04IcXmx-3OezowJC5w57u692diuILAAfzMNDEMl23HXeg6_tVCVUBUYwb3x7rQvvv9Zpf06QiqdBaRYq3AL3k2xoF_uK-Xw1PSdGo14AUCZmqOCmKF5s"
                   loading="lazy"
+                  width={800}
+                  height={1000}
                 />
               </div>
               <div className="absolute -bottom-10 -right-10 w-48 h-48 bg-secondary rounded-3xl flex flex-col items-center justify-center text-white shadow-xl" style={{ transform: 'rotate(-6deg)' }}>

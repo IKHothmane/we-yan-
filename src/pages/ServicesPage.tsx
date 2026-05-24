@@ -1,57 +1,12 @@
-import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import Navbar from './Navbar.tsx'
-
-function classNames(...values: (string | false | null | undefined)[]) {
-  return values.filter(Boolean).join(' ')
-}
-
-function useScrollReveal() {
-  useEffect(() => {
-    const prefersReduced =
-      typeof window !== 'undefined' &&
-      window.matchMedia &&
-      window.matchMedia('(prefers-reduced-motion: reduce)').matches
-
-    const elements = Array.from(document.querySelectorAll('[data-reveal]')) as HTMLElement[]
-    elements.forEach((el) => {
-      const delay = el.getAttribute('data-reveal-delay') || '0'
-      el.classList.add('opacity-0', 'translate-y-8', 'transition-all', 'duration-700', 'ease-out')
-      el.style.transitionDelay = `${delay}ms`
-    })
-
-    if (prefersReduced) {
-      elements.forEach((el) => {
-        el.classList.remove('opacity-0', 'translate-y-8')
-        el.classList.add('opacity-100', 'translate-y-0')
-        el.style.transitionDelay = '0ms'
-      })
-      return
-    }
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) return
-          const target = entry.target as HTMLElement
-          target.classList.remove('opacity-0', 'translate-y-8')
-          target.classList.add('opacity-100', 'translate-y-0')
-          observer.unobserve(target)
-        })
-      },
-      { threshold: 0.15 },
-    )
-
-    elements.forEach((el) => observer.observe(el))
-    return () => observer.disconnect()
-  }, [])
-}
+import Navbar from '../components/Navbar'
+import useScrollReveal from '../hooks/useScrollReveal'
 
 export default function ServicesPage() {
   useScrollReveal()
 
   return (
-    <div className="font-body-md bg-background min-h-screen">
+    <div className="font-body-md bg-background min-h-screen overflow-hidden w-full">
       <Navbar />
 
       <main>
@@ -111,6 +66,9 @@ export default function ServicesPage() {
                     alt="Workspace branding"
                     className="w-full h-full object-cover"
                     src="https://lh3.googleusercontent.com/aida-public/AB6AXuBpa3VKIP82G8xHVoadX2k1SG5vSeecooWPILhhlGRhaDXkbB6ZtBAaV4-ebYnMNd95xUevPNqNmUl-mUsIXePe_hT6eWYYseFdcC6IAR_NRBaO9kWK8urJK8760oUE3RhswuI4ksW_NM_Hvus8ks2RRGhuAscbuUK7M1x2y3k-psXyd2A0Ge6ivNJ5zLKVqZ2CqGR5xa-Jm4OzSNQaZr2kTU55fSEhs73Xto7yfFjtvFWSgXej3i4JgNvThFUv5UujoT-p000EMNE"
+                    loading="lazy"
+                    width={800}
+                    height={256}
                   />
                 </div>
               </div>
@@ -169,6 +127,9 @@ export default function ServicesPage() {
                     alt="Video production"
                     className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
                     src="https://lh3.googleusercontent.com/aida-public/AB6AXuB6DWMU19t88TzuFQFcclzlkb0XnvVzDQRdhxVmIakuiTSX9hDQXS3NIDHzxrXPrAB0lq1WMzM4_TRXSq3Lm3mctrLsemU1r68-PNyoKmI4LKSPnzDc7GcJmKQ40YDDYoKiKCXgoJ0GirE5ziG8k9dQp0NOb8jWGOct6EvqVuriBeQwejp5oH64i-Fzw31Lz5z6zULC6PcdOI1qZxj5KWmrmuRvy_YWb3Vi5ybOXVJo8sawjSEzszioI4BR6V4eG0ktFLirHFMrmAM"
+                    loading="lazy"
+                    width={400}
+                    height={400}
                   />
                 </div>
                 <div className="aspect-square rounded-lg overflow-hidden bg-white">
@@ -176,6 +137,9 @@ export default function ServicesPage() {
                     alt="Photography"
                     className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
                     src="https://lh3.googleusercontent.com/aida-public/AB6AXuCqe1f-VU4DkqYBxK6DAaop7C46CJQJAGn6y97JjuE65021BIjhvUGO0HdPuXNdTkBiLGXVmYD_v8qs7-t5LwiMYhzFiaeAOE1-w7wmJhxIRKOycltJ_Uq-ADCKErRaAiJZvBQImcJSmFDbtb5z2yNMQKbCNMUmSCoj-M7mBpMV2Ks8gK67w9rBXvYV0EtLhkm_QBgsq7qm-Ngur656uSecItFyZGOAk1_QzpdZpeR2J4WBozEhcDksvqcguRn3PvUe3hU8aoehi5E"
+                    loading="lazy"
+                    width={400}
+                    height={400}
                   />
                 </div>
               </div>
