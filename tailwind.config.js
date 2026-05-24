@@ -1,0 +1,71 @@
+export default {
+  content: ['./index.html', './src/**/*.{js,jsx,ts,tsx}'],
+  theme: {
+    extend: {
+      colors: {
+        primary: '#6483F0',
+        secondary: '#FC9700',
+        background: '#F1F1F1',
+        surface: '#ffffff',
+        'on-background': '#0A0A0A',
+        'on-surface': '#0A0A0A',
+        'outline-variant': '#c2c7ce',
+        'primary-container': '#6483F0',
+        'secondary-container': '#FC9700',
+        'on-primary': '#ffffff',
+        'on-secondary': '#ffffff',
+        'on-primary-container': '#ffffff',
+        'on-secondary-container': '#ffffff',
+        'surface-container-lowest': '#ffffff',
+        'surface-container-low': '#F8F8F8',
+        'surface-container-highest': '#e2e2e2',
+        'on-surface-variant': '#42474d',
+      },
+      borderRadius: {
+        DEFAULT: '0.25rem',
+        lg: '0.5rem',
+        xl: '0.75rem',
+        full: '9999px',
+      },
+      spacing: {
+        gutter: '24px',
+        'container-max': '1280px',
+        unit: '8px',
+        'margin-desktop': '80px',
+        'margin-mobile': '20px',
+        'section-padding': '120px',
+        'margin-tablet': '40px',
+      },
+      fontFamily: {
+        headline: ['Syne', 'Bricolage Grotesque', 'sans-serif'],
+        body: ['Poppins', 'sans-serif'],
+      },
+      fontSize: {
+        'headline-lg-mobile': [
+          '32px',
+          { lineHeight: '40px', letterSpacing: '-0.01em', fontWeight: '800' },
+        ],
+        'display-lg': [
+          '72px',
+          { lineHeight: '80px', letterSpacing: '-0.04em', fontWeight: '800' },
+        ],
+        'body-lg': ['20px', { lineHeight: '32px', fontWeight: '400' }],
+        'display-lg-mobile': [
+          '40px',
+          { lineHeight: '44px', letterSpacing: '-0.02em', fontWeight: '800' },
+        ],
+        'label-md': [
+          '14px',
+          { lineHeight: '20px', letterSpacing: '0.05em', fontWeight: '600' },
+        ],
+        'headline-md': ['32px', { lineHeight: '40px', fontWeight: '800' }],
+        'body-md': ['16px', { lineHeight: '24px', fontWeight: '400' }],
+        'headline-lg': [
+          '48px',
+          { lineHeight: '56px', letterSpacing: '-0.02em', fontWeight: '800' },
+        ],
+      },
+    },
+  },
+  plugins: [],
+}
