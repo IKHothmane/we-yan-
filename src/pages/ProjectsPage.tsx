@@ -243,14 +243,15 @@ export default function ProjectsPage() {
       <footer className="bg-white border-t border-outline-variant/30" data-reveal data-reveal-delay="700">
         <div className="flex flex-col md:flex-row justify-between items-start py-20 px-8 md:px-margin-desktop max-w-container-max mx-auto gap-16">
           <div className="flex flex-col gap-6 max-w-sm">
-            <img
-              alt="We Digital"
-              className="h-12 w-fit object-contain"
-              src="/logo.jpg"
-              loading="lazy"
-              width={100}
-              height={48}
-            />
+            <div className="flex items-center gap-4">
+              <span
+                aria-hidden="true"
+                className="w-12 h-12 rounded-full bg-secondary shadow-[0_10px_30px_-10px_rgba(252,151,0,0.7)]"
+              />
+              <span className="font-display text-xl font-bold text-on-surface tracking-tight">
+                we yan digital
+              </span>
+            </div>
             <p className="font-body text-on-surface-variant leading-relaxed">
               Agence digitale premium spécialisée dans l'innovation créative et la stratégie d'impact pour le marché marocain et international.
             </p>

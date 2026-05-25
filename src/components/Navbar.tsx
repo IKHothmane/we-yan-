@@ -5,11 +5,9 @@ export default function Navbar() {
     <nav className="fixed top-0 left-0 right-0 z-50 px-6 py-4">
       <div className="max-w-7xl mx-auto flex items-center justify-between bg-white/95 backdrop-blur-md rounded-full px-8 py-3 border border-slate-200 shadow-lg">
         <Link to="/" className="flex items-center space-x-3">
-          <img
-            src="/logo.jpg"
-            alt=""
+          <span
             aria-hidden="true"
-            className="w-12 h-12 object-contain"
+            className="w-12 h-12 rounded-full bg-[#FC9700] shadow-[0_10px_30px_-10px_rgba(252,151,0,0.7)]"
           />
           <span className="text-slate-900 font-bold text-xl tracking-tight">we yan digital</span>
         </Link>

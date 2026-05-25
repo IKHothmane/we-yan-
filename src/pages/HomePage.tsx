@@ -40,7 +40,7 @@ export default function HomePage() {
           className="relative h-screen min-h-[800px] flex items-center overflow-hidden hero-bg pt-24"
           style={{
             backgroundImage:
-              'linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url(https://lh3.googleusercontent.com/aida-public/AB6AXuA73sb8SjkI0qqpCmo-VYEtXwTRBj3A-47H0t6Dy1DJS8OeS-DPXpcx14y34qJM1qXWsDxydeiYiGNneEbOMJtJDkhRVnCuNRPt7H1YP9WFSkPl_WeQtiQx22zOcWKEJTkSuken0V58-OEwYy5wTEyGqEYjXGcvDehVxIbJWcQXzZLaH9z83haEgQJVLINbagKfjS21rRR2jJGDCh0rxQAiauiNrsIoAyUeBnxAvWe-7h9Y0TjM7NXTxvkHjQ3P9jtYHHLVtx6SCtI)',
+              'linear-gradient(135deg, rgba(15, 23, 42, 1) 0%, rgba(15, 23, 42, 0.92) 45%, rgba(252, 151, 0, 0.18) 100%), radial-gradient(circle at 30% 20%, rgba(100, 131, 240, 0.35), transparent 55%), radial-gradient(circle at 70% 60%, rgba(252, 151, 0, 0.22), transparent 50%)',
           }}
         >
           <div className="absolute inset-0 pointer-events-none">
@@ -214,32 +214,39 @@ export default function HomePage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" data-reveal data-reveal-delay="100">
             <div className="lg:col-span-2">
-              <img
-                alt="Mobile app design"
-                className="w-full rounded-3xl shadow-xl"
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCpJH-Hx_YvWuSl5bmE3UPd8JDWEYAn6IMa8CPqCpejrxi5Lb-S_iNUBdEuQuL6LeCaiMo8HGwTbbtZ2_-VU3UYErJ429lhn4yKYGOBlJL9INCdwlKGREEK1Do0hsVJgrdv7vlduxFIAh4sSUDlxiJaAbU8YIru_mjeqR4trc9oIzChJ4Vp8Cu91l4GeTLwANH96F34AovPOkcYTyfakVptYRJJmof6iYoUoFn472_-zDzaKNCl1VgOcrUqGydAPCId9nyaIxngHas"
-                loading="lazy"
-                width={1000}
-                height={600}
-              />
+              <div
+                role="img"
+                aria-label="Aperçu projet"
+                className="w-full rounded-3xl shadow-xl aspect-[16/10] md:aspect-[16/9] bg-gradient-to-br from-[#FC9700]/15 via-white to-[#6483F0]/15 border border-slate-200 overflow-hidden relative"
+              >
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(252,151,0,0.25),_transparent_55%)]"></div>
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,_rgba(100,131,240,0.22),_transparent_55%)]"></div>
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="bg-white/80 backdrop-blur-md border border-white/60 rounded-2xl px-6 py-4 shadow-lg flex items-center gap-4">
+                    <span className="w-12 h-12 rounded-2xl brand-gradient" aria-hidden="true" />
+                    <div className="text-left">
+                      <p className="font-bold text-slate-900 leading-tight">Portfolio</p>
+                      <p className="text-sm text-slate-600">Aperçu de nos réalisations</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
             <div className="flex flex-col gap-8">
-              <img
-                alt="Office interior"
-                className="w-full rounded-3xl shadow-xl"
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCpJH-Hx_YvWuSl5bmE3UPd8JDWEYAn6IMa8CPqCpejrxi5Lb-S_iNUBdEuQuL6LeCaiMo8HGwTbbtZ2_-VU3UYErJ429lhn4yKYGOBlJL9INCdwlKGREEK1Do0hsVJgrdv7vlduxFIAh4sSUDlxiJaAbU8YIru_mjeqR4trc9oIzChJ4Vp8Cu91l4GeTLwANH96F34AovPOkcYTyfakVptYRJJmof6iYoUoFn472_-zDzaKNCl1VgOcrUqGydAPCId9nyaIxngHas"
-                loading="lazy"
-                width={500}
-                height={380}
-              />
-              <img
-                alt="Computer screen"
-                className="w-full rounded-3xl shadow-xl"
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCpJH-Hx_YvWuSl5bmE3UPd8JDWEYAn6IMa8CPqCpejrxi5Lb-S_iNUBdEuQuL6LeCaiMo8HGwTbbtZ2_-VU3UYErJ429lhn4yKYGOBlJL9INCdwlKGREEK1Do0hsVJgrdv7vlduxFIAh4sSUDlxiJaAbU8YIru_mjeqR4trc9oIzChJ4Vp8Cu91l4GeTLwANH96F34AovPOkcYTyfakVptYRJJmof6iYoUoFn472_-zDzaKNCl1VgOcrUqGydAPCId9nyaIxngHas"
-                loading="lazy"
-                width={500}
-                height={380}
-              />
+              <div
+                role="img"
+                aria-label="Aperçu studio"
+                className="w-full rounded-3xl shadow-xl aspect-[4/3] bg-gradient-to-br from-slate-100 via-white to-[#FC9700]/10 border border-slate-200 overflow-hidden relative"
+              >
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,_rgba(100,131,240,0.18),_transparent_55%)]"></div>
+              </div>
+              <div
+                role="img"
+                aria-label="Aperçu dashboard"
+                className="w-full rounded-3xl shadow-xl aspect-[4/3] bg-gradient-to-br from-slate-100 via-white to-[#6483F0]/10 border border-slate-200 overflow-hidden relative"
+              >
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_40%,_rgba(252,151,0,0.16),_transparent_55%)]"></div>
+              </div>
             </div>
           </div>
         </div>
@@ -444,12 +451,20 @@ export default function HomePage() {
                 </div>
               </div>
               <div className="mt-12 rounded-2xl overflow-hidden">
-                <img
-                  alt="Map"
-                  className="w-full h-64 object-cover"
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuCpJH-Hx_YvWuSl5bmE3UPd8JDWEYAn6IMa8CPqCpejrxi5Lb-S_iNUBdEuQuL6LeCaiMo8HGwTbbtZ2_-VU3UYErJ429lhn4yKYGOBlJL9INCdwlKGREEK1Do0hsVJgrdv7vlduxFIAh4sSUDlxiJaAbU8YIru_mjeqR4trc9oIzChJ4Vp8Cu91l4GeTLwANH96F34AovPOkcYTyfakVptYRJJmof6iYoUoFn472_-zDzaKNCl1VgOcrUqGydAPCId9nyaIxngHas"
-                  loading="lazy"
-                />
+                <div
+                  role="img"
+                  aria-label="Localisation Casablanca"
+                  className="w-full h-64 bg-gradient-to-br from-slate-900 via-[#0F172A] to-slate-800 relative"
+                >
+                  <div className="absolute inset-0 opacity-40 bg-[radial-gradient(circle_at_20%_30%,_rgba(252,151,0,0.35),_transparent_50%)]"></div>
+                  <div className="absolute inset-0 opacity-40 bg-[radial-gradient(circle_at_75%_60%,_rgba(100,131,240,0.3),_transparent_55%)]"></div>
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="flex items-center gap-3 bg-white/10 backdrop-blur-md border border-white/10 rounded-full px-5 py-3">
+                      <Icon name="location_on" className="w-6 h-6 text-[#FC9700]" />
+                      <span className="text-white font-semibold">Casablanca</span>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -461,11 +476,9 @@ export default function HomePage() {
         <div className="max-w-6xl mx-auto px-8 grid grid-cols-1 md:grid-cols-3 gap-12">
           <div>
             <div className="flex items-center gap-4 mb-6">
-              <img
-                src="/logo.jpg"
-                alt=""
+              <span
                 aria-hidden="true"
-                className="w-12 h-12 object-contain"
+                className="w-12 h-12 rounded-full bg-[#FC9700] shadow-[0_10px_30px_-10px_rgba(252,151,0,0.7)]"
               />
               <span className="text-2xl font-extrabold">
                 we yan digital
