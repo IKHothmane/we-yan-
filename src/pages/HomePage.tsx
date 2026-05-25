@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import Icon from '../components/Icon'
 import Navbar from '../components/Navbar'
 import useScrollReveal from '../hooks/useScrollReveal'
 
@@ -34,55 +35,80 @@ export default function HomePage() {
 
       <Navbar />
 
-      <section 
-        className="relative h-screen min-h-[800px] flex items-center overflow-hidden hero-bg pt-24" 
-        style={{ 
-          backgroundImage: 'linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url(https://lh3.googleusercontent.com/aida-public/AB6AXuA73sb8SjkI0qqpCmo-VYEtXwTRBj3A-47H0t6Dy1DJS8OeS-DPXpcx14y34qJM1qXWsDxydeiYiGNneEbOMJtJDkhRVnCuNRPt7H1YP9WFSkPl_WeQtiQx22zOcWKEJTkSuken0V58-OEwYy5wTEyGqEYjXGcvDehVxIbJWcQXzZLaH9z83haEgQJVLINbagKfjS21rRR2jJGDCh0rxQAiauiNrsIoAyUeBnxAvWe-7h9Y0TjM7NXTxvkHjQ3P9jtYHHLVtx6SCtI)' 
-        }}
-      >
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-[25%] right-[20%] floating-tag flex items-center space-x-3 px-6 py-3 rounded-2xl shadow-xl z-10" style={{ animationDelay: '0s' }}>
-            <div className="w-6 h-6 bg-[#FC9700] rounded-full flex items-center justify-center">
-              <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path d="M5 13l4 4L19 7" strokeLinecap="round" strokeLinejoin="round" strokeWidth="3"></path>
-              </svg>
+      <main>
+        <section
+          className="relative h-screen min-h-[800px] flex items-center overflow-hidden hero-bg pt-24"
+          style={{
+            backgroundImage:
+              'linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url(https://lh3.googleusercontent.com/aida-public/AB6AXuA73sb8SjkI0qqpCmo-VYEtXwTRBj3A-47H0t6Dy1DJS8OeS-DPXpcx14y34qJM1qXWsDxydeiYiGNneEbOMJtJDkhRVnCuNRPt7H1YP9WFSkPl_WeQtiQx22zOcWKEJTkSuken0V58-OEwYy5wTEyGqEYjXGcvDehVxIbJWcQXzZLaH9z83haEgQJVLINbagKfjS21rRR2jJGDCh0rxQAiauiNrsIoAyUeBnxAvWe-7h9Y0TjM7NXTxvkHjQ3P9jtYHHLVtx6SCtI)',
+          }}
+        >
+          <div className="absolute inset-0 pointer-events-none">
+            <div
+              className="absolute top-[25%] right-[20%] floating-tag flex items-center space-x-3 px-6 py-3 rounded-2xl shadow-xl z-10"
+              style={{ animationDelay: '0s' }}
+            >
+              <div className="w-6 h-6 bg-[#FC9700] rounded-full flex items-center justify-center">
+                <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path
+                    d="M5 13l4 4L19 7"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="3"
+                  ></path>
+                </svg>
+              </div>
+              <span className="font-bold text-slate-800">Branding</span>
             </div>
-            <span className="font-bold text-slate-800">Branding</span>
-          </div>
-          <div className="absolute bottom-[25%] right-[30%] floating-tag flex items-center space-x-3 px-6 py-3 rounded-2xl shadow-xl z-10" style={{ animationDelay: '1s' }}>
-            <div className="w-6 h-6 bg-[#FC9700] rounded-full flex items-center justify-center">
-              <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path d="M5 13l4 4L19 7" strokeLinecap="round" strokeLinejoin="round" strokeWidth="3"></path>
-              </svg>
-            </div>
-            <span className="font-bold text-slate-800">Ads</span>
-          </div>
-        </div>
-        <div className="container mx-auto px-6 relative z-10">
-          <div className="max-w-3xl">
-            <h1 className="text-white text-6xl md:text-8xl font-rigot font-bold leading-tight mb-4">
-              Make it <br /> Different
-            </h1>
-            <h2 className="text-white text-4xl md:text-5xl font-bold mb-8">
-              Votre marque mérite de se <br />
-              <span className="text-[#FC9700]">démarquer.</span>
-            </h2>
-            <p className="text-gray-300 text-lg md:text-xl max-w-xl leading-relaxed mb-10">
-              Agence de communication spécialisée en branding, création de contenu, influence marketing et publicité digitale.
-            </p>
-            <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
-              <Link to="/contact" className="bg-[#FC9700] text-white px-10 py-4 rounded-full font-bold text-lg hover:scale-105 transition-transform shadow-lg shadow-orange-500/20 text-center">
-                Demander un devis
-              </Link>
-              <Link to="/projets" className="border-2 border-white/40 text-white px-10 py-4 rounded-full font-bold text-lg hover:bg-white/10 transition-all text-center">
-                Voir nos projets
-              </Link>
+            <div
+              className="absolute bottom-[25%] right-[30%] floating-tag flex items-center space-x-3 px-6 py-3 rounded-2xl shadow-xl z-10"
+              style={{ animationDelay: '1s' }}
+            >
+              <div className="w-6 h-6 bg-[#FC9700] rounded-full flex items-center justify-center">
+                <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path
+                    d="M5 13l4 4L19 7"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="3"
+                  ></path>
+                </svg>
+              </div>
+              <span className="font-bold text-slate-800">Ads</span>
             </div>
           </div>
-        </div>
-      </section>
+          <div className="container mx-auto px-6 relative z-10">
+            <div className="max-w-3xl">
+              <h1 className="text-white text-6xl md:text-8xl font-rigot font-bold leading-tight mb-4">
+                Make it <br /> Different
+              </h1>
+              <h2 className="text-white text-4xl md:text-5xl font-bold mb-8">
+                Votre marque mérite de se <br />
+                <span className="text-[#FC9700]">démarquer.</span>
+              </h2>
+              <p className="text-gray-300 text-lg md:text-xl max-w-xl leading-relaxed mb-10">
+                Agence de communication spécialisée en branding, création de contenu, influence marketing
+                et publicité digitale.
+              </p>
+              <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                <Link
+                  to="/contact"
+                  className="bg-[#FC9700] text-[#0F172A] px-10 py-4 rounded-full font-bold text-lg hover:scale-105 transition-transform shadow-lg shadow-orange-500/20 text-center"
+                >
+                  Demander un devis
+                </Link>
+                <Link
+                  to="/projets"
+                  className="border-2 border-white/40 text-white px-10 py-4 rounded-full font-bold text-lg hover:bg-white/10 transition-all text-center"
+                >
+                  Voir nos projets
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
 
-      <section className="py-20 md:py-32 bg-white" id="services">
+        <section className="py-20 md:py-32 bg-white" id="services">
         <div className="max-w-6xl mx-auto px-8">
           <div className="text-center mb-16" data-reveal>
             <h2 className="font-bold text-3xl md:text-5xl text-slate-900 mb-4">
@@ -153,7 +179,7 @@ export default function HomePage() {
                 <div className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-6 ${
                   service.tone === 'secondary' ? 'bg-[#FC9700]/10 text-[#FC9700]' : 'bg-[#6483F0]/10 text-[#6483F0]'
                 }`}>
-                  <span className="material-symbols-outlined text-3xl">{service.icon}</span>
+                  <Icon name={service.icon} className="w-8 h-8" />
                 </div>
                 <h3 className="text-2xl font-bold text-slate-900 mb-3">
                   {service.title}
@@ -167,7 +193,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="py-20 md:py-32 bg-slate-50" id="work">
+        <section className="py-20 md:py-32 bg-slate-50" id="work">
         <div className="max-w-6xl mx-auto px-8">
           <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6" data-reveal>
             <div>
@@ -219,7 +245,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="py-20 md:py-32 bg-[#0F172A] text-white" id="about">
+        <section className="py-20 md:py-32 bg-[#0F172A] text-white" id="about">
         <div className="max-w-6xl mx-auto px-8 grid md:grid-cols-2 gap-16 items-center">
           <div data-reveal>
             <h2 className="font-bold text-3xl md:text-5xl mb-8 leading-tight">
@@ -230,18 +256,18 @@ export default function HomePage() {
             </p>
             <ul className="space-y-6">
               <li className="flex items-start gap-4">
-                <span className="material-symbols-outlined text-[#FC9700] text-2xl">circle</span>
+                <Icon name="circle" className="w-6 h-6 text-[#FC9700]" />
                 <div>
-                  <h4 className="text-2xl font-bold mb-1">Stratégie Personnalisée</h4>
+                  <h3 className="text-2xl font-bold mb-1">Stratégie Personnalisée</h3>
                   <p className="text-slate-400 text-sm">
                     Pas de solutions "taille unique". Chaque marque est unique et mérite une voix propre.
                   </p>
                 </div>
               </li>
               <li className="flex items-start gap-4">
-                <span className="material-symbols-outlined text-[#FC9700] text-2xl">circle</span>
+                <Icon name="circle" className="w-6 h-6 text-[#FC9700]" />
                 <div>
-                  <h4 className="text-2xl font-bold mb-1">Focus Résultats</h4>
+                  <h3 className="text-2xl font-bold mb-1">Focus Résultats</h3>
                   <p className="text-slate-400 text-sm">
                     Nous mesurons tout. Si ça ne convertit pas, on optimise jusqu'à l'excellence.
                   </p>
@@ -271,7 +297,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="py-20 md:py-32 bg-white">
+        <section className="py-20 md:py-32 bg-white">
         <div className="max-w-6xl mx-auto px-8">
           <h2 className="text-center text-3xl md:text-5xl font-bold text-slate-900 mb-16" data-reveal>
             Ce que disent nos <span className="text-[#6483F0]">partenaires</span>
@@ -325,7 +351,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="py-20 md:py-32 bg-slate-50">
+        <section className="py-20 md:py-32 bg-slate-50">
         <div className="max-w-6xl mx-auto px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 overflow-hidden rounded-3xl shadow-2xl">
             <div className="p-12 bg-white" data-reveal>
@@ -334,24 +360,38 @@ export default function HomePage() {
               </h2>
               <form className="space-y-6">
                 <div className="space-y-2">
-                  <label className="text-sm font-semibold text-slate-700">Nom complet</label>
+                  <label className="text-sm font-semibold text-slate-700" htmlFor="home-contact-name">
+                    Nom complet
+                  </label>
                   <input
+                    id="home-contact-name"
+                    name="name"
                     type="text"
                     className="w-full border border-slate-300 rounded-lg p-4 focus:outline-none focus:border-[#FC9700]"
                     placeholder="Ex: Amine Benali"
                   />
                 </div>
                 <div className="space-y-2">
-                  <label className="text-sm font-semibold text-slate-700">Adresse email</label>
+                  <label className="text-sm font-semibold text-slate-700" htmlFor="home-contact-email">
+                    Adresse email
+                  </label>
                   <input
+                    id="home-contact-email"
+                    name="email"
                     type="email"
                     className="w-full border border-slate-300 rounded-lg p-4 focus:outline-none focus:border-[#FC9700]"
                     placeholder="Ex: amine@exemple.com"
                   />
                 </div>
                 <div className="space-y-2">
-                  <label className="text-sm font-semibold text-slate-700">Service souhaité</label>
-                  <select className="w-full border border-slate-300 rounded-lg p-4 focus:outline-none focus:border-[#FC9700] bg-white">
+                  <label className="text-sm font-semibold text-slate-700" htmlFor="home-contact-service">
+                    Service souhaité
+                  </label>
+                  <select
+                    id="home-contact-service"
+                    name="service"
+                    className="w-full border border-slate-300 rounded-lg p-4 focus:outline-none focus:border-[#FC9700] bg-white"
+                  >
                     <option>Branding</option>
                     <option>Social Media</option>
                     <option>Publicité</option>
@@ -359,8 +399,12 @@ export default function HomePage() {
                   </select>
                 </div>
                 <div className="space-y-2">
-                  <label className="text-sm font-semibold text-slate-700">Votre message</label>
+                  <label className="text-sm font-semibold text-slate-700" htmlFor="home-contact-message">
+                    Votre message
+                  </label>
                   <textarea
+                    id="home-contact-message"
+                    name="message"
                     className="w-full border border-slate-300 rounded-lg p-4 focus:outline-none focus:border-[#FC9700] resize-none"
                     rows={4}
                     placeholder="Parlez-nous de vos objectifs..."
@@ -368,7 +412,7 @@ export default function HomePage() {
                 </div>
                 <button
                   type="submit"
-                  className="w-full bg-[#FC9700] text-white py-4 rounded-xl font-bold text-lg hover:brightness-110 transition-all"
+                  className="w-full bg-[#FC9700] text-[#0F172A] py-4 rounded-xl font-bold text-lg hover:brightness-110 transition-all"
                 >
                   ENVOYER LE MESSAGE
                 </button>
@@ -378,21 +422,21 @@ export default function HomePage() {
               <h3 className="text-2xl font-bold mb-8">Coordonnées</h3>
               <div className="space-y-8">
                 <div className="flex items-center gap-4">
-                  <span className="material-symbols-outlined text-[#FC9700] text-3xl">phone</span>
+                  <Icon name="phone" className="w-8 h-8 text-[#FC9700]" />
                   <div>
                     <p className="text-sm text-slate-400">Téléphone</p>
                     <p className="text-lg font-semibold">+212 6XX XXX XX XX</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-4">
-                  <span className="material-symbols-outlined text-[#FC9700] text-3xl">mail</span>
+                  <Icon name="mail" className="w-8 h-8 text-[#FC9700]" />
                   <div>
                     <p className="text-sm text-slate-400">Email</p>
                     <p className="text-lg font-semibold">hello@wedigital.com</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-4">
-                  <span className="material-symbols-outlined text-[#FC9700] text-3xl">location_on</span>
+                  <Icon name="location_on" className="w-8 h-8 text-[#FC9700]" />
                   <div>
                     <p className="text-sm text-slate-400">Adresse</p>
                     <p className="text-lg font-semibold">Bd d'Anfa, Casablanca, Morocco</p>
@@ -410,7 +454,8 @@ export default function HomePage() {
             </div>
           </div>
         </div>
-      </section>
+        </section>
+      </main>
 
       <footer className="w-full py-16 bg-[#0F172A] text-white border-t border-slate-800">
         <div className="max-w-6xl mx-auto px-8 grid grid-cols-1 md:grid-cols-3 gap-12">
@@ -418,7 +463,8 @@ export default function HomePage() {
             <div className="flex items-center gap-4 mb-6">
               <img
                 src="/logo.jpg"
-                alt="we yan digital"
+                alt=""
+                aria-hidden="true"
                 className="w-12 h-12 object-contain"
               />
               <span className="text-2xl font-extrabold">
@@ -428,7 +474,7 @@ export default function HomePage() {
             <p className="text-slate-400 text-lg leading-relaxed mb-8">
               Agence digitale marocaine qui transforme les marques avec créativité et stratégie.
             </p>
-            <p className="text-xs text-slate-500 uppercase tracking-widest">
+            <p className="text-xs text-slate-300 uppercase tracking-widest">
               © {new Date().getFullYear()} we yan digital. All rights reserved.
             </p>
           </div>
@@ -475,7 +521,7 @@ export default function HomePage() {
             </ul>
             <div className="mt-10">
               <Link
-                className="inline-flex px-6 py-2 bg-[#FC9700] text-white rounded-full text-xs font-bold hover:brightness-110 transition-all shadow-lg uppercase tracking-widest"
+                className="inline-flex px-6 py-2 bg-[#FC9700] text-[#0F172A] rounded-full text-xs font-bold hover:brightness-110 transition-all shadow-lg uppercase tracking-widest"
                 to="/contact"
               >
                 COMMENCER MAINTENANT

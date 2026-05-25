@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+import Icon from '../components/Icon'
 import Navbar from '../components/Navbar'
 import useScrollReveal from '../hooks/useScrollReveal'
 
@@ -96,7 +97,7 @@ export default function AgencyPage() {
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
               <div className="lg:col-span-2 p-12 rounded-3xl bg-white/70 backdrop-blur-lg border border-white/30 relative overflow-hidden group" data-reveal>
                 <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:opacity-20 transition-opacity">
-                  <span className="material-symbols-outlined text-9xl">public</span>
+                  <Icon name="public" className="w-24 h-24 text-on-surface" />
                 </div>
                 <h3 className="text-2xl md:text-3xl font-bold text-primary mb-6">Standards Internationaux</h3>
                 <p className="text-lg text-on-surface-variant">
@@ -104,7 +105,7 @@ export default function AgencyPage() {
                 </p>
               </div>
               <div className="p-12 rounded-3xl bg-primary text-white flex flex-col justify-end" data-reveal data-reveal-delay="100">
-                <span className="material-symbols-outlined text-6xl mb-8">auto_awesome</span>
+                <Icon name="auto_awesome" className="w-16 h-16 mb-8" />
                 <h3 className="text-2xl md:text-3xl font-bold mb-4">Culture Locale</h3>
                 <p className="text-white/80">
                   Nous comprenons les nuances, l'humour et les codes visuels du consommateur marocain pour créer des connexions authentiques.

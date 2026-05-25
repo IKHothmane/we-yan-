@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import Icon from '../components/Icon'
 import Navbar from '../components/Navbar'
 import useScrollReveal from '../hooks/useScrollReveal'
 
@@ -170,7 +171,7 @@ export default function ProjectsPage() {
                       </span>
                       <h3 className="font-display text-[32px]">{project.title}</h3>
                       <div className="mt-6 w-12 h-12 rounded-full border-2 border-white flex items-center justify-center">
-                        <span className="material-symbols-outlined">add</span>
+                        <Icon name="add" className="w-6 h-6 text-white" />
                       </div>
                     </div>
                   </div>
@@ -213,7 +214,7 @@ export default function ProjectsPage() {
           <div className="flex justify-center mt-20" data-reveal data-reveal-delay="500">
             <Link to="/contact" className="group flex items-center gap-4 text-on-surface font-bold text-[16px] border-b-2 border-secondary pb-2 hover:gap-6 transition-all duration-300 font-display">
               Discuter d'un projet
-              <span className="material-symbols-outlined text-secondary font-bold">arrow_forward</span>
+              <Icon name="arrow_forward" className="w-5 h-5 text-secondary" />
             </Link>
           </div>
         </section>

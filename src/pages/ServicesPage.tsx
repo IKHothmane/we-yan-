@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import Icon from '../components/Icon'
 import Navbar from '../components/Navbar'
 import useScrollReveal from '../hooks/useScrollReveal'
 
@@ -26,12 +27,7 @@ export default function ServicesPage() {
               <div className="flex flex-col h-full justify-between">
                 <div>
                   <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-6">
-                    <span
-                      className="material-symbols-outlined text-primary"
-                      style={{ fontVariationSettings: "'FILL' 1" }}
-                    >
-                      architecture
-                    </span>
+                    <Icon name="architecture" className="w-6 h-6 text-primary" />
                   </div>
                   <h3 className="font-headline-md text-headline-md text-on-surface mb-4">
                     Branding & Visual Identity
@@ -42,21 +38,15 @@ export default function ServicesPage() {
                   </p>
                   <ul className="space-y-3 mb-8">
                     <li className="flex items-center gap-3 font-label-md text-label-md text-on-surface">
-                      <span className="material-symbols-outlined text-secondary text-sm">
-                        check_circle
-                      </span>
+                      <Icon name="check_circle" className="w-4 h-4 text-secondary" />
                       Logo design & Iconography
                     </li>
                     <li className="flex items-center gap-3 font-label-md text-label-md text-on-surface">
-                      <span className="material-symbols-outlined text-secondary text-sm">
-                        check_circle
-                      </span>
+                      <Icon name="check_circle" className="w-4 h-4 text-secondary" />
                       Brand strategy & Architecture
                     </li>
                     <li className="flex items-center gap-3 font-label-md text-label-md text-on-surface">
-                      <span className="material-symbols-outlined text-secondary text-sm">
-                        check_circle
-                      </span>
+                      <Icon name="check_circle" className="w-4 h-4 text-secondary" />
                       Visual guidelines & Stationery
                     </li>
                   </ul>
@@ -77,12 +67,7 @@ export default function ServicesPage() {
             <div className="md:col-span-5 bg-primary text-on-primary p-10 rounded-xl shadow-[0_10px_40px_-10px_rgba(100,131,240,0.15)] relative overflow-hidden group" data-reveal data-reveal-delay="100">
               <div className="relative z-10">
                 <div className="w-12 h-12 rounded-lg bg-white/20 flex items-center justify-center mb-6">
-                  <span
-                    className="material-symbols-outlined text-white"
-                    style={{ fontVariationSettings: "'FILL' 1" }}
-                  >
-                    trending_up
-                  </span>
+                  <Icon name="trending_up" className="w-6 h-6 text-white" />
                 </div>
                 <h3 className="font-headline-md text-headline-md mb-4">Digital Growth</h3>
                 <p className="font-body-md text-body-md text-white/80 mb-8">
@@ -109,12 +94,7 @@ export default function ServicesPage() {
 
             <div className="md:col-span-5 bg-surface-container-low p-10 rounded-xl shadow-[0_10px_40px_-10px_rgba(100,131,240,0.15)] border border-outline-variant/20" data-reveal data-reveal-delay="200">
               <div className="w-12 h-12 rounded-lg bg-secondary/10 flex items-center justify-center mb-6">
-                <span
-                  className="material-symbols-outlined text-secondary"
-                  style={{ fontVariationSettings: "'FILL' 1" }}
-                >
-                  movie_filter
-                </span>
+                <Icon name="movie_filter" className="w-6 h-6 text-secondary" />
               </div>
               <h3 className="font-headline-md text-headline-md text-on-surface mb-4">Content Creation</h3>
               <p className="font-body-md text-body-md text-on-surface-variant mb-8">
@@ -148,12 +128,7 @@ export default function ServicesPage() {
             <div className="md:col-span-7 bg-surface-container-lowest p-10 rounded-xl shadow-[0_10px_40px_-10px_rgba(100,131,240,0.15)] border border-outline-variant/20 flex flex-col md:flex-row gap-8 items-center" data-reveal data-reveal-delay="300">
               <div className="flex-1">
                 <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-6">
-                  <span
-                    className="material-symbols-outlined text-primary"
-                    style={{ fontVariationSettings: "'FILL' 1" }}
-                  >
-                    groups_3
-                  </span>
+                  <Icon name="groups_3" className="w-6 h-6 text-primary" />
                 </div>
                 <h3 className="font-headline-md text-headline-md text-on-surface mb-4">
                   Social Media & Influence

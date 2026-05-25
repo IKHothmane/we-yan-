@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import Icon from '../components/Icon'
 import Navbar from '../components/Navbar'
 import useScrollReveal from '../hooks/useScrollReveal'
 
@@ -37,7 +38,7 @@ export default function ContactPage() {
             <div className="space-y-8">
               <div className="group">
                 <div className="flex items-center gap-4 mb-2">
-                  <span className="material-symbols-outlined text-primary text-2xl">mail</span>
+                  <Icon name="mail" className="w-6 h-6 text-primary" />
                   <span className="uppercase tracking-widest text-outline text-sm font-semibold">Email</span>
                 </div>
                 <a
@@ -50,7 +51,7 @@ export default function ContactPage() {
 
               <div className="group">
                 <div className="flex items-center gap-4 mb-2">
-                  <span className="material-symbols-outlined text-primary text-2xl">phone_iphone</span>
+                  <Icon name="phone_iphone" className="w-6 h-6 text-primary" />
                   <span className="uppercase tracking-widest text-outline text-sm font-semibold">Téléphone</span>
                 </div>
                 <div className="flex flex-col">
@@ -66,7 +67,7 @@ export default function ContactPage() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <span className="material-symbols-outlined">chat</span>
+                    <Icon name="chat" className="w-5 h-5" />
                     Contactez-nous sur WhatsApp
                   </a>
                 </div>
@@ -74,7 +75,7 @@ export default function ContactPage() {
 
               <div className="group">
                 <div className="flex items-center gap-4 mb-2">
-                  <span className="material-symbols-outlined text-primary text-2xl">location_on</span>
+                  <Icon name="location_on" className="w-6 h-6 text-primary" />
                   <span className="uppercase tracking-widest text-outline text-sm font-semibold">Bureau</span>
                 </div>
                 <address className="text-lg md:text-xl not-italic text-on-surface-variant leading-relaxed">
@@ -94,7 +95,7 @@ export default function ContactPage() {
                   rel="noreferrer"
                   aria-label="Visitez notre LinkedIn"
                 >
-                  <span className="material-symbols-outlined" aria-hidden="true">share</span>
+                  <Icon name="share" className="w-6 h-6" />
                 </a>
                 <a
                   className="w-12 h-12 rounded-lg border border-outline-variant flex items-center justify-center hover:bg-primary hover:text-white transition-all duration-300"
@@ -103,7 +104,7 @@ export default function ContactPage() {
                   rel="noreferrer"
                   aria-label="Visitez notre Instagram"
                 >
-                  <span className="material-symbols-outlined" aria-hidden="true">camera</span>
+                  <Icon name="camera" className="w-6 h-6" />
                 </a>
                 <a
                   className="w-12 h-12 rounded-lg border border-outline-variant flex items-center justify-center hover:bg-primary hover:text-white transition-all duration-300"
@@ -112,7 +113,7 @@ export default function ContactPage() {
                   rel="noreferrer"
                   aria-label="Visitez notre Twitter"
                 >
-                  <span className="material-symbols-outlined" aria-hidden="true">link</span>
+                  <Icon name="link" className="w-6 h-6" />
                 </a>
               </div>
             </div>
@@ -196,7 +197,10 @@ export default function ContactPage() {
                   type="submit"
                 >
                   Envoyer le message
-                  <span className="material-symbols-outlined group-hover:translate-x-2 transition-transform">arrow_forward</span>
+                  <Icon
+                    name="arrow_forward"
+                    className="w-6 h-6 group-hover:translate-x-2 transition-transform"
+                  />
                 </button>
               </form>
             </div>
@@ -216,12 +220,7 @@ export default function ContactPage() {
           </div>
           <div className="relative z-10 bg-white/90 backdrop-blur-xl border border-black/5 p-10 max-w-md mx-8 text-center rounded-2xl">
             <div className="w-20 h-20 bg-secondary text-white rounded-full flex items-center justify-center mx-auto mb-6">
-              <span
-                className="material-symbols-outlined text-4xl"
-                style={{ fontVariationSettings: "'FILL' 1" }}
-              >
-                location_on
-              </span>
+              <Icon name="location_on" className="w-10 h-10 text-white" />
             </div>
             <h3 className="text-2xl md:text-3xl font-semibold mb-2">Visitez nos bureaux</h3>
             <p className="text-base md:text-lg text-on-surface-variant mb-6">

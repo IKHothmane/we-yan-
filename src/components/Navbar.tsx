@@ -7,7 +7,8 @@ export default function Navbar() {
         <Link to="/" className="flex items-center space-x-3">
           <img
             src="/logo.jpg"
-            alt="we yan digital"
+            alt=""
+            aria-hidden="true"
             className="w-12 h-12 object-contain"
           />
           <span className="text-slate-900 font-bold text-xl tracking-tight">we yan digital</span>
@@ -25,7 +26,7 @@ export default function Navbar() {
         </div>
         <div>
           <Link
-            className="bg-[#FC9700] text-white px-6 py-2 rounded-full font-semibold hover:brightness-110 transition-all text-sm uppercase tracking-wider"
+            className="bg-[#FC9700] text-[#0F172A] px-6 py-2 rounded-full font-semibold hover:brightness-110 transition-all text-sm uppercase tracking-wider"
             to="/contact"
           >
             Demander un devis
