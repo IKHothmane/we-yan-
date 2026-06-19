@@ -15,10 +15,12 @@ function Svg({
   title?: string
   children: React.ReactNode
 }) {
+  const baseClass = `flex-shrink-0 ${className ?? ''}`.trim()
+
   if (title) {
     return (
       <svg
-        className={className}
+        className={baseClass}
         viewBox="0 0 24 24"
         role="img"
         aria-label={title}
@@ -33,7 +35,7 @@ function Svg({
 
   return (
     <svg
-      className={className}
+      className={baseClass}
       viewBox="0 0 24 24"
       aria-hidden="true"
       fill="none"
@@ -44,7 +46,7 @@ function Svg({
   )
 }
 
-export default function Icon({ name, className, title }: IconProps) {
+export default function Icon({ name, className = 'w-6 h-6', title }: IconProps) {
   const commonStroke = {
     stroke: 'currentColor',
     strokeWidth: 2,
@@ -282,4 +284,3 @@ export default function Icon({ name, className, title }: IconProps) {
       )
   }
 }
-

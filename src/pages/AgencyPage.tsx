@@ -2,7 +2,9 @@ import { useEffect } from 'react'
 import Icon from '../components/Icon'
 import Navbar from '../components/Navbar'
 import PageSeo from '../components/PageSeo'
+import SiteFooter from '../components/SiteFooter'
 import useScrollReveal from '../hooks/useScrollReveal'
+import { pageSeo } from '../lib/pageSeo'
 
 export default function AgencyPage() {
   useScrollReveal()
@@ -25,17 +27,19 @@ export default function AgencyPage() {
 
   return (
     <div className="bg-background text-on-background overflow-hidden w-full pb-28 md:pb-32">
-      <PageSeo
-        title="Agence | we yan digital"
-        description="Découvrez l'agence we yan digital, notre vision, notre méthode et notre équipe dédiée à la performance, à la créativité et à l'impact digital."
-      />
+      <PageSeo {...pageSeo.agency} />
       <Navbar />
 
       <main>
-        <section className="relative min-h-[80vh] flex items-center pt-24 pb-32 px-8 md:px-20 overflow-hidden" data-reveal style={{
-          backgroundImage: 'radial-gradient(circle at 2px 2px, rgba(100, 131, 240, 0.05) 1px, transparent 0)',
-          backgroundSize: '40px 40px'
-        }}>
+        <section
+          className="relative min-h-[80vh] flex items-center pt-[clamp(6rem,11vw,7.5rem)] pb-[clamp(4rem,10vw,8rem)] px-[clamp(1rem,4vw,2rem)] md:px-20 overflow-hidden"
+          data-reveal
+          style={{
+            backgroundImage:
+              'radial-gradient(circle at 2px 2px, rgba(100, 131, 240, 0.05) 1px, transparent 0)',
+            backgroundSize: '40px 40px',
+          }}
+        >
           <div className="absolute top-0 right-0 -z-10 w-1/2 h-full opacity-10">
             <div className="absolute top-20 right-20 w-96 h-96 bg-primary rounded-full blur-[120px] float-animation"></div>
             <div className="absolute bottom-20 right-40 w-64 h-64 bg-secondary rounded-full blur-[100px] float-animation" style={{ animationDelay: '-2s' }}></div>
@@ -45,19 +49,24 @@ export default function AgencyPage() {
               <span className="inline-block text-secondary font-semibold text-sm tracking-widest uppercase mb-6 bg-secondary/10 px-4 py-1 rounded-full">
                 L'Agence
               </span>
-              <h1 className="text-4xl md:text-7xl font-extrabold text-on-surface mb-8 leading-tight">
+              <h1 className="text-[clamp(2.7rem,7vw,4.75rem)] font-extrabold text-on-surface mb-8 leading-[1.02]">
                 Nous créons le futur des <span className="text-primary italic">marques marocaines.</span>
               </h1>
-              <p className="text-lg md:text-xl text-on-surface-variant">
+              <p className="text-[clamp(1rem,2.5vw,1.25rem)] text-on-surface-variant">
                 Un collectif créatif né au cœur de Casablanca, fusionnant l'âme locale avec l'excellence digitale internationale pour transformer chaque vision en impact concret.
               </p>
             </div>
           </div>
         </section>
 
-        <section className="py-32 px-8 md:px-20 bg-surface-container-lowest" data-reveal data-reveal-delay="100">
-          <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
-            <div className="relative">
+        <section
+          className="py-[clamp(4rem,9vw,8rem)] px-[clamp(1rem,4vw,2rem)] md:px-20 bg-surface-container-lowest"
+          data-reveal
+          data-reveal-delay="100"
+        >
+          <div className="max-w-7xl mx-auto overflow-x-auto pb-4">
+            <div className="grid min-w-[920px] grid-cols-2 gap-24 items-center">
+              <div className="relative">
               <div className="aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl shadow-primary/20 transition-transform duration-700" style={{ transform: 'rotate(3deg)' }} onMouseEnter={(e) => (e.currentTarget.style.transform = 'rotate(0deg)')} onMouseLeave={(e) => (e.currentTarget.style.transform = 'rotate(3deg)')}>
                 <img
                   alt="Our Creative Space"
@@ -73,8 +82,8 @@ export default function AgencyPage() {
                 <span className="text-sm font-semibold tracking-wide">Années d'Excellence</span>
               </div>
             </div>
-            <div data-reveal data-reveal-delay="200">
-              <h2 className="text-3xl md:text-5xl font-bold text-on-surface mb-8">Our Story: <span className="text-secondary">Make it Different.</span></h2>
+              <div data-reveal data-reveal-delay="200">
+              <h2 className="text-[clamp(2rem,5vw,3rem)] font-bold text-on-surface mb-8">Our Story: <span className="text-secondary">Make it Different.</span></h2>
               <div className="space-y-6">
                 <p className="text-on-surface-variant">
                   We Digital est né d'une conviction simple : le marché marocain mérite une créativité sans compromis. Nous avons commencé comme un petit atelier d'innovation, avec pour seule boussole l'obsession de la différence.
@@ -91,46 +100,43 @@ export default function AgencyPage() {
               </div>
             </div>
           </div>
+          </div>
         </section>
 
-        <section className="py-32 px-8 md:px-20 bg-surface" data-reveal data-reveal-delay="300">
+        <section
+          className="py-[clamp(4rem,9vw,8rem)] px-[clamp(1rem,4vw,2rem)] md:px-20 bg-surface"
+          data-reveal
+          data-reveal-delay="300"
+        >
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-5xl font-bold text-on-surface mb-4">Notre ADN</h2>
+              <h2 className="text-[clamp(2rem,5vw,3rem)] font-bold text-on-surface mb-4">Notre ADN</h2>
               <p className="text-on-surface-variant max-w-2xl mx-auto">La rencontre entre l'héritage marocain et les standards digitaux globaux.</p>
             </div>
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-              <div className="lg:col-span-2 p-12 rounded-3xl bg-white/70 backdrop-blur-lg border border-white/30 relative overflow-hidden group" data-reveal>
+            <div className="overflow-x-auto pb-4">
+              <div className="grid min-w-[980px] grid-cols-3 gap-6">
+                <div className="col-span-2 p-[clamp(1.5rem,4vw,3rem)] rounded-3xl bg-white/70 backdrop-blur-lg border border-white/30 relative overflow-hidden group" data-reveal>
                 <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:opacity-20 transition-opacity">
                   <Icon name="public" className="w-24 h-24 text-on-surface" />
                 </div>
-                <h3 className="text-2xl md:text-3xl font-bold text-primary mb-6">Standards Internationaux</h3>
+                <h3 className="text-[clamp(1.6rem,3vw,2rem)] font-bold text-primary mb-6">Standards Internationaux</h3>
                 <p className="text-lg text-on-surface-variant">
                   Nous appliquons les méthodologies agiles et les cadres technologiques les plus avancés au monde pour garantir des produits robustes, scalables et sécurisés.
                 </p>
               </div>
-              <div className="p-12 rounded-3xl bg-primary text-white flex flex-col justify-end" data-reveal data-reveal-delay="100">
+                <div className="p-[clamp(1.5rem,4vw,3rem)] rounded-3xl bg-primary text-white flex flex-col justify-end" data-reveal data-reveal-delay="100">
                 <Icon name="auto_awesome" className="w-16 h-16 mb-8" />
-                <h3 className="text-2xl md:text-3xl font-bold mb-4">Culture Locale</h3>
+                <h3 className="text-[clamp(1.6rem,3vw,2rem)] font-bold mb-4">Culture Locale</h3>
                 <p className="text-white/80">
                   Nous comprenons les nuances, l'humour et les codes visuels du consommateur marocain pour créer des connexions authentiques.
                 </p>
               </div>
             </div>
+            </div>
           </div>
         </section>
 
-        <footer className="bg-surface-container-lowest border-t border-outline-variant/20 py-12 px-8 md:px-20" data-reveal data-reveal-delay="400">
-          <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
-            <div>
-              <div className="text-2xl font-bold text-on-surface mb-2">we yan digital</div>
-              <p className="text-on-surface-variant">Creativity meets digital excellence.</p>
-            </div>
-            <div className="text-on-surface-variant">
-              © {new Date().getFullYear()} we yan digital. All Rights Reserved.
-            </div>
-          </div>
-        </footer>
+        <SiteFooter revealDelay="400" />
       </main>
 
       <style>{`

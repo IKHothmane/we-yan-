@@ -1,9 +1,10 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
 import Icon from '../components/Icon'
 import Navbar from '../components/Navbar'
 import PageSeo from '../components/PageSeo'
+import SiteFooter from '../components/SiteFooter'
 import useScrollReveal from '../hooks/useScrollReveal'
+import { pageSeo } from '../lib/pageSeo'
 
 export default function ContactPage() {
   useScrollReveal()
@@ -19,27 +20,22 @@ export default function ContactPage() {
 
   return (
     <div className="bg-[#f1f1f1] min-h-screen font-body-md text-on-surface selection:bg-primary-container selection:text-on-primary-container overflow-hidden w-full pb-28 md:pb-32">
-      <PageSeo
-        title="Contact | we yan digital"
-        description="Contactez we yan digital pour discuter de votre branding, site web, campagnes publicitaires ou stratégie digitale à Casablanca et partout au Maroc."
-      />
+      <PageSeo {...pageSeo.contact} />
       <Navbar />
 
-      <main className="max-w-7xl mx-auto px-8 md:px-16 py-32">
+      <main className="max-w-7xl mx-auto px-[clamp(1rem,4vw,2rem)] md:px-16 py-[clamp(6rem,11vw,8rem)]">
         <header className="mb-20" data-reveal>
-          <h1 className="hidden md:block text-[72px] leading-[80px] tracking-[-0.04em] font-extrabold max-w-4xl mb-6">
+          <h1 className="text-[clamp(2.8rem,7vw,4.5rem)] leading-[1.02] tracking-[-0.03em] font-extrabold max-w-4xl mb-6">
             Parlons de votre prochain grand projet.
           </h1>
-          <h1 className="md:hidden text-[40px] leading-[1.1] tracking-[-0.01em] font-bold mb-4">
-            Parlons de votre prochain grand projet.
-          </h1>
-          <p className="text-lg md:text-xl text-on-surface-variant max-w-2xl">
+          <p className="text-[clamp(1rem,2.5vw,1.25rem)] text-on-surface-variant max-w-2xl">
             Prêt à transformer vos idées en réalité numérique ? Notre équipe d'experts est à votre écoute pour concevoir des solutions sur mesure.
           </p>
         </header>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-          <aside className="lg:col-span-4 space-y-12 order-2 lg:order-1" data-reveal data-reveal-delay="100">
+        <div className="overflow-x-auto pb-4">
+          <div className="grid min-w-[1040px] grid-cols-12 gap-6">
+            <aside className="col-span-4 space-y-12" data-reveal data-reveal-delay="100">
             <div className="space-y-8">
               <div className="group">
                 <div className="flex items-center gap-4 mb-2">
@@ -122,12 +118,12 @@ export default function ContactPage() {
                 </a>
               </div>
             </div>
-          </aside>
+            </aside>
 
-          <div className="lg:col-span-8 order-1 lg:order-2" data-reveal data-reveal-delay="200">
-            <div className="bg-white/90 backdrop-blur-xl border border-black/5 p-8 md:p-12 rounded-xl shadow-sm">
+            <div className="col-span-8" data-reveal data-reveal-delay="200">
+            <div className="bg-white/90 backdrop-blur-xl border border-black/5 p-[clamp(1.5rem,4vw,3rem)] rounded-xl shadow-sm">
               <form className="space-y-8" onSubmit={handleSubmit}>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div className="grid grid-cols-2 gap-8">
                   <div className="space-y-2">
                     <label className="text-sm font-semibold text-on-surface-variant" htmlFor="name">
                       Nom complet
@@ -211,6 +207,7 @@ export default function ContactPage() {
             </div>
           </div>
         </div>
+        </div>
 
         <section className="mt-32 rounded-3xl overflow-hidden relative shadow-xl min-h-[500px] flex items-center justify-center" data-reveal data-reveal-delay="300">
           <div className="absolute inset-0 z-0 grayscale contrast-125 opacity-40">
@@ -245,45 +242,7 @@ export default function ContactPage() {
         </section>
       </main>
 
-      <footer className="bg-white border-t border-outline-variant/20" data-reveal data-reveal-delay="400">
-        <div className="flex flex-col md:flex-row justify-between items-center py-32 px-8 md:px-16 max-w-7xl mx-auto w-full">
-          <div className="mb-8 md:mb-0">
-            <div className="text-2xl md:text-3xl font-bold text-on-surface mb-2">we yan digital</div>
-            <p className="text-base md:text-lg text-on-surface-variant max-w-xs">
-              L'excellence digitale, au service de vos ambitions les plus audacieuses.
-            </p>
-          </div>
-          <div className="flex flex-wrap justify-center gap-8 md:gap-12 mb-8 md:mb-0">
-            <Link
-              className="text-base md:text-lg text-on-surface-variant hover:text-primary transition-colors duration-300"
-              to="/projets"
-            >
-              Projets
-            </Link>
-            <Link
-              className="text-base md:text-lg text-on-surface-variant hover:text-primary transition-colors duration-300"
-              to="/agence"
-            >
-              Notre Agence
-            </Link>
-            <Link
-              className="text-base md:text-lg text-on-surface-variant hover:text-primary transition-colors duration-300"
-              to="/services"
-            >
-              Services
-            </Link>
-            <Link
-              className="text-base md:text-lg text-on-surface-variant hover:text-primary transition-colors duration-300"
-              to="/contact"
-            >
-              Contact
-            </Link>
-          </div>
-          <div className="text-base md:text-lg text-on-surface-variant/60">
-            © {new Date().getFullYear()} we yan digital. All Rights Reserved.
-          </div>
-        </div>
-      </footer>
+      <SiteFooter revealDelay="400" />
     </div>
   )
 }

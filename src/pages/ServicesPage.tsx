@@ -2,33 +2,43 @@ import { Link } from 'react-router-dom'
 import Icon from '../components/Icon'
 import Navbar from '../components/Navbar'
 import PageSeo from '../components/PageSeo'
+import SiteFooter from '../components/SiteFooter'
 import useScrollReveal from '../hooks/useScrollReveal'
+import { pageSeo } from '../lib/pageSeo'
 
 export default function ServicesPage() {
   useScrollReveal()
 
   return (
     <div className="font-body-md bg-background min-h-screen overflow-hidden w-full pb-28 md:pb-32">
-      <PageSeo
-        title="Services | we yan digital"
-        description="Découvrez les services de we yan digital : branding, stratégie digitale, création de contenu, publicité et développement web pour votre croissance."
-      />
+      <PageSeo {...pageSeo.services} />
       <Navbar />
 
       <main>
-        <section className="pt-32 pb-20 px-8 md:px-margin-desktop max-w-container-max mx-auto text-center" data-reveal>
-          <h1 className="font-display-lg text-headline-lg-mobile md:text-display-lg text-on-surface mb-6">
+        <section
+          className="pt-[clamp(7rem,12vw,8rem)] pb-[clamp(3.5rem,8vw,5rem)] px-[clamp(1rem,4vw,2rem)] md:px-margin-desktop max-w-container-max mx-auto text-center"
+          data-reveal
+        >
+          <h1 className="font-display-lg text-[clamp(2.6rem,8vw,5.5rem)] leading-[0.95] text-on-surface mb-6">
             Nos Expertises <span className="text-primary italic">Digitales</span>
           </h1>
-          <p className="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto" data-reveal data-reveal-delay="100">
+          <p
+            className="font-body-lg text-[clamp(1rem,2.5vw,1.25rem)] text-on-surface-variant max-w-2xl mx-auto"
+            data-reveal
+            data-reveal-delay="100"
+          >
             Des solutions sur mesure pour propulser votre marque au niveau supérieur grâce à une
             approche centrée sur l'innovation et la performance.
           </p>
         </section>
 
-        <section className="py-section-padding px-8 md:px-margin-desktop max-w-container-max mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-gutter">
-            <div className="md:col-span-7 bg-surface-container-lowest p-10 rounded-xl shadow-[0_10px_40px_-10px_rgba(100,131,240,0.15)] border border-outline-variant/20 group hover:border-primary/30 transition-all duration-300" data-reveal>
+        <section className="py-section-padding px-[clamp(1rem,4vw,2rem)] md:px-margin-desktop max-w-container-max mx-auto">
+          <div className="overflow-x-auto pb-4">
+            <div className="grid min-w-[980px] grid-cols-12 gap-[clamp(1rem,2vw,2rem)]">
+              <div
+                className="col-span-7 bg-surface-container-lowest p-[clamp(1.5rem,3vw,2.5rem)] rounded-xl shadow-[0_10px_40px_-10px_rgba(100,131,240,0.15)] border border-outline-variant/20 group hover:border-primary/30 transition-all duration-300"
+                data-reveal
+              >
               <div className="flex flex-col h-full justify-between">
                 <div>
                   <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-6">
@@ -69,7 +79,11 @@ export default function ServicesPage() {
               </div>
             </div>
 
-            <div className="md:col-span-5 bg-primary text-on-primary p-10 rounded-xl shadow-[0_10px_40px_-10px_rgba(100,131,240,0.15)] relative overflow-hidden group" data-reveal data-reveal-delay="100">
+              <div
+                className="col-span-5 bg-primary text-on-primary p-[clamp(1.5rem,3vw,2.5rem)] rounded-xl shadow-[0_10px_40px_-10px_rgba(100,131,240,0.15)] relative overflow-hidden group"
+                data-reveal
+                data-reveal-delay="100"
+              >
               <div className="relative z-10">
                 <div className="w-12 h-12 rounded-lg bg-white/20 flex items-center justify-center mb-6">
                   <Icon name="trending_up" className="w-6 h-6 text-white" />
@@ -97,7 +111,11 @@ export default function ServicesPage() {
               <div className="absolute -bottom-10 -right-10 w-64 h-64 bg-secondary/10 rounded-full blur-3xl group-hover:bg-secondary/20 transition-colors duration-500"></div>
             </div>
 
-            <div className="md:col-span-5 bg-surface-container-low p-10 rounded-xl shadow-[0_10px_40px_-10px_rgba(100,131,240,0.15)] border border-outline-variant/20" data-reveal data-reveal-delay="200">
+              <div
+                className="col-span-5 bg-surface-container-low p-[clamp(1.5rem,3vw,2.5rem)] rounded-xl shadow-[0_10px_40px_-10px_rgba(100,131,240,0.15)] border border-outline-variant/20"
+                data-reveal
+                data-reveal-delay="200"
+              >
               <div className="w-12 h-12 rounded-lg bg-secondary/10 flex items-center justify-center mb-6">
                 <Icon name="movie_filter" className="w-6 h-6 text-secondary" />
               </div>
@@ -130,7 +148,11 @@ export default function ServicesPage() {
               </div>
             </div>
 
-            <div className="md:col-span-7 bg-surface-container-lowest p-10 rounded-xl shadow-[0_10px_40px_-10px_rgba(100,131,240,0.15)] border border-outline-variant/20 flex flex-col md:flex-row gap-8 items-center" data-reveal data-reveal-delay="300">
+              <div
+                className="col-span-7 bg-surface-container-lowest p-[clamp(1.5rem,3vw,2.5rem)] rounded-xl shadow-[0_10px_40px_-10px_rgba(100,131,240,0.15)] border border-outline-variant/20 flex flex-row gap-8 items-center"
+                data-reveal
+                data-reveal-delay="300"
+              >
               <div className="flex-1">
                 <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-6">
                   <Icon name="groups_3" className="w-6 h-6 text-primary" />
@@ -172,21 +194,22 @@ export default function ServicesPage() {
               </div>
             </div>
           </div>
+          </div>
         </section>
 
         <section className="py-section-padding bg-surface-container-lowest">
-          <div className="px-8 md:px-margin-desktop max-w-container-max mx-auto">
+          <div className="px-[clamp(1rem,4vw,2rem)] md:px-margin-desktop max-w-container-max mx-auto">
             <div className="text-center mb-16" data-reveal>
               <span className="font-label-md text-label-md text-secondary tracking-widest uppercase mb-4 block">
                 Notre Méthode
               </span>
-              <h2 className="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface">
+              <h2 className="font-headline-lg text-[clamp(2.25rem,6vw,4rem)] leading-[1.05] text-on-surface">
                 Comment nous travaillons
               </h2>
             </div>
-            <div className="relative">
-              <div className="hidden md:block absolute top-[28px] left-0 w-full h-0.5 bg-outline-variant/30 z-0"></div>
-              <div className="grid grid-cols-1 md:grid-cols-4 gap-gutter relative z-10">
+            <div className="relative overflow-x-auto pb-4">
+              <div className="absolute top-[28px] left-0 min-w-[920px] w-full h-0.5 bg-outline-variant/30 z-0"></div>
+              <div className="grid min-w-[920px] grid-cols-4 gap-[clamp(1rem,2vw,2rem)] relative z-10">
                 {[
                   {
                     num: '01',
@@ -227,11 +250,15 @@ export default function ServicesPage() {
           </div>
         </section>
 
-        <section className="py-section-padding px-8" data-reveal data-reveal-delay="400">
+        <section
+          className="py-section-padding px-[clamp(1rem,4vw,2rem)]"
+          data-reveal
+          data-reveal-delay="400"
+        >
           <div className="max-w-container-max mx-auto bg-primary rounded-[2rem] overflow-hidden relative">
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-secondary/40 via-transparent to-transparent"></div>
-            <div className="relative z-10 px-8 py-16 md:py-24 text-center">
-              <h2 className="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-white mb-8">
+            <div className="relative z-10 px-[clamp(1.5rem,4vw,3rem)] py-[clamp(3rem,7vw,6rem)] text-center">
+              <h2 className="font-headline-lg text-[clamp(2.25rem,6vw,4rem)] leading-[1.05] text-white mb-8">
                 Prêt à transformer votre présence en ligne ?
               </h2>
               <Link to="/contact" className="bg-secondary text-white px-10 py-5 rounded-full font-headline-md text-[20px] hover:brightness-110 transition-all duration-300 shadow-xl active:scale-95 inline-block">
@@ -242,49 +269,7 @@ export default function ServicesPage() {
         </section>
       </main>
 
-      <footer className="bg-surface-container-lowest border-t border-outline-variant/20" data-reveal data-reveal-delay="500">
-        <div className="flex flex-col md:flex-row justify-between items-center py-16 px-8 md:px-margin-desktop max-w-container-max mx-auto">
-          <div className="flex flex-col gap-4 mb-8 md:mb-0">
-            <div className="font-headline-md text-headline-md text-on-surface">we yan digital</div>
-            <p className="text-on-surface-variant max-w-xs font-body-md text-body-md">
-              L'agence digitale marocaine qui propulse les marques vers l'excellence.
-            </p>
-          </div>
-          <div className="flex gap-12 mb-8 md:mb-0">
-            <div className="flex flex-col gap-3">
-              <Link
-                className="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors"
-                to="/projets"
-              >
-                Projets
-              </Link>
-              <Link
-                className="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors"
-                to="/agence"
-              >
-                Notre Agence
-              </Link>
-            </div>
-            <div className="flex flex-col gap-3">
-              <Link
-                className="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors"
-                to="/services"
-              >
-                Services
-              </Link>
-              <Link
-                className="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors"
-                to="/contact"
-              >
-                Contact
-              </Link>
-            </div>
-          </div>
-          <div className="text-on-surface-variant font-body-md text-body-md">
-            © {new Date().getFullYear()} We Digital. All Rights Reserved.
-          </div>
-        </div>
-      </footer>
+      <SiteFooter revealDelay="500" />
     </div>
   )
 }

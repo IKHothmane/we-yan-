@@ -2,7 +2,9 @@ import { Link } from 'react-router-dom'
 import Icon from '../components/Icon'
 import Navbar from '../components/Navbar'
 import PageSeo from '../components/PageSeo'
+import SiteFooter from '../components/SiteFooter'
 import useScrollReveal from '../hooks/useScrollReveal'
+import { pageSeo } from '../lib/pageSeo'
 
 const svgToDataUri = (svg: string) => `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(svg)}`
 
@@ -19,10 +21,7 @@ export default function HomePage() {
 
   return (
     <div className="bg-white font-sans text-slate-900 overflow-hidden w-full pb-28 md:pb-32">
-      <PageSeo
-        title="we yan digital | Votre marque mérite de se démarquer"
-        description="Agence digitale marocaine spécialisée en branding, création de contenu, influence marketing et publicité digitale pour faire grandir votre marque."
-      />
+      <PageSeo {...pageSeo.home} />
       <style>{`
         @font-face {
           font-family: 'Rigot';
@@ -52,19 +51,19 @@ export default function HomePage() {
 
       <main>
         <section
-          className="relative h-screen min-h-[800px] flex items-center overflow-hidden hero-bg pt-24"
+          className="relative h-[100svh] min-h-[clamp(36rem,85svh,50rem)] flex items-center overflow-hidden hero-bg pt-[clamp(4.5rem,10vw,6rem)]"
           style={{
             backgroundImage:
               'linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url(https://lh3.googleusercontent.com/aida-public/AB6AXuCUGg2lUMCMuLVIsmlsCW4VyhcMGcJlUUMl8WKW4sWG7BNt5_6QydR1eLvwRbEAwjtrrx8lrp8w7z9dhh2l7he3JtaFLN9ULabhvNGcyARI2888BuU4mBZSQfh3mymgbuZOHVbRlV89er0sRGIjisA1u6vyKnwh7ksFmJ7-XFz-Td-GcCGNZm1z3s1Sh3-RRqEBCgpSgs6qp4hQoNPUyeyWlfcgk14kDadWrn7If66REaBcklH6wNH6JkyJZmSD8EkpCqH5QuKMRaY)',
           }}
         >
-          <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute inset-0 pointer-events-none hidden md:block">
             <div
-              className="absolute top-[25%] right-[20%] floating-tag flex items-center space-x-3 px-6 py-3 rounded-2xl shadow-xl z-10"
+              className="absolute top-[25%] right-[5%] lg:right-[20%] floating-tag flex items-center space-x-3 px-4 lg:px-6 py-2 lg:py-3 rounded-2xl shadow-xl z-10"
               style={{ animationDelay: '0s' }}
             >
-              <div className="w-6 h-6 bg-[#FC9700] rounded-full flex items-center justify-center">
-                <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="w-5 h-5 lg:w-6 lg:h-6 bg-[#FC9700] rounded-full flex items-center justify-center">
+                <svg className="w-3 h-3 lg:w-4 lg:h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path
                     d="M5 13l4 4L19 7"
                     strokeLinecap="round"
@@ -73,14 +72,14 @@ export default function HomePage() {
                   ></path>
                 </svg>
               </div>
-              <span className="font-bold text-slate-800">Branding</span>
+              <span className="font-bold text-slate-800 text-sm lg:text-base">Branding</span>
             </div>
             <div
-              className="absolute bottom-[25%] right-[30%] floating-tag flex items-center space-x-3 px-6 py-3 rounded-2xl shadow-xl z-10"
+              className="absolute bottom-[25%] right-[8%] lg:right-[30%] floating-tag flex items-center space-x-3 px-4 lg:px-6 py-2 lg:py-3 rounded-2xl shadow-xl z-10"
               style={{ animationDelay: '1s' }}
             >
-              <div className="w-6 h-6 bg-[#FC9700] rounded-full flex items-center justify-center">
-                <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="w-5 h-5 lg:w-6 lg:h-6 bg-[#FC9700] rounded-full flex items-center justify-center">
+                <svg className="w-3 h-3 lg:w-4 lg:h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path
                     d="M5 13l4 4L19 7"
                     strokeLinecap="round"
@@ -89,32 +88,32 @@ export default function HomePage() {
                   ></path>
                 </svg>
               </div>
-              <span className="font-bold text-slate-800">Ads</span>
+              <span className="font-bold text-slate-800 text-sm lg:text-base">Ads</span>
             </div>
           </div>
-          <div className="container mx-auto px-6 relative z-10">
+          <div className="container mx-auto px-[clamp(1rem,4vw,1.5rem)] relative z-10">
             <div className="max-w-3xl">
-              <h1 className="text-white text-6xl md:text-8xl font-rigot font-bold leading-tight mb-4">
+              <h1 className="text-white text-[clamp(3rem,10vw,5.5rem)] font-rigot font-bold leading-[1.05] mb-[clamp(0.75rem,2vw,1rem)]">
                 Make it <br /> Different
               </h1>
-              <h2 className="text-white text-4xl md:text-5xl font-bold mb-8">
-                Votre marque mérite de se <br />
+              <h2 className="text-white text-[clamp(1.65rem,5.4vw,3.125rem)] font-bold mb-[clamp(1.25rem,3vw,2rem)]">
+                Votre marque mérite de se <br className="hidden sm:block" />
                 <span className="text-[#FC9700]">démarquer.</span>
               </h2>
-              <p className="text-gray-300 text-lg md:text-xl max-w-xl leading-relaxed mb-10">
+              <p className="text-gray-300 text-[clamp(1rem,2.2vw,1.25rem)] max-w-xl leading-relaxed mb-[clamp(1.5rem,3vw,2.5rem)]">
                 Agence de communication spécialisée en branding, création de contenu, influence marketing
                 et publicité digitale.
               </p>
-              <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+              <div className="flex flex-col sm:flex-row gap-[clamp(0.75rem,2vw,1rem)]">
                 <Link
                   to="/contact"
-                  className="bg-[#FC9700] text-white px-10 py-4 rounded-full font-bold text-lg hover:scale-105 transition-transform shadow-lg shadow-orange-500/20 text-center"
+                  className="bg-[#FC9700] text-white px-[clamp(1.5rem,4vw,2.5rem)] py-[clamp(0.85rem,2vw,1rem)] rounded-full font-bold text-[clamp(0.95rem,2vw,1.125rem)] hover:scale-105 transition-transform shadow-lg shadow-orange-500/20 text-center"
                 >
                   Demander un devis
                 </Link>
                 <Link
                   to="/projets"
-                  className="border-2 border-white/40 text-white px-10 py-4 rounded-full font-bold text-lg hover:bg-white/10 transition-all text-center"
+                  className="border-2 border-white/40 text-white px-[clamp(1.5rem,4vw,2.5rem)] py-[clamp(0.85rem,2vw,1rem)] rounded-full font-bold text-[clamp(0.95rem,2vw,1.125rem)] hover:bg-white/10 transition-all text-center"
                 >
                   Voir nos projets
                 </Link>
@@ -123,18 +122,18 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section className="py-20 md:py-32 bg-white" id="services">
-        <div className="max-w-6xl mx-auto px-8">
-          <div className="text-center mb-16" data-reveal>
-            <h2 className="font-bold text-3xl md:text-5xl text-slate-900 mb-4">
+        <section className="py-[clamp(4.5rem,9vw,8rem)] bg-white" id="services">
+        <div className="max-w-6xl mx-auto px-[clamp(1rem,4vw,2rem)]">
+          <div className="text-center mb-[clamp(2.5rem,6vw,4rem)]" data-reveal>
+            <h2 className="font-bold text-[clamp(2rem,5vw,3rem)] text-slate-900 mb-4">
               Nos Solutions <span className="text-[#6483F0]">Digitales</span>
             </h2>
-            <p className="text-slate-600 text-lg max-w-2xl mx-auto">
+            <p className="text-slate-600 text-[clamp(1rem,2.3vw,1.125rem)] max-w-2xl mx-auto">
               Nous avons ce qu'il vous faut, de la création de logo à la campagne publicitaire.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6" data-reveal data-reveal-delay="100">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6" data-reveal data-reveal-delay="100">
             {[
               {
                 icon: 'palette',
@@ -187,19 +186,19 @@ export default function HomePage() {
             ].map((service) => (
               <div
                 key={service.title}
-                className={`p-8 rounded-3xl border border-transparent hover:border-slate-200 transition-all shadow-sm ${
+                className={`p-[clamp(1.25rem,3vw,2rem)] rounded-3xl border border-transparent hover:border-slate-200 transition-all shadow-sm ${
                   service.tone === 'secondary' ? 'bg-slate-50' : 'bg-white'
                 }`}
               >
-                <div className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-6 ${
+                <div className={`w-[clamp(3rem,7vw,3.5rem)] h-[clamp(3rem,7vw,3.5rem)] rounded-2xl flex items-center justify-center mb-[clamp(1rem,2vw,1.5rem)] ${
                   service.tone === 'secondary' ? 'bg-[#FC9700]/10 text-[#FC9700]' : 'bg-[#6483F0]/10 text-[#6483F0]'
                 }`}>
-                  <Icon name={service.icon} className="w-8 h-8" />
+                  <Icon name={service.icon} className="w-[clamp(1.5rem,4vw,2rem)] h-[clamp(1.5rem,4vw,2rem)]" />
                 </div>
-                <h3 className="text-2xl font-bold text-slate-900 mb-3">
+                <h3 className="text-[clamp(1.3rem,3vw,1.5rem)] font-bold text-slate-900 mb-3">
                   {service.title}
                 </h3>
-                <p className="text-slate-600 text-sm leading-relaxed">
+                <p className="text-slate-600 text-[clamp(0.92rem,1.8vw,1rem)] leading-relaxed">
                   {service.description}
                 </p>
               </div>
@@ -208,14 +207,14 @@ export default function HomePage() {
         </div>
       </section>
 
-        <section className="py-20 md:py-32 bg-slate-50" id="work">
-        <div className="max-w-6xl mx-auto px-8">
-          <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6" data-reveal>
+        <section className="py-[clamp(4.5rem,9vw,8rem)] bg-slate-50" id="work">
+        <div className="max-w-6xl mx-auto px-[clamp(1rem,4vw,2rem)]">
+          <div className="flex flex-col md:flex-row justify-between items-end mb-[clamp(2rem,5vw,3rem)] gap-6" data-reveal>
             <div>
-              <h2 className="text-3xl md:text-5xl font-bold text-slate-900 tracking-tight">
+              <h2 className="text-[clamp(2rem,5vw,3rem)] font-bold text-slate-900 tracking-tight">
                 Impact <span className="text-[#FC9700]">Visuel</span>
               </h2>
-              <p className="text-slate-600 mt-2 text-lg">
+              <p className="text-slate-600 mt-2 text-[clamp(1rem,2.3vw,1.125rem)]">
                 Découvrez nos créations pour nos partenaires
               </p>
             </div>
@@ -260,29 +259,29 @@ export default function HomePage() {
         </div>
       </section>
 
-        <section className="py-20 md:py-32 bg-[#0F172A] text-white" id="about">
-        <div className="max-w-6xl mx-auto px-8 grid md:grid-cols-2 gap-16 items-center">
+        <section className="py-[clamp(4.5rem,9vw,8rem)] bg-[#0F172A] text-white" id="about">
+        <div className="max-w-6xl mx-auto px-[clamp(1rem,4vw,2rem)] grid md:grid-cols-2 gap-[clamp(2rem,5vw,4rem)] items-center">
           <div data-reveal>
-            <h2 className="font-bold text-3xl md:text-5xl mb-8 leading-tight">
+            <h2 className="font-bold text-[clamp(2rem,5vw,3rem)] mb-[clamp(1.5rem,4vw,2rem)] leading-tight">
               Pourquoi nous faire <span className="text-[#FC9700]">confiance</span> ?
             </h2>
-            <p className="text-slate-300 text-lg mb-10 leading-relaxed">
+            <p className="text-slate-300 text-[clamp(1rem,2.3vw,1.125rem)] mb-[clamp(1.5rem,4vw,2.5rem)] leading-relaxed">
               Nous ne sommes pas juste une agence, nous sommes votre partenaire de croissance. Notre approche combine créativité sans limite et rigueur analytique pour assurer que chaque dirham investi génère de la valeur.
             </p>
             <ul className="space-y-6">
               <li className="flex items-start gap-4">
-                <Icon name="circle" className="w-6 h-6 text-[#FC9700]" />
+                <Icon name="circle" className="w-5 h-5 md:w-6 md:h-6 text-[#FC9700] mt-1 flex-shrink-0" />
                 <div>
-                  <h3 className="text-2xl font-bold mb-1">Stratégie Personnalisée</h3>
+                  <h3 className="text-[clamp(1.2rem,3vw,1.5rem)] font-bold mb-1">Stratégie Personnalisée</h3>
                   <p className="text-slate-400 text-sm">
                     Pas de solutions "taille unique". Chaque marque est unique et mérite une voix propre.
                   </p>
                 </div>
               </li>
               <li className="flex items-start gap-4">
-                <Icon name="circle" className="w-6 h-6 text-[#FC9700]" />
+                <Icon name="circle" className="w-5 h-5 md:w-6 md:h-6 text-[#FC9700] mt-1 flex-shrink-0" />
                 <div>
-                  <h3 className="text-2xl font-bold mb-1">Focus Résultats</h3>
+                  <h3 className="text-[clamp(1.2rem,3vw,1.5rem)] font-bold mb-1">Focus Résultats</h3>
                   <p className="text-slate-400 text-sm">
                     Nous mesurons tout. Si ça ne convertit pas, on optimise jusqu'à l'excellence.
                   </p>
@@ -291,30 +290,30 @@ export default function HomePage() {
             </ul>
           </div>
 
-          <div className="grid grid-cols-2 gap-6" data-reveal data-reveal-delay="100">
-            <div className="p-8 bg-white rounded-3xl text-center shadow-xl">
-              <p className="text-5xl font-bold text-slate-900 mb-2">+50</p>
-              <p className="text-sm font-semibold text-slate-500 uppercase tracking-wider">Projets</p>
+          <div className="grid grid-cols-2 gap-4 md:gap-6" data-reveal data-reveal-delay="100">
+            <div className="p-6 md:p-8 bg-white rounded-3xl text-center shadow-xl">
+              <p className="text-[clamp(2rem,5vw,3rem)] font-bold text-slate-900 mb-2">+50</p>
+              <p className="text-xs md:text-sm font-semibold text-slate-500 uppercase tracking-wider">Projets</p>
             </div>
-            <div className="p-8 bg-white rounded-3xl text-center shadow-xl mt-8">
-              <p className="text-5xl font-bold text-slate-900 mb-2">+20</p>
-              <p className="text-sm font-semibold text-slate-500 uppercase tracking-wider">Marques</p>
+            <div className="p-6 md:p-8 bg-white rounded-3xl text-center shadow-xl mt-4 md:mt-8">
+              <p className="text-[clamp(2rem,5vw,3rem)] font-bold text-slate-900 mb-2">+20</p>
+              <p className="text-xs md:text-sm font-semibold text-slate-500 uppercase tracking-wider">Marques</p>
             </div>
-            <div className="p-8 bg-white rounded-3xl text-center shadow-xl">
-              <p className="text-5xl font-bold text-slate-900 mb-2">+1M</p>
-              <p className="text-sm font-semibold text-slate-500 uppercase tracking-wider">Impressions</p>
+            <div className="p-6 md:p-8 bg-white rounded-3xl text-center shadow-xl">
+              <p className="text-[clamp(2rem,5vw,3rem)] font-bold text-slate-900 mb-2">+1M</p>
+              <p className="text-xs md:text-sm font-semibold text-slate-500 uppercase tracking-wider">Impressions</p>
             </div>
-            <div className="p-8 bg-white rounded-3xl text-center shadow-xl mt-8">
-              <p className="text-5xl font-bold text-slate-900 mb-2">100%</p>
-              <p className="text-sm font-semibold text-slate-500 uppercase tracking-wider">Passion</p>
+            <div className="p-6 md:p-8 bg-white rounded-3xl text-center shadow-xl mt-4 md:mt-8">
+              <p className="text-[clamp(2rem,5vw,3rem)] font-bold text-slate-900 mb-2">100%</p>
+              <p className="text-xs md:text-sm font-semibold text-slate-500 uppercase tracking-wider">Passion</p>
             </div>
           </div>
         </div>
       </section>
 
-        <section className="py-20 md:py-32 bg-white">
-        <div className="max-w-6xl mx-auto px-8">
-          <h2 className="text-center text-3xl md:text-5xl font-bold text-slate-900 mb-16" data-reveal>
+        <section className="py-[clamp(4.5rem,9vw,8rem)] bg-white">
+        <div className="max-w-6xl mx-auto px-[clamp(1rem,4vw,2rem)]">
+          <h2 className="text-center text-[clamp(2rem,5vw,3rem)] font-bold text-slate-900 mb-[clamp(2.5rem,6vw,4rem)]" data-reveal>
             Ce que disent nos <span className="text-[#6483F0]">partenaires</span>
           </h2>
 
@@ -366,8 +365,8 @@ export default function HomePage() {
         </div>
       </section>
 
-        <section className="py-20 md:py-32 bg-slate-50">
-        <div className="max-w-6xl mx-auto px-8">
+        <section className="py-[clamp(4.5rem,9vw,8rem)] bg-slate-50">
+        <div className="max-w-6xl mx-auto px-[clamp(1rem,4vw,2rem)]">
           <div className="grid grid-cols-1 md:grid-cols-2 overflow-hidden rounded-3xl shadow-2xl">
             <div className="p-12 bg-white" data-reveal>
               <h2 className="text-3xl font-bold text-slate-900 mb-8">
@@ -482,77 +481,7 @@ export default function HomePage() {
         </section>
       </main>
 
-      <footer className="w-full py-16 bg-[#0F172A] text-white border-t border-slate-800">
-        <div className="max-w-6xl mx-auto px-8 grid grid-cols-1 md:grid-cols-3 gap-12">
-          <div>
-            <div className="flex items-center gap-4 mb-6">
-              <span
-                aria-hidden="true"
-                className="w-12 h-12 rounded-full bg-[#FC9700] shadow-[0_10px_30px_-10px_rgba(252,151,0,0.7)]"
-              />
-              <span className="text-2xl font-extrabold">
-                we yan digital
-              </span>
-            </div>
-            <p className="text-slate-400 text-lg leading-relaxed mb-8">
-              Agence digitale marocaine qui transforme les marques avec créativité et stratégie.
-            </p>
-            <p className="text-xs text-slate-300 uppercase tracking-widest">
-              © {new Date().getFullYear()} we yan digital. All rights reserved.
-            </p>
-          </div>
-
-          <div>
-            <h4 className="text-lg font-bold mb-6">Explorer</h4>
-            <ul className="space-y-4">
-              <li>
-                <Link className="text-slate-400 hover:text-[#FC9700] transition-colors" to="/projets">
-                  Nos Projets
-                </Link>
-              </li>
-              <li>
-                <Link className="text-slate-400 hover:text-[#FC9700] transition-colors" to="/services">
-                  Services
-                </Link>
-              </li>
-              <li>
-                <Link className="text-slate-400 hover:text-[#FC9700] transition-colors" to="/agence">
-                  Notre Agence
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          <div>
-            <h4 className="text-lg font-bold mb-6">Légal</h4>
-            <ul className="space-y-4">
-              <li>
-                <Link className="text-slate-400 hover:text-[#FC9700] transition-colors" to="/contact">
-                  Conditions Générales
-                </Link>
-              </li>
-              <li>
-                <Link className="text-slate-400 hover:text-[#FC9700] transition-colors" to="/contact">
-                  Politique de Confidentialité
-                </Link>
-              </li>
-              <li>
-                <Link className="text-slate-400 hover:text-[#FC9700] transition-colors" to="/contact">
-                  Contactez-nous
-                </Link>
-              </li>
-            </ul>
-            <div className="mt-10">
-              <Link
-                className="inline-flex px-6 py-2 bg-[#FC9700] text-[#0F172A] rounded-full text-xs font-bold hover:brightness-110 transition-all shadow-lg uppercase tracking-widest"
-                to="/contact"
-              >
-                COMMENCER MAINTENANT
-              </Link>
-            </div>
-          </div>
-        </div>
-      </footer>
+      <SiteFooter />
     </div>
   )
 }
