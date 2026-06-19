@@ -1,11 +1,10 @@
 import { Suspense, lazy, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import PageSeo from '../components/PageSeo'
-import { pageSeo } from '../lib/pageSeo'
 
 const HomeDeferredSections = lazy(() => import('../components/home/HomeDeferredSections'))
 
 const homeImages = {
+  heroAvif: '/images/home/hero.avif?v=20260619',
   hero: '/images/home/hero.webp?v=20260619',
 }
 
@@ -65,14 +64,12 @@ export default function HomePage() {
 
   useEffect(() => {
     const loadDeferredSections = () => setShouldLoadDeferredSections(true)
-    const timerId = window.setTimeout(loadDeferredSections, 1200)
 
     window.addEventListener('scroll', loadDeferredSections, { passive: true, once: true })
     window.addEventListener('pointerdown', loadDeferredSections, { passive: true, once: true })
     window.addEventListener('keydown', loadDeferredSections, { once: true })
 
     return () => {
-      window.clearTimeout(timerId)
       window.removeEventListener('scroll', loadDeferredSections)
       window.removeEventListener('pointerdown', loadDeferredSections)
       window.removeEventListener('keydown', loadDeferredSections)
@@ -81,7 +78,6 @@ export default function HomePage() {
 
   return (
     <div className="bg-white font-sans text-slate-900 overflow-hidden w-full pb-28 md:pb-32">
-      <PageSeo {...pageSeo.home} />
       <style>{`
         @font-face {
           font-family: 'Rigot';
@@ -109,17 +105,20 @@ export default function HomePage() {
         <section
           className="relative h-[100svh] min-h-[clamp(36rem,85svh,50rem)] flex items-center overflow-hidden pt-[clamp(4.5rem,10vw,6rem)]"
         >
-          <img
-            alt=""
-            aria-hidden="true"
-            className="absolute inset-0 h-full w-full object-cover"
-            src={homeImages.hero}
-            width={512}
-            height={286}
-            loading="eager"
-            fetchPriority="high"
-            decoding="async"
-          />
+          <picture className="absolute inset-0">
+            <source srcSet={homeImages.heroAvif} type="image/avif" />
+            <img
+              alt=""
+              aria-hidden="true"
+              className="absolute inset-0 h-full w-full object-cover"
+              src={homeImages.hero}
+              width={512}
+              height={286}
+              loading="eager"
+              fetchPriority="high"
+              decoding="async"
+            />
+          </picture>
           <div
             aria-hidden="true"
             className="absolute inset-0"

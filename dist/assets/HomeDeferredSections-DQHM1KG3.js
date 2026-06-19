@@ -1,4 +1,4 @@
-import{j as e,L as n}from"./index-B4Ulj1SK.js";import{u as c,I as s,S as m}from"./useScrollReveal-Bmmyx2i7.js";const o=a=>`data:image/svg+xml;charset=UTF-8,${encodeURIComponent(a)}`,t=(a,r,i)=>o(`
+import{j as e,L as n}from"./index-BOFrveq_.js";import{u as c,I as s,S as m}from"./useScrollReveal-XvhplEMg.js";const o=a=>`data:image/svg+xml;charset=UTF-8,${encodeURIComponent(a)}`,t=(a,r,i)=>o(`
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120">
   <rect width="120" height="120" rx="60" fill="${r}"/>
   <text x="50%" y="54%" dominant-baseline="middle" text-anchor="middle" font-family="Arial, sans-serif" font-size="40" font-weight="700" fill="${i}">${a}</text>
