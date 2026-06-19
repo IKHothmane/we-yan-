@@ -60,7 +60,7 @@ export default function Navbar({ variant = 'light' }: NavbarProps) {
                     : 'h-[clamp(2.5rem,6vw,3.5rem)] w-[clamp(2.5rem,6vw,3.5rem)] bg-white/10'
                 }`}
               >
-                <img src="/logo.jpg" alt="We Digital" className="h-full w-full object-cover" />
+                <img src="/Logo%20weyan.png" alt="We Yan Digital" className="h-full w-full object-cover" />
               </span>
               <span className="sr-only">We Digital</span>
             </Link>
