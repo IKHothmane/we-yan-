@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import Icon from '../components/Icon'
 import Navbar from '../components/Navbar'
+import PageSeo from '../components/PageSeo'
 import useScrollReveal from '../hooks/useScrollReveal'
 
 const svgToDataUri = (svg: string) => `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(svg)}`
@@ -18,6 +19,10 @@ export default function HomePage() {
 
   return (
     <div className="bg-white font-sans text-slate-900 overflow-hidden w-full pb-28 md:pb-32">
+      <PageSeo
+        title="we yan digital | Votre marque mérite de se démarquer"
+        description="Agence digitale marocaine spécialisée en branding, création de contenu, influence marketing et publicité digitale pour faire grandir votre marque."
+      />
       <style>{`
         @font-face {
           font-family: 'Rigot';

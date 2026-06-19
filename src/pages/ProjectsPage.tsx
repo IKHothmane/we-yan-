@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import Icon from '../components/Icon'
 import Navbar from '../components/Navbar'
+import PageSeo from '../components/PageSeo'
 import useScrollReveal from '../hooks/useScrollReveal'
 
 interface Project {
@@ -70,6 +71,10 @@ export default function ProjectsPage() {
 
   return (
     <div className="min-h-screen bg-[#F1F1F1] overflow-hidden w-full pb-28 md:pb-32">
+      <PageSeo
+        title="Projets | we yan digital"
+        description="Explorez les projets de we yan digital en branding, campagnes sociales, design digital et identités visuelles réalisées pour des marques ambitieuses."
+      />
       <Navbar />
 
       <main className="bg-[#F1F1F1] min-h-screen pt-24">

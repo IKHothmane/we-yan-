@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import Icon from '../components/Icon'
 import Navbar from '../components/Navbar'
+import PageSeo from '../components/PageSeo'
 import useScrollReveal from '../hooks/useScrollReveal'
 
 export default function AgencyPage() {
@@ -24,6 +25,10 @@ export default function AgencyPage() {
 
   return (
     <div className="bg-background text-on-background overflow-hidden w-full pb-28 md:pb-32">
+      <PageSeo
+        title="Agence | we yan digital"
+        description="Découvrez l'agence we yan digital, notre vision, notre méthode et notre équipe dédiée à la performance, à la créativité et à l'impact digital."
+      />
       <Navbar />
 
       <main>

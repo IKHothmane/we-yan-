@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import Icon from '../components/Icon'
 import Navbar from '../components/Navbar'
+import PageSeo from '../components/PageSeo'
 import useScrollReveal from '../hooks/useScrollReveal'
 
 export default function ContactPage() {
@@ -18,6 +19,10 @@ export default function ContactPage() {
 
   return (
     <div className="bg-[#f1f1f1] min-h-screen font-body-md text-on-surface selection:bg-primary-container selection:text-on-primary-container overflow-hidden w-full pb-28 md:pb-32">
+      <PageSeo
+        title="Contact | we yan digital"
+        description="Contactez we yan digital pour discuter de votre branding, site web, campagnes publicitaires ou stratégie digitale à Casablanca et partout au Maroc."
+      />
       <Navbar />
 
       <main className="max-w-7xl mx-auto px-8 md:px-16 py-32">

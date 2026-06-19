@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import Icon from '../components/Icon'
 import Navbar from '../components/Navbar'
+import PageSeo from '../components/PageSeo'
 import useScrollReveal from '../hooks/useScrollReveal'
 
 export default function ServicesPage() {
@@ -8,6 +9,10 @@ export default function ServicesPage() {
 
   return (
     <div className="font-body-md bg-background min-h-screen overflow-hidden w-full pb-28 md:pb-32">
+      <PageSeo
+        title="Services | we yan digital"
+        description="Découvrez les services de we yan digital : branding, stratégie digitale, création de contenu, publicité et développement web pour votre croissance."
+      />
       <Navbar />
 
       <main>
