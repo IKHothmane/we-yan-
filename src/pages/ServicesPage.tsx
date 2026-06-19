@@ -7,7 +7,7 @@ export default function ServicesPage() {
   useScrollReveal()
 
   return (
-    <div className="font-body-md bg-background min-h-screen overflow-hidden w-full">
+    <div className="font-body-md bg-background min-h-screen overflow-hidden w-full pb-28 md:pb-32">
       <Navbar />
 
       <main>

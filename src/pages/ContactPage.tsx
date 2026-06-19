@@ -17,7 +17,7 @@ export default function ContactPage() {
   }
 
   return (
-    <div className="bg-[#f1f1f1] min-h-screen font-body-md text-on-surface selection:bg-primary-container selection:text-on-primary-container overflow-hidden w-full">
+    <div className="bg-[#f1f1f1] min-h-screen font-body-md text-on-surface selection:bg-primary-container selection:text-on-primary-container overflow-hidden w-full pb-28 md:pb-32">
       <Navbar />
 
       <main className="max-w-7xl mx-auto px-8 md:px-16 py-32">

@@ -3,11 +3,21 @@ import Icon from '../components/Icon'
 import Navbar from '../components/Navbar'
 import useScrollReveal from '../hooks/useScrollReveal'
 
+const svgToDataUri = (svg: string) => `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(svg)}`
+
+const avatarImage = (initials: string, bg: string, fg: string) =>
+  svgToDataUri(`
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120">
+  <rect width="120" height="120" rx="60" fill="${bg}"/>
+  <text x="50%" y="54%" dominant-baseline="middle" text-anchor="middle" font-family="Arial, sans-serif" font-size="40" font-weight="700" fill="${fg}">${initials}</text>
+</svg>
+`)
+
 export default function HomePage() {
   useScrollReveal()
 
   return (
-    <div className="bg-white font-sans text-slate-900 overflow-hidden w-full">
+    <div className="bg-white font-sans text-slate-900 overflow-hidden w-full pb-28 md:pb-32">
       <style>{`
         @font-face {
           font-family: 'Rigot';
@@ -33,14 +43,14 @@ export default function HomePage() {
         }
       `}</style>
 
-      <Navbar />
+      <Navbar variant="hero" />
 
       <main>
         <section
           className="relative h-screen min-h-[800px] flex items-center overflow-hidden hero-bg pt-24"
           style={{
             backgroundImage:
-              'linear-gradient(135deg, rgba(15, 23, 42, 1) 0%, rgba(15, 23, 42, 0.92) 45%, rgba(252, 151, 0, 0.18) 100%), radial-gradient(circle at 30% 20%, rgba(100, 131, 240, 0.35), transparent 55%), radial-gradient(circle at 70% 60%, rgba(252, 151, 0, 0.22), transparent 50%)',
+              'linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url(https://lh3.googleusercontent.com/aida-public/AB6AXuCUGg2lUMCMuLVIsmlsCW4VyhcMGcJlUUMl8WKW4sWG7BNt5_6QydR1eLvwRbEAwjtrrx8lrp8w7z9dhh2l7he3JtaFLN9ULabhvNGcyARI2888BuU4mBZSQfh3mymgbuZOHVbRlV89er0sRGIjisA1u6vyKnwh7ksFmJ7-XFz-Td-GcCGNZm1z3s1Sh3-RRqEBCgpSgs6qp4hQoNPUyeyWlfcgk14kDadWrn7If66REaBcklH6wNH6JkyJZmSD8EkpCqH5QuKMRaY)',
           }}
         >
           <div className="absolute inset-0 pointer-events-none">
@@ -93,7 +103,7 @@ export default function HomePage() {
               <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
                 <Link
                   to="/contact"
-                  className="bg-[#FC9700] text-[#0F172A] px-10 py-4 rounded-full font-bold text-lg hover:scale-105 transition-transform shadow-lg shadow-orange-500/20 text-center"
+                  className="bg-[#FC9700] text-white px-10 py-4 rounded-full font-bold text-lg hover:scale-105 transition-transform shadow-lg shadow-orange-500/20 text-center"
                 >
                   Demander un devis
                 </Link>
@@ -214,39 +224,32 @@ export default function HomePage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" data-reveal data-reveal-delay="100">
             <div className="lg:col-span-2">
-              <div
-                role="img"
-                aria-label="Aperçu projet"
-                className="w-full rounded-3xl shadow-xl aspect-[16/10] md:aspect-[16/9] bg-gradient-to-br from-[#FC9700]/15 via-white to-[#6483F0]/15 border border-slate-200 overflow-hidden relative"
-              >
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(252,151,0,0.25),_transparent_55%)]"></div>
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,_rgba(100,131,240,0.22),_transparent_55%)]"></div>
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="bg-white/80 backdrop-blur-md border border-white/60 rounded-2xl px-6 py-4 shadow-lg flex items-center gap-4">
-                    <span className="w-12 h-12 rounded-2xl brand-gradient" aria-hidden="true" />
-                    <div className="text-left">
-                      <p className="font-bold text-slate-900 leading-tight">Portfolio</p>
-                      <p className="text-sm text-slate-600">Aperçu de nos réalisations</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <img
+                alt="Aperçu projet branding premium"
+                className="w-full rounded-3xl shadow-xl aspect-[16/10] md:aspect-[16/9] object-cover"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCepd34wN95r5n4e_lhiduxIU0iHrNCNgms5SOb2IODeq-u11xjUTzKSvArGazGXaqjPp9E7xTBlddBdWFcsG4S9H7PqpcSm5hrvBE_oQBakGPcmPKqauisDaX7lJ6rXAfodzSA2gKQiYcUtd9BknfGfMpL4LIl0j94vFKizBjrvQiYM_Ilo310QtQo2FUuUvIFp1KoeUqmH272vV_djgoJOigNU0VFBcf34X3idF902-qY5r6_KsZqpSEdQMFghjiISWkvNg9U-90"
+                loading="lazy"
+                width={1000}
+                height={600}
+              />
             </div>
             <div className="flex flex-col gap-8">
-              <div
-                role="img"
-                aria-label="Aperçu studio"
-                className="w-full rounded-3xl shadow-xl aspect-[4/3] bg-gradient-to-br from-slate-100 via-white to-[#FC9700]/10 border border-slate-200 overflow-hidden relative"
-              >
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,_rgba(100,131,240,0.18),_transparent_55%)]"></div>
-              </div>
-              <div
-                role="img"
-                aria-label="Aperçu dashboard"
-                className="w-full rounded-3xl shadow-xl aspect-[4/3] bg-gradient-to-br from-slate-100 via-white to-[#6483F0]/10 border border-slate-200 overflow-hidden relative"
-              >
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_40%,_rgba(252,151,0,0.16),_transparent_55%)]"></div>
-              </div>
+              <img
+                alt="Studio créatif moderne"
+                className="w-full rounded-3xl shadow-xl aspect-[4/3] object-cover"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCoyweO0W1tSPc9TY2gaGIFiQnphBk-4ifHQ5Uj3iJFRMM00UkN6RvqaZlC2VaIzv2DoclwUoZ75EmYMuIhzkqb_uITBiQzrdBIiTBeihveVqJvrYVKijR8wfBy9udPRqB6mLWZDo69ZdQe-W5sQacP4mO1XWjObIXmT07Ch02TkXlhzJ3nDzrJcyybQb-MLYNFB0Vb45XU4UYMPfzGOL3c36MCYnNozyNsWPnpDXDw7zXDF8BTTaJ2ZATw4KELVbyku6otdfp1mCM"
+                loading="lazy"
+                width={500}
+                height={380}
+              />
+              <img
+                alt="Dashboard marketing premium"
+                className="w-full rounded-3xl shadow-xl aspect-[4/3] object-cover"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAZFPeUiKo7rq9WDfSKxtmL9IzQSt7jcAImesKMUycpZzcdbQrAimuU6v4h6cuuTHIfaa8gkHqokRRf95qNTIXjczQe6DAw-Vvk54y0K8w8sZ9G2_HB02T7ao89l0dEVw6__94ndgRxL4nny8gGbHr1ZoGvq8FRM6W6a8lIeKfDfk0YBG9BwSnzacRK-6FcKkvWVoP47GasDzqqU32wVQ65K0PlIqP1oBtoduyE0b1TxkF04QKVEUX-4vtxo7zaihQpSnsVzAmnEv4"
+                loading="lazy"
+                width={500}
+                height={380}
+              />
             </div>
           </div>
         </div>
@@ -316,19 +319,19 @@ export default function HomePage() {
                 quote: 'Leur équipe a su capturer l\'essence de notre marque dès le premier jour. Résultats incroyables !',
                 author: 'Sara Benani',
                 role: 'Lux Moroccan Decor',
-                avatar: 'https://i.pravatar.cc/150?img=32'
+                avatar: avatarImage('SB', '#FC9700', '#0F172A')
               },
               {
                 quote: 'Collaboration parfaite. Nos ventes ont augmenté de 180% en 6 mois grâce à leur stratégie social media.',
                 author: 'Mehdi Alaoui',
                 role: 'CEO, TechNova Morocco',
-                avatar: 'https://i.pravatar.cc/150?img=33'
+                avatar: avatarImage('MA', '#6483F0', '#FFFFFF')
               },
               {
                 quote: 'Leur branding est exceptionnel. On nous reconnaît immédiatement dans la rue. Retour client phénoménal.',
                 author: 'Ines Tazi',
                 role: 'Marketing, GreenFlow',
-                avatar: 'https://i.pravatar.cc/150?img=34'
+                avatar: avatarImage('IT', '#0F172A', '#FFFFFF')
               }
             ].map((t) => (
               <div
@@ -446,26 +449,28 @@ export default function HomePage() {
                   <Icon name="location_on" className="w-8 h-8 text-[#FC9700]" />
                   <div>
                     <p className="text-sm text-slate-400">Adresse</p>
-                    <p className="text-lg font-semibold">Bd d'Anfa, Casablanca, Morocco</p>
+                    <p className="text-lg font-semibold">HAY HASSANI BLOC 5 N° 58, Casablanca 20200</p>
                   </div>
                 </div>
               </div>
               <div className="mt-12 rounded-2xl overflow-hidden">
-                <div
-                  role="img"
-                  aria-label="Localisation Casablanca"
-                  className="w-full h-64 bg-gradient-to-br from-slate-900 via-[#0F172A] to-slate-800 relative"
-                >
-                  <div className="absolute inset-0 opacity-40 bg-[radial-gradient(circle_at_20%_30%,_rgba(252,151,0,0.35),_transparent_50%)]"></div>
-                  <div className="absolute inset-0 opacity-40 bg-[radial-gradient(circle_at_75%_60%,_rgba(100,131,240,0.3),_transparent_55%)]"></div>
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="flex items-center gap-3 bg-white/10 backdrop-blur-md border border-white/10 rounded-full px-5 py-3">
-                      <Icon name="location_on" className="w-6 h-6 text-[#FC9700]" />
-                      <span className="text-white font-semibold">Casablanca</span>
-                    </div>
-                  </div>
-                </div>
+                <iframe
+                  title="Carte OpenStreetMap - HAY HASSANI BLOC 5 N° 58, Casablanca 20200"
+                  className="w-full h-64 border-0"
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  src="https://www.openstreetmap.org/export/embed.html?bbox=-7.6878725%2C33.5608827%2C-7.6678725%2C33.5808827&layer=mapnik&marker=33.5708827%2C-7.6778725"
+                />
               </div>
+              <a
+                href="https://www.openstreetmap.org/?mlat=33.5708827&mlon=-7.6778725#map=16/33.5708827/-7.6778725"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-[#FC9700] hover:text-white transition-colors"
+              >
+                <Icon name="location_on" className="w-4 h-4" />
+                Ouvrir dans OpenStreetMap
+              </a>
             </div>
           </div>
         </div>

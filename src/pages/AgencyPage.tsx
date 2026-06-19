@@ -23,7 +23,7 @@ export default function AgencyPage() {
   }, [])
 
   return (
-    <div className="bg-background text-on-background overflow-hidden w-full">
+    <div className="bg-background text-on-background overflow-hidden w-full pb-28 md:pb-32">
       <Navbar />
 
       <main>

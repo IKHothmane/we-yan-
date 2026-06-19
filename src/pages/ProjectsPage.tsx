@@ -69,7 +69,7 @@ export default function ProjectsPage() {
   )
 
   return (
-    <div className="min-h-screen bg-[#F1F1F1] overflow-hidden w-full">
+    <div className="min-h-screen bg-[#F1F1F1] overflow-hidden w-full pb-28 md:pb-32">
       <Navbar />
 
       <main className="bg-[#F1F1F1] min-h-screen pt-24">
