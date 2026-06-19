@@ -1,0 +1,22 @@
+# We Yan Digital
+
+Site officiel de We Yan Digital, agence digitale marocaine specialisee en branding, creation de contenu, influence marketing, publicite digitale et developpement web.
+
+## Pages principales
+
+- [Accueil](https://weyandigital.ma/)
+- [Services](https://weyandigital.ma/services)
+- [Projets](https://weyandigital.ma/projets)
+- [Agence](https://weyandigital.ma/agence)
+- [Contact](https://weyandigital.ma/contact)
+
+## Ressources utiles
+
+- [Sitemap XML](https://weyandigital.ma/sitemap.xml)
+- [Robots.txt](https://weyandigital.ma/robots.txt)
+
+## Notes
+
+- Langue principale : francais
+- Zone geographique : Maroc
+- Objet du site : presentation de l'agence, de ses services et de ses realisations

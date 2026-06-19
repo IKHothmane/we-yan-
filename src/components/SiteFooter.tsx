@@ -15,11 +15,12 @@ export default function SiteFooter({ revealDelay }: SiteFooterProps) {
       {...revealProps}
     >
       <div className="px-[clamp(1rem,4vw,2rem)]">
+        <h2 className="sr-only">Pied de page</h2>
         <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[1.25fr_0.8fr_0.9fr] gap-[clamp(1.75rem,4vw,3rem)] items-start">
           <div className="sm:col-span-2 lg:col-span-1">
             <div className="flex items-center gap-4 mb-6 justify-center sm:justify-start">
               <span className="w-[clamp(2.75rem,6vw,3rem)] h-[clamp(2.75rem,6vw,3rem)] rounded-full overflow-hidden bg-white shadow-[0_10px_30px_-10px_rgba(252,151,0,0.7)] flex items-center justify-center">
-                <img src="/Logo%20weyan.png" alt="We Yan Digital" className="h-full w-full object-cover" />
+                <img src="/Logo%20weyan.png?v=20260619" alt="We Yan Digital" className="h-full w-full object-cover" />
               </span>
               <span className="text-[clamp(1.5rem,4vw,2rem)] font-extrabold">
                 we yan digital
@@ -34,7 +35,7 @@ export default function SiteFooter({ revealDelay }: SiteFooterProps) {
           </div>
 
           <div className="text-center sm:text-left">
-            <h4 className="text-[clamp(1rem,2.2vw,1.125rem)] font-bold mb-6">Explorer</h4>
+            <h3 className="text-[clamp(1rem,2.2vw,1.125rem)] font-bold mb-6">Explorer</h3>
             <ul className="space-y-4">
               <li>
                 <Link className="text-slate-400 hover:text-[#FC9700] transition-colors" to="/projets">
@@ -55,7 +56,7 @@ export default function SiteFooter({ revealDelay }: SiteFooterProps) {
           </div>
 
           <div className="text-center sm:text-left">
-            <h4 className="text-[clamp(1rem,2.2vw,1.125rem)] font-bold mb-6">Legal</h4>
+            <h3 className="text-[clamp(1rem,2.2vw,1.125rem)] font-bold mb-6">Legal</h3>
             <ul className="space-y-4">
               <li>
                 <Link className="text-slate-400 hover:text-[#FC9700] transition-colors" to="/contact">

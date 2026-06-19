@@ -60,7 +60,7 @@ export default function Navbar({ variant = 'light' }: NavbarProps) {
                     : 'h-[clamp(2.5rem,6vw,3.5rem)] w-[clamp(2.5rem,6vw,3.5rem)] bg-white/10'
                 }`}
               >
-                <img src="/Logo%20weyan.png" alt="We Yan Digital" className="h-full w-full object-cover" />
+                <img src="/Logo%20weyan.png?v=20260619" alt="We Yan Digital" className="h-full w-full object-cover" />
               </span>
               <span className="sr-only">We Digital</span>
             </Link>
@@ -80,7 +80,7 @@ export default function Navbar({ variant = 'light' }: NavbarProps) {
             <div className="flex items-center gap-[clamp(0.5rem,1.8vw,1rem)]">
               <Link
                 className={`px-[clamp(0.9rem,2.6vw,1.5rem)] py-[clamp(0.55rem,1.6vw,0.85rem)] rounded-full font-semibold hover:brightness-110 transition-all text-[clamp(0.7rem,1.8vw,0.875rem)] uppercase tracking-[0.18em] ${
-                  useLightStyle ? 'bg-[#FC9700] text-[#0F172A]' : 'bg-[#FC9700] text-white hover:bg-orange-600'
+                  useLightStyle ? 'bg-[#FC9700] text-[#0F172A]' : 'bg-[#FC9700] text-[#0F172A] hover:bg-orange-600'
                 }`}
                 to="/contact"
               >
