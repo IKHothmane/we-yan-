@@ -41,16 +41,16 @@ function HeroNavbarLite() {
         </div>
 
         <div className="grid grid-cols-4 gap-1 md:hidden">
-          <Link className="rounded-2xl px-2 py-2.5 text-center text-[0.68rem] font-semibold text-white transition-colors hover:bg-white/10" to="/">
+          <Link className="flex min-h-[48px] items-center justify-center rounded-2xl px-2 py-3 text-center text-[0.68rem] font-semibold text-white transition-colors hover:bg-white/10" to="/">
             Home
           </Link>
-          <Link className="rounded-2xl px-2 py-2.5 text-center text-[0.68rem] font-semibold text-white transition-colors hover:bg-white/10" to="/services">
+          <Link className="flex min-h-[48px] items-center justify-center rounded-2xl px-2 py-3 text-center text-[0.68rem] font-semibold text-white transition-colors hover:bg-white/10" to="/services">
             Services
           </Link>
-          <Link className="rounded-2xl px-2 py-2.5 text-center text-[0.68rem] font-semibold text-white transition-colors hover:bg-white/10" to="/agence">
+          <Link className="flex min-h-[48px] items-center justify-center rounded-2xl px-2 py-3 text-center text-[0.68rem] font-semibold text-white transition-colors hover:bg-white/10" to="/agence">
             About
           </Link>
-          <Link className="rounded-2xl bg-[#FC9700] px-2 py-2.5 text-center text-[0.68rem] font-bold text-[#0F172A] shadow-sm" to="/contact">
+          <Link className="flex min-h-[48px] items-center justify-center rounded-2xl bg-[#FC9700] px-2 py-3 text-center text-[0.68rem] font-bold text-[#0F172A] shadow-sm" to="/contact">
             Devis
           </Link>
         </div>
@@ -64,12 +64,14 @@ export default function HomePage() {
 
   useEffect(() => {
     const loadDeferredSections = () => setShouldLoadDeferredSections(true)
+    const timeoutId = window.setTimeout(loadDeferredSections, 3000)
 
     window.addEventListener('scroll', loadDeferredSections, { passive: true, once: true })
     window.addEventListener('pointerdown', loadDeferredSections, { passive: true, once: true })
     window.addEventListener('keydown', loadDeferredSections, { once: true })
 
     return () => {
+      window.clearTimeout(timeoutId)
       window.removeEventListener('scroll', loadDeferredSections)
       window.removeEventListener('pointerdown', loadDeferredSections)
       window.removeEventListener('keydown', loadDeferredSections)
@@ -79,12 +81,9 @@ export default function HomePage() {
   return (
     <div className="bg-white font-sans text-slate-900 overflow-hidden w-full pb-28 md:pb-32">
       <style>{`
-        @font-face {
-          font-family: 'Rigot';
-          src: local('Impact'), local('Arial Black');
-        }
         .font-rigot {
-          font-family: 'Rigot', 'Poppins', sans-serif;
+          font-family: 'Syne', 'Poppins', sans-serif;
+          font-weight: 800;
           letter-spacing: -0.02em;
         }
         .floating-tag {
