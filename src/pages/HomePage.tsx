@@ -101,8 +101,8 @@ export default function HomePage() {
                 <span className="text-[#FC9700]">démarquer.</span>
               </h2>
               <p className="text-gray-300 text-[clamp(1rem,2.2vw,1.25rem)] max-w-xl leading-relaxed mb-[clamp(1.5rem,3vw,2.5rem)]">
-                Agence de communication spécialisée en branding, création de contenu, influence marketing
-                et publicité digitale.
+                We Yan Digital est une agence de communication à Casablanca spécialisée en branding,
+                création de contenu, influence marketing et publicité digitale au Maroc.
               </p>
               <div className="flex flex-col sm:flex-row gap-[clamp(0.75rem,2vw,1rem)]">
                 <Link
@@ -478,6 +478,33 @@ export default function HomePage() {
             </div>
           </div>
         </div>
+        </section>
+
+        <section className="py-[clamp(3.5rem,8vw,5rem)] bg-white border-t border-slate-100">
+          <div className="max-w-5xl mx-auto px-[clamp(1rem,4vw,2rem)]" data-reveal>
+            <div className="rounded-[2rem] border border-slate-200 bg-slate-50 p-[clamp(1.5rem,4vw,3rem)]">
+              <p className="text-[clamp(0.78rem,1.6vw,0.85rem)] font-bold uppercase tracking-[0.25em] text-[#6483F0] mb-4">
+                We Yan Digital
+              </p>
+              <h2 className="text-[clamp(1.8rem,4.5vw,2.6rem)] font-bold text-slate-900 leading-tight mb-5">
+                We Yan Digital, agence digitale marocaine pour les marques qui veulent se demarquer
+              </h2>
+              <div className="space-y-4 text-slate-600 text-[clamp(1rem,2.1vw,1.08rem)] leading-relaxed">
+                <p>
+                  We Yan Digital accompagne les entreprises, commerces et marques qui cherchent une
+                  agence digitale au Maroc capable de combiner strategie, creativite et execution.
+                  Si vos clients recherchent We Yan, We Yan Digital ou une agence de communication a
+                  Casablanca, cette plateforme presente notre expertise en branding, publicite digitale,
+                  creation de contenu et developpement web.
+                </p>
+                <p>
+                  Notre mission est simple : aider chaque marque a construire une presence forte sur
+                  Google, sur les reseaux sociaux et sur le web avec une approche claire, mesurable et
+                  orientee resultats.
+                </p>
+              </div>
+            </div>
+          </div>
         </section>
       </main>
 

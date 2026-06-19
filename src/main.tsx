@@ -1,6 +1,6 @@
 import React, { Suspense, lazy } from 'react'
 import ReactDOM from 'react-dom/client'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
 import ScrollToTop from './components/ScrollToTop'
 import HomePage from './pages/HomePage'
 import './styles.css'
@@ -21,6 +21,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
           <Route path="/projets" element={<ProjectsPage />} />
           <Route path="/agence" element={<AgencyPage />} />
           <Route path="/contact" element={<ContactPage />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </Suspense>
     </BrowserRouter>

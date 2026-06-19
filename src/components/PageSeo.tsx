@@ -11,7 +11,7 @@ type PageSeoProps = {
 }
 
 const SITE_URL = 'https://weyandigital.ma'
-const SITE_NAME = 'we yan digital'
+const SITE_NAME = 'We Yan Digital'
 
 function setMeta(selector: string, attribute: 'name' | 'property', value: string, content: string) {
   const element = document.head.querySelector<HTMLMetaElement>(selector)
