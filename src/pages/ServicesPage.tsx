@@ -6,6 +6,9 @@ import SiteFooter from '../components/SiteFooter'
 import useScrollReveal from '../hooks/useScrollReveal'
 import { pageSeo } from '../lib/pageSeo'
 
+const solutionCardsBackground =
+  'https://lh3.googleusercontent.com/aida-public/AB6AXuA26cTrzHWhr1lAl33fd3Ki70zwSUi4OF6NjvcmIZ76Ga7-B-FjhQoLQtGZcbTdkiBFBnDeDM5_JRbgc_X94ePyxv64rKgjS7XfUkwJuIMzIENhqM1PpaK7RoethVHVm8di6c_IbAx7F-BB6NczMfoLzkMUeRiJ_K_cjdVe0s3vP6gWa8PXNUBIy5mhVNAtHC7--WgbqpaXlN1mq7vEhIVL9FZQN8rWrTrYlU634k6EKU8XO-Rm8y-Hu66NwWKW2iAryuhp5f9Z7lM'
+
 export default function ServicesPage() {
   useScrollReveal()
 
@@ -36,51 +39,62 @@ export default function ServicesPage() {
           <div className="overflow-x-auto pb-4">
             <div className="grid min-w-[980px] grid-cols-12 gap-[clamp(1rem,2vw,2rem)]">
               <div
-                className="col-span-7 bg-surface-container-lowest p-[clamp(1.5rem,3vw,2.5rem)] rounded-xl shadow-[0_10px_40px_-10px_rgba(100,131,240,0.15)] border border-outline-variant/20 group hover:border-primary/30 transition-all duration-300"
+                className="col-span-7 relative overflow-hidden rounded-xl border border-white/15 p-[clamp(1.5rem,3vw,2.5rem)] text-white shadow-[0_10px_40px_-10px_rgba(15,23,42,0.45)] group transition-all duration-300"
+                style={{
+                  backgroundImage: `linear-gradient(135deg, rgba(15, 23, 42, 0.84), rgba(15, 23, 42, 0.56)), url(${solutionCardsBackground})`,
+                  backgroundPosition: 'center',
+                  backgroundSize: 'cover',
+                }}
                 data-reveal
               >
               <div className="flex flex-col h-full justify-between">
                 <div>
-                  <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-6">
-                    <Icon name="architecture" className="w-6 h-6 text-primary" />
+                  <div className="w-12 h-12 rounded-lg bg-white/15 backdrop-blur-sm flex items-center justify-center mb-6">
+                    <Icon name="architecture" className="w-6 h-6 text-white" />
                   </div>
-                  <h3 className="font-headline-md text-headline-md text-on-surface mb-4">
+                  <h3 className="font-headline-md text-headline-md mb-4">
                     Branding & Visual Identity
                   </h3>
-                  <p className="font-body-md text-body-md text-on-surface-variant mb-6 max-w-md">
+                  <p className="font-body-md text-body-md text-white/80 mb-6 max-w-md">
                     Nous créons des identités visuelles fortes qui racontent votre histoire et
                     captivent votre audience dès le premier regard.
                   </p>
                   <ul className="space-y-3 mb-8">
-                    <li className="flex items-center gap-3 font-label-md text-label-md text-on-surface">
-                      <Icon name="check_circle" className="w-4 h-4 text-secondary" />
+                    <li className="flex items-center gap-3 font-label-md text-label-md text-white">
+                      <Icon name="check_circle" className="w-4 h-4 text-[#FC9700]" />
                       Logo design & Iconography
                     </li>
-                    <li className="flex items-center gap-3 font-label-md text-label-md text-on-surface">
-                      <Icon name="check_circle" className="w-4 h-4 text-secondary" />
+                    <li className="flex items-center gap-3 font-label-md text-label-md text-white">
+                      <Icon name="check_circle" className="w-4 h-4 text-[#FC9700]" />
                       Brand strategy & Architecture
                     </li>
-                    <li className="flex items-center gap-3 font-label-md text-label-md text-on-surface">
-                      <Icon name="check_circle" className="w-4 h-4 text-secondary" />
+                    <li className="flex items-center gap-3 font-label-md text-label-md text-white">
+                      <Icon name="check_circle" className="w-4 h-4 text-[#FC9700]" />
                       Visual guidelines & Stationery
                     </li>
                   </ul>
                 </div>
-                <div className="w-full h-64 rounded-lg overflow-hidden">
-                  <img
-                    alt="Workspace branding"
-                    className="w-full h-full object-cover"
-                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuBpa3VKIP82G8xHVoadX2k1SG5vSeecooWPILhhlGRhaDXkbB6ZtBAaV4-ebYnMNd95xUevPNqNmUl-mUsIXePe_hT6eWYYseFdcC6IAR_NRBaO9kWK8urJK8760oUE3RhswuI4ksW_NM_Hvus8ks2RRGhuAscbuUK7M1x2y3k-psXyd2A0Ge6ivNJ5zLKVqZ2CqGR5xa-Jm4OzSNQaZr2kTU55fSEhs73Xto7yfFjtvFWSgXej3i4JgNvThFUv5UujoT-p000EMNE"
-                    loading="lazy"
-                    width={800}
-                    height={256}
-                  />
+                <div className="flex flex-wrap gap-3">
+                  <span className="rounded-full border border-white/15 bg-white/10 px-4 py-2 text-sm font-semibold text-white backdrop-blur-sm">
+                    Strategic Direction
+                  </span>
+                  <span className="rounded-full border border-white/15 bg-white/10 px-4 py-2 text-sm font-semibold text-white backdrop-blur-sm">
+                    Logo Systems
+                  </span>
+                  <span className="rounded-full border border-white/15 bg-white/10 px-4 py-2 text-sm font-semibold text-white backdrop-blur-sm">
+                    Premium Identity
+                  </span>
                 </div>
               </div>
             </div>
 
               <div
-                className="col-span-5 bg-primary text-on-primary p-[clamp(1.5rem,3vw,2.5rem)] rounded-xl shadow-[0_10px_40px_-10px_rgba(100,131,240,0.15)] relative overflow-hidden group"
+                className="col-span-5 relative overflow-hidden rounded-xl border border-white/15 p-[clamp(1.5rem,3vw,2.5rem)] text-white shadow-[0_10px_40px_-10px_rgba(15,23,42,0.45)] group"
+                style={{
+                  backgroundImage: `linear-gradient(135deg, rgba(76, 96, 194, 0.78), rgba(15, 23, 42, 0.72)), url(${solutionCardsBackground})`,
+                  backgroundPosition: 'center',
+                  backgroundSize: 'cover',
+                }}
                 data-reveal
                 data-reveal-delay="100"
               >
@@ -112,79 +126,81 @@ export default function ServicesPage() {
             </div>
 
               <div
-                className="col-span-5 bg-surface-container-low p-[clamp(1.5rem,3vw,2.5rem)] rounded-xl shadow-[0_10px_40px_-10px_rgba(100,131,240,0.15)] border border-outline-variant/20"
+                className="col-span-5 relative overflow-hidden rounded-xl border border-white/15 p-[clamp(1.5rem,3vw,2.5rem)] text-white shadow-[0_10px_40px_-10px_rgba(15,23,42,0.45)]"
+                style={{
+                  backgroundImage: `linear-gradient(135deg, rgba(15, 23, 42, 0.82), rgba(76, 96, 194, 0.54)), url(${solutionCardsBackground})`,
+                  backgroundPosition: 'center',
+                  backgroundSize: 'cover',
+                }}
                 data-reveal
                 data-reveal-delay="200"
               >
-              <div className="w-12 h-12 rounded-lg bg-secondary/10 flex items-center justify-center mb-6">
-                <Icon name="movie_filter" className="w-6 h-6 text-secondary" />
+              <div className="w-12 h-12 rounded-lg bg-white/15 backdrop-blur-sm flex items-center justify-center mb-6">
+                <Icon name="movie_filter" className="w-6 h-6 text-white" />
               </div>
-              <h3 className="font-headline-md text-headline-md text-on-surface mb-4">Content Creation</h3>
-              <p className="font-body-md text-body-md text-on-surface-variant mb-8">
+              <h3 className="font-headline-md text-headline-md mb-4">Content Creation</h3>
+              <p className="font-body-md text-body-md text-white/80 mb-8">
                 Du contenu visuel de haute qualité qui sublime votre marque et engage votre
                 communauté.
               </p>
               <div className="grid grid-cols-2 gap-4">
-                <div className="aspect-square rounded-lg overflow-hidden bg-white">
-                  <img
-                    alt="Video production"
-                    className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
-                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuB6DWMU19t88TzuFQFcclzlkb0XnvVzDQRdhxVmIakuiTSX9hDQXS3NIDHzxrXPrAB0lq1WMzM4_TRXSq3Lm3mctrLsemU1r68-PNyoKmI4LKSPnzDc7GcJmKQ40YDDYoKiKCXgoJ0GirE5ziG8k9dQp0NOb8jWGOct6EvqVuriBeQwejp5oH64i-Fzw31Lz5z6zULC6PcdOI1qZxj5KWmrmuRvy_YWb3Vi5ybOXVJo8sawjSEzszioI4BR6V4eG0ktFLirHFMrmAM"
-                    loading="lazy"
-                    width={400}
-                    height={400}
-                  />
+                <div className="aspect-square rounded-lg border border-white/15 bg-white/10 p-5 backdrop-blur-sm">
+                  <div className="flex h-full flex-col justify-between">
+                    <span className="text-sm font-semibold uppercase tracking-[0.2em] text-white/70">Video</span>
+                    <p className="text-lg font-semibold text-white">Reels, ads et capsules premium</p>
+                  </div>
                 </div>
-                <div className="aspect-square rounded-lg overflow-hidden bg-white">
-                  <img
-                    alt="Photography"
-                    className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
-                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuCqe1f-VU4DkqYBxK6DAaop7C46CJQJAGn6y97JjuE65021BIjhvUGO0HdPuXNdTkBiLGXVmYD_v8qs7-t5LwiMYhzFiaeAOE1-w7wmJhxIRKOycltJ_Uq-ADCKErRaAiJZvBQImcJSmFDbtb5z2yNMQKbCNMUmSCoj-M7mBpMV2Ks8gK67w9rBXvYV0EtLhkm_QBgsq7qm-Ngur656uSecItFyZGOAk1_QzpdZpeR2J4WBozEhcDksvqcguRn3PvUe3hU8aoehi5E"
-                    loading="lazy"
-                    width={400}
-                    height={400}
-                  />
+                <div className="aspect-square rounded-lg border border-white/15 bg-white/10 p-5 backdrop-blur-sm">
+                  <div className="flex h-full flex-col justify-between">
+                    <span className="text-sm font-semibold uppercase tracking-[0.2em] text-white/70">Photo</span>
+                    <p className="text-lg font-semibold text-white">Shooting produit et lifestyle</p>
+                  </div>
                 </div>
               </div>
             </div>
 
               <div
-                className="col-span-7 bg-surface-container-lowest p-[clamp(1.5rem,3vw,2.5rem)] rounded-xl shadow-[0_10px_40px_-10px_rgba(100,131,240,0.15)] border border-outline-variant/20 flex flex-row gap-8 items-center"
+                className="col-span-7 flex flex-row gap-8 items-center rounded-xl border border-white/15 p-[clamp(1.5rem,3vw,2.5rem)] text-white shadow-[0_10px_40px_-10px_rgba(15,23,42,0.45)]"
+                style={{
+                  backgroundImage: `linear-gradient(135deg, rgba(15, 23, 42, 0.84), rgba(15, 23, 42, 0.58)), url(${solutionCardsBackground})`,
+                  backgroundPosition: 'center',
+                  backgroundSize: 'cover',
+                }}
                 data-reveal
                 data-reveal-delay="300"
               >
               <div className="flex-1">
-                <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-6">
-                  <Icon name="groups_3" className="w-6 h-6 text-primary" />
+                <div className="w-12 h-12 rounded-lg bg-white/15 backdrop-blur-sm flex items-center justify-center mb-6">
+                  <Icon name="groups_3" className="w-6 h-6 text-white" />
                 </div>
-                <h3 className="font-headline-md text-headline-md text-on-surface mb-4">
+                <h3 className="font-headline-md text-headline-md mb-4">
                   Social Media & Influence
                 </h3>
-                <p className="font-body-md text-body-md text-on-surface-variant mb-6">
+                <p className="font-body-md text-body-md text-white/80 mb-6">
                   Bâtissez une communauté engagée et collaborez avec les bons influenceurs pour
                   étendre votre portée.
                 </p>
                 <div className="flex gap-3 flex-wrap">
-                  <span className="bg-primary/10 text-primary px-4 py-1.5 rounded-full font-label-md text-label-md">
+                  <span className="bg-white/10 text-white px-4 py-1.5 rounded-full font-label-md text-label-md border border-white/15 backdrop-blur-sm">
                     Community Management
                   </span>
-                  <span className="bg-primary/10 text-primary px-4 py-1.5 rounded-full font-label-md text-label-md">
+                  <span className="bg-white/10 text-white px-4 py-1.5 rounded-full font-label-md text-label-md border border-white/15 backdrop-blur-sm">
                     Influencer Strategy
                   </span>
-                  <span className="bg-primary/10 text-primary px-4 py-1.5 rounded-full font-label-md text-label-md">
+                  <span className="bg-white/10 text-white px-4 py-1.5 rounded-full font-label-md text-label-md border border-white/15 backdrop-blur-sm">
                     Social Audits
                   </span>
                 </div>
               </div>
-              <div className="flex-1 w-full h-full min-h-[250px] bg-background rounded-lg relative flex items-center justify-center overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-secondary/5"></div>
+              <div className="flex-1 w-full h-full min-h-[250px] rounded-lg relative flex items-center justify-center overflow-hidden border border-white/15 bg-white/10 backdrop-blur-sm">
+                <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent"></div>
                 <div className="relative flex flex-col gap-4 w-full px-6">
-                  <div className="bg-white p-3 rounded-xl shadow-sm border border-outline-variant/10 flex items-center gap-3 animate-pulse">
+                  <div className="bg-white/85 p-3 rounded-xl shadow-sm border border-white/30 flex items-center gap-3 animate-pulse">
                     <div className="w-8 h-8 rounded-full bg-secondary/20"></div>
                     <div className="h-2 w-24 bg-surface-container rounded"></div>
                   </div>
                   <div
-                    className="bg-white p-3 rounded-xl shadow-sm border border-outline-variant/10 flex items-center gap-3 ml-8 animate-pulse"
+                    className="bg-white/85 p-3 rounded-xl shadow-sm border border-white/30 flex items-center gap-3 ml-8 animate-pulse"
                     style={{ animationDelay: '0.2s' }}
                   >
                     <div className="w-8 h-8 rounded-full bg-primary/20"></div>

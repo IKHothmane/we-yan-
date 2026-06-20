@@ -43,7 +43,7 @@ export default function Navbar({ variant = 'light' }: NavbarProps) {
 
   return (
     <>
-      <nav className="fixed bottom-4 left-0 right-0 z-50 px-[clamp(0.875rem,3vw,1.5rem)]">
+      <nav className="fixed left-0 right-0 top-4 z-50 px-[clamp(0.875rem,3vw,1.5rem)]">
         <div
           className={`max-w-7xl mx-auto rounded-full px-[clamp(0.8rem,3vw,2rem)] py-[clamp(0.65rem,1.8vw,0.85rem)] transition-all ${
             useLightStyle

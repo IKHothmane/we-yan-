@@ -9,18 +9,45 @@ const homeImages = {
 }
 
 function HeroNavbarLite() {
+  const [useLightStyle, setUseLightStyle] = useState(false)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setUseLightStyle(window.scrollY > window.innerHeight * 0.55)
+    }
+
+    handleScroll()
+    window.addEventListener('scroll', handleScroll, { passive: true })
+
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
   return (
-    <nav className="fixed bottom-4 left-0 right-0 z-50 px-[clamp(0.875rem,3vw,1.5rem)]">
-      <div className="max-w-7xl mx-auto rounded-full border border-white/20 bg-white/10 px-[clamp(0.8rem,3vw,2rem)] py-[clamp(0.65rem,1.8vw,0.85rem)] backdrop-blur-md">
+    <nav className="fixed left-0 right-0 top-4 z-50 px-[clamp(0.875rem,3vw,1.5rem)]">
+      <div
+        className={`max-w-7xl mx-auto rounded-full px-[clamp(0.8rem,3vw,2rem)] py-[clamp(0.65rem,1.8vw,0.85rem)] backdrop-blur-md transition-all ${
+          useLightStyle
+            ? 'border border-slate-200 bg-white/95 shadow-lg'
+            : 'border border-white/20 bg-white/10'
+        }`}
+      >
         <div className="hidden md:flex items-center justify-between gap-6">
           <Link to="/" className="flex items-center space-x-3">
-            <span className="h-[clamp(2.5rem,6vw,3.5rem)] w-[clamp(2.5rem,6vw,3.5rem)] overflow-hidden rounded-full bg-white/10">
+            <span
+              className={`h-[clamp(2.5rem,6vw,3.5rem)] w-[clamp(2.5rem,6vw,3.5rem)] overflow-hidden rounded-full transition-all ${
+                useLightStyle ? 'bg-white shadow-sm' : 'bg-white/10'
+              }`}
+            >
               <img src="/Logo%20weyan.png?v=20260619" alt="We Yan Digital" className="h-full w-full object-cover" />
             </span>
             <span className="sr-only">We Yan Digital</span>
           </Link>
 
-          <div className="hidden md:flex items-center space-x-[clamp(1.25rem,2.6vw,2.5rem)] text-[clamp(0.9rem,1.2vw,1rem)] font-medium text-white">
+          <div
+            className={`hidden md:flex items-center space-x-[clamp(1.25rem,2.6vw,2.5rem)] text-[clamp(0.9rem,1.2vw,1rem)] font-medium ${
+              useLightStyle ? 'text-slate-700' : 'text-white'
+            }`}
+          >
             <Link className="transition-colors hover:text-[#FC9700]" to="/">
               Home
             </Link>
@@ -41,13 +68,28 @@ function HeroNavbarLite() {
         </div>
 
         <div className="grid grid-cols-4 gap-1 md:hidden">
-          <Link className="flex min-h-[48px] items-center justify-center rounded-2xl px-2 py-3 text-center text-[0.68rem] font-semibold text-white transition-colors hover:bg-white/10" to="/">
+          <Link
+            className={`flex min-h-[48px] items-center justify-center rounded-2xl px-2 py-3 text-center text-[0.68rem] font-semibold transition-colors ${
+              useLightStyle ? 'text-slate-700 hover:bg-slate-100' : 'text-white hover:bg-white/10'
+            }`}
+            to="/"
+          >
             Home
           </Link>
-          <Link className="flex min-h-[48px] items-center justify-center rounded-2xl px-2 py-3 text-center text-[0.68rem] font-semibold text-white transition-colors hover:bg-white/10" to="/services">
+          <Link
+            className={`flex min-h-[48px] items-center justify-center rounded-2xl px-2 py-3 text-center text-[0.68rem] font-semibold transition-colors ${
+              useLightStyle ? 'text-slate-700 hover:bg-slate-100' : 'text-white hover:bg-white/10'
+            }`}
+            to="/services"
+          >
             Services
           </Link>
-          <Link className="flex min-h-[48px] items-center justify-center rounded-2xl px-2 py-3 text-center text-[0.68rem] font-semibold text-white transition-colors hover:bg-white/10" to="/agence">
+          <Link
+            className={`flex min-h-[48px] items-center justify-center rounded-2xl px-2 py-3 text-center text-[0.68rem] font-semibold transition-colors ${
+              useLightStyle ? 'text-slate-700 hover:bg-slate-100' : 'text-white hover:bg-white/10'
+            }`}
+            to="/agence"
+          >
             About
           </Link>
           <Link className="flex min-h-[48px] items-center justify-center rounded-2xl bg-[#FC9700] px-2 py-3 text-center text-[0.68rem] font-bold text-[#0F172A] shadow-sm" to="/contact">
