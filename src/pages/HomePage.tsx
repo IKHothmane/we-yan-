@@ -57,14 +57,11 @@ function HeroNavbarLite() {
             <Link className="transition-colors hover:text-[#FC9700]" to="/agence">
               About
             </Link>
+            <Link className="transition-colors hover:text-[#FC9700]" to="/contact">
+              Contacte
+            </Link>
           </div>
 
-          <Link
-            className="rounded-full bg-[#FC9700] px-[clamp(0.9rem,2.6vw,1.5rem)] py-[clamp(0.55rem,1.6vw,0.85rem)] text-[clamp(0.7rem,1.8vw,0.875rem)] font-semibold uppercase tracking-[0.18em] text-[#0F172A] transition-all hover:bg-orange-600"
-            to="/contact"
-          >
-            Let's Talk
-          </Link>
         </div>
 
         <div className="grid grid-cols-4 gap-1 md:hidden">
@@ -92,8 +89,13 @@ function HeroNavbarLite() {
           >
             About
           </Link>
-          <Link className="flex min-h-[48px] items-center justify-center rounded-2xl bg-[#FC9700] px-2 py-3 text-center text-[0.68rem] font-bold text-[#0F172A] shadow-sm" to="/contact">
-            Devis
+          <Link
+            className={`flex min-h-[48px] items-center justify-center rounded-2xl px-2 py-3 text-center text-[0.68rem] font-semibold transition-colors ${
+              useLightStyle ? 'text-slate-700 hover:bg-slate-100' : 'text-white hover:bg-white/10'
+            }`}
+            to="/contact"
+          >
+            Contacte
           </Link>
         </div>
       </div>
@@ -167,35 +169,29 @@ export default function HomePage() {
           />
           <div className="absolute inset-0 pointer-events-none hidden md:block">
             <div
-              className="absolute top-[25%] right-[5%] lg:right-[20%] floating-tag flex items-center space-x-3 px-4 lg:px-6 py-2 lg:py-3 rounded-2xl shadow-xl z-10"
+              className="absolute top-[25%] right-[5%] lg:right-[20%] floating-tag flex items-center gap-3 px-4 lg:px-6 py-2 lg:py-3 rounded-2xl shadow-xl z-10"
               style={{ animationDelay: '0s' }}
             >
-              <div className="w-5 h-5 lg:w-6 lg:h-6 bg-[#FC9700] rounded-full flex items-center justify-center">
-                <svg className="w-3 h-3 lg:w-4 lg:h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path
-                    d="M5 13l4 4L19 7"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="3"
-                  ></path>
+              <span className="flex h-9 w-9 items-center justify-center rounded-full bg-primary text-white shadow-sm">
+                <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+                  <path d="M4 20h4l10.5-10.5a2.1 2.1 0 0 0-4-4L4 16v4Z" />
+                  <path d="m13.5 6.5 4 4" />
                 </svg>
-              </div>
+              </span>
               <span className="font-bold text-slate-800 text-sm lg:text-base">Branding</span>
             </div>
             <div
-              className="absolute bottom-[25%] right-[8%] lg:right-[30%] floating-tag flex items-center space-x-3 px-4 lg:px-6 py-2 lg:py-3 rounded-2xl shadow-xl z-10"
+              className="absolute bottom-[25%] right-[8%] lg:right-[30%] floating-tag flex items-center gap-3 px-4 lg:px-6 py-2 lg:py-3 rounded-2xl shadow-xl z-10"
               style={{ animationDelay: '1s' }}
             >
-              <div className="w-5 h-5 lg:w-6 lg:h-6 bg-[#FC9700] rounded-full flex items-center justify-center">
-                <svg className="w-3 h-3 lg:w-4 lg:h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path
-                    d="M5 13l4 4L19 7"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="3"
-                  ></path>
+              <span className="flex h-9 w-9 items-center justify-center rounded-full bg-[#FC9700] text-white shadow-sm">
+                <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+                  <path d="M4 19h16" />
+                  <path d="M7 15V9" />
+                  <path d="M12 15V5" />
+                  <path d="M17 15v-3" />
                 </svg>
-              </div>
+              </span>
               <span className="font-bold text-slate-800 text-sm lg:text-base">Ads</span>
             </div>
           </div>

@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Média Publicité Offline | We Digital Agency</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+                "on-secondary-fixed-variant": "#832700",
+                "outline-variant": "#c2c7ce",
+                "on-secondary": "#ffffff",
+                "inverse-surface": "#2f3131",
+                "on-background": "#1a1c1c",
+                "primary-container": "#a7c7e7",
+                "secondary-fixed-dim": "#ffb59c",
+                "on-tertiary-container": "#4f5051",
+                "on-primary": "#ffffff",
+                "on-tertiary": "#ffffff",
+                "tertiary-fixed": "#e2e2e2",
+                "tertiary": "#5d5f5f",
+                "primary": "#42617d",
+                "tertiary-fixed-dim": "#c6c6c6",
+                "on-error-container": "#93000a",
+                "on-secondary-container": "#551600",
+                "surface": "#f9f9f9",
+                "on-primary-fixed": "#001d32",
+                "error": "#ba1a1a",
+                "surface-container-lowest": "#ffffff",
+                "secondary-container": "#fe5e1e",
+                "on-secondary-fixed": "#390c00",
+                "secondary": "#ab3600",
+                "on-surface": "#1a1c1c",
+                "outline": "#73777e",
+                "primary-fixed-dim": "#aacaea",
+                "inverse-primary": "#aacaea",
+                "background": "#f9f9f9",
+                "surface-dim": "#dadada",
+                "tertiary-container": "#c3c3c3",
+                "inverse-on-surface": "#f1f1f1",
+                "surface-container-highest": "#e2e2e2",
+                "on-surface-variant": "#42474d",
+                "surface-bright": "#f9f9f9",
+                "on-tertiary-fixed-variant": "#454747",
+                "on-primary-container": "#34536f",
+                "primary-fixed": "#cde5ff",
+                "secondary-fixed": "#ffdbcf",
+                "surface-variant": "#e2e2e2",
+                "surface-container-low": "#f3f3f3",
+                "surface-container-high": "#e8e8e8",
+                "on-error": "#ffffff",
+                "error-container": "#ffdad6",
+                "on-tertiary-fixed": "#1a1c1c",
+                "on-primary-fixed-variant": "#294964",
+                "surface-container": "#eeeeee",
+                "surface-tint": "#42617d"
+            },
+            borderRadius: {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+            },
+            fontFamily: {
+                "headline": ["Hanken Grotesk"],
+                "display": ["Hanken Grotesk"],
+                "body": ["Hanken Grotesk"],
+                "label": ["Hanken Grotesk"]
+            },
+            spacing: {
+                "unit": "8px",
+                "container-max": "1280px",
+                "margin-desktop": "80px",
+                "margin-tablet": "40px",
+                "margin-mobile": "20px",
+                "gutter": "24px",
+                "section-padding": "120px"
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Custom Header Font Simulation (Rigot style) */
+        .rigot-heading {
+            font-family: 'Hanken Grotesk', sans-serif;
+            font-weight: 900;
+            letter-spacing: -0.05em;
+            text-transform: uppercase;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(194, 199, 206, 0.2);
+        }
+        .hero-gradient {
+            background: radial-gradient(circle at top right, rgba(167, 199, 231, 0.15), transparent 60%);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body overflow-x-hidden">
+<!-- Top Navigation Bar -->
+<header class="bg-surface/80 dark:bg-surface/80 backdrop-blur-xl docked full-width top-0 sticky z-50 shadow-sm shadow-primary/10">
+<nav class="flex justify-between items-center px-8 md:px-margin-desktop py-4 w-full max-w-container-max mx-auto">
+<div class="font-headline-md text-headline-md font-bold text-on-surface dark:text-inverse-on-surface">
+                We Digital
+            </div>
+<div class="hidden md:flex gap-8 items-center">
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-outline-variant hover:text-secondary dark:hover:text-secondary-fixed transition-colors duration-300" href="#">Work</a>
+<a class="font-label-md text-label-md text-secondary dark:text-secondary-fixed-dim border-b-2 border-secondary dark:border-secondary-fixed-dim pb-1" href="#">Services</a>
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-outline-variant hover:text-secondary dark:hover:text-secondary-fixed transition-colors duration-300" href="#">Agency</a>
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-outline-variant hover:text-secondary dark:hover:text-secondary-fixed transition-colors duration-300" href="#">Contact</a>
+<button class="bg-secondary text-on-secondary px-6 py-2 rounded-lg font-label-md transition-all hover:scale-105 active:scale-95">Let's Talk</button>
+</div>
+<button class="md:hidden text-primary">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</nav>
+</header>
+<main>
+<!-- Hero Section -->
+<section class="relative min-h-[819px] flex items-center overflow-hidden hero-gradient pt-20">
+<div class="max-w-container-max mx-auto px-8 md:px-margin-desktop grid md:grid-cols-2 gap-16 items-center">
+<div class="z-10">
+<span class="text-secondary font-label-md tracking-widest uppercase mb-4 block">Communication Traditionnelle 2.0</span>
+<h1 class="rigot-heading text-[56px] md:text-[80px] leading-[0.9] text-on-surface mb-8">
+                        Impact <span class="text-primary">Massif</span> <br/>Réalité <span class="text-secondary">Tangible.</span>
+</h1>
+<p class="text-body-lg text-on-surface-variant max-w-md mb-10">
+                        Nous fusionnons la puissance sensorielle de la publicité offline avec l'intelligence de la donnée digitale pour créer des campagnes omnicanales mémorables.
+                    </p>
+<div class="flex flex-wrap gap-4">
+<button class="bg-secondary-container text-on-secondary-container px-8 py-4 rounded-xl font-bold flex items-center gap-2 hover:shadow-lg transition-all group">
+                            Découvrir nos solutions
+                            <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+</div>
+</div>
+<div class="relative h-[600px] w-full">
+<!-- Impactful Billboard Imagery Mockup -->
+<div class="absolute inset-0 rounded-3xl overflow-hidden shadow-2xl rotate-3 scale-105">
+<img class="w-full h-full object-cover" data-alt="A massive, high-contrast billboard in a busy, modern Moroccan urban intersection at dusk. The billboard features a minimalist, high-end fashion advertisement with vibrant orange accents, surrounded by glowing city lights and traffic trails. The atmosphere is sophisticated and energetic, reflecting a premium light-mode aesthetic with soft blue ambient lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvBFZwGi8JA9AMkEiwdBEM1rvQ9TTE2D_tMRGJCxPsb1ziGEEWrV0rf62vFfap-H3J1Hx3ShSBZYTst5X60-YlIodg91-_E9i4oZspB9ORYUJagLyVFo8mqbKpzSDSnJsPfOU3CPHG6qd3-s-o2tTYjKHmRVy9mvI_LuBgFsC89sN1PXYcdRbAtrEQ6mPy8ZUdFA5QXMpK0BPurrS5R4AcA0Ik3ChIANkkTaswPvaM_p0HcJDI2snBaNC7ksiWJqVHtb8CiWk5wiY"/>
+</div>
+<div class="absolute -bottom-10 -left-10 w-64 h-64 bg-primary/10 rounded-full blur-3xl -z-10"></div>
+</div>
+</div>
+</section>
+<!-- The Synergy Bento Grid -->
+<section class="py-section-padding px-8 md:px-margin-desktop max-w-container-max mx-auto">
+<div class="text-center mb-16">
+<h2 class="rigot-heading text-headline-lg mb-4">L'Écosystème Offline</h2>
+<p class="text-body-md text-on-surface-variant max-w-2xl mx-auto">
+                    Dominance visuelle, répétition stratégique et intégration digitale (QR, Phygital, Retargeting Géo).
+                </p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6 h-auto md:h-[800px]">
+<!-- Large Format (OOH) -->
+<div class="md:col-span-8 glass-card rounded-xl overflow-hidden group relative p-8 flex flex-col justify-end">
+<div class="absolute inset-0 -z-10 overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="A panoramic view of multiple digital street furniture displays along a clean, modern boulevard. The lighting is bright and airy, representing a midday sunlight scenario. The screens display bold, minimalist typography and high-saturation product photography with subtle primary blue and orange gradients." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC3pcm9Y3d9xVGa7Bm0J4hBj3AXSuyFGMN9lah2_3Xziuw-rrvn5zU4Euo6Hp_EfAfChExWnjsyhY32VxhO-IQywB514Znr7VmCDRzPgOX97fPWKVhPKQ7pb3y4gqa62jp4Onu8enuVKDXUwkPzkwvAZqfJ63_taQPbb2w4P9wP9TweFLiBv9ScyPMXlN-K2lcCSpObONG9X_ICyXPVFqMnzoi68kSWJVjrfec16uorHA_nMPe8vhLihGNm5viz6wfrndkaKFCc7bk"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+</div>
+<span class="bg-secondary text-white px-3 py-1 rounded-full text-xs font-bold w-fit mb-4 uppercase">Le Plus Impactant</span>
+<h3 class="text-white text-headline-md font-bold mb-2 uppercase">Affichage Urbain (OOH)</h3>
+<p class="text-white/80 text-body-md max-w-md">Panneaux 4x3, Unipoles, Mobiliers Urbains et écrans LED géants pour une présence incontournable.</p>
+</div>
+<!-- Radio & Audio -->
+<div class="md:col-span-4 bg-primary-container/20 rounded-xl p-8 border border-primary/10 flex flex-col items-center justify-center text-center">
+<div class="w-16 h-16 bg-primary text-white rounded-full flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-3xl">radio</span>
+</div>
+<h3 class="text-headline-md font-bold mb-4 uppercase">Radio &amp; Podcast</h3>
+<p class="text-body-md text-on-surface-variant">L'émotion par la voix. Spots publicitaires et sponsoring sur les ondes nationales les plus écoutées.</p>
+</div>
+<!-- Press -->
+<div class="md:col-span-4 bg-surface-container-high rounded-xl p-8 border border-outline-variant/30 flex flex-col">
+<span class="material-symbols-outlined text-secondary text-4xl mb-4">newspaper</span>
+<h3 class="text-headline-md font-bold mb-4 uppercase">Presse &amp; Print</h3>
+<p class="text-body-md text-on-surface-variant mb-6">L'autorité de l'imprimé. Campagnes dans les magazines premium et quotidiens influents.</p>
+<div class="mt-auto pt-4 border-t border-outline-variant/20 flex gap-2">
+<span class="bg-surface px-3 py-1 rounded-full text-xs font-semibold text-primary">Qualité Premium</span>
+<span class="bg-surface px-3 py-1 rounded-full text-xs font-semibold text-primary">Ciblage CSP+</span>
+</div>
+</div>
+<!-- TV & Cinema -->
+<div class="md:col-span-8 glass-card rounded-xl overflow-hidden relative p-8 group">
+<div class="absolute inset-0 -z-10">
+<img class="w-full h-full object-cover" data-alt="A cinematic wide-angle shot of a luxurious theater or cinema interior, showing a massive screen displaying a high-definition brand film. The lighting is dramatic yet soft, highlighting the textures of the velvet seating and the crispness of the projection. Deep blue and warm orange tones create a premium, high-production atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBKbRKncf9FSqKUCqv-R8s_EcYvObw1RdzmwF3BPh2Ll3ZlFpqOA7UNrvWYgguUGyaYmKktcT-4Nq3rvq5Jki_wnDXEjdBdAHq8MT5vtchndp-YJHBaE9VTiu49lwQp5yDM9DXMP8eju6ztDFuP2_JgDB9IG4XIvYus2TG-CwDAHCUUXYd4tVV4obwBAztIo_wyeNyl3Vlry-CenrlOLiZMHqG4pmHTok1WNNGHZn2PQhBrmcmC2XOyNu2siJeW9ASqusz6sVGuxxE"/>
+<div class="absolute inset-0 bg-primary/20 mix-blend-multiply"></div>
+</div>
+<div class="h-full flex flex-col justify-between">
+<div class="flex justify-between items-start">
+<h3 class="text-white text-headline-md font-bold uppercase">TV &amp; Cinéma</h3>
+<span class="material-symbols-outlined text-white text-3xl">movie_filter</span>
+</div>
+<div class="max-w-md">
+<p class="text-white text-body-lg font-medium leading-tight">La narration au service de votre marque sur les plus grands écrans du pays.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Digital Integration Section -->
+<section class="bg-inverse-surface py-section-padding text-inverse-on-surface overflow-hidden relative">
+<div class="absolute top-0 right-0 w-1/2 h-full opacity-10 pointer-events-none">
+
+</div>
+<div class="max-w-container-max mx-auto px-8 md:px-margin-desktop grid md:grid-cols-2 gap-16 items-center">
+<div>
+<h2 class="rigot-heading text-headline-lg mb-8 leading-tight">
+                        Le Pont vers le <span class="text-secondary-fixed">Digital.</span>
+</h2>
+<ul class="space-y-8">
+<li class="flex gap-6">
+<div class="flex-shrink-0 w-12 h-12 rounded-lg bg-secondary flex items-center justify-center">
+<span class="material-symbols-outlined text-white">qr_code_2</span>
+</div>
+<div>
+<h4 class="text-body-lg font-bold text-secondary-fixed">Ciblages QR Dynamiques</h4>
+<p class="text-on-surface-variant brightness-150">Mesurez l'engagement physique et redirigez l'audience vers des expériences immersives.</p>
+</div>
+</li>
+<li class="flex gap-6">
+<div class="flex-shrink-0 w-12 h-12 rounded-lg bg-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-white">location_on</span>
+</div>
+<div>
+<h4 class="text-body-lg font-bold text-primary-fixed-dim">Géo-Fencing Retargeting</h4>
+<p class="text-on-surface-variant brightness-150">Reciblez sur mobile les utilisateurs ayant croisé vos panneaux publicitaires.</p>
+</div>
+</li>
+<li class="flex gap-6">
+<div class="flex-shrink-0 w-12 h-12 rounded-lg bg-white/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-white">analytics</span>
+</div>
+<div>
+<h4 class="text-body-lg font-bold text-white">Data-Driven Media Buying</h4>
+<p class="text-on-surface-variant brightness-150">Optimisez vos placements offline grâce aux insights de flux de mobilité urbaine.</p>
+</div>
+</li>
+</ul>
+</div>
+<div class="relative">
+<div class="aspect-square bg-surface-container-highest/10 rounded-full border border-white/10 p-12 relative flex items-center justify-center">
+<div class="w-full h-full rounded-full border-2 border-dashed border-secondary/50 animate-[spin_20s_linear_infinite]"></div>
+<div class="absolute inset-20 bg-secondary/20 rounded-full blur-2xl"></div>
+<span class="material-symbols-outlined text-[120px] text-secondary absolute" style="font-variation-settings: 'FILL' 1;">cell_tower</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Process Section -->
+<section class="py-section-padding px-8 md:px-margin-desktop max-w-container-max mx-auto">
+<div class="flex flex-col md:flex-row gap-12">
+<div class="md:w-1/3">
+<h2 class="rigot-heading text-headline-lg sticky top-32">Notre <br/>Approche.</h2>
+</div>
+<div class="md:w-2/3 space-y-24">
+<div class="relative pl-12 border-l-2 border-primary/20">
+<span class="absolute -left-[13px] top-0 w-6 h-6 bg-primary rounded-full border-4 border-surface"></span>
+<h4 class="text-headline-md font-bold mb-4">01. Stratégie &amp; Mapping</h4>
+<p class="text-body-lg text-on-surface-variant">Identification des points de contact clés basés sur les habitudes de vie de votre cible. Nous cartographions les zones à forte affluence.</p>
+</div>
+<div class="relative pl-12 border-l-2 border-primary/20">
+<span class="absolute -left-[13px] top-0 w-6 h-6 bg-secondary rounded-full border-4 border-surface"></span>
+<h4 class="text-headline-md font-bold mb-4">02. Négociation &amp; Achat</h4>
+<p class="text-body-lg text-on-surface-variant">Accès privilégié aux meilleures régies publicitaires nationales. Optimisation des coûts et garantie d'emplacements premium.</p>
+</div>
+<div class="relative pl-12 border-l-2 border-primary/20">
+<span class="absolute -left-[13px] top-0 w-6 h-6 bg-primary rounded-full border-4 border-surface"></span>
+<h4 class="text-headline-md font-bold mb-4">03. Production Haute-Fidélité</h4>
+<p class="text-body-lg text-on-surface-variant">Création visuelle adaptée aux grands formats. Gestion de l'impression et de la pose pour un rendu impeccable.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="mb-section-padding px-8 md:px-margin-desktop max-w-container-max mx-auto">
+<div class="bg-primary-container rounded-[2rem] p-12 md:p-24 relative overflow-hidden flex flex-col items-center text-center">
+<div class="absolute -top-24 -right-24 w-96 h-96 bg-secondary/10 rounded-full blur-3xl"></div>
+<h2 class="rigot-heading text-headline-lg text-on-primary-container mb-8">Prêt à Dominer l'Espace Public ?</h2>
+<p class="text-body-lg text-on-primary-container/80 max-w-xl mb-12">
+                    Donnez à votre marque la stature qu'elle mérite avec une campagne média offline d'envergure.
+                </p>
+<div class="flex flex-col sm:flex-row gap-6">
+<button class="bg-secondary text-on-secondary px-10 py-5 rounded-xl font-bold text-lg hover:bg-on-secondary-container transition-colors">
+                        Lancer mon projet
+                    </button>
+<button class="bg-white/20 backdrop-blur-md border border-on-primary-container/20 text-on-primary-container px-10 py-5 rounded-xl font-bold text-lg hover:bg-white/40 transition-colors">
+                        Consulter nos tarifs
+                    </button>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest dark:bg-surface-container-high border-t border-outline-variant/20">
+<div class="flex flex-col md:flex-row justify-between items-center py-section-padding px-8 md:px-margin-desktop max-w-container-max mx-auto">
+<div class="mb-8 md:mb-0">
+<div class="font-headline-md text-headline-md font-bold text-on-surface dark:text-inverse-on-surface mb-2">We Digital</div>
+<p class="text-on-surface-variant text-label-md">L'agence digitale qui repense le offline.</p>
+</div>
+<div class="flex gap-12">
+<ul class="space-y-3">
+<li><a class="text-on-surface-variant dark:text-outline-variant hover:text-secondary font-body-md transition-colors" href="#">Case Studies</a></li>
+<li><a class="text-on-surface-variant dark:text-outline-variant hover:text-secondary font-body-md transition-colors" href="#">Our Story</a></li>
+</ul>
+<ul class="space-y-3">
+<li><a class="text-on-surface-variant dark:text-outline-variant hover:text-secondary font-body-md transition-colors" href="#">Process</a></li>
+<li><a class="text-on-surface-variant dark:text-outline-variant hover:text-secondary font-body-md transition-colors" href="#">Privacy</a></li>
+</ul>
+</div>
+<div class="mt-8 md:mt-0 text-center md:text-right">
+<p class="text-on-surface-variant dark:text-outline-variant font-body-md mb-4">© 2024 We Digital. All Rights Reserved.</p>
+<div class="flex gap-4 justify-center md:justify-end">
+<a class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center hover:bg-primary-container transition-colors" href="#">
+<span class="material-symbols-outlined text-sm">link</span>
+</a>
+<a class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center hover:bg-primary-container transition-colors" href="#">
+<span class="material-symbols-outlined text-sm">alternate_email</span>
+</a>
+</div>
+</div>
+</div>
+</footer>
+<script>
+        // Subtle scroll animations
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('opacity-100', 'translate-y-0');
+                    entry.target.classList.remove('opacity-0', 'translate-y-10');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section > div').forEach(section => {
+            section.classList.add('transition-all', 'duration-1000', 'opacity-0', 'translate-y-10');
+            observer.observe(section);
+        });
+    </script>
+</body></html>

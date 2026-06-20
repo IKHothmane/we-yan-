@@ -29,6 +29,72 @@ export const seoImages = {
     ),
     alt: 'Apercu des services We Yan Digital avec branding, strategie digitale, publicite et developpement web.',
   },
+  strategyMarketing: {
+    og: buildSeoImage(
+      'marketing strategy and rebranding service page cover, premium agency workshop, strategic brand board, elegant business presentation, periwinkle primary color and orange accent, realistic, high-end',
+      'landscape_16_9',
+    ),
+    twitter: buildSeoImage(
+      'social preview for marketing strategy and rebranding service, premium creative agency planning board, refined business aesthetic, periwinkle and orange palette, realistic',
+      'landscape_4_3',
+    ),
+    alt: 'Apercu du service Strategie Marketing et Rebranding de We Yan Digital.',
+  },
+  contentCreation: {
+    og: buildSeoImage(
+      'content creation and community management service page cover, premium studio setup, camera, creative social media planning, periwinkle primary color and orange accent, realistic, high-end',
+      'landscape_16_9',
+    ),
+    twitter: buildSeoImage(
+      'social preview for content creation and community management service, premium agency studio, reels production and social planning, refined periwinkle and orange palette, realistic',
+      'landscape_4_3',
+    ),
+    alt: 'Apercu du service Creation de Contenu et Community Management de We Yan Digital.',
+  },
+  advertising: {
+    og: buildSeoImage(
+      'digital advertising service page cover, meta ads and google ads dashboard, luxury performance marketing agency, periwinkle and orange palette, realistic, premium',
+      'landscape_16_9',
+    ),
+    twitter: buildSeoImage(
+      'social preview for digital advertising service, premium meta ads and google ads strategy, performance dashboard, refined periwinkle and orange brand palette, realistic',
+      'landscape_4_3',
+    ),
+    alt: 'Apercu du service Publicite Digitale Meta Ads et Google Ads de We Yan Digital.',
+  },
+  influenceMarketing: {
+    og: buildSeoImage(
+      'influence marketing service page cover, premium Moroccan creators, social storytelling campaign, elegant brand collaboration aesthetic, periwinkle and orange palette, realistic',
+      'landscape_16_9',
+    ),
+    twitter: buildSeoImage(
+      'social preview for influence marketing service, creators collaboration, premium campaign storytelling, Moroccan digital agency style, periwinkle and orange palette, realistic',
+      'landscape_4_3',
+    ),
+    alt: 'Apercu du service Marketing d Influence de We Yan Digital.',
+  },
+  seo: {
+    og: buildSeoImage(
+      'seo service page cover, organic growth dashboard, search ranking analytics, premium digital agency presentation, periwinkle and orange palette, realistic, high-end',
+      'landscape_16_9',
+    ),
+    twitter: buildSeoImage(
+      'social preview for SEO service, organic traffic analytics and search ranking performance, premium Moroccan digital agency aesthetic, periwinkle and orange palette, realistic',
+      'landscape_4_3',
+    ),
+    alt: 'Apercu du service Referencement Naturel SEO de We Yan Digital.',
+  },
+  offlineMedia: {
+    og: buildSeoImage(
+      'offline advertising service page cover, premium billboard campaign, urban out of home media, print and radio branding, Moroccan city atmosphere, periwinkle and orange palette, realistic, high-end',
+      'landscape_16_9',
+    ),
+    twitter: buildSeoImage(
+      'social preview for offline media advertising service, premium billboard, print campaign and radio branding concept, elegant Moroccan agency style, periwinkle and orange palette, realistic',
+      'landscape_4_3',
+    ),
+    alt: 'Apercu du service Media Publicite Offline de We Yan Digital.',
+  },
   projects: {
     og: buildSeoImage(
       'creative portfolio showcase cover, premium brand case studies, laptop and mobile mockups, campaign visuals, orange and periwinkle design system, editorial grid, realistic, high-end',

@@ -24,76 +24,118 @@ const solutionsCardsBackground =
 
 const services = [
   {
-    icon: 'palette',
-    title: 'Branding',
-    description: 'Identité visuelle, logo, charte graphique',
+    icon: 'travel_explore',
+    title: 'Stratégie Marketing & Rebranding',
+    description: 'Positionnement, relance de marque et plan d’action pour accélérer votre croissance.',
     tone: 'primary',
-    layoutClassName: 'min-h-[250px] md:min-h-[280px] lg:min-h-[300px]',
+    layoutClassName: 'min-h-[300px] md:min-h-[320px]',
+    to: '/services/strategie-marketing-rebranding',
     image:
-      'https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt=premium%20branding%20identity%20moodboard%2C%20logo%20sketches%2C%20elegant%20stationery%2C%20orange%20and%20periwinkle%20accents%2C%20realistic%20studio%20scene%2C%20editorial%20lighting&image_size=portrait_4_3',
+      'https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt=premium%20marketing%20strategy%20and%20rebranding%20workshop%2C%20brand%20board%2C%20positioning%20notes%2C%20creative%20agency%20desk%2C%20orange%20and%20periwinkle%20palette%2C%20realistic&image_size=portrait_4_3',
   },
   {
     icon: 'edit_document',
-    title: 'Content Creation',
-    description: 'Photos, vidéos, reels, copywriting',
+    title: 'Création de Contenu & Community Management',
+    description: 'Photos, vidéos, reels et gestion quotidienne de vos réseaux sociaux.',
     tone: 'secondary',
-    layoutClassName: 'min-h-[290px] md:min-h-[330px] md:mt-10 lg:mt-16',
+    layoutClassName: 'min-h-[300px] md:min-h-[320px] md:mt-6',
+    to: '/services/creation-contenu-community-management',
     image:
       'https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt=premium%20content%20creation%20studio%2C%20camera%2C%20reels%20storyboard%2C%20softbox%20lights%2C%20stylish%20set%20design%2C%20orange%20and%20periwinkle%20accents%2C%20realistic&image_size=portrait_4_3',
   },
   {
-    icon: 'groups',
-    title: 'Community Management',
-    description: 'Gestion des réseaux sociaux, engagement',
+    icon: 'ads_click',
+    title: 'Publicité Digitale (Meta Ads & Google Ads)',
+    description: 'Campagnes sponsorisées pour générer trafic, leads et ventes qualifiées.',
     tone: 'primary',
-    layoutClassName: 'min-h-[265px] md:min-h-[300px] lg:-mt-4',
+    layoutClassName: 'min-h-[300px] md:min-h-[320px]',
+    to: '/services/publicite-digitale',
     image:
-      'https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt=social%20media%20community%20management%20dashboard%2C%20smartphone%20feed%2C%20engagement%20notifications%2C%20premium%20marketing%20workspace%2C%20orange%20and%20periwinkle%20brand%20palette%2C%20realistic&image_size=portrait_4_3',
+      'https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt=meta%20ads%20and%20google%20ads%20dashboard%2C%20performance%20campaign%20charts%2C%20premium%20digital%20marketing%20workspace%2C%20orange%20and%20periwinkle%20palette%2C%20realistic&image_size=portrait_4_3',
+  },
+  {
+    icon: 'search',
+    title: 'Référencement Naturel (SEO)',
+    description: 'Optimisation SEO pour améliorer votre visibilité Google sur le long terme.',
+    tone: 'secondary',
+    layoutClassName: 'min-h-[300px] md:min-h-[320px] md:mt-6',
+    to: '/services/seo',
+    image:
+      'https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt=seo%20search%20ranking%20dashboard%2C%20organic%20traffic%20analytics%2C%20premium%20laptop%20workspace%2C%20orange%20and%20periwinkle%20brand%20palette%2C%20realistic&image_size=portrait_4_3',
   },
   {
     icon: 'campaign',
-    title: 'Influence Marketing',
-    description: 'Partenariats, collaborations, stratégie',
-    tone: 'secondary',
-    layoutClassName: 'min-h-[310px] md:min-h-[350px] md:mt-14 lg:mt-24',
+    title: 'Marketing d’Influence',
+    description: 'Collaborez avec les bons créateurs pour amplifier votre marque.',
+    tone: 'primary',
+    layoutClassName: 'min-h-[300px] md:min-h-[320px]',
+    to: '/services/marketing-influence',
     image:
       'https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt=influencer%20marketing%20campaign%20planning%2C%20creator%20collaboration%20meeting%2C%20premium%20brand%20partnership%20scene%2C%20stylish%20studio%2C%20orange%20and%20periwinkle%20accents%2C%20realistic&image_size=portrait_4_3',
   },
   {
-    icon: 'ads_click',
-    title: 'Meta Ads',
-    description: 'Campagnes publicitaires Facebook & Instagram',
-    tone: 'primary',
-    layoutClassName: 'min-h-[275px] md:min-h-[310px] md:-mt-4 lg:-mt-10',
-    image:
-      'https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt=facebook%20instagram%20ads%20dashboard%20on%20laptop%2C%20paid%20campaign%20analytics%2C%20premium%20digital%20marketing%20workspace%2C%20orange%20and%20periwinkle%20highlights%2C%20realistic&image_size=portrait_4_3',
-  },
-  {
-    icon: 'search',
-    title: 'Google Ads & SEO',
-    description: 'Publicité Google & référencement naturel',
+    icon: 'palette',
+    title: 'Média Publicité Offline',
+    description: 'Affichage, print et supports publicitaires pour renforcer votre présence terrain.',
     tone: 'secondary',
-    layoutClassName: 'min-h-[305px] md:min-h-[340px] md:mt-8 lg:mt-14',
+    layoutClassName: 'min-h-[300px] md:min-h-[320px] md:mt-6',
+    to: '/services/media-publicite-offline',
     image:
-      'https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt=google%20ads%20and%20seo%20analytics%20dashboard%2C%20search%20ranking%20charts%2C%20premium%20laptop%20workspace%2C%20orange%20and%20periwinkle%20brand%20palette%2C%20realistic&image_size=portrait_4_3',
+      'https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt=offline%20advertising%20media%20mockups%2C%20billboard%2C%20flyer%2C%20poster%20and%20print%20campaign%2C%20premium%20branding%20presentation%2C%20orange%20and%20periwinkle%20palette%2C%20realistic&image_size=portrait_4_3',
+  },
+] as const
+
+const projects = [
+  {
+    title: 'E-COMMERCE - LUXE',
+    client: 'Riget',
+    image: homeImages.studio,
+    bg: 'bg-gradient-to-b from-white to-slate-200',
+    height: 'h-[320px] md:h-[360px]',
+    offset: '',
   },
   {
-    icon: 'travel_explore',
-    title: 'Digital Strategy',
-    description: 'Audit, KPIs, plan d’action personnalisé',
-    tone: 'primary',
-    layoutClassName: 'min-h-[255px] md:min-h-[295px] lg:-mt-6',
+    title: 'E-COMMERCE - LUXE',
+    client: 'C Opticiens',
     image:
-      'https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt=digital%20strategy%20planning%20board%2C%20KPI%20dashboard%2C%20premium%20business%20workshop%2C%20agency%20desk%2C%20orange%20and%20periwinkle%20accents%2C%20realistic&image_size=portrait_4_3',
+      'https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt=premium%20ecommerce%20mobile%20mockup%20for%20luxury%20eyewear%20brand%2C%20orange%20background%2C%20realistic%20smartphone%20product%20ui%2C%20clean%20editorial%20lighting&image_size=portrait_4_3',
+    bg: 'bg-primary',
+    height: 'h-[380px] md:h-[420px]',
+    offset: 'md:mt-8',
   },
   {
-    icon: 'insights',
-    title: 'Web Development',
-    description: 'Sites web, landing pages, e-commerce',
-    tone: 'secondary',
-    layoutClassName: 'min-h-[300px] md:min-h-[345px] md:mt-12 lg:mt-20',
+    title: 'BRANDING - LIFESTYLE',
+    client: 'Rigor',
+    image: homeImages.branding,
+    bg: 'bg-[#C8956E]',
+    height: 'h-[320px] md:h-[360px]',
+    offset: '',
+  },
+  {
+    title: 'BRANDING - LIFESTYLE',
+    client: 'Biget',
     image:
-      'https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt=modern%20web%20development%20workspace%2C%20large%20monitor%20with%20website%20wireframe%2C%20code%20editor%2C%20ecommerce%20mockup%2C%20orange%20and%20periwinkle%20accents%2C%20realistic&image_size=portrait_4_3',
+      'https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt=dark%20premium%20branding%20mobile%20mockup%2C%20luxury%20product%20presentation%2C%20black%20studio%20background%2C%20realistic%20editorial%20lighting&image_size=portrait_4_3',
+    bg: 'bg-[#0F172A]',
+    height: 'h-[280px] md:h-[300px]',
+    offset: 'md:-mt-6',
+  },
+  {
+    title: 'BRANDING - LIFESTYLE',
+    client: 'Digue',
+    image: homeImages.dashboard,
+    bg: 'bg-gradient-to-b from-[#4A8B9F] to-[#2C5F6F]',
+    height: 'h-[280px] md:h-[300px]',
+    offset: 'md:mt-2',
+  },
+  {
+    title: 'BRANDING - LIFESTYLE',
+    client: 'Bigor',
+    image:
+      'https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt=luxury%20branding%20print%20mockup%2C%20editorial%20stationery%2C%20brochure%20and%20business%20cards%2C%20warm%20beige%20background%2C%20realistic%20top%20view&image_size=portrait_4_3',
+    bg: 'bg-[#E8DCC8]',
+    height: 'h-[320px] md:h-[360px]',
+    offset: 'md:-mt-4',
   },
 ] as const
 
@@ -106,54 +148,122 @@ export default function HomeDeferredSections() {
         <div className="max-w-6xl mx-auto px-[clamp(1rem,4vw,2rem)]">
           <div className="text-center mb-[clamp(2.5rem,6vw,4rem)]" data-reveal>
             <h2 className="font-bold text-[clamp(2rem,5vw,3rem)] text-slate-900 mb-4">
-              Nos Solutions <span className="text-[#6483F0]">Digitales</span>
+              Nos Solutions <span className="text-primary">Digitales</span>
             </h2>
             <p className="text-slate-600 text-[clamp(1rem,2.3vw,1.125rem)] max-w-2xl mx-auto">
               Nous avons ce qu'il vous faut, de la création de logo à la campagne publicitaire.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 items-start md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6" data-reveal data-reveal-delay="100">
-            {services.map((service) => (
-              <div
-                key={service.title}
-                className={`group relative flex overflow-hidden rounded-3xl border border-white/15 p-[clamp(1.25rem,3vw,2rem)] text-white shadow-[0_14px_40px_-16px_rgba(15,23,42,0.55)] transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_24px_60px_-20px_rgba(15,23,42,0.7)] ${service.layoutClassName}`}
-              >
-                <div
-                  className="absolute inset-0 scale-100 transition-transform duration-700 ease-out group-hover:scale-110"
-                  style={{
-                    backgroundImage:
-                      service.tone === 'secondary'
-                        ? `linear-gradient(135deg, rgba(252, 151, 0, 0.32), rgba(15, 23, 42, 0.82)), url(${solutionsCardsBackground})`
-                        : `linear-gradient(135deg, rgba(100, 131, 240, 0.34), rgba(15, 23, 42, 0.82)), url(${solutionsCardsBackground})`,
-                    backgroundPosition: 'center',
-                    backgroundSize: 'cover',
-                  }}
-                />
-                <div
-                  className="absolute inset-0 opacity-0 scale-105 transition-all duration-700 ease-out group-hover:scale-100 group-hover:opacity-100"
-                  style={{
-                    backgroundImage: `linear-gradient(180deg, rgba(15, 23, 42, 0.18), rgba(15, 23, 42, 0.7)), url(${service.image || solutionsCardsBackground})`,
-                    backgroundPosition: 'center',
-                    backgroundSize: 'cover',
-                  }}
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/55 via-slate-950/15 to-transparent transition-opacity duration-500 group-hover:opacity-95" />
-                <div className="absolute inset-0 bg-white/0 transition-colors duration-500 group-hover:bg-white/5" />
-                <div className="relative z-10 flex min-h-full flex-col justify-end">
-                <div
-                  className={`w-[clamp(3rem,7vw,3.5rem)] h-[clamp(3rem,7vw,3.5rem)] rounded-2xl flex items-center justify-center mb-[clamp(1rem,2vw,1.5rem)] backdrop-blur-sm transition-all duration-500 group-hover:scale-110 group-hover:rotate-3 group-hover:bg-white/25 ${
-                    service.tone === 'secondary' ? 'bg-[#FC9700]/20 text-white' : 'bg-[#6483F0]/20 text-white'
-                  }`}
+          <div className="grid grid-cols-1 items-start md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6" data-reveal data-reveal-delay="100">
+            {services.map((service) => {
+              const cardClasses = `group relative isolate flex overflow-hidden rounded-3xl border border-white/15 p-[clamp(1.25rem,3vw,2rem)] text-white shadow-[0_14px_40px_-16px_rgba(15,23,42,0.55)] transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_24px_60px_-20px_rgba(15,23,42,0.7)] ${service.layoutClassName} ${
+                'to' in service
+                  ? 'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/70 focus-visible:ring-offset-2'
+                  : ''
+              }`
+
+              const cardContent = (
+                <>
+                  <div
+                    className="absolute inset-0 rounded-[inherit] scale-100 transform-gpu transition-transform duration-700 ease-out group-hover:scale-110"
+                    style={{
+                      backgroundImage:
+                        service.tone === 'secondary'
+                          ? `linear-gradient(135deg, rgba(252, 151, 0, 0.32), rgba(15, 23, 42, 0.82)), url(${solutionsCardsBackground})`
+                          : `linear-gradient(135deg, rgba(100, 131, 240, 0.34), rgba(15, 23, 42, 0.82)), url(${solutionsCardsBackground})`,
+                      backgroundPosition: 'center',
+                      backgroundSize: 'cover',
+                    }}
+                  />
+                  <img
+                    alt=""
+                    aria-hidden="true"
+                    className="absolute inset-0 h-full w-full rounded-[inherit] scale-105 transform-gpu object-cover opacity-0 transition-all duration-700 ease-out group-hover:scale-100 group-hover:opacity-100"
+                    src={service.image}
+                  />
+                  <div className="absolute inset-0 rounded-[inherit] bg-slate-950/20 opacity-0 transition-opacity duration-700 group-hover:opacity-100" />
+                  <div className="absolute inset-0 rounded-[inherit] bg-gradient-to-t from-slate-950/55 via-slate-950/15 to-transparent transition-opacity duration-500 group-hover:opacity-95" />
+                  <div className="absolute inset-0 rounded-[inherit] bg-white/0 transition-colors duration-500 group-hover:bg-white/5" />
+                  <div className="relative z-10 flex min-h-full flex-col justify-end">
+                    <h3 className="mb-2 text-[clamp(1.3rem,3vw,1.5rem)] font-bold text-white transition-all duration-500 group-hover:translate-x-1 group-hover:text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.45)]">
+                      {service.title}
+                    </h3>
+                    <p className="text-white/85 text-[clamp(0.92rem,1.8vw,1rem)] leading-relaxed transition-all duration-500 group-hover:translate-x-1 group-hover:text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.35)]">
+                      {service.description}
+                    </p>
+                    {'to' in service ? (
+                      <span className="mt-5 inline-flex items-center gap-2 text-[0.78rem] font-bold uppercase tracking-[0.22em] text-white/90">
+                        Explorer
+                        <Icon name="arrow_forward" className="h-4 w-4" />
+                      </span>
+                    ) : null}
+                  </div>
+                </>
+              )
+
+              return 'to' in service ? (
+                <Link
+                  key={service.title}
+                  to={service.to}
+                  className={cardClasses}
+                  aria-label={`Découvrir ${service.title}`}
                 >
-                  <Icon name={service.icon} className="w-[clamp(1.5rem,4vw,2rem)] h-[clamp(1.5rem,4vw,2rem)] drop-shadow-[0_2px_8px_rgba(0,0,0,0.35)]" />
+                  {cardContent}
+                </Link>
+              ) : (
+                <div key={service.title} className={cardClasses}>
+                  {cardContent}
                 </div>
-                <h3 className="text-[clamp(1.3rem,3vw,1.5rem)] font-bold text-white mb-3 transition-all duration-500 group-hover:translate-x-1 group-hover:text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.45)]">
-                  {service.title}
-                </h3>
-                <p className="text-white/85 text-[clamp(0.92rem,1.8vw,1rem)] leading-relaxed transition-all duration-500 group-hover:translate-x-1 group-hover:text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.35)]">
-                  {service.description}
-                </p>
+              )
+            })}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-[clamp(4.5rem,9vw,8rem)] bg-slate-50" id="work">
+        <div className="max-w-6xl mx-auto px-[clamp(1rem,4vw,2rem)]">
+          <div
+            className="flex flex-col md:flex-row justify-between items-start md:items-end mb-[clamp(2.5rem,6vw,4rem)] gap-4"
+            data-reveal
+          >
+            <div>
+              <h2 className="text-[clamp(2rem,5vw,3rem)] font-bold text-slate-900 tracking-tight">
+                Impact <span className="text-primary">Visuel</span>
+              </h2>
+              <p className="text-slate-600 mt-2 text-[clamp(0.95rem,2.2vw,1.125rem)]">
+                Dernières campagnes et créations pour nos partenaires
+              </p>
+            </div>
+            <Link
+              to="/projets"
+              className="text-primary font-bold text-sm border-b-2 border-primary pb-1 hover:text-primary/80 hover:border-primary/80 transition-colors uppercase tracking-[0.2em]"
+            >
+              Tout voir
+            </Link>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6" data-reveal data-reveal-delay="100">
+            {projects.map((project, index) => (
+              <div
+                key={`${project.title}-${project.client}-${index}`}
+                className={`group relative overflow-hidden rounded-[2rem] ${project.height} ${project.offset ?? ''} ${project.bg} p-6 shadow-lg transition-all duration-500 hover:-translate-y-1 hover:shadow-2xl`}
+              >
+                <img
+                  alt={`${project.title} ${project.client}`}
+                  className="absolute inset-0 h-full w-full object-contain p-4 transition-transform duration-700 ease-out group-hover:scale-105"
+                  src={project.image}
+                  loading="lazy"
+                  decoding="async"
+                />
+                <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
+                <div className="absolute bottom-0 left-0 right-0 z-10 p-6">
+                  <p className="text-white font-bold text-sm uppercase tracking-wider mb-1 drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
+                    {project.title}
+                  </p>
+                  <p className="text-white/90 text-xs font-medium drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
+                    {project.client}
+                  </p>
                 </div>
               </div>
             ))}
@@ -161,88 +271,30 @@ export default function HomeDeferredSections() {
         </div>
       </section>
 
-      <section className="py-[clamp(4.5rem,9vw,8rem)] bg-slate-50" id="work">
-        <div className="max-w-6xl mx-auto px-[clamp(1rem,4vw,2rem)]">
-          <div className="flex flex-col md:flex-row justify-between items-end mb-[clamp(2rem,5vw,3rem)] gap-6" data-reveal>
-            <div>
-              <h2 className="text-[clamp(2rem,5vw,3rem)] font-bold text-slate-900 tracking-tight">
-                Impact <span className="text-[#FC9700]">Visuel</span>
-              </h2>
-              <p className="text-slate-600 mt-2 text-[clamp(1rem,2.3vw,1.125rem)]">
-                Découvrez nos créations pour nos partenaires
-              </p>
-            </div>
-            <Link
-              to="/projets"
-              className="text-[#6483F0] font-bold border-b-2 border-[#6483F0] pb-1 hover:text-[#FC9700] hover:border-[#FC9700] transition-colors uppercase tracking-widest"
-            >
-              Voir nos projets
-            </Link>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" data-reveal data-reveal-delay="100">
-            <div className="lg:col-span-2">
-              <img
-                alt="Aperçu projet branding premium"
-                className="w-full rounded-3xl shadow-xl aspect-[16/10] md:aspect-[16/9] object-cover"
-                src={homeImages.branding}
-                loading="lazy"
-                decoding="async"
-                sizes="(min-width: 1024px) 66vw, 100vw"
-                width={1000}
-                height={600}
-              />
-            </div>
-            <div className="flex flex-col gap-8">
-              <img
-                alt="Studio créatif moderne"
-                className="w-full rounded-3xl shadow-xl aspect-[4/3] object-cover"
-                src={homeImages.studio}
-                loading="lazy"
-                decoding="async"
-                sizes="(min-width: 1024px) 28vw, (min-width: 768px) 50vw, 100vw"
-                width={500}
-                height={380}
-              />
-              <img
-                alt="Dashboard marketing premium"
-                className="w-full rounded-3xl shadow-xl aspect-[4/3] object-cover"
-                src={homeImages.dashboard}
-                loading="lazy"
-                decoding="async"
-                sizes="(min-width: 1024px) 28vw, (min-width: 768px) 50vw, 100vw"
-                width={500}
-                height={380}
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-[clamp(4.5rem,9vw,8rem)] bg-[#0F172A] text-white" id="about">
+      <section className="py-[clamp(4.5rem,9vw,8rem)] bg-primary text-white" id="about">
         <div className="max-w-6xl mx-auto px-[clamp(1rem,4vw,2rem)] grid md:grid-cols-2 gap-[clamp(2rem,5vw,4rem)] items-center">
           <div data-reveal>
             <h2 className="font-bold text-[clamp(2rem,5vw,3rem)] mb-[clamp(1.5rem,4vw,2rem)] leading-tight">
-              Pourquoi nous faire <span className="text-[#FC9700]">confiance</span> ?
+              Pourquoi nous faire <span className="text-primary">confiance</span> ?
             </h2>
-            <p className="text-slate-300 text-[clamp(1rem,2.3vw,1.125rem)] mb-[clamp(1.5rem,4vw,2.5rem)] leading-relaxed">
+            <p className="text-white/85 text-[clamp(1rem,2.3vw,1.125rem)] mb-[clamp(1.5rem,4vw,2.5rem)] leading-relaxed">
               Nous ne sommes pas juste une agence, nous sommes votre partenaire de croissance. Notre approche combine créativité sans limite et rigueur analytique pour assurer que chaque dirham investi génère de la valeur.
             </p>
             <ul className="space-y-6">
               <li className="flex items-start gap-4">
-                <Icon name="circle" className="w-5 h-5 md:w-6 md:h-6 text-[#FC9700] mt-1 flex-shrink-0" />
+                <Icon name="circle" className="w-5 h-5 md:w-6 md:h-6 text-primary mt-1 flex-shrink-0" />
                 <div>
                   <h3 className="text-[clamp(1.2rem,3vw,1.5rem)] font-bold mb-1">Stratégie Personnalisée</h3>
-                  <p className="text-slate-400 text-sm">
+                  <p className="text-white/75 text-sm">
                     Pas de solutions "taille unique". Chaque marque est unique et mérite une voix propre.
                   </p>
                 </div>
               </li>
               <li className="flex items-start gap-4">
-                <Icon name="circle" className="w-5 h-5 md:w-6 md:h-6 text-[#FC9700] mt-1 flex-shrink-0" />
+                <Icon name="circle" className="w-5 h-5 md:w-6 md:h-6 text-primary mt-1 flex-shrink-0" />
                 <div>
                   <h3 className="text-[clamp(1.2rem,3vw,1.5rem)] font-bold mb-1">Focus Résultats</h3>
-                  <p className="text-slate-400 text-sm">
+                  <p className="text-white/75 text-sm">
                     Nous mesurons tout. Si ça ne convertit pas, on optimise jusqu'à l'excellence.
                   </p>
                 </div>
@@ -274,7 +326,7 @@ export default function HomeDeferredSections() {
       <section className="py-[clamp(4.5rem,9vw,8rem)] bg-white">
         <div className="max-w-6xl mx-auto px-[clamp(1rem,4vw,2rem)]">
           <h2 className="text-center text-[clamp(2rem,5vw,3rem)] font-bold text-slate-900 mb-[clamp(2.5rem,6vw,4rem)]" data-reveal>
-            Ce que disent nos <span className="text-[#6483F0]">partenaires</span>
+            Ce que disent nos <span className="text-primary">partenaires</span>
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8" data-reveal data-reveal-delay="100">
@@ -283,7 +335,7 @@ export default function HomeDeferredSections() {
                 quote: "Leur équipe a su capturer l'essence de notre marque dès le premier jour. Résultats incroyables !",
                 author: 'Sara Benani',
                 role: 'Lux Moroccan Decor',
-                avatar: avatarImage('SB', '#FC9700', '#0F172A'),
+                avatar: avatarImage('SB', '#6483F0', '#FFFFFF'),
               },
               {
                 quote: 'Collaboration parfaite. Nos ventes ont augmenté de 180% en 6 mois grâce à leur stratégie social media.',
@@ -325,7 +377,7 @@ export default function HomeDeferredSections() {
           <div className="grid grid-cols-1 md:grid-cols-2 overflow-hidden rounded-3xl shadow-2xl">
             <div className="p-12 bg-white" data-reveal>
               <h2 className="text-3xl font-bold text-slate-900 mb-8">
-                Parlons de <span className="text-[#FC9700]">votre Projet</span>
+                Parlons de <span className="text-primary">votre Projet</span>
               </h2>
               <form className="space-y-6">
                 <div className="space-y-2">
@@ -336,7 +388,7 @@ export default function HomeDeferredSections() {
                     id="home-contact-name"
                     name="name"
                     type="text"
-                    className="w-full border border-slate-300 rounded-lg p-4 focus:outline-none focus:border-[#FC9700]"
+                    className="w-full border border-slate-300 rounded-lg p-4 focus:outline-none focus:border-primary"
                     placeholder="Ex: Amine Benali"
                   />
                 </div>
@@ -348,7 +400,7 @@ export default function HomeDeferredSections() {
                     id="home-contact-email"
                     name="email"
                     type="email"
-                    className="w-full border border-slate-300 rounded-lg p-4 focus:outline-none focus:border-[#FC9700]"
+                    className="w-full border border-slate-300 rounded-lg p-4 focus:outline-none focus:border-primary"
                     placeholder="Ex: amine@exemple.com"
                   />
                 </div>
@@ -359,7 +411,7 @@ export default function HomeDeferredSections() {
                   <select
                     id="home-contact-service"
                     name="service"
-                    className="w-full border border-slate-300 rounded-lg p-4 focus:outline-none focus:border-[#FC9700] bg-white"
+                    className="w-full border border-slate-300 rounded-lg p-4 focus:outline-none focus:border-primary bg-white"
                   >
                     <option>Branding</option>
                     <option>Social Media</option>
@@ -374,40 +426,40 @@ export default function HomeDeferredSections() {
                   <textarea
                     id="home-contact-message"
                     name="message"
-                    className="w-full border border-slate-300 rounded-lg p-4 focus:outline-none focus:border-[#FC9700] resize-none"
+                    className="w-full border border-slate-300 rounded-lg p-4 focus:outline-none focus:border-primary resize-none"
                     rows={4}
                     placeholder="Parlez-nous de vos objectifs..."
                   />
                 </div>
                 <button
                   type="submit"
-                  className="w-full bg-[#FC9700] text-[#0F172A] py-4 rounded-xl font-bold text-lg hover:brightness-110 transition-all"
+                  className="w-full bg-primary text-white py-4 rounded-xl font-bold text-lg hover:brightness-110 transition-all"
                 >
                   ENVOYER LE MESSAGE
                 </button>
               </form>
             </div>
-            <div className="p-12 bg-[#0F172A] text-white" data-reveal data-reveal-delay="100">
+            <div className="p-12 bg-primary text-white" data-reveal data-reveal-delay="100">
               <h3 className="text-2xl font-bold mb-8">Coordonnées</h3>
               <div className="space-y-8">
                 <div className="flex items-center gap-4">
-                  <Icon name="phone" className="w-8 h-8 text-[#FC9700]" />
+                  <Icon name="phone" className="w-8 h-8 text-primary" />
                   <div>
-                    <p className="text-sm text-slate-400">Téléphone</p>
+                    <p className="text-sm text-white/70">Téléphone</p>
                     <p className="text-lg font-semibold">+212 6XX XXX XX XX</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-4">
-                  <Icon name="mail" className="w-8 h-8 text-[#FC9700]" />
+                  <Icon name="mail" className="w-8 h-8 text-primary" />
                   <div>
-                    <p className="text-sm text-slate-400">Email</p>
+                    <p className="text-sm text-white/70">Email</p>
                     <p className="text-lg font-semibold">hello@wedigital.com</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-4">
-                  <Icon name="location_on" className="w-8 h-8 text-[#FC9700]" />
+                  <Icon name="location_on" className="w-8 h-8 text-primary" />
                   <div>
-                    <p className="text-sm text-slate-400">Adresse</p>
+                    <p className="text-sm text-white/70">Adresse</p>
                     <p className="text-lg font-semibold">HAY HASSANI BLOC 5 N° 58, Casablanca 20200</p>
                   </div>
                 </div>
@@ -425,7 +477,7 @@ export default function HomeDeferredSections() {
                 href="https://www.openstreetmap.org/?mlat=33.5708827&mlon=-7.6778725#map=16/33.5708827/-7.6778725"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-[#FC9700] hover:text-white transition-colors"
+                className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-white transition-colors"
               >
                 <Icon name="location_on" className="w-4 h-4" />
                 Ouvrir dans OpenStreetMap
@@ -438,7 +490,7 @@ export default function HomeDeferredSections() {
       <section className="py-[clamp(3.5rem,8vw,5rem)] bg-white border-t border-slate-100">
         <div className="max-w-5xl mx-auto px-[clamp(1rem,4vw,2rem)]" data-reveal>
           <div className="rounded-[2rem] border border-slate-200 bg-slate-50 p-[clamp(1.5rem,4vw,3rem)]">
-            <p className="text-[clamp(0.78rem,1.6vw,0.85rem)] font-bold uppercase tracking-[0.25em] text-[#6483F0] mb-4">
+            <p className="text-[clamp(0.78rem,1.6vw,0.85rem)] font-bold uppercase tracking-[0.25em] text-primary mb-4">
               We Yan Digital
             </p>
             <h2 className="text-[clamp(1.8rem,4.5vw,2.6rem)] font-bold text-slate-900 leading-tight mb-5">

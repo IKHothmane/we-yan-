@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --page-scale: 0.8;
+}
+
 @font-face {
   font-family: Rigot;
   src:
@@ -21,6 +25,20 @@ body {
   width: 100%;
   margin: 0;
   padding: 0;
+}
+
+@supports (zoom: 1) {
+  html {
+    zoom: var(--page-scale);
+  }
+}
+
+@supports not (zoom: 1) {
+  #root {
+    transform: scale(var(--page-scale));
+    transform-origin: top left;
+    width: calc(100% / var(--page-scale));
+  }
 }
 
 h1,

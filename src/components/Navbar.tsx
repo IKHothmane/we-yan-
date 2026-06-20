@@ -32,11 +32,13 @@ export default function Navbar({ variant = 'light' }: NavbarProps) {
             { to: '/', label: 'Home', icon: 'web' },
             { to: '/services', label: 'Services', icon: 'architecture' },
             { to: '/agence', label: 'About', icon: 'groups_3' },
+            { to: '/contact', label: 'Contacte', icon: 'mail' },
           ]
         : [
             { to: '/projets', label: 'Projets', icon: 'palette' },
             { to: '/services', label: 'Services', icon: 'architecture' },
             { to: '/agence', label: 'Pourquoi nous', icon: 'groups_3' },
+            { to: '/contact', label: 'Contacte', icon: 'mail' },
           ],
     [isHero],
   )
@@ -77,16 +79,6 @@ export default function Navbar({ variant = 'light' }: NavbarProps) {
               ))}
             </div>
 
-            <div className="flex items-center gap-[clamp(0.5rem,1.8vw,1rem)]">
-              <Link
-                className={`px-[clamp(0.9rem,2.6vw,1.5rem)] py-[clamp(0.55rem,1.6vw,0.85rem)] rounded-full font-semibold hover:brightness-110 transition-all text-[clamp(0.7rem,1.8vw,0.875rem)] uppercase tracking-[0.18em] ${
-                  useLightStyle ? 'bg-[#FC9700] text-[#0F172A]' : 'bg-[#FC9700] text-[#0F172A] hover:bg-orange-600'
-                }`}
-                to="/contact"
-              >
-                {isHero ? "Let's Talk" : 'Devis'}
-              </Link>
-            </div>
           </div>
 
           <div className="grid grid-cols-4 gap-1 md:hidden">
@@ -104,13 +96,6 @@ export default function Navbar({ variant = 'light' }: NavbarProps) {
                 </span>
               </Link>
             ))}
-            <Link
-              className="flex min-w-0 flex-col items-center justify-center gap-1 rounded-2xl bg-[#FC9700] px-2 py-2.5 text-[#0F172A] shadow-sm"
-              to="/contact"
-            >
-              <Icon name="mail" className="w-5 h-5" />
-              <span className="text-[0.68rem] leading-none font-bold text-center">Devis</span>
-            </Link>
           </div>
         </div>
       </nav>

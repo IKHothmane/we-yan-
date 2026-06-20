@@ -35,6 +35,36 @@ export const pageSeo = {
     'Découvrez les services de We Yan Digital : branding, stratégie digitale, création de contenu, publicité et développement web pour votre croissance.',
     seoImages.services,
   ),
+  strategyMarketing: createPageSeoConfig(
+    'Stratégie Marketing & Rebranding | We Yan Digital',
+    'Découvrez notre service Stratégie Marketing & Rebranding pour clarifier votre positionnement, moderniser votre image et accélérer votre croissance digitale.',
+    seoImages.strategyMarketing,
+  ),
+  contentCreation: createPageSeoConfig(
+    'Création de Contenu & Community Management | We Yan Digital',
+    'Découvrez notre service de création de contenu et community management pour produire des visuels premium, animer vos réseaux sociaux et renforcer l’engagement.',
+    seoImages.contentCreation,
+  ),
+  advertising: createPageSeoConfig(
+    'Publicité Digitale (Meta Ads & Google Ads) | We Yan Digital',
+    'Découvrez notre service de publicité digitale pour piloter vos campagnes Meta Ads et Google Ads, optimiser vos budgets et maximiser votre retour sur investissement.',
+    seoImages.advertising,
+  ),
+  influenceMarketing: createPageSeoConfig(
+    'Marketing d’Influence | We Yan Digital',
+    'Découvrez notre service de marketing d’influence pour connecter votre marque aux bons créateurs, construire des récits authentiques et amplifier votre impact.',
+    seoImages.influenceMarketing,
+  ),
+  seo: createPageSeoConfig(
+    'Référencement Naturel (SEO) | We Yan Digital',
+    'Découvrez notre service SEO pour améliorer votre visibilité Google, renforcer votre autorité et transformer le trafic organique en croissance durable.',
+    seoImages.seo,
+  ),
+  offlineMedia: createPageSeoConfig(
+    'Média Publicité Offline | We Yan Digital',
+    'Découvrez notre service média publicité offline pour orchestrer vos campagnes d’affichage, print, radio et dispositifs phygitaux avec une approche omnicanale.',
+    seoImages.offlineMedia,
+  ),
   projects: createPageSeoConfig(
     'Projets | We Yan Digital',
     'Explorez les projets de We Yan Digital en branding, campagnes sociales, design digital et identités visuelles réalisées pour des marques ambitieuses.',
