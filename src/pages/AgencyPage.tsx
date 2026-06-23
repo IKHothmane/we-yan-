@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+﻿﻿﻿﻿import { useEffect } from 'react'
 import Icon from '../components/Icon'
 import Navbar from '../components/Navbar'
 import PageSeo from '../components/PageSeo'
@@ -26,7 +26,7 @@ export default function AgencyPage() {
   }, [])
 
   return (
-    <div className="bg-background text-on-background overflow-hidden w-full pb-28 md:pb-32">
+    <div className="bg-background text-on-background overflow-hidden w-full">
       <PageSeo {...pageSeo.agency} />
       <Navbar />
 
@@ -44,16 +44,16 @@ export default function AgencyPage() {
             <div className="absolute top-20 right-20 w-96 h-96 bg-primary rounded-full blur-[120px] float-animation"></div>
             <div className="absolute bottom-20 right-40 w-64 h-64 bg-secondary rounded-full blur-[100px] float-animation" style={{ animationDelay: '-2s' }}></div>
           </div>
-          <div className="max-w-7xl mx-auto w-full">
+          <div className="w-full">
             <div className="lg:w-2/3">
               <span className="inline-block text-secondary font-semibold text-sm tracking-widest uppercase mb-6 bg-secondary/10 px-4 py-1 rounded-full">
                 L'Agence
               </span>
               <h1 className="text-[clamp(2.7rem,7vw,4.75rem)] font-extrabold text-on-surface mb-8 leading-[1.02]">
-                Nous créons le futur des <span className="text-primary italic">marques marocaines.</span>
+                Nous crÃ©ons le futur des <span className="text-primary italic">marques marocaines.</span>
               </h1>
               <p className="text-[clamp(1rem,2.5vw,1.25rem)] text-on-surface-variant">
-                Un collectif créatif né au cœur de Casablanca, fusionnant l'âme locale avec l'excellence digitale internationale pour transformer chaque vision en impact concret.
+                Un collectif crÃ©atif nÃ© au cÅ“ur de Casablanca, fusionnant l'Ã¢me locale avec l'excellence digitale internationale pour transformer chaque vision en impact concret.
               </p>
             </div>
           </div>
@@ -64,42 +64,43 @@ export default function AgencyPage() {
           data-reveal
           data-reveal-delay="100"
         >
-          <div className="max-w-7xl mx-auto overflow-x-auto pb-4">
-            <div className="grid min-w-[920px] grid-cols-2 gap-24 items-center">
+          <div className="w-full">
+            <div className="grid grid-cols-1 gap-16 lg:grid-cols-2 lg:gap-24 items-center">
               <div className="relative">
-              <div className="aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl shadow-primary/20 transition-transform duration-700" style={{ transform: 'rotate(3deg)' }} onMouseEnter={(e) => (e.currentTarget.style.transform = 'rotate(0deg)')} onMouseLeave={(e) => (e.currentTarget.style.transform = 'rotate(3deg)')}>
-                <img
-                  alt="Our Creative Space"
-                  className="w-full h-full object-cover"
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuAXanOiulfk8KwYBo42gYSatoWmknKg7L5Vu_Wm8CIqGXka1ScAIWQDwGerHTb8E6YtZlRcfDTghyIoDE8M5Px5r9dDcwbDRv7i42pCxGPxZda8xChiGC1D1DWaT2JV5fmkCYLXUlVR1bBuRWX5qVPBuLB04IcXmx-3OezowJC5w57u692diuILAAfzMNDEMl23HXeg6_tVCVUBUYwb3x7rQvvv9Zpf06QiqdBaRYq3AL3k2xoF_uK-Xw1PSdGo14AUCZmqOCmKF5s"
-                  loading="lazy"
-                  width={800}
-                  height={1000}
-                />
+                <div className="aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl shadow-primary/20 transition-transform duration-700" style={{ transform: 'rotate(3deg)' }} onMouseEnter={(e) => (e.currentTarget.style.transform = 'rotate(0deg)')} onMouseLeave={(e) => (e.currentTarget.style.transform = 'rotate(3deg)')}>
+                  <img
+                    alt="Our Creative Space"
+                    className="w-full h-full object-cover"
+                    src="/images/agency/story.jpg"
+                    loading="lazy"
+                    width={800}
+                    height={1000}
+                  />
+                </div>
+                <div className="absolute -bottom-6 right-2 h-32 w-32 sm:-bottom-10 sm:-right-10 sm:h-48 sm:w-48 bg-secondary rounded-3xl flex flex-col items-center justify-center text-white shadow-xl" style={{ transform: 'rotate(-6deg)' }}>
+                  <span className="text-3xl sm:text-4xl font-extrabold">10+</span>
+                  <span className="px-3 text-center text-xs sm:text-sm font-semibold tracking-wide">AnnÃ©es d'Excellence</span>
+                </div>
               </div>
-              <div className="absolute -bottom-10 -right-10 w-48 h-48 bg-secondary rounded-3xl flex flex-col items-center justify-center text-white shadow-xl" style={{ transform: 'rotate(-6deg)' }}>
-                <span className="text-4xl font-extrabold">10+</span>
-                <span className="text-sm font-semibold tracking-wide">Années d'Excellence</span>
-              </div>
-            </div>
+
               <div data-reveal data-reveal-delay="200">
-              <h2 className="text-[clamp(2rem,5vw,3rem)] font-bold text-on-surface mb-8">Our Story: <span className="text-secondary">Make it Different.</span></h2>
-              <div className="space-y-6">
-                <p className="text-on-surface-variant">
-                  We Digital est né d'une conviction simple : le marché marocain mérite une créativité sans compromis. Nous avons commencé comme un petit atelier d'innovation, avec pour seule boussole l'obsession de la différence.
-                </p>
-                <p className="text-on-surface-variant">
-                  Aujourd'hui, nous accompagnons les leaders de demain dans leur transformation numérique. Chaque pixel, chaque ligne de code et chaque stratégie sociale est imprégnée de notre mission fondamentale : ne jamais se contenter du statu quo. Nous ne suivons pas les tendances, nous les créons pour nos partenaires.
-                </p>
-                <div className="pt-8">
-                  <div className="flex items-center gap-4">
-                    <div className="w-12 h-1 bg-secondary rounded-full"></div>
-                    <span className="text-sm font-semibold tracking-wide text-on-surface italic">Innovation, Passion, Excellence.</span>
+                <h2 className="text-[clamp(2rem,5vw,3rem)] font-bold text-on-surface mb-8">Our Story: <span className="text-secondary">Make it Different.</span></h2>
+                <div className="space-y-6">
+                  <p className="text-on-surface-variant">
+                    We Digital est nÃ© d'une conviction simple : le marchÃ© marocain mÃ©rite une crÃ©ativitÃ© sans compromis. Nous avons commencÃ© comme un petit atelier d'innovation, avec pour seule boussole l'obsession de la diffÃ©rence.
+                  </p>
+                  <p className="text-on-surface-variant">
+                    Aujourd'hui, nous accompagnons les leaders de demain dans leur transformation numÃ©rique. Chaque pixel, chaque ligne de code et chaque stratÃ©gie sociale est imprÃ©gnÃ©e de notre mission fondamentale : ne jamais se contenter du statu quo. Nous ne suivons pas les tendances, nous les crÃ©ons pour nos partenaires.
+                  </p>
+                  <div className="pt-8">
+                    <div className="flex items-center gap-4">
+                      <div className="w-12 h-1 bg-secondary rounded-full"></div>
+                      <span className="text-sm font-semibold tracking-wide text-on-surface italic">Innovation, Passion, Excellence.</span>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
           </div>
         </section>
 
@@ -108,30 +109,28 @@ export default function AgencyPage() {
           data-reveal
           data-reveal-delay="300"
         >
-          <div className="max-w-7xl mx-auto">
+          <div className="w-full">
             <div className="text-center mb-16">
               <h2 className="text-[clamp(2rem,5vw,3rem)] font-bold text-on-surface mb-4">Notre ADN</h2>
-              <p className="text-on-surface-variant max-w-2xl mx-auto">La rencontre entre l'héritage marocain et les standards digitaux globaux.</p>
+              <p className="text-on-surface-variant max-w-2xl mx-auto">La rencontre entre l'hÃ©ritage marocain et les standards digitaux globaux.</p>
             </div>
-            <div className="overflow-x-auto pb-4">
-              <div className="grid min-w-[980px] grid-cols-3 gap-6">
-                <div className="col-span-2 p-[clamp(1.5rem,4vw,3rem)] rounded-3xl bg-white/70 backdrop-blur-lg border border-white/30 relative overflow-hidden group" data-reveal>
+            <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
+              <div className="p-[clamp(1.5rem,4vw,3rem)] rounded-3xl bg-white/70 backdrop-blur-lg border border-white/30 relative overflow-hidden group lg:col-span-2" data-reveal>
                 <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:opacity-20 transition-opacity">
                   <Icon name="public" className="w-24 h-24 text-on-surface" />
                 </div>
                 <h3 className="text-[clamp(1.6rem,3vw,2rem)] font-bold text-primary mb-6">Standards Internationaux</h3>
                 <p className="text-lg text-on-surface-variant">
-                  Nous appliquons les méthodologies agiles et les cadres technologiques les plus avancés au monde pour garantir des produits robustes, scalables et sécurisés.
+                  Nous appliquons les mÃ©thodologies agiles et les cadres technologiques les plus avancÃ©s au monde pour garantir des produits robustes, scalables et sÃ©curisÃ©s.
                 </p>
               </div>
-                <div className="p-[clamp(1.5rem,4vw,3rem)] rounded-3xl bg-primary text-white flex flex-col justify-end" data-reveal data-reveal-delay="100">
+              <div className="p-[clamp(1.5rem,4vw,3rem)] rounded-3xl bg-primary text-white flex flex-col justify-end" data-reveal data-reveal-delay="100">
                 <Icon name="auto_awesome" className="w-16 h-16 mb-8" />
                 <h3 className="text-[clamp(1.6rem,3vw,2rem)] font-bold mb-4">Culture Locale</h3>
                 <p className="text-white/80">
-                  Nous comprenons les nuances, l'humour et les codes visuels du consommateur marocain pour créer des connexions authentiques.
+                  Nous comprenons les nuances, l'humour et les codes visuels du consommateur marocain pour crÃ©er des connexions authentiques.
                 </p>
               </div>
-            </div>
             </div>
           </div>
         </section>
@@ -152,3 +151,4 @@ export default function AgencyPage() {
     </div>
   )
 }
+

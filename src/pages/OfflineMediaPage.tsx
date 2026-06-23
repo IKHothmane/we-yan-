@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+﻿﻿﻿import { Link } from 'react-router-dom'
 import Icon from '../components/Icon'
 import Navbar from '../components/Navbar'
 import PageSeo from '../components/PageSeo'
@@ -6,35 +6,32 @@ import SiteFooter from '../components/SiteFooter'
 import useScrollReveal from '../hooks/useScrollReveal'
 import { pageSeo } from '../lib/pageSeo'
 
-const heroImage =
-  'https://lh3.googleusercontent.com/aida-public/AB6AXuAvBFZwGi8JA9AMkEiwdBEM1rvQ9TTE2D_tMRGJCxPsb1ziGEEWrV0rf62vFfap-H3J1Hx3ShSBZYTst5X60-YlIodg91-_E9i4oZspB9ORYUJagLyVFo8mqbKpzSDSnJsPfOU3CPHG6qd3-s-o2tTYjKHmRVy9mvI_LuBgFsC89sN1PXYcdRbAtrEQ6mPy8ZUdFA5QXMpK0BPurrS5R4AcA0Ik3ChIANkkTaswPvaM_p0HcJDI2snBaNC7ksiWJqVHtb8CiWk5wiY'
+const heroImage = '/images/offline/hero.jpg'
 
-const oohImage =
-  'https://lh3.googleusercontent.com/aida-public/AB6AXuC3pcm9Y3d9xVGa7Bm0J4hBj3AXSuyFGMN9lah2_3Xziuw-rrvn5zU4Euo6Hp_EfAfChExWnjsyhY32VxhO-IQywB514Znr7VmCDRzPgOX97fPWKVhPKQ7pb3y4gqa62jp4Onu8enuVKDXUwkPzkwvAZqfJ63_taQPbb2w4P9wP9TweFLiBv9ScyPMXlN-K2lcCSpObONG9X_ICyXPVFqMnzoi68kSWJVjrfec16uorHA_nMPe8vhLihGNm5viz6wfrndkaKFCc7bk'
+const oohImage = '/images/offline/ooh.jpg'
 
-const cinemaImage =
-  'https://lh3.googleusercontent.com/aida-public/AB6AXuBKbRKncf9FSqKUCqv-R8s_EcYvObw1RdzmwF3BPh2Ll3ZlFpqOA7UNrvWYgguUGyaYmKktcT-4Nq3rvq5Jki_wnDXEjdBdAHq8MT5vtchndp-YJHBaE9VTiu49lwQp5yDM9DXMP8eju6ztDFuP2_JgDB9IG4XIvYus2TG-CwDAHCUUXYd4tVV4obwBAztIo_wyeNyl3Vlry-CenrlOLiZMHqG4pmHTok1WNNGHZn2PQhBrmcmC2XOyNu2siJeW9ASqusz6sVGuxxE'
+const cinemaImage = '/images/offline/cinema.jpg'
 
 const bridgeFeatures = [
   {
     icon: 'qr_code_2',
     title: 'Ciblages QR Dynamiques',
     description:
-      "Mesurez l'engagement physique et redirigez l'audience vers des expériences immersives.",
+      "Mesurez l'engagement physique et redirigez l'audience vers des expÃ©riences immersives.",
     accent: 'bg-secondary text-white',
     titleClassName: 'text-white',
   },
   {
     icon: 'location_on',
-    title: 'Géo-Fencing Retargeting',
-    description: 'Reciblez sur mobile les utilisateurs ayant croisé vos panneaux publicitaires.',
+    title: 'GÃ©o-Fencing Retargeting',
+    description: 'Reciblez sur mobile les utilisateurs ayant croisÃ© vos panneaux publicitaires.',
     accent: 'bg-primary text-white',
     titleClassName: 'text-primary',
   },
   {
     icon: 'analytics',
     title: 'Data-Driven Media Buying',
-    description: 'Optimisez vos placements offline grâce aux insights de flux de mobilité urbaine.',
+    description: 'Optimisez vos placements offline grÃ¢ce aux insights de flux de mobilitÃ© urbaine.',
     accent: 'bg-white/10 text-white',
     titleClassName: 'text-white',
   },
@@ -43,23 +40,23 @@ const bridgeFeatures = [
 const approachSteps = [
   {
     number: '01',
-    title: 'Stratégie & Mapping',
+    title: 'StratÃ©gie & Mapping',
     description:
-      'Identification des points de contact clés basés sur les habitudes de vie de votre cible. Nous cartographions les zones à forte affluence.',
+      'Identification des points de contact clÃ©s basÃ©s sur les habitudes de vie de votre cible. Nous cartographions les zones Ã  forte affluence.',
     dotClassName: 'bg-primary',
   },
   {
     number: '02',
-    title: 'Négociation & Achat',
+    title: 'NÃ©gociation & Achat',
     description:
-      "Accès privilégié aux meilleures régies publicitaires nationales. Optimisation des coûts et garantie d'emplacements premium.",
+      "AccÃ¨s privilÃ©giÃ© aux meilleures rÃ©gies publicitaires nationales. Optimisation des coÃ»ts et garantie d'emplacements premium.",
     dotClassName: 'bg-secondary',
   },
   {
     number: '03',
-    title: 'Production Haute-Fidélité',
+    title: 'Production Haute-FidÃ©litÃ©',
     description:
-      "Création visuelle adaptée aux grands formats. Gestion de l'impression et de la pose pour un rendu impeccable.",
+      "CrÃ©ation visuelle adaptÃ©e aux grands formats. Gestion de l'impression et de la pose pour un rendu impeccable.",
     dotClassName: 'bg-primary',
   },
 ] as const
@@ -68,14 +65,14 @@ export default function OfflineMediaPage() {
   useScrollReveal()
 
   return (
-    <div className="min-h-screen w-full overflow-hidden bg-surface font-body text-on-surface pb-28 md:pb-32">
+    <div className="min-h-screen w-full overflow-hidden bg-surface font-body text-on-surface">
       <PageSeo {...pageSeo.offlineMedia} />
       <Navbar />
 
       <main>
         <section className="relative overflow-hidden bg-gradient-to-br from-primary/10 via-surface to-surface px-[clamp(1rem,4vw,2rem)] pb-24 pt-24 md:px-margin-desktop md:pb-32 md:pt-32">
           <div className="absolute right-0 top-0 h-80 w-80 translate-x-1/4 -translate-y-1/4 rounded-full bg-primary/10 blur-[100px]" />
-          <div className="max-w-container-max mx-auto grid items-center gap-16 lg:grid-cols-2">
+          <div className="w-full grid items-center gap-16 lg:grid-cols-2">
             <div className="relative z-10" data-reveal>
               <span className="mb-5 inline-flex items-center gap-2 rounded-full bg-secondary/10 px-4 py-2 text-[0.78rem] font-bold uppercase tracking-[0.2em] text-secondary">
                 <span className="h-2 w-2 rounded-full bg-secondary" />
@@ -84,25 +81,25 @@ export default function OfflineMediaPage() {
               <h1 className="mb-8 text-[clamp(3rem,8vw,5.4rem)] font-extrabold uppercase leading-[0.9] tracking-[-0.06em] text-on-surface">
                 Impact <span className="text-primary">Massif</span>
                 <br />
-                Réalité <span className="text-secondary">Tangible.</span>
+                RÃ©alitÃ© <span className="text-secondary">Tangible.</span>
               </h1>
               <p className="mb-10 max-w-xl text-[clamp(1rem,2.2vw,1.22rem)] leading-relaxed text-on-surface-variant">
-                Nous fusionnons la puissance sensorielle de la publicité offline avec l&apos;intelligence de la
-                donnée digitale pour créer des campagnes omnicanales mémorables.
+                Nous fusionnons la puissance sensorielle de la publicitÃ© offline avec l&apos;intelligence de la
+                donnÃ©e digitale pour crÃ©er des campagnes omnicanales mÃ©morables.
               </p>
               <div className="flex flex-wrap gap-4">
                 <Link
                   to="/contact"
                   className="inline-flex items-center gap-2 rounded-2xl bg-secondary px-8 py-4 text-base font-bold text-white shadow-lg shadow-secondary/20 transition-all hover:translate-y-[-2px] hover:shadow-xl"
                 >
-                  Découvrir nos solutions
+                  DÃ©couvrir nos solutions
                   <Icon name="arrow_forward" className="h-5 w-5" />
                 </Link>
                 <a
                   href="#ecosysteme-offline"
                   className="inline-flex items-center rounded-2xl border border-primary/20 px-8 py-4 text-base font-bold text-primary transition-colors hover:bg-primary/5"
                 >
-                  Voir l&apos;écosystème
+                  Voir l&apos;Ã©cosystÃ¨me
                 </a>
               </div>
             </div>
@@ -117,15 +114,15 @@ export default function OfflineMediaPage() {
         </section>
 
         <section
-          className="max-w-container-max mx-auto px-[clamp(1rem,4vw,2rem)] py-section-padding md:px-margin-desktop"
+          className="w-full px-[clamp(1rem,4vw,2rem)] py-section-padding md:px-margin-desktop"
           id="ecosysteme-offline"
         >
           <div className="mb-16 text-center" data-reveal>
             <h2 className="mb-4 text-[clamp(2rem,5vw,3.4rem)] font-extrabold uppercase tracking-[-0.05em]">
-              L&apos;Écosystème Offline
+              L&apos;Ã‰cosystÃ¨me Offline
             </h2>
             <p className="mx-auto max-w-2xl text-[clamp(1rem,2vw,1.12rem)] text-on-surface-variant">
-              Dominance visuelle, répétition stratégique et intégration digitale via QR, phygital et retargeting géolocalisé.
+              Dominance visuelle, rÃ©pÃ©tition stratÃ©gique et intÃ©gration digitale via QR, phygital et retargeting gÃ©olocalisÃ©.
             </p>
           </div>
 
@@ -149,7 +146,7 @@ export default function OfflineMediaPage() {
                 Affichage Urbain (OOH)
               </h3>
               <p className="max-w-md text-white/80">
-                Panneaux 4x3, unipoles, mobiliers urbains et écrans LED géants pour une présence incontournable.
+                Panneaux 4x3, unipoles, mobiliers urbains et Ã©crans LED gÃ©ants pour une prÃ©sence incontournable.
               </p>
             </article>
 
@@ -163,7 +160,7 @@ export default function OfflineMediaPage() {
               </div>
               <h3 className="mb-4 text-[clamp(1.4rem,2.4vw,1.8rem)] font-bold uppercase">Radio & Podcast</h3>
               <p className="text-on-surface-variant">
-                L&apos;émotion par la voix. Spots publicitaires et sponsoring sur les ondes nationales les plus écoutées.
+                L&apos;Ã©motion par la voix. Spots publicitaires et sponsoring sur les ondes nationales les plus Ã©coutÃ©es.
               </p>
             </article>
 
@@ -175,11 +172,11 @@ export default function OfflineMediaPage() {
               <Icon name="newspaper" className="mb-4 h-10 w-10 text-secondary" />
               <h3 className="mb-4 text-[clamp(1.4rem,2.4vw,1.8rem)] font-bold uppercase">Presse & Print</h3>
               <p className="mb-6 text-on-surface-variant">
-                L&apos;autorité de l&apos;imprimé. Campagnes dans les magazines premium et quotidiens influents.
+                L&apos;autoritÃ© de l&apos;imprimÃ©. Campagnes dans les magazines premium et quotidiens influents.
               </p>
               <div className="mt-auto flex gap-2 border-t border-outline-variant/20 pt-4">
                 <span className="rounded-full bg-surface px-3 py-1 text-xs font-semibold text-primary">
-                  Qualité Premium
+                  QualitÃ© Premium
                 </span>
                 <span className="rounded-full bg-surface px-3 py-1 text-xs font-semibold text-primary">
                   Ciblage CSP+
@@ -193,16 +190,16 @@ export default function OfflineMediaPage() {
               data-reveal-delay="300"
             >
               <div className="absolute inset-0 -z-10">
-                <img className="h-full w-full object-cover" src={cinemaImage} alt="Publicité TV et cinéma" />
+                <img className="h-full w-full object-cover" src={cinemaImage} alt="PublicitÃ© TV et cinÃ©ma" />
                 <div className="absolute inset-0 bg-primary/30 mix-blend-multiply" />
               </div>
               <div className="flex h-full flex-col justify-between">
                 <div className="flex items-start justify-between gap-4">
-                  <h3 className="text-[clamp(1.5rem,3vw,2rem)] font-bold uppercase text-white">TV & Cinéma</h3>
+                  <h3 className="text-[clamp(1.5rem,3vw,2rem)] font-bold uppercase text-white">TV & CinÃ©ma</h3>
                   <Icon name="movie_filter" className="h-8 w-8 text-white" />
                 </div>
                 <p className="max-w-md text-[clamp(1rem,2vw,1.2rem)] font-medium leading-tight text-white">
-                  La narration au service de votre marque sur les plus grands écrans du pays.
+                  La narration au service de votre marque sur les plus grands Ã©crans du pays.
                 </p>
               </div>
             </article>
@@ -213,7 +210,7 @@ export default function OfflineMediaPage() {
           <div className="absolute right-0 top-0 h-full w-1/2 opacity-10">
             <div className="h-full w-full bg-[radial-gradient(circle_at_top_right,rgba(100,131,240,0.55),transparent_60%)]" />
           </div>
-          <div className="max-w-container-max mx-auto grid items-center gap-16 px-[clamp(1rem,4vw,2rem)] md:px-margin-desktop lg:grid-cols-2">
+          <div className="w-full grid items-center gap-16 px-[clamp(1rem,4vw,2rem)] md:px-margin-desktop lg:grid-cols-2">
             <div data-reveal>
               <h2 className="mb-8 text-[clamp(2rem,5vw,3.4rem)] font-extrabold uppercase leading-tight tracking-[-0.05em]">
                 Le Pont vers le <span className="text-secondary">Digital.</span>
@@ -243,7 +240,7 @@ export default function OfflineMediaPage() {
           </div>
         </section>
 
-        <section className="max-w-container-max mx-auto px-[clamp(1rem,4vw,2rem)] py-section-padding md:px-margin-desktop">
+        <section className="w-full px-[clamp(1rem,4vw,2rem)] py-section-padding md:px-margin-desktop">
           <div className="flex flex-col gap-12 md:flex-row">
             <div className="md:w-1/3" data-reveal>
               <h2 className="md:sticky md:top-32 text-[clamp(2rem,5vw,3.4rem)] font-extrabold uppercase leading-[0.95] tracking-[-0.05em]">
@@ -274,13 +271,13 @@ export default function OfflineMediaPage() {
         </section>
 
         <section className="px-[clamp(1rem,4vw,2rem)] pb-section-padding md:px-margin-desktop">
-          <div className="max-w-container-max mx-auto overflow-hidden rounded-[2rem] bg-primary/12 px-8 py-14 text-center md:px-20 md:py-24">
+          <div className="w-full overflow-hidden rounded-[2rem] bg-primary/12 px-8 py-14 text-center md:px-20 md:py-24">
             <div className="relative z-10" data-reveal>
               <h2 className="mb-8 text-[clamp(2rem,5vw,3.4rem)] font-extrabold uppercase tracking-[-0.05em] text-on-surface">
-                Prêt à Dominer l&apos;Espace Public ?
+                PrÃªt Ã  Dominer l&apos;Espace Public ?
               </h2>
               <p className="mx-auto mb-12 max-w-2xl text-[clamp(1rem,2vw,1.15rem)] text-on-surface-variant">
-                Donnez à votre marque la stature qu&apos;elle mérite avec une campagne média offline d&apos;envergure.
+                Donnez Ã  votre marque la stature qu&apos;elle mÃ©rite avec une campagne mÃ©dia offline d&apos;envergure.
               </p>
               <div className="flex flex-col justify-center gap-4 sm:flex-row">
                 <Link
@@ -305,3 +302,4 @@ export default function OfflineMediaPage() {
     </div>
   )
 }
+

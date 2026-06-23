@@ -1,191 +1,215 @@
+﻿﻿﻿﻿import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import Icon from '../components/Icon'
 import Navbar from '../components/Navbar'
 import PageSeo from '../components/PageSeo'
 import SiteFooter from '../components/SiteFooter'
-import useScrollReveal from '../hooks/useScrollReveal'
 import { pageSeo } from '../lib/pageSeo'
+
+// Types
+interface ProcessStep {
+  number: string
+  title: string
+  description: string
+  icon: string
+}
+
+// Hook useScrollReveal
+const useScrollReveal = () => {
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('opacity-100', 'translate-y-0')
+            entry.target.classList.remove('opacity-0', 'translate-y-10')
+          }
+        })
+      },
+      { threshold: 0.1 }
+    )
+
+    document.querySelectorAll('.bento-item').forEach((el) => {
+      el.classList.add('transition-all', 'duration-700', 'opacity-0', 'translate-y-10')
+      observer.observe(el)
+    })
+
+    return () => observer.disconnect()
+  }, [])
+}
 
 const creatorImages = [
   'https://lh3.googleusercontent.com/aida-public/AB6AXuBqEHKVc8cBzPpd2rqSg9cJgLRQAUZ0sIeqnAVukfSJlNhUPHecQJOl2fnajUsx_sc7OgGgPKj760k_PFCrdZMZk_pLiIdzbupl3pfTb7EChW01BtiHFqMXOXG6S9xFTEdl71N18bfZRgL0LrZYiq_wfte_nTgC5FzLFOLEWTW4mmU3WJsi3jaDx81fi4qtqUAuuDUkXYwuTZ9mDZQccqExjwW8IyfFadziYvRDCgmpWTI2bEARfBUYLsrJzgsHYc6wf3wb105sdK4',
   'https://lh3.googleusercontent.com/aida-public/AB6AXuCQYoP7JZt_0gcaL0lMzou3yEmGB0mH_EcJB_znVzLg1pw4TQV9-OJoPQtLu28Vd3kpAVX3WfFcG32uBXTH68ZpiaxBNCMIV3cAHQeMpsjtNokSsF77KkUoxjlMvSZyeW1yo3rwtoZxcULG5MFQLt9KVaaVCeB3dLix6Vozi28IlECEjSGVjhcWU65K0KJNn4lyA8zABvLyIxKbXpf8othzcVBaFHLLmXD0t3ArUIbjPZAkepRTLorofOvOsYGZNEXfzQpyRQZj0Wc',
-  'https://lh3.googleusercontent.com/aida-public/AB6AXuApmsSU9nNlYVy1A3zpWH42dIf25FYPRm7KnKmBF8hjFZRecuthrs0VrlZzrQkUG_pe7hB-DczV0UZcYTOjMMLm8J6JDpgltO-FlPs9iaJRBQll2CC8h5TZOGboKuh9gCuilJKZDBZiPZmPaUfJiG3HxbXbXmj1F2mTwPgsoVTQReej6oaYux9yYtw652HLktXEgP5fHJ94xymWVMqEQZqKYhJUPigkDTcaYCWNRzKZjOuIDedbPoFQtXfqLD4JjmizHTINuYhB-Bw',
+  'https://lh3.googleusercontent.com/aida-public/AB6AXuApmsSU9nNlYVy1A3zpWH42dIf25FYPRm7KnKmBF8hjFZRecuthrs0VrlZzrQkUG_pe7hB-DczV0UZcYTOjMMLm8J6JDpgltO-FlPs9iaJRBQll2CC8h5TZOGboKuh9gCuilJKZDBZiPZmPaUfJiG3HxbXbXmj1F2mTwPgsoVTQReej6oaYux9yYtw652HLktXEgP5fHJ94xymWVMqEQZqKYhJUPigkDTcaYCWNRzKZjOuIDedbPoFQtXfqLD4JjmizHTINuYhB-Bw'
 ] as const
 
-const cultureImage =
-  'https://lh3.googleusercontent.com/aida-public/AB6AXuDgeN2ZDNCQd1THTPx_ppluph3jyvNHinygytfYhFyLNwuUhjAnShsJe4m0fRkSI1LNmgtChwoG7is9exjq2_68zJK1W1wzLU5D40sOf0MBdU7-21JpZ01osv6YIZXfVY0X_wP6aNgKEutyLa0Dah3XNatoUsHZm-sfXSUI47PehuL-93TcgoDz7mK8U3ijDUS4A6LKCPBJpCY4sAj_KX-ucCab0cp5JcDre3M-CI6pf6G5OYyWoDZEylY6pBgiKvfeFD9KKAmYrL8'
+const heroImage = 'https://lh3.googleusercontent.com/aida-public/AB6AXuAiUPLwSoH2ABfBCJ2dF899_akQuF6xSSaPoMaIX8H7E7glOTP7yfzMLnqdayWBWscdkPGOWGUHZyuWPgZNRVDNBFio3RpYXBNeU3SjhGT2a36nDsZnmQzyjvXjphIj3ysIuCc-9CZhGhF_W4cQYj8DfOI3SFSS39eCIzpjVoAykMUoi1R8J2J5DHKp_i6X1hgkQp16Mix8jQivIilshT9fRzH0mEQgWLC_cREMP-bnxAxt5L17ErLeMF7ju74kPs29Hun61ldxibs'
 
-const processSteps = [
+const cultureImage = 'https://lh3.googleusercontent.com/aida-public/AB6AXuDgeN2ZDNCQd1THTPx_ppluph3jyvNHinygytfYhFyLNwuUhjAnShsJe4m0fRkSI1LNmgtChwoG7is9exjq2_68zJK1W1wzLU5D40sOf0MBdU7-21JpZ01osv6YIZXfVY0X_wP6aNgKEutyLa0Dah3XNatoUsHZm-sfXSUI47PehuL-93TcgoDz7mK8U3ijDUS4A6LKCPBJpCY4sAj_KX-ucCab0cp5JcDre3M-CI6pf6G5OYyWoDZEylY6pBgiKvfeFD9KKAmYrL8'
+
+const processSteps: ProcessStep[] = [
   {
     number: '01',
     title: 'Curation de Talents',
-    description:
-      'Nous identifions des profils authentiques dont l’univers et l’audience correspondent précisément à votre cible.',
+    description: "Identification de profils authentiques dont les valeurs et l'audience correspondent précisément à votre cible marketing.",
+    icon: 'person_search',
   },
   {
     number: '02',
     title: 'Direction Artistique',
-    description:
-      'Nous concevons des concepts qui respectent la patte du créateur tout en sublimant votre message de marque.',
+    description: "Co-création de concepts uniques qui respectent la 'patte' du créateur tout en sublimant les messages clés de votre marque.",
+    icon: 'palette',
   },
   {
     number: '03',
     title: 'Optimisation ROI',
-    description:
-      'Nous pilotons les KPIs en temps réel pour maximiser la visibilité, l’engagement et l’impact business.',
+    description: "Monitoring en temps réel et ajustement des campagnes pour maximiser la visibilité et l'impact sur vos ventes.",
+    icon: 'monitoring',
   },
-] as const
+]
 
 export default function InfluenceMarketingPage() {
   useScrollReveal()
 
   return (
-    <div className="font-body bg-background min-h-screen overflow-hidden w-full pb-28 md:pb-32">
+    <div className="bg-background text-on-background font-body selection:bg-secondary selection:text-brand-charcoal">
       <PageSeo {...pageSeo.influenceMarketing} />
       <Navbar />
 
       <main className="pt-24">
-        <section className="relative max-w-container-max mx-auto overflow-hidden px-[clamp(1rem,4vw,2rem)] py-24 md:px-margin-desktop md:py-32">
-          <div className="max-w-3xl" data-reveal>
-            <div className="mb-6 inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-1 text-primary">
-              <Icon name="campaign" className="h-4 w-4" />
-              <span className="text-xs font-bold uppercase tracking-widest">Influence & Storytelling</span>
+        {/* Hero Section */}
+        <section className="relative px-8 md:px-20 py-32 md:py-48 overflow-hidden">
+          {/* Background Image */}
+          <div className="absolute inset-0 z-0">
+            <img
+              alt="Cinematic Studio Background"
+              className="w-full h-full object-cover object-center opacity-40"
+              src={heroImage}
+            />
+            <div className="absolute inset-0 bg-white/80 backdrop-blur-md"></div>
+          </div>
+
+          <div className="relative z-10 max-w- mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div className="max-w-2xl">
+              <div className="mb-8 inline-flex items-center gap-3 rounded-full border border-brand-blue/15 bg-white text-brand-blue/80 shadow-sm px-5 py-2">
+                <Icon name="campaign" className="text-" />
+                <span className="text-xs font-bold tracking-widest uppercase">Influence & Storytelling</span>
+              </div>
+              <h1 className="mb-8 font-rigot text-6xl font-extrabold leading-[1.05] text-brand-charcoal md:text-8xl">
+                L’influence qui <span className="text-brand-orange italic">Rayonne</span>.
+              </h1>
+              <p className="mb-12 max-w-xl font-light leading-relaxed text-[#70798B] text-xl md:text-2xl">
+                Nous connectons votre marque aux créateurs les plus impactants. Plus que de simples placements, nous bâtissons des récits authentiques qui engagent, inspirent et convertissent.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-6">
+                <Link
+                  to="/contact"
+                  className="bg-secondary text-on-secondary px-8 py-4 rounded-xl font-bold flex items-center justify-center gap-3 hover:bg-secondary/90 hover:shadow-xl hover:shadow-secondary/20 transition-all text-lg"
+                >
+                  Lancer une campagne <Icon name="trending_up" />
+                </Link>
+                <a
+                  href="#creators"
+                  className="border-2 border-brand-blue text-brand-blue px-8 py-4 rounded-xl font-bold hover:bg-brand-blue hover:text-white transition-all text-lg"
+                >
+                  Découvrir nos créateurs
+                </a>
+              </div>
             </div>
-            <h1 className="mb-8 text-5xl font-extrabold leading-[1.1] text-on-surface md:text-7xl">
-              L’influence qui <span className="text-secondary italic">Rayonne</span>.
-            </h1>
-            <p className="mb-10 max-w-2xl text-lg leading-relaxed text-on-surface-variant md:text-xl">
-              Nous connectons votre marque aux créateurs les plus impactants du Maroc. Plus que de
-              simples placements, nous bâtissons des récits authentiques qui engagent, inspirent et
-              convertissent.
-            </p>
-            <div className="flex flex-col gap-4 sm:flex-row">
-              <Link
-                to="/contact"
-                className="inline-flex items-center justify-center gap-2 rounded-xl bg-secondary px-8 py-4 font-bold text-white transition-all hover:shadow-lg hover:shadow-secondary/20"
-              >
-                Lancer une campagne
-                <Icon name="trending_up" className="h-5 w-5" />
-              </Link>
-              <a
-                href="#creators"
-                className="inline-flex items-center justify-center rounded-xl border-2 border-primary px-8 py-4 font-bold text-primary transition-all hover:bg-primary/5"
-              >
-                Découvrir nos créateurs
-              </a>
+            <div className="hidden lg:block relative rounded-3xl overflow-hidden shadow-2xl glass-card p-4">
+              <img alt="Agency Studio" className="w-full h-full object-cover rounded-2xl" src={heroImage}/>
             </div>
           </div>
         </section>
 
-        <section className="bg-surface-container-low px-[clamp(1rem,4vw,2rem)] py-24 md:px-margin-desktop" id="creators">
-          <div className="max-w-container-max mx-auto">
-            <div className="grid grid-cols-1 gap-6 md:grid-cols-4">
-              <article
-                className="glass-card bento-item relative overflow-hidden rounded-[2rem] p-10 md:col-span-2 md:row-span-2"
-                data-reveal
-              >
+        {/* Partnerships / Stats Bento */}
+        <section className="px-8 md:px-20 py-32 bg-white" id="creators">
+          <div className="max-w- mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+              {/* Large Card: Storytelling */}
+              <div className="md:col-span-2 md:row-span-2 glass-card bg-surface-container p-12 rounded-3xl flex flex-col justify-between overflow-hidden relative bento-item border border-brand-blue/10">
                 <div className="relative z-10">
-                  <h2 className="mb-4 text-3xl font-bold text-primary">Le Storytelling au cœur</h2>
-                  <p className="text-on-surface-variant">
-                    Nous ne faisons pas de la publicité, nous racontons des histoires. Chaque collaboration
-                    est pensée pour s’intégrer naturellement dans le quotidien de l’audience.
-                  </p>
+                  <h3 className="mb-6 font-rigot text-4xl font-bold text-brand-charcoal">Le Storytelling au cœur</h3>
+                  <p className="text-lg leading-relaxed text-[#70798B]">Nous ne faisons pas de la publicité, nous racontons des histoires. Chaque collaboration est pensée pour s'intégrer naturellement dans le quotidien de l'audience.</p>
                 </div>
-                <div className="mt-12 flex -space-x-4">
-                  {creatorImages.map((image) => (
-                    <img
-                      key={image}
-                      className="h-16 w-16 rounded-full border-4 border-white object-cover"
-                      src={image}
-                      alt="Créateur de contenu premium"
-                    />
+                <div className="mt-16 flex -space-x-4 items-center">
+                  {creatorImages.map((img, idx) => (
+                    <img key={idx} className="w-16 h-16 rounded-full border-4 border-white object-cover" src={img} alt="Creator" />
                   ))}
-                  <div className="flex h-16 w-16 items-center justify-center rounded-full border-4 border-white bg-primary-container font-bold text-on-primary-container">
+                  <div className="relative z-10 flex h-16 w-16 shrink-0 items-center justify-center rounded-full border-4 border-white bg-primary text-base font-bold text-white shadow-lg shadow-primary/25">
                     +500
                   </div>
                 </div>
-              </article>
+              </div>
 
-              <article
-                className="bento-item flex flex-col items-center justify-center rounded-[2rem] border border-outline-variant/30 bg-white p-8 text-center"
-                data-reveal
-                data-reveal-delay="100"
-              >
-                <span className="mb-2 text-5xl font-bold text-secondary">94%</span>
-                <span className="text-sm font-bold uppercase tracking-widest text-on-surface-variant">
-                  Taux d&apos;Engagement
-                </span>
-              </article>
+              {/* Stat 1 */}
+              <div className="bento-item flex min-h-[220px] flex-col items-center justify-center rounded-3xl border border-brand-blue/10 bg-surface-container p-10 text-center">
+                <span className="text-brand-orange font-rigot text-6xl font-bold mb-4">94%</span>
+                <span className="text-sm font-bold uppercase tracking-widest text-[#8C94A6]">Taux d'Engagement</span>
+              </div>
 
-              <article
-                className="bento-item relative min-h-[200px] overflow-hidden rounded-[2rem]"
-                data-reveal
-                data-reveal-delay="200"
-              >
-                <div
-                  className="absolute inset-0 bg-cover bg-center"
-                  style={{ backgroundImage: `url(${cultureImage})` }}
-                />
-              </article>
+              {/* Image Block */}
+              <div className="bento-item relative min-h-[240px] overflow-hidden rounded-3xl md:col-span-1">
+                <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${cultureImage})` }}></div>
+              </div>
 
-              <article
-                className="bento-item rounded-[2rem] bg-primary p-8 text-on-primary md:col-span-2"
-                data-reveal
-                data-reveal-delay="300"
-              >
-                <div className="mb-6 flex items-center gap-4">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-white/20">
-                    <Icon name="insights" className="h-6 w-6" />
+              {/* Campaign Management */}
+              <div className="bento-item flex min-h-[260px] flex-col justify-center rounded-3xl bg-primary p-10 text-white shadow-xl shadow-primary/20 ring-1 ring-primary/30 md:col-span-2">
+                <div className="mb-6 flex items-center gap-5">
+                  <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-white/20 backdrop-blur-sm">
+                    <Icon name="analytics" className="text-[30px] text-white" />
                   </div>
-                  <h3 className="text-2xl font-bold">Gestion 360°</h3>
+                  <h3 className="font-rigot text-4xl font-bold tracking-tight">Gestion 360°</h3>
                 </div>
-                <p className="leading-relaxed opacity-90">
-                  Du sourcing des profils à l&apos;analyse des KPIs, nous pilotons l’intégralité de vos campagnes
+                <p className="max-w-3xl text-xl leading-relaxed text-white/90">
+                  Du sourcing des profils à l&apos;analyse des KPIs, nous pilotons l&apos;intégralité de vos campagnes
                   avec une transparence totale sur les performances.
                 </p>
-              </article>
+              </div>
             </div>
           </div>
         </section>
 
-        <section className="max-w-container-max mx-auto px-[clamp(1rem,4vw,2rem)] py-32 md:px-margin-desktop">
-          <div className="mb-20 text-center" data-reveal>
-            <h2 className="mb-6 text-4xl font-bold text-on-surface md:text-5xl">Notre Processus Stratégique</h2>
-            <p className="mx-auto max-w-2xl text-on-surface-variant">
-              Une approche basée sur les données pour garantir l’alignement parfait entre votre marque
-              et les créateurs de contenu.
-            </p>
-          </div>
-          <div className="grid grid-cols-1 gap-12 md:grid-cols-3">
-            {processSteps.map((step, index) => (
-              <article key={step.number} className="relative group" data-reveal data-reveal-delay={String(index * 100)}>
-                <div className="pointer-events-none absolute -left-4 -top-16 select-none text-[120px] font-extrabold leading-none text-primary/10 transition-colors group-hover:text-primary/20">
-                  {step.number}
+        {/* Process Section */}
+        <section className="px-8 md:px-20 py-32 bg-surface-container max-w-full">
+          <div className="max-w- mx-auto">
+            <div className="text-center mb-24">
+              <h2 className="font-rigot text-4xl md:text-6xl font-bold text-brand-charcoal mb-6">Notre Processus Stratégique</h2>
+              <p className="mx-auto max-w-3xl font-light text-[#8B93A6] text-xl">Une approche basée sur les données pour garantir l'alignement parfait entre votre marque et les créateurs de contenu.</p>
+            </div>
+            <div className="grid grid-cols-1 gap-16 md:grid-cols-3">
+              {processSteps.map((step) => (
+                <div
+                  key={step.number}
+                  className="relative rounded-3xl border border-black/5 bg-white p-10 shadow-sm transition-all duration-300 hover:shadow-xl"
+                >
+                  <div className="pointer-events-none absolute -right-4 -top-12 select-none font-rigot text-[110px] font-extrabold leading-none text-brand-blue/[0.12] md:text-[140px]">
+                    {step.number}
+                  </div>
+                  <div className="relative z-10">
+                    <div className="mb-8 flex h-12 w-12 items-center justify-center rounded-full bg-brand-blue/10 text-brand-blue">
+                      <Icon name={step.icon} />
+                    </div>
+                    <h4 className="mb-4 font-rigot text-2xl font-bold text-brand-charcoal">{step.title}</h4>
+                    <p className="leading-relaxed text-[#7A8397]">{step.description}</p>
+                  </div>
                 </div>
-                <div className="relative z-10 pt-8">
-                  <h3 className="mb-4 text-xl font-bold">{step.title}</h3>
-                  <p className="leading-relaxed text-on-surface-variant">{step.description}</p>
-                </div>
-              </article>
-            ))}
+              ))}
+            </div>
           </div>
         </section>
 
-        <section className="mb-24 px-[clamp(1rem,4vw,2rem)] py-24 md:px-margin-desktop">
-          <div className="max-w-container-max mx-auto relative overflow-hidden rounded-[2.5rem] bg-on-surface p-12 text-center md:p-20">
-            <div className="relative z-10" data-reveal>
-              <h2 className="mb-8 text-4xl font-bold text-surface md:text-6xl">
-                Prêt à devenir
-                <br />
-                une icône digitale ?
-              </h2>
-              <p className="mx-auto mb-12 max-w-xl text-lg text-surface/70">
-                Discutons de votre prochaine campagne d’influence et définissons ensemble votre stratégie
-                de conquête.
-              </p>
+        {/* CTA Section */}
+        <section className="px-8 md:px-20 py-32">
+          <div className="max-w- mx-auto bg-surface-container rounded- p-16 md:p-24 text-center relative overflow-hidden border-brand-blue/10 shadow-2xl">
+            <div className="absolute top-0 left-0 w-full h-full opacity-5 pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, #6483F0 1px, transparent 0)', backgroundSize: '32px 32px' }}></div>
+            <div className="relative z-10">
+              <h2 className="font-rigot text-5xl md:text-7xl font-bold text-brand-charcoal mb-8 leading-tight">Prêt à devenir <br/>une icône digitale?</h2>
+              <p className="mx-auto mb-12 max-w-2xl font-light text-[#8B93A6] text-xl">Discutons de votre prochaine campagne d'influence et définissons ensemble votre stratégie de conquête.</p>
               <Link
                 to="/contact"
-                className="inline-flex items-center justify-center rounded-2xl bg-secondary px-12 py-5 text-lg font-bold text-white transition-transform hover:scale-105"
+                className="bg-secondary text-on-secondary px-14 py-6 rounded-2xl font-bold text-xl hover:scale-105 hover:bg-secondary/90 transition-transform shadow-xl shadow-secondary/30 inline-block"
               >
                 Prendre rendez-vous
               </Link>

@@ -1,10 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-:root {
-  --page-scale: 0.8;
-}
 
 @font-face {
   font-family: Rigot;
@@ -27,18 +25,10 @@ body {
   padding: 0;
 }
 
-@supports (zoom: 1) {
-  html {
-    zoom: var(--page-scale);
-  }
-}
-
-@supports not (zoom: 1) {
-  #root {
-    transform: scale(var(--page-scale));
-    transform-origin: top left;
-    width: calc(100% / var(--page-scale));
-  }
+::selection {
+  background: #fc9700;
+  color: #1a1f2b;
+  text-shadow: none;
 }
 
 h1,
@@ -55,6 +45,20 @@ h4,
   background: rgba(255, 255, 255, 0.8);
   backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.glassmorphism {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.glass-card-dark {
+  background: rgba(26, 31, 43, 0.6);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .hero-blob {
@@ -80,7 +84,101 @@ h4,
   letter-spacing: -0.02em;
 }
 
+.rigot-headline {
+  font-family: Rigot, 'Bodoni Moda', Syne, 'Bricolage Grotesque', serif;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+.platform-carousel-mask {
+  overflow: hidden;
+  width: 100%;
+}
+
+.platform-carousel-track {
+  display: flex;
+  align-items: center;
+  gap: 4rem;
+  width: max-content;
+  animation: platform-carousel-scroll 24s linear infinite;
+}
+
+.platform-carousel-item {
+  flex: 0 0 auto;
+}
+
+.seo-bars {
+  align-items: flex-end;
+}
+
+.seo-bar {
+  width: 1.25rem;
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+  transform-origin: bottom center;
+  animation: seo-bar-bounce 2.4s ease-in-out infinite;
+}
+
+.seo-bar-blue {
+  background: #6483f0;
+}
+
+.seo-bar-orange {
+  background: #fc9700;
+}
+
+.seo-bar-1 {
+  height: 40%;
+  animation-duration: 2s;
+}
+
+.seo-bar-2 {
+  height: 60%;
+  animation-duration: 2.5s;
+}
+
+.seo-bar-3 {
+  height: 90%;
+  animation-duration: 3s;
+}
+
+.seo-bar-4 {
+  height: 50%;
+  animation-duration: 2.2s;
+}
+
+@keyframes platform-carousel-scroll {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(calc(-50% - 2rem));
+  }
+}
+
+@keyframes seo-bar-bounce {
+  0%,
+  100% {
+    transform: scaleY(0.92);
+    opacity: 0.85;
+  }
+
+  50% {
+    transform: scaleY(1.08);
+    opacity: 1;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
+  .platform-carousel-track {
+    animation: none;
+  }
+
+  .seo-bar {
+    animation: none;
+  }
+
   .hover-lift,
   .hover-lift:hover {
     transition: none;

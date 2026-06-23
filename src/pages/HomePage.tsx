@@ -1,129 +1,66 @@
-import { Suspense, lazy, useEffect, useState } from 'react'
+﻿﻿﻿﻿import { Suspense, lazy, useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
+import Navbar from '../components/Navbar'
 
 const HomeDeferredSections = lazy(() => import('../components/home/HomeDeferredSections'))
 
 const homeImages = {
-  heroAvif: '/images/home/hero.avif?v=20260619',
-  hero: '/images/home/hero.webp?v=20260619',
-}
-
-function HeroNavbarLite() {
-  const [useLightStyle, setUseLightStyle] = useState(false)
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setUseLightStyle(window.scrollY > window.innerHeight * 0.55)
-    }
-
-    handleScroll()
-    window.addEventListener('scroll', handleScroll, { passive: true })
-
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
-
-  return (
-    <nav className="fixed left-0 right-0 top-4 z-50 px-[clamp(0.875rem,3vw,1.5rem)]">
-      <div
-        className={`max-w-7xl mx-auto rounded-full px-[clamp(0.8rem,3vw,2rem)] py-[clamp(0.65rem,1.8vw,0.85rem)] backdrop-blur-md transition-all ${
-          useLightStyle
-            ? 'border border-slate-200 bg-white/95 shadow-lg'
-            : 'border border-white/20 bg-white/10'
-        }`}
-      >
-        <div className="hidden md:flex items-center justify-between gap-6">
-          <Link to="/" className="flex items-center space-x-3">
-            <span
-              className={`h-[clamp(2.5rem,6vw,3.5rem)] w-[clamp(2.5rem,6vw,3.5rem)] overflow-hidden rounded-full transition-all ${
-                useLightStyle ? 'bg-white shadow-sm' : 'bg-white/10'
-              }`}
-            >
-              <img src="/Logo%20weyan.png?v=20260619" alt="We Yan Digital" className="h-full w-full object-cover" />
-            </span>
-            <span className="sr-only">We Yan Digital</span>
-          </Link>
-
-          <div
-            className={`hidden md:flex items-center space-x-[clamp(1.25rem,2.6vw,2.5rem)] text-[clamp(0.9rem,1.2vw,1rem)] font-medium ${
-              useLightStyle ? 'text-slate-700' : 'text-white'
-            }`}
-          >
-            <Link className="transition-colors hover:text-[#FC9700]" to="/">
-              Home
-            </Link>
-            <Link className="transition-colors hover:text-[#FC9700]" to="/services">
-              Services
-            </Link>
-            <Link className="transition-colors hover:text-[#FC9700]" to="/agence">
-              About
-            </Link>
-            <Link className="transition-colors hover:text-[#FC9700]" to="/contact">
-              Contacte
-            </Link>
-          </div>
-
-        </div>
-
-        <div className="grid grid-cols-4 gap-1 md:hidden">
-          <Link
-            className={`flex min-h-[48px] items-center justify-center rounded-2xl px-2 py-3 text-center text-[0.68rem] font-semibold transition-colors ${
-              useLightStyle ? 'text-slate-700 hover:bg-slate-100' : 'text-white hover:bg-white/10'
-            }`}
-            to="/"
-          >
-            Home
-          </Link>
-          <Link
-            className={`flex min-h-[48px] items-center justify-center rounded-2xl px-2 py-3 text-center text-[0.68rem] font-semibold transition-colors ${
-              useLightStyle ? 'text-slate-700 hover:bg-slate-100' : 'text-white hover:bg-white/10'
-            }`}
-            to="/services"
-          >
-            Services
-          </Link>
-          <Link
-            className={`flex min-h-[48px] items-center justify-center rounded-2xl px-2 py-3 text-center text-[0.68rem] font-semibold transition-colors ${
-              useLightStyle ? 'text-slate-700 hover:bg-slate-100' : 'text-white hover:bg-white/10'
-            }`}
-            to="/agence"
-          >
-            About
-          </Link>
-          <Link
-            className={`flex min-h-[48px] items-center justify-center rounded-2xl px-2 py-3 text-center text-[0.68rem] font-semibold transition-colors ${
-              useLightStyle ? 'text-slate-700 hover:bg-slate-100' : 'text-white hover:bg-white/10'
-            }`}
-            to="/contact"
-          >
-            Contacte
-          </Link>
-        </div>
-      </div>
-    </nav>
-  )
+  hero: '/images/home/hero-custom.jpg?v=20260623',
 }
 
 export default function HomePage() {
   const [shouldLoadDeferredSections, setShouldLoadDeferredSections] = useState(false)
+  const deferredSectionsTriggerRef = useRef<HTMLDivElement | null>(null)
 
   useEffect(() => {
-    const loadDeferredSections = () => setShouldLoadDeferredSections(true)
-    const timeoutId = window.setTimeout(loadDeferredSections, 3000)
+    const loadDeferredSections = () => setShouldLoadDeferredSections((currentValue) => currentValue || true)
+    const deferredSectionsTrigger = deferredSectionsTriggerRef.current
 
-    window.addEventListener('scroll', loadDeferredSections, { passive: true, once: true })
+    let observer: IntersectionObserver | null = null
+    let fallbackTimeoutId = 0
+    let idleCallbackId: number | null = null
+
+    if (deferredSectionsTrigger) {
+      observer = new IntersectionObserver(
+        (entries) => {
+          if (!entries.some((entry) => entry.isIntersecting)) return
+          loadDeferredSections()
+          observer?.disconnect()
+          observer = null
+        },
+        {
+          rootMargin: '320px 0px',
+        },
+      )
+
+      observer.observe(deferredSectionsTrigger)
+    }
+
+    fallbackTimeoutId = window.setTimeout(() => {
+      if ('requestIdleCallback' in window) {
+        idleCallbackId = window.requestIdleCallback(loadDeferredSections, { timeout: 1200 })
+        return
+      }
+
+      loadDeferredSections()
+    }, 4500)
+
     window.addEventListener('pointerdown', loadDeferredSections, { passive: true, once: true })
     window.addEventListener('keydown', loadDeferredSections, { once: true })
 
     return () => {
-      window.clearTimeout(timeoutId)
-      window.removeEventListener('scroll', loadDeferredSections)
+      if (observer) observer.disconnect()
+      window.clearTimeout(fallbackTimeoutId)
+      if (idleCallbackId !== null && 'cancelIdleCallback' in window) {
+        window.cancelIdleCallback(idleCallbackId)
+      }
       window.removeEventListener('pointerdown', loadDeferredSections)
       window.removeEventListener('keydown', loadDeferredSections)
     }
   }, [])
 
   return (
-    <div className="bg-white font-sans text-slate-900 overflow-hidden w-full pb-28 md:pb-32">
+    <div className="bg-white font-sans text-slate-900 overflow-hidden w-full">
       <style>{`
         .font-rigot {
           font-family: 'Syne', 'Poppins', sans-serif;
@@ -131,37 +68,41 @@ export default function HomePage() {
           letter-spacing: -0.02em;
         }
         .floating-tag {
-          backdrop-filter: blur(8px);
           background-color: rgba(255, 255, 255, 0.9);
           animation: float 4s ease-in-out infinite;
+        }
+        .hero-image-motion {
+          animation: heroPan 18s ease-in-out infinite alternate;
+          transform-origin: center center;
+          will-change: transform;
         }
         @keyframes float {
           0% { transform: translateY(0px); }
           50% { transform: translateY(-15px); }
           100% { transform: translateY(0px); }
         }
+        @keyframes heroPan {
+          0% { transform: scale(1.02) translate3d(0, 0, 0); }
+          100% { transform: scale(1.1) translate3d(-1.5%, 1.5%, 0); }
+        }
       `}</style>
 
-      <HeroNavbarLite />
+      <Navbar variant="hero" />
 
       <main>
         <section
-          className="relative h-[100svh] min-h-[clamp(36rem,85svh,50rem)] flex items-center overflow-hidden pt-[clamp(4.5rem,10vw,6rem)]"
+          className="relative flex min-h-[100svh] items-center overflow-hidden pt-[clamp(5.5rem,12vw,7rem)] pb-[clamp(2.5rem,6vw,4rem)]"
         >
-          <picture className="absolute inset-0">
-            <source srcSet={homeImages.heroAvif} type="image/avif" />
-            <img
-              alt=""
-              aria-hidden="true"
-              className="absolute inset-0 h-full w-full object-cover"
-              src={homeImages.hero}
-              width={512}
-              height={286}
-              loading="eager"
-              fetchPriority="high"
-              decoding="async"
-            />
-          </picture>
+          <img
+            alt=""
+            aria-hidden="true"
+            className="hero-image-motion absolute inset-0 h-full w-full object-cover object-center"
+            src={homeImages.hero}
+            width={1600}
+            height={900}
+            loading="eager"
+            decoding="async"
+          />
           <div
             aria-hidden="true"
             className="absolute inset-0"
@@ -195,18 +136,18 @@ export default function HomePage() {
               <span className="font-bold text-slate-800 text-sm lg:text-base">Ads</span>
             </div>
           </div>
-          <div className="container mx-auto px-[clamp(1rem,4vw,1.5rem)] relative z-10">
-            <div className="max-w-3xl">
-              <h1 className="text-white text-[clamp(3rem,10vw,5.5rem)] font-rigot font-bold leading-[1.05] mb-[clamp(0.75rem,2vw,1rem)]">
+          <div className="relative z-10 w-full px-[clamp(1rem,4vw,1.5rem)]">
+            <div className="max-w-3xl py-[clamp(1rem,3vw,2rem)]">
+              <h1 className="text-white text-[clamp(2.4rem,9vw,5.5rem)] font-rigot font-bold leading-[1.02] mb-[clamp(0.75rem,2vw,1rem)]">
                 Make it <br /> Different
               </h1>
-              <h2 className="text-white text-[clamp(1.65rem,5.4vw,3.125rem)] font-bold mb-[clamp(1.25rem,3vw,2rem)]">
-                Votre marque mérite de se <br className="hidden sm:block" />
-                <span className="text-[#FC9700]">démarquer.</span>
+              <h2 className="text-white text-[clamp(1.35rem,5vw,3.125rem)] font-bold leading-[1.08] mb-[clamp(1.25rem,3vw,2rem)]">
+                Votre marque mÃ©rite de se <br className="hidden sm:block" />
+                <span className="text-[#FC9700]">dÃ©marquer.</span>
               </h2>
-              <p className="text-gray-300 text-[clamp(1rem,2.2vw,1.25rem)] max-w-xl leading-relaxed mb-[clamp(1.5rem,3vw,2.5rem)]">
-                We Yan Digital est une agence de communication à Casablanca spécialisée en branding,
-                création de contenu, influence marketing et publicité digitale au Maroc.
+              <p className="text-gray-300 text-[clamp(0.95rem,2vw,1.25rem)] max-w-2xl leading-relaxed mb-[clamp(1.5rem,3vw,2.5rem)]">
+                We Yan Digital est une agence de communication Ã  Casablanca spÃ©cialisÃ©e en branding,
+                crÃ©ation de contenu, influence marketing et publicitÃ© digitale au Maroc.
               </p>
               <div className="flex flex-col sm:flex-row gap-[clamp(0.75rem,2vw,1rem)]">
                 <Link
@@ -226,6 +167,8 @@ export default function HomePage() {
           </div>
         </section>
 
+        <div ref={deferredSectionsTriggerRef} aria-hidden="true" className="h-px w-full" />
+
         <Suspense fallback={null}>
           {shouldLoadDeferredSections ? <HomeDeferredSections /> : null}
         </Suspense>
@@ -233,3 +176,4 @@ export default function HomePage() {
     </div>
   )
 }
+

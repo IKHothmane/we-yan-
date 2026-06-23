@@ -3,6 +3,13 @@ export default {
   theme: {
     extend: {
       colors: {
+        brand: {
+          charcoal: '#1A1F2B',
+          blue: '#6483F0',
+          orange: '#FC9700',
+          gray: '#F5F7FA',
+          light: '#FFFFFF',
+        },
         primary: '#6483F0',
         secondary: '#FC9700',
         'agency-orange': '#FC9700',
@@ -39,8 +46,9 @@ export default {
         'margin-tablet': '40px',
       },
       fontFamily: {
-        sans: ['Poppins', 'sans-serif'],
+        sans: ['Hanken Grotesk', 'Poppins', 'sans-serif'],
         heading: ['Rigot', 'sans-serif'],
+        rigot: ['Rigot', 'sans-serif'],
         headline: ['Syne', 'Bricolage Grotesque', 'sans-serif'],
         body: ['Poppins', 'sans-serif'],
       },

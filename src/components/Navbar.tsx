@@ -1,6 +1,5 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import Icon from './Icon'
 
 type NavbarProps = {
   variant?: 'light' | 'hero'
@@ -16,32 +15,55 @@ export default function Navbar({ variant = 'light' }: NavbarProps) {
       return
     }
 
-    const handleScroll = () => {
-      setUseLightStyle(window.scrollY > window.innerHeight * 0.55)
+    let frameId = 0
+
+    const updateNavbarStyle = () => {
+      frameId = 0
+      const nextValue = window.scrollY > window.innerHeight * 0.55
+      setUseLightStyle((currentValue) => (currentValue === nextValue ? currentValue : nextValue))
     }
 
-    handleScroll()
+    const handleScroll = () => {
+      if (frameId) return
+      frameId = window.requestAnimationFrame(updateNavbarStyle)
+    }
+
+    updateNavbarStyle()
     window.addEventListener('scroll', handleScroll, { passive: true })
-    return () => window.removeEventListener('scroll', handleScroll)
+    window.addEventListener('resize', handleScroll, { passive: true })
+
+    return () => {
+      if (frameId) window.cancelAnimationFrame(frameId)
+      window.removeEventListener('scroll', handleScroll)
+      window.removeEventListener('resize', handleScroll)
+    }
   }, [isHero])
 
-  const links = useMemo(
-    () =>
-      isHero
-        ? [
-            { to: '/', label: 'Home', icon: 'web' },
-            { to: '/services', label: 'Services', icon: 'architecture' },
-            { to: '/agence', label: 'About', icon: 'groups_3' },
-            { to: '/contact', label: 'Contacte', icon: 'mail' },
-          ]
-        : [
-            { to: '/projets', label: 'Projets', icon: 'palette' },
-            { to: '/services', label: 'Services', icon: 'architecture' },
-            { to: '/agence', label: 'Pourquoi nous', icon: 'groups_3' },
-            { to: '/contact', label: 'Contacte', icon: 'mail' },
-          ],
-    [isHero],
-  )
+  const links = [
+    { to: '/', label: 'Home' },
+    { to: '/services', label: 'Services' },
+    { to: '/agence', label: 'About' },
+    { to: '/contact', label: 'Contacte' },
+  ] as const
+
+  const socialLinks = [
+    { href: 'https://instagram.com', label: 'Instagram', icon: '/icons/instagram.svg', hoverClassName: 'hover:text-secondary' },
+    { href: 'https://linkedin.com', label: 'LinkedIn', icon: '/icons/linkedin-in.svg', hoverClassName: 'hover:text-primary' },
+    { href: 'https://facebook.com', label: 'Facebook', icon: '/icons/facebook-f.svg', hoverClassName: 'hover:text-secondary' },
+  ] as const
+
+  const iconMaskStyle = (url: string) =>
+    ({
+      WebkitMaskImage: `url(${url})`,
+      maskImage: `url(${url})`,
+      WebkitMaskRepeat: 'no-repeat',
+      maskRepeat: 'no-repeat',
+      WebkitMaskPosition: 'center',
+      maskPosition: 'center',
+      WebkitMaskSize: 'contain',
+      maskSize: 'contain',
+      backgroundColor: 'currentColor',
+    }) as const
 
   return (
     <>
@@ -49,22 +71,20 @@ export default function Navbar({ variant = 'light' }: NavbarProps) {
         <div
           className={`max-w-7xl mx-auto rounded-full px-[clamp(0.8rem,3vw,2rem)] py-[clamp(0.65rem,1.8vw,0.85rem)] transition-all ${
             useLightStyle
-              ? 'bg-white/95 backdrop-blur-md border border-slate-200 shadow-lg'
-              : 'bg-white/10 backdrop-blur-md border border-white/20'
+              ? 'bg-white/95 border border-slate-200 shadow-lg'
+              : 'bg-white/10 border border-white/20'
           }`}
         >
           <div className="hidden md:flex items-center justify-between gap-6">
             <Link to="/" className="flex items-center space-x-3">
               <span
-                className={`overflow-hidden rounded-full flex items-center justify-center transition-all ${
-                  useLightStyle
-                    ? 'h-[clamp(2.5rem,6vw,3rem)] w-[clamp(2.5rem,6vw,3rem)] bg-white'
-                    : 'h-[clamp(2.5rem,6vw,3.5rem)] w-[clamp(2.5rem,6vw,3.5rem)] bg-white/10'
+                className={`h-[clamp(2.5rem,6vw,3.5rem)] w-[clamp(2.5rem,6vw,3.5rem)] overflow-hidden rounded-full transition-all ${
+                  useLightStyle ? 'bg-white shadow-sm' : 'bg-white/10'
                 }`}
               >
                 <img src="/Logo%20weyan.png?v=20260619" alt="We Yan Digital" className="h-full w-full object-cover" />
               </span>
-              <span className="sr-only">We Digital</span>
+              <span className="sr-only">We Yan Digital</span>
             </Link>
 
             <div
@@ -72,11 +92,32 @@ export default function Navbar({ variant = 'light' }: NavbarProps) {
                 useLightStyle ? 'text-slate-700' : 'text-white'
               }`}
             >
-              {links.map((link) => (
+              {links.slice(0, 3).map((link) => (
                 <Link key={link.to} className="hover:text-[#FC9700] transition-colors" to={link.to}>
                   {link.label}
                 </Link>
               ))}
+              <div className="flex items-center gap-4">
+                <Link className="hover:text-[#FC9700] transition-colors" to={links[3].to}>
+                  {links[3].label}
+                </Link>
+                <div className="flex items-center gap-2">
+                  {socialLinks.map((socialLink) => (
+                    <a
+                      key={socialLink.label}
+                      aria-label={socialLink.label}
+                      className={`flex items-center justify-center transition-all ${socialLink.hoverClassName} ${
+                        useLightStyle ? 'text-slate-700' : 'text-white'
+                      }`}
+                      href={socialLink.href}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      <span aria-hidden="true" className="h-5 w-5" style={iconMaskStyle(socialLink.icon)} />
+                    </a>
+                  ))}
+                </div>
+              </div>
             </div>
 
           </div>
@@ -85,15 +126,12 @@ export default function Navbar({ variant = 'light' }: NavbarProps) {
             {links.map((link) => (
               <Link
                 key={link.to}
-                className={`flex min-w-0 flex-col items-center justify-center gap-1 rounded-2xl px-2 py-2.5 transition-colors ${
+                className={`flex min-h-[48px] items-center justify-center rounded-2xl px-2 py-3 text-center text-[0.68rem] font-semibold transition-colors ${
                   useLightStyle ? 'text-slate-700 hover:bg-slate-100' : 'text-white hover:bg-white/10'
                 }`}
                 to={link.to}
               >
-                <Icon name={link.icon} className="w-5 h-5" />
-                <span className="text-[0.68rem] leading-none font-semibold text-center">
-                  {link.label}
-                </span>
+                {link.label}
               </Link>
             ))}
           </div>

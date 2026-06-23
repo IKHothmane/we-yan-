@@ -14,7 +14,14 @@ export default function useScrollReveal() {
 
       elements.forEach((el) => {
         const delay = el.getAttribute('data-reveal-delay') || '0'
-        el.classList.add('opacity-0', 'translate-y-8', 'transition-all', 'duration-700', 'ease-out')
+        el.classList.add(
+          'opacity-0',
+          'translate-y-8',
+          'transition-opacity',
+          'transition-transform',
+          'duration-700',
+          'ease-out',
+        )
         el.style.transitionDelay = `${delay}ms`
       })
 

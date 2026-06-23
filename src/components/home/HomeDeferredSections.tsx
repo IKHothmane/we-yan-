@@ -1,3 +1,4 @@
+import type { CSSProperties } from 'react'
 import { Link } from 'react-router-dom'
 import Icon from '../Icon'
 import SiteFooter from '../SiteFooter'
@@ -22,6 +23,11 @@ const homeImages = {
 const solutionsCardsBackground =
   'https://lh3.googleusercontent.com/aida-public/AB6AXuA26cTrzHWhr1lAl33fd3Ki70zwSUi4OF6NjvcmIZ76Ga7-B-FjhQoLQtGZcbTdkiBFBnDeDM5_JRbgc_X94ePyxv64rKgjS7XfUkwJuIMzIENhqM1PpaK7RoethVHVm8di6c_IbAx7F-BB6NczMfoLzkMUeRiJ_K_cjdVe0s3vP6gWa8PXNUBIy5mhVNAtHC7--WgbqpaXlN1mq7vEhIVL9FZQN8rWrTrYlU634k6EKU8XO-Rm8y-Hu66NwWKW2iAryuhp5f9Z7lM'
 
+const deferredSectionStyle: CSSProperties = {
+  contentVisibility: 'auto',
+  containIntrinsicSize: '900px',
+}
+
 const services = [
   {
     icon: 'travel_explore',
@@ -38,7 +44,7 @@ const services = [
     title: 'Création de Contenu & Community Management',
     description: 'Photos, vidéos, reels et gestion quotidienne de vos réseaux sociaux.',
     tone: 'secondary',
-    layoutClassName: 'min-h-[300px] md:min-h-[320px] md:mt-6',
+    layoutClassName: 'min-h-[300px] md:min-h-[320px] md:mt-16 lg:mt-20',
     to: '/services/creation-contenu-community-management',
     image:
       'https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt=premium%20content%20creation%20studio%2C%20camera%2C%20reels%20storyboard%2C%20softbox%20lights%2C%20stylish%20set%20design%2C%20orange%20and%20periwinkle%20accents%2C%20realistic&image_size=portrait_4_3',
@@ -58,7 +64,7 @@ const services = [
     title: 'Référencement Naturel (SEO)',
     description: 'Optimisation SEO pour améliorer votre visibilité Google sur le long terme.',
     tone: 'secondary',
-    layoutClassName: 'min-h-[300px] md:min-h-[320px] md:mt-6',
+    layoutClassName: 'min-h-[300px] md:min-h-[320px] md:mt-16 lg:mt-20',
     to: '/services/seo',
     image:
       'https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt=seo%20search%20ranking%20dashboard%2C%20organic%20traffic%20analytics%2C%20premium%20laptop%20workspace%2C%20orange%20and%20periwinkle%20brand%20palette%2C%20realistic&image_size=portrait_4_3',
@@ -78,7 +84,7 @@ const services = [
     title: 'Média Publicité Offline',
     description: 'Affichage, print et supports publicitaires pour renforcer votre présence terrain.',
     tone: 'secondary',
-    layoutClassName: 'min-h-[300px] md:min-h-[320px] md:mt-6',
+    layoutClassName: 'min-h-[300px] md:min-h-[320px] md:mt-16 lg:mt-20',
     to: '/services/media-publicite-offline',
     image:
       'https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt=offline%20advertising%20media%20mockups%2C%20billboard%2C%20flyer%2C%20poster%20and%20print%20campaign%2C%20premium%20branding%20presentation%2C%20orange%20and%20periwinkle%20palette%2C%20realistic&image_size=portrait_4_3',
@@ -145,7 +151,7 @@ export default function HomeDeferredSections() {
   return (
     <>
       <section className="py-[clamp(4.5rem,9vw,8rem)] bg-white" id="services">
-        <div className="max-w-6xl mx-auto px-[clamp(1rem,4vw,2rem)]">
+        <div className="w-full px-[clamp(1rem,4vw,2rem)]">
           <div className="text-center mb-[clamp(2.5rem,6vw,4rem)]" data-reveal>
             <h2 className="font-bold text-[clamp(2rem,5vw,3rem)] text-slate-900 mb-4">
               Nos Solutions <span className="text-primary">Digitales</span>
@@ -155,32 +161,34 @@ export default function HomeDeferredSections() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 items-start md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6" data-reveal data-reveal-delay="100">
+          <div className="grid grid-cols-1 items-start md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8" data-reveal data-reveal-delay="100">
             {services.map((service) => {
-              const cardClasses = `group relative isolate flex overflow-hidden rounded-3xl border border-white/15 p-[clamp(1.25rem,3vw,2rem)] text-white shadow-[0_14px_40px_-16px_rgba(15,23,42,0.55)] transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_24px_60px_-20px_rgba(15,23,42,0.7)] ${service.layoutClassName} ${
-                'to' in service
-                  ? 'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/70 focus-visible:ring-offset-2'
-                  : ''
-              }`
+              const cardClasses = `group relative isolate flex overflow-hidden rounded-3xl border border-white/15 p-[clamp(1.25rem,3vw,2rem)] text-white shadow-[0_14px_40px_-16px_rgba(15,23,42,0.55)] transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_24px_60px_-20px_rgba(15,23,42,0.7)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/70 focus-visible:ring-offset-2 ${service.layoutClassName}`
+              const toneGradient =
+                service.tone === 'secondary'
+                  ? 'bg-[linear-gradient(135deg,rgba(252,151,0,0.32),rgba(15,23,42,0.82))]'
+                  : 'bg-[linear-gradient(135deg,rgba(100,131,240,0.34),rgba(15,23,42,0.82))]'
 
               const cardContent = (
                 <>
-                  <div
-                    className="absolute inset-0 rounded-[inherit] scale-100 transform-gpu transition-transform duration-700 ease-out group-hover:scale-110"
-                    style={{
-                      backgroundImage:
-                        service.tone === 'secondary'
-                          ? `linear-gradient(135deg, rgba(252, 151, 0, 0.32), rgba(15, 23, 42, 0.82)), url(${solutionsCardsBackground})`
-                          : `linear-gradient(135deg, rgba(100, 131, 240, 0.34), rgba(15, 23, 42, 0.82)), url(${solutionsCardsBackground})`,
-                      backgroundPosition: 'center',
-                      backgroundSize: 'cover',
-                    }}
+                  <img
+                    alt=""
+                    aria-hidden="true"
+                    className="absolute inset-0 h-full w-full rounded-[inherit] object-cover opacity-95"
+                    src={solutionsCardsBackground}
+                    loading="lazy"
+                    decoding="async"
+                    fetchPriority="low"
                   />
+                  <div className={`absolute inset-0 rounded-[inherit] ${toneGradient}`} />
                   <img
                     alt=""
                     aria-hidden="true"
                     className="absolute inset-0 h-full w-full rounded-[inherit] scale-105 transform-gpu object-cover opacity-0 transition-all duration-700 ease-out group-hover:scale-100 group-hover:opacity-100"
                     src={service.image}
+                    loading="lazy"
+                    decoding="async"
+                    fetchPriority="low"
                   />
                   <div className="absolute inset-0 rounded-[inherit] bg-slate-950/20 opacity-0 transition-opacity duration-700 group-hover:opacity-100" />
                   <div className="absolute inset-0 rounded-[inherit] bg-gradient-to-t from-slate-950/55 via-slate-950/15 to-transparent transition-opacity duration-500 group-hover:opacity-95" />
@@ -192,37 +200,26 @@ export default function HomeDeferredSections() {
                     <p className="text-white/85 text-[clamp(0.92rem,1.8vw,1rem)] leading-relaxed transition-all duration-500 group-hover:translate-x-1 group-hover:text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.35)]">
                       {service.description}
                     </p>
-                    {'to' in service ? (
-                      <span className="mt-5 inline-flex items-center gap-2 text-[0.78rem] font-bold uppercase tracking-[0.22em] text-white/90">
-                        Explorer
-                        <Icon name="arrow_forward" className="h-4 w-4" />
-                      </span>
-                    ) : null}
+                    <span className="mt-5 inline-flex items-center gap-2 text-[0.78rem] font-bold uppercase tracking-[0.22em] text-white/90">
+                      Explorer
+                      <Icon name="arrow_forward" className="h-4 w-4" />
+                    </span>
                   </div>
                 </>
               )
 
-              return 'to' in service ? (
-                <Link
-                  key={service.title}
-                  to={service.to}
-                  className={cardClasses}
-                  aria-label={`Découvrir ${service.title}`}
-                >
+              return (
+                <Link key={service.title} to={service.to} className={cardClasses} aria-label={`Découvrir ${service.title}`}>
                   {cardContent}
                 </Link>
-              ) : (
-                <div key={service.title} className={cardClasses}>
-                  {cardContent}
-                </div>
               )
             })}
           </div>
         </div>
       </section>
 
-      <section className="py-[clamp(4.5rem,9vw,8rem)] bg-slate-50" id="work">
-        <div className="max-w-6xl mx-auto px-[clamp(1rem,4vw,2rem)]">
+      <section className="py-[clamp(4.5rem,9vw,8rem)] bg-slate-50" id="work" style={deferredSectionStyle}>
+        <div className="w-full px-[clamp(1rem,4vw,2rem)]">
           <div
             className="flex flex-col md:flex-row justify-between items-start md:items-end mb-[clamp(2.5rem,6vw,4rem)] gap-4"
             data-reveal
@@ -271,8 +268,8 @@ export default function HomeDeferredSections() {
         </div>
       </section>
 
-      <section className="py-[clamp(4.5rem,9vw,8rem)] bg-primary text-white" id="about">
-        <div className="max-w-6xl mx-auto px-[clamp(1rem,4vw,2rem)] grid md:grid-cols-2 gap-[clamp(2rem,5vw,4rem)] items-center">
+      <section className="py-[clamp(4.5rem,9vw,8rem)] bg-primary text-white" id="about" style={deferredSectionStyle}>
+        <div className="w-full px-[clamp(1rem,4vw,2rem)] grid md:grid-cols-2 gap-[clamp(2rem,5vw,4rem)] items-center">
           <div data-reveal>
             <h2 className="font-bold text-[clamp(2rem,5vw,3rem)] mb-[clamp(1.5rem,4vw,2rem)] leading-tight">
               Pourquoi nous faire <span className="text-primary">confiance</span> ?
@@ -323,8 +320,8 @@ export default function HomeDeferredSections() {
         </div>
       </section>
 
-      <section className="py-[clamp(4.5rem,9vw,8rem)] bg-white">
-        <div className="max-w-6xl mx-auto px-[clamp(1rem,4vw,2rem)]">
+      <section className="py-[clamp(4.5rem,9vw,8rem)] bg-white" style={deferredSectionStyle}>
+        <div className="w-full px-[clamp(1rem,4vw,2rem)]">
           <h2 className="text-center text-[clamp(2rem,5vw,3rem)] font-bold text-slate-900 mb-[clamp(2.5rem,6vw,4rem)]" data-reveal>
             Ce que disent nos <span className="text-primary">partenaires</span>
           </h2>
@@ -372,8 +369,8 @@ export default function HomeDeferredSections() {
         </div>
       </section>
 
-      <section className="py-[clamp(4.5rem,9vw,8rem)] bg-slate-50">
-        <div className="max-w-6xl mx-auto px-[clamp(1rem,4vw,2rem)]">
+      <section className="py-[clamp(4.5rem,9vw,8rem)] bg-slate-50" style={deferredSectionStyle}>
+        <div className="w-full px-[clamp(1rem,4vw,2rem)]">
           <div className="grid grid-cols-1 md:grid-cols-2 overflow-hidden rounded-3xl shadow-2xl">
             <div className="p-12 bg-white" data-reveal>
               <h2 className="text-3xl font-bold text-slate-900 mb-8">
@@ -482,27 +479,6 @@ export default function HomeDeferredSections() {
                 <Icon name="location_on" className="w-4 h-4" />
                 Ouvrir dans OpenStreetMap
               </a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-[clamp(3.5rem,8vw,5rem)] bg-white border-t border-slate-100">
-        <div className="max-w-5xl mx-auto px-[clamp(1rem,4vw,2rem)]" data-reveal>
-          <div className="rounded-[2rem] border border-slate-200 bg-slate-50 p-[clamp(1.5rem,4vw,3rem)]">
-            <p className="text-[clamp(0.78rem,1.6vw,0.85rem)] font-bold uppercase tracking-[0.25em] text-primary mb-4">
-              We Yan Digital
-            </p>
-            <h2 className="text-[clamp(1.8rem,4.5vw,2.6rem)] font-bold text-slate-900 leading-tight mb-5">
-              We Yan Digital, agence digitale marocaine pour les marques qui veulent se demarquer
-            </h2>
-            <div className="space-y-4 text-slate-600 text-[clamp(1rem,2.1vw,1.08rem)] leading-relaxed">
-              <p>
-                We Yan Digital accompagne les entreprises, commerces et marques qui cherchent une agence digitale au Maroc capable de combiner strategie, creativite et execution. Si vos clients recherchent We Yan, We Yan Digital ou une agence de communication a Casablanca, cette plateforme presente notre expertise en branding, publicite digitale, creation de contenu et developpement web.
-              </p>
-              <p>
-                Notre mission est simple : aider chaque marque a construire une presence forte sur Google, sur les reseaux sociaux et sur le web avec une approche claire, mesurable et orientee resultats.
-              </p>
             </div>
           </div>
         </div>

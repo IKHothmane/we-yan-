@@ -1,4 +1,4 @@
-import { useState } from 'react'
+﻿import { useState } from 'react'
 import Icon from '../components/Icon'
 import Navbar from '../components/Navbar'
 import PageSeo from '../components/PageSeo'
@@ -15,27 +15,26 @@ export default function ContactPage() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    alert('Message envoyé !')
+    alert('Message envoyÃ© !')
   }
 
   return (
-    <div className="bg-[#f1f1f1] min-h-screen font-body-md text-on-surface selection:bg-primary-container selection:text-on-primary-container overflow-hidden w-full pb-28 md:pb-32">
+    <div className="bg-[#f1f1f1] min-h-screen font-body-md text-on-surface selection:bg-primary-container selection:text-on-primary-container overflow-hidden w-full">
       <PageSeo {...pageSeo.contact} />
       <Navbar />
 
-      <main className="max-w-7xl mx-auto px-[clamp(1rem,4vw,2rem)] md:px-16 py-[clamp(6rem,11vw,8rem)]">
+      <main className="w-full px-[clamp(1rem,4vw,2rem)] md:px-10 lg:px-16 py-[clamp(6rem,11vw,8rem)]">
         <header className="mb-20" data-reveal>
           <h1 className="text-[clamp(2.8rem,7vw,4.5rem)] leading-[1.02] tracking-[-0.03em] font-extrabold max-w-4xl mb-6">
             Parlons de votre prochain grand projet.
           </h1>
           <p className="text-[clamp(1rem,2.5vw,1.25rem)] text-on-surface-variant max-w-2xl">
-            Prêt à transformer vos idées en réalité numérique ? Notre équipe d'experts est à votre écoute pour concevoir des solutions sur mesure.
+            PrÃªt Ã  transformer vos idÃ©es en rÃ©alitÃ© numÃ©rique ? Notre Ã©quipe d'experts est Ã  votre Ã©coute pour concevoir des solutions sur mesure.
           </p>
         </header>
 
-        <div className="overflow-x-auto pb-4">
-          <div className="grid min-w-[1040px] grid-cols-12 gap-6">
-            <aside className="col-span-4 space-y-12" data-reveal data-reveal-delay="100">
+        <div className="grid grid-cols-1 gap-8 lg:grid-cols-12">
+            <aside className="space-y-12 lg:col-span-4" data-reveal data-reveal-delay="100">
             <div className="space-y-8">
               <div className="group">
                 <div className="flex items-center gap-4 mb-2">
@@ -53,7 +52,7 @@ export default function ContactPage() {
               <div className="group">
                 <div className="flex items-center gap-4 mb-2">
                   <Icon name="phone_iphone" className="w-6 h-6 text-primary" />
-                  <span className="uppercase tracking-widest text-outline text-sm font-semibold">Téléphone</span>
+                  <span className="uppercase tracking-widest text-outline text-sm font-semibold">TÃ©lÃ©phone</span>
                 </div>
                 <div className="flex flex-col">
                   <a
@@ -120,10 +119,10 @@ export default function ContactPage() {
             </div>
             </aside>
 
-            <div className="col-span-8" data-reveal data-reveal-delay="200">
+            <div className="lg:col-span-8" data-reveal data-reveal-delay="200">
             <div className="bg-white/90 backdrop-blur-xl border border-black/5 p-[clamp(1.5rem,4vw,3rem)] rounded-xl shadow-sm">
               <form className="space-y-8" onSubmit={handleSubmit}>
-                <div className="grid grid-cols-2 gap-8">
+                <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-8">
                   <div className="space-y-2">
                     <label className="text-sm font-semibold text-on-surface-variant" htmlFor="name">
                       Nom complet
@@ -155,9 +154,9 @@ export default function ContactPage() {
                 </div>
 
                 <div className="space-y-2">
-                  <label className="text-sm font-semibold text-on-surface-variant">Service souhaité</label>
+                  <label className="text-sm font-semibold text-on-surface-variant">Service souhaitÃ©</label>
                   <div className="flex flex-wrap gap-3">
-                    {['Design UI/UX', 'Développement', 'Marketing Digital', 'Autre'].map((s) => {
+                    {['Design UI/UX', 'DÃ©veloppement', 'Marketing Digital', 'Autre'].map((s) => {
                       const id = `service-${s.toLowerCase().replace(/\s+/g, '-')}`
                       return (
                         <label key={s} htmlFor={id} className="cursor-pointer">
@@ -207,14 +206,13 @@ export default function ContactPage() {
             </div>
           </div>
         </div>
-        </div>
 
         <section className="mt-32 rounded-3xl overflow-hidden relative shadow-xl min-h-[500px] flex items-center justify-center" data-reveal data-reveal-delay="300">
           <div className="absolute inset-0 z-0 grayscale contrast-125 opacity-40">
             <img
               alt="Casablanca Map Location"
               className="w-full h-full object-cover"
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuDq3SVMlJH5rvKmas1N4jlXA9e2UrV9-pCs4xy7wYc6olT-M-pNNUOmfYjrEycxY7wBWERmaWpmv3aMoLdBM76icOQMMlvCGTjTL7RJRcqmqi9wGgiXFQvUU3IzZ3mDettLYqmk-gE9MbfKpAvtBvumj_W3kK_aN3355uKC4ZwhSKynO2GY7ksXrNdNg3qn4PlI67DCKmbzSB3gz1kqbFtb7PBORdYFkObbAkpjcbiiQXJAx_zg1zUm0f_uTt3HlJy6zY62ez2pGPg"
+              src="/images/contact/hero.jpg"
               loading="lazy"
               width={1200}
               height={500}
@@ -226,7 +224,7 @@ export default function ContactPage() {
             </div>
             <h3 className="text-2xl md:text-3xl font-semibold mb-2">Visitez nos bureaux</h3>
             <p className="text-base md:text-lg text-on-surface-variant mb-6">
-              Venez discuter de votre projet autour d'un café dans le cœur battant de Casablanca.
+              Venez discuter de votre projet autour d'un cafÃ© dans le cÅ“ur battant de Casablanca.
             </p>
             <a
               className="text-primary text-sm font-semibold underline underline-offset-4 hover:text-secondary transition-colors"
@@ -246,3 +244,4 @@ export default function ContactPage() {
     </div>
   )
 }
+

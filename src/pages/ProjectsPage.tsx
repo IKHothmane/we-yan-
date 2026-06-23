@@ -1,4 +1,4 @@
-import { useState } from 'react'
+﻿import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import Icon from '../components/Icon'
 import Navbar from '../components/Navbar'
@@ -22,8 +22,8 @@ const projects: Project[] = [
     title: 'Modern Retail Identity',
     category: 'Branding',
     year: '2024',
-    description: 'Identité visuelle novatrice pour le secteur retail au Maroc.',
-    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCNTGXkUV5g81ISneMfjN-O2cpC3O4vPu3s79ZDskipBo4_AYA2QAsDbP3cChyqHj6PC0dcSCQRsTxR2u1x8jTKmAlA7rIGFafL4gA9nj39ZHoswXO42-ZQK8XxbcC0EqB0gbFaSoptmmJvW2U-jM_sqJEuRfiUqVM9a8N-AwJzRHDk3LWv1pap45ICf7ir7wmDpPo7ZtawvzmAX6b7miKiC1izPkPUoHxUGzcJ44_trTZxrFoiEv0rzvYPxVCVSvEIHyCe5aCyEf4',
+    description: 'IdentitÃ© visuelle novatrice pour le secteur retail au Maroc.',
+    image: '/images/projects/project-1.jpg',
     size: 'large',
   },
   {
@@ -31,7 +31,7 @@ const projects: Project[] = [
     category: 'Product Design',
     year: '2024',
     description: '',
-    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBIMmUVG7OKX1VqbVDbIjF7YYVcrW6_nBiWxBkDgIep5Di2WwtNS3g35pwuNbcwj275n8_rutfqkkTiltBUm0oTg4456pqjLcfVF13K_zMrcnkw7lFWTe8t1eSBfMxD5OtBfIM95ifchcdxy8HC5SyaJ0UEaWDXILiAjcbgxQ4JYazbTS3Ttl7kLc8tSpvyt7EXcVfa9nYaN4Y1-8Vf0WxxzZ7DjWJHAm5j_a2bHDdppO8rIqZVZBcMAFuUwyNUHv4oD5WWsNfiyhA',
+    image: '/images/projects/project-2.jpg',
     size: 'medium',
     secondary: true,
   },
@@ -40,7 +40,7 @@ const projects: Project[] = [
     category: 'Social Media',
     year: '2024',
     description: 'Lancement Digital',
-    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDXpcMXigDzN3H2KqayLINUCgXKEXMJw47UDb9Ar8E60-BQVXAJ6UlJFNcLLSgIHEraSHapYfPH2HunnznKIp_M6LRT9je4Ykli9_IL7Tp1iskwP4zbUheYc6DeiEAy-xGW4NsIt4xHpRYX-DegTbRd0S2UYj-iMaw013x1CYKJRyujxo4ByPaNeqDlf0enocV64QkQTIhW69xWkgd9j1Z5v08pqVI3Lj2rsQeiTuDECV4guyHYJojMDzrxjXhP6kRKiEazcoBol8M',
+    image: '/images/projects/project-3.jpg',
     size: 'small',
   },
   {
@@ -48,7 +48,7 @@ const projects: Project[] = [
     category: 'Data Strategy',
     year: '2023',
     description: 'Plateforme B2B',
-    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBypvLcPd31s47HMB2RhGtLAyFXpY4xAphoZIZXHD8yOfnjvFhxDEF_Yk63CGXhMEmlDRcvviANYDV5FHvq90YR1B_X9AXBcrTxaKzxpSLAAh3tVuWDaNnAmmy7XFDP5HAVnXuaa4lkBsvkct8y_yQ7xKhPEDCbhcwxVnPsELTUMGTu-lSRDRZomsPcHVDrz-aaoCQ2VXV9bxx2E7nPb6Zz-3JJtl-yASsaP0P-dcaWbHcQcr_dkeyebBBvjNQ4V878CGeRLolKjMU',
+    image: '/images/projects/project-4.jpg',
     size: 'small',
   },
   {
@@ -56,28 +56,28 @@ const projects: Project[] = [
     category: 'Content Creation',
     year: '2024',
     description: 'Production Studio',
-    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAD81dLKYJiL3ECpe0CCs-eLyp5swpyUILzmxQPnDHCxhJQNAj1mxVGh8HM6mXJgqN49VNGXzUWfT-JutGcqcgI6PwlLRiNWUEOlOhPCuxk4Az2l7CGFWPb5pdU0oXpPm0GN8tjNUAdBLJW-4A0Z1KTGvyMJO6c1n-LRKavDJKyN2Aj0DWM8phrRATYidyE38BdPs24dxw4G73Ahk-kfyWXBK5Pu4qGRnuu1lfg-jqhHokKz3uEJTH6xr8A1q-_zMqDUtMiW_f9HEc',
+    image: '/images/projects/project-5.jpg',
     size: 'small',
   },
 ]
 
-const filters = ['Tous', 'Branding', 'Content Creation', 'Social Media', 'Stratégie']
+const filters = ['Tous', 'Branding', 'Content Creation', 'Social Media', 'StratÃ©gie']
 
 export default function ProjectsPage() {
   const [activeFilter, setActiveFilter] = useState('Tous')
   useScrollReveal()
 
   const filteredProjects = projects.filter((p) =>
-    activeFilter === 'Tous' ? true : p.category === activeFilter || (activeFilter === 'Stratégie' && p.category === 'Data Strategy'),
+    activeFilter === 'Tous' ? true : p.category === activeFilter || (activeFilter === 'StratÃ©gie' && p.category === 'Data Strategy'),
   )
 
   return (
-    <div className="min-h-screen bg-[#F1F1F1] overflow-hidden w-full pb-28 md:pb-32">
+    <div className="min-h-screen bg-[#F1F1F1] overflow-hidden w-full">
       <PageSeo {...pageSeo.projects} />
       <Navbar />
 
       <main className="bg-[#F1F1F1] min-h-screen pt-24">
-        <header className="pt-[clamp(5rem,9vw,6rem)] pb-[clamp(3rem,7vw,4rem)] px-[clamp(1rem,4vw,2rem)] md:px-margin-desktop max-w-container-max mx-auto">
+        <header className="w-full pt-[clamp(5rem,9vw,6rem)] pb-[clamp(3rem,7vw,4rem)] px-[clamp(1rem,4vw,2rem)] md:px-margin-desktop">
           <div className="flex flex-col gap-6 max-w-4xl" data-reveal>
             <span className="text-primary font-semibold text-[14px] uppercase tracking-[0.2em] flex items-center gap-3">
               <span className="w-8 h-[2px] bg-primary"></span>
@@ -87,13 +87,13 @@ export default function ProjectsPage() {
               Nos Projets
             </h1>
             <p className="font-body text-[clamp(1rem,2.5vw,1.25rem)] text-on-surface-variant leading-relaxed max-w-2xl">
-              Une immersion dans notre univers créatif où la stratégie rencontre l'innovation pour propulser les marques marocaines.
+              Une immersion dans notre univers crÃ©atif oÃ¹ la stratÃ©gie rencontre l'innovation pour propulser les marques marocaines.
             </p>
           </div>
         </header>
 
         <section className="sticky top-[72px] md:top-[80px] z-40 bg-white/60 backdrop-blur-md py-6 border-y border-outline-variant/30" data-reveal data-reveal-delay="100">
-          <div className="px-[clamp(1rem,4vw,2rem)] md:px-margin-desktop max-w-container-max mx-auto">
+          <div className="w-full px-[clamp(1rem,4vw,2rem)] md:px-margin-desktop">
             <div className="flex flex-nowrap overflow-x-auto md:flex-wrap gap-4 pb-2 md:pb-0 no-scrollbar items-center">
               {filters.map((filter) => (
                 <button
@@ -112,15 +112,14 @@ export default function ProjectsPage() {
           </div>
         </section>
 
-        <section className="py-20 px-[clamp(1rem,4vw,2rem)] md:px-margin-desktop max-w-container-max mx-auto">
-          <div className="overflow-x-auto pb-4">
-            <div className="grid min-w-[1100px] grid-cols-12 gap-[clamp(1rem,2vw,2rem)]">
+        <section className="w-full py-20 px-[clamp(1rem,4vw,2rem)] md:px-margin-desktop">
+            <div className="grid grid-cols-1 gap-[clamp(1rem,2vw,2rem)] md:grid-cols-2 xl:grid-cols-12">
               {filteredProjects.map((project, index) => {
               if (project.size === 'large') {
                 return (
                   <div
                     key={project.title}
-                    className="col-span-8 group project-card relative overflow-hidden rounded-xl bg-white"
+                    className="group project-card relative overflow-hidden rounded-xl bg-white md:col-span-2 xl:col-span-8"
                     data-reveal
                     data-reveal-delay={index * 100}
                   >
@@ -156,7 +155,7 @@ export default function ProjectsPage() {
                 return (
                   <div
                     key={project.title}
-                    className="col-span-4 group project-card relative overflow-hidden rounded-xl bg-white"
+                    className="group project-card relative overflow-hidden rounded-xl bg-white md:col-span-1 xl:col-span-4"
                     data-reveal
                     data-reveal-delay={index * 100}
                   >
@@ -186,7 +185,7 @@ export default function ProjectsPage() {
               return (
                 <div
                   key={project.title}
-                  className="col-span-4 group project-card rounded-xl bg-white overflow-hidden hover:shadow-2xl hover:shadow-primary/5 transition-all duration-500 border border-outline-variant/30"
+                  className="group project-card rounded-xl bg-white overflow-hidden hover:shadow-2xl hover:shadow-primary/5 transition-all duration-500 border border-outline-variant/30 md:col-span-1 xl:col-span-4"
                   data-reveal
                   data-reveal-delay={index * 100}
                 >
@@ -215,7 +214,6 @@ export default function ProjectsPage() {
               )
               })}
             </div>
-          </div>
 
           <div className="flex justify-center mt-20" data-reveal data-reveal-delay="500">
             <Link to="/contact" className="group flex items-center gap-4 text-on-surface font-bold text-[16px] border-b-2 border-secondary pb-2 hover:gap-6 transition-all duration-300 font-display">
@@ -226,16 +224,16 @@ export default function ProjectsPage() {
         </section>
 
         <section className="py-section-padding" data-reveal data-reveal-delay="600">
-          <div className="max-w-container-max mx-auto px-[clamp(1rem,4vw,2rem)] md:px-margin-desktop">
+          <div className="w-full px-[clamp(1rem,4vw,2rem)] md:px-margin-desktop">
             <div className="relative bg-[#1b1b1b] overflow-hidden rounded-xl p-[clamp(1.75rem,5vw,7rem)] text-center">
               <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/20 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/3"></div>
               <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-secondary/15 rounded-full blur-[100px] translate-y-1/2 -translate-x-1/4"></div>
               <div className="relative z-10 flex flex-col items-center gap-8">
                 <h2 className="font-display text-[clamp(2.3rem,6vw,4rem)] text-white leading-tight max-w-3xl">
-                  Prêt à lancer votre projet ?
+                  PrÃªt Ã  lancer votre projet ?
                 </h2>
                 <p className="font-body text-[clamp(1rem,2.5vw,1.25rem)] text-white/60 max-w-2xl mx-auto">
-                  Rejoignez les marques qui font confiance à notre expertise pour transformer leur présence digitale en un avantage compétitif majeur.
+                  Rejoignez les marques qui font confiance Ã  notre expertise pour transformer leur prÃ©sence digitale en un avantage compÃ©titif majeur.
                 </p>
                 <Link to="/contact" className="bg-secondary text-white px-12 py-5 rounded-full font-bold text-[18px] hover:scale-105 hover:brightness-110 shadow-2xl shadow-secondary/40 transition-all duration-300 active:scale-95 mt-4 font-display inline-block">
                   Contactez-nous
@@ -256,3 +254,4 @@ export default function ProjectsPage() {
     </div>
   )
 }
+
