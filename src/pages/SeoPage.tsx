@@ -6,7 +6,7 @@ import SiteFooter from '../components/SiteFooter'
 import useScrollReveal from '../hooks/useScrollReveal'
 import { pageSeo } from '../lib/pageSeo'
 
-const heroImage = '/images/seo/hero.jpg'
+const heroImage = '/images/seo/hero-user.jpg?v=20260623'
 const authorityImage = '/images/seo/authority.jpg'
 const testimonialImage = '/images/seo/testimonial.jpg'
 
@@ -37,10 +37,10 @@ export default function SeoPage() {
   return (
     <div className="min-h-screen w-full overflow-x-hidden bg-background font-body text-on-background">
       <PageSeo {...pageSeo.seo} />
-      <Navbar />
+      <Navbar serviceTitle="Référencement Naturel (SEO)" />
 
-      <main className="pt-24">
-        <section className="relative overflow-hidden px-[clamp(1rem,4vw,2rem)] py-32 md:px-margin-desktop md:py-48">
+      <main>
+        <section className="relative overflow-hidden px-[clamp(1rem,4vw,2rem)] pb-32 pt-32 md:px-margin-desktop md:pb-48 md:pt-40 lg:pt-48">
           <div className="absolute inset-0 z-0">
             <img
               alt="Luminous office background"
@@ -50,7 +50,7 @@ export default function SeoPage() {
             <div className="absolute inset-0 bg-white/80 backdrop-blur-md" />
           </div>
 
-          <div className="relative z-10 grid w-full grid-cols-1 items-center gap-16 lg:grid-cols-2">
+          <div className="relative z-10 grid w-full grid-cols-1 items-center gap-16 lg:grid-cols-2 lg:gap-20">
             <div className="max-w-2xl" data-reveal>
               <div className="mb-8 inline-flex items-center gap-3 rounded-full border border-brand-blue/20 bg-white px-5 py-2 text-brand-blue shadow-sm">
                 <span className="h-2 w-2 rounded-full bg-brand-orange" />
@@ -58,8 +58,12 @@ export default function SeoPage() {
                   Expertise Performance
                 </span>
               </div>
-              <h1 className="mb-8 font-rigot text-6xl font-extrabold leading-[1.05] text-brand-charcoal md:text-8xl">
-                Referencement <span className="text-brand-orange italic">Naturel (SEO)</span>.
+              <h1 className="mb-8 max-w-3xl font-rigot text-6xl font-extrabold leading-[1.05] text-brand-charcoal md:text-8xl">
+                Référencement
+                <br />
+                <span className="block text-secondary italic drop-shadow-[0_10px_30px_rgba(252,151,0,0.28)]">
+                  Naturel (SEO).
+                </span>
               </h1>
               <p className="mb-12 max-w-xl text-xl font-light leading-relaxed text-brand-charcoal/70 md:text-2xl">
                 Dominez les resultats de recherche et transformez votre visibilite organique en
@@ -84,7 +88,7 @@ export default function SeoPage() {
             </div>
 
             <div
-              className="relative hidden overflow-hidden rounded-3xl p-4 shadow-2xl glass-card lg:block"
+              className="relative hidden overflow-hidden rounded-3xl p-4 shadow-2xl glass-card lg:mt-48 lg:block xl:mt-56 2xl:mt-64"
               data-reveal
               data-reveal-delay="100"
             >
@@ -93,11 +97,14 @@ export default function SeoPage() {
                 className="h-full w-full rounded-2xl object-cover"
                 src={heroImage}
               />
-              <div className="absolute -bottom-6 -left-6 max-w-[200px] rounded-xl bg-brand-orange p-6 text-white shadow-xl">
-                <p className="mb-1 font-rigot text-4xl">140%</p>
-                <p className="text-sm font-bold leading-tight opacity-90">
-                  Croissance organique moyenne sur 12 mois
-                </p>
+              <div className="absolute -bottom-6 -left-6 w-[220px] max-w-[220px]">
+                <div className="absolute inset-0 translate-x-4 translate-y-4 rounded-[1rem] border-[3px] border-brand-orange bg-transparent shadow-[0_18px_45px_-18px_rgba(252,151,0,0.65)]" />
+                <div className="relative rounded-[1rem] bg-secondary px-5 py-4 text-white shadow-xl">
+                  <p className="mb-2 font-rigot text-4xl leading-none tracking-tight">40%</p>
+                  <p className="text-sm font-semibold leading-snug text-white/95">
+                    Croissance organique moyenne sur 12 mois
+                  </p>
+                </div>
               </div>
             </div>
           </div>
@@ -241,7 +248,7 @@ export default function SeoPage() {
                     data-reveal
                     data-reveal-delay={String(index * 100)}
                   >
-                    <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-brand-blue/10 font-rigot text-2xl font-bold text-brand-blue">
+                    <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full border-2 border-secondary/25 bg-secondary/10 font-rigot text-2xl font-bold text-secondary shadow-[0_10px_24px_-18px_rgba(252,151,0,0.9)]">
                       {step.number}
                     </div>
                     <div>

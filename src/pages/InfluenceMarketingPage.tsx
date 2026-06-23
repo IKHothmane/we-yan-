@@ -1,4 +1,4 @@
-﻿﻿﻿﻿import { useEffect } from 'react'
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import Icon from '../components/Icon'
 import Navbar from '../components/Navbar'
@@ -75,11 +75,11 @@ export default function InfluenceMarketingPage() {
   return (
     <div className="bg-background text-on-background font-body selection:bg-secondary selection:text-brand-charcoal">
       <PageSeo {...pageSeo.influenceMarketing} />
-      <Navbar />
+      <Navbar serviceTitle="Marketing d’Influence" />
 
-      <main className="pt-24">
+      <main>
         {/* Hero Section */}
-        <section className="relative px-8 md:px-20 py-32 md:py-48 overflow-hidden">
+        <section className="relative overflow-hidden px-8 pb-32 pt-32 md:px-20 md:pb-48 md:pt-40 lg:pt-48">
           {/* Background Image */}
           <div className="absolute inset-0 z-0">
             <img

@@ -3,9 +3,10 @@ import { Link } from 'react-router-dom'
 
 type NavbarProps = {
   variant?: 'light' | 'hero'
+  serviceTitle?: string
 }
 
-export default function Navbar({ variant = 'light' }: NavbarProps) {
+export default function Navbar({ variant = 'light', serviceTitle }: NavbarProps) {
   const isHero = variant === 'hero'
   const [useLightStyle, setUseLightStyle] = useState(!isHero)
 
@@ -76,15 +77,29 @@ export default function Navbar({ variant = 'light' }: NavbarProps) {
           }`}
         >
           <div className="hidden md:flex items-center justify-between gap-6">
-            <Link to="/" className="flex items-center space-x-3">
+            <Link to="/" className="flex items-center gap-4">
               <span
-                className={`h-[clamp(2.5rem,6vw,3.5rem)] w-[clamp(2.5rem,6vw,3.5rem)] overflow-hidden rounded-full transition-all ${
+                className={`h-[clamp(2.5rem,6vw,3.5rem)] w-[clamp(2.5rem,6vw,3.5rem)] flex-shrink-0 overflow-hidden rounded-full transition-all ${
                   useLightStyle ? 'bg-white shadow-sm' : 'bg-white/10'
                 }`}
               >
-                <img src="/Logo%20weyan.png?v=20260619" alt="We Yan Digital" className="h-full w-full object-cover" />
+                <img
+                  src="/Logo%20weyan.png?v=20260619"
+                  alt="We Yan Digital"
+                  className="h-full w-full scale-[1.25] object-cover"
+                />
               </span>
-              <span className="sr-only">We Yan Digital</span>
+              {serviceTitle ? (
+                <span
+                  className={`max-w-[18rem] truncate text-[clamp(0.9rem,1.4vw,1.1rem)] font-semibold tracking-[-0.02em] ${
+                    useLightStyle ? 'text-slate-800' : 'text-white'
+                  }`}
+                >
+                  {serviceTitle}
+                </span>
+              ) : (
+                <span className="sr-only">We Yan Digital</span>
+              )}
             </Link>
 
             <div

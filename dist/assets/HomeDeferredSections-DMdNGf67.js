@@ -1,4 +1,4 @@
-import{j as e,L as n}from"./index-CHb2G2Ej.js";import{I as t,S as c}from"./SiteFooter-CtjVcjSh.js";import{u as d}from"./useScrollReveal-B7ZxYl1t.js";const p=a=>`data:image/svg+xml;charset=UTF-8,${encodeURIComponent(a)}`,l=(a,s,i)=>p(`
+import{j as e,L as n}from"./index-B5BeWS0K.js";import{I as t,S as c}from"./SiteFooter-CyrD1hVB.js";import{u as d}from"./useScrollReveal-D1OVaS2S.js";const p=a=>`data:image/svg+xml;charset=UTF-8,${encodeURIComponent(a)}`,l=(a,s,i)=>p(`
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120">
   <rect width="120" height="120" rx="60" fill="${s}"/>
   <text x="50%" y="54%" dominant-baseline="middle" text-anchor="middle" font-family="Arial, sans-serif" font-size="40" font-weight="700" fill="${i}">${a}</text>

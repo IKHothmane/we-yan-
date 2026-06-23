@@ -1,4 +1,4 @@
-﻿﻿﻿﻿﻿﻿﻿import { Link } from 'react-router-dom'
+﻿﻿﻿﻿﻿﻿﻿﻿import { Link } from 'react-router-dom'
 import Icon from '../components/Icon'
 import Navbar from '../components/Navbar'
 import PageSeo from '../components/PageSeo'
@@ -217,7 +217,7 @@ export default function AdvertisingPage() {
   return (
     <div className="min-h-screen overflow-x-hidden bg-brand-gray font-sans text-brand-charcoal antialiased">
       <PageSeo {...pageSeo.advertising} />
-      <Navbar />
+      <Navbar serviceTitle="Publicité Digitale" />
 
       <main>
         <header className="relative overflow-hidden bg-white pb-20 pt-32 lg:pb-32 lg:pt-48">

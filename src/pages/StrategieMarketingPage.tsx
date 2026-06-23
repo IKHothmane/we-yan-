@@ -70,7 +70,7 @@ export default function StrategieMarketingPage() {
   return (
     <div className="font-body bg-background min-h-screen overflow-hidden w-full">
       <PageSeo {...pageSeo.strategyMarketing} />
-      <Navbar />
+      <Navbar serviceTitle="Stratégie Marketing" />
 
       <main>
         <section className="relative flex min-h-[921px] items-center overflow-hidden bg-surface-container-lowest">

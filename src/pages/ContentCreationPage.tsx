@@ -59,7 +59,7 @@ export default function ContentCreationPage() {
   return (
     <div className="min-h-screen w-full overflow-hidden bg-surface text-on-surface">
       <PageSeo {...pageSeo.contentCreation} />
-      <Navbar />
+      <Navbar serviceTitle="Création de Contenu" />
 
       <main>
         {/* Hero Section */}
