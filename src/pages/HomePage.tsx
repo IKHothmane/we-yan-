@@ -1,6 +1,8 @@
-﻿﻿﻿﻿﻿﻿import { Suspense, lazy, useEffect, useRef, useState } from 'react'
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿import { Suspense, lazy, useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
+import Icon from '../components/Icon'
 import Navbar from '../components/Navbar'
+import { HOME_HERO_SERVICES } from '../constants'
 
 const HomeDeferredSections = lazy(() => import('../components/home/HomeDeferredSections'))
 
@@ -8,8 +10,24 @@ const homeImages = {
   hero: '/images/home/hero-custom.jpg?v=20260623',
 }
 
+const heroServicePositions = [
+  {
+    containerClassName: 'top-[18%] right-[5%] lg:right-[16%]',
+    animationDelay: '0s',
+  },
+  {
+    containerClassName: 'top-[39%] right-[10%] lg:right-[28%]',
+    animationDelay: '0.8s',
+  },
+  {
+    containerClassName: 'bottom-[20%] right-[6%] lg:right-[18%]',
+    animationDelay: '1.6s',
+  },
+] as const
+
 export default function HomePage() {
   const [shouldLoadDeferredSections, setShouldLoadDeferredSections] = useState(false)
+  const [activeServiceGroup, setActiveServiceGroup] = useState(0)
   const deferredSectionsTriggerRef = useRef<HTMLDivElement | null>(null)
 
   useEffect(() => {
@@ -59,6 +77,16 @@ export default function HomePage() {
     }
   }, [])
 
+  useEffect(() => {
+    const intervalId = window.setInterval(() => {
+      setActiveServiceGroup((currentValue) => (currentValue + 1) % 2)
+    }, 3200)
+
+    return () => window.clearInterval(intervalId)
+  }, [])
+
+  const visibleHeroServices = HOME_HERO_SERVICES.slice(activeServiceGroup * 3, activeServiceGroup * 3 + 3)
+
   return (
     <div className="bg-white font-sans text-slate-900 overflow-hidden w-full">
       <style>{`
@@ -76,10 +104,17 @@ export default function HomePage() {
           transform-origin: center center;
           will-change: transform;
         }
+        .service-tag-enter {
+          animation: tagSwap 420ms ease both;
+        }
         @keyframes float {
           0% { transform: translateY(0px); }
           50% { transform: translateY(-15px); }
           100% { transform: translateY(0px); }
+        }
+        @keyframes tagSwap {
+          0% { opacity: 0; transform: translate3d(0, 18px, 0) scale(0.96); }
+          100% { opacity: 1; transform: translate3d(0, 0, 0) scale(1); }
         }
         @keyframes heroPan {
           0% { transform: scale(1.02) translate3d(0, 0, 0); }
@@ -109,32 +144,23 @@ export default function HomePage() {
             style={{ background: 'linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45))' }}
           />
           <div className="absolute inset-0 pointer-events-none hidden md:block">
-            <div
-              className="absolute top-[25%] right-[5%] lg:right-[20%] floating-tag flex items-center gap-3 px-4 lg:px-6 py-2 lg:py-3 rounded-2xl shadow-xl z-10"
-              style={{ animationDelay: '0s' }}
-            >
-              <span className="flex h-9 w-9 items-center justify-center rounded-full bg-primary text-white shadow-sm">
-                <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
-                  <path d="M4 20h4l10.5-10.5a2.1 2.1 0 0 0-4-4L4 16v4Z" />
-                  <path d="m13.5 6.5 4 4" />
-                </svg>
-              </span>
-              <span className="font-bold text-slate-800 text-sm lg:text-base">Branding</span>
-            </div>
-            <div
-              className="absolute bottom-[25%] right-[8%] lg:right-[30%] floating-tag flex items-center gap-3 px-4 lg:px-6 py-2 lg:py-3 rounded-2xl shadow-xl z-10"
-              style={{ animationDelay: '1s' }}
-            >
-              <span className="flex h-9 w-9 items-center justify-center rounded-full bg-[#FC9700] text-white shadow-sm">
-                <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
-                  <path d="M4 19h16" />
-                  <path d="M7 15V9" />
-                  <path d="M12 15V5" />
-                  <path d="M17 15v-3" />
-                </svg>
-              </span>
-              <span className="font-bold text-slate-800 text-sm lg:text-base">Ads</span>
-            </div>
+            {visibleHeroServices.map((service, index) => {
+              const position = heroServicePositions[index]
+              const toneClassName = service.tone === 'secondary' ? 'bg-[#FC9700]' : 'bg-primary'
+
+              return (
+                <div
+                  key={`${activeServiceGroup}-${service.label}`}
+                  className={`absolute ${position.containerClassName} floating-tag service-tag-enter flex items-center gap-3 px-4 lg:px-6 py-2 lg:py-3 rounded-2xl shadow-xl z-10`}
+                  style={{ animationDelay: position.animationDelay }}
+                >
+                  <span className={`flex h-9 w-9 items-center justify-center rounded-full ${toneClassName} text-white shadow-sm`}>
+                    <Icon name={service.icon} className="text-[1.15rem] leading-none" />
+                  </span>
+                  <span className="font-bold text-slate-800 text-sm lg:text-base">{service.label}</span>
+                </div>
+              )
+            })}
           </div>
           <div className="relative z-10 w-full px-[clamp(1rem,4vw,1.5rem)]">
             <div className="max-w-3xl py-[clamp(1rem,3vw,2rem)]">
@@ -142,12 +168,12 @@ export default function HomePage() {
                 Make it <br /> Different
               </h1>
               <h2 className="text-white text-[clamp(1.35rem,5vw,3.125rem)] font-bold leading-[1.08] mb-[clamp(1.25rem,3vw,2rem)]">
-                Votre marque mÃ©rite de se <br className="hidden sm:block" />
-                <span className="text-[#FC9700]">dÃ©marquer.</span>
+                Votre marque mérite de se <br className="hidden sm:block" />
+                <span className="text-[#FC9700]">démarquer.</span>
               </h2>
               <p className="text-gray-300 text-[clamp(0.95rem,2vw,1.25rem)] max-w-2xl leading-relaxed mb-[clamp(1.5rem,3vw,2.5rem)]">
-                We Yan Digital est une agence de communication Ã  Casablanca spÃ©cialisÃ©e en branding,
-                crÃ©ation de contenu, influence marketing et publicitÃ© digitale au Maroc.
+                We Yan Digital est une agence de communication à Casablanca spécialisée en branding,
+                création de contenu, influence marketing et publicité digitale au Maroc.
               </p>
               <div className="flex flex-col sm:flex-row gap-[clamp(0.75rem,2vw,1rem)]">
                 <Link
@@ -176,4 +202,3 @@ export default function HomePage() {
     </div>
   )
 }
-

@@ -1,4 +1,4 @@
-﻿﻿﻿﻿﻿﻿﻿﻿import { Link } from 'react-router-dom'
+﻿﻿import { Link } from 'react-router-dom'
 import Icon from '../components/Icon'
 import Navbar from '../components/Navbar'
 import PageSeo from '../components/PageSeo'
@@ -153,6 +153,7 @@ const omniChannelCards = [
     title: 'Video Strategy',
     description: 'YouTube & Reels pour une notoriété massive et des contenus qui captent vite l’attention.',
     icon: 'movie_filter',
+    video: '/videos/premium-landscape-video-for-digital-advertising-ag.mp4',
     image: analyticsPreview,
     imageAlt: 'Video Strategy',
     cardClassName: 'bg-brand-charcoal text-white',
@@ -332,8 +333,24 @@ export default function AdvertisingPage() {
                   data-reveal
                   data-reveal-delay={String(index * 100)}
                 >
-                  <img alt={card.imageAlt} className={card.imageClassName} src={card.image} />
-                  <div className={`absolute inset-0 z-10 ${card.overlayClassName}`} />
+                  {'video' in card && card.video ? (
+                    <video
+                      aria-hidden="true"
+                      className={card.imageClassName}
+                      src={card.video}
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
+                      preload="metadata"
+                      poster={card.image}
+                    />
+                  ) : (
+                    <img alt={card.imageAlt} className={card.imageClassName} src={card.image} />
+                  )}
+                  {'video' in card && card.video ? null : (
+                    <div className={`absolute inset-0 z-10 ${card.overlayClassName}`} />
+                  )}
                   <div className={`relative z-20 ${card.contentClassName}`}>
                     <div className={`mb-4 flex h-10 w-10 items-center justify-center rounded-lg ${card.iconWrapperClassName}`}>
                       <Icon name={card.icon} className="text-[20px]" />
@@ -380,10 +397,19 @@ export default function AdvertisingPage() {
           </div>
         </section>
 
-        <section className="relative overflow-hidden bg-brand-charcoal py-32 text-white">
-          <div className="absolute inset-0 opacity-40 mix-blend-overlay">
-            <img alt="Dashboard analytics premium" className="h-full w-full object-cover" src={analyticsPreview} />
+        <section className="relative overflow-hidden bg-brand-blue py-32 text-white">
+          <div className="absolute inset-0 opacity-35">
+            <img
+              alt="Dashboard analytics premium"
+              className="h-full w-full object-cover object-center"
+              src={analyticsPreview}
+            />
           </div>
+          <div aria-hidden="true" className="absolute inset-0 bg-white/25" />
+          <div
+            aria-hidden="true"
+            className="absolute inset-0 bg-gradient-to-br from-brand-blue/55 via-brand-blue/45 to-brand-blue/25 opacity-55"
+          />
           <div className="relative z-10 mx-auto w-full max-w-[1600px] px-[clamp(1rem,2vw,2.5rem)]">
             <div className="max-w-2xl" data-reveal>
               <div className="glass-card-dark rounded-[2rem] p-8 md:p-10">

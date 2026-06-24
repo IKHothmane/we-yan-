@@ -1,331 +1,351 @@
 <!DOCTYPE html>
 
-<html class="scroll-smooth" lang="fr"><head>
+<html class="light" lang="fr"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Média Publicité Offline | WE YAN DIGITAL</title>
-<!-- Fonts -->
-<link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.cdnfonts.com/css/rigot" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        .bg-custom-surface {
+            background-color: #f9f9f9;
+        }
+        .input-focus-ring:focus {
+            box-shadow: 0 0 0 4px rgba(100, 131, 240, 0.1);
+        }
+    </style>
 <script id="tailwind-config">
-      tailwind.config = {
-        darkMode: "class",
-        theme: {
-          extend: {
-            colors: {
-                "on-secondary-fixed-variant": "#832700",
-                "outline-variant": "#c2c7ce",
-                "on-secondary": "#ffffff",
-                "inverse-surface": "#2f3131",
-                "on-background": "#1a1c1c",
-                "primary-container": "#a7c7e7",
-                "secondary-fixed-dim": "#ffb59c",
-                "on-tertiary-container": "#4f5051",
-                "on-primary": "#ffffff",
-                "on-tertiary": "#ffffff",
-                "tertiary-fixed": "#e2e2e2",
-                "tertiary": "#5d5f5f",
-                "primary": "#6483F0", /* Soft Pastel Blue */
-                "tertiary-fixed-dim": "#c6c6c6",
-                "on-error-container": "#93000a",
-                "on-secondary-container": "#ffffff",
-                "surface": "#ffffff", /* White surface */
-                "on-primary-fixed": "#001d32",
-                "error": "#ba1a1a",
-                "surface-container-lowest": "#ffffff",
-                "secondary-container": "#FC9700", /* Vibrant Orange */
-                "on-secondary-fixed": "#390c00",
-                "secondary": "#FC9700", /* Vibrant Orange */
-                "on-surface": "#1a1c1c",
-                "outline": "#73777e",
-                "primary-fixed-dim": "#aacaea",
-                "inverse-primary": "#aacaea",
-                "background": "#ffffff", /* White background */
-                "surface-dim": "#dadada",
-                "tertiary-container": "#c3c3c3",
-                "inverse-on-surface": "#f1f1f1",
-                "surface-container-highest": "#f9f9f9",
-                "on-surface-variant": "#42474d",
-                "surface-bright": "#ffffff",
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+                "surface-container-low": "#f3f3f3",
                 "on-tertiary-fixed-variant": "#454747",
-                "on-primary-container": "#34536f",
-                "primary-fixed": "#cde5ff",
-                "secondary-fixed": "#ffdbcf",
-                "surface-variant": "#f3f3f3",
-                "surface-container-low": "#f9f9f9",
-                "surface-container-high": "#e8e8e8",
+                "inverse-on-surface": "#f1f1f1",
+                "on-background": "#1b1b1b",
+                "on-secondary-container": "#643900",
+                "tertiary-fixed": "#e2e2e2",
+                "primary-fixed": "#dce1ff",
                 "on-error": "#ffffff",
-                "error-container": "#ffdad6",
+                "tertiary": "#5b5c5c",
+                "secondary-container": "#fe9803",
+                "surface-container-high": "#e8e8e8",
+                "primary": "#6483F0",
+                "inverse-surface": "#303030",
+                "secondary-fixed": "#ffdcbd",
+                "inverse-primary": "#b6c4ff",
                 "on-tertiary-fixed": "#1a1c1c",
-                "on-primary-fixed-variant": "#294964",
-                "surface-container": "#f3f3f3",
-                "surface-tint": "#6483F0"
-            },
-            borderRadius: {
+                "surface-dim": "#dadada",
+                "on-secondary": "#ffffff",
+                "surface-container-highest": "#e2e2e2",
+                "error-container": "#ffdad6",
+                "surface-container-lowest": "#ffffff",
+                "surface-bright": "#f9f9f9",
+                "on-secondary-fixed": "#2c1600",
+                "surface-container": "#eeeeee",
+                "surface-tint": "#3456c1",
+                "outline": "#747684",
+                "outline-variant": "#c4c5d5",
+                "primary-container": "#dce1ff",
+                "tertiary-fixed-dim": "#c6c6c7",
+                "on-primary-fixed-variant": "#133ca8",
+                "background": "#f9f9f9",
+                "tertiary-container": "#737575",
+                "on-surface-variant": "#444653",
+                "surface-variant": "#e2e2e2",
+                "secondary-fixed-dim": "#ffb86f",
+                "on-surface": "#1b1b1b",
+                "on-error-container": "#93000a",
+                "on-secondary-fixed-variant": "#693c00",
+                "surface": "#f9f9f9",
+                "on-primary-fixed": "#001550",
+                "on-primary-container": "#001550",
+                "primary-fixed-dim": "#b6c4ff",
+                "on-primary": "#ffffff",
+                "on-tertiary-container": "#fcfcfc",
+                "secondary": "#FC9700",
+                "on-tertiary": "#ffffff",
+                "error": "#ba1a1a"
+        },
+        "borderRadius": {
                 "DEFAULT": "0.25rem",
                 "lg": "0.5rem",
                 "xl": "0.75rem",
                 "full": "9999px"
-            },
-            fontFamily: {
-                "headline": ["Hanken Grotesk"],
-                "display": ["Hanken Grotesk"],
-                "body": ["Hanken Grotesk"],
-                "label": ["Hanken Grotesk"]
-            },
-            spacing: {
-                "unit": "8px",
-                "container-max": "1280px",
-                "margin-desktop": "80px",
-                "margin-tablet": "40px",
-                "margin-mobile": "20px",
-                "gutter": "24px",
-                "section-padding": "120px"
-            }
-          },
         },
-      }
-    </script>
-<style>
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        "spacing": {
+                "container-max": "1280px",
+                "gutter": "24px",
+                "margin-desktop": "64px",
+                "margin-mobile": "20px",
+                "base": "8px",
+                "section-padding": "120px"
+        },
+        "fontFamily": {
+                "label-md": [
+                        "Hanken Grotesk", "sans-serif"
+                ],
+                "body-md": [
+                        "Hanken Grotesk", "sans-serif"
+                ],
+                "headline-lg": [
+                        "Rigot", "sans-serif"
+                ],
+                "headline-md": [
+                        "Rigot", "sans-serif"
+                ],
+                "display-lg": [
+                        "Rigot", "sans-serif"
+                ],
+                "display-lg-mobile": [
+                        "Rigot", "sans-serif"
+                ],
+                "body-lg": [
+                        "Hanken Grotesk", "sans-serif"
+                ],
+                "headline-lg-mobile": [
+                        "Rigot", "sans-serif"
+                ]
+        },
+        "fontSize": {
+                "label-md": [
+                        "14px",
+                        {
+                                "lineHeight": "20px",
+                                "letterSpacing": "0.05em",
+                                "fontWeight": "600"
+                        }
+                ],
+                "body-md": [
+                        "16px",
+                        {
+                                "lineHeight": "24px",
+                                "fontWeight": "400"
+                        }
+                ],
+                "headline-lg": [
+                        "48px",
+                        {
+                                "lineHeight": "56px",
+                                "letterSpacing": "-0.02em",
+                                "fontWeight": "700"
+                        }
+                ],
+                "headline-md": [
+                        "32px",
+                        {
+                                "lineHeight": "40px",
+                                "fontWeight": "600"
+                        }
+                ],
+                "display-lg": [
+                        "72px",
+                        {
+                                "lineHeight": "80px",
+                                "letterSpacing": "-0.04em",
+                                "fontWeight": "800"
+                        }
+                ],
+                "display-lg-mobile": ["40px", {"lineHeight": "1.1", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                "body-lg": [
+                        "18px",
+                        {
+                                "lineHeight": "28px",
+                                "fontWeight": "400"
+                        }
+                ],
+                "headline-lg-mobile": [
+                        "32px",
+                        {
+                                "lineHeight": "40px",
+                                "letterSpacing": "-0.02em",
+                                "fontWeight": "700"
+                        }
+                ]
         }
-        /* Custom Header Font Simulation (Rigot style) */
-        .rigot-heading {
-            font-family: 'Hanken Grotesk', sans-serif;
-            font-weight: 900;
-            letter-spacing: -0.05em;
-            text-transform: uppercase;
-        }
-        .glass-card {
-            background: rgba(255, 255, 255, 0.4);
-            backdrop-filter: blur(24px);
-            border: 1px solid rgba(255, 255, 255, 0.6);
-        }
-        .hero-gradient {
-            background: radial-gradient(circle at top right, rgba(100, 131, 240, 0.05), transparent 70%);
-        }
-    </style>
+},
+    },
+  }
+</script>
 </head>
-<body class="bg-surface text-on-surface font-body overflow-x-hidden">
-<!-- Top Navigation Bar -->
-<header class="bg-surface/80 dark:bg-surface/80 backdrop-blur-xl fixed top-0 w-full z-50 shadow-sm">
-<nav class="flex justify-between items-center w-full px-8 py-4 max-w-[1280px] mx-auto">
-<div class="text-2xl font-display font-black tracking-tighter text-on-surface dark:text-on-surface">
-                WE YAN DIGITAL
-            </div>
-<div class="hidden md:flex gap-8 items-center">
-<a class="font-display font-extrabold uppercase tracking-tight text-on-surface-variant font-medium hover:text-secondary transition-colors duration-300" href="#">Work</a>
-<a class="font-display font-extrabold uppercase tracking-tight text-secondary font-bold border-b-2 border-secondary pb-1" href="#">Services</a>
-<a class="font-display font-extrabold uppercase tracking-tight text-on-surface-variant font-medium hover:text-secondary transition-colors duration-300" href="#">Agency</a>
-<a class="font-display font-extrabold uppercase tracking-tight text-on-surface-variant font-medium hover:text-secondary transition-colors duration-300" href="#">Contact</a>
-<button class="bg-secondary text-on-secondary px-6 py-2 rounded-lg font-display font-extrabold uppercase tracking-tight transition-transform duration-200 active:scale-95 hover:scale-105">Let's Talk</button>
+<body class="bg-custom-surface min-h-screen font-body-md text-on-surface selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopNavBar -->
+<nav class="bg-surface/80 backdrop-blur-xl shadow-sm docked full-width top-0 sticky z-50">
+<div class="flex justify-between items-center px-8 md:px-margin-desktop py-4 w-full max-w-container-max mx-auto">
+<div class="font-headline-md text-headline-md font-bold text-on-surface uppercase tracking-wider">WE YAN DIGITAL</div>
+<div class="hidden md:flex items-center gap-8">
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors duration-300" href="#">Work</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors duration-300" href="#">Services</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors duration-300" href="#">Agency</a>
+<a class="font-label-md text-label-md text-primary border-b-2 border-primary pb-1 transition-colors duration-300" href="#">Contact</a>
 </div>
-<button class="md:hidden text-primary">
-<span class="material-symbols-outlined">menu</span>
-</button>
+<div class="flex items-center gap-6">
+<div class="hidden lg:flex items-center gap-4 border-r border-outline-variant/30 pr-6 mr-2">
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#">
+<svg class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"></path></svg>
+</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#">
+<svg class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path></svg>
+</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#">
+<svg class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"></path></svg>
+</a>
+</div>
+<button class="bg-primary text-on-primary px-6 py-2 rounded-lg font-label-md text-label-md hover:opacity-90 active:scale-95 transition-all duration-200">
+                Let's Talk
+            </button>
+</div>
+</div>
 </nav>
-</header>
-<main>
+<main class="max-w-container-max mx-auto px-8 md:px-margin-desktop py-section-padding">
 <!-- Hero Section -->
-<section class="relative min-h-[819px] flex items-center overflow-hidden hero-gradient pt-32 pb-20">
-<div class="max-w-container-max mx-auto px-8 md:px-margin-desktop grid md:grid-cols-2 gap-16 items-center">
-<div class="z-10">
-<span class="text-secondary font-label-md tracking-widest uppercase mb-4 block font-bold">Communication Traditionnelle 2.0</span>
-<h1 class="rigot-heading text-[56px] md:text-[80px] leading-[0.9] text-on-surface mb-8">
-                        IMPACT <span class="text-primary">MASSIF.</span> <br/>RÉALITÉ <span class="text-secondary">TANGIBLE.</span>
-</h1>
-<p class="text-body-lg text-on-surface-variant max-w-md mb-10 text-lg">
-                        Nous fusionnons la puissance sensorielle de la publicité offline avec l'intelligence de la donnée digitale pour créer des campagnes omnicanales mémorables.
-                    </p>
-<div class="flex flex-wrap gap-4">
-<button class="bg-secondary text-on-secondary-container px-8 py-4 rounded-xl font-bold flex items-center gap-2 transition-all hover:scale-105 active:scale-95 group shadow-sm shadow-secondary/20">
-                            Découvrir nos solutions
-                            <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+<header class="mb-20 animate-fade-in text-center max-w-4xl mx-auto">
+<h1 class="font-display-lg text-display-lg mb-6 hidden md:block">
+                Parlons de votre prochain grand projet.
+            </h1>
+<h1 class="font-display-lg-mobile text-display-lg-mobile mb-4 md:hidden">
+                Parlons de votre prochain grand projet.
+            </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">
+                Prêt à transformer vos idées en réalité numérique ? Notre équipe d'experts est à votre écoute pour concevoir des solutions sur mesure.
+            </p>
+</header>
+<div class="max-w-4xl mx-auto">
+<div class="glass-card p-8 md:p-12 rounded-2xl shadow-sm border border-outline-variant/20 relative overflow-hidden">
+<!-- Decorative blurred background -->
+<div class="absolute -top-32 -left-32 w-64 h-64 bg-primary/10 rounded-full blur-3xl"></div>
+<div class="absolute -bottom-32 -right-32 w-64 h-64 bg-secondary/10 rounded-full blur-3xl"></div>
+<div class="relative z-10">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-12">
+<!-- Contact Info Side -->
+<aside class="md:col-span-5 space-y-10">
+<div>
+<h3 class="font-headline-md text-headline-md mb-8">Informations de contact</h3>
+<div class="space-y-6">
+<div class="group">
+<div class="flex items-center gap-4 mb-1">
+<span class="material-symbols-outlined text-primary text-xl" data-icon="mail">mail</span>
+<span class="font-label-md text-label-md uppercase tracking-widest text-outline">Email</span>
+</div>
+<a class="font-body-lg text-body-lg font-semibold hover:text-primary transition-colors duration-300 ml-9 block" href="mailto:contact@weyan.digital">contact@weyan.digital</a>
+</div>
+<div class="group">
+<div class="flex items-center gap-4 mb-1">
+<span class="material-symbols-outlined text-primary text-xl" data-icon="phone_iphone">phone_iphone</span>
+<span class="font-label-md text-label-md uppercase tracking-widest text-outline">Téléphone</span>
+</div>
+<a class="font-body-lg text-body-lg font-semibold hover:text-primary transition-colors duration-300 ml-9 block" href="tel:+33123456789">+33 1 23 45 67 89</a>
+</div>
+</div>
+</div>
+<div class="pt-8 border-t border-outline-variant/30">
+<span class="font-label-md text-label-md uppercase tracking-widest text-outline mb-6 block">Suivez-nous</span>
+<div class="flex gap-4">
+<a class="w-12 h-12 rounded-lg border border-outline-variant flex items-center justify-center hover:bg-primary hover:text-white transition-all duration-300 text-on-surface-variant" href="#">
+<svg class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"></path></svg>
+</a>
+<a class="w-12 h-12 rounded-lg border border-outline-variant flex items-center justify-center hover:bg-primary hover:text-white transition-all duration-300 text-on-surface-variant" href="#">
+<svg class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path></svg>
+</a>
+<a class="w-12 h-12 rounded-lg border border-outline-variant flex items-center justify-center hover:bg-primary hover:text-white transition-all duration-300 text-on-surface-variant" href="#">
+<svg class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"></path></svg>
+</a>
+</div>
+</div>
+</aside>
+<!-- Contact Form Side -->
+<div class="md:col-span-7">
+<form class="space-y-6" onsubmit="event.preventDefault(); alert('Message envoyé !');">
+<div class="space-y-2">
+<label class="font-label-md text-label-md text-on-surface-variant" for="name">Nom complet</label>
+<input class="w-full bg-surface/50 border-outline-variant rounded-lg p-4 focus:ring-0 focus:border-primary input-focus-ring transition-all" id="name" placeholder="Jean Dupont" required="" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="font-label-md text-label-md text-on-surface-variant" for="email">Adresse email</label>
+<input class="w-full bg-surface/50 border-outline-variant rounded-lg p-4 focus:ring-0 focus:border-primary input-focus-ring transition-all" id="email" placeholder="jean@exemple.com" required="" type="email"/>
+</div>
+<div class="space-y-2">
+<label class="font-label-md text-label-md text-on-surface-variant">Service souhaité</label>
+<div class="flex flex-wrap gap-2">
+<label class="cursor-pointer">
+<input checked="" class="hidden peer" name="service" type="radio"/>
+<span class="px-4 py-2 rounded-lg border border-outline-variant peer-checked:bg-primary-container peer-checked:border-primary-container peer-checked:text-on-primary-container font-label-md text-sm transition-all inline-block bg-surface/50">Strategic</span>
+</label>
+<label class="cursor-pointer">
+<input class="hidden peer" name="service" type="radio"/>
+<span class="px-4 py-2 rounded-lg border border-outline-variant peer-checked:bg-primary-container peer-checked:border-primary-container peer-checked:text-on-primary-container font-label-md text-sm transition-all inline-block bg-surface/50">Content</span>
+</label>
+<label class="cursor-pointer">
+<input class="hidden peer" name="service" type="radio"/>
+<span class="px-4 py-2 rounded-lg border border-outline-variant peer-checked:bg-primary-container peer-checked:border-primary-container peer-checked:text-on-primary-container font-label-md text-sm transition-all inline-block bg-surface/50">Ads</span>
+</label>
+<label class="cursor-pointer">
+<input class="hidden peer" name="service" type="radio"/>
+<span class="px-4 py-2 rounded-lg border border-outline-variant peer-checked:bg-primary-container peer-checked:border-primary-container peer-checked:text-on-primary-container font-label-md text-sm transition-all inline-block bg-surface/50">SEO</span>
+</label>
+<label class="cursor-pointer">
+<input class="hidden peer" name="service" type="radio"/>
+<span class="px-4 py-2 rounded-lg border border-outline-variant peer-checked:bg-primary-container peer-checked:border-primary-container peer-checked:text-on-primary-container font-label-md text-sm transition-all inline-block bg-surface/50">Influence</span>
+</label>
+<label class="cursor-pointer">
+<input class="hidden peer" name="service" type="radio"/>
+<span class="px-4 py-2 rounded-lg border border-outline-variant peer-checked:bg-primary-container peer-checked:border-primary-container peer-checked:text-on-primary-container font-label-md text-sm transition-all inline-block bg-surface/50">Offline</span>
+</label>
+</div>
+</div>
+<div class="space-y-2">
+<label class="font-label-md text-label-md text-on-surface-variant" for="message">Votre message</label>
+<textarea class="w-full bg-surface/50 border-outline-variant rounded-lg p-4 focus:ring-0 focus:border-primary input-focus-ring transition-all" id="message" placeholder="Parlez-nous de vos objectifs..." required="" rows="4"></textarea>
+</div>
+<button class="w-full bg-secondary text-on-tertiary font-headline-md text-xl py-4 rounded-xl hover:shadow-lg hover:shadow-secondary/20 transition-all duration-300 flex items-center justify-center gap-3 group" type="submit">
+                            Envoyer le message
+                            <span class="material-symbols-outlined group-hover:translate-x-2 transition-transform" data-icon="arrow_forward">arrow_forward</span>
 </button>
-</div>
-</div>
-<div class="relative h-[600px] w-full">
-<!-- Impactful Billboard Imagery Mockup -->
-<div class="absolute inset-0 rounded-3xl overflow-hidden rotate-2 scale-105 shadow-sm border border-outline-variant/10">
-<img class="w-full h-full object-cover" data-alt="Ultra-premium, professional representation of modern offline advertising and traditional media." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCDDO_wttwePbmI8eYVBGDCtegRqaAn-_bnv_lXIKBAuLwGvbJkbnMaLyDq9WLmAZJQ8vcE_sczAlb_EzN01T4O73Bu6EpiVBNIcpu9abElk96eQ3nYm0QvrYVzp08UeeLFZn3EQK9n2fVMPwrX1iKeiXImhm3YETO-hjzLMlVXUbKc0lR54w634224hL11Zk4EV6ec09sJ7vQTayWEC1GCFeymzg_eLe0V-eTfKWxiCuZW2gbVPHu0kRE-Ugpga-tJQla3OmVpnrc"/>
-</div>
-<div class="absolute -bottom-10 -left-10 w-64 h-64 bg-primary/5 rounded-full blur-3xl -z-10"></div>
-</div>
-</div>
-</section>
-<!-- The Synergy Bento Grid -->
-<section class="py-section-padding px-8 md:px-margin-desktop max-w-container-max mx-auto">
-<div class="text-center mb-20">
-<h2 class="rigot-heading text-headline-lg mb-6">L'Écosystème Offline</h2>
-<p class="text-body-lg text-on-surface-variant max-w-2xl mx-auto">
-                    Dominance visuelle, répétition stratégique et intégration digitale (QR, Phygital, Retargeting Géo).
-                </p>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-12 gap-8 h-auto md:h-[800px]">
-<!-- Large Format (OOH) -->
-<div class="md:col-span-8 glass-card rounded-2xl overflow-hidden group relative p-10 flex flex-col justify-end shadow-sm">
-<div class="absolute inset-0 -z-10 overflow-hidden">
-<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-90" data-alt="Panoramic view of digital street furniture displays." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC3pcm9Y3d9xVGa7Bm0J4hBj3AXSuyFGMN9lah2_3Xziuw-rrvn5zU4Euo6Hp_EfAfChExWnjsyhY32VxhO-IQywB514Znr7VmCDRzPgOX97fPWKVhPKQ7pb3y4gqa62jp4Onu8enuVKDXUwkPzkwvAZqfJ63_taQPbb2w4P9wP9TweFLiBv9ScyPMXlN-K2lcCSpObONG9X_ICyXPVFqMnzoi68kSWJVjrfec16uorHA_nMPe8vhLihGNm5viz6wfrndkaKFCc7bk"/>
-<div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent"></div>
-</div>
-<span class="bg-secondary text-white px-4 py-1.5 rounded-full text-xs font-bold w-fit mb-6 uppercase tracking-wider">Le Plus Impactant</span>
-<h3 class="text-white text-headline-lg font-bold mb-4 uppercase rigot-heading tracking-normal">Affichage Urbain (OOH)</h3>
-<p class="text-white/90 text-body-lg max-w-md">Panneaux 4x3, Unipoles, Mobiliers Urbains et écrans LED géants pour une présence incontournable.</p>
-</div>
-<!-- Radio & Audio -->
-<div class="md:col-span-4 bg-surface-container-low rounded-2xl p-10 border border-outline-variant/20 flex flex-col items-center justify-center text-center shadow-sm hover:shadow-md transition-shadow">
-<div class="w-20 h-20 bg-primary/10 text-primary rounded-2xl flex items-center justify-center mb-8">
-<span class="material-symbols-outlined text-4xl">podcasts</span>
-</div>
-<h3 class="text-headline-md font-bold mb-4 uppercase rigot-heading tracking-normal">Radio &amp; Podcast</h3>
-<p class="text-body-lg text-on-surface-variant">L'émotion par la voix. Spots publicitaires et sponsoring sur les ondes nationales les plus écoutées.</p>
-</div>
-<!-- Press -->
-<div class="md:col-span-4 bg-surface-container-low rounded-2xl p-10 border border-outline-variant/20 flex flex-col shadow-sm hover:shadow-md transition-shadow">
-<div class="w-16 h-16 bg-secondary/10 text-secondary rounded-2xl flex items-center justify-center mb-8">
-<span class="material-symbols-outlined text-3xl">auto_stories</span>
-</div>
-<h3 class="text-headline-md font-bold mb-4 uppercase rigot-heading tracking-normal">Presse &amp; Print</h3>
-<p class="text-body-lg text-on-surface-variant mb-8">L'autorité de l'imprimé. Campagnes dans les magazines premium et quotidiens influents.</p>
-<div class="mt-auto flex gap-3 flex-wrap">
-<span class="bg-surface border border-outline-variant/20 px-4 py-1.5 rounded-full text-sm font-semibold text-primary">Qualité Premium</span>
-<span class="bg-surface border border-outline-variant/20 px-4 py-1.5 rounded-full text-sm font-semibold text-primary">Ciblage CSP+</span>
-</div>
-</div>
-<!-- TV & Cinema -->
-<div class="md:col-span-8 glass-card rounded-2xl overflow-hidden relative p-10 group shadow-sm border border-outline-variant/20 bg-surface-container-low/50">
-<div class="absolute inset-0 -z-10 opacity-60">
-<img class="w-full h-full object-cover" data-alt="Cinematic wide-angle shot of a luxurious theater." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBKbRKncf9FSqKUCqv-R8s_EcYvObw1RdzmwF3BPh2Ll3ZlFpqOA7UNrvWYgguUGyaYmKktcT-4Nq3rvq5Jki_wnDXEjdBdAHq8MT5vtchndp-YJHBaE9VTiu49lwQp5yDM9DXMP8eju6ztDFuP2_JgDB9IG4XIvYus2TG-CwDAHCUUXYd4tVV4obwBAztIo_wyeNyl3Vlry-CenrlOLiZMHqG4pmHTok1WNNGHZn2PQhBrmcmC2XOyNu2siJeW9ASqusz6sVGuxxE"/>
-<div class="absolute inset-0 bg-white/40 backdrop-blur-[2px]"></div>
-</div>
-<div class="h-full flex flex-col justify-between">
-<div class="flex justify-between items-start">
-<h3 class="text-on-surface text-headline-lg font-bold uppercase rigot-heading tracking-normal">TV &amp; Cinéma</h3>
-<div class="w-16 h-16 bg-surface/80 backdrop-blur-sm rounded-2xl flex items-center justify-center">
-<span class="material-symbols-outlined text-primary text-3xl">movie</span>
-</div>
-</div>
-<div class="max-w-md bg-surface/80 backdrop-blur-md p-6 rounded-xl border border-white">
-<p class="text-on-surface text-body-lg font-medium leading-relaxed">La narration au service de votre marque sur les plus grands écrans du pays.</p>
+</form>
 </div>
 </div>
 </div>
 </div>
-</section>
-<!-- Digital Integration Section -->
-<section class="bg-surface-container-low py-section-padding text-on-surface overflow-hidden relative border-y border-outline-variant/10">
-<div class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-primary/5 to-transparent pointer-events-none"></div>
-<div class="max-w-container-max mx-auto px-8 md:px-margin-desktop grid md:grid-cols-2 gap-16 items-center">
-<div>
-<h2 class="rigot-heading text-headline-lg mb-12 leading-tight">
-                        Le Pont vers le <span class="text-primary">Digital.</span>
-</h2>
-<ul class="space-y-12">
-<li class="flex gap-8 group">
-<div class="flex-shrink-0 w-16 h-16 rounded-2xl bg-white border border-outline-variant/20 shadow-sm flex items-center justify-center group-hover:border-secondary transition-colors">
-<span class="material-symbols-outlined text-secondary text-3xl">qr_code_scanner</span>
 </div>
-<div>
-<h4 class="text-headline-sm font-bold text-on-surface mb-2">Ciblages QR Dynamiques</h4>
-<p class="text-body-lg text-on-surface-variant">Mesurez l'engagement physique et redirigez l'audience vers des expériences immersives.</p>
-</div>
-</li>
-<li class="flex gap-8 group">
-<div class="flex-shrink-0 w-16 h-16 rounded-2xl bg-white border border-outline-variant/20 shadow-sm flex items-center justify-center group-hover:border-primary transition-colors">
-<span class="material-symbols-outlined text-primary text-3xl">share_location</span>
-</div>
-<div>
-<h4 class="text-headline-sm font-bold text-on-surface mb-2">Géo-Fencing Retargeting</h4>
-<p class="text-body-lg text-on-surface-variant">Reciblez sur mobile les utilisateurs ayant croisé vos panneaux publicitaires.</p>
-</div>
-</li>
-<li class="flex gap-8 group">
-<div class="flex-shrink-0 w-16 h-16 rounded-2xl bg-white border border-outline-variant/20 shadow-sm flex items-center justify-center group-hover:border-on-surface transition-colors">
-<span class="material-symbols-outlined text-on-surface text-3xl">monitoring</span>
-</div>
-<div>
-<h4 class="text-headline-sm font-bold text-on-surface mb-2">Data-Driven Media Buying</h4>
-<p class="text-body-lg text-on-surface-variant">Optimisez vos placements offline grâce aux insights de flux de mobilité urbaine.</p>
-</div>
-</li>
-</ul>
-</div>
-<div class="relative flex justify-center">
-<div class="w-full max-w-md aspect-square bg-white rounded-[3rem] shadow-sm border border-outline-variant/10 p-12 relative flex items-center justify-center group hover:shadow-md transition-shadow duration-500">
-<img alt="Abstract offline media icon" class="w-full h-full object-contain mix-blend-multiply opacity-90 group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD5MIHO3HkQj45SgMywBzPWKxZ1WnzYmzMLdy5leg-lQju-lJoMKkE-bA5C_qeln_oZ8g9yORS3jqm7SxYa_Hx0QzwXsfxhRTnCPRAP83ANYvM6TOUzTFvFrx7GzmMjSJzMK6USAoub5W8VvNlc2c3FIdspAJan2nSUxR-fSrG7Z68sDzo4-u3uSBdtQsJjGmW6j00fcC91eCNt3W-3PopnC-_m-ZY0-NBCLJNybAPSEuxNeVL0j5MCkl7IqDqpc961kwSUADD3V78"/>
-<div class="absolute inset-0 bg-gradient-to-tr from-primary/5 to-transparent rounded-[3rem] pointer-events-none"></div>
-</div>
-</div>
-</div>
-</section>
-<!-- Process Section -->
-<section class="py-section-padding px-8 md:px-margin-desktop max-w-container-max mx-auto">
-<div class="flex flex-col md:flex-row gap-16">
-<div class="md:w-1/3">
-<h2 class="rigot-heading text-headline-lg sticky top-32">Notre <br/>Approche.</h2>
-</div>
-<div class="md:w-2/3 space-y-24">
-<div class="relative pl-16 border-l border-outline-variant/30">
-<span class="absolute -left-[17px] top-0 w-8 h-8 bg-surface rounded-full border border-primary flex items-center justify-center text-primary text-sm font-bold">1</span>
-<h4 class="text-headline-md font-bold mb-6 rigot-heading tracking-normal">Stratégie &amp; Mapping</h4>
-<p class="text-body-lg text-on-surface-variant leading-relaxed">Identification des points de contact clés basés sur les habitudes de vie de votre cible. Nous cartographions les zones à forte affluence.</p>
-</div>
-<div class="relative pl-16 border-l border-outline-variant/30">
-<span class="absolute -left-[17px] top-0 w-8 h-8 bg-surface rounded-full border border-secondary flex items-center justify-center text-secondary text-sm font-bold">2</span>
-<h4 class="text-headline-md font-bold mb-6 rigot-heading tracking-normal">Négociation &amp; Achat</h4>
-<p class="text-body-lg text-on-surface-variant leading-relaxed">Accès privilégié aux meilleures régies publicitaires nationales. Optimisation des coûts et garantie d'emplacements premium.</p>
-</div>
-<div class="relative pl-16 border-l border-outline-variant/30">
-<span class="absolute -left-[17px] top-0 w-8 h-8 bg-surface rounded-full border border-on-surface flex items-center justify-center text-on-surface text-sm font-bold">3</span>
-<h4 class="text-headline-md font-bold mb-6 rigot-heading tracking-normal">Production Haute-Fidélité</h4>
-<p class="text-body-lg text-on-surface-variant leading-relaxed">Création visuelle adaptée aux grands formats. Gestion de l'impression et de la pose pour un rendu impeccable.</p>
-</div>
-</div>
-</div>
-</section>
-<!-- CTA Section -->
-<section class="mb-section-padding px-8 md:px-margin-desktop max-w-container-max mx-auto">
-<div class="bg-surface border border-outline-variant/20 rounded-[3rem] p-16 md:p-24 relative overflow-hidden flex flex-col items-center text-center shadow-sm">
-<div class="absolute -top-32 -right-32 w-96 h-96 bg-primary/5 rounded-full blur-3xl pointer-events-none"></div>
-<div class="absolute -bottom-32 -left-32 w-96 h-96 bg-secondary/5 rounded-full blur-3xl pointer-events-none"></div>
-<h2 class="rigot-heading text-headline-lg text-on-surface mb-8 z-10 relative">Prêt à Dominer l'Espace Public ?</h2>
-<p class="text-body-lg text-on-surface-variant max-w-2xl mb-12 z-10 relative">
-                    Donnez à votre marque la stature qu'elle mérite avec une campagne média offline d'envergure.
-                </p>
-<div class="flex flex-col sm:flex-row gap-6 z-10 relative">
-<button class="bg-secondary text-white px-10 py-5 rounded-xl font-bold text-lg hover:scale-105 active:scale-95 transition-all shadow-sm shadow-secondary/20">
-                        Lancer mon projet
-                    </button>
-<button class="bg-white border border-outline-variant/30 text-on-surface px-10 py-5 rounded-xl font-bold text-lg hover:bg-surface-container-low transition-colors shadow-sm">
-                        Consulter nos tarifs
-                    </button>
-</div>
-</div>
-</section>
 </main>
 <!-- Footer -->
-<footer class="bg-inverse-surface border-t border-outline-variant/20">
-<div class="flex flex-col md:flex-row justify-between items-center w-full px-8 py-12 max-w-[1280px] mx-auto gap-8">
-<div class="text-xl font-display font-black text-inverse-on-surface">
-                WE YAN DIGITAL
-            </div>
-<div class="flex gap-8 flex-wrap justify-center">
-<a class="font-body text-body-md text-inverse-on-surface/70 hover:text-secondary underline decoration-2 underline-offset-4 transition-all" href="#">Case Studies</a>
-<a class="font-body text-body-md text-inverse-on-surface/70 hover:text-secondary underline decoration-2 underline-offset-4 transition-all" href="#">Our Story</a>
-<a class="font-body text-body-md text-inverse-on-surface/70 hover:text-secondary underline decoration-2 underline-offset-4 transition-all" href="#">Process</a>
-<a class="font-body text-body-md text-inverse-on-surface/70 hover:text-secondary underline decoration-2 underline-offset-4 transition-all" href="#">Privacy</a>
+<footer class="bg-surface-container-lowest border-t border-outline-variant/20 mt-12">
+<div class="flex flex-col md:flex-row justify-between items-center py-12 px-8 md:px-margin-desktop max-w-container-max mx-auto w-full">
+<div class="mb-8 md:mb-0">
+<div class="font-headline-md text-headline-md font-bold text-on-surface mb-2 uppercase tracking-wider">WE YAN DIGITAL</div>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-xs">L'excellence digitale, au service de vos ambitions les plus audacieuses.</p>
 </div>
-<div class="font-body text-body-md text-inverse-on-surface/50 text-center md:text-right">
-                © 2024 WE YAN DIGITAL. All rights reserved.
+<div class="flex flex-wrap justify-center gap-8 md:gap-12">
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors duration-300" href="#">Case Studies</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors duration-300" href="#">Our Story</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors duration-300" href="#">Process</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors duration-300" href="#">Privacy</a>
+</div>
+<div class="mt-8 md:mt-0 font-body-md text-body-md text-on-surface-variant/60">
+                © 2024 WE YAN DIGITAL. All Rights Reserved.
             </div>
 </div>
 </footer>
 <script>
-        // Subtle scroll animations
+        document.querySelectorAll('input, textarea').forEach(el => {
+            el.addEventListener('focus', () => {
+                el.parentElement.querySelector('label')?.classList.add('text-primary');
+            });
+            el.addEventListener('blur', () => {
+                el.parentElement.querySelector('label')?.classList.remove('text-primary');
+            });
+        });
+
         const observerOptions = {
             threshold: 0.1
         };
@@ -334,14 +354,14 @@
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('opacity-100', 'translate-y-0');
-                    entry.target.classList.remove('opacity-0', 'translate-y-10');
+                    entry.target.classList.remove('opacity-0', 'translate-y-8');
                 }
             });
         }, observerOptions);
 
-        document.querySelectorAll('section > div').forEach(section => {
-            section.classList.add('transition-all', 'duration-1000', 'opacity-0', 'translate-y-10');
-            observer.observe(section);
+        document.querySelectorAll('header, div.glass-card').forEach(el => {
+            el.classList.add('transition-all', 'duration-700', 'opacity-0', 'translate-y-8');
+            observer.observe(el);
         });
     </script>
 </body></html>

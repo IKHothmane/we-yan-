@@ -1,4 +1,4 @@
-﻿import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Icon from '../components/Icon'
 import Navbar from '../components/Navbar'
 import PageSeo from '../components/PageSeo'
@@ -6,242 +6,252 @@ import SiteFooter from '../components/SiteFooter'
 import useScrollReveal from '../hooks/useScrollReveal'
 import { pageSeo } from '../lib/pageSeo'
 
+const socialLinks = [
+  { href: 'https://instagram.com', label: 'Instagram', icon: '/icons/instagram.svg' },
+  { href: 'https://linkedin.com', label: 'LinkedIn', icon: '/icons/linkedin-in.svg' },
+  { href: 'https://facebook.com', label: 'Facebook', icon: '/icons/facebook-f.svg' },
+] as const
+
+const iconMaskStyle = (url: string) =>
+  ({
+    WebkitMaskImage: `url(${url})`,
+    maskImage: `url(${url})`,
+    WebkitMaskRepeat: 'no-repeat',
+    maskRepeat: 'no-repeat',
+    WebkitMaskPosition: 'center',
+    maskPosition: 'center',
+    WebkitMaskSize: 'contain',
+    maskSize: 'contain',
+    backgroundColor: 'currentColor',
+  }) as const
+
+const services = [
+  'Stratégie Marketing & Rebranding',
+  'Création de Contenu & Community Management',
+  'Publicité Digitale (Meta Ads & Google Ads)',
+  'Référencement Naturel (SEO)',
+  'Marketing d’Influence',
+  'Média Publicité Offline',
+] as const
+
+type Service = (typeof services)[number]
+
 export default function ContactPage() {
   useScrollReveal()
-  const [service, setService] = useState('Design UI/UX')
+  const [selectedServices, setSelectedServices] = useState<Service[]>([])
+  const [carouselIndex, setCarouselIndex] = useState(0)
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [message, setMessage] = useState('')
 
+  useEffect(() => {
+    const intervalId = window.setInterval(() => {
+      setCarouselIndex((current) => (current + 1) % services.length)
+    }, 1400)
+    return () => window.clearInterval(intervalId)
+  }, [])
+
+  const toggleService = (service: Service) => {
+    setSelectedServices((current) =>
+      current.includes(service) ? current.filter((item) => item !== service) : [...current, service]
+    )
+  }
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    alert('Message envoyÃ© !')
+    alert('Message envoyé !')
   }
 
   return (
-    <div className="bg-[#f1f1f1] min-h-screen font-body-md text-on-surface selection:bg-primary-container selection:text-on-primary-container overflow-hidden w-full">
+    <div className="bg-background min-h-screen font-body-md text-on-surface selection:bg-primary-container selection:text-on-primary-container overflow-hidden w-full">
       <PageSeo {...pageSeo.contact} />
       <Navbar />
 
-      <main className="w-full px-[clamp(1rem,4vw,2rem)] md:px-10 lg:px-16 py-[clamp(6rem,11vw,8rem)]">
-        <header className="mb-20" data-reveal>
-          <h1 className="text-[clamp(2.8rem,7vw,4.5rem)] leading-[1.02] tracking-[-0.03em] font-extrabold max-w-4xl mb-6">
+      <main className="max-w-[1280px] mx-auto px-8 md:px-margin-desktop py-section-padding">
+        <header className="mb-20 animate-fade-in text-center max-w-4xl mx-auto" data-reveal>
+          <h1 className="font-rigot text-6xl md:text-7xl font-extrabold mb-6 hidden md:block">
             Parlons de votre prochain grand projet.
           </h1>
-          <p className="text-[clamp(1rem,2.5vw,1.25rem)] text-on-surface-variant max-w-2xl">
-            PrÃªt Ã  transformer vos idÃ©es en rÃ©alitÃ© numÃ©rique ? Notre Ã©quipe d'experts est Ã  votre Ã©coute pour concevoir des solutions sur mesure.
+          <h1 className="font-rigot text-4xl font-bold mb-4 md:hidden">
+            Parlons de votre prochain grand projet.
+          </h1>
+          <p className="text-body-lg text-on-surface-variant">
+            Prêt à transformer vos idées en réalité numérique ? Notre équipe d&apos;experts est à votre écoute pour
+            concevoir des solutions sur mesure.
           </p>
         </header>
 
-        <div className="grid grid-cols-1 gap-8 lg:grid-cols-12">
-            <aside className="space-y-12 lg:col-span-4" data-reveal data-reveal-delay="100">
-            <div className="space-y-8">
-              <div className="group">
-                <div className="flex items-center gap-4 mb-2">
-                  <Icon name="mail" className="w-6 h-6 text-primary" />
-                  <span className="uppercase tracking-widest text-outline text-sm font-semibold">Email</span>
-                </div>
-                <a
-                  className="text-2xl md:text-3xl font-semibold hover:text-primary transition-colors duration-300"
-                  href="mailto:hello@wedigital.ma"
-                >
-                  hello@wedigital.ma
-                </a>
-              </div>
+        <div className="max-w-5xl mx-auto">
+          <div className="glass-card p-8 md:p-14 rounded-2xl shadow-sm border border-outline-variant/20 relative overflow-hidden">
+            <div aria-hidden="true" className="absolute -top-32 -left-32 w-64 h-64 bg-primary/10 rounded-full blur-3xl" />
+            <div aria-hidden="true" className="absolute -bottom-32 -right-32 w-64 h-64 bg-secondary/10 rounded-full blur-3xl" />
 
-              <div className="group">
-                <div className="flex items-center gap-4 mb-2">
-                  <Icon name="phone_iphone" className="w-6 h-6 text-primary" />
-                  <span className="uppercase tracking-widest text-outline text-sm font-semibold">TÃ©lÃ©phone</span>
-                </div>
-                <div className="flex flex-col">
-                  <a
-                    className="text-2xl md:text-3xl font-semibold hover:text-primary transition-colors duration-300"
-                    href="tel:+212500000000"
-                  >
-                    +212 (0) 5 22 00 00 00
-                  </a>
-                  <a
-                    className="flex items-center gap-2 mt-2 text-primary text-sm font-semibold hover:underline"
-                    href="https://wa.me/212600000000"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <Icon name="chat" className="w-5 h-5" />
-                    Contactez-nous sur WhatsApp
-                  </a>
-                </div>
-              </div>
+            <div className="relative z-10">
+              <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-12">
+                <aside className="space-y-10 lg:col-span-4">
+                  <div>
+                    <h3 className="font-rigot text-2xl font-bold leading-tight md:text-3xl mb-8">
+                      Informations de contact
+                    </h3>
+                    <div className="space-y-6">
+                      <div className="group">
+                        <div className="flex items-center gap-4 mb-1">
+                          <Icon name="mail" className="text-primary text-xl" />
+                          <span className="uppercase tracking-widest text-outline text-sm font-semibold">Email</span>
+                        </div>
+                        <a
+                          className="text-body-lg font-semibold hover:text-primary transition-colors duration-300 ml-9 block"
+                          href="mailto:contact@weyan.digital"
+                        >
+                          contact@weyan.digital
+                        </a>
+                      </div>
 
-              <div className="group">
-                <div className="flex items-center gap-4 mb-2">
-                  <Icon name="location_on" className="w-6 h-6 text-primary" />
-                  <span className="uppercase tracking-widest text-outline text-sm font-semibold">Bureau</span>
-                </div>
-                <address className="text-lg md:text-xl not-italic text-on-surface-variant leading-relaxed">
-                  Angle Boulevard Anfa & Rue Moulay Ali Chrif,<br />
-                  Casablanca 20000, Maroc
-                </address>
-              </div>
-            </div>
-
-            <div className="pt-8 border-t border-outline-variant/30">
-              <span className="uppercase tracking-widest text-outline text-sm font-semibold mb-6 block">Suivez-nous</span>
-              <div className="flex gap-4">
-                <a
-                  className="w-12 h-12 rounded-lg border border-outline-variant flex items-center justify-center hover:bg-primary hover:text-white transition-all duration-300"
-                  href="https://linkedin.com"
-                  target="_blank"
-                  rel="noreferrer"
-                  aria-label="Visitez notre LinkedIn"
-                >
-                  <Icon name="share" className="w-6 h-6" />
-                </a>
-                <a
-                  className="w-12 h-12 rounded-lg border border-outline-variant flex items-center justify-center hover:bg-primary hover:text-white transition-all duration-300"
-                  href="https://instagram.com"
-                  target="_blank"
-                  rel="noreferrer"
-                  aria-label="Visitez notre Instagram"
-                >
-                  <Icon name="camera" className="w-6 h-6" />
-                </a>
-                <a
-                  className="w-12 h-12 rounded-lg border border-outline-variant flex items-center justify-center hover:bg-primary hover:text-white transition-all duration-300"
-                  href="https://twitter.com"
-                  target="_blank"
-                  rel="noreferrer"
-                  aria-label="Visitez notre Twitter"
-                >
-                  <Icon name="link" className="w-6 h-6" />
-                </a>
-              </div>
-            </div>
-            </aside>
-
-            <div className="lg:col-span-8" data-reveal data-reveal-delay="200">
-            <div className="bg-white/90 backdrop-blur-xl border border-black/5 p-[clamp(1.5rem,4vw,3rem)] rounded-xl shadow-sm">
-              <form className="space-y-8" onSubmit={handleSubmit}>
-                <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-8">
-                  <div className="space-y-2">
-                    <label className="text-sm font-semibold text-on-surface-variant" htmlFor="name">
-                      Nom complet
-                    </label>
-                    <input
-                      className="w-full bg-white border border-outline-variant rounded-lg p-4 focus:ring-0 focus:border-primary transition-all"
-                      id="name"
-                      placeholder="Jean Dupont"
-                      required
-                      type="text"
-                      value={name}
-                      onChange={(e) => setName(e.target.value)}
-                    />
+                      <div className="group">
+                        <div className="flex items-center gap-4 mb-1">
+                          <Icon name="phone_iphone" className="text-primary text-xl" />
+                          <span className="uppercase tracking-widest text-outline text-sm font-semibold">Téléphone</span>
+                        </div>
+                        <a
+                          className="text-body-lg font-semibold hover:text-primary transition-colors duration-300 ml-9 block"
+                          href="tel:+33123456789"
+                        >
+                          +33 1 23 45 67 89
+                        </a>
+                      </div>
+                    </div>
                   </div>
-                  <div className="space-y-2">
-                    <label className="text-sm font-semibold text-on-surface-variant" htmlFor="email">
-                      Adresse email
-                    </label>
-                    <input
-                      className="w-full bg-white border border-outline-variant rounded-lg p-4 focus:ring-0 focus:border-primary transition-all"
-                      id="email"
-                      placeholder="jean@exemple.com"
-                      required
-                      type="email"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                    />
+
+                  <div className="pt-8 border-t border-outline-variant/30">
+                    <span className="uppercase tracking-widest text-outline text-sm font-semibold mb-6 block">
+                      Suivez-nous
+                    </span>
+                    <div className="flex gap-4">
+                      {socialLinks.map((socialLink) => (
+                        <a
+                          key={socialLink.label}
+                          className="w-12 h-12 rounded-lg border border-outline-variant flex items-center justify-center hover:bg-primary hover:text-white transition-all duration-300 text-on-surface-variant"
+                          href={socialLink.href}
+                          target="_blank"
+                          rel="noreferrer"
+                          aria-label={`Visitez notre ${socialLink.label}`}
+                        >
+                          <span aria-hidden="true" className="h-5 w-5" style={iconMaskStyle(socialLink.icon)} />
+                        </a>
+                      ))}
+                    </div>
                   </div>
-                </div>
+                </aside>
 
-                <div className="space-y-2">
-                  <label className="text-sm font-semibold text-on-surface-variant">Service souhaitÃ©</label>
-                  <div className="flex flex-wrap gap-3">
-                    {['Design UI/UX', 'DÃ©veloppement', 'Marketing Digital', 'Autre'].map((s) => {
-                      const id = `service-${s.toLowerCase().replace(/\s+/g, '-')}`
-                      return (
-                        <label key={s} htmlFor={id} className="cursor-pointer">
-                          <input
-                            id={id}
-                            checked={service === s}
-                            className="hidden peer"
-                            name="service"
-                            type="radio"
-                            onChange={() => setService(s)}
-                          />
-                          <span className="px-6 py-3 rounded-lg border border-outline-variant peer-checked:bg-primary-container peer-checked:border-primary-container peer-checked:text-on-primary-container text-sm font-semibold transition-all inline-block">
-                            {s}
-                          </span>
-                        </label>
-                      )
-                    })}
-                  </div>
-                </div>
+                <div className="lg:col-span-8">
+                  <form className="space-y-6" onSubmit={handleSubmit}>
+                    <div className="space-y-2 group">
+                      <label
+                        className="text-sm font-semibold text-on-surface-variant transition-colors group-focus-within:text-primary"
+                        htmlFor="name"
+                      >
+                        Nom complet
+                      </label>
+                      <input
+                        className="w-full bg-surface/50 border border-outline-variant rounded-lg p-4 focus:ring-0 focus:border-primary focus:outline-none focus:ring-4 focus:ring-primary/10 transition-all"
+                        id="name"
+                        placeholder="Jean Dupont"
+                        required
+                        type="text"
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                      />
+                    </div>
 
-                <div className="space-y-2">
-                  <label className="text-sm font-semibold text-on-surface-variant" htmlFor="message">
-                    Votre message
-                  </label>
-                  <textarea
-                    className="w-full bg-white border border-outline-variant rounded-lg p-4 focus:ring-0 focus:border-primary transition-all"
-                    id="message"
-                    placeholder="Parlez-nous de vos objectifs..."
-                    required
-                    rows={5}
-                    value={message}
-                    onChange={(e) => setMessage(e.target.value)}
-                  />
-                </div>
+                    <div className="space-y-2 group">
+                      <label
+                        className="text-sm font-semibold text-on-surface-variant transition-colors group-focus-within:text-primary"
+                        htmlFor="email"
+                      >
+                        Adresse email
+                      </label>
+                      <input
+                        className="w-full bg-surface/50 border border-outline-variant rounded-lg p-4 focus:ring-0 focus:border-primary focus:outline-none focus:ring-4 focus:ring-primary/10 transition-all"
+                        id="email"
+                        placeholder="jean@exemple.com"
+                        required
+                        type="email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                      />
+                    </div>
 
-                <button
-                  className="w-full bg-secondary text-white text-xl md:text-2xl font-semibold py-6 rounded-xl hover:shadow-lg hover:shadow-secondary/20 transition-all duration-300 flex items-center justify-center gap-3 group"
-                  type="submit"
-                >
-                  Envoyer le message
-                  <Icon
-                    name="arrow_forward"
-                    className="w-6 h-6 group-hover:translate-x-2 transition-transform"
-                  />
-                </button>
-              </form>
+                    <div className="space-y-2">
+                      <label className="text-sm font-semibold text-on-surface-variant">Service souhaité</label>
+                      <p className="text-xs text-on-surface-variant/80">
+                        Les services défilent comme un carrousel. Cliquez pour sélectionner.
+                      </p>
+                      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+                        {services.map((s, index) => {
+                          const id = `service-${s.toLowerCase().replace(/[^\p{L}0-9]+/gu, '-')}`
+                          const isSelected = selectedServices.includes(s)
+                          const isSpotlight = index === carouselIndex
+                          return (
+                            <label key={s} htmlFor={id} className="block cursor-pointer">
+                              <input
+                                id={id}
+                                checked={isSelected}
+                                className="hidden"
+                                name="services"
+                                type="checkbox"
+                                onChange={() => toggleService(s)}
+                              />
+                              <span
+                                className={`flex min-h-[3.5rem] w-full items-center rounded-lg border px-4 py-3 text-sm font-semibold leading-snug transition-all whitespace-normal break-words ${
+                                  isSelected
+                                    ? 'border-primary-container bg-primary-container text-on-primary-container service-carousel-selected'
+                                    : isSpotlight
+                                      ? 'border-secondary bg-secondary text-on-secondary shadow-lg shadow-secondary/20'
+                                      : 'border-outline-variant bg-surface/50 text-on-surface'
+                                } ${isSpotlight ? 'service-carousel-spotlight' : ''}`}
+                              >
+                                {s}
+                              </span>
+                            </label>
+                          )
+                        })}
+                      </div>
+                    </div>
+
+                    <div className="space-y-2 group">
+                      <label
+                        className="text-sm font-semibold text-on-surface-variant transition-colors group-focus-within:text-primary"
+                        htmlFor="message"
+                      >
+                        Votre message
+                      </label>
+                      <textarea
+                        className="w-full bg-surface/50 border border-outline-variant rounded-lg p-4 focus:ring-0 focus:border-primary focus:outline-none focus:ring-4 focus:ring-primary/10 transition-all"
+                        id="message"
+                        placeholder="Parlez-nous de vos objectifs..."
+                        required
+                        rows={5}
+                        value={message}
+                        onChange={(e) => setMessage(e.target.value)}
+                      />
+                    </div>
+
+                    <button
+                      className="w-full bg-secondary text-on-secondary font-semibold text-xl py-4 rounded-xl hover:shadow-lg hover:shadow-secondary/20 transition-all duration-300 flex items-center justify-center gap-3 group"
+                      type="submit"
+                    >
+                      Envoyer le message
+                      <Icon name="arrow_forward" className="group-hover:translate-x-2 transition-transform" />
+                    </button>
+                  </form>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-
-        <section className="mt-32 rounded-3xl overflow-hidden relative shadow-xl min-h-[500px] flex items-center justify-center" data-reveal data-reveal-delay="300">
-          <div className="absolute inset-0 z-0 grayscale contrast-125 opacity-40">
-            <img
-              alt="Casablanca Map Location"
-              className="w-full h-full object-cover"
-              src="/images/contact/hero.jpg"
-              loading="lazy"
-              width={1200}
-              height={500}
-            />
-          </div>
-          <div className="relative z-10 bg-white/90 backdrop-blur-xl border border-black/5 p-10 max-w-md mx-8 text-center rounded-2xl">
-            <div className="w-20 h-20 bg-secondary text-white rounded-full flex items-center justify-center mx-auto mb-6">
-              <Icon name="location_on" className="w-10 h-10 text-white" />
-            </div>
-            <h3 className="text-2xl md:text-3xl font-semibold mb-2">Visitez nos bureaux</h3>
-            <p className="text-base md:text-lg text-on-surface-variant mb-6">
-              Venez discuter de votre projet autour d'un cafÃ© dans le cÅ“ur battant de Casablanca.
-            </p>
-            <a
-              className="text-primary text-sm font-semibold underline underline-offset-4 hover:text-secondary transition-colors"
-              href="https://maps.google.com?q=Casablanca"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Ouvrir dans Google Maps
-            </a>
-          </div>
-          <div className="absolute top-10 right-10 w-64 h-64 bg-primary/5 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-10 left-10 w-48 h-48 bg-secondary/5 rounded-full blur-3xl"></div>
-        </section>
       </main>
 
-      <SiteFooter revealDelay="400" />
+      <SiteFooter revealDelay="200" />
     </div>
   )
 }
-

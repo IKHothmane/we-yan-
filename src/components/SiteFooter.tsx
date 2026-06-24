@@ -1,5 +1,23 @@
 import { Link } from 'react-router-dom'
-import Icon from './Icon'
+
+const socialLinks = [
+  { href: 'https://instagram.com', label: 'Instagram', icon: '/icons/instagram.svg' },
+  { href: 'https://linkedin.com', label: 'LinkedIn', icon: '/icons/linkedin-in.svg' },
+  { href: 'https://facebook.com', label: 'Facebook', icon: '/icons/facebook-f.svg' },
+] as const
+
+const iconMaskStyle = (url: string) =>
+  ({
+    WebkitMaskImage: `url(${url})`,
+    maskImage: `url(${url})`,
+    WebkitMaskRepeat: 'no-repeat',
+    maskRepeat: 'no-repeat',
+    WebkitMaskPosition: 'center',
+    maskPosition: 'center',
+    WebkitMaskSize: 'contain',
+    maskSize: 'contain',
+    backgroundColor: 'currentColor',
+  }) as const
 
 type SiteFooterProps = {
   revealDelay?: string
@@ -17,7 +35,7 @@ export default function SiteFooter({ revealDelay }: SiteFooterProps) {
     >
       <div className="px-[clamp(1rem,4vw,2rem)]">
         <h2 className="sr-only">Pied de page</h2>
-        <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[1.25fr_0.8fr_0.9fr] gap-[clamp(1.75rem,4vw,3rem)] items-start">
+        <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[1.25fr_0.8fr_0.9fr] gap-[clamp(1.75rem,4vw,3rem)] items-start">
           <div className="sm:col-span-2 lg:col-span-1">
             <div className="flex items-center gap-4 mb-6 justify-center sm:justify-start">
               <span className="w-[clamp(2.75rem,6vw,3rem)] h-[clamp(2.75rem,6vw,3rem)] rounded-full overflow-hidden bg-white shadow-[0_10px_30px_-10px_rgba(15,23,42,0.35)] flex items-center justify-center">
@@ -38,33 +56,18 @@ export default function SiteFooter({ revealDelay }: SiteFooterProps) {
                 Suivez-nous
               </p>
               <div className="flex items-center justify-center sm:justify-start gap-3">
-                <a
-                  className="flex h-11 w-11 items-center justify-center rounded-full border border-white/25 text-white/85 transition-all hover:bg-white hover:text-primary"
-                  href="https://linkedin.com"
-                  target="_blank"
-                  rel="noreferrer"
-                  aria-label="Visitez notre LinkedIn"
-                >
-                  <Icon name="share" className="w-5 h-5" />
-                </a>
-                <a
-                  className="flex h-11 w-11 items-center justify-center rounded-full border border-white/25 text-white/85 transition-all hover:bg-white hover:text-primary"
-                  href="https://instagram.com"
-                  target="_blank"
-                  rel="noreferrer"
-                  aria-label="Visitez notre Instagram"
-                >
-                  <Icon name="camera" className="w-5 h-5" />
-                </a>
-                <a
-                  className="flex h-11 w-11 items-center justify-center rounded-full border border-white/25 text-white/85 transition-all hover:bg-white hover:text-primary"
-                  href="https://twitter.com"
-                  target="_blank"
-                  rel="noreferrer"
-                  aria-label="Visitez notre Twitter"
-                >
-                  <Icon name="link" className="w-5 h-5" />
-                </a>
+                {socialLinks.map((socialLink) => (
+                  <a
+                    key={socialLink.label}
+                    className="flex h-11 w-11 items-center justify-center rounded-full border border-white/25 text-white/85 transition-all hover:bg-white hover:text-primary"
+                    href={socialLink.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label={`Visitez notre ${socialLink.label}`}
+                  >
+                    <span aria-hidden="true" className="h-5 w-5" style={iconMaskStyle(socialLink.icon)} />
+                  </a>
+                ))}
               </div>
             </div>
           </div>

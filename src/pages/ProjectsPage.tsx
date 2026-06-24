@@ -1,4 +1,4 @@
-﻿import { useState } from 'react'
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import Icon from '../components/Icon'
 import Navbar from '../components/Navbar'
@@ -22,15 +22,15 @@ const projects: Project[] = [
     title: 'Modern Retail Identity',
     category: 'Branding',
     year: '2024',
-    description: 'IdentitÃ© visuelle novatrice pour le secteur retail au Maroc.',
+    description: "Refonte d'identité visuelle pour une enseigne retail en quête de distinction.",
     image: '/images/projects/project-1.jpg',
     size: 'large',
   },
   {
     title: 'Luxe Care',
-    category: 'Product Design',
+    category: 'Branding',
     year: '2024',
-    description: '',
+    description: 'Univers premium et direction artistique pour une marque orientée désirabilité.',
     image: '/images/projects/project-2.jpg',
     size: 'medium',
     secondary: true,
@@ -39,37 +39,35 @@ const projects: Project[] = [
     title: 'Campaign Launch',
     category: 'Social Media',
     year: '2024',
-    description: 'Lancement Digital',
+    description: 'Campagne de lancement pensée pour maximiser la visibilité.',
     image: '/images/projects/project-3.jpg',
     size: 'small',
   },
   {
     title: 'Fintech Hub',
-    category: 'Data Strategy',
+    category: 'Stratégie digitale',
     year: '2023',
-    description: 'Plateforme B2B',
+    description: 'Plateforme B2B conçue pour soutenir la croissance et la conversion.',
     image: '/images/projects/project-4.jpg',
     size: 'small',
   },
   {
     title: 'Creative Flow',
-    category: 'Content Creation',
+    category: 'Création de contenu',
     year: '2024',
-    description: 'Production Studio',
+    description: 'Production photo et vidéo pour nourrir une présence de marque cohérente.',
     image: '/images/projects/project-5.jpg',
     size: 'small',
   },
 ]
 
-const filters = ['Tous', 'Branding', 'Content Creation', 'Social Media', 'StratÃ©gie']
+const filters = ['Tous', 'Branding', 'Création de contenu', 'Social Media', 'Stratégie digitale']
 
 export default function ProjectsPage() {
   const [activeFilter, setActiveFilter] = useState('Tous')
   useScrollReveal()
 
-  const filteredProjects = projects.filter((p) =>
-    activeFilter === 'Tous' ? true : p.category === activeFilter || (activeFilter === 'StratÃ©gie' && p.category === 'Data Strategy'),
-  )
+  const filteredProjects = projects.filter((project) => (activeFilter === 'Tous' ? true : project.category === activeFilter))
 
   return (
     <div className="min-h-screen bg-[#F1F1F1] overflow-hidden w-full">
@@ -81,13 +79,13 @@ export default function ProjectsPage() {
           <div className="flex flex-col gap-6 max-w-4xl" data-reveal>
             <span className="text-primary font-semibold text-[14px] uppercase tracking-[0.2em] flex items-center gap-3">
               <span className="w-8 h-[2px] bg-primary"></span>
-              Portfolio
+              Portfolio créatif
             </span>
             <h1 className="font-display text-[clamp(2.9rem,8vw,5.25rem)] text-on-surface leading-[1.02] font-bold">
               Nos Projets
             </h1>
             <p className="font-body text-[clamp(1rem,2.5vw,1.25rem)] text-on-surface-variant leading-relaxed max-w-2xl">
-              Une immersion dans notre univers crÃ©atif oÃ¹ la stratÃ©gie rencontre l'innovation pour propulser les marques marocaines.
+              Découvrez une sélection de projets où stratégie, identité et contenu se rencontrent pour faire rayonner des marques ambitieuses.
             </p>
           </div>
         </header>
@@ -217,7 +215,7 @@ export default function ProjectsPage() {
 
           <div className="flex justify-center mt-20" data-reveal data-reveal-delay="500">
             <Link to="/contact" className="group flex items-center gap-4 text-on-surface font-bold text-[16px] border-b-2 border-secondary pb-2 hover:gap-6 transition-all duration-300 font-display">
-              Discuter d'un projet
+              Parlons de votre projet
               <Icon name="arrow_forward" className="w-5 h-5 text-secondary" />
             </Link>
           </div>
@@ -230,10 +228,10 @@ export default function ProjectsPage() {
               <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-secondary/15 rounded-full blur-[100px] translate-y-1/2 -translate-x-1/4"></div>
               <div className="relative z-10 flex flex-col items-center gap-8">
                 <h2 className="font-display text-[clamp(2.3rem,6vw,4rem)] text-white leading-tight max-w-3xl">
-                  PrÃªt Ã  lancer votre projet ?
+                  Prêt à donner vie à votre prochain projet ?
                 </h2>
                 <p className="font-body text-[clamp(1rem,2.5vw,1.25rem)] text-white/60 max-w-2xl mx-auto">
-                  Rejoignez les marques qui font confiance Ã  notre expertise pour transformer leur prÃ©sence digitale en un avantage compÃ©titif majeur.
+                  Nous accompagnons les marques qui veulent allier clarté stratégique, exécution soignée et impact durable.
                 </p>
                 <Link to="/contact" className="bg-secondary text-white px-12 py-5 rounded-full font-bold text-[18px] hover:scale-105 hover:brightness-110 shadow-2xl shadow-secondary/40 transition-all duration-300 active:scale-95 mt-4 font-display inline-block">
                   Contactez-nous
@@ -254,4 +252,3 @@ export default function ProjectsPage() {
     </div>
   )
 }
-

@@ -1,4 +1,4 @@
-import type { CSSProperties } from 'react'
+import { useEffect, useState, type CSSProperties } from 'react'
 import { Link } from 'react-router-dom'
 import Icon from '../Icon'
 import SiteFooter from '../SiteFooter'
@@ -22,6 +22,25 @@ const homeImages = {
 
 const solutionsCardsBackground =
   'https://lh3.googleusercontent.com/aida-public/AB6AXuA26cTrzHWhr1lAl33fd3Ki70zwSUi4OF6NjvcmIZ76Ga7-B-FjhQoLQtGZcbTdkiBFBnDeDM5_JRbgc_X94ePyxv64rKgjS7XfUkwJuIMzIENhqM1PpaK7RoethVHVm8di6c_IbAx7F-BB6NczMfoLzkMUeRiJ_K_cjdVe0s3vP6gWa8PXNUBIy5mhVNAtHC7--WgbqpaXlN1mq7vEhIVL9FZQN8rWrTrYlU634k6EKU8XO-Rm8y-Hu66NwWKW2iAryuhp5f9Z7lM'
+
+const socialLinks = [
+  { href: 'https://instagram.com', label: 'Instagram', icon: '/icons/instagram.svg' },
+  { href: 'https://linkedin.com', label: 'LinkedIn', icon: '/icons/linkedin-in.svg' },
+  { href: 'https://facebook.com', label: 'Facebook', icon: '/icons/facebook-f.svg' },
+] as const
+
+const iconMaskStyle = (url: string) =>
+  ({
+    WebkitMaskImage: `url(${url})`,
+    maskImage: `url(${url})`,
+    WebkitMaskRepeat: 'no-repeat',
+    maskRepeat: 'no-repeat',
+    WebkitMaskPosition: 'center',
+    maskPosition: 'center',
+    WebkitMaskSize: 'contain',
+    maskSize: 'contain',
+    backgroundColor: 'currentColor',
+  }) as const
 
 const deferredSectionStyle: CSSProperties = {
   contentVisibility: 'auto',
@@ -147,9 +166,50 @@ const projects = [
 
 export default function HomeDeferredSections() {
   useScrollReveal()
+  const [selectedHomeServices, setSelectedHomeServices] = useState<string[]>([])
+  const [homeCarouselIndex, setHomeCarouselIndex] = useState(0)
+
+  useEffect(() => {
+    const intervalId = window.setInterval(() => {
+      setHomeCarouselIndex((current) => (current + 1) % services.length)
+    }, 1400)
+    return () => window.clearInterval(intervalId)
+  }, [])
+
+  const toggleHomeService = (serviceTitle: string) => {
+    setSelectedHomeServices((current) =>
+      current.includes(serviceTitle)
+        ? current.filter((item) => item !== serviceTitle)
+        : [...current, serviceTitle]
+    )
+  }
 
   return (
     <>
+      <style>{`
+        .home-service-float {
+          animation-name: homeServiceFloat;
+          animation-timing-function: ease-in-out;
+          animation-iteration-count: infinite;
+          will-change: transform;
+        }
+
+        .home-service-float:hover {
+          animation-play-state: paused;
+        }
+
+        @keyframes homeServiceFloat {
+          0% { transform: translate3d(0, 0, 0); }
+          50% { transform: translate3d(0, -12px, 0); }
+          100% { transform: translate3d(0, 0, 0); }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+          .home-service-float {
+            animation: none;
+          }
+        }
+      `}</style>
       <section className="py-[clamp(4.5rem,9vw,8rem)] bg-white" id="services">
         <div className="w-full px-[clamp(1rem,4vw,2rem)]">
           <div className="text-center mb-[clamp(2.5rem,6vw,4rem)]" data-reveal>
@@ -162,7 +222,7 @@ export default function HomeDeferredSections() {
           </div>
 
           <div className="grid grid-cols-1 items-start md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8" data-reveal data-reveal-delay="100">
-            {services.map((service) => {
+            {services.map((service, index) => {
               const cardClasses = `group relative isolate flex overflow-hidden rounded-3xl border border-white/15 p-[clamp(1.25rem,3vw,2rem)] text-white shadow-[0_14px_40px_-16px_rgba(15,23,42,0.55)] transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_24px_60px_-20px_rgba(15,23,42,0.7)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/70 focus-visible:ring-offset-2 ${service.layoutClassName}`
               const toneGradient =
                 service.tone === 'secondary'
@@ -209,9 +269,20 @@ export default function HomeDeferredSections() {
               )
 
               return (
-                <Link key={service.title} to={service.to} className={cardClasses} aria-label={`Découvrir ${service.title}`}>
-                  {cardContent}
-                </Link>
+                <div
+                  key={service.title}
+                  className="home-service-float"
+                  data-reveal
+                  data-reveal-delay={String(100 + index * 80)}
+                  style={{
+                    animationDuration: `${5.2 + (index % 3) * 0.6}s`,
+                    animationDelay: `${index * 0.35}s`,
+                  }}
+                >
+                  <Link to={service.to} className={cardClasses} aria-label={`Découvrir ${service.title}`}>
+                    {cardContent}
+                  </Link>
+                </div>
               )
             })}
           </div>
@@ -369,116 +440,153 @@ export default function HomeDeferredSections() {
         </div>
       </section>
 
-      <section className="py-[clamp(4.5rem,9vw,8rem)] bg-slate-50" style={deferredSectionStyle}>
-        <div className="w-full px-[clamp(1rem,4vw,2rem)]">
-          <div className="grid grid-cols-1 md:grid-cols-2 overflow-hidden rounded-3xl shadow-2xl">
-            <div className="p-12 bg-white" data-reveal>
-              <h2 className="text-3xl font-bold text-slate-900 mb-8">
-                Parlons de <span className="text-primary">votre Projet</span>
-              </h2>
-              <form className="space-y-6">
-                <div className="space-y-2">
-                  <label className="text-sm font-semibold text-slate-700" htmlFor="home-contact-name">
-                    Nom complet
-                  </label>
-                  <input
-                    id="home-contact-name"
-                    name="name"
-                    type="text"
-                    className="w-full border border-slate-300 rounded-lg p-4 focus:outline-none focus:border-primary"
-                    placeholder="Ex: Amine Benali"
-                  />
-                </div>
-                <div className="space-y-2">
-                  <label className="text-sm font-semibold text-slate-700" htmlFor="home-contact-email">
-                    Adresse email
-                  </label>
-                  <input
-                    id="home-contact-email"
-                    name="email"
-                    type="email"
-                    className="w-full border border-slate-300 rounded-lg p-4 focus:outline-none focus:border-primary"
-                    placeholder="Ex: amine@exemple.com"
-                  />
-                </div>
-                <div className="space-y-2">
-                  <label className="text-sm font-semibold text-slate-700" htmlFor="home-contact-service">
-                    Service souhaité
-                  </label>
-                  <select
-                    id="home-contact-service"
-                    name="service"
-                    className="w-full border border-slate-300 rounded-lg p-4 focus:outline-none focus:border-primary bg-white"
-                  >
-                    <option>Branding</option>
-                    <option>Social Media</option>
-                    <option>Publicité</option>
-                    <option>Web Development</option>
-                  </select>
-                </div>
-                <div className="space-y-2">
-                  <label className="text-sm font-semibold text-slate-700" htmlFor="home-contact-message">
-                    Votre message
-                  </label>
-                  <textarea
-                    id="home-contact-message"
-                    name="message"
-                    className="w-full border border-slate-300 rounded-lg p-4 focus:outline-none focus:border-primary resize-none"
-                    rows={4}
-                    placeholder="Parlez-nous de vos objectifs..."
-                  />
-                </div>
-                <button
-                  type="submit"
-                  className="w-full bg-primary text-white py-4 rounded-xl font-bold text-lg hover:brightness-110 transition-all"
-                >
-                  ENVOYER LE MESSAGE
-                </button>
-              </form>
-            </div>
-            <div className="p-12 bg-primary text-white" data-reveal data-reveal-delay="100">
-              <h3 className="text-2xl font-bold mb-8">Coordonnées</h3>
-              <div className="space-y-8">
-                <div className="flex items-center gap-4">
-                  <Icon name="phone" className="w-8 h-8 text-primary" />
-                  <div>
-                    <p className="text-sm text-white/70">Téléphone</p>
-                    <p className="text-lg font-semibold">+212 6XX XXX XX XX</p>
+      <section className="relative overflow-hidden bg-white py-[clamp(4.5rem,9vw,8rem)] text-brand-charcoal" style={deferredSectionStyle}>
+        <div aria-hidden="true" className="pointer-events-none absolute -left-32 -top-32 h-[460px] w-[460px] rounded-full bg-brand-blue/10 blur-3xl opacity-70" />
+        <div aria-hidden="true" className="pointer-events-none absolute -bottom-40 right-0 h-[520px] w-[520px] rounded-full bg-secondary/10 blur-3xl opacity-70" />
+
+        <div className="relative z-10 w-full px-[clamp(1rem,4vw,2rem)]">
+          <div className="w-full">
+            <div className="grid grid-cols-1 gap-10 md:grid-cols-2 md:items-start md:gap-14">
+              <div className="max-w-xl" data-reveal>
+                <h3 className="text-4xl font-extrabold tracking-tight md:text-5xl">COORDONNÉES</h3>
+                <p className="mt-6 text-sm leading-relaxed text-brand-charcoal/70 md:text-base">
+                  Prêt à transformer votre vision en réalité ? Contactez-nous pour discuter de votre prochain projet.
+                </p>
+
+                <div className="mt-10 space-y-6">
+                  <div className="flex items-center gap-5 rounded-3xl border border-brand-blue/10 bg-surface-container px-6 py-6 shadow-sm">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-full bg-secondary text-on-secondary shadow-lg shadow-secondary/20">
+                      <Icon name="mail" className="text-[22px]" />
+                    </div>
+                    <div>
+                      <p className="text-xs font-bold uppercase tracking-widest text-brand-charcoal/55">Email</p>
+                      <p className="mt-1 text-lg font-semibold text-brand-charcoal">contact@weyan.digital</p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center gap-5 rounded-3xl border border-brand-blue/10 bg-surface-container px-6 py-6 shadow-sm">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-full bg-brand-blue text-white shadow-lg shadow-brand-blue/20">
+                      <Icon name="phone" className="text-[22px]" />
+                    </div>
+                    <div>
+                      <p className="text-xs font-bold uppercase tracking-widest text-brand-charcoal/55">Téléphone</p>
+                      <p className="mt-1 text-lg font-semibold text-brand-charcoal">+33 1 23 45 67 89</p>
+                    </div>
                   </div>
                 </div>
-                <div className="flex items-center gap-4">
-                  <Icon name="mail" className="w-8 h-8 text-primary" />
-                  <div>
-                    <p className="text-sm text-white/70">Email</p>
-                    <p className="text-lg font-semibold">hello@wedigital.com</p>
-                  </div>
-                </div>
-                <div className="flex items-center gap-4">
-                  <Icon name="location_on" className="w-8 h-8 text-primary" />
-                  <div>
-                    <p className="text-sm text-white/70">Adresse</p>
-                    <p className="text-lg font-semibold">HAY HASSANI BLOC 5 N° 58, Casablanca 20200</p>
-                  </div>
+
+                <div className="mt-10 flex items-center gap-4">
+                  {socialLinks.map((socialLink) => (
+                    <a
+                      key={socialLink.label}
+                      href={socialLink.href}
+                      target="_blank"
+                      rel="noreferrer"
+                      aria-label={socialLink.label}
+                      className="flex h-11 w-11 items-center justify-center rounded-full border border-brand-blue/10 bg-surface-container text-brand-charcoal/70 shadow-sm transition-all hover:bg-white hover:text-brand-charcoal"
+                    >
+                      <span aria-hidden="true" className="h-4 w-4" style={iconMaskStyle(socialLink.icon)} />
+                    </a>
+                  ))}
                 </div>
               </div>
-              <div className="mt-12 rounded-2xl overflow-hidden">
-                <iframe
-                  title="Carte OpenStreetMap - HAY HASSANI BLOC 5 N° 58, Casablanca 20200"
-                  className="w-full h-64 border-0"
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  src="https://www.openstreetmap.org/export/embed.html?bbox=-7.6878725%2C33.5608827%2C-7.6678725%2C33.5808827&layer=mapnik&marker=33.5708827%2C-7.6778725"
-                />
-              </div>
-              <a
-                href="https://www.openstreetmap.org/?mlat=33.5708827&mlon=-7.6778725#map=16/33.5708827/-7.6778725"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-white transition-colors"
+
+              <div
+                className="rounded-[2.25rem] border border-brand-blue/10 bg-surface-container p-8 shadow-2xl shadow-brand-blue/10 md:p-10"
+                data-reveal
+                data-reveal-delay="100"
               >
-                <Icon name="location_on" className="w-4 h-4" />
-                Ouvrir dans OpenStreetMap
-              </a>
+                <h2 className="text-3xl font-extrabold tracking-tight text-brand-charcoal md:text-4xl">PARLONS DE VOTRE PROJET</h2>
+
+                <form className="mt-10 space-y-6">
+                  <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
+                    <div className="space-y-2">
+                      <label className="text-xs font-bold uppercase tracking-widest text-brand-charcoal/55" htmlFor="home-contact-name">
+                        Nom
+                      </label>
+                      <input
+                        id="home-contact-name"
+                        name="name"
+                        type="text"
+                        className="w-full rounded-2xl border border-brand-blue/10 bg-white px-5 py-4 text-brand-charcoal placeholder:text-brand-charcoal/40 focus:border-secondary focus:outline-none"
+                        placeholder="Votre nom"
+                      />
+                    </div>
+
+                    <div className="space-y-2">
+                      <label className="text-xs font-bold uppercase tracking-widest text-brand-charcoal/55" htmlFor="home-contact-email">
+                        Email
+                      </label>
+                      <input
+                        id="home-contact-email"
+                        name="email"
+                        type="email"
+                        className="w-full rounded-2xl border border-brand-blue/10 bg-white px-5 py-4 text-brand-charcoal placeholder:text-brand-charcoal/40 focus:border-secondary focus:outline-none"
+                        placeholder="votre@email.com"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="space-y-3">
+                    <label className="text-xs font-bold uppercase tracking-widest text-brand-charcoal/55">
+                      Service souhaité
+                    </label>
+                    <p className="text-sm text-brand-charcoal/60">
+                      Les services défilent comme un carrousel. Cliquez pour sélectionner.
+                    </p>
+                    <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+                      {services.map((service, index) => {
+                        const id = `home-contact-service-${service.title.toLowerCase().replace(/[^\p{L}0-9]+/gu, '-')}`
+                        const isSelected = selectedHomeServices.includes(service.title)
+                        const isSpotlight = index === homeCarouselIndex
+                        return (
+                          <label key={service.title} htmlFor={id} className="block cursor-pointer">
+                            <input
+                              id={id}
+                              checked={isSelected}
+                              className="hidden"
+                              name="services"
+                              type="checkbox"
+                              onChange={() => toggleHomeService(service.title)}
+                            />
+                            <span
+                              className={`flex min-h-[3.75rem] w-full items-center rounded-2xl border px-5 py-4 text-sm font-semibold leading-snug transition-all whitespace-normal break-words ${
+                                isSelected
+                                  ? 'border-secondary bg-secondary text-on-secondary service-carousel-selected'
+                                  : isSpotlight
+                                    ? 'border-secondary bg-secondary text-on-secondary shadow-lg shadow-secondary/20'
+                                    : 'border-brand-blue/10 bg-white text-brand-charcoal'
+                              } ${isSpotlight ? 'service-carousel-spotlight' : ''}`}
+                            >
+                              {service.title}
+                            </span>
+                          </label>
+                        )
+                      })}
+                    </div>
+                  </div>
+
+                  <div className="space-y-2">
+                    <label className="text-xs font-bold uppercase tracking-widest text-brand-charcoal/55" htmlFor="home-contact-message">
+                      Message
+                    </label>
+                    <textarea
+                      id="home-contact-message"
+                      name="message"
+                      className="w-full resize-none rounded-2xl border border-brand-blue/10 bg-white px-5 py-4 text-brand-charcoal placeholder:text-brand-charcoal/40 focus:border-secondary focus:outline-none"
+                      rows={4}
+                      placeholder="Dites-nous en plus..."
+                    />
+                  </div>
+
+                  <button
+                    type="submit"
+                    className="w-full rounded-2xl bg-secondary px-6 py-4 text-sm font-extrabold uppercase tracking-[0.2em] text-on-secondary shadow-xl shadow-secondary/30 transition-all hover:bg-secondary/90"
+                  >
+                    Envoyer le message
+                  </button>
+                </form>
+              </div>
             </div>
           </div>
         </div>

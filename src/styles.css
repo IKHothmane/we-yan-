@@ -170,6 +170,21 @@ h4,
   }
 }
 
+@keyframes service-carousel-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.02);
+  }
+}
+
+.service-carousel-spotlight {
+  animation: service-carousel-pulse 1.15s ease-in-out infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .platform-carousel-track {
     animation: none;
@@ -183,5 +198,9 @@ h4,
   .hover-lift:hover {
     transition: none;
     transform: none;
+  }
+
+  .service-carousel-spotlight {
+    animation: none;
   }
 }

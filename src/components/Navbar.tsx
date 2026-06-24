@@ -43,6 +43,7 @@ export default function Navbar({ variant = 'light', serviceTitle }: NavbarProps)
   const links = [
     { to: '/', label: 'Home' },
     { to: '/services', label: 'Services' },
+    { to: '/projets', label: 'Projets' },
     { to: '/agence', label: 'About' },
     { to: '/contact', label: 'Contacte' },
   ] as const
@@ -107,14 +108,14 @@ export default function Navbar({ variant = 'light', serviceTitle }: NavbarProps)
                 useLightStyle ? 'text-slate-700' : 'text-white'
               }`}
             >
-              {links.slice(0, 3).map((link) => (
+              {links.slice(0, 4).map((link) => (
                 <Link key={link.to} className="hover:text-[#FC9700] transition-colors" to={link.to}>
                   {link.label}
                 </Link>
               ))}
               <div className="flex items-center gap-4">
-                <Link className="hover:text-[#FC9700] transition-colors" to={links[3].to}>
-                  {links[3].label}
+                <Link className="hover:text-[#FC9700] transition-colors" to={links[4].to}>
+                  {links[4].label}
                 </Link>
                 <div className="flex items-center gap-2">
                   {socialLinks.map((socialLink) => (
@@ -137,7 +138,7 @@ export default function Navbar({ variant = 'light', serviceTitle }: NavbarProps)
 
           </div>
 
-          <div className="grid grid-cols-4 gap-1 md:hidden">
+          <div className="grid grid-cols-5 gap-1 md:hidden">
             {links.map((link) => (
               <Link
                 key={link.to}
