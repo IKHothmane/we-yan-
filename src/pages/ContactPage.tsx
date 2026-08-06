@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import Icon from '../components/Icon'
 import Navbar from '../components/Navbar'
 import PageSeo from '../components/PageSeo'
@@ -39,17 +39,9 @@ type Service = (typeof services)[number]
 export default function ContactPage() {
   useScrollReveal()
   const [selectedServices, setSelectedServices] = useState<Service[]>([])
-  const [carouselIndex, setCarouselIndex] = useState(0)
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [message, setMessage] = useState('')
-
-  useEffect(() => {
-    const intervalId = window.setInterval(() => {
-      setCarouselIndex((current) => (current + 1) % services.length)
-    }, 1400)
-    return () => window.clearInterval(intervalId)
-  }, [])
 
   const toggleService = (service: Service) => {
     setSelectedServices((current) =>
@@ -64,6 +56,16 @@ export default function ContactPage() {
 
   return (
     <div className="bg-background min-h-screen font-body-md text-on-surface selection:bg-primary-container selection:text-on-primary-container overflow-hidden w-full">
+      <style>{`
+        @keyframes contactBtnPulse {
+          0%, 100% { box-shadow: 0 10px 15px -3px rgba(252,151,0,0.25), 0 0 0 0 rgba(252,151,0,0.45); transform: scale(1); }
+          50% { box-shadow: 0 10px 15px -3px rgba(252,151,0,0.25), 0 0 0 12px rgba(252,151,0,0); transform: scale(1.01); }
+        }
+        .contact-submit-pulse { animation: contactBtnPulse 1.6s ease-in-out infinite; }
+        @media (prefers-reduced-motion: reduce) {
+          .contact-submit-pulse { animation: none; }
+        }
+      `}</style>
       <PageSeo {...pageSeo.contact} />
       <Navbar />
 
@@ -114,9 +116,9 @@ export default function ContactPage() {
                         </div>
                         <a
                           className="text-body-lg font-semibold hover:text-primary transition-colors duration-300 ml-9 block"
-                          href="tel:+33123456789"
+                          href="tel:+212691567246"
                         >
-                          +33 1 23 45 67 89
+                          06 91 56 72 46
                         </a>
                       </div>
                     </div>
@@ -184,13 +186,12 @@ export default function ContactPage() {
                     <div className="space-y-2">
                       <label className="text-sm font-semibold text-on-surface-variant">Service souhaité</label>
                       <p className="text-xs text-on-surface-variant/80">
-                        Les services défilent comme un carrousel. Cliquez pour sélectionner.
+                        Sélectionnez les services qui vous intéressent.
                       </p>
                       <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-                        {services.map((s, index) => {
+                        {services.map((s) => {
                           const id = `service-${s.toLowerCase().replace(/[^\p{L}0-9]+/gu, '-')}`
                           const isSelected = selectedServices.includes(s)
-                          const isSpotlight = index === carouselIndex
                           return (
                             <label key={s} htmlFor={id} className="block cursor-pointer">
                               <input
@@ -205,10 +206,8 @@ export default function ContactPage() {
                                 className={`flex min-h-[3.5rem] w-full items-center rounded-lg border px-4 py-3 text-sm font-semibold leading-snug transition-all whitespace-normal break-words ${
                                   isSelected
                                     ? 'border-primary-container bg-primary-container text-on-primary-container service-carousel-selected'
-                                    : isSpotlight
-                                      ? 'border-secondary bg-secondary text-on-secondary shadow-lg shadow-secondary/20'
-                                      : 'border-outline-variant bg-surface/50 text-on-surface'
-                                } ${isSpotlight ? 'service-carousel-spotlight' : ''}`}
+                                    : 'border-outline-variant bg-surface/50 text-on-surface'
+                                }`}
                               >
                                 {s}
                               </span>
@@ -237,7 +236,7 @@ export default function ContactPage() {
                     </div>
 
                     <button
-                      className="w-full bg-secondary text-on-secondary font-semibold text-xl py-4 rounded-xl hover:shadow-lg hover:shadow-secondary/20 transition-all duration-300 flex items-center justify-center gap-3 group"
+                      className="w-full bg-secondary text-on-secondary font-semibold text-xl py-4 rounded-xl hover:shadow-lg hover:shadow-secondary/20 transition-all duration-300 flex items-center justify-center gap-3 group contact-submit-pulse"
                       type="submit"
                     >
                       Envoyer le message

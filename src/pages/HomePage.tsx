@@ -1,4 +1,4 @@
-﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿import { Suspense, lazy, useEffect, useRef, useState } from 'react'
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿import { Suspense, lazy, useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import Icon from '../components/Icon'
 import Navbar from '../components/Navbar'
@@ -7,7 +7,7 @@ import { HOME_HERO_SERVICES } from '../constants'
 const HomeDeferredSections = lazy(() => import('../components/home/HomeDeferredSections'))
 
 const homeImages = {
-  hero: '/images/home/hero-custom.jpg?v=20260623',
+  hero: '/hero.webp',
 }
 
 const heroServicePositions = [
@@ -138,11 +138,6 @@ export default function HomePage() {
             loading="eager"
             decoding="async"
           />
-          <div
-            aria-hidden="true"
-            className="absolute inset-0"
-            style={{ background: 'linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45))' }}
-          />
           <div className="absolute inset-0 pointer-events-none hidden md:block">
             {visibleHeroServices.map((service, index) => {
               const position = heroServicePositions[index]
@@ -151,7 +146,7 @@ export default function HomePage() {
               return (
                 <div
                   key={`${activeServiceGroup}-${service.label}`}
-                  className={`absolute ${position.containerClassName} floating-tag service-tag-enter flex items-center gap-3 px-4 lg:px-6 py-2 lg:py-3 rounded-2xl shadow-xl z-10`}
+                  className={`absolute ${position.containerClassName} floating-tag service-tag-enter flex items-center gap-3 px-4 lg:px-6 py-2 lg:py-3 rounded-2xl shadow-xl z-10 border border-slate-100`}
                   style={{ animationDelay: position.animationDelay }}
                 >
                   <span className={`flex h-9 w-9 items-center justify-center rounded-full ${toneClassName} text-white shadow-sm`}>
@@ -164,16 +159,15 @@ export default function HomePage() {
           </div>
           <div className="relative z-10 w-full px-[clamp(1rem,4vw,1.5rem)]">
             <div className="max-w-3xl py-[clamp(1rem,3vw,2rem)]">
-              <h1 className="text-white text-[clamp(2.4rem,9vw,5.5rem)] font-rigot font-bold leading-[1.02] mb-[clamp(0.75rem,2vw,1rem)]">
+              <h1 className="text-slate-900 text-[clamp(2.4rem,9vw,5.5rem)] font-rigot font-bold leading-[1.02] mb-[clamp(0.75rem,2vw,1rem)]">
                 Make it <br /> Different
               </h1>
-              <h2 className="text-white text-[clamp(1.35rem,5vw,3.125rem)] font-bold leading-[1.08] mb-[clamp(1.25rem,3vw,2rem)]">
+              <h2 className="text-slate-900 text-[clamp(1.35rem,5vw,3.125rem)] font-bold leading-[1.08] mb-[clamp(1.25rem,3vw,2rem)]">
                 Votre marque mérite de se <br className="hidden sm:block" />
                 <span className="text-[#FC9700]">démarquer.</span>
               </h2>
-              <p className="text-gray-300 text-[clamp(0.95rem,2vw,1.25rem)] max-w-2xl leading-relaxed mb-[clamp(1.5rem,3vw,2.5rem)]">
-                We Yan Digital est une agence de communication à Casablanca spécialisée en branding,
-                création de contenu, influence marketing et publicité digitale au Maroc.
+              <p className="text-slate-600 text-[clamp(0.95rem,2vw,1.25rem)] max-w-2xl leading-relaxed mb-[clamp(1.5rem,3vw,2.5rem)]">
+                <strong className="font-semibold text-slate-900">Agence digitale à Casablanca</strong>, We Yan Digital accompagne marques, startups et PME au Maroc dans leur croissance digitale : branding, création de contenu, influence marketing, SEO, SEA, création de site web et publicité digitale performante.
               </p>
               <div className="flex flex-col sm:flex-row gap-[clamp(0.75rem,2vw,1rem)]">
                 <Link
@@ -184,7 +178,7 @@ export default function HomePage() {
                 </Link>
                 <Link
                   to="/projets"
-                  className="border-2 border-white/40 text-white px-[clamp(1.5rem,4vw,2.5rem)] py-[clamp(0.85rem,2vw,1rem)] rounded-full font-bold text-[clamp(0.95rem,2vw,1.125rem)] hover:bg-white/10 transition-all text-center"
+                  className="border-2 border-slate-900/80 text-slate-900 px-[clamp(1.5rem,4vw,2.5rem)] py-[clamp(0.85rem,2vw,1rem)] rounded-full font-bold text-[clamp(0.95rem,2vw,1.125rem)] hover:bg-slate-900 hover:text-white transition-all text-center"
                 >
                   Voir nos projets
                 </Link>

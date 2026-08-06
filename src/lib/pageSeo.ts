@@ -31,8 +31,8 @@ export const pageSeo = {
     seoImages.home,
   ),
   services: createPageSeoConfig(
-    'Services | We Yan Digital',
-    'Découvrez les services de We Yan Digital : branding, stratégie digitale, création de contenu, publicité et développement web pour votre croissance.',
+    'Agence digitale à Casablanca · Services SEO, Site Web, Branding, Ads | We Yan Digital',
+    'We Yan Digital — agence digitale à Casablanca : SEO Maroc, SEA Google Ads, community management, branding, création site web vitrine et e-commerce, influence marketing et publicité offline. Devis gratuit sous 24h pour startups, PME et grands comptes au Maroc.',
     seoImages.services,
   ),
   strategyMarketing: createPageSeoConfig(

@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 
 type NavbarProps = {
@@ -7,38 +6,7 @@ type NavbarProps = {
 }
 
 export default function Navbar({ variant = 'light', serviceTitle }: NavbarProps) {
-  const isHero = variant === 'hero'
-  const [useLightStyle, setUseLightStyle] = useState(!isHero)
-
-  useEffect(() => {
-    if (!isHero) {
-      setUseLightStyle(true)
-      return
-    }
-
-    let frameId = 0
-
-    const updateNavbarStyle = () => {
-      frameId = 0
-      const nextValue = window.scrollY > window.innerHeight * 0.55
-      setUseLightStyle((currentValue) => (currentValue === nextValue ? currentValue : nextValue))
-    }
-
-    const handleScroll = () => {
-      if (frameId) return
-      frameId = window.requestAnimationFrame(updateNavbarStyle)
-    }
-
-    updateNavbarStyle()
-    window.addEventListener('scroll', handleScroll, { passive: true })
-    window.addEventListener('resize', handleScroll, { passive: true })
-
-    return () => {
-      if (frameId) window.cancelAnimationFrame(frameId)
-      window.removeEventListener('scroll', handleScroll)
-      window.removeEventListener('resize', handleScroll)
-    }
-  }, [isHero])
+  void variant
 
   const links = [
     { to: '/', label: 'Home' },
@@ -71,30 +39,21 @@ export default function Navbar({ variant = 'light', serviceTitle }: NavbarProps)
     <>
       <nav className="fixed left-0 right-0 top-4 z-50 px-[clamp(0.875rem,3vw,1.5rem)]">
         <div
-          className={`max-w-7xl mx-auto rounded-full px-[clamp(0.8rem,3vw,2rem)] py-[clamp(0.65rem,1.8vw,0.85rem)] transition-all ${
-            useLightStyle
-              ? 'bg-white/95 border border-slate-200 shadow-lg'
-              : 'bg-white/10 border border-white/20'
-          }`}
+          className={`max-w-7xl mx-auto rounded-full px-[clamp(0.8rem,3vw,2rem)] py-[clamp(0.65rem,1.8vw,0.85rem)] transition-all bg-white/95 border border-slate-200 shadow-lg overflow-visible`}
         >
           <div className="hidden md:flex items-center justify-between gap-6">
-            <Link to="/" className="flex items-center gap-4">
-              <span
-                className={`h-[clamp(2.5rem,6vw,3.5rem)] w-[clamp(2.5rem,6vw,3.5rem)] flex-shrink-0 overflow-hidden rounded-full transition-all ${
-                  useLightStyle ? 'bg-white shadow-sm' : 'bg-white/10'
-                }`}
-              >
+            <Link to="/" className="flex items-center gap-4 overflow-visible">
+              <div className="relative h-0 overflow-visible flex-shrink-0 w-[clamp(9rem,22vw,14rem)]">
                 <img
-                  src="/Logo%20weyan.png?v=20260619"
+                  src="/Logo%20weyan.png"
                   alt="We Yan Digital"
-                  className="h-full w-full scale-[1.25] object-cover"
+                  className="absolute left-0 top-1/2 w-full h-auto max-h-[clamp(3.5rem,9vw,5.5rem)] object-contain z-[60]"
+                  style={{ transform: 'translate3d(0, -50%, 0) rotate(-6deg)' }}
                 />
-              </span>
+              </div>
               {serviceTitle ? (
                 <span
-                  className={`max-w-[18rem] truncate text-[clamp(0.9rem,1.4vw,1.1rem)] font-semibold tracking-[-0.02em] ${
-                    useLightStyle ? 'text-slate-800' : 'text-white'
-                  }`}
+                  className={`max-w-[18rem] truncate text-[clamp(0.9rem,1.4vw,1.1rem)] font-semibold tracking-[-0.02em] text-slate-800`}
                 >
                   {serviceTitle}
                 </span>
@@ -104,9 +63,7 @@ export default function Navbar({ variant = 'light', serviceTitle }: NavbarProps)
             </Link>
 
             <div
-              className={`hidden md:flex items-center space-x-[clamp(1.25rem,2.6vw,2.5rem)] font-medium text-[clamp(0.9rem,1.2vw,1rem)] ${
-                useLightStyle ? 'text-slate-700' : 'text-white'
-              }`}
+              className={`hidden md:flex items-center space-x-[clamp(1.25rem,2.6vw,2.5rem)] font-medium text-[clamp(0.9rem,1.2vw,1rem)] text-slate-700`}
             >
               {links.slice(0, 4).map((link) => (
                 <Link key={link.to} className="hover:text-[#FC9700] transition-colors" to={link.to}>
@@ -122,9 +79,7 @@ export default function Navbar({ variant = 'light', serviceTitle }: NavbarProps)
                     <a
                       key={socialLink.label}
                       aria-label={socialLink.label}
-                      className={`flex items-center justify-center transition-all ${socialLink.hoverClassName} ${
-                        useLightStyle ? 'text-slate-700' : 'text-white'
-                      }`}
+                      className={`flex items-center justify-center transition-all ${socialLink.hoverClassName} text-slate-700`}
                       href={socialLink.href}
                       target="_blank"
                       rel="noreferrer"
@@ -142,9 +97,7 @@ export default function Navbar({ variant = 'light', serviceTitle }: NavbarProps)
             {links.map((link) => (
               <Link
                 key={link.to}
-                className={`flex min-h-[48px] items-center justify-center rounded-2xl px-2 py-3 text-center text-[0.68rem] font-semibold transition-colors ${
-                  useLightStyle ? 'text-slate-700 hover:bg-slate-100' : 'text-white hover:bg-white/10'
-                }`}
+                className={`flex min-h-[48px] items-center justify-center rounded-2xl px-2 py-3 text-center text-[0.68rem] font-semibold transition-colors text-slate-700 hover:bg-slate-100`}
                 to={link.to}
               >
                 {link.label}

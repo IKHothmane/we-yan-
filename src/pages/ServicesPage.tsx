@@ -151,28 +151,156 @@ export default function ServicesPage() {
           <div className="absolute bottom-[8%] right-[6%] h-[24rem] w-[24rem] rounded-full bg-[radial-gradient(circle,rgba(254,94,30,0.16)_0%,rgba(254,94,30,0.08)_28%,transparent_68%)]" />
         </div>
 
-        <section className="w-full flex flex-col items-center px-6 py-20 text-center sm:px-8 lg:py-32">
-          <h1
-            className="max-w-4xl break-words text-[clamp(2.4rem,8vw,6.4rem)] font-black uppercase leading-[0.9] tracking-[-0.035em] text-slate-900 sm:tracking-[-0.05em]"
+        <section className="w-full flex flex-col items-center px-6 pb-10 text-center sm:px-8 lg:pb-14 pt-20">
+          <span
+            className="inline-flex items-center gap-2 rounded-full border px-4 py-2 text-[0.72rem] font-bold uppercase tracking-[0.22em] mb-8"
+            style={{ backgroundColor: '#EEF2FF', color: '#4338CA', borderColor: '#C7D2FE' }}
             data-reveal
           >
-            Nos Expertises <span className="text-primary italic">Digitales</span>
+            <span className="h-1.5 w-1.5 rounded-full" style={{ backgroundColor: '#6483F0' }} />
+            We Yan Digital · Agence digitale basée à Casablanca, Maarif
+          </span>
+          <h1
+            className="max-w-5xl break-words text-[clamp(2rem,7.5vw,5.5rem)] font-black uppercase leading-[0.9] tracking-[-0.035em] text-slate-900 sm:tracking-[-0.05em]"
+            data-reveal
+          >
+            Agence digitale à <span className="italic" style={{ color: '#FC9700' }}>Casablanca</span>
+            <br />
+            <span style={{ color: '#6483F0' }}>Services</span> SEO, Site Web, Branding & Ads
           </h1>
-          <p
-            className="mt-8 max-w-2xl text-[clamp(1rem,2vw,1.18rem)] leading-8 text-slate-600"
+          <div
+            className="mt-8 max-w-3xl text-[clamp(0.95rem,2vw,1.15rem)] leading-8 text-slate-600 space-y-4"
             data-reveal
             data-reveal-delay="100"
           >
-            Des solutions sur mesure pour propulser votre marque au niveau supérieur grâce à une
-            approche centrée sur l&apos;innovation et la performance.
-          </p>
+            <p>
+              Nous accompagnons <strong className="font-semibold text-slate-800">startups, PME et grands comptes</strong> sur tout le territoire marocain (Casablanca, Rabat, Marrakech, Tanger, Fès…) et à l’international, pour transformer leur présence digitale en un véritable <em>levier de croissance business</em>.
+            </p>
+            <p>
+              Nos équipes maîtrisent aussi bien le <strong>référencement naturel SEO local</strong> sur des requêtes comme « agence digitale près de Casablanca », « SEO Maroc » ou « community management Casablanca », que les campagnes <strong>SEA Google Ads, Meta Ads et TikTok Ads</strong> qui génèrent des leads dès la première semaine. Notre promesse : <strong className="font-semibold">une stratégie sur-mesure, zéro pack standard, des résultats mesurables</strong> chaque mois.
+            </p>
+          </div>
+
+          {/* Image avec ALT obligatoire pour le SEO */}
+          <figure
+            className="mt-14 w-full max-w-[980px] rounded-[1.75rem] overflow-hidden border border-slate-200 shadow-[0_30px_70px_-28px_rgba(15,23,42,0.4)]"
+            data-reveal
+            data-reveal-delay="180"
+          >
+            <img
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuA26cTrzHWhr1lAl33fd3Ki70zwSUi4OF6NjvcmIZ76Ga7-B-FjhQoLQtGZcbTdkiBFBnDeDM5_JRbgc_X94ePyxv64rKgjS7XfUkwJuIMzIENhqM1PpaK7RoethVHVm8di6c_IbAx7F-BB6NczMfoLzkMUeRiJ_K_cjdVe0s3vP6gWa8PXNUBIy5mhVNAtHC7--WgbqpaXlN1mq7vEhIVL9FZQN8rWrTrYlU634k6EKU8XO-Rm8y-Hu66NwWKW2iAryuhp5f9Z7lM"
+              alt="Agence digitale We Yan Digital à Casablanca - Équipe réunion stratégie marketing Maroc SEO site web branding publicité"
+              className="w-full h-auto object-cover block"
+              loading="eager"
+              decoding="async"
+              fetchPriority="high"
+            />
+            <figcaption className="sr-only">
+              Équipe We Yan Digital agence digitale Casablanca travaillant sur une stratégie SEO, branding et création de site web pour un client marocain.
+            </figcaption>
+          </figure>
         </section>
 
         <section className="w-full px-6 pb-24 sm:px-8 lg:pb-32">
+          <div className="mx-auto max-w-5xl mb-16 text-center" data-reveal>
+            <h2 className="text-[clamp(1.8rem,4.5vw,3rem)] font-black tracking-tight text-slate-900 mb-5">
+              Nos 6 expertises digitales complémentaires
+            </h2>
+            <p className="text-[clamp(0.95rem,2vw,1.1rem)] leading-relaxed text-slate-600 max-w-2xl mx-auto">
+              Une seule agence digitale à Casablanca pour piloter <strong>tous vos leviers d’acquisition</strong> : du branding au référencement, en passant par la création de site web, la publicité payante, les réseaux sociaux et les influenceurs. Vous gardez un seul interlocuteur, nous gardons la cohérence globale de votre marque — et nous optimisons chaque mois votre retour sur investissement.
+            </p>
+          </div>
           <div className="mx-auto grid max-w-[1400px] grid-cols-1 items-start gap-6 md:grid-cols-2 md:gap-8 lg:grid-cols-3">
             {services.map((service, index) => (
               <ServiceCard key={service.title} {...service} delay={index * 90} />
             ))}
+          </div>
+        </section>
+
+        {/* Section « Pourquoi nous choisir » — contenu long SEO 500+ mots */}
+        <section
+          className="w-full px-6 pb-24 sm:px-8 lg:pb-32 bg-white border-y border-slate-200"
+          data-reveal
+          data-reveal-delay="250"
+        >
+          <div className="mx-auto max-w-[1200px] grid grid-cols-1 gap-10 md:grid-cols-[1.1fr_1fr] items-start">
+            <div>
+              <span
+                className="inline-flex items-center gap-2 rounded-full border px-3.5 py-1.5 text-[0.7rem] font-bold uppercase tracking-[0.2em] mb-6"
+                style={{ backgroundColor: '#FFF7ED', color: '#C2410C', borderColor: '#FED7AA' }}
+              >
+                Pourquoi We Yan
+                <span className="h-1.5 w-1.5 rounded-full" style={{ backgroundColor: '#FC9700' }} />
+              </span>
+              <h2 className="text-[clamp(1.8rem,4.2vw,2.75rem)] font-black leading-[1.05] tracking-tight text-slate-900 mb-6">
+                Pourquoi choisir <span style={{ color: '#6483F0' }}>We Yan Digital</span> comme agence digitale à Casablanca ?
+              </h2>
+
+              <div className="space-y-5 text-[clamp(0.95rem,1.9vw,1.05rem)] leading-8 text-slate-700">
+                <p>
+                  Contrairement aux freelances généralistes ou aux agences à l’étranger, <strong className="font-semibold text-slate-900">nous sommes implantés à Casablanca, quartier Maarif</strong>, au cœur de l’effervescence économique du Maroc. Cette proximité nous permet de <em>vraiment comprendre votre marché</em> : les habitudes d’achat des consommateurs marocains sur Meta, Instagram et TikTok, la concurrence dans votre secteur, les expressions de recherche locales tapées dans Google (en français, en darija ou en anglais), et les spécificités culturelles qui font qu’un message fonctionnera… ou pas.
+                </p>
+                <p>
+                  Nous privilégions toujours une <strong className="font-semibold text-slate-900">stratégie mixte SEO + SEA</strong> : le SEO pour construire une <em>visibilité durable</em> sur 3 à 6 mois (pages premièrs sur Google, contenu qui capitalise avec le temps), et les campagnes Google Ads / Meta Ads pour générer <em>des leads qualifiés dès la première semaine</em>. Chaque euro dépensé en publicité est suivi dans un dashboard que vous pouvez consulter à tout moment — <strong className="font-semibold">transparence totale, zéro zone grise</strong>.
+                </p>
+                <p>
+                  Enfin, notre <strong className="font-semibold text-slate-900">approche créative We Yan</strong> n’est jamais « un pack standard » : nous travaillons chaque mois une idée de marque forte, des visuels premium, un ton différentiant, pour que votre entreprise se démarque de <em>toutes</em> les autres agences et entreprises dans votre secteur à Casablanca. Branding, design, UX, storytelling : tout est pensé comme un <em>écosystème cohérent</em> — et nous nous adaptons à tous les budgets, de la startup qui démarre au grand compte qui veut accélérer son développement digital au Maroc et en Afrique.
+                </p>
+                <p className="pt-2">
+                  <strong className="font-semibold text-slate-900">Prêt à transformer votre présence digitale en moteur de chiffre d’affaires ?</strong> Répondez-nous en moins de 24h avec un devis gratuit, sans engagement, détaillé service par service.
+                </p>
+              </div>
+            </div>
+
+            <div className="space-y-5 md:sticky md:top-36">
+              <div
+                className="rounded-[1.75rem] p-7 text-white shadow-[0_25px_60px_-22px_rgba(15,23,42,0.65)]"
+                style={{ backgroundColor: '#1F2937' }}
+              >
+                <h3 className="text-[1.35rem] font-black tracking-tight mb-6">
+                  6 raisons de travailler avec nous
+                </h3>
+                <ul className="space-y-4">
+                  {[
+                    { n: '01', t: 'Agence 100% Casablanca, réactivité unique sur Maroc' },
+                    { n: '02', t: 'Dashboard live avec KPI trafic, leads, conversions & ROI' },
+                    { n: '03', t: 'Stratégie mixte SEO (long terme) + SEA (immédiat)' },
+                    { n: '04', t: 'Design premium & branding différenciant We Yan' },
+                    { n: '05', t: 'Accompagnement startups, PME & grands comptes' },
+                    { n: '06', t: 'Devis détaillé & réponse sous 24h chrono' },
+                  ].map((r) => (
+                    <li key={r.n} className="flex items-start gap-4">
+                      <span
+                        className="mt-0.5 flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-xl font-black text-[0.82rem]"
+                        style={{ backgroundColor: '#FC9700', color: '#0F172A' }}
+                      >
+                        {r.n}
+                      </span>
+                      <p className="text-white/85 text-[0.95rem] leading-7 pt-0.5">{r.t}</p>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div
+                className="rounded-[1.5rem] border border-slate-200 p-5"
+                style={{ backgroundColor: '#FFFFFF' }}
+              >
+                <p className="text-[0.78rem] font-bold uppercase tracking-[0.2em] text-slate-500 mb-3">
+                  ✉️ Réponse garantie
+                </p>
+                <p className="text-slate-800 font-bold text-[1.05rem] leading-snug mb-4">
+                  Demande de devis → réponse détaillée sous 24h ouvrées
+                </p>
+                <Link
+                  to="/contact"
+                  className="inline-flex w-full items-center justify-center gap-2 rounded-2xl px-5 py-3.5 text-[0.8rem] font-black uppercase tracking-[0.18em] text-white shadow-lg transition-all hover:brightness-110 hover:-translate-y-0.5"
+                  style={{ backgroundColor: '#6483F0', boxShadow: '0 20px 44px -18px rgba(100,131,240,0.6)' }}
+                >
+                  Obtenir mon devis gratuit
+                  <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-white/15 text-xs font-black">→</span>
+                </Link>
+              </div>
+            </div>
           </div>
         </section>
 

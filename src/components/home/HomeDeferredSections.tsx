@@ -1,4 +1,4 @@
-import { useEffect, useState, type CSSProperties } from 'react'
+import { useState, type CSSProperties } from 'react'
 import { Link } from 'react-router-dom'
 import Icon from '../Icon'
 import SiteFooter from '../SiteFooter'
@@ -23,6 +23,30 @@ const homeImages = {
 const solutionsCardsBackground =
   'https://lh3.googleusercontent.com/aida-public/AB6AXuA26cTrzHWhr1lAl33fd3Ki70zwSUi4OF6NjvcmIZ76Ga7-B-FjhQoLQtGZcbTdkiBFBnDeDM5_JRbgc_X94ePyxv64rKgjS7XfUkwJuIMzIENhqM1PpaK7RoethVHVm8di6c_IbAx7F-BB6NczMfoLzkMUeRiJ_K_cjdVe0s3vP6gWa8PXNUBIy5mhVNAtHC7--WgbqpaXlN1mq7vEhIVL9FZQN8rWrTrYlU634k6EKU8XO-Rm8y-Hu66NwWKW2iAryuhp5f9Z7lM'
 
+const deferredSectionStyle: CSSProperties = {
+  contentVisibility: 'auto',
+  containIntrinsicSize: '900px',
+}
+
+const faqItems = [
+  {
+    q: 'Quelle est la meilleure agence digitale à Casablanca ?',
+    a: 'We Yan Digital est une agence digitale à Casablanca qui se différencie par son approche stratégique et créative : nous ne livrons pas de « packs standard », mais une stratégie sur-mesure alignée sur vos objectifs business (acquisition clients, notoriété, chiffre d\'affaires). Notre équipe maîtrise le marché marocain : du consommateur darijaophone aux cadres francophones, en passant par les segments premium et e-commerce. Nous accompagnons startups, PME et grands comptes à Casablanca, Rabat, Marrakech et partout au Maroc, avec une réactivité unique et un reporting transparent chaque semaine.',
+  },
+  {
+    q: 'Combien coûte un site web vitrine au Maroc en 2026 ?',
+    a: 'En 2026, le prix d\'un site web vitrine au Maroc varie généralement entre 5 000 MAD et 35 000 MAD HT selon la complexité. Chez We Yan Digital à Casablanca, nos formules démarrent à partir de 6 500 MAD pour un site vitrine 3-5 pages (responsive, optimisé SEO mobile, hébergement 1 an inclus). Un site intermédiaire avec back-office, formulaires avancés et optimisation SEO complète se situe entre 12 000 et 22 000 MAD. Un site premium, sur-mesure, multi-langue (FR / AR / EN) et optimisé pour la conversion, dépasse généralement 25 000 MAD. Chaque devis est gratuit et détaillé sans engagement.',
+  },
+  {
+    q: 'Comment améliorer son référencement naturel SEO à Casablanca ?',
+    a: 'Pour booster votre référencement SEO à Casablanca, nous appliquons une méthodologie en 4 piliers : (1) Audit technique complet — vitesse mobile, Core Web Vitals, structure des URLs, balises Schema.org, maillage interne. (2) SEO local Google Business Profile — optimisation de la fiche, photos de qualité Casablanca, avis clients, NAP cohérent (Name/Address/Phone) sur tout le web. (3) Contenu ciblé sur l\'intention de recherche marocaine — mots-clés en français, darija et anglais pour toucher « agence digitale près de chez moi », « prix site web Casablanca », etc. (4) Netlinking local — backlinks depuis des annuaires marocains, partenariats média et presse. Les premiers résultats se voient sous 3 à 6 mois.',
+  },
+  {
+    q: 'Proposez-vous du community management à Casablanca ?',
+    a: 'Oui, absolument. Nous proposons du community management complet à Casablanca et partout au Maroc : création de contenu premium (photographie, reels, carrousels, visuels branding), planification éditoriale mensuelle, animation des communautés Instagram, Facebook, LinkedIn, TikTok, réponse aux commentaires et DM, gestion des bad buzz le cas échéant, reporting mensuel avec KPIs (portée, engagement, clics, leads générés). Nous faisons aussi de la publicité Meta Ads + TikTok Ads couplée au community management pour transformer vos abonnés en clients payants.',
+  },
+] as const
+
 const socialLinks = [
   { href: 'https://instagram.com', label: 'Instagram', icon: '/icons/instagram.svg' },
   { href: 'https://linkedin.com', label: 'LinkedIn', icon: '/icons/linkedin-in.svg' },
@@ -41,11 +65,6 @@ const iconMaskStyle = (url: string) =>
     maskSize: 'contain',
     backgroundColor: 'currentColor',
   }) as const
-
-const deferredSectionStyle: CSSProperties = {
-  contentVisibility: 'auto',
-  containIntrinsicSize: '900px',
-}
 
 const services = [
   {
@@ -167,14 +186,7 @@ const projects = [
 export default function HomeDeferredSections() {
   useScrollReveal()
   const [selectedHomeServices, setSelectedHomeServices] = useState<string[]>([])
-  const [homeCarouselIndex, setHomeCarouselIndex] = useState(0)
-
-  useEffect(() => {
-    const intervalId = window.setInterval(() => {
-      setHomeCarouselIndex((current) => (current + 1) % services.length)
-    }, 1400)
-    return () => window.clearInterval(intervalId)
-  }, [])
+  const [openFaq, setOpenFaq] = useState<number | null>(0)
 
   const toggleHomeService = (serviceTitle: string) => {
     setSelectedHomeServices((current) =>
@@ -182,6 +194,10 @@ export default function HomeDeferredSections() {
         ? current.filter((item) => item !== serviceTitle)
         : [...current, serviceTitle]
     )
+  }
+
+  const toggleFaq = (idx: number) => {
+    setOpenFaq((current) => (current === idx ? null : idx))
   }
 
   return (
@@ -204,8 +220,18 @@ export default function HomeDeferredSections() {
           100% { transform: translate3d(0, 0, 0); }
         }
 
+        @keyframes homeBtnPulse {
+          0%, 100% { box-shadow: 0 20px 25px -5px rgba(252,151,0,0.35), 0 0 0 0 rgba(252,151,0,0.5); transform: scale(1); }
+          50% { box-shadow: 0 20px 25px -5px rgba(252,151,0,0.35), 0 0 0 14px rgba(252,151,0,0); transform: scale(1.015); }
+        }
+
+        .home-submit-pulse { animation: homeBtnPulse 1.6s ease-in-out infinite; }
+
         @media (prefers-reduced-motion: reduce) {
           .home-service-float {
+            animation: none;
+          }
+          .home-submit-pulse {
             animation: none;
           }
         }
@@ -216,9 +242,16 @@ export default function HomeDeferredSections() {
             <h2 className="font-bold text-[clamp(2rem,5vw,3rem)] text-slate-900 mb-4">
               Nos Solutions <span className="text-primary">Digitales</span>
             </h2>
-            <p className="text-slate-600 text-[clamp(1rem,2.3vw,1.125rem)] max-w-2xl mx-auto">
+            <p className="text-slate-600 text-[clamp(1rem,2.3vw,1.125rem)] max-w-2xl mx-auto mb-5">
               Nous avons ce qu'il vous faut, de la création de logo à la campagne publicitaire.
             </p>
+            <Link
+              to="/services"
+              className="inline-flex items-center gap-2 text-slate-700 font-bold text-[0.78rem] uppercase tracking-[0.2em] border-b-2 border-slate-900/70 pb-1 hover:text-primary hover:border-primary transition-colors"
+            >
+              Voir toutes nos expertises (SEO, Site Web, Branding, Ads…)
+              <span aria-hidden="true">↗</span>
+            </Link>
           </div>
 
           <div className="grid grid-cols-1 items-start md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8" data-reveal data-reveal-delay="100">
@@ -470,7 +503,7 @@ export default function HomeDeferredSections() {
                     </div>
                     <div>
                       <p className="text-xs font-bold uppercase tracking-widest text-brand-charcoal/55">Téléphone</p>
-                      <p className="mt-1 text-lg font-semibold text-brand-charcoal">+33 1 23 45 67 89</p>
+                      <p className="mt-1 text-lg font-semibold text-brand-charcoal">06 91 56 72 46</p>
                     </div>
                   </div>
                 </div>
@@ -532,13 +565,12 @@ export default function HomeDeferredSections() {
                       Service souhaité
                     </label>
                     <p className="text-sm text-brand-charcoal/60">
-                      Les services défilent comme un carrousel. Cliquez pour sélectionner.
+                      Sélectionnez les services qui vous intéressent.
                     </p>
                     <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-                      {services.map((service, index) => {
+                      {services.map((service) => {
                         const id = `home-contact-service-${service.title.toLowerCase().replace(/[^\p{L}0-9]+/gu, '-')}`
                         const isSelected = selectedHomeServices.includes(service.title)
-                        const isSpotlight = index === homeCarouselIndex
                         return (
                           <label key={service.title} htmlFor={id} className="block cursor-pointer">
                             <input
@@ -553,10 +585,8 @@ export default function HomeDeferredSections() {
                               className={`flex min-h-[3.75rem] w-full items-center rounded-2xl border px-5 py-4 text-sm font-semibold leading-snug transition-all whitespace-normal break-words ${
                                 isSelected
                                   ? 'border-secondary bg-secondary text-on-secondary service-carousel-selected'
-                                  : isSpotlight
-                                    ? 'border-secondary bg-secondary text-on-secondary shadow-lg shadow-secondary/20'
-                                    : 'border-brand-blue/10 bg-white text-brand-charcoal'
-                              } ${isSpotlight ? 'service-carousel-spotlight' : ''}`}
+                                  : 'border-brand-blue/10 bg-white text-brand-charcoal'
+                              }`}
                             >
                               {service.title}
                             </span>
@@ -581,13 +611,117 @@ export default function HomeDeferredSections() {
 
                   <button
                     type="submit"
-                    className="w-full rounded-2xl bg-secondary px-6 py-4 text-sm font-extrabold uppercase tracking-[0.2em] text-on-secondary shadow-xl shadow-secondary/30 transition-all hover:bg-secondary/90"
+                    className="w-full rounded-2xl bg-secondary px-6 py-4 text-sm font-extrabold uppercase tracking-[0.2em] text-on-secondary shadow-xl shadow-secondary/30 transition-all hover:bg-secondary/90 home-submit-pulse"
                   >
                     Envoyer le message
                   </button>
                 </form>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ - juste au-dessus du footer */}
+      <section className="relative overflow-hidden bg-white py-[clamp(4.5rem,9vw,7.5rem)] text-slate-900" id="faq">
+        <div className="absolute -top-40 right-0 h-96 w-96 rounded-full blur-3xl opacity-30" style={{ background: 'radial-gradient(circle, #6483F0 0%, transparent 60%)' }} />
+        <div className="absolute -bottom-32 -left-20 h-96 w-96 rounded-full blur-3xl opacity-20" style={{ background: 'radial-gradient(circle, #FC9700 0%, transparent 60%)' }} />
+
+        <div className="relative w-full max-w-[1120px] mx-auto px-[clamp(1rem,4vw,2rem)]">
+          <div className="text-center mb-[clamp(2.5rem,6vw,3.5rem)]" data-reveal>
+            <span className="inline-flex items-center gap-2 rounded-full border px-3.5 py-1.5 text-[0.7rem] font-bold uppercase tracking-[0.2em] mb-4" style={{ backgroundColor: '#EEF2FF', color: '#4338CA', borderColor: '#C7D2FE' }}>
+              <span className="h-1.5 w-1.5 rounded-full" style={{ backgroundColor: '#6483F0' }} />
+              FAQ · SEO
+            </span>
+            <h2 className="font-black text-[clamp(2rem,5.5vw,3.5rem)] tracking-tight text-slate-900 mb-4">
+              Questions <span style={{ color: '#6483F0' }}>fréquentes</span>
+            </h2>
+            <p className="text-slate-500 text-[clamp(0.95rem,2vw,1.125rem)] max-w-2xl mx-auto leading-relaxed">
+              Les réponses aux questions que nous posent le plus souvent nos clients marocains et internationaux.
+            </p>
+          </div>
+
+          <div className="space-y-4" data-reveal data-reveal-delay="80">
+            {faqItems.map((item, idx) => {
+              const isOpen = openFaq === idx
+              return (
+                <div
+                  key={item.q}
+                  className={`group rounded-3xl border-2 transition-all duration-300 ${
+                    isOpen
+                      ? 'shadow-[0_22px_50px_-18px_rgba(100,131,240,0.45)]'
+                      : 'shadow-sm hover:shadow-md hover:-translate-y-0.5'
+                  }`}
+                  style={{
+                    borderColor: isOpen ? '#6483F0' : '#E5E7EB',
+                    backgroundColor: isOpen ? '#FFFFFF' : '#FFFFFF',
+                  }}
+                >
+                  <button
+                    type="button"
+                    onClick={() => toggleFaq(idx)}
+                    className="flex w-full items-center justify-between gap-5 text-left px-[clamp(1.1rem,3vw,1.6rem)] py-[clamp(1rem,2.2vw,1.35rem)]"
+                    aria-expanded={isOpen}
+                  >
+                    <div className="flex items-start gap-4">
+                      <span
+                        className={`mt-0.5 flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-xl text-sm font-black transition-all ${
+                          isOpen ? 'text-white shadow-md' : 'text-[#6483F0]'
+                        }`}
+                        style={{ backgroundColor: isOpen ? '#6483F0' : '#EEF2FF' }}
+                      >
+                        {String(idx + 1).padStart(2, '0')}
+                      </span>
+                      <h3 className={`font-bold text-[clamp(0.95rem,2vw,1.15rem)] leading-snug ${
+                        isOpen ? 'text-slate-900' : 'text-slate-800'
+                      }`}>
+                        {item.q}
+                      </h3>
+                    </div>
+                    <span
+                      className={`flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full transition-all duration-300 ${
+                        isOpen ? 'rotate-180 text-white' : 'text-slate-400 bg-slate-100'
+                      }`}
+                      style={{ backgroundColor: isOpen ? '#FC9700' : undefined }}
+                    >
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M6 9l6 6 6-6" />
+                      </svg>
+                    </span>
+                  </button>
+                  <div
+                    className="grid transition-all duration-300 ease-out"
+                    style={{ gridTemplateRows: isOpen ? '1fr' : '0fr' }}
+                  >
+                    <div className="overflow-hidden">
+                      <div
+                        className="px-[clamp(1.1rem,3vw,1.6rem)] pb-[clamp(1.1rem,2.2vw,1.45rem)] pl-[calc(clamp(1.1rem,3vw,1.6rem)+2rem+1rem)] pr-[clamp(1.1rem,3vw,1.6rem)]"
+                      >
+                        <p className="text-slate-600 leading-relaxed text-[clamp(0.92rem,1.8vw,1rem)]">
+                          {item.a}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )
+            })}
+          </div>
+
+          <div className="mt-14 text-center" data-reveal data-reveal-delay="160">
+            <p className="text-slate-500 text-[0.92rem] mb-5">
+              Vous n'avez pas trouvé votre réponse ?
+            </p>
+            <Link
+              to="/contact"
+              className="inline-flex items-center gap-3 rounded-2xl px-7 py-4 text-[0.8rem] font-black uppercase tracking-[0.2em] text-white shadow-xl transition-all hover:brightness-110 hover:-translate-y-0.5"
+              style={{ backgroundColor: '#6483F0', boxShadow: '0 22px 45px -16px rgba(100,131,240,0.55)' }}
+            >
+              Parlez à un expert · Casablanca
+              <span className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-white/20 text-sm">
+                →
+              </span>
+            </Link>
           </div>
         </div>
       </section>
