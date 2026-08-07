@@ -4,6 +4,41 @@ import Icon from '../Icon'
 import SiteFooter from '../SiteFooter'
 import useScrollReveal from '../../hooks/useScrollReveal'
 
+const blogResources = [
+  {
+    eyebrow: 'Prix · 2026',
+    title: 'Prix création site web au Maroc 2026',
+    excerpt: 'Vitrine, e-commerce, sur-mesure : tarifs MAD détaillés, fourchettes réelles freelance vs agence, coûts récurrents et 5 pièges à éviter avant de signer un devis.',
+    readingTime: '9 min',
+    to: '/blog/prix-site-web-maroc-2026',
+    accent: '#6483F0',
+  },
+  {
+    eyebrow: 'SEO vs SEA · Comparatif',
+    title: 'SEO vs SEA au Maroc : lequel prioriser ?',
+    excerpt: 'Tableau comparatif 7 critères, cas d\'usage seul, coût CPA Casablanca, et la stratégie We Yan gagnante combo SEO+SEA qui fait +162% de CA en 9 mois.',
+    readingTime: '8 min',
+    to: '/blog/seo-vs-sea-maroc',
+    accent: '#FC9700',
+  },
+  {
+    eyebrow: 'Branding · Marque',
+    title: 'Branding Maroc : créer une marque qui dure',
+    excerpt: '6 étapes (de la stratégie avant design au playbook lancement), budget branding 2026, recherche OMPIC, 10 marques marocaines inspirantes.',
+    readingTime: '11 min',
+    to: '/blog/branding-creation-marque-maroc',
+    accent: '#4F46E5',
+  },
+  {
+    eyebrow: 'Tendances · 2026',
+    title: 'Marketing digital au Maroc : 6 tendances 2026',
+    excerpt: 'TikTok Shop, SEO local Google Business, IA générative contenu, micro-influenceurs 10k-100k, budgets PME tableau, et ce qu\'il faut arrêter.',
+    readingTime: '10 min',
+    to: '/blog/marketing-digital-tendances-maroc-2026',
+    accent: '#10B981',
+  },
+] as const
+
 const svgToDataUri = (svg: string) => `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(svg)}`
 
 const avatarImage = (initials: string, bg: string, fg: string) =>
@@ -271,7 +306,6 @@ export default function HomeDeferredSections() {
                     src={solutionsCardsBackground}
                     loading="lazy"
                     decoding="async"
-                    fetchPriority="low"
                   />
                   <div className={`absolute inset-0 rounded-[inherit] ${toneGradient}`} />
                   <img
@@ -281,7 +315,6 @@ export default function HomeDeferredSections() {
                     src={service.image}
                     loading="lazy"
                     decoding="async"
-                    fetchPriority="low"
                   />
                   <div className="absolute inset-0 rounded-[inherit] bg-slate-950/20 opacity-0 transition-opacity duration-700 group-hover:opacity-100" />
                   <div className="absolute inset-0 rounded-[inherit] bg-gradient-to-t from-slate-950/55 via-slate-950/15 to-transparent transition-opacity duration-500 group-hover:opacity-95" />
@@ -618,6 +651,93 @@ export default function HomeDeferredSections() {
                 </form>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* RESSOURCES BLOG · Maillage interne SEO vers 4 articles orphelins */}
+      <section className="relative overflow-hidden py-[clamp(4rem,8vw,6rem)] text-slate-900" style={{ backgroundColor: '#F8FAFC' }}>
+        <div aria-hidden="true" className="pointer-events-none absolute -top-24 left-1/2 h-96 w-96 -translate-x-1/2 rounded-full blur-3xl opacity-40" style={{ background: 'radial-gradient(circle, #EEF2FF 0%, transparent 65%)' }} />
+        <div aria-hidden="true" className="pointer-events-none absolute -bottom-20 -right-16 h-80 w-80 rounded-full blur-3xl opacity-50" style={{ background: 'radial-gradient(circle, #FFF7ED 0%, transparent 65%)' }} />
+
+        <div className="relative z-10 w-full max-w-[1200px] mx-auto px-[clamp(1rem,4vw,2rem)]">
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-[clamp(2.2rem,5.5vw,3rem)]">
+            <div data-reveal>
+              <span className="inline-flex items-center gap-2 rounded-full border px-3.5 py-1.5 text-[0.7rem] font-bold uppercase tracking-[0.2em] mb-4" style={{ backgroundColor: '#FFF7ED', color: '#C2410C', borderColor: '#FED7AA' }}>
+                <span className="h-1.5 w-1.5 rounded-full" style={{ backgroundColor: '#FC9700' }} />
+                Guides & Blog We Yan
+              </span>
+              <h2 className="font-black text-[clamp(1.8rem,5vw,3.1rem)] tracking-tight text-slate-900 mb-3 leading-[1.05]">
+                Nos <span style={{ color: '#FC9700' }}>ressources</span> pour booster votre marque au Maroc
+              </h2>
+              <p className="text-slate-500 text-[clamp(0.95rem,2vw,1.1rem)] max-w-2xl leading-relaxed">
+                Tarifs, comparatifs, stratégie, branding : tous nos guides 100% dédiés au marché marocain. Données réelles 2026, contenu unique, aucun contenu IA brut.
+              </p>
+            </div>
+            <Link
+              to="/blog/prix-site-web-maroc-2026"
+              className="group inline-flex items-center gap-2.5 rounded-full px-6 py-3.5 text-[0.9rem] font-bold uppercase tracking-wider shadow-xl shadow-[#6483F0]/20 hover:shadow-2xl hover:shadow-[#6483F0]/30 hover:scale-[1.01] transition-all whitespace-nowrap"
+              style={{ backgroundColor: '#6483F0', color: '#FFF' }}
+              data-reveal
+              data-reveal-delay="60"
+            >
+              Explorer tous les articles
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="h-4.5 w-4.5 h-4 w-4 transition-transform group-hover:translate-x-0.5" fill="none" stroke="currentColor" strokeWidth={2.5} strokeLinecap="round" strokeLinejoin="round">
+                <path d="M5 12h14" />
+                <path d="M13 6l6 6-6 6" />
+              </svg>
+            </Link>
+          </div>
+
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-4">
+            {blogResources.map((card, i) => (
+              <article
+                key={card.to}
+                className="group relative flex h-full flex-col overflow-hidden rounded-3xl bg-white border border-slate-100 shadow-[0_18px_40px_-20px_rgba(15,23,42,0.18)] hover:shadow-[0_28px_60px_-22px_rgba(100,131,240,0.35)] hover:-translate-y-1 transition-all duration-300"
+                data-reveal
+                data-reveal-delay={`${100 + i * 80}`}
+              >
+                <div aria-hidden="true" className="h-2.5 w-full" style={{ backgroundColor: card.accent }} />
+                <div className="flex h-full flex-col p-6">
+                  <div className="flex items-center justify-between mb-4">
+                    <span
+                      className="inline-flex items-center rounded-full px-3 py-1 text-[0.72rem] font-bold uppercase tracking-wider"
+                      style={{
+                        backgroundColor: `${card.accent}14`,
+                        color: card.accent,
+                      }}
+                    >
+                      {card.eyebrow}
+                    </span>
+                    <span className="text-[0.75rem] text-slate-400 font-medium flex items-center gap-1.5">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="h-3.5 w-3.5" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
+                        <circle cx="12" cy="12" r="10" />
+                        <path d="M12 6v6l4 2" />
+                      </svg>
+                      {card.readingTime}
+                    </span>
+                  </div>
+                  <h3 className="text-[1.12rem] sm:text-[1.2rem] font-extrabold leading-[1.25] text-slate-900 mb-3 line-clamp-2 group-hover:text-[#6483F0] transition-colors">
+                    {card.title}
+                  </h3>
+                  <p className="text-[0.93rem] leading-[1.65] text-slate-500 line-clamp-4 mb-6 flex-1">
+                    {card.excerpt}
+                  </p>
+                  <Link
+                    to={card.to}
+                    aria-label={`Lire l'article : ${card.title}`}
+                    className="mt-auto inline-flex items-center gap-2 rounded-xl px-4 py-2.5 text-[0.85rem] font-bold transition-all group-hover:text-white"
+                    style={{ backgroundColor: `${card.accent}14`, color: card.accent }}
+                  >
+                    Lire l'article
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="h-3.5 w-3.5" fill="none" stroke="currentColor" strokeWidth={2.5} strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M5 12h14" />
+                      <path d="M13 6l6 6-6 6" />
+                    </svg>
+                  </Link>
+                </div>
+              </article>
+            ))}
           </div>
         </div>
       </section>

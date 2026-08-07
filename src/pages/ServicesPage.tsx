@@ -103,7 +103,6 @@ function ServiceCard({
         src={solutionsCardsBackground}
         loading="lazy"
         decoding="async"
-        fetchPriority="low"
       />
       <div className={`absolute inset-0 rounded-[inherit] ${toneGradient}`} />
       <img
@@ -113,7 +112,6 @@ function ServiceCard({
         src={image}
         loading="lazy"
         decoding="async"
-        fetchPriority="low"
       />
       <div className="absolute inset-0 rounded-[inherit] bg-slate-950/20 opacity-0 transition-opacity duration-700 group-hover:opacity-100" />
       <div className="absolute inset-0 rounded-[inherit] bg-gradient-to-t from-slate-950/55 via-slate-950/15 to-transparent transition-opacity duration-500 group-hover:opacity-95" />
@@ -193,7 +191,6 @@ export default function ServicesPage() {
               className="w-full h-auto object-cover block"
               loading="eager"
               decoding="async"
-              fetchPriority="high"
             />
             <figcaption className="sr-only">
               Équipe We Yan Digital agence digitale Casablanca travaillant sur une stratégie SEO, branding et création de site web pour un client marocain.
@@ -319,6 +316,112 @@ export default function ServicesPage() {
                 to="/contact"
               >
                 Discutons de votre projet
+              </Link>
+            </div>
+          </div>
+        </section>
+
+        {/* PAGES LONG TAIL SEO · Maillage interne PageRank vers pages dédiées (hors /services/* wildcard) */}
+        <section className="relative overflow-hidden py-[clamp(4rem,8vw,6rem)] text-slate-900">
+          <div aria-hidden="true" className="pointer-events-none absolute -top-32 left-0 h-96 w-96 rounded-full blur-3xl opacity-40" style={{ background: 'radial-gradient(circle, #EEF2FF 0%, transparent 65%)' }} />
+          <div aria-hidden="true" className="pointer-events-none absolute -bottom-24 right-0 h-96 w-96 rounded-full blur-3xl opacity-40" style={{ background: 'radial-gradient(circle, #FFF7ED 0%, transparent 65%)' }} />
+
+          <div className="relative z-10 w-full max-w-[1180px] mx-auto px-[clamp(1rem,4vw,2rem)]">
+            <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-5 mb-[clamp(2.2rem,5.5vw,3rem)]">
+              <div data-reveal>
+                <span className="inline-flex items-center gap-2 rounded-full border px-3.5 py-1.5 text-[0.7rem] font-bold uppercase tracking-[0.2em] mb-4" style={{ backgroundColor: '#EEF2FF', color: '#4338CA', borderColor: '#C7D2FE' }}>
+                  <span className="h-1.5 w-1.5 rounded-full" style={{ backgroundColor: '#6483F0' }} />
+                  Expertises dédiées · Casablanca
+                </span>
+                <h2 className="font-black text-[clamp(1.9rem,5vw,3rem)] tracking-tight text-slate-900 mb-3 leading-[1.05]">
+                  Nos pages <span style={{ color: '#6483F0' }}>expertise dédiée</span> SEO Casablanca & Community Management
+                </h2>
+                <p className="text-slate-500 text-[clamp(0.95rem,2vw,1.1rem)] max-w-2xl leading-relaxed">
+                  Pour Google : des pages spécialisées ultra-longues, positionnées sur les requêtes longues traînes que tapent vos prospects marocains tous les jours.
+                </p>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+              {/* Carte 1 : Agence SEO Casablanca */}
+              <Link
+                to="/agence-seo-casablanca"
+                data-reveal
+                className="group relative overflow-hidden rounded-[2rem] p-[clamp(1.5rem,3.5vw,2.25rem)] text-white shadow-[0_30px_60px_-30px_rgba(99,102,241,0.55)] hover:shadow-[0_45px_75px_-30px_rgba(99,102,241,0.75)] hover:-translate-y-1 transition-all duration-300"
+                style={{ backgroundColor: '#6483F0' }}
+              >
+                <div aria-hidden="true" className="pointer-events-none absolute -right-24 -top-24 h-64 w-64 rounded-full blur-3xl opacity-50" style={{ background: 'radial-gradient(circle,#4F46E5 0%,transparent 65%)' }} />
+                <div aria-hidden="true" className="pointer-events-none absolute -bottom-20 -left-20 h-60 w-60 rounded-full blur-3xl opacity-40" style={{ background: 'radial-gradient(circle,#818CF8 0%,transparent 65%)' }} />
+
+                <div className="relative z-10">
+                  <div className="flex items-center justify-between mb-7">
+                    <span className="inline-flex items-center gap-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/15 px-4 py-1.5 text-[0.72rem] font-bold uppercase tracking-[0.18em] text-white">
+                      ☝️ Requête #1 Google : Agence SEO Casablanca
+                    </span>
+                    <span aria-hidden="true" className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-white/15 backdrop-blur-sm text-white text-xl">
+                      🔎
+                    </span>
+                  </div>
+                  <h3 className="text-[clamp(1.5rem,4vw,2.1rem)] font-black leading-[1.08] mb-4">
+                    Agence SEO à Casablanca<br />· Premier sur Google en 2026
+                  </h3>
+                  <p className="text-white/85 leading-relaxed mb-7 max-w-xl text-[0.98rem]">
+                    4 avantages We Yan, méthode 4 étapes, tarifs audit SEO gratuit, FAQ 3 questions, +1 600 mots uniques. Parfaite pour ranker #1 sur les requêtes SEO marocaines.
+                  </p>
+                  <div className="flex flex-wrap items-center gap-2.5 mb-8 text-[0.8rem] font-semibold text-white/90">
+                    <span className="rounded-full bg-white/10 backdrop-blur-sm border border-white/15 px-3 py-1">SEO Local GBP</span>
+                    <span className="rounded-full bg-white/10 backdrop-blur-sm border border-white/15 px-3 py-1">Tech Audit Core Web Vitals</span>
+                    <span className="rounded-full bg-white/10 backdrop-blur-sm border border-white/15 px-3 py-1">Netlinking Maroc</span>
+                  </div>
+                  <span className="group inline-flex items-center gap-2.5 rounded-full bg-white px-6 py-3.5 text-[0.88rem] font-black uppercase tracking-wider shadow-xl shadow-black/15 hover:scale-[1.02] transition-transform" style={{ color: '#6483F0' }}>
+                    Découvrir l'agence SEO
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="h-4 w-4 transition-transform group-hover:translate-x-0.5" fill="none" stroke="currentColor" strokeWidth={2.5} strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M5 12h14" />
+                      <path d="M13 6l6 6-6 6" />
+                    </svg>
+                  </span>
+                </div>
+              </Link>
+
+              {/* Carte 2 : Community Management Casablanca */}
+              <Link
+                to="/community-management-casablanca"
+                data-reveal
+                data-reveal-delay="120"
+                className="group relative overflow-hidden rounded-[2rem] p-[clamp(1.5rem,3.5vw,2.25rem)] text-white shadow-[0_30px_60px_-30px_rgba(252,151,0,0.6)] hover:shadow-[0_45px_75px_-30px_rgba(252,151,0,0.8)] hover:-translate-y-1 transition-all duration-300"
+                style={{ backgroundColor: '#FC9700' }}
+              >
+                <div aria-hidden="true" className="pointer-events-none absolute -right-24 -top-24 h-64 w-64 rounded-full blur-3xl opacity-50" style={{ background: 'radial-gradient(circle,#F97316 0%,transparent 65%)' }} />
+                <div aria-hidden="true" className="pointer-events-none absolute -bottom-20 -left-20 h-60 w-60 rounded-full blur-3xl opacity-40" style={{ background: 'radial-gradient(circle,#FBBF24 0%,transparent 65%)' }} />
+
+                <div className="relative z-10">
+                  <div className="flex items-center justify-between mb-7">
+                    <span className="inline-flex items-center gap-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/15 px-4 py-1.5 text-[0.72rem] font-bold uppercase tracking-[0.18em] text-white">
+                      📱 Community Management · Casablanca & Maroc
+                    </span>
+                    <span aria-hidden="true" className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-white/15 backdrop-blur-sm text-white text-xl">
+                      🎬
+                    </span>
+                  </div>
+                  <h3 className="text-[clamp(1.5rem,4vw,2.1rem)] font-black leading-[1.08] mb-4">
+                    Community management à<br />Casablanca · Contenu + Ads
+                  </h3>
+                  <p className="text-white/90 leading-relaxed mb-7 max-w-xl text-[0.98rem]">
+                    6 expertises, galerie studio We Yan, 3 forfaits Essentiel / Performance / Premium tarifs MAD / mois, budget Meta/TikTok Ads inclus, FAQ 3 questions.
+                  </p>
+                  <div className="flex flex-wrap items-center gap-2.5 mb-8 text-[0.8rem] font-semibold text-white/95">
+                    <span className="rounded-full bg-white/10 backdrop-blur-sm border border-white/15 px-3 py-1">Studio photo Casablanca</span>
+                    <span className="rounded-full bg-white/10 backdrop-blur-sm border border-white/15 px-3 py-1">Reels / TikTok</span>
+                    <span className="rounded-full bg-white/10 backdrop-blur-sm border border-white/15 px-3 py-1">Meta & TikTok Ads</span>
+                  </div>
+                  <span className="group inline-flex items-center gap-2.5 rounded-full bg-white px-6 py-3.5 text-[0.88rem] font-black uppercase tracking-wider shadow-xl shadow-black/15 hover:scale-[1.02] transition-transform" style={{ color: '#FC9700' }}>
+                    Voir les forfaits CM
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="h-4 w-4 transition-transform group-hover:translate-x-0.5" fill="none" stroke="currentColor" strokeWidth={2.5} strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M5 12h14" />
+                      <path d="M13 6l6 6-6 6" />
+                    </svg>
+                  </span>
+                </div>
               </Link>
             </div>
           </div>
