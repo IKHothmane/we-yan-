@@ -8,6 +8,7 @@ const HomeDeferredSections = lazy(() => import('../components/home/HomeDeferredS
 
 const homeImages = {
   hero: '/hero.webp',
+  heroMobile: '/modern_office_scene.webp',
 }
 
 const heroServicePositions = [
@@ -128,10 +129,22 @@ export default function HomePage() {
         <section
           className="relative flex min-h-[100svh] items-center overflow-hidden pt-[clamp(5.5rem,12vw,7rem)] pb-[clamp(2.5rem,6vw,4rem)]"
         >
+          {/* Hero background MOBILE */}
           <img
             alt=""
             aria-hidden="true"
-            className="hero-image-motion absolute inset-0 h-full w-full object-cover object-center"
+            className="md:hidden hero-image-motion absolute inset-0 h-full w-full object-cover object-center"
+            src={homeImages.heroMobile}
+            width={900}
+            height={1600}
+            loading="eager"
+            decoding="async"
+          />
+          {/* Hero background DESKTOP */}
+          <img
+            alt=""
+            aria-hidden="true"
+            className="hidden md:block hero-image-motion absolute inset-0 h-full w-full object-cover object-center"
             src={homeImages.hero}
             width={1600}
             height={900}
