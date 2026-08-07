@@ -56,19 +56,19 @@ export default function SiteFooter({ revealDelay }: SiteFooterProps) {
                 loading="lazy"
               />
             </Link>
-            <p className="text-white/90 text-[0.95rem] leading-relaxed max-w-[18rem] mb-8">
+            <p className="text-white text-[0.95rem] leading-relaxed max-w-[18rem] mb-8">
               Agence digitale à Casablanca qui transforme les marques avec créativité et stratégie.
             </p>
 
             <div className="mt-auto">
-              <p className="text-[0.75rem] font-bold uppercase tracking-[0.22em] text-white/65 mb-4">
+              <p className="text-[0.75rem] font-bold uppercase tracking-[0.22em] text-white/85 mb-4">
                 Suivez-nous
               </p>
               <div className="flex items-center gap-3 mb-8">
                 {socialLinks.map((socialLink) => (
                   <a
                     key={socialLink.label}
-                    className="flex h-11 w-11 items-center justify-center rounded-full border border-white/30 text-white/90 transition-all hover:bg-white hover:text-[#6483F0] hover:border-white"
+                    className="flex h-11 w-11 items-center justify-center rounded-full border border-white/45 text-white transition-all hover:bg-white hover:text-[#6483F0] hover:border-white"
                     href={socialLink.href}
                     target="_blank"
                     rel="noreferrer"
@@ -78,7 +78,7 @@ export default function SiteFooter({ revealDelay }: SiteFooterProps) {
                   </a>
                 ))}
               </div>
-              <p className="text-[0.8rem] text-white/65">
+              <p className="text-[0.8rem] text-white/85">
                 © 2026 We Yan Digital. Tous droits réservés.
               </p>
             </div>
@@ -86,7 +86,7 @@ export default function SiteFooter({ revealDelay }: SiteFooterProps) {
 
           {/* COL 2 — EXPLORER */}
           <div>
-            <h3 className="text-[0.8rem] font-bold uppercase tracking-[0.22em] mb-5 text-white/65">
+            <h3 className="text-[0.8rem] font-bold uppercase tracking-[0.22em] mb-5 text-white/85">
               Explorer
             </h3>
             <ul className="space-y-3">
@@ -99,7 +99,7 @@ export default function SiteFooter({ revealDelay }: SiteFooterProps) {
                 </Link>
               </li>
               <li>
-                <p className="text-[0.8rem] font-bold uppercase tracking-[0.22em] mt-6 mb-3 text-white/65">
+                <p className="text-[0.8rem] font-bold uppercase tracking-[0.22em] mt-6 mb-3 text-white/85">
                   Services
                 </p>
                 <ul className="space-y-2.5">
@@ -137,7 +137,7 @@ export default function SiteFooter({ revealDelay }: SiteFooterProps) {
           {/* COL 3 — LÉGAL + Carte trust */}
           <div className="flex flex-col h-full">
             <div>
-              <h3 className="text-[0.8rem] font-bold uppercase tracking-[0.22em] mb-5 text-white/65">
+              <h3 className="text-[0.8rem] font-bold uppercase tracking-[0.22em] mb-5 text-white/85">
                 Légal
               </h3>
               <ul className="space-y-3.5">
@@ -179,7 +179,7 @@ export default function SiteFooter({ revealDelay }: SiteFooterProps) {
             <div className="mt-auto pt-10">
               <Link
                 to="/contact"
-                className="block rounded-2xl border border-white/15 px-5 py-5 hover:bg-white/10 transition-all"
+                className="block rounded-2xl border border-white/25 px-5 py-5 hover:bg-white/10 transition-all"
                 style={{ backgroundColor: 'rgba(255,255,255,0.08)' }}
               >
                 <p className="text-white font-bold text-[0.95rem] leading-relaxed mb-1.5">
@@ -187,7 +187,7 @@ export default function SiteFooter({ revealDelay }: SiteFooterProps) {
                   <br className="hidden sm:block" />
                   disponible dans tout le Maroc.
                 </p>
-                <p className="text-white/60 text-[0.82rem] leading-relaxed">
+                <p className="text-white/85 text-[0.82rem] leading-relaxed">
                   Réponse sous 24h ouvrées.
                 </p>
               </Link>
@@ -196,7 +196,7 @@ export default function SiteFooter({ revealDelay }: SiteFooterProps) {
 
           {/* COL 4 — CONTACT + CTA */}
           <div>
-            <h3 className="text-[0.8rem] font-bold uppercase tracking-[0.22em] mb-5 text-white/65">
+            <h3 className="text-[0.8rem] font-bold uppercase tracking-[0.22em] mb-5 text-white/85">
               Contact
             </h3>
             <ul className="space-y-5 mb-8">
@@ -207,8 +207,8 @@ export default function SiteFooter({ revealDelay }: SiteFooterProps) {
                 >
                   <span
                     aria-hidden="true"
-                    className="mt-0.5 flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full text-white/95 group-hover:text-white transition-colors"
-                    style={{ backgroundColor: 'rgba(255,255,255,0.12)' }}
+                    className="mt-0.5 flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full text-white group-hover:text-white transition-colors"
+                    style={{ backgroundColor: 'rgba(255,255,255,0.14)' }}
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -236,8 +236,8 @@ export default function SiteFooter({ revealDelay }: SiteFooterProps) {
                 >
                   <span
                     aria-hidden="true"
-                    className="mt-0.5 flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full text-white/95 group-hover:text-white transition-colors"
-                    style={{ backgroundColor: 'rgba(255,255,255,0.12)' }}
+                    className="mt-0.5 flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full text-white group-hover:text-white transition-colors"
+                    style={{ backgroundColor: 'rgba(255,255,255,0.14)' }}
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -289,7 +289,7 @@ export default function SiteFooter({ revealDelay }: SiteFooterProps) {
                 </svg>
               </span>
             </Link>
-            <Link to="/contact" className="mt-4 block text-center text-[0.82rem] text-white/65 hover:text-white/90 transition-colors">
+            <Link to="/contact" className="mt-4 block text-center text-[0.82rem] text-white/85 hover:text-white transition-colors">
               Devis gratuit • Réponse en 24h
             </Link>
           </div>

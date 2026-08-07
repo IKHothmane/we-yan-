@@ -1,4 +1,4 @@
-﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿import { Suspense, lazy, useEffect, useRef, useState } from 'react'
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿import { Suspense, lazy, useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import Icon from '../components/Icon'
 import Navbar from '../components/Navbar'
@@ -135,6 +135,8 @@ export default function HomePage() {
             aria-hidden="true"
             className="md:hidden hero-image-motion absolute inset-0 h-full w-full object-cover object-center"
             src={homeImages.heroMobile}
+            srcSet={`${homeImages.heroMobile} 900w`}
+            sizes="(max-width: 767px) 100vw, 0px"
             width={900}
             height={1600}
             loading="eager"
@@ -146,6 +148,8 @@ export default function HomePage() {
             aria-hidden="true"
             className="hidden md:block hero-image-motion absolute inset-0 h-full w-full object-cover object-center"
             src={homeImages.hero}
+            srcSet={`${homeImages.hero} 1600w`}
+            sizes="(min-width: 768px) 100vw, 0px"
             width={1600}
             height={900}
             loading="eager"
