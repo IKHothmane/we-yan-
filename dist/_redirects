@@ -1,22 +1,51 @@
 # =========================================================
-#  We Yan Digital · Cloudflare Pages _redirects
-#  RÈGLE N°1 EN PREMIÈRE : assets statiques  →  passthrough (:status=404 si absents)
-#  RÈGLE N°2 : toutes autres URLs HTML        →  index.html 200 SPA fallback
+#  We Yan Digital · Cloudflare Pages (et Netlify compatible)
+#  ——————————————————————————————————————————————————————————
+#  IMPORTANT RÈGLE CLOUDFLARE PAGES:
+#  Les règles sont lues DE HAUT EN BAS · LA PREMIÈRE QUI MATCH = C'EST ELLE !
+#  → On MET TOUJOURS LES EXCLUSIONS D'ASSETS EN PREMIER.
 # =========================================================
 
-# 1) Assets : JAMAIS de fallback index.html (évite MIME type text/html sur .js/.css)
-#    :splat = ce qui est après /assets/ — 404 explicite si le fichier nexiste pas
-/assets/*   :splat      404
+# ——————————————————————————————————————————————————————————
+# 1)  ASSETS BUILD VITE (hashés, /assets/*.js / .css / .woff2 etc.)
+#    :splat signifie : sert le fichier S/IL EXISTE.
+#    404 signifie : SI LE FICHIER N'EXISTE PAS → VRAI HTTP 404.
+#    CECI ÉVITE QUE LA WILDCARD SPA `* → index.html` NE SERVE DU
+#    HTML text/html POUR UN FICHIER JS/CSS MANQUANT → crash MIME.
+# ——————————————————————————————————————————————————————————
+/assets/*   :splat    404
 
-# 2) Images et autres fichiers statiques : si 404 → 404, pas fallback SPA
-/*.webp      :splat      404
-/*.png       :splat      404
-/*.jpg       :splat      404
-/*.jpeg      :splat      404
-/*.svg       :splat      404
-/*.ico       :splat      404
-/sitemap.xml            200
-/robots.txt             200
+# ——————————————————————————————————————————————————————————
+# 2)  IMAGES / MEDIAS / FAVICON (statiques, racine / ou /public)
+# ——————————————————————————————————————————————————————————
+/*.webp      :splat    404
+/*.png       :splat    404
+/*.jpg       :splat    404
+/*.jpeg      :splat    404
+/*.svg       :splat    404
+/*.ico       :splat    404
+/favicon.ico :splat    404
 
-# 3) TOUT le reste (routes SPA HTML) → index.html
-/*           /index.html   200
+# ——————————————————————————————————————————————————————————
+# 3)  FICHIERS RACINE NON-HTML : SITEMAP.XML / ROBOTS.TXT
+#     Règle 200 explicite (les exclut explicitement du fallback SPA)
+# ——————————————————————————————————————————————————————————
+/sitemap.xml         200
+/sitemap.xml.gz      200
+/robots.txt          200
+
+# ——————————————————————————————————————————————————————————
+# 4)  META-FICHIERS CLOUDFLARE PAGES / _headers / _redirects
+#     (on les laisse passer en 200; ils ne sont pas servis aux utilisateurs
+#      mais Cloudflare les lit à l'inclusion)
+# ——————————————————————————————————————————————————————————
+/_headers           200
+/_redirects         200
+/404.html           404
+
+# ——————————————————————————————————————————————————————————
+# 5)  SPAs REACT ROUTER : TOUTES LES AUTRES URLS
+#     → page index.html  ·  code HTTP 200
+#     Mettre CETTE RÈGLE EN TOUT DERNIER (sinon elle prend le dessus)
+# ——————————————————————————————————————————————————————————
+/*          /index.html     200
