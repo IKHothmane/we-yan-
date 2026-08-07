@@ -1,25 +1,63 @@
 {
   "version": 1,
-  "description": "We Yan Digital · SPA Cloudflare Pages. Routes SPA vers index.html, SAUF /assets (vrai 404 si chunk périmé) + fichiers statiques existants.",
+  "description": "We Yan Digital · Cloudflare Pages SPA. Réécrit les routes HTML VERS index.html, JAMAIS /assets/ ni fichiers statiques.",
   "include": ["/*"],
-  "exclude": [
-    "/assets/*",
-    "/*.webp",
-    "/*.png",
-    "/*.jpg",
-    "/*.jpeg",
-    "/*.svg",
-    "/*.ico",
-    "/sitemap.xml",
-    "/robots.txt",
-    "/404.html",
-    "/_redirects",
-    "/favicon.ico"
-  ],
   "routes": [
     {
+      "pathPattern": "/assets/*",
+      "status": "passthrough"
+    },
+    {
+      "pathPattern": "/*.webp",
+      "status": "passthrough"
+    },
+    {
+      "pathPattern": "/*.png",
+      "status": "passthrough"
+    },
+    {
+      "pathPattern": "/*.jpg",
+      "status": "passthrough"
+    },
+    {
+      "pathPattern": "/*.jpeg",
+      "status": "passthrough"
+    },
+    {
+      "pathPattern": "/*.svg",
+      "status": "passthrough"
+    },
+    {
+      "pathPattern": "/*.ico",
+      "status": "passthrough"
+    },
+    {
+      "pathPattern": "/sitemap.xml",
+      "status": "passthrough"
+    },
+    {
+      "pathPattern": "/robots.txt",
+      "status": "passthrough"
+    },
+    {
+      "pathPattern": "/_headers",
+      "status": "passthrough"
+    },
+    {
+      "pathPattern": "/_redirects",
+      "status": "passthrough"
+    },
+    {
+      "pathPattern": "/404.html",
+      "status": "passthrough"
+    },
+    {
+      "pathPattern": "/favicon.ico",
+      "status": "passthrough"
+    },
+    {
       "pathPattern": "/*",
-      "target": ".wrangler/pages/public/index.html"
+      "target": "/index.html"
     }
   ]
 }

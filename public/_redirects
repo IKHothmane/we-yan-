@@ -1,6 +1,22 @@
-# SPA routing: toute URL HTML → index.html (sauf assets existants + fichiers)
-/*    /index.html   200
+# =========================================================
+#  We Yan Digital · Cloudflare Pages _redirects
+#  RÈGLE N°1 EN PREMIÈRE : assets statiques  →  passthrough (:status=404 si absents)
+#  RÈGLE N°2 : toutes autres URLs HTML        →  index.html 200 SPA fallback
+# =========================================================
 
-# IMPORTANT: /assets/ → VRAI 404 (pas fallback index.html) → évite le crash MIME HTML/JS
-# quand un vieux navigateur demande un chunk hash périmé (ex: index-AbCdEf.js supprimé après déploiement)
-/assets/*   /404.html   404
+# 1) Assets : JAMAIS de fallback index.html (évite MIME type text/html sur .js/.css)
+#    :splat = ce qui est après /assets/ — 404 explicite si le fichier nexiste pas
+/assets/*   :splat      404
+
+# 2) Images et autres fichiers statiques : si 404 → 404, pas fallback SPA
+/*.webp      :splat      404
+/*.png       :splat      404
+/*.jpg       :splat      404
+/*.jpeg      :splat      404
+/*.svg       :splat      404
+/*.ico       :splat      404
+/sitemap.xml            200
+/robots.txt             200
+
+# 3) TOUT le reste (routes SPA HTML) → index.html
+/*           /index.html   200
