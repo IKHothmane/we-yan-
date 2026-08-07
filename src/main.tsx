@@ -1,41 +1,72 @@
-import React, { Suspense, lazy } from 'react'
-import ReactDOM from 'react-dom/client'
+import { Suspense } from 'react'
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
+import ReactDOM from 'react-dom/client'
 import ScrollToTop from './components/ScrollToTop'
+import ChunkErrorBoundary from './components/ChunkErrorBoundary'
+import { lazyWithRetry } from './lib/lazyWithRetry'
 import HomePage from './pages/HomePage'
 import './styles.css'
 
-const ServicesPage = lazy(() => import('./pages/ServicesPage'))
-const StrategieMarketingPage = lazy(() => import('./pages/StrategieMarketingPage'))
-const ContentCreationPage = lazy(() => import('./pages/ContentCreationPage'))
-const AdvertisingPage = lazy(() => import('./pages/AdvertisingPage'))
-const InfluenceMarketingPage = lazy(() => import('./pages/InfluenceMarketingPage'))
-const SeoPage = lazy(() => import('./pages/SeoPage'))
-const OfflineMediaPage = lazy(() => import('./pages/OfflineMediaPage'))
-const ProjectsPage = lazy(() => import('./pages/ProjectsPage'))
-const AgencyPage = lazy(() => import('./pages/AgencyPage'))
-const ContactPage = lazy(() => import('./pages/ContactPage'))
+// Page home (synchrone pour LCP le + rapide possible, pas lazy)
+const ServicesPage = lazyWithRetry(() => import('./pages/ServicesPage'))
+const StrategieMarketingPage = lazyWithRetry(() => import('./pages/StrategieMarketingPage'))
+const ContentCreationPage = lazyWithRetry(() => import('./pages/ContentCreationPage'))
+const AdvertisingPage = lazyWithRetry(() => import('./pages/AdvertisingPage'))
+const InfluenceMarketingPage = lazyWithRetry(() => import('./pages/InfluenceMarketingPage'))
+const SeoPage = lazyWithRetry(() => import('./pages/SeoPage'))
+const OfflineMediaPage = lazyWithRetry(() => import('./pages/OfflineMediaPage'))
+const ProjectsPage = lazyWithRetry(() => import('./pages/ProjectsPage'))
+const AgencyPage = lazyWithRetry(() => import('./pages/AgencyPage'))
+const ContactPage = lazyWithRetry(() => import('./pages/ContactPage'))
 
-// Pages SEO dédiées long tail : Agence Casablanca (indexation 30+ pages)
-const AgenceSeoCasablancaPage = lazy(() => import('./pages/AgenceSeoCasablancaPage'))
-const CommunityManagementCasablancaPage = lazy(() => import('./pages/CommunityManagementCasablancaPage'))
+// Pages SEO dédiées long tail (Casablanca)
+const AgenceSeoCasablancaPage = lazyWithRetry(() => import('./pages/AgenceSeoCasablancaPage'))
+const CommunityManagementCasablancaPage = lazyWithRetry(() => import('./pages/CommunityManagementCasablancaPage'))
 
-// Articles Blog We Yan Digital (indexation SEO + contenu unique)
-const BlogPrixSiteWebMarocPage = lazy(() => import('./pages/BlogPrixSiteWebMarocPage'))
-const BlogSeoVsSeaPage = lazy(() => import('./pages/BlogSeoVsSeaPage'))
-const BlogBrandingMarocPage = lazy(() => import('./pages/BlogBrandingMarocPage'))
-const BlogMarketingDigitalMarocPage = lazy(() => import('./pages/BlogMarketingDigitalMarocPage'))
+// Articles Blog
+const BlogPrixSiteWebMarocPage = lazyWithRetry(() => import('./pages/BlogPrixSiteWebMarocPage'))
+const BlogSeoVsSeaPage = lazyWithRetry(() => import('./pages/BlogSeoVsSeaPage'))
+const BlogBrandingMarocPage = lazyWithRetry(() => import('./pages/BlogBrandingMarocPage'))
+const BlogMarketingDigitalMarocPage = lazyWithRetry(() => import('./pages/BlogMarketingDigitalMarocPage'))
 
-// Pages légales obligatoires footer — confiance utilisateur & Search Console
-const ConditionsGeneralesPage = lazy(() => import('./pages/ConditionsGeneralesPage'))
-const PolitiqueConfidentialitePage = lazy(() => import('./pages/PolitiqueConfidentialitePage'))
-const MentionsLegalesPage = lazy(() => import('./pages/MentionsLegalesPage'))
+// Pages légales
+const ConditionsGeneralesPage = lazyWithRetry(() => import('./pages/ConditionsGeneralesPage'))
+const PolitiqueConfidentialitePage = lazyWithRetry(() => import('./pages/PolitiqueConfidentialitePage'))
+const MentionsLegalesPage = lazyWithRetry(() => import('./pages/MentionsLegalesPage'))
+
+const AppSuspenseFallback = () => (
+  <div aria-hidden="true" className="min-h-[100svh] w-full bg-slate-50 animate-pulse">
+    {/* Top bar skeleton Navbar */}
+    <div className="sticky top-0 z-[70] bg-white/80 backdrop-blur-lg border-b border-slate-100">
+      <div className="mx-auto w-full max-w-[1200px] px-[clamp(1rem,4vw,2rem)] h-[76px] flex items-center justify-between">
+        <div className="h-10 w-[clamp(8rem,20vw,12rem)] rounded-2xl bg-slate-200/80" />
+        <div className="hidden md:flex items-center gap-8">
+          {[0, 1, 2, 3, 4].map((i) => (
+            <div key={i} className="h-3.5 w-20 rounded-full bg-slate-200/80" />
+          ))}
+        </div>
+        <div className="h-10 w-32 rounded-full bg-indigo-100/80" />
+      </div>
+    </div>
+    {/* Hero skeleton */}
+    <div className="w-full max-w-[1200px] mx-auto px-[clamp(1rem,4vw,2rem)] pt-[clamp(3rem,8vw,6rem)] pb-[clamp(4rem,10vw,8rem)] space-y-7">
+      <div className="h-3.5 w-48 rounded-full bg-indigo-100" />
+      <div className="h-[clamp(2.5rem,7vw,4.5rem)] w-11/12 max-w-3xl rounded-2xl bg-slate-200/80" />
+      <div className="h-5 w-10/12 max-w-2xl rounded-full bg-slate-200/70" />
+      <div className="h-5 w-8/12 max-w-xl rounded-full bg-slate-200/70" />
+      <div className="flex flex-wrap gap-4 pt-3">
+        <div className="h-14 w-56 rounded-full bg-indigo-100" />
+        <div className="h-14 w-44 rounded-full bg-slate-200/70" />
+      </div>
+    </div>
+  </div>
+)
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
-  <React.StrictMode>
+  <ChunkErrorBoundary>
     <BrowserRouter>
       <ScrollToTop />
-      <Suspense fallback={null}>
+      <Suspense fallback={<AppSuspenseFallback />}>
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/services" element={<ServicesPage />} />
@@ -49,17 +80,14 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
           <Route path="/agence" element={<AgencyPage />} />
           <Route path="/contact" element={<ContactPage />} />
 
-          {/* Pages dédiées SEO long tail (Casablanca) — top requêtes Search Console */}
           <Route path="/agence-seo-casablanca" element={<AgenceSeoCasablancaPage />} />
           <Route path="/community-management-casablanca" element={<CommunityManagementCasablancaPage />} />
 
-          {/* Articles Blog (SEO longue traîne + contenu 600+ mots uniques) */}
           <Route path="/blog/prix-site-web-maroc-2026" element={<BlogPrixSiteWebMarocPage />} />
           <Route path="/blog/seo-vs-sea-maroc" element={<BlogSeoVsSeaPage />} />
           <Route path="/blog/branding-creation-marque-maroc" element={<BlogBrandingMarocPage />} />
           <Route path="/blog/marketing-digital-tendances-maroc-2026" element={<BlogMarketingDigitalMarocPage />} />
 
-          {/* Pages légales obligatoires footer */}
           <Route path="/conditions-generales" element={<ConditionsGeneralesPage />} />
           <Route path="/politique-de-confidentialite" element={<PolitiqueConfidentialitePage />} />
           <Route path="/mentions-legales" element={<MentionsLegalesPage />} />
@@ -68,5 +96,5 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
         </Routes>
       </Suspense>
     </BrowserRouter>
-  </React.StrictMode>,
+  </ChunkErrorBoundary>,
 )

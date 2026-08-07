@@ -1,0 +1,6 @@
+# SPA routing: toute URL HTML → index.html (sauf assets existants + fichiers)
+/*    /index.html   200
+
+# IMPORTANT: /assets/ → VRAI 404 (pas fallback index.html) → évite le crash MIME HTML/JS
+# quand un vieux navigateur demande un chunk hash périmé (ex: index-AbCdEf.js supprimé après déploiement)
+/assets/*   /404.html   404

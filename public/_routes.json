@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "description": "We Yan Digital · SPA Cloudflare Pages. Routes SPA vers index.html, SAUF /assets (vrai 404 si chunk périmé) + fichiers statiques existants.",
+  "include": ["/*"],
+  "exclude": [
+    "/assets/*",
+    "/*.webp",
+    "/*.png",
+    "/*.jpg",
+    "/*.jpeg",
+    "/*.svg",
+    "/*.ico",
+    "/sitemap.xml",
+    "/robots.txt",
+    "/404.html",
+    "/_redirects",
+    "/favicon.ico"
+  ],
+  "routes": [
+    {
+      "pathPattern": "/*",
+      "target": ".wrangler/pages/public/index.html"
+    }
+  ]
+}

@@ -1,14 +1,62 @@
-/*
-  X-Robots-Tag: index, follow
+# =========================================================
+#  We Yan Digital · Headers Cloudflare Pages / Cloudflare CDN
+# =========================================================
 
+# ——————————————————————————————————————————————————————————
+# 1. Assets statiques hashés : CACHE IMMUABLE 1 AN
+#    -> Jamais re-téléchargé si même hash (évite MIME HTML)
+# ——————————————————————————————————————————————————————————
 /assets/*
   Cache-Control: public, max-age=31536000, immutable
+  X-Content-Type-Options: nosniff
+  Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+  Referrer-Policy: strict-origin-when-cross-origin
 
-/fonts/*
+# ——————————————————————————————————————————————————————————
+# 2. Images locales / Logo weyan / hero.webp / modern_office_scene
+# ——————————————————————————————————————————————————————————
+/*.webp
+  Cache-Control: public, max-age=2592000, stale-while-revalidate=604800
+  X-Content-Type-Options: nosniff
+/*.png
+  Cache-Control: public, max-age=2592000, stale-while-revalidate=604800
+  X-Content-Type-Options: nosniff
+/*.jpg
+  Cache-Control: public, max-age=2592000, stale-while-revalidate=604800
+/*.jpeg
+  Cache-Control: public, max-age=2592000, stale-while-revalidate=604800
+/*.svg
   Cache-Control: public, max-age=31536000, immutable
+  X-Content-Type-Options: nosniff
+/*.ico
+  Cache-Control: public, max-age=2592000
 
-/Logo%20weyan.png
-  Cache-Control: public, max-age=31536000, immutable
-
+# ——————————————————————————————————————————————————————————
+# 3. Sitemap + robots : 1 jour cache
+# ——————————————————————————————————————————————————————————
+/sitemap.xml
+  Cache-Control: public, max-age=86400, must-revalidate
+  X-Content-Type-Options: nosniff
 /robots.txt
-  Cache-Control: public, max-age=86400
+  Cache-Control: public, max-age=86400, must-revalidate
+  X-Content-Type-Options: nosniff
+
+# ——————————————————————————————————————————————————————————
+# 4. TOUTES les réponses HTML (routes SPA, index.html, 404)
+#    -> Pas de cache navigateur, toujours fresh après déploiement
+# ——————————————————————————————————————————————————————————
+/*
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: https: blob:; connect-src 'self' https:; frame-ancestors 'self'; base-uri 'self'; form-action 'self' mailto: tel:
+  Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
+  X-Frame-Options: SAMEORIGIN
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=()
+  X-XSS-Protection: 1; mode=block
+  Cross-Origin-Opener-Policy: same-origin
+  Cross-Origin-Resource-Policy: same-site
+  Cross-Origin-Embedder-Policy: credentialless
+  Cache-Control: no-cache, no-store, must-revalidate
+  Pragma: no-cache
+  Expires: 0
