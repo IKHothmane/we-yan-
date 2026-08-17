@@ -93,18 +93,23 @@
             "@type": "Organization",
             "@id": "https://weyandigital.ma/#organization",
             "name": "We Yan Digital",
-            "alternateName": ["We Yan", "We Yan Digital", "WeYanDigital"],
+            "alternateName": ["We Yan", "WeYanDigital"],
             "url": "https://weyandigital.ma/",
             "logo": "https://weyandigital.ma/Logo%20weyan.png",
-            "description": "Agence digitale marocaine à Casablanca spécialisée en SEO, SEA Google Ads, Branding, Création de sites web, Social Media, Media Buying et Influence Marketing.",
+            "description": "We Yan Digital est une agence SEO à Casablanca (Maarif) : référencement naturel, community management, branding, publicité digitale, marketing d’influence et média offline au Maroc.",
             "address": {
               "@type": "PostalAddress",
               "streetAddress": "Quartier Maarif",
               "addressLocality": "Casablanca",
+              "postalCode": "20100",
+              "addressRegion": "Casablanca-Settat",
               "addressCountry": "MA"
             },
             "areaServed": [
               { "@type": "AdministrativeArea", "name": "Casablanca" },
+              { "@type": "AdministrativeArea", "name": "Rabat" },
+              { "@type": "AdministrativeArea", "name": "Marrakech" },
+              { "@type": "AdministrativeArea", "name": "Tanger" },
               { "@type": "Country", "name": "Maroc" }
             ],
             "contactPoint": {
@@ -113,25 +118,23 @@
               "contactType": "customer support",
               "email": "contact@weyandigital.ma",
               "availableLanguage": ["French", "English", "Arabic"]
-            },
-            "sameAs": [
-              "https://instagram.com",
-              "https://linkedin.com",
-              "https://facebook.com"
-            ]
+            }
           },
           {
-            "@type": "ProfessionalService",
-            "@id": "https://weyandigital.ma/#professional-service",
+            "@type": ["LocalBusiness", "ProfessionalService"],
+            "@id": "https://weyandigital.ma/#localbusiness",
             "name": "We Yan Digital",
             "image": "https://weyandigital.ma/Logo%20weyan.png",
             "url": "https://weyandigital.ma/",
             "telephone": "+212-6-91-56-72-46",
             "email": "contact@weyandigital.ma",
+            "priceRange": "$$",
             "address": {
               "@type": "PostalAddress",
               "streetAddress": "Quartier Maarif",
               "addressLocality": "Casablanca",
+              "postalCode": "20100",
+              "addressRegion": "Casablanca-Settat",
               "addressCountry": "MA"
             },
             "geo": {
@@ -139,16 +142,74 @@
               "latitude": 33.59,
               "longitude": -7.62
             },
-            "openingHours": "Mo-Fr 09:00-18:00",
-            "priceRange": "$$",
+            "openingHoursSpecification": {
+              "@type": "OpeningHoursSpecification",
+              "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+              "opens": "09:00",
+              "closes": "18:00"
+            },
+            "hasOfferCatalog": {
+              "@type": "OfferCatalog",
+              "name": "Services We Yan Digital Casablanca",
+              "itemListElement": [
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Référencement Naturel (SEO)",
+                    "url": "https://weyandigital.ma/agence-seo-casablanca"
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Création de Contenu & Community Management",
+                    "url": "https://weyandigital.ma/community-management-casablanca"
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Stratégie Marketing & Rebranding",
+                    "url": "https://weyandigital.ma/services/strategie-marketing-rebranding"
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Publicité Digitale (Google Ads & Meta Ads)",
+                    "url": "https://weyandigital.ma/services/publicite-digitale"
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Marketing d’Influence",
+                    "url": "https://weyandigital.ma/services/marketing-influence"
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Média Publicité Offline",
+                    "url": "https://weyandigital.ma/projets"
+                  }
+                }
+              ]
+            },
             "knowsAbout": [
+              "Agence SEO Casablanca",
               "Agence digitale Casablanca",
-              "SEO Maroc",
-              "SEA Google Ads Maroc",
-              "Référencement Casablanca",
-              "Branding Maroc",
-              "Création site web Casablanca",
-              "Social Media Maroc"
+              "Référencement naturel Maroc",
+              "Community management Casablanca",
+              "Agence branding Casablanca",
+              "Agence Google Ads Maroc",
+              "Agence influenceur Maroc"
             ]
           },
           {
