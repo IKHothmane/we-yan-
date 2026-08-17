@@ -1,5 +1,30 @@
+import { copyFileSync, mkdirSync, existsSync } from 'node:fs'
+import { dirname, join } from 'node:path'
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
+
+/** Routes React (hors accueil) : un index.html physique par URL pour OVH sans rewrite. */
+const SPA_ROUTES = [
+  'services',
+  'services/strategie-marketing-rebranding',
+  'services/creation-contenu-community-management',
+  'services/publicite-digitale',
+  'services/marketing-influence',
+  'services/seo',
+  'services/media-publicite-offline',
+  'projets',
+  'agence',
+  'contact',
+  'agence-seo-casablanca',
+  'community-management-casablanca',
+  'blog/prix-site-web-maroc-2026',
+  'blog/seo-vs-sea-maroc',
+  'blog/branding-creation-marque-maroc',
+  'blog/marketing-digital-tendances-maroc-2026',
+  'conditions-generales',
+  'politique-de-confidentialite',
+  'mentions-legales',
+]
 
 export default defineConfig({
   build: {
@@ -44,6 +69,21 @@ export default defineConfig({
           .replace(/<script\s+type="module"(?![^>]*\bcrossorigin=)([^>]*?)src="(\/assets\/[^"]+\.js)"([^>]*)>/g,
             (full, before, src, after) => `<script type="module"${before}src="${src}" crossorigin="anonymous"${after}>`,
           )
+      },
+    },
+    {
+      name: 'emit-spa-html-pages',
+      apply: 'build',
+      closeBundle() {
+        const dist = join(process.cwd(), 'dist')
+        const indexFile = join(dist, 'index.html')
+        if (!existsSync(indexFile)) return
+
+        for (const route of SPA_ROUTES) {
+          const target = join(dist, route, 'index.html')
+          mkdirSync(dirname(target), { recursive: true })
+          copyFileSync(indexFile, target)
+        }
       },
     },
   ],

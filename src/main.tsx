@@ -34,6 +34,29 @@ const ConditionsGeneralesPage = lazyWithRetry(() => import('./pages/ConditionsGe
 const PolitiqueConfidentialitePage = lazyWithRetry(() => import('./pages/PolitiqueConfidentialitePage'))
 const MentionsLegalesPage = lazyWithRetry(() => import('./pages/MentionsLegalesPage'))
 
+const APP_PAGE_ROUTES = [
+  { path: '/', element: <HomePage /> },
+  { path: '/services', element: <ServicesPage /> },
+  { path: '/services/strategie-marketing-rebranding', element: <StrategieMarketingPage /> },
+  { path: '/services/creation-contenu-community-management', element: <ContentCreationPage /> },
+  { path: '/services/publicite-digitale', element: <AdvertisingPage /> },
+  { path: '/services/marketing-influence', element: <InfluenceMarketingPage /> },
+  { path: '/services/seo', element: <SeoPage /> },
+  { path: '/services/media-publicite-offline', element: <OfflineMediaPage /> },
+  { path: '/projets', element: <ProjectsPage /> },
+  { path: '/agence', element: <AgencyPage /> },
+  { path: '/contact', element: <ContactPage /> },
+  { path: '/agence-seo-casablanca', element: <AgenceSeoCasablancaPage /> },
+  { path: '/community-management-casablanca', element: <CommunityManagementCasablancaPage /> },
+  { path: '/blog/prix-site-web-maroc-2026', element: <BlogPrixSiteWebMarocPage /> },
+  { path: '/blog/seo-vs-sea-maroc', element: <BlogSeoVsSeaPage /> },
+  { path: '/blog/branding-creation-marque-maroc', element: <BlogBrandingMarocPage /> },
+  { path: '/blog/marketing-digital-tendances-maroc-2026', element: <BlogMarketingDigitalMarocPage /> },
+  { path: '/conditions-generales', element: <ConditionsGeneralesPage /> },
+  { path: '/politique-de-confidentialite', element: <PolitiqueConfidentialitePage /> },
+  { path: '/mentions-legales', element: <MentionsLegalesPage /> },
+]
+
 const AppSuspenseFallback = () => (
   <div aria-hidden="true" className="min-h-[100svh] w-full bg-slate-50 animate-pulse">
     {/* Top bar skeleton Navbar */}
@@ -68,30 +91,14 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
       <ScrollToTop />
       <Suspense fallback={<AppSuspenseFallback />}>
         <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/services" element={<ServicesPage />} />
-          <Route path="/services/strategie-marketing-rebranding" element={<StrategieMarketingPage />} />
-          <Route path="/services/creation-contenu-community-management" element={<ContentCreationPage />} />
-          <Route path="/services/publicite-digitale" element={<AdvertisingPage />} />
-          <Route path="/services/marketing-influence" element={<InfluenceMarketingPage />} />
-          <Route path="/services/seo" element={<SeoPage />} />
-          <Route path="/services/media-publicite-offline" element={<OfflineMediaPage />} />
-          <Route path="/projets" element={<ProjectsPage />} />
-          <Route path="/agence" element={<AgencyPage />} />
-          <Route path="/contact" element={<ContactPage />} />
-
-          <Route path="/agence-seo-casablanca" element={<AgenceSeoCasablancaPage />} />
-          <Route path="/community-management-casablanca" element={<CommunityManagementCasablancaPage />} />
-
-          <Route path="/blog/prix-site-web-maroc-2026" element={<BlogPrixSiteWebMarocPage />} />
-          <Route path="/blog/seo-vs-sea-maroc" element={<BlogSeoVsSeaPage />} />
-          <Route path="/blog/branding-creation-marque-maroc" element={<BlogBrandingMarocPage />} />
-          <Route path="/blog/marketing-digital-tendances-maroc-2026" element={<BlogMarketingDigitalMarocPage />} />
-
-          <Route path="/conditions-generales" element={<ConditionsGeneralesPage />} />
-          <Route path="/politique-de-confidentialite" element={<PolitiqueConfidentialitePage />} />
-          <Route path="/mentions-legales" element={<MentionsLegalesPage />} />
-
+          {APP_PAGE_ROUTES.flatMap(({ path, element }) =>
+            path === '/'
+              ? [<Route key={path} path={path} element={element} />]
+              : [
+                  <Route key={path} path={path} element={element} />,
+                  <Route key={`${path}/`} path={`${path}/`} element={element} />,
+                ],
+          )}
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </Suspense>

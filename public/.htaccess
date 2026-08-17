@@ -1,26 +1,28 @@
-# We Yan Digital · React SPA (OVH Apache)
-# Toutes les routes (/mentions-legales, /services/seo, etc.) doivent
-# servir index.html en HTTP 200 pour que React Router fonctionne.
+# We Yan Digital · Apache OVH
+# Les pages existent aussi en dossiers physiques :
+#   /mentions-legales/index.html
+#   /services/seo/index.html
+# etc. → HTTP 200 même sans mod_rewrite.
+
+DirectoryIndex index.html
 
 <IfModule mod_rewrite.c>
   RewriteEngine On
   RewriteBase /
 
-  # Fichiers et dossiers existants : servir normalement
-  RewriteCond %{REQUEST_FILENAME} -f [OR]
-  RewriteCond %{REQUEST_FILENAME} -d
+  # Fichiers existants : ne pas réécrire
+  RewriteCond %{REQUEST_FILENAME} -f
   RewriteRule ^ - [L]
 
-  # Assets Vite manquants → vrai 404 (évite HTML servi comme JS/CSS)
-  RewriteCond %{REQUEST_URI} ^/assets/ [NC]
-  RewriteRule ^ - [R=404,L]
+  # Dossier existant : servir son index.html (URL avec ou sans slash)
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^(.*?)/?$ $1/index.html [L]
 
-  # Autres fichiers statiques manquants (.js, .css, images…) → vrai 404
+  # Assets / fichiers statiques manquants : vrai 404
+  RewriteCond %{REQUEST_URI} ^/assets/ [NC,OR]
   RewriteCond %{REQUEST_URI} \.(js|mjs|css|webp|png|jpe?g|svg|ico|woff2?|map|xml|txt)$ [NC]
   RewriteRule ^ - [R=404,L]
 
-  # Fallback SPA : toute autre URL → index.html (200)
-  RewriteRule ^ index.html [L]
+  # Autres URLs : SPA
+  RewriteRule ^ /index.html [L]
 </IfModule>
-
-Options -Indexes -MultiViews
