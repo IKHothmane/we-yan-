@@ -51,8 +51,8 @@ export const pageSeo = {
     seoImages.advertising,
   ),
   influenceMarketing: createPageSeoConfig(
-    'Marketing d’Influence | We Yan Digital',
-    'Découvrez notre service de marketing d’influence pour connecter votre marque aux bons créateurs, construire des récits authentiques et amplifier votre impact.',
+    'Agence Influenceur Maroc | Marketing d’Influence Casablanca - We Yan Digital',
+    'Agence influenceur Maroc et marketing d’influence Casablanca : casting, brief, reporting. Nano, micro, macro, tarifs story / reel 2026. Devis sous 24h.',
     seoImages.influenceMarketing,
   ),
   seo: createPageSeoConfig(
@@ -116,6 +116,11 @@ export const pageSeo = {
     'Prix Meta Ads Casablanca 2026 : CPC, CPL Facebook et Instagram',
     'Prix Meta Ads à Casablanca en 2026 : CPC, CPM, coût par lead WhatsApp, budgets Facebook / Instagram. Fourchettes MAD et agence We Yan Digital.',
     seoImages.advertising,
+  ),
+  blogPrixInfluenceurMaroc2026: createPageSeoConfig(
+    'Prix influenceur Maroc 2026 : tarifs story, reel et post',
+    'Prix d’un influenceur au Maroc en 2026 : nano, micro, macro, story, reel, post en MAD. Fourchettes Casablanca et agence We Yan Digital.',
+    seoImages.influenceMarketing,
   ),
   blogSeoVsSea: createPageSeoConfig(
     'SEO vs SEA au Maroc : quelle stratégie choisir en 2026 ? | We Yan Digital',

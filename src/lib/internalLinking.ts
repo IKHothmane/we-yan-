@@ -35,6 +35,8 @@ const MONEY_SLUGS = [
   '/agence-seo-casablanca',
   '/community-management-casablanca',
   '/services/strategie-marketing-rebranding',
+  '/services/publicite-digitale',
+  '/services/marketing-influence',
 ]
 
 export const PAGES_LINKING: PageLinking[] = [
@@ -394,36 +396,92 @@ export const PAGES_LINKING: PageLinking[] = [
   },
   {
     slug: '/services/marketing-influence',
-    titre: 'Marketing d’Influence',
-    intention: 'Vendre l’influence Maroc dans le silo ads / acquisition.',
-    mot_cle_principal: 'marketing influence maroc',
+    titre: 'Agence Influenceur Maroc',
+    intention: 'Ranker sur « agence influenceur maroc » / « marketing influence casablanca » et convertir (page money).',
+    mot_cle_principal: 'agence influenceur maroc',
     cluster_semantique: 'ads',
-    pageRank_voulu: 6,
+    pageRank_voulu: 9,
+    title_serp: 'Agence Influenceur Maroc | Marketing d’Influence Casablanca - We Yan Digital',
+    faq: [
+      {
+        q: 'Quel est le prix d’une story influenceur au Maroc en 2026 ?',
+        r: 'Une story nano (10k–50k) se négocie souvent entre 800 et 2 500 MAD. Micro (50k–200k) : 2 500 à 8 000 MAD. Macro (200k+) : 8 000 à 25 000 MAD et plus selon la ville (Casablanca vs intérieur) et l’exclusivité. Le CPL réel dépend du brief, pas seulement du tarif brut.',
+      },
+      {
+        q: 'Combien coûte un reel d’influenceur au Maroc ?',
+        r: 'Nano : 1 500 à 5 000 MAD. Micro : 5 000 à 18 000 MAD. Macro : 18 000 à 60 000 MAD. Un reel usage ads (droits 3–6 mois) se facture 30 à 80 % de plus. Chez We Yan, le devis sépare cachet, droits et production.',
+      },
+      {
+        q: 'Comment choisir un influenceur à Casablanca ?',
+        r: 'On regarde l’audience réelle (ville, âge, langue), le taux d’engagement, les commentaires (pas les vues achetées), l’alignement offre, et les scandales. Un micro Casa qui vend en darija bat souvent un macro générique. Le casting We Yan refuse les faux followers.',
+      },
+      {
+        q: 'Nano, micro ou macro : par quoi commencer ?',
+        r: 'PME locale : 4 à 8 nanos / micros Casablanca, pas un seul macro. Le macro sert à la notoriété nationale une fois l’offre et le brief rodés. Un premier test We Yan tient en 15 000 à 35 000 MAD de cachets + gestion.',
+      },
+      {
+        q: 'Faut-il coupler influence et Meta Ads ?',
+        r: 'Oui dès que le UGC convertit. On whitelist le contenu, on le booste via l’agence Meta Ads Casablanca. Sans ads, la campagne meurt en 48h. Sans influence, les ads manquent de preuve sociale marocaine.',
+      },
+      {
+        q: 'Comment mesurer le ROI d’une campagne influence ?',
+        r: 'Codes promo, UTM, lien in-bio, screens WhatsApp, ventes attributées, et CPM/CPL vs ads. We Yan livre un reporting : livrables, portée, engagement, leads, CPA. Pas un PDF de screenshots sans chiffres.',
+      },
+      {
+        q: 'Intervenez-vous à Rabat, Marrakech et Tanger ?',
+        r: 'Oui. L’agence est à Casablanca Maarif. Casting et brief en visio ou présentiel. Les créateurs peuvent être Casa, Rabat, Marrakech, Tanger selon la cible. Le contrat et le reporting restent We Yan.',
+      },
+      {
+        q: 'Comment lancer une campagne influence avec We Yan ?',
+        r: 'Formulaire contact. Sous 24h : 3 profils, fourchette MAD, calendrier. Puis contrat, brief, validation contenus, mise en ligne, reporting. CTA : lancer ma campagne influence — sans engagement sur le premier échange.',
+      },
+    ],
     breadcrumb: [
       { label: 'Accueil', to: '/' },
       { label: 'Services', to: '/services' },
-      { label: 'Marketing d’influence Maroc' },
+      { label: 'Agence influenceur Maroc' },
     ],
     liens_sortants: [
       {
-        cible: '/services/publicite-digitale',
-        ancre: 'publicité Meta Ads et Google Ads',
-        contexte_avant: 'L’influence marocaine amplifie une campagne déjà mesurable via la',
-        contexte_apres: 'déjà trackée, pour ne pas acheter de la notoriété à l’aveugle.',
-        pourquoi: 'Silo ads',
+        cible: '/community-management-casablanca',
+        ancre: 'community management à Casablanca',
+        contexte_avant: 'Une campagne influence sans animation quotidienne s’éteint : couplez-la au',
+        contexte_apres: 'pour que stories de créateurs et feed de marque parlent la même langue.',
+        pourquoi: 'Pyramide : money influence pousse money CM',
       },
       {
-        cible: '/blog/marketing-digital-tendances-maroc-2026',
-        ancre: 'tendances influence et social commerce',
-        contexte_avant: 'Le contexte 2026 est dans notre article sur les',
-        contexte_apres: 'au Maroc, TikTok Shop compris, pour cadrer le brief créateurs.',
-        pourquoi: 'Article du cluster',
+        cible: '/services/publicite-digitale',
+        ancre: 'agence Google Ads Maroc',
+        contexte_avant: 'Quand l’intention de recherche est déjà chaude, couplez l’influence à une',
+        contexte_apres: 'qui convertit le trafic Search pendant que les créateurs chauffent la demande.',
+        pourquoi: 'Silo ads : influence → money ads',
+      },
+      {
+        cible: '/services/publicite-digitale',
+        ancre: 'agence Meta Ads Casablanca',
+        contexte_avant: 'Les contenus UGC se scalent ensuite via une',
+        contexte_apres: 'qui booste reels et stories déjà validés par l’audience organique.',
+        pourquoi: 'Silo ads : 2e ancre vers money ads',
+      },
+      {
+        cible: '/projets',
+        ancre: 'campagnes d’influence',
+        contexte_avant: 'Le casting et le reporting se lisent concrètement dans nos',
+        contexte_apres: 'livrées pour des marques de Casablanca et du Maroc.',
+        pourquoi: 'Preuve sociale hub',
+      },
+      {
+        cible: '/blog/prix-influenceur-maroc-2026',
+        ancre: 'prix d’un influenceur au Maroc',
+        contexte_avant: 'Pour comparer nano, micro et macro en MAD, lisez notre',
+        contexte_apres: 'avec tarifs story, reel, post et fourchettes 2026.',
+        pourquoi: 'Article PR4 du silo, crawl hors sitemap',
       },
       {
         cible: '/contact',
-        ancre: 'brief influenceurs Maroc',
-        contexte_avant: 'Pour un casting de créateurs et un brief influence,',
-        contexte_apres: 'avec l’équipe We Yan, contrats et KPIs inclus.',
+        ancre: 'lancer ma campagne influence',
+        contexte_avant: 'Pour un casting et un brief à Casablanca sans engagement,',
+        contexte_apres: 'nous répondons sous 24h ouvrées, avec trois profils proposés.',
         pourquoi: 'Conversion',
       },
     ],
@@ -697,6 +755,35 @@ export const PAGES_LINKING: PageLinking[] = [
     ],
   },
   {
+    slug: '/blog/prix-influenceur-maroc-2026',
+    titre: 'Prix influenceur Maroc 2026',
+    intention: 'Informer sur les tarifs story / reel / post, puis pousser vers la money influence.',
+    mot_cle_principal: 'prix influenceur maroc',
+    cluster_semantique: 'ads',
+    pageRank_voulu: 4,
+    breadcrumb: [
+      { label: 'Accueil', to: '/' },
+      { label: 'Services', to: '/services' },
+      { label: 'Prix influenceur Maroc 2026' },
+    ],
+    liens_sortants: [
+      {
+        cible: '/services/marketing-influence',
+        ancre: 'agence influenceur Maroc',
+        contexte_avant: 'Pour un casting, un brief et un reporting à Casablanca, notre',
+        contexte_apres: 'négocie les tarifs, les droits d’usage et les KPIs en MAD.',
+        pourquoi: 'Article PR4 → money influence PR9',
+      },
+      {
+        cible: '/contact',
+        ancre: 'demander un devis influence',
+        contexte_avant: 'Pour un chiffrage nano micro macro selon votre offre à Casablanca,',
+        contexte_apres: 'nous envoyons trois profils et un tarif sous 24h ouvrées.',
+        pourquoi: 'Conversion',
+      },
+    ],
+  },
+  {
     slug: '/blog/marketing-digital-tendances-maroc-2026',
     titre: 'Marketing digital Maroc 2026',
     intention: 'Informer sur les tendances, puis pousser ads / CM / contact.',
@@ -764,6 +851,13 @@ export const PAGES_LINKING: PageLinking[] = [
         contexte_avant: 'Les identités retail et luxe du portfolio relèvent d’un vrai',
         contexte_apres: 'mené avec charte, site et lancement alignés sur le marché marocain.',
         pourquoi: 'PR6 portfolio → money branding PR9',
+      },
+      {
+        cible: '/services/marketing-influence',
+        ancre: 'campagnes d’influence au Maroc',
+        contexte_avant: 'Les lancements social du portfolio relèvent aussi de nos',
+        contexte_apres: 'avec casting créateurs, brief et reporting livrés à Casablanca.',
+        pourquoi: 'PR6 portfolio → money influence PR9',
       },
       {
         cible: '/services',
@@ -876,6 +970,7 @@ export const FOOTER_PILIERS = [
   { to: '/community-management-casablanca', label: 'Community Management Casablanca' },
   { to: '/services/strategie-marketing-rebranding', label: 'Stratégie & Rebranding' },
   { to: '/services/publicite-digitale', label: 'Google Ads & Meta Ads' },
+  { to: '/services/marketing-influence', label: 'Marketing d’influence' },
 ] as const
 
 function normalizePath(pathname: string) {

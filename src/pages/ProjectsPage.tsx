@@ -39,9 +39,9 @@ const projects: Project[] = [
   },
   {
     title: 'Campaign Launch',
-    category: 'Social Media',
+    category: 'Influence',
     year: '2024',
-    description: 'Campagne de lancement pensée pour maximiser la visibilité.',
+    description: 'Campagne créateurs Instagram / TikTok : casting, brief et reporting pour un lancement marque.',
     image: '/images/projects/project-3.jpg',
     size: 'small',
   },
@@ -63,11 +63,14 @@ const projects: Project[] = [
   },
 ]
 
-const filters = ['Tous', 'Branding', 'Création de contenu', 'Social Media', 'Stratégie digitale']
+const filters = ['Tous', 'Branding', 'Création de contenu', 'Social Media', 'Influence', 'Stratégie digitale']
 
 const projetsLinking = getPageLinking('/projets')
 const lienBranding = projetsLinking?.liens_sortants.find(
   (lien) => lien.cible === '/services/strategie-marketing-rebranding',
+)
+const lienInfluence = projetsLinking?.liens_sortants.find(
+  (lien) => lien.cible === '/services/marketing-influence',
 )
 
 export default function ProjectsPage() {
@@ -96,6 +99,9 @@ export default function ProjectsPage() {
             </p>
             {lienBranding ? (
               <SemanticLink lien={lienBranding} clusterSource="hub" className="max-w-2xl text-on-surface-variant" />
+            ) : null}
+            {lienInfluence ? (
+              <SemanticLink lien={lienInfluence} clusterSource="hub" className="max-w-2xl text-on-surface-variant" />
             ) : null}
           </div>
         </header>

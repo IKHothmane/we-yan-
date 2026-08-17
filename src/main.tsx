@@ -33,6 +33,7 @@ const BlogPrixSiteWebMarocPage = lazyWithRetry(() => import('./pages/BlogPrixSit
 const BlogPrixSeoCasablancaPage = lazyWithRetry(() => import('./pages/BlogPrixSeoCasablancaPage'))
 const BlogPrixGoogleAdsMarocPage = lazyWithRetry(() => import('./pages/BlogPrixGoogleAdsMarocPage'))
 const BlogPrixMetaAdsCasablancaPage = lazyWithRetry(() => import('./pages/BlogPrixMetaAdsCasablancaPage'))
+const BlogPrixInfluenceurMarocPage = lazyWithRetry(() => import('./pages/BlogPrixInfluenceurMarocPage'))
 const BlogSeoVsSeaPage = lazyWithRetry(() => import('./pages/BlogSeoVsSeaPage'))
 const BlogBrandingMarocPage = lazyWithRetry(() => import('./pages/BlogBrandingMarocPage'))
 const BlogRebrandingExempleCasablancaPage = lazyWithRetry(() => import('./pages/BlogRebrandingExempleCasablancaPage'))
@@ -63,6 +64,7 @@ const APP_PAGE_ROUTES = [
   { path: '/blog/prix-seo-casablanca-2026', element: <BlogPrixSeoCasablancaPage /> },
   { path: '/blog/prix-google-ads-maroc-2026', element: <BlogPrixGoogleAdsMarocPage /> },
   { path: '/blog/prix-meta-ads-casablanca-2026', element: <BlogPrixMetaAdsCasablancaPage /> },
+  { path: '/blog/prix-influenceur-maroc-2026', element: <BlogPrixInfluenceurMarocPage /> },
   { path: '/blog/seo-vs-sea-maroc', element: <BlogSeoVsSeaPage /> },
   { path: '/blog/branding-creation-marque-maroc', element: <BlogBrandingMarocPage /> },
   { path: '/blog/rebranding-exemple-casablanca-2026', element: <BlogRebrandingExempleCasablancaPage /> },

@@ -41,6 +41,7 @@ const SPA_ROUTES = [
   'blog/prix-seo-casablanca-2026',
   'blog/prix-google-ads-maroc-2026',
   'blog/prix-meta-ads-casablanca-2026',
+  'blog/prix-influenceur-maroc-2026',
   'blog/seo-vs-sea-maroc',
   'blog/branding-creation-marque-maroc',
   'blog/rebranding-exemple-casablanca-2026',
