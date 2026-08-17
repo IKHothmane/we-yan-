@@ -7,7 +7,7 @@ export type ContactPayload = {
 }
 
 export async function sendContactMessage(payload: ContactPayload) {
-  const response = await fetch('/api/contact.php', {
+  const response = await fetch('/api/contact', {
     method: 'POST',
     headers: {
       Accept: 'application/json',

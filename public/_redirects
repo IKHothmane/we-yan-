@@ -43,6 +43,9 @@
 /_redirects         200
 /404.html           404
 
+# 4b) API Pages Functions : ne pas renvoyer /api/* vers index.html
+/api/*              /api/:splat     200
+
 # ——————————————————————————————————————————————————————————
 # 5)  SPAs REACT ROUTER : TOUTES LES AUTRES URLS
 #     → page index.html  ·  code HTTP 200
