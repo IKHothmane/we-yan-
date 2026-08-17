@@ -106,35 +106,80 @@ export default defineConfig({
 
         const html = readFileSync(indexFile, 'utf8')
         const linkingModule = join(process.cwd(), 'node_modules', '.cache', 'validate-internal-links.mjs')
-        const { getPageLinking, buildBreadcrumbJsonLd } = await import(
+        const { getPageLinking, buildBreadcrumbJsonLd, buildPageDocumentTitle, buildPageMetaDescription, buildPageCanonical } = await import(
           `${pathToFileURL(linkingModule).href}?emit=${Date.now()}`
         )
 
-        const injectRouteHtml = (sourceHtml, route) => {
+        const escapeHtml = (value) =>
+          String(value)
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;')
+
+        const applyPageHead = (sourceHtml, slug) => {
           let next = sourceHtml
-          const slug = `/${route}`
-          const page = getPageLinking(slug)
-
-          if (page && page.breadcrumb.length >= 2) {
-            const json = JSON.stringify(buildBreadcrumbJsonLd(page))
-            const tag = `    <script type="application/ld+json" id="breadcrumb-jsonld">${json}</script>\n`
-            next = next.replace('</head>', `${tag}  </head>`)
-          }
-
-          if (route === 'demandes') {
+          if (slug === '/demandes') {
             next = next.replace(
               /<meta name="robots" content="[^"]*" \/>/,
               '<meta name="robots" content="noindex, nofollow" />',
             )
           }
 
+          const page = getPageLinking(slug)
+          if (!page) return next
+
+          const title = buildPageDocumentTitle(page)
+          const description = buildPageMetaDescription(page)
+          const canonical = buildPageCanonical(page)
+          const safeTitle = escapeHtml(title)
+          const safeDescription = escapeHtml(description)
+
+          next = next.replace(/<title>[^<]*<\/title>/, `<title>${safeTitle}</title>`)
+          next = next.replace(
+            /<meta name="description" content="[^"]*" \/>/,
+            `<meta name="description" content="${safeDescription}" />`,
+          )
+          next = next.replace(
+            /<meta property="og:title" content="[^"]*" \/>/,
+            `<meta property="og:title" content="${safeTitle}" />`,
+          )
+          next = next.replace(
+            /<meta property="og:description" content="[^"]*" \/>/,
+            `<meta property="og:description" content="${safeDescription}" />`,
+          )
+          next = next.replace(
+            /<link rel="canonical" href="[^"]*" \/>/,
+            `<link rel="canonical" href="${canonical}" />`,
+          )
+          next = next.replace(
+            /<meta property="og:url" content="[^"]*" \/>/,
+            `<meta property="og:url" content="${canonical}" />`,
+          )
+          next = next.replace(
+            /<meta name="twitter:title" content="[^"]*" \/>/,
+            `<meta name="twitter:title" content="${safeTitle}" />`,
+          )
+          next = next.replace(
+            /<meta name="twitter:description" content="[^"]*" \/>/,
+            `<meta name="twitter:description" content="${safeDescription}" />`,
+          )
+
+          if (page.breadcrumb.length >= 2) {
+            const json = JSON.stringify(buildBreadcrumbJsonLd(page))
+            const tag = `    <script type="application/ld+json" id="breadcrumb-jsonld">${json}</script>\n`
+            next = next.replace('</head>', `${tag}  </head>`)
+          }
+
           return next
         }
+
+        writeFileSync(indexFile, applyPageHead(html, '/'))
 
         for (const route of SPA_ROUTES) {
           const target = join(dist, route, 'index.html')
           mkdirSync(dirname(target), { recursive: true })
-          writeFileSync(target, injectRouteHtml(html, route))
+          writeFileSync(target, applyPageHead(html, `/${route}`))
         }
       },
     },

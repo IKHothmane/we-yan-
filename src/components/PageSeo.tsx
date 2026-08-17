@@ -1,6 +1,12 @@
 import { useLayoutEffect } from 'react'
 import { useLocation } from 'react-router-dom'
-import { buildBreadcrumbJsonLd, getPageLinking } from '../lib/internalLinking'
+import {
+  buildBreadcrumbJsonLd,
+  buildPageCanonical,
+  buildPageDocumentTitle,
+  buildPageMetaDescription,
+  getPageLinking,
+} from '../lib/internalLinking'
 
 type PageSeoProps = {
   title: string
@@ -64,19 +70,22 @@ export default function PageSeo({
   const location = useLocation()
 
   useLayoutEffect(() => {
-    const canonicalUrl = `${SITE_URL}${normalizePath(location.pathname)}`
+    const page = getPageLinking(location.pathname)
+    const documentTitle = page ? buildPageDocumentTitle(page) : title
+    const metaDescription = page ? buildPageMetaDescription(page) : description
+    const canonicalUrl = page ? buildPageCanonical(page) : `${SITE_URL}${normalizePath(location.pathname)}`
 
-    document.title = title
+    document.title = documentTitle
 
-    setMeta('meta[name="description"]', 'name', 'description', description)
-    setMeta('meta[property="og:title"]', 'property', 'og:title', title)
-    setMeta('meta[property="og:description"]', 'property', 'og:description', description)
+    setMeta('meta[name="description"]', 'name', 'description', metaDescription)
+    setMeta('meta[property="og:title"]', 'property', 'og:title', documentTitle)
+    setMeta('meta[property="og:description"]', 'property', 'og:description', metaDescription)
     setMeta('meta[property="og:url"]', 'property', 'og:url', canonicalUrl)
     setMeta('meta[property="og:site_name"]', 'property', 'og:site_name', SITE_NAME)
     setMeta('meta[property="og:image"]', 'property', 'og:image', ogImage)
     setMeta('meta[property="og:image:alt"]', 'property', 'og:image:alt', ogImageAlt)
-    setMeta('meta[name="twitter:title"]', 'name', 'twitter:title', title)
-    setMeta('meta[name="twitter:description"]', 'name', 'twitter:description', description)
+    setMeta('meta[name="twitter:title"]', 'name', 'twitter:title', documentTitle)
+    setMeta('meta[name="twitter:description"]', 'name', 'twitter:description', metaDescription)
     setMeta('meta[name="twitter:image"]', 'name', 'twitter:image', twitterImage)
     setMeta('meta[name="twitter:image:alt"]', 'name', 'twitter:image:alt', twitterImageAlt)
     // Sécurité : si le link canonical n'existe pas (ex: template), on le crée.

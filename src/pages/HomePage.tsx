@@ -1,8 +1,10 @@
-﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿import { Suspense, lazy, useEffect, useRef, useState } from 'react'
+﻿﻿﻿﻿import { Suspense, lazy, useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import Icon from '../components/Icon'
 import Navbar from '../components/Navbar'
+import PageSeo from '../components/PageSeo'
 import { HOME_HERO_SERVICES } from '../constants'
+import { pageSeo } from '../lib/pageSeo'
 
 const HomeDeferredSections = lazy(() => import('../components/home/HomeDeferredSections'))
 
@@ -90,6 +92,7 @@ export default function HomePage() {
 
   return (
     <div className="bg-white font-sans text-slate-900 overflow-hidden w-full">
+      <PageSeo {...pageSeo.home} />
       <style>{`
         .font-rigot {
           font-family: 'Syne', 'Poppins', sans-serif;

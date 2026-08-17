@@ -87,13 +87,13 @@ export const pageSeo = {
   ),
 
   agenceSeoCasablanca: createPageSeoConfig(
-    'Agence SEO à Casablanca · Référencement naturel Maroc 2026 | We Yan Digital',
-    'Agence SEO à Casablanca (Maroc) spécialisée en référencement naturel local et national. Nous vous mettons premier sur Google : audit technique, SEO local Google Business, stratégie éditoriale, netlinking marocain. Devis SEO gratuit sous 24h.',
+    'Agence SEO Casablanca | We Yan Digital - Agence SEO à Casablanca',
+    'Ranker sur « agence SEO Casablanca » et convertir (page money).',
     seoImages.seo,
   ),
   communityManagementCasablanca: createPageSeoConfig(
-    'Community Management Casablanca · Réseaux sociaux Maroc | We Yan Digital',
-    'Community Management à Casablanca : animation Instagram, Facebook, LinkedIn, TikTok, création contenu premium (reels, photos, carrousels), community manager dédié, publicité Meta Ads + TikTok Ads, KPIs mensuels. Agence community manager Maroc.',
+    'Community Management Casablanca | We Yan Digital - Community Management à Casablanca',
+    'Ranker sur « community management Casablanca » et convertir.',
     seoImages.contentCreation,
   ),
 

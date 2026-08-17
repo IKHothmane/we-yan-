@@ -722,6 +722,25 @@ export function getPageLinking(pathname: string) {
 
 const SITE_URL = 'https://weyandigital.ma'
 
+export function buildPageDocumentTitle(page: PageLinking) {
+  if (page.slug === '/') {
+    return 'We Yan Digital | Agence digitale Casablanca'
+  }
+  const keywordPhrase = page.titre.replace(/\s+Casablanca$/, ' à Casablanca')
+  if (page.mot_cle_principal && keywordPhrase !== page.titre) {
+    return `${page.titre} | We Yan Digital - ${keywordPhrase}`
+  }
+  return `${page.titre} | We Yan Digital`
+}
+
+export function buildPageMetaDescription(page: PageLinking) {
+  return page.intention
+}
+
+export function buildPageCanonical(page: PageLinking) {
+  return page.slug === '/' ? `${SITE_URL}/` : `${SITE_URL}${page.slug}`
+}
+
 export function buildBreadcrumbJsonLd(page: PageLinking) {
   return {
     '@context': 'https://schema.org',
