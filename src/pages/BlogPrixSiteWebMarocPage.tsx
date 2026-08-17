@@ -196,7 +196,7 @@ export default function BlogPrixSiteWebMarocPage() {
           r: "Site vitrine : 10 → 20 jours ouvrés en moyenne. E-commerce standard : 30 → 45 jours. Site sur-mesure : 2 → 6 mois selon complexité. Nous livrons toujours un planning Gantt partagé au démarrage.",
         },
       ]}
-      relatedLinks={[{ label: 'Demander un devis site web', to: '/creation-site-web-casablanca' }]}
+      relatedLinks={[{ label: 'Demander un devis site web', to: '/contact' }]}
     />
   )
 }

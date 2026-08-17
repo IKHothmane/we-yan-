@@ -35,6 +35,27 @@
 /robots.txt          200
 
 # ——————————————————————————————————————————————————————————
+# 3b)  ANCIENS SLUGS / LIENS MORTS → 301 (GSC Introuvable)
+#      Avant le fallback SPA, sinon Google garde un 404.
+# ——————————————————————————————————————————————————————————
+/creation-site-web-casablanca                      /contact 301
+/creation-site-web-casablanca/                     /contact 301
+/seo                                               /services/seo 301
+/seo/                                              /services/seo 301
+/agence-seo                                        /agence-seo-casablanca 301
+/agence-seo/                                       /agence-seo-casablanca 301
+/about                                             /agence 301
+/about/                                            /agence 301
+/projects                                          /projets 301
+/projects/                                         /projets 301
+/blog                                              /blog/prix-seo-casablanca-2026 301
+/blog/                                             /blog/prix-seo-casablanca-2026 301
+/services/creation-contenu                         /services/creation-contenu-community-management 301
+/services/creation-contenu/                        /services/creation-contenu-community-management 301
+/services/community-management                     /community-management-casablanca 301
+/services/community-management/                    /community-management-casablanca 301
+
+# ——————————————————————————————————————————————————————————
 # 4)  META-FICHIERS CLOUDFLARE PAGES / _headers / _redirects
 #     (on les laisse passer en 200; ils ne sont pas servis aux utilisateurs
 #      mais Cloudflare les lit à l'inclusion)

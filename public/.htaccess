@@ -6,12 +6,27 @@
 
 DirectoryIndex index.html
 
+<IfModule mod_headers.c>
+  SetEnvIf Request_URI "^/demandes" DEMANDES_NOINDEX
+  Header always set X-Robots-Tag "noindex, nofollow" env=DEMANDES_NOINDEX
+</IfModule>
+
 <IfModule mod_rewrite.c>
   RewriteEngine On
   RewriteBase /
 
   # API PHP : ne jamais réécrire vers la SPA
   RewriteRule ^api/ - [L]
+
+  # Anciens slugs → 301
+  RewriteRule ^creation-site-web-casablanca/?$ /contact [R=301,L]
+  RewriteRule ^seo/?$ /services/seo [R=301,L]
+  RewriteRule ^agence-seo/?$ /agence-seo-casablanca [R=301,L]
+  RewriteRule ^about/?$ /agence [R=301,L]
+  RewriteRule ^projects/?$ /projets [R=301,L]
+  RewriteRule ^blog/?$ /blog/prix-seo-casablanca-2026 [R=301,L]
+  RewriteRule ^services/creation-contenu/?$ /services/creation-contenu-community-management [R=301,L]
+  RewriteRule ^services/community-management/?$ /community-management-casablanca [R=301,L]
 
   # Fichiers existants : ne pas réécrire
   RewriteCond %{REQUEST_FILENAME} -f
