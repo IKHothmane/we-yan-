@@ -31,8 +31,11 @@ const CommunityManagementCasablancaPage = lazyWithRetry(() => import('./pages/Co
 // Articles Blog
 const BlogPrixSiteWebMarocPage = lazyWithRetry(() => import('./pages/BlogPrixSiteWebMarocPage'))
 const BlogPrixSeoCasablancaPage = lazyWithRetry(() => import('./pages/BlogPrixSeoCasablancaPage'))
+const BlogPrixGoogleAdsMarocPage = lazyWithRetry(() => import('./pages/BlogPrixGoogleAdsMarocPage'))
+const BlogPrixMetaAdsCasablancaPage = lazyWithRetry(() => import('./pages/BlogPrixMetaAdsCasablancaPage'))
 const BlogSeoVsSeaPage = lazyWithRetry(() => import('./pages/BlogSeoVsSeaPage'))
 const BlogBrandingMarocPage = lazyWithRetry(() => import('./pages/BlogBrandingMarocPage'))
+const BlogRebrandingExempleCasablancaPage = lazyWithRetry(() => import('./pages/BlogRebrandingExempleCasablancaPage'))
 const BlogMarketingDigitalMarocPage = lazyWithRetry(() => import('./pages/BlogMarketingDigitalMarocPage'))
 
 // Pages légales
@@ -58,8 +61,11 @@ const APP_PAGE_ROUTES = [
   { path: '/community-management-casablanca', element: <CommunityManagementCasablancaPage /> },
   { path: '/blog/prix-site-web-maroc-2026', element: <BlogPrixSiteWebMarocPage /> },
   { path: '/blog/prix-seo-casablanca-2026', element: <BlogPrixSeoCasablancaPage /> },
+  { path: '/blog/prix-google-ads-maroc-2026', element: <BlogPrixGoogleAdsMarocPage /> },
+  { path: '/blog/prix-meta-ads-casablanca-2026', element: <BlogPrixMetaAdsCasablancaPage /> },
   { path: '/blog/seo-vs-sea-maroc', element: <BlogSeoVsSeaPage /> },
   { path: '/blog/branding-creation-marque-maroc', element: <BlogBrandingMarocPage /> },
+  { path: '/blog/rebranding-exemple-casablanca-2026', element: <BlogRebrandingExempleCasablancaPage /> },
   { path: '/blog/marketing-digital-tendances-maroc-2026', element: <BlogMarketingDigitalMarocPage /> },
   { path: '/conditions-generales', element: <ConditionsGeneralesPage /> },
   { path: '/politique-de-confidentialite', element: <PolitiqueConfidentialitePage /> },

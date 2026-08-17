@@ -36,8 +36,8 @@ export const pageSeo = {
     seoImages.services,
   ),
   strategyMarketing: createPageSeoConfig(
-    'Stratégie Marketing & Rebranding | We Yan Digital',
-    'Découvrez notre service Stratégie Marketing & Rebranding pour clarifier votre positionnement, moderniser votre image et accélérer votre croissance digitale.',
+    'Agence Branding & Rebranding Casablanca | Stratégie Marketing - We Yan Digital',
+    'Agence branding à Casablanca : rebranding, identité de marque, stratégie marketing Maroc. Packs dès 15 000 MAD. Audit gratuit, intervention Rabat, Marrakech, Tanger.',
     seoImages.strategyMarketing,
   ),
   contentCreation: createPageSeoConfig(
@@ -46,8 +46,8 @@ export const pageSeo = {
     seoImages.contentCreation,
   ),
   advertising: createPageSeoConfig(
-    'Publicité Digitale (Meta Ads & Google Ads) | We Yan Digital',
-    'Découvrez notre service de publicité digitale pour piloter vos campagnes Meta Ads et Google Ads, optimiser vos budgets et maximiser votre retour sur investissement.',
+    'Agence Google Ads Maroc & Meta Ads Casablanca | We Yan Digital',
+    'Agence Google Ads Maroc et Meta Ads Casablanca : media plan, CPC, tracking ROAS. Campagnes Search, Facebook, Instagram. Devis sous 24h.',
     seoImages.advertising,
   ),
   influenceMarketing: createPageSeoConfig(
@@ -107,6 +107,16 @@ export const pageSeo = {
     'Prix d’un accompagnement SEO à Casablanca en 2026 : audit, retainer mensuel, freelance vs agence, fourchettes MAD honnêtes. Comment passer du tarif à une agence SEO qui ranke vraiment.',
     seoImages.seo,
   ),
+  blogPrixGoogleAdsMaroc2026: createPageSeoConfig(
+    'Prix Google Ads Maroc 2026 : CPC, budget media et frais d’agence',
+    'Prix Google Ads au Maroc en 2026 : CPC Search, Display, YouTube, budgets minimum Casablanca, frais d’agence. Fourchettes MAD et media plan We Yan Digital.',
+    seoImages.advertising,
+  ),
+  blogPrixMetaAdsCasablanca2026: createPageSeoConfig(
+    'Prix Meta Ads Casablanca 2026 : CPC, CPL Facebook et Instagram',
+    'Prix Meta Ads à Casablanca en 2026 : CPC, CPM, coût par lead WhatsApp, budgets Facebook / Instagram. Fourchettes MAD et agence We Yan Digital.',
+    seoImages.advertising,
+  ),
   blogSeoVsSea: createPageSeoConfig(
     'SEO vs SEA au Maroc : quelle stratégie choisir en 2026 ? | We Yan Digital',
     'SEO vs SEA Google Ads à Casablanca et au Maroc : différences, délais, coûts, ROI. Pourquoi la stratégie gagnante We Yan Digital est toujours SEO + SEA mixte. Devis gratuit Casablanca.',
@@ -115,6 +125,11 @@ export const pageSeo = {
   blogBrandingMaroc: createPageSeoConfig(
     'Comment créer une marque au Maroc en 2026 · Branding Casablanca',
     'Créer une marque au Maroc en 2026 : stratégie de marque, naming, identité visuelle logo, charte graphique, positionnement, lancement. Accompagnement branding We Yan Digital agence à Casablanca.',
+    seoImages.strategyMarketing,
+  ),
+  blogRebrandingExempleCasablanca: createPageSeoConfig(
+    'Exemple de rebranding à Casablanca 2026 | We Yan Digital',
+    'Cas concret de rebranding à Casablanca en 2026 : audit, positionnement, charte, déploiement digital. Méthode We Yan Digital et lien vers l’agence branding Casablanca.',
     seoImages.strategyMarketing,
   ),
   blogMarketingDigitalMaroc: createPageSeoConfig(

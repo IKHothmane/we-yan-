@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
 Disallow: /demandes
+Disallow: /merci
 Sitemap: https://weyandigital.ma/sitemap.xml

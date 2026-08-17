@@ -18,6 +18,16 @@ DirectoryIndex index.html
   # API PHP : ne jamais réécrire vers la SPA
   RewriteRule ^api/ - [L]
 
+  # Anciens slugs → 301
+  RewriteRule ^creation-site-web-casablanca/?$ /contact [R=301,L]
+  RewriteRule ^seo/?$ /services/seo [R=301,L]
+  RewriteRule ^agence-seo/?$ /agence-seo-casablanca [R=301,L]
+  RewriteRule ^about/?$ /agence [R=301,L]
+  RewriteRule ^projects/?$ /projets [R=301,L]
+  RewriteRule ^blog/?$ /blog/prix-seo-casablanca-2026 [R=301,L]
+  RewriteRule ^services/creation-contenu/?$ /services/creation-contenu-community-management [R=301,L]
+  RewriteRule ^services/community-management/?$ /community-management-casablanca [R=301,L]
+
   # Fichiers existants : ne pas réécrire
   RewriteCond %{REQUEST_FILENAME} -f
   RewriteRule ^ - [L]

@@ -2,6 +2,7 @@ import { useLayoutEffect } from 'react'
 import { useLocation } from 'react-router-dom'
 import {
   buildBreadcrumbJsonLd,
+  buildFaqJsonLd,
   buildPageCanonical,
   buildPageDocumentTitle,
   buildPageMetaDescription,
@@ -54,6 +55,26 @@ function setBreadcrumbJsonLd(pathname: string) {
   script.textContent = JSON.stringify(buildBreadcrumbJsonLd(page))
 }
 
+function setFaqJsonLd(pathname: string) {
+  const id = 'faq-jsonld'
+  const page = getPageLinking(pathname)
+  const existing = document.getElementById(id)
+  const json = page ? buildFaqJsonLd(page) : null
+  if (!json) {
+    existing?.remove()
+    return
+  }
+
+  let script = existing as HTMLScriptElement | null
+  if (!script) {
+    script = document.createElement('script')
+    script.id = id
+    script.type = 'application/ld+json'
+    document.head.appendChild(script)
+  }
+  script.textContent = JSON.stringify(json)
+}
+
 function normalizePath(pathname: string) {
   if (pathname === '/') return '/'
   return pathname.replace(/\/+$/, '')
@@ -98,6 +119,7 @@ export default function PageSeo({
       document.head.appendChild(link)
     }
     setBreadcrumbJsonLd(location.pathname)
+    setFaqJsonLd(location.pathname)
   }, [description, location.pathname, ogImage, ogImageAlt, title, twitterImage, twitterImageAlt])
 
   return null

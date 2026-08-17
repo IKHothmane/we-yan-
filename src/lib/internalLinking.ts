@@ -23,11 +23,19 @@ export type PageLinking = {
   mot_cle_principal: string
   cluster_semantique: Cluster
   pageRank_voulu: number
+  title_serp?: string
+  faq?: Array<{ q: string; r: string }>
   breadcrumb: Array<{ label: string; to?: string }>
   liens_sortants: LienSortant[]
 }
 
 const UNIVERSAL_CLUSTERS: Cluster[] = ['home', 'hub', 'conversion']
+
+const MONEY_SLUGS = [
+  '/agence-seo-casablanca',
+  '/community-management-casablanca',
+  '/services/strategie-marketing-rebranding',
+]
 
 export const PAGES_LINKING: PageLinking[] = [
   {
@@ -185,36 +193,85 @@ export const PAGES_LINKING: PageLinking[] = [
   },
   {
     slug: '/services/strategie-marketing-rebranding',
-    titre: 'Stratégie Marketing & Rebranding',
-    intention: 'Ranker sur branding / rebranding Maroc et vendre le positionnement de marque.',
-    mot_cle_principal: 'rebranding casablanca',
+    titre: 'Agence Branding & Rebranding Casablanca',
+    intention: 'Ranker sur « agence branding casablanca » et convertir (page money).',
+    mot_cle_principal: 'agence branding casablanca',
     cluster_semantique: 'branding',
-    pageRank_voulu: 8,
+    pageRank_voulu: 9,
+    title_serp: 'Agence Branding & Rebranding Casablanca | Stratégie Marketing - We Yan Digital',
+    faq: [
+      {
+        q: 'Quelle est la différence entre branding et rebranding ?',
+        r: 'Le branding construit une marque qui n’existe pas encore : nom, promesse, identité de marque, premiers points de contact. Le rebranding corrige une marque déjà en marché — perception datée, fusion, nouveau positionnement, ou décalage avec Casablanca et le Maroc 2026. Chez We Yan Digital, les deux passent par un audit, une stratégie, puis une identité visuelle. On ne « change pas de logo » pour le plaisir : on décide d’abord ce que la marque doit dire, ensuite on dessine.',
+      },
+      {
+        q: 'Combien de temps dure un rebranding à Casablanca ?',
+        r: 'Un pack Starter (logo + charte) se livre en 3 à 5 semaines, avec ateliers à Maarif. Un Growth (identité + site + community) prend 8 à 12 semaines. Un Premium (SEO + Ads + déploiement) s’étale sur 4 à 6 mois, le temps d’aligner tous les points de contact. Le délai dépend surtout de vos validations internes : plus l’équipe est claire, plus c’est rapide.',
+      },
+      {
+        q: 'Quel est le prix d’une agence branding à Casablanca ?',
+        r: 'Chez We Yan Digital, le Starter démarre à 15 000 MAD HT (logo + charte). Le Growth (site + community management) est à 35 000 MAD HT. Le Premium (SEO + Ads + lancement) est à 70 000 MAD HT. Devis détaillé sous 24h, sans pack caché. Ces tarifs 2026 couvrent Casablanca, Rabat, Marrakech et Tanger. Un logo à 2 000 MAD n’inclut ni positionnement ni déploiement : comparez le livrable, pas le chiffre.',
+      },
+      {
+        q: 'Faut-il refaire son site lors d’un rebranding ?',
+        r: 'Pas toujours. Si le site est lent, non SEO, ou visuellement déconnecté de la nouvelle charte, oui. Sinon on peut d’abord poser l’identité, puis migrer le site. Un site cher sans positionnement rate : d’abord la marque, ensuite les pages. Le pack Growth inclut déjà un site vitrine aligné. Le Premium ajoute le SEO pour que Google voie la même promesse que vos visiteurs.',
+      },
+      {
+        q: 'Une PME à Casablanca a-t-elle besoin d’un rebranding ?',
+        r: 'Oui, dès que vos devis se comparent au prix, que vos équipes expliquent mal l’offre, ou que votre concurrent Maarif / Anfa paraît plus clair. Le rebranding n’est pas réservé aux grands comptes : c’est un levier de conversion locale. Une TPE food, une clinique, un cabinet B2B : dès que le client hésite à cause de l’image, pas du métier, il faut recadrer.',
+      },
+      {
+        q: 'Rebranding ou community management : par quoi commencer ?',
+        r: 'Si votre promesse n’est pas claire, commencez par le branding. Si la marque est claire mais invisible sur Instagram et TikTok, commencez par le community management. Les deux ensemble évitent de publier une identité qui n’existe pas encore. Le pack Growth couple les deux. Un community manager seul ne répare pas un positionnement flou ; une charte seule ne remplit pas le feed.',
+      },
+      {
+        q: 'Intervenez-vous à Rabat, Marrakech et Tanger ?',
+        r: 'Oui. L’agence est basée à Casablanca Maarif, avec ateliers en présentiel. Nous accompagnons aussi Rabat, Marrakech, Tanger et le reste du Maroc en visio, avec la même méthode et les mêmes livrables. Le signal local (Google, vitrine, langue) s’adapte à votre ville ; le process reste We Yan : audit, stratégie, identité, déploiement.',
+      },
+      {
+        q: 'Comment se passe un audit branding gratuit ?',
+        r: 'Vous remplissez le formulaire contact. Sous 24h ouvrées, un humain vous rappelle : perception actuelle, concurrence Casa, et 3 chantiers priorisés. Sans engagement. L’audit oriente ensuite Starter, Growth ou Premium. Préparez site, réseaux, et 3 concurrents. Plus vous êtes factuels, plus la reco est utile — ce n’est pas un appel commercial générique.',
+      },
+    ],
     breadcrumb: [
       { label: 'Accueil', to: '/' },
       { label: 'Services', to: '/services' },
-      { label: 'Stratégie marketing et rebranding Casablanca' },
+      { label: 'Agence branding Casablanca' },
     ],
     liens_sortants: [
       {
-        cible: '/blog/branding-creation-marque-maroc',
-        ancre: 'créer une marque au Maroc',
-        contexte_avant: 'Le parcours complet (naming, identité, lancement) est dans le guide',
-        contexte_apres: 'rédigé pour 2026, avec budgets et étapes concrètes au Maroc.',
-        pourquoi: 'Article du silo branding',
+        cible: '/agence-seo-casablanca',
+        ancre: 'agence digitale à Casablanca',
+        contexte_avant: 'We Yan Digital n’est pas qu’une studio graphique : c’est une',
+        contexte_apres: 'qui aligne marque, Google et conversion sur le marché marocain.',
+        pourquoi: 'Pyramide : money branding pousse money SEO',
       },
       {
-        cible: '/agence',
-        ancre: 'l’agence We Yan Digital',
-        contexte_avant: 'La méthode branding, du positionnement au lancement, est portée par',
-        contexte_apres: 'basée à Casablanca Maarif, au plus près de vos équipes.',
-        pourquoi: 'Hub / preuve',
+        cible: '/community-management-casablanca',
+        ancre: 'community management à Casablanca',
+        contexte_avant: 'Une charte sans animation quotidienne s’éteint : couplez le rebranding au',
+        contexte_apres: 'pour que logo, reels et stories parlent la même langue.',
+        pourquoi: 'Pyramide : money branding pousse money CM',
+      },
+      {
+        cible: '/projets',
+        ancre: 'réalisations rebranding',
+        contexte_avant: 'La méthode de rebranding se lit concrètement dans nos',
+        contexte_apres: 'avant / après livrées pour des marques de Casablanca et du Maroc.',
+        pourquoi: 'Preuve sociale hub, 3 liens in-body en plus',
+      },
+      {
+        cible: '/blog/rebranding-exemple-casablanca-2026',
+        ancre: 'exemple de rebranding à Casablanca',
+        contexte_avant: 'Pour voir un cas concret marché marocain 2026, lisez notre',
+        contexte_apres: 'avec décisions de positionnement, charte et déploiement digital.',
+        pourquoi: 'Article PR4 du silo branding',
       },
       {
         cible: '/contact',
-        ancre: 'lancer un rebranding',
-        contexte_avant: 'Pour cadrer positionnement, naming et identité visuelle au Maroc,',
-        contexte_apres: 'avec un atelier de marque d’une demi-journée à Casablanca.',
+        ancre: 'demander un audit branding gratuit',
+        contexte_avant: 'Pour cadrer pack, délais et budget en MAD à Casablanca,',
+        contexte_apres: 'nous répondons sous 24h ouvrées, sans aucun engagement.',
         pourquoi: 'Conversion',
       },
     ],
@@ -294,10 +351,11 @@ export const PAGES_LINKING: PageLinking[] = [
   {
     slug: '/services/publicite-digitale',
     titre: 'Publicité Digitale',
-    intention: 'Vendre Meta Ads & Google Ads Maroc et rester dans le silo ads.',
+    intention: 'Ranker sur « agence google ads maroc » / « agence meta ads casablanca » et convertir (page money).',
     mot_cle_principal: 'agence google ads maroc',
     cluster_semantique: 'ads',
-    pageRank_voulu: 8,
+    pageRank_voulu: 9,
+    title_serp: 'Agence Google Ads Maroc & Meta Ads Casablanca | We Yan Digital',
     breadcrumb: [
       { label: 'Accueil', to: '/' },
       { label: 'Services', to: '/services' },
@@ -305,11 +363,18 @@ export const PAGES_LINKING: PageLinking[] = [
     ],
     liens_sortants: [
       {
-        cible: '/blog/marketing-digital-tendances-maroc-2026',
-        ancre: 'tendances ads et social commerce au Maroc',
-        contexte_avant: 'Pour calibrer Meta Ads et Google Ads en 2026, lisez',
-        contexte_apres: 'avec budgets PME, TikTok Shop et leviers d’acquisition mesurables.',
-        pourquoi: 'Article du silo ads',
+        cible: '/blog/prix-google-ads-maroc-2026',
+        ancre: 'prix Google Ads au Maroc',
+        contexte_avant: 'Avant de lancer une campagne Search à Casablanca, comparez le',
+        contexte_apres: 'en 2026, CPC par secteur, frais agence et budget media minimum.',
+        pourquoi: 'Article PR4 du silo ads',
+      },
+      {
+        cible: '/blog/prix-meta-ads-casablanca-2026',
+        ancre: 'prix Meta Ads à Casablanca',
+        contexte_avant: 'Le budget Facebook et Instagram se lit aussi via le',
+        contexte_apres: 'avec CPC, coût par lead WhatsApp et forfaits de gestion 2026.',
+        pourquoi: 'Article PR4 du silo ads',
       },
       {
         cible: '/services/marketing-influence',
@@ -544,6 +609,94 @@ export const PAGES_LINKING: PageLinking[] = [
     ],
   },
   {
+    slug: '/blog/rebranding-exemple-casablanca-2026',
+    titre: 'Exemple de rebranding à Casablanca 2026',
+    intention:
+      'Cas concret de rebranding à Casablanca en 2026, puis pousser vers l’agence branding et le contact.',
+    mot_cle_principal: 'rebranding casablanca exemple',
+    cluster_semantique: 'branding',
+    pageRank_voulu: 4,
+    breadcrumb: [
+      { label: 'Accueil', to: '/' },
+      { label: 'Services', to: '/services' },
+      { label: 'Exemple rebranding Casablanca 2026' },
+    ],
+    liens_sortants: [
+      {
+        cible: '/services/strategie-marketing-rebranding',
+        ancre: 'agence branding à Casablanca',
+        contexte_avant: 'Pour appliquer la même méthode à votre marque, notre',
+        contexte_apres: 'cadre audit, identité visuelle et déploiement digital au Maroc.',
+        pourquoi: 'Article PR4 → money branding PR9',
+      },
+      {
+        cible: '/contact',
+        ancre: 'demander un audit branding gratuit',
+        contexte_avant: 'Pour un diagnostic de perception à Casablanca sans engagement,',
+        contexte_apres: 'nous rappelons sous 24h ouvrées avec trois chantiers priorisés.',
+        pourquoi: 'Conversion',
+      },
+    ],
+  },
+  {
+    slug: '/blog/prix-google-ads-maroc-2026',
+    titre: 'Prix Google Ads Maroc 2026',
+    intention: 'Informer sur les tarifs CPC Google Ads au Maroc, puis pousser vers la money ads.',
+    mot_cle_principal: 'prix google ads maroc',
+    cluster_semantique: 'ads',
+    pageRank_voulu: 4,
+    breadcrumb: [
+      { label: 'Accueil', to: '/' },
+      { label: 'Services', to: '/services' },
+      { label: 'Prix Google Ads Maroc 2026' },
+    ],
+    liens_sortants: [
+      {
+        cible: '/services/publicite-digitale',
+        ancre: 'agence Google Ads Maroc',
+        contexte_avant: 'Pour un media plan Search et un suivi ROAS à Casablanca, notre',
+        contexte_apres: 'pilote le budget, le tracking conversions et un reporting hebdomadaire.',
+        pourquoi: 'Article PR4 → money ads PR9',
+      },
+      {
+        cible: '/contact',
+        ancre: 'demander un media plan Google Ads',
+        contexte_avant: 'Pour un chiffrage CPC réel selon votre secteur à Casablanca,',
+        contexte_apres: 'nous envoyons un plan d’action et un tarif sous 24h ouvrées.',
+        pourquoi: 'Conversion',
+      },
+    ],
+  },
+  {
+    slug: '/blog/prix-meta-ads-casablanca-2026',
+    titre: 'Prix Meta Ads Casablanca 2026',
+    intention: 'Informer sur les tarifs CPC Meta Ads à Casablanca, puis pousser vers la money ads.',
+    mot_cle_principal: 'prix meta ads casablanca',
+    cluster_semantique: 'ads',
+    pageRank_voulu: 4,
+    breadcrumb: [
+      { label: 'Accueil', to: '/' },
+      { label: 'Services', to: '/services' },
+      { label: 'Prix Meta Ads Casablanca 2026' },
+    ],
+    liens_sortants: [
+      {
+        cible: '/services/publicite-digitale',
+        ancre: 'agence Meta Ads Casablanca',
+        contexte_avant: 'Pour lancer Facebook et Instagram Ads sans brûler le budget, notre',
+        contexte_apres: 'teste creatives, audiences Casablanca et le coût par lead en MAD.',
+        pourquoi: 'Article PR4 → money ads PR9',
+      },
+      {
+        cible: '/contact',
+        ancre: 'demander un media plan Meta Ads',
+        contexte_avant: 'Pour un budget Facebook Instagram calé sur vos leads à Casablanca,',
+        contexte_apres: 'nous envoyons un plan d’action et un tarif sous 24h ouvrées.',
+        pourquoi: 'Conversion',
+      },
+    ],
+  },
+  {
     slug: '/blog/marketing-digital-tendances-maroc-2026',
     titre: 'Marketing digital Maroc 2026',
     intention: 'Informer sur les tendances, puis pousser ads / CM / contact.',
@@ -606,6 +759,13 @@ export const PAGES_LINKING: PageLinking[] = [
         pourquoi: 'Redistribuer PR6 vers money page CM',
       },
       {
+        cible: '/services/strategie-marketing-rebranding',
+        ancre: 'rebranding à Casablanca',
+        contexte_avant: 'Les identités retail et luxe du portfolio relèvent d’un vrai',
+        contexte_apres: 'mené avec charte, site et lancement alignés sur le marché marocain.',
+        pourquoi: 'PR6 portfolio → money branding PR9',
+      },
+      {
         cible: '/services',
         ancre: 'services de l’agence',
         contexte_avant: 'Ces livrables du portfolio We Yan correspondent aux',
@@ -633,6 +793,13 @@ export const PAGES_LINKING: PageLinking[] = [
       { label: 'Agence We Yan Digital Casablanca' },
     ],
     liens_sortants: [
+      {
+        cible: '/services/strategie-marketing-rebranding',
+        ancre: 'agence branding à Casablanca',
+        contexte_avant: 'Le travail d’identité, du positionnement à la charte, est porté par notre',
+        contexte_apres: 'avec ateliers en présentiel à Maarif et un plan de lancement.',
+        pourquoi: 'PR6 hub → money branding PR9',
+      },
       {
         cible: '/projets',
         ancre: 'réalisations',
@@ -708,6 +875,7 @@ export const FOOTER_PILIERS = [
   { to: '/agence-seo-casablanca', label: 'Agence SEO Casablanca' },
   { to: '/community-management-casablanca', label: 'Community Management Casablanca' },
   { to: '/services/strategie-marketing-rebranding', label: 'Stratégie & Rebranding' },
+  { to: '/services/publicite-digitale', label: 'Google Ads & Meta Ads' },
 ] as const
 
 function normalizePath(pathname: string) {
@@ -722,7 +890,24 @@ export function getPageLinking(pathname: string) {
 
 const SITE_URL = 'https://weyandigital.ma'
 
+export function buildFaqJsonLd(page: PageLinking) {
+  if (!page.faq?.length) return null
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: page.faq.map((item) => ({
+      '@type': 'Question',
+      name: item.q,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: item.r,
+      },
+    })),
+  }
+}
+
 export function buildPageDocumentTitle(page: PageLinking) {
+  if (page.title_serp) return page.title_serp
   if (page.slug === '/') {
     return 'We Yan Digital | Agence digitale Casablanca'
   }
@@ -791,7 +976,10 @@ export function validateInternalLinks() {
         continue
       }
       const same = page.cluster_semantique === cible.cluster_semantique
-      const allowed = UNIVERSAL_CLUSTERS.includes(cible.cluster_semantique) || UNIVERSAL_CLUSTERS.includes(page.cluster_semantique)
+      const allowed =
+        UNIVERSAL_CLUSTERS.includes(cible.cluster_semantique) ||
+        UNIVERSAL_CLUSTERS.includes(page.cluster_semantique) ||
+        MONEY_SLUGS.includes(lien.cible)
       if (!same && !allowed) {
         errors.push(
           `ALERTE SILO: ${page.slug} (${page.cluster_semantique}) → ${lien.cible} (${cible.cluster_semantique})`,

@@ -39,8 +39,11 @@ const SPA_ROUTES = [
   'community-management-casablanca',
   'blog/prix-site-web-maroc-2026',
   'blog/prix-seo-casablanca-2026',
+  'blog/prix-google-ads-maroc-2026',
+  'blog/prix-meta-ads-casablanca-2026',
   'blog/seo-vs-sea-maroc',
   'blog/branding-creation-marque-maroc',
+  'blog/rebranding-exemple-casablanca-2026',
   'blog/marketing-digital-tendances-maroc-2026',
   'conditions-generales',
   'politique-de-confidentialite',
@@ -106,7 +109,7 @@ export default defineConfig({
 
         const html = readFileSync(indexFile, 'utf8')
         const linkingModule = join(process.cwd(), 'node_modules', '.cache', 'validate-internal-links.mjs')
-        const { getPageLinking, buildBreadcrumbJsonLd, buildPageDocumentTitle, buildPageMetaDescription, buildPageCanonical } = await import(
+        const { getPageLinking, buildBreadcrumbJsonLd, buildFaqJsonLd, buildPageDocumentTitle, buildPageMetaDescription, buildPageCanonical } = await import(
           `${pathToFileURL(linkingModule).href}?emit=${Date.now()}`
         )
 
@@ -168,6 +171,12 @@ export default defineConfig({
           if (page.breadcrumb.length >= 2) {
             const json = JSON.stringify(buildBreadcrumbJsonLd(page))
             const tag = `    <script type="application/ld+json" id="breadcrumb-jsonld">${json}</script>\n`
+            next = next.replace('</head>', `${tag}  </head>`)
+          }
+
+          const faqJson = buildFaqJsonLd(page)
+          if (faqJson) {
+            const tag = `    <script type="application/ld+json" id="faq-jsonld">${JSON.stringify(faqJson)}</script>\n`
             next = next.replace('</head>', `${tag}  </head>`)
           }
 

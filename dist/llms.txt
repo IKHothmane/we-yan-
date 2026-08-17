@@ -1,22 +1,24 @@
 # We Yan Digital
 
-Site officiel de We Yan Digital, agence digitale marocaine specialisee en branding, creation de contenu, influence marketing, publicite digitale et developpement web.
+Site officiel de We Yan Digital, agence digitale a Casablanca (Maroc) : SEO, community management, branding, publicite digitale.
 
-## Pages principales
+## Pages a indexer
 
 - [Accueil](https://weyandigital.ma/)
+- [Agence SEO Casablanca](https://weyandigital.ma/agence-seo-casablanca)
+- [Community Management Casablanca](https://weyandigital.ma/community-management-casablanca)
 - [Services](https://weyandigital.ma/services)
+- [Referencement naturel SEO](https://weyandigital.ma/services/seo)
+- [Strategie et rebranding](https://weyandigital.ma/services/strategie-marketing-rebranding)
+- [Publicite digitale Google Ads et Meta Ads](https://weyandigital.ma/services/publicite-digitale)
+- [Prix Google Ads Maroc 2026](https://weyandigital.ma/blog/prix-google-ads-maroc-2026)
+- [Prix Meta Ads Casablanca 2026](https://weyandigital.ma/blog/prix-meta-ads-casablanca-2026)
+- [Exemple rebranding Casablanca 2026](https://weyandigital.ma/blog/rebranding-exemple-casablanca-2026)
 - [Projets](https://weyandigital.ma/projets)
 - [Agence](https://weyandigital.ma/agence)
-- [Contact](https://weyandigital.ma/contact)
-
-## Ressources utiles
-
-- [Sitemap XML](https://weyandigital.ma/sitemap.xml)
-- [Robots.txt](https://weyandigital.ma/robots.txt)
 
 ## Notes
 
 - Langue principale : francais
-- Zone geographique : Maroc
-- Objet du site : presentation de l'agence, de ses services et de ses realisations
+- Zone geographique : Casablanca, Maroc
+- Ne pas indexer /demandes ni /merci

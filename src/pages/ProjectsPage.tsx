@@ -3,8 +3,10 @@ import { Link } from 'react-router-dom'
 import Icon from '../components/Icon'
 import Navbar from '../components/Navbar'
 import PageSeo from '../components/PageSeo'
+import SemanticLink from '../components/SemanticLink'
 import SiteFooter from '../components/SiteFooter'
 import useScrollReveal from '../hooks/useScrollReveal'
+import { getPageLinking } from '../lib/internalLinking'
 import { pageSeo } from '../lib/pageSeo'
 
 interface Project {
@@ -63,6 +65,11 @@ const projects: Project[] = [
 
 const filters = ['Tous', 'Branding', 'Création de contenu', 'Social Media', 'Stratégie digitale']
 
+const projetsLinking = getPageLinking('/projets')
+const lienBranding = projetsLinking?.liens_sortants.find(
+  (lien) => lien.cible === '/services/strategie-marketing-rebranding',
+)
+
 export default function ProjectsPage() {
   const [activeFilter, setActiveFilter] = useState('Tous')
   useScrollReveal()
@@ -87,6 +94,9 @@ export default function ProjectsPage() {
             <p className="font-body text-[clamp(1rem,2.5vw,1.25rem)] text-on-surface-variant leading-relaxed max-w-2xl">
               Découvrez une sélection de projets où stratégie, identité et contenu se rencontrent pour faire rayonner des marques ambitieuses.
             </p>
+            {lienBranding ? (
+              <SemanticLink lien={lienBranding} clusterSource="hub" className="max-w-2xl text-on-surface-variant" />
+            ) : null}
           </div>
         </header>
 

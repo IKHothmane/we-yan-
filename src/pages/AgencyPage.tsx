@@ -1,10 +1,18 @@
-﻿﻿﻿﻿﻿import { useEffect } from 'react'
+﻿import { useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import Icon from '../components/Icon'
 import Navbar from '../components/Navbar'
 import PageSeo from '../components/PageSeo'
+import SemanticLink from '../components/SemanticLink'
 import SiteFooter from '../components/SiteFooter'
 import useScrollReveal from '../hooks/useScrollReveal'
+import { getPageLinking } from '../lib/internalLinking'
 import { pageSeo } from '../lib/pageSeo'
+
+const agenceLinking = getPageLinking('/agence')
+const lienBranding = agenceLinking?.liens_sortants.find(
+  (lien) => lien.cible === '/services/strategie-marketing-rebranding',
+)
 
 export default function AgencyPage() {
   useScrollReveal()
@@ -92,6 +100,17 @@ export default function AgencyPage() {
                   <p className="text-on-surface-variant">
                     Aujourd'hui, nous accompagnons les marques de demain dans leur transformation numérique. Chaque concept, chaque visuel et chaque stratégie digitale s'inscrivent dans une même mission : créer une différence durable, utile et mémorable pour nos partenaires.
                   </p>
+                  {lienBranding ? (
+                    <SemanticLink lien={lienBranding} clusterSource="hub" className="text-on-surface-variant" />
+                  ) : (
+                    <p className="text-on-surface-variant">
+                      Le travail d’identité, du positionnement à la charte, est porté par notre{' '}
+                      <Link to="/services/strategie-marketing-rebranding" className="font-bold text-primary underline-offset-4 hover:underline">
+                        agence branding à Casablanca
+                      </Link>{' '}
+                      avec ateliers en présentiel à Maarif et un plan de lancement.
+                    </p>
+                  )}
                   <div className="pt-8">
                     <div className="flex items-center gap-4">
                       <div className="w-12 h-1 bg-secondary rounded-full"></div>
