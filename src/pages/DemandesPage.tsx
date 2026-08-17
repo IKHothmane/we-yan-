@@ -15,6 +15,7 @@ type Demande = {
 }
 
 const STORAGE_KEY = 'weyan-demandes-key'
+const STATUTS_KEY = 'weyan-demandes-statuts'
 
 const SECTIONS: { id: Statut; title: string; hint: string; tone: string }[] = [
   { id: 'Nouvelle', title: 'À valider', hint: 'Nouvelles demandes', tone: 'bg-white border-slate-200' },
@@ -25,7 +26,10 @@ const SECTIONS: { id: Statut; title: string; hint: string; tone: string }[] = [
 ]
 
 function normalizeStatut(value?: string): Statut {
-  if (value === 'Validée' || value === 'En cours' || value === 'Terminée' || value === 'Annulée') return value
+  if (value === 'Valider' || value === 'Validée' || value === 'Validé') return 'Validée'
+  if (value === 'En cours') return 'En cours'
+  if (value === 'Terminer' || value === 'Terminée' || value === 'Terminé') return 'Terminée'
+  if (value === 'Annuler' || value === 'Annulée' || value === 'Annulé') return 'Annulée'
   return 'Nouvelle'
 }
 
@@ -45,6 +49,36 @@ function rowClass(statut: Statut) {
   if (statut === 'Terminée') return 'bg-sky-50'
   if (statut === 'Annulée') return 'bg-slate-100 text-slate-500'
   return 'bg-white'
+}
+
+function demandeKey(item: Demande) {
+  return `${item.email || ''}|${item.message || ''}|${item.date || ''}`
+}
+
+function readSavedStatuts(): Record<string, Statut> {
+  try {
+    const parsed = JSON.parse(localStorage.getItem(STATUTS_KEY) || '{}') as Record<string, string>
+    const out: Record<string, Statut> = {}
+    for (const [key, value] of Object.entries(parsed)) out[key] = normalizeStatut(value)
+    return out
+  } catch {
+    return {}
+  }
+}
+
+function saveStatut(item: Demande, statut: Statut) {
+  const all = readSavedStatuts()
+  all[demandeKey(item)] = statut
+  localStorage.setItem(STATUTS_KEY, JSON.stringify(all))
+}
+
+function mergeSavedStatuts(rows: Demande[], scriptReady: boolean) {
+  const saved = readSavedStatuts()
+  return rows.map((row) => {
+    const fromSheet = normalizeStatut(row.statut)
+    if (scriptReady && fromSheet !== 'Nouvelle') return { ...row, statut: fromSheet }
+    return { ...row, statut: saved[demandeKey(row)] || fromSheet }
+  })
 }
 
 function badgeClass(statut: Statut) {
@@ -87,7 +121,7 @@ export default function DemandesPage() {
       if (!response.ok || !data.ok) {
         throw new Error(data.error || 'Impossible de charger les demandes.')
       }
-      setRows(data.rows || [])
+      setRows(mergeSavedStatuts(data.rows || [], data.scriptReady !== false))
       setScriptReady(data.scriptReady !== false)
       setUnlocked(true)
       sessionStorage.setItem(STORAGE_KEY, adminKey)
@@ -111,6 +145,15 @@ export default function DemandesPage() {
     const sheetRow = Number(item.row) || 0
     setUpdatingRow(sheetRow || item.email || item.message || 'row')
     setError('')
+    saveStatut(item, statut)
+    setRows((current) =>
+      current.map((entry) =>
+        (sheetRow && entry.row === sheetRow) ||
+        (entry.email === item.email && entry.message === item.message)
+          ? { ...entry, statut }
+          : entry,
+      ),
+    )
     try {
       const response = await fetch(`/api/demandes?key=${encodeURIComponent(key)}`, {
         method: 'POST',
@@ -125,21 +168,20 @@ export default function DemandesPage() {
           statut,
         }),
       })
-      const data = (await response.json().catch(() => ({}))) as { ok?: boolean; error?: string; scriptReady?: boolean }
-      if (data.scriptReady === false) setScriptReady(false)
-      if (!response.ok || !data.ok) {
-        throw new Error(data.error || 'Mise à jour impossible.')
+      const data = (await response.json().catch(() => ({}))) as {
+        ok?: boolean
+        error?: string
+        warning?: string
+        scriptReady?: boolean
+        sheetUpdated?: boolean
       }
-      setRows((current) =>
-        current.map((entry) =>
-          (sheetRow && entry.row === sheetRow) ||
-          (entry.email === item.email && entry.message === item.message)
-            ? { ...entry, statut }
-            : entry,
-        ),
-      )
+      if (data.scriptReady === false || data.sheetUpdated === false) setScriptReady(false)
+      if (data.ok === false) {
+        setError(data.error || 'Google Sheets n’a pas été modifié.')
+      }
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Mise à jour impossible.')
+      setScriptReady(false)
+      setError(err instanceof Error ? err.message : 'Google Sheets n’a pas été modifié.')
     } finally {
       setUpdatingRow(null)
     }

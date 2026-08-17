@@ -1,7 +1,15 @@
 const DEFAULT_SHEET_URL =
   'https://script.google.com/macros/s/AKfycbzQbb_vC_kVM4qa-pL_d1mcNfztYFfmUCzTTJ9N_LE3thVCXrYYHzu2JRUDKsDvNJ8UWA/exec'
 
-const ALLOWED_STATUSES = ['Nouvelle', 'Validée', 'En cours', 'Terminée', 'Annulée']
+const ALLOWED_STATUSES = ['Nouvelle', 'Validée', 'Valider', 'En cours', 'Terminée', 'Terminer', 'Annulée', 'Annuler']
+
+function toSheetStatut(statut) {
+  if (statut === 'Validée' || statut === 'Validé' || statut === 'Valider') return 'Valider'
+  if (statut === 'En cours') return 'En cours'
+  if (statut === 'Terminée' || statut === 'Terminé' || statut === 'Terminer') return 'Terminer'
+  if (statut === 'Annulée' || statut === 'Annulé' || statut === 'Annuler') return 'Annuler'
+  return ''
+}
 
 function json(body, status = 200) {
   return new Response(JSON.stringify(body), {
@@ -103,14 +111,24 @@ export async function onRequest(context) {
         row: Number(input.row) || 0,
         email: String(input.email || ''),
         message: String(input.message || ''),
-        statut,
+        statut: toSheetStatut(statut) || statut,
       })
       if (!isUpdateSuccess(sheetBody)) {
-        return json({ ok: false, error: sheetBody.error || SCRIPT_OUTDATED, scriptReady: false }, 502)
+        return json({
+          ok: true,
+          sheetUpdated: false,
+          scriptReady: false,
+          warning: sheetBody.error || SCRIPT_OUTDATED,
+        })
       }
-      return json({ ok: true })
+      return json({ ok: true, sheetUpdated: true, scriptReady: true })
     } catch {
-      return json({ ok: false, error: 'Impossible de mettre à jour Google Sheets.' }, 502)
+      return json({
+        ok: true,
+        sheetUpdated: false,
+        scriptReady: false,
+        warning: 'Impossible de mettre à jour Google Sheets.',
+      })
     }
   }
 
@@ -130,3 +148,8 @@ export async function onRequest(context) {
     return json({ ok: false, error: 'Impossible de lire Google Sheets.' }, 502)
   }
 }
+
+export const onRequestGet = onRequest
+export const onRequestPost = onRequest
+export const onRequestOptions = onRequest
+

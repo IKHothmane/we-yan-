@@ -1,10 +1,11 @@
 import { useState, type CSSProperties, type FormEvent } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import Icon from '../Icon'
 import SiteFooter from '../SiteFooter'
 import useScrollReveal from '../../hooks/useScrollReveal'
 import ContactSendPopup from '../ContactSendPopup'
 import { sendContactMessage } from '../../lib/sendContact'
+import { markLeadReadyToTrack } from '../../lib/trackLead'
 
 const blogResources = [
   {
@@ -222,6 +223,7 @@ const projects = [
 
 export default function HomeDeferredSections() {
   useScrollReveal()
+  const navigate = useNavigate()
   const [selectedHomeServices, setSelectedHomeServices] = useState<string[]>([])
   const [openFaq, setOpenFaq] = useState<number | null>(0)
   const [homeName, setHomeName] = useState('')
@@ -259,14 +261,8 @@ export default function HomeDeferredSections() {
         services: selectedHomeServices,
         website: homeWebsite,
       })
-      setHomeStatus('success')
-      setHomeName('')
-      setHomeEmail('')
-      setHomePhone('')
-      setHomeMessage('')
-      setHomeWebsite('')
-      setSelectedHomeServices([])
-      setPopupOpen(true)
+      markLeadReadyToTrack()
+      navigate('/merci')
     } catch (error) {
       setHomeStatus('error')
       setHomeError(error instanceof Error ? error.message : 'Envoi impossible.')
@@ -742,7 +738,7 @@ export default function HomeDeferredSections() {
 
       <ContactSendPopup
         open={popupOpen}
-        status={homeStatus === 'error' ? 'error' : 'success'}
+        status="error"
         errorMessage={homeError}
         onClose={() => setPopupOpen(false)}
       />

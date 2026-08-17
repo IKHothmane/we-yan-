@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import Icon from '../components/Icon'
 import Navbar from '../components/Navbar'
 import PageSeo from '../components/PageSeo'
@@ -7,6 +8,7 @@ import useScrollReveal from '../hooks/useScrollReveal'
 import { pageSeo } from '../lib/pageSeo'
 import ContactSendPopup from '../components/ContactSendPopup'
 import { sendContactMessage } from '../lib/sendContact'
+import { markLeadReadyToTrack } from '../lib/trackLead'
 
 const socialLinks = [
   { href: 'https://instagram.com', label: 'Instagram', icon: '/icons/instagram.svg' },
@@ -40,6 +42,7 @@ type Service = (typeof services)[number]
 
 export default function ContactPage() {
   useScrollReveal()
+  const navigate = useNavigate()
   const [selectedServices, setSelectedServices] = useState<Service[]>([])
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
@@ -70,14 +73,8 @@ export default function ContactPage() {
         services: selectedServices,
         website,
       })
-      setStatus('success')
-      setName('')
-      setEmail('')
-      setPhone('')
-      setMessage('')
-      setWebsite('')
-      setSelectedServices([])
-      setPopupOpen(true)
+      markLeadReadyToTrack()
+      navigate('/merci')
     } catch (error) {
       setStatus('error')
       setErrorMessage(error instanceof Error ? error.message : 'Envoi impossible.')
@@ -322,7 +319,7 @@ export default function ContactPage() {
 
       <ContactSendPopup
         open={popupOpen}
-        status={status === 'error' ? 'error' : 'success'}
+        status="error"
         errorMessage={errorMessage}
         onClose={() => setPopupOpen(false)}
       />

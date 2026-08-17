@@ -2,6 +2,7 @@ import type { ReactNode } from 'react'
 import { Link } from 'react-router-dom'
 import Navbar from './Navbar'
 import PageSeo from './PageSeo'
+import PageBreadcrumb from './PageBreadcrumb'
 import SiteFooter from './SiteFooter'
 import useScrollReveal from '../hooks/useScrollReveal'
 import type { PageSeoConfig } from '../lib/pageSeo'
@@ -44,16 +45,7 @@ export default function BlogArticleLayout(props: BlogArticleProps) {
         {/* Breadcrumb & Badge */}
         <section className="px-[clamp(1rem,4vw,2rem)] pt-28 pb-10 sm:px-8">
           <div className="mx-auto max-w-[860px]" data-reveal>
-            <nav
-              aria-label="Fil d'Ariane"
-              className="flex items-center gap-2 text-[0.8rem] font-semibold text-slate-500 uppercase tracking-[0.16em] mb-7 flex-wrap"
-            >
-              <Link to="/" className="hover:text-slate-800 transition-colors">Accueil</Link>
-              <span aria-hidden="true" className="text-slate-300">/</span>
-              <Link to="/services" className="hover:text-slate-800 transition-colors">Expertises</Link>
-              <span aria-hidden="true" className="text-slate-300">/</span>
-              <span className="text-slate-700">Blog We Yan</span>
-            </nav>
+            <PageBreadcrumb className="mb-7 uppercase tracking-[0.16em] font-semibold" />
             <div className="flex flex-wrap items-center gap-3 mb-6">
               <span
                 className="inline-flex items-center gap-2 rounded-full border px-3.5 py-1.5 text-[0.72rem] font-bold uppercase tracking-[0.2em]"

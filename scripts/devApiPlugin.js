@@ -3,8 +3,17 @@ import { loadEnv } from 'vite'
 const DEFAULT_SHEET_URL =
   'https://script.google.com/macros/s/AKfycbzQbb_vC_kVM4qa-pL_d1mcNfztYFfmUCzTTJ9N_LE3thVCXrYYHzu2JRUDKsDvNJ8UWA/exec'
 
-const ALLOWED_STATUSES = ['Nouvelle', 'Validée', 'En cours', 'Terminée', 'Annulée']
+const ALLOWED_STATUSES = ['Nouvelle', 'Validée', 'Valider', 'En cours', 'Terminée', 'Terminer', 'Annulée', 'Annuler']
+
+function toSheetStatut(statut) {
+  if (statut === 'Validée' || statut === 'Validé' || statut === 'Valider') return 'Valider'
+  if (statut === 'En cours') return 'En cours'
+  if (statut === 'Terminée' || statut === 'Terminé' || statut === 'Terminer') return 'Terminer'
+  if (statut === 'Annulée' || statut === 'Annulé' || statut === 'Annuler') return 'Annuler'
+  return ''
+}
 const TO_EMAILS = ['meriemflyer@gmail.com', 'ikhlef.othmane@gmail.com']
+
 const FROM_EMAIL = 'We Yan Digital <contact@weyandigital.ma>'
 
 function sendJson(res, status, body) {
@@ -99,16 +108,17 @@ function attachApi(server, env) {
             row: Number(input.row) || 0,
             email: String(input.email || ''),
             message: String(input.message || ''),
-            statut,
+            statut: toSheetStatut(statut) || statut,
           })
           if (!isUpdateSuccess(sheetBody)) {
-            return sendJson(res, 502, {
-              ok: false,
-              error: sheetBody.error || SCRIPT_OUTDATED,
+            return sendJson(res, 200, {
+              ok: true,
+              sheetUpdated: false,
               scriptReady: false,
+              warning: sheetBody.error || SCRIPT_OUTDATED,
             })
           }
-          return sendJson(res, 200, { ok: true })
+          return sendJson(res, 200, { ok: true, sheetUpdated: true, scriptReady: true })
         }
 
         return sendJson(res, 405, { ok: false, error: 'Méthode non autorisée' })

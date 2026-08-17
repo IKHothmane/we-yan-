@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import Icon from '../components/Icon'
 import Navbar from '../components/Navbar'
 import PageSeo from '../components/PageSeo'
+import PageBreadcrumb from '../components/PageBreadcrumb'
 import SiteFooter from '../components/SiteFooter'
 import useScrollReveal from '../hooks/useScrollReveal'
 import { pageSeo } from '../lib/pageSeo'
@@ -150,6 +151,7 @@ export default function ServicesPage() {
         </div>
 
         <section className="w-full flex flex-col items-center px-6 pb-10 text-center sm:px-8 lg:pb-14 pt-20">
+          <PageBreadcrumb className="mb-6 justify-center" />
           <span
             className="inline-flex items-center gap-2 rounded-full border px-4 py-2 text-[0.72rem] font-bold uppercase tracking-[0.22em] mb-8"
             style={{ backgroundColor: '#EEF2FF', color: '#4338CA', borderColor: '#C7D2FE' }}

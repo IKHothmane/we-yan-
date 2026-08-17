@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import Navbar from '../components/Navbar'
 import PageSeo from '../components/PageSeo'
+import PageBreadcrumb from '../components/PageBreadcrumb'
 import SiteFooter from '../components/SiteFooter'
 import useScrollReveal from '../hooks/useScrollReveal'
 import { pageSeo } from '../lib/pageSeo'
@@ -70,6 +71,7 @@ export default function AgenceSeoCasablancaPage() {
 
           <div className="relative z-10 mx-auto grid max-w-[1200px] grid-cols-1 items-start gap-14 lg:grid-cols-[1.15fr_1fr]">
             <div data-reveal>
+              <PageBreadcrumb className="mb-6" />
               <span
                 className="inline-flex items-center gap-2 rounded-full border px-4 py-2 text-[0.72rem] font-bold uppercase tracking-[0.22em] mb-7"
                 style={{ backgroundColor: '#DBEAFE', color: '#1D4ED8', borderColor: '#93C5FD' }}

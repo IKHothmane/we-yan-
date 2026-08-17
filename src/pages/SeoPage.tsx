@@ -1,7 +1,8 @@
-﻿﻿﻿﻿﻿﻿﻿﻿﻿import { Link } from 'react-router-dom'
+﻿import { Link } from 'react-router-dom'
 import Icon from '../components/Icon'
 import Navbar from '../components/Navbar'
 import PageSeo from '../components/PageSeo'
+import PageBreadcrumb from '../components/PageBreadcrumb'
 import SiteFooter from '../components/SiteFooter'
 import useScrollReveal from '../hooks/useScrollReveal'
 import { pageSeo } from '../lib/pageSeo'
@@ -52,6 +53,7 @@ export default function SeoPage() {
 
           <div className="relative z-10 grid w-full grid-cols-1 items-center gap-16 lg:grid-cols-2 lg:gap-20">
             <div className="max-w-2xl" data-reveal>
+              <PageBreadcrumb className="mb-6" />
               <div className="mb-8 inline-flex items-center gap-3 rounded-full border border-brand-blue/20 bg-white px-5 py-2 text-brand-blue shadow-sm">
                 <span className="h-2 w-2 rounded-full bg-brand-orange" />
                 <span className="text-xs font-bold uppercase tracking-widest">
