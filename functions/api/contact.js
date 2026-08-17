@@ -1,5 +1,7 @@
 const TO_EMAILS = ['meriemflyer@gmail.com', 'ikhlef.othmane@gmail.com']
 const FROM_EMAIL = 'We Yan Digital <contact@weyandigital.ma>'
+const DEFAULT_SHEET_URL =
+  'https://script.google.com/macros/s/AKfycbzQbb_vC_kVM4qa-pL_d1mcNfztYFfmUCzTTJ9N_LE3thVCXrYYHzu2JRUDKsDvNJ8UWA/exec'
 
 function json(body, status = 200) {
   return new Response(JSON.stringify(body), {
@@ -61,6 +63,7 @@ export async function onRequest(context) {
   const name = String(input.name || '').trim()
   const email = String(input.email || '').trim()
   const message = String(input.message || '').trim()
+  const phone = String(input.phone || input.telephone || '').trim()
   const services = Array.isArray(input.services)
     ? input.services.map((item) => String(item).trim()).filter(Boolean)
     : []
@@ -71,25 +74,49 @@ export async function onRequest(context) {
   if (!isEmail(email) || email.length > 180) {
     return json({ ok: false, error: 'Adresse email invalide.' }, 422)
   }
+  if (phone.length > 40) {
+    return json({ ok: false, error: 'Téléphone invalide.' }, 422)
+  }
   if (!message || message.length > 5000) {
     return json({ ok: false, error: 'Message invalide.' }, 422)
   }
 
   const safeName = escapeHtml(name)
   const safeEmail = escapeHtml(email)
+  const safePhone = escapeHtml(phone || 'Non précisé')
   const safeMessage = escapeHtml(message).replace(/\n/g, '<br>')
-  const safeServices = services.length ? escapeHtml(services.join(', ')) : 'Non précisé'
+  const serviceLabel = services.length ? services.join(', ') : 'Non précisé'
+  const safeServices = escapeHtml(serviceLabel)
 
   const html = `
     <div style="font-family:Arial,sans-serif;line-height:1.6;color:#0f172a">
       <h1 style="font-size:20px;margin:0 0 16px">Nouveau message — We Yan Digital</h1>
       <p><strong>Nom :</strong> ${safeName}</p>
       <p><strong>Email :</strong> ${safeEmail}</p>
+      <p><strong>Téléphone :</strong> ${safePhone}</p>
       <p><strong>Services :</strong> ${safeServices}</p>
       <p><strong>Message :</strong></p>
       <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:16px">${safeMessage}</div>
     </div>
   `
+
+  const sheetUrl = String(env.GOOGLE_SHEET_URL || DEFAULT_SHEET_URL).trim()
+  const sheetPayload = JSON.stringify({
+    nom: name,
+    email,
+    telephone: phone,
+    service: serviceLabel,
+    message,
+  })
+
+  const sheetPromise = sheetUrl
+    ? fetch(sheetUrl, {
+        method: 'POST',
+        redirect: 'follow',
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: sheetPayload,
+      }).catch(() => null)
+    : Promise.resolve(null)
 
   let resendRes
   try {
@@ -119,6 +146,8 @@ export async function onRequest(context) {
       'Resend a refusé l’envoi.'
     return json({ ok: false, error: resendError }, 502)
   }
+
+  await sheetPromise
 
   return json({ ok: true })
 }

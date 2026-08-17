@@ -24,6 +24,7 @@ const SPA_ROUTES = [
   'conditions-generales',
   'politique-de-confidentialite',
   'mentions-legales',
+  'demandes',
 ]
 
 export default defineConfig({

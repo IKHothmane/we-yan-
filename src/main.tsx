@@ -32,7 +32,7 @@ const BlogMarketingDigitalMarocPage = lazyWithRetry(() => import('./pages/BlogMa
 // Pages légales
 const ConditionsGeneralesPage = lazyWithRetry(() => import('./pages/ConditionsGeneralesPage'))
 const PolitiqueConfidentialitePage = lazyWithRetry(() => import('./pages/PolitiqueConfidentialitePage'))
-const MentionsLegalesPage = lazyWithRetry(() => import('./pages/MentionsLegalesPage'))
+const DemandesPage = lazyWithRetry(() => import('./pages/DemandesPage'))
 
 const APP_PAGE_ROUTES = [
   { path: '/', element: <HomePage /> },
@@ -55,6 +55,7 @@ const APP_PAGE_ROUTES = [
   { path: '/conditions-generales', element: <ConditionsGeneralesPage /> },
   { path: '/politique-de-confidentialite', element: <PolitiqueConfidentialitePage /> },
   { path: '/mentions-legales', element: <MentionsLegalesPage /> },
+  { path: '/demandes', element: <DemandesPage /> },
 ]
 
 const AppSuspenseFallback = () => (

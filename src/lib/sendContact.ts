@@ -1,6 +1,7 @@
 export type ContactPayload = {
   name: string
   email: string
+  phone?: string
   message: string
   services: string[]
   website?: string
