@@ -1,1 +1,3 @@
 node_modules
+public/api/secrets.php
+dist/api/secrets.php

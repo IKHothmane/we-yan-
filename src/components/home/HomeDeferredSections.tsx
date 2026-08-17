@@ -1,8 +1,9 @@
-import { useState, type CSSProperties } from 'react'
+import { useState, type CSSProperties, type FormEvent } from 'react'
 import { Link } from 'react-router-dom'
 import Icon from '../Icon'
 import SiteFooter from '../SiteFooter'
 import useScrollReveal from '../../hooks/useScrollReveal'
+import { sendContactMessage } from '../../lib/sendContact'
 
 const blogResources = [
   {
@@ -222,6 +223,9 @@ export default function HomeDeferredSections() {
   useScrollReveal()
   const [selectedHomeServices, setSelectedHomeServices] = useState<string[]>([])
   const [openFaq, setOpenFaq] = useState<number | null>(0)
+  const [homeStatus, setHomeStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle')
+  const [homeError, setHomeError] = useState('')
+  const [popupOpen, setPopupOpen] = useState(false)
 
   const toggleHomeService = (serviceTitle: string) => {
     setSelectedHomeServices((current) =>
@@ -233,6 +237,33 @@ export default function HomeDeferredSections() {
 
   const toggleFaq = (idx: number) => {
     setOpenFaq((current) => (current === idx ? null : idx))
+  }
+
+  const handleHomeSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
+    const form = event.currentTarget
+    const data = new FormData(form)
+
+    setHomeStatus('sending')
+    setHomeError('')
+
+    try {
+      await sendContactMessage({
+        name: String(data.get('name') || ''),
+        email: String(data.get('email') || ''),
+        message: String(data.get('message') || ''),
+        services: selectedHomeServices,
+        website: String(data.get('website') || ''),
+      })
+      setHomeStatus('success')
+      form.reset()
+      setSelectedHomeServices([])
+      setPopupOpen(true)
+    } catch (error) {
+      setHomeStatus('error')
+      setHomeError(error instanceof Error ? error.message : 'Envoi impossible.')
+      setPopupOpen(true)
+    }
   }
 
   return (
@@ -564,7 +595,7 @@ export default function HomeDeferredSections() {
               >
                 <h2 className="text-3xl font-extrabold tracking-tight text-brand-charcoal md:text-4xl">PARLONS DE VOTRE PROJET</h2>
 
-                <form className="mt-10 space-y-6">
+                <form className="relative mt-10 space-y-6" onSubmit={handleHomeSubmit}>
                   <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
                     <div className="space-y-2">
                       <label className="text-xs font-bold uppercase tracking-widest text-brand-charcoal/55" htmlFor="home-contact-name">
@@ -576,6 +607,7 @@ export default function HomeDeferredSections() {
                         type="text"
                         className="w-full rounded-2xl border border-brand-blue/10 bg-white px-5 py-4 text-brand-charcoal placeholder:text-brand-charcoal/40 focus:border-secondary focus:outline-none"
                         placeholder="Votre nom"
+                        required
                       />
                     </div>
 
@@ -589,6 +621,7 @@ export default function HomeDeferredSections() {
                         type="email"
                         className="w-full rounded-2xl border border-brand-blue/10 bg-white px-5 py-4 text-brand-charcoal placeholder:text-brand-charcoal/40 focus:border-secondary focus:outline-none"
                         placeholder="votre@email.com"
+                        required
                       />
                     </div>
                   </div>
@@ -639,21 +672,87 @@ export default function HomeDeferredSections() {
                       className="w-full resize-none rounded-2xl border border-brand-blue/10 bg-white px-5 py-4 text-brand-charcoal placeholder:text-brand-charcoal/40 focus:border-secondary focus:outline-none"
                       rows={4}
                       placeholder="Dites-nous en plus..."
+                      required
                     />
                   </div>
 
+                  <input
+                    type="text"
+                    name="website"
+                    tabIndex={-1}
+                    autoComplete="off"
+                    className="absolute left-[-9999px] h-0 w-0 opacity-0"
+                    aria-hidden="true"
+                  />
+
                   <button
                     type="submit"
-                    className="w-full rounded-2xl bg-secondary px-6 py-4 text-sm font-extrabold uppercase tracking-[0.2em] text-on-secondary shadow-xl shadow-secondary/30 transition-all hover:bg-secondary/90 home-submit-pulse"
+                    disabled={homeStatus === 'sending'}
+                    className="w-full rounded-2xl bg-secondary px-6 py-4 text-sm font-extrabold uppercase tracking-[0.2em] text-on-secondary shadow-xl shadow-secondary/30 transition-all hover:bg-secondary/90 home-submit-pulse disabled:cursor-not-allowed disabled:opacity-70"
                   >
-                    Envoyer le message
+                    {homeStatus === 'sending' ? 'Envoi en cours…' : 'Envoyer le message'}
                   </button>
+                  {homeStatus === 'success' && (
+                    <p className="sr-only" role="status">
+                      Message envoyé. Nous vous répondons sous 24h.
+                    </p>
+                  )}
+                  {homeStatus === 'error' && (
+                    <p className="sr-only" role="alert">
+                      {homeError}
+                    </p>
+                  )}
                 </form>
               </div>
             </div>
           </div>
         </div>
       </section>
+
+      {popupOpen && (
+        <div
+          role="dialog"
+          aria-modal="true"
+          aria-label={homeStatus === 'success' ? 'Demande envoyée' : 'Erreur d’envoi'}
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/50 px-4"
+        >
+          <div className="w-full max-w-[520px] rounded-2xl bg-white p-6 shadow-2xl border border-slate-200">
+            <div className="flex items-start justify-between gap-4">
+              <div>
+                <p className="text-sm font-bold uppercase tracking-widest text-slate-500 mb-2">
+                  {homeStatus === 'success' ? 'Succès' : 'Erreur'}
+                </p>
+                <h2 className="text-2xl font-black text-slate-900 mb-2">
+                  {homeStatus === 'success' ? 'Demande envoyée' : "Impossible d’envoyer"}
+                </h2>
+                <p className="text-slate-600 leading-relaxed">
+                  {homeStatus === 'success'
+                    ? 'Merci ! Nous vous répondons sous 24h ouvrées.'
+                    : homeError || 'Réessayez dans quelques instants.'}
+                </p>
+              </div>
+              <button
+                type="button"
+                onClick={() => setPopupOpen(false)}
+                className="rounded-xl px-3 py-2 text-slate-600 hover:bg-slate-100 transition-colors"
+                aria-label="Fermer"
+              >
+                <span aria-hidden="true">✕</span>
+              </button>
+            </div>
+
+            <div className="mt-6 flex items-center justify-end">
+              <button
+                type="button"
+                onClick={() => setPopupOpen(false)}
+                className="inline-flex items-center justify-center rounded-xl bg-secondary text-on-secondary font-semibold px-5 py-3 hover:brightness-110 transition-all"
+              >
+                OK
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* RESSOURCES BLOG · Maillage interne SEO vers 4 articles orphelins */}
       <section className="relative overflow-hidden py-[clamp(4rem,8vw,6rem)] text-slate-900" style={{ backgroundColor: '#F8FAFC' }}>

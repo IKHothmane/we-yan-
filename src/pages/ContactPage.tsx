@@ -5,6 +5,7 @@ import PageSeo from '../components/PageSeo'
 import SiteFooter from '../components/SiteFooter'
 import useScrollReveal from '../hooks/useScrollReveal'
 import { pageSeo } from '../lib/pageSeo'
+import { sendContactMessage } from '../lib/sendContact'
 
 const socialLinks = [
   { href: 'https://instagram.com', label: 'Instagram', icon: '/icons/instagram.svg' },
@@ -42,6 +43,10 @@ export default function ContactPage() {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [message, setMessage] = useState('')
+  const [website, setWebsite] = useState('')
+  const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle')
+  const [errorMessage, setErrorMessage] = useState('')
+  const [popupOpen, setPopupOpen] = useState(false)
 
   const toggleService = (service: Service) => {
     setSelectedServices((current) =>
@@ -49,9 +54,31 @@ export default function ContactPage() {
     )
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    alert('Message envoyé !')
+    setStatus('sending')
+    setErrorMessage('')
+
+    try {
+      await sendContactMessage({
+        name,
+        email,
+        message,
+        services: selectedServices,
+        website,
+      })
+      setStatus('success')
+      setName('')
+      setEmail('')
+      setMessage('')
+      setWebsite('')
+      setSelectedServices([])
+      setPopupOpen(true)
+    } catch (error) {
+      setStatus('error')
+      setErrorMessage(error instanceof Error ? error.message : 'Envoi impossible.')
+      setPopupOpen(true)
+    }
   }
 
   return (
@@ -146,7 +173,7 @@ export default function ContactPage() {
                 </aside>
 
                 <div className="lg:col-span-8">
-                  <form className="space-y-6" onSubmit={handleSubmit}>
+                  <form className="relative space-y-6" onSubmit={handleSubmit}>
                     <div className="space-y-2 group">
                       <label
                         className="text-sm font-semibold text-on-surface-variant transition-colors group-focus-within:text-primary"
@@ -235,13 +262,35 @@ export default function ContactPage() {
                       />
                     </div>
 
+                    <input
+                      type="text"
+                      name="website"
+                      value={website}
+                      onChange={(e) => setWebsite(e.target.value)}
+                      tabIndex={-1}
+                      autoComplete="off"
+                      className="absolute left-[-9999px] h-0 w-0 opacity-0"
+                      aria-hidden="true"
+                    />
+
                     <button
-                      className="w-full bg-secondary text-on-secondary font-semibold text-xl py-4 rounded-xl hover:shadow-lg hover:shadow-secondary/20 transition-all duration-300 flex items-center justify-center gap-3 group contact-submit-pulse"
+                      className="w-full bg-secondary text-on-secondary font-semibold text-xl py-4 rounded-xl hover:shadow-lg hover:shadow-secondary/20 transition-all duration-300 flex items-center justify-center gap-3 group contact-submit-pulse disabled:cursor-not-allowed disabled:opacity-70"
                       type="submit"
+                      disabled={status === 'sending'}
                     >
-                      Envoyer le message
+                      {status === 'sending' ? 'Envoi en cours…' : 'Envoyer le message'}
                       <Icon name="arrow_forward" className="group-hover:translate-x-2 transition-transform" />
                     </button>
+                    {status === 'success' && (
+                      <p className="sr-only" role="status">
+                        Message envoyé. Nous vous répondons sous 24h.
+                      </p>
+                    )}
+                    {status === 'error' && (
+                      <p className="sr-only" role="alert">
+                        {errorMessage}
+                      </p>
+                    )}
                   </form>
                 </div>
               </div>
@@ -249,6 +298,51 @@ export default function ContactPage() {
           </div>
         </div>
       </main>
+
+      {popupOpen && (
+        <div
+          role="dialog"
+          aria-modal="true"
+          aria-label={status === 'success' ? 'Demande envoyée' : 'Erreur d’envoi'}
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/50 px-4"
+        >
+          <div className="w-full max-w-[520px] rounded-2xl bg-white p-6 shadow-2xl border border-slate-200">
+            <div className="flex items-start justify-between gap-4">
+              <div>
+                <p className="text-sm font-bold uppercase tracking-widest text-slate-500 mb-2">
+                  {status === 'success' ? 'Succès' : 'Erreur'}
+                </p>
+                <h2 className="text-2xl font-black text-slate-900 mb-2">
+                  {status === 'success' ? 'Demande envoyée' : "Impossible d’envoyer"}
+                </h2>
+                <p className="text-slate-600 leading-relaxed">
+                  {status === 'success'
+                    ? 'Merci ! Nous vous répondons sous 24h ouvrées.'
+                    : errorMessage || 'Réessayez dans quelques instants.'}
+                </p>
+              </div>
+              <button
+                type="button"
+                onClick={() => setPopupOpen(false)}
+                className="rounded-xl px-3 py-2 text-slate-600 hover:bg-slate-100 transition-colors"
+                aria-label="Fermer"
+              >
+                <span aria-hidden="true">✕</span>
+              </button>
+            </div>
+
+            <div className="mt-6 flex items-center justify-end">
+              <button
+                type="button"
+                onClick={() => setPopupOpen(false)}
+                className="inline-flex items-center justify-center rounded-xl bg-secondary text-on-secondary font-semibold px-5 py-3 hover:brightness-110 transition-all"
+              >
+                OK
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
       <SiteFooter revealDelay="200" />
     </div>

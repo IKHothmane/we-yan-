@@ -10,6 +10,9 @@ DirectoryIndex index.html
   RewriteEngine On
   RewriteBase /
 
+  # API PHP : ne jamais réécrire vers la SPA
+  RewriteRule ^api/ - [L]
+
   # Fichiers existants : ne pas réécrire
   RewriteCond %{REQUEST_FILENAME} -f
   RewriteRule ^ - [L]
