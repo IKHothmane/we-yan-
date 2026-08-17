@@ -1,5 +1,6 @@
 import { useLayoutEffect } from 'react'
 import { useLocation } from 'react-router-dom'
+import { buildBreadcrumbJsonLd, getPageLinking } from '../lib/internalLinking'
 
 type PageSeoProps = {
   title: string
@@ -26,6 +27,25 @@ function setCanonical(url: string) {
   if (!canonical) return
 
   canonical.href = url
+}
+
+function setBreadcrumbJsonLd(pathname: string) {
+  const id = 'breadcrumb-jsonld'
+  const page = getPageLinking(pathname)
+  const existing = document.getElementById(id)
+  if (!page || page.breadcrumb.length < 2) {
+    existing?.remove()
+    return
+  }
+
+  let script = existing as HTMLScriptElement | null
+  if (!script) {
+    script = document.createElement('script')
+    script.id = id
+    script.type = 'application/ld+json'
+    document.head.appendChild(script)
+  }
+  script.textContent = JSON.stringify(buildBreadcrumbJsonLd(page))
 }
 
 function normalizePath(pathname: string) {
@@ -68,6 +88,7 @@ export default function PageSeo({
       link.href = canonicalUrl
       document.head.appendChild(link)
     }
+    setBreadcrumbJsonLd(location.pathname)
   }, [description, location.pathname, ogImage, ogImageAlt, title, twitterImage, twitterImageAlt])
 
   return null

@@ -1,8 +1,27 @@
-import { copyFileSync, mkdirSync, existsSync } from 'node:fs'
+import { mkdirSync, existsSync, readFileSync, writeFileSync } from 'node:fs'
 import { dirname, join } from 'node:path'
+import { pathToFileURL } from 'node:url'
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import { devApiPlugin } from './scripts/devApiPlugin.js'
+
+function validateInternalLinksPlugin() {
+  return {
+    name: 'validate-internal-links',
+    async buildStart() {
+      const { transformSync } = await import('esbuild')
+      const srcPath = join(process.cwd(), 'src/lib/internalLinking.ts')
+      const src = readFileSync(srcPath, 'utf8')
+      const { code } = transformSync(src, { loader: 'ts', format: 'esm' })
+      const cacheDir = join(process.cwd(), 'node_modules', '.cache')
+      if (!existsSync(cacheDir)) mkdirSync(cacheDir, { recursive: true })
+      const tmp = join(cacheDir, 'validate-internal-links.mjs')
+      writeFileSync(tmp, code)
+      const mod = await import(`${pathToFileURL(tmp).href}?t=${Date.now()}`)
+      mod.validateInternalLinks()
+    },
+  }
+}
 
 /** Routes React (hors accueil) : un index.html physique par URL pour OVH sans rewrite. */
 const SPA_ROUTES = [
@@ -19,6 +38,7 @@ const SPA_ROUTES = [
   'agence-seo-casablanca',
   'community-management-casablanca',
   'blog/prix-site-web-maroc-2026',
+  'blog/prix-seo-casablanca-2026',
   'blog/seo-vs-sea-maroc',
   'blog/branding-creation-marque-maroc',
   'blog/marketing-digital-tendances-maroc-2026',
@@ -26,6 +46,7 @@ const SPA_ROUTES = [
   'politique-de-confidentialite',
   'mentions-legales',
   'demandes',
+  'merci',
 ]
 
 export default defineConfig({
@@ -43,6 +64,7 @@ export default defineConfig({
   plugins: [
     react(),
     devApiPlugin(),
+    validateInternalLinksPlugin(),
     {
       name: 'defer-build-css',
       apply: 'build',
@@ -77,15 +99,42 @@ export default defineConfig({
     {
       name: 'emit-spa-html-pages',
       apply: 'build',
-      closeBundle() {
+      async closeBundle() {
         const dist = join(process.cwd(), 'dist')
         const indexFile = join(dist, 'index.html')
         if (!existsSync(indexFile)) return
 
+        const html = readFileSync(indexFile, 'utf8')
+        const linkingModule = join(process.cwd(), 'node_modules', '.cache', 'validate-internal-links.mjs')
+        const { getPageLinking, buildBreadcrumbJsonLd } = await import(
+          `${pathToFileURL(linkingModule).href}?emit=${Date.now()}`
+        )
+
+        const injectRouteHtml = (sourceHtml, route) => {
+          let next = sourceHtml
+          const slug = `/${route}`
+          const page = getPageLinking(slug)
+
+          if (page && page.breadcrumb.length >= 2) {
+            const json = JSON.stringify(buildBreadcrumbJsonLd(page))
+            const tag = `    <script type="application/ld+json" id="breadcrumb-jsonld">${json}</script>\n`
+            next = next.replace('</head>', `${tag}  </head>`)
+          }
+
+          if (route === 'demandes') {
+            next = next.replace(
+              /<meta name="robots" content="[^"]*" \/>/,
+              '<meta name="robots" content="noindex, nofollow" />',
+            )
+          }
+
+          return next
+        }
+
         for (const route of SPA_ROUTES) {
           const target = join(dist, route, 'index.html')
           mkdirSync(dirname(target), { recursive: true })
-          copyFileSync(indexFile, target)
+          writeFileSync(target, injectRouteHtml(html, route))
         }
       },
     },

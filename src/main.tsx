@@ -4,8 +4,13 @@ import ReactDOM from 'react-dom/client'
 import ScrollToTop from './components/ScrollToTop'
 import ChunkErrorBoundary from './components/ChunkErrorBoundary'
 import { lazyWithRetry } from './lib/lazyWithRetry'
+import { validateInternalLinks } from './lib/internalLinking'
 import HomePage from './pages/HomePage'
 import './styles.css'
+
+if (import.meta.env.DEV) {
+  validateInternalLinks()
+}
 
 // Page home (synchrone pour LCP le + rapide possible, pas lazy)
 const ServicesPage = lazyWithRetry(() => import('./pages/ServicesPage'))
@@ -25,6 +30,7 @@ const CommunityManagementCasablancaPage = lazyWithRetry(() => import('./pages/Co
 
 // Articles Blog
 const BlogPrixSiteWebMarocPage = lazyWithRetry(() => import('./pages/BlogPrixSiteWebMarocPage'))
+const BlogPrixSeoCasablancaPage = lazyWithRetry(() => import('./pages/BlogPrixSeoCasablancaPage'))
 const BlogSeoVsSeaPage = lazyWithRetry(() => import('./pages/BlogSeoVsSeaPage'))
 const BlogBrandingMarocPage = lazyWithRetry(() => import('./pages/BlogBrandingMarocPage'))
 const BlogMarketingDigitalMarocPage = lazyWithRetry(() => import('./pages/BlogMarketingDigitalMarocPage'))
@@ -34,6 +40,7 @@ const ConditionsGeneralesPage = lazyWithRetry(() => import('./pages/ConditionsGe
 const PolitiqueConfidentialitePage = lazyWithRetry(() => import('./pages/PolitiqueConfidentialitePage'))
 const MentionsLegalesPage = lazyWithRetry(() => import('./pages/MentionsLegalesPage'))
 const DemandesPage = lazyWithRetry(() => import('./pages/DemandesPage'))
+const MerciPage = lazyWithRetry(() => import('./pages/MerciPage'))
 
 const APP_PAGE_ROUTES = [
   { path: '/', element: <HomePage /> },
@@ -50,6 +57,7 @@ const APP_PAGE_ROUTES = [
   { path: '/agence-seo-casablanca', element: <AgenceSeoCasablancaPage /> },
   { path: '/community-management-casablanca', element: <CommunityManagementCasablancaPage /> },
   { path: '/blog/prix-site-web-maroc-2026', element: <BlogPrixSiteWebMarocPage /> },
+  { path: '/blog/prix-seo-casablanca-2026', element: <BlogPrixSeoCasablancaPage /> },
   { path: '/blog/seo-vs-sea-maroc', element: <BlogSeoVsSeaPage /> },
   { path: '/blog/branding-creation-marque-maroc', element: <BlogBrandingMarocPage /> },
   { path: '/blog/marketing-digital-tendances-maroc-2026', element: <BlogMarketingDigitalMarocPage /> },
@@ -57,6 +65,7 @@ const APP_PAGE_ROUTES = [
   { path: '/politique-de-confidentialite', element: <PolitiqueConfidentialitePage /> },
   { path: '/mentions-legales', element: <MentionsLegalesPage /> },
   { path: '/demandes', element: <DemandesPage /> },
+  { path: '/merci', element: <MerciPage /> },
 ]
 
 const AppSuspenseFallback = () => (

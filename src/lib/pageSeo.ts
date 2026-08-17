@@ -80,6 +80,11 @@ export const pageSeo = {
     'Contactez We Yan Digital pour discuter de votre branding, site web, campagnes publicitaires ou stratégie digitale à Casablanca et partout au Maroc.',
     seoImages.contact,
   ),
+  merci: createPageSeoConfig(
+    'Votre demande a bien été envoyée | We Yan Digital',
+    'Merci pour votre demande. We Yan Digital vous répond sous 24h ouvrées.',
+    seoImages.contact,
+  ),
 
   agenceSeoCasablanca: createPageSeoConfig(
     'Agence SEO à Casablanca · Référencement naturel Maroc 2026 | We Yan Digital',
@@ -96,6 +101,11 @@ export const pageSeo = {
     'Prix site web Maroc 2026 : tarifs création site vitrine, e-commerce',
     'Tarifs création site web au Maroc en 2026 : combien coûte un site vitrine, un e-commerce, un site sur-mesure ? Comparatif prix agence vs freelance, fourchettes détaillées 5 000 → 120 000 MAD, conseils We Yan Digital Casablanca.',
     seoImages.services,
+  ),
+  blogPrixSeoCasablanca2026: createPageSeoConfig(
+    'Prix SEO Casablanca 2026 : tarifs référencement naturel au Maroc',
+    'Prix d’un accompagnement SEO à Casablanca en 2026 : audit, retainer mensuel, freelance vs agence, fourchettes MAD honnêtes. Comment passer du tarif à une agence SEO qui ranke vraiment.',
+    seoImages.seo,
   ),
   blogSeoVsSea: createPageSeoConfig(
     'SEO vs SEA au Maroc : quelle stratégie choisir en 2026 ? | We Yan Digital',
