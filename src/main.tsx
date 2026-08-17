@@ -32,6 +32,7 @@ const BlogMarketingDigitalMarocPage = lazyWithRetry(() => import('./pages/BlogMa
 // Pages légales
 const ConditionsGeneralesPage = lazyWithRetry(() => import('./pages/ConditionsGeneralesPage'))
 const PolitiqueConfidentialitePage = lazyWithRetry(() => import('./pages/PolitiqueConfidentialitePage'))
+const MentionsLegalesPage = lazyWithRetry(() => import('./pages/MentionsLegalesPage'))
 const DemandesPage = lazyWithRetry(() => import('./pages/DemandesPage'))
 
 const APP_PAGE_ROUTES = [
