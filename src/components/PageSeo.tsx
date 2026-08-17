@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useLayoutEffect } from 'react'
 import { useLocation } from 'react-router-dom'
 
 type PageSeoProps = {
@@ -43,7 +43,7 @@ export default function PageSeo({
 }: PageSeoProps) {
   const location = useLocation()
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const canonicalUrl = `${SITE_URL}${normalizePath(location.pathname)}`
 
     document.title = title
@@ -59,7 +59,15 @@ export default function PageSeo({
     setMeta('meta[name="twitter:description"]', 'name', 'twitter:description', description)
     setMeta('meta[name="twitter:image"]', 'name', 'twitter:image', twitterImage)
     setMeta('meta[name="twitter:image:alt"]', 'name', 'twitter:image:alt', twitterImageAlt)
-    setCanonical(canonicalUrl)
+    // Sécurité : si le link canonical n'existe pas (ex: template), on le crée.
+    if (document.head.querySelector<HTMLLinkElement>('link[rel="canonical"]')) {
+      setCanonical(canonicalUrl)
+    } else {
+      const link = document.createElement('link')
+      link.setAttribute('rel', 'canonical')
+      link.href = canonicalUrl
+      document.head.appendChild(link)
+    }
   }, [description, location.pathname, ogImage, ogImageAlt, title, twitterImage, twitterImageAlt])
 
   return null
