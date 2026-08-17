@@ -22,6 +22,33 @@ async function readJsonBody(req) {
   return JSON.parse(raw)
 }
 
+const SCRIPT_OUTDATED =
+  'Le script Google n’est pas à jour. Enregistrer ne suffit pas : dans Apps Script, Déployer → Gérer les déploiements → crayon → Version « Nouvelle version » → Déployer.'
+
+function isUpdateSuccess(body) {
+  if (!body || typeof body !== 'object') return false
+  if (Array.isArray(body.rows)) return false
+  return body.updated === true || body.success === true
+}
+
+function isScriptReady(body) {
+  if (Number(body?.version) >= 3) return true
+  const rows = body?.rows
+  if (!Array.isArray(rows) || rows.length === 0) return false
+  return rows.some((row) => row && typeof row === 'object' && ('statut' in row || 'row' in row))
+}
+
+async function updateSheetStatus(sheetUrl, payload) {
+  const url = new URL(sheetUrl)
+  url.searchParams.set('action', 'update')
+  url.searchParams.set('row', String(payload.row || ''))
+  url.searchParams.set('statut', String(payload.statut || ''))
+  url.searchParams.set('email', String(payload.email || ''))
+  url.searchParams.set('message', String(payload.message || ''))
+  const response = await fetch(url.toString(), { method: 'GET', redirect: 'follow' })
+  return response.json().catch(() => ({}))
+}
+
 async function postToSheet(sheetUrl, payload) {
   const response = await fetch(sheetUrl, {
     method: 'POST',
@@ -59,20 +86,28 @@ function attachApi(server, env) {
           const sheetRes = await fetch(sheetUrl, { method: 'GET', redirect: 'follow' })
           const sheetBody = await sheetRes.json().catch(() => ({}))
           const rows = Array.isArray(sheetBody.rows) ? sheetBody.rows : []
-          return sendJson(res, 200, { ok: true, rows })
+          return sendJson(res, 200, { ok: true, rows, scriptReady: isScriptReady(sheetBody) })
         }
 
         if (req.method === 'POST') {
           const input = await readJsonBody(req)
-          const row = Number(input.row)
           const statut = String(input.statut || '').trim()
-          if (!Number.isInteger(row) || row < 2) {
-            return sendJson(res, 422, { ok: false, error: 'Ligne invalide.' })
-          }
           if (!ALLOWED_STATUSES.includes(statut)) {
             return sendJson(res, 422, { ok: false, error: 'Statut invalide.' })
           }
-          await postToSheet(sheetUrl, { action: 'update', row, statut })
+          const sheetBody = await updateSheetStatus(sheetUrl, {
+            row: Number(input.row) || 0,
+            email: String(input.email || ''),
+            message: String(input.message || ''),
+            statut,
+          })
+          if (!isUpdateSuccess(sheetBody)) {
+            return sendJson(res, 502, {
+              ok: false,
+              error: sheetBody.error || SCRIPT_OUTDATED,
+              scriptReady: false,
+            })
+          }
           return sendJson(res, 200, { ok: true })
         }
 

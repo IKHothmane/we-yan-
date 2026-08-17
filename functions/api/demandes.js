@@ -23,12 +23,45 @@ function isAuthorized(request, env) {
   return fromQuery === expected || fromHeader === expected
 }
 
-async function postToSheet(sheetUrl, payload) {
-  const sheetRes = await fetch(sheetUrl, {
-    method: 'POST',
+function normalizeRows(rows) {
+  if (!Array.isArray(rows)) return []
+  return rows.map((item, index, all) => {
+    const parsed = Number(item?.row)
+    return {
+      ...item,
+      row: Number.isInteger(parsed) && parsed >= 2 ? parsed : all.length + 1 - index,
+      statut: item?.statut || 'Nouvelle',
+    }
+  })
+}
+
+const SCRIPT_OUTDATED =
+  'Le script Google n’est pas à jour. Enregistrer ne suffit pas : dans Apps Script, Déployer → Gérer les déploiements → crayon → Version « Nouvelle version » → Déployer.'
+
+function isUpdateSuccess(body) {
+  if (!body || typeof body !== 'object') return false
+  if (Array.isArray(body.rows)) return false
+  return body.updated === true || body.success === true
+}
+
+function isScriptReady(body) {
+  if (Number(body?.version) >= 3) return true
+  const rows = body?.rows
+  if (!Array.isArray(rows) || rows.length === 0) return false
+  return rows.some((row) => row && typeof row === 'object' && ('statut' in row || 'row' in row))
+}
+
+async function updateSheetStatus(sheetUrl, payload) {
+  const url = new URL(sheetUrl)
+  url.searchParams.set('action', 'update')
+  url.searchParams.set('row', String(payload.row || ''))
+  url.searchParams.set('statut', String(payload.statut || ''))
+  url.searchParams.set('email', String(payload.email || ''))
+  url.searchParams.set('message', String(payload.message || ''))
+
+  const sheetRes = await fetch(url.toString(), {
+    method: 'GET',
     redirect: 'follow',
-    headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-    body: JSON.stringify(payload),
   })
   return sheetRes.json().catch(() => ({}))
 }
@@ -60,19 +93,20 @@ export async function onRequest(context) {
       return json({ ok: false, error: 'Requête invalide.' }, 400)
     }
 
-    const row = Number(input.row)
     const statut = String(input.statut || '').trim()
-    if (!Number.isInteger(row) || row < 2) {
-      return json({ ok: false, error: 'Ligne invalide.' }, 422)
-    }
     if (!ALLOWED_STATUSES.includes(statut)) {
       return json({ ok: false, error: 'Statut invalide.' }, 422)
     }
 
     try {
-      const sheetBody = await postToSheet(sheetUrl, { action: 'update', row, statut })
-      if (sheetBody && sheetBody.success === false) {
-        return json({ ok: false, error: sheetBody.error || 'Mise à jour Google Sheets refusée.' }, 502)
+      const sheetBody = await updateSheetStatus(sheetUrl, {
+        row: Number(input.row) || 0,
+        email: String(input.email || ''),
+        message: String(input.message || ''),
+        statut,
+      })
+      if (!isUpdateSuccess(sheetBody)) {
+        return json({ ok: false, error: sheetBody.error || SCRIPT_OUTDATED, scriptReady: false }, 502)
       }
       return json({ ok: true })
     } catch {
@@ -90,8 +124,8 @@ export async function onRequest(context) {
       redirect: 'follow',
     })
     const sheetBody = await sheetRes.json().catch(() => ({}))
-    const rows = Array.isArray(sheetBody.rows) ? sheetBody.rows : []
-    return json({ ok: true, rows })
+    const rows = normalizeRows(sheetBody.rows)
+    return json({ ok: true, rows, scriptReady: isScriptReady(sheetBody) })
   } catch {
     return json({ ok: false, error: 'Impossible de lire Google Sheets.' }, 502)
   }

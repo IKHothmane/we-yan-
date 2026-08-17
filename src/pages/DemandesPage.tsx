@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from 'react'
+import appsScriptSource from '../../scripts/google-apps-script.js?raw'
 
 type Statut = 'Nouvelle' | 'Validée' | 'En cours' | 'Terminée' | 'Annulée'
 
@@ -59,8 +60,10 @@ export default function DemandesPage() {
   const [unlocked, setUnlocked] = useState(false)
   const [rows, setRows] = useState<Demande[]>([])
   const [loading, setLoading] = useState(false)
-  const [updatingRow, setUpdatingRow] = useState<number | null>(null)
+  const [updatingRow, setUpdatingRow] = useState<number | string | null>(null)
   const [error, setError] = useState('')
+  const [scriptReady, setScriptReady] = useState(true)
+  const [copied, setCopied] = useState(false)
 
   useEffect(() => {
     document.title = 'Demandes | We Yan Digital'
@@ -75,11 +78,17 @@ export default function DemandesPage() {
       const response = await fetch(`/api/demandes?key=${encodeURIComponent(adminKey)}`, {
         headers: { Accept: 'application/json' },
       })
-      const data = (await response.json().catch(() => ({}))) as { ok?: boolean; rows?: Demande[]; error?: string }
+      const data = (await response.json().catch(() => ({}))) as {
+        ok?: boolean
+        rows?: Demande[]
+        error?: string
+        scriptReady?: boolean
+      }
       if (!response.ok || !data.ok) {
         throw new Error(data.error || 'Impossible de charger les demandes.')
       }
       setRows(data.rows || [])
+      setScriptReady(data.scriptReady !== false)
       setUnlocked(true)
       sessionStorage.setItem(STORAGE_KEY, adminKey)
     } catch (err) {
@@ -98,8 +107,9 @@ export default function DemandesPage() {
     }
   }, [])
 
-  const updateStatut = async (row: number, statut: Statut) => {
-    setUpdatingRow(row)
+  const updateStatut = async (item: Demande, statut: Statut) => {
+    const sheetRow = Number(item.row) || 0
+    setUpdatingRow(sheetRow || item.email || item.message || 'row')
     setError('')
     try {
       const response = await fetch(`/api/demandes?key=${encodeURIComponent(key)}`, {
@@ -108,13 +118,26 @@ export default function DemandesPage() {
           Accept: 'application/json',
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ row, statut }),
+        body: JSON.stringify({
+          row: sheetRow,
+          email: item.email || '',
+          message: item.message || '',
+          statut,
+        }),
       })
-      const data = (await response.json().catch(() => ({}))) as { ok?: boolean; error?: string }
+      const data = (await response.json().catch(() => ({}))) as { ok?: boolean; error?: string; scriptReady?: boolean }
+      if (data.scriptReady === false) setScriptReady(false)
       if (!response.ok || !data.ok) {
         throw new Error(data.error || 'Mise à jour impossible.')
       }
-      setRows((current) => current.map((item) => (item.row === row ? { ...item, statut } : item)))
+      setRows((current) =>
+        current.map((entry) =>
+          (sheetRow && entry.row === sheetRow) ||
+          (entry.email === item.email && entry.message === item.message)
+            ? { ...entry, statut }
+            : entry,
+        ),
+      )
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Mise à jour impossible.')
     } finally {
@@ -125,6 +148,12 @@ export default function DemandesPage() {
   const handleUnlock = (event: React.FormEvent) => {
     event.preventDefault()
     void loadRows(key.trim())
+  }
+
+  const copyScript = async () => {
+    await navigator.clipboard.writeText(appsScriptSource)
+    setCopied(true)
+    window.setTimeout(() => setCopied(false), 2500)
   }
 
   const grouped = useMemo(() => {
@@ -189,7 +218,33 @@ export default function DemandesPage() {
               </button>
             </div>
 
-            {error && <p className="mb-4 text-sm font-semibold text-red-600">{error}</p>}
+            {(!scriptReady || error) && (
+              <div className="mb-6 rounded-3xl border border-amber-300 bg-amber-50 p-5 text-sm text-amber-950">
+                <p className="font-black">Google Sheets n’est pas à jour</p>
+                <p className="mt-2">
+                  Enregistrer le code ne suffit pas. Il faut publier une <strong>nouvelle version</strong> du
+                  déploiement existant (icône crayon), pas un nouveau déploiement.
+                </p>
+                <ol className="mt-3 list-decimal space-y-1 pl-5">
+                  <li>Ouvre le Google Sheet → <strong>Extensions → Apps Script</strong></li>
+                  <li>Efface tout le code, clique le bouton ci-dessous, puis colle</li>
+                  <li>Enregistre (disquette)</li>
+                  <li>
+                    <strong>Déployer → Gérer les déploiements → crayon</strong> → Version :{' '}
+                    <strong>Nouvelle version</strong> → <strong>Déployer</strong>
+                  </li>
+                  <li>Recharge cette page, puis reclique Valider / En cours / Terminer</li>
+                </ol>
+                <button
+                  type="button"
+                  onClick={() => void copyScript()}
+                  className="mt-4 rounded-full bg-amber-900 px-4 py-2 text-xs font-bold text-white hover:brightness-110"
+                >
+                  {copied ? 'Script copié' : 'Copier le script Google'}
+                </button>
+                {error && <p className="mt-3 font-semibold text-red-700">{error}</p>}
+              </div>
+            )}
 
             <div className="space-y-8">
               {SECTIONS.map((section) => {
@@ -228,9 +283,9 @@ export default function DemandesPage() {
                           {sectionRows.map((row, index) => {
                             const statut = normalizeStatut(row.statut)
                             const sheetRow = Number(row.row)
-                            const busy = updatingRow === sheetRow
+                            const busy = updatingRow !== null && (updatingRow === sheetRow || updatingRow === row.email)
                             return (
-                              <tr key={`${sheetRow}-${index}`} className={`border-t border-slate-100 align-top ${rowClass(statut)}`}>
+                              <tr key={`${sheetRow || row.email}-${index}`} className={`border-t border-slate-100 align-top ${rowClass(statut)}`}>
                                 <td className="px-4 py-3 whitespace-nowrap text-slate-500">{formatDate(String(row.date || ''))}</td>
                                 <td className="px-4 py-3 font-semibold">{row.nom || '—'}</td>
                                 <td className="px-4 py-3">
@@ -250,23 +305,23 @@ export default function DemandesPage() {
                                     {statut}
                                   </span>
                                 </td>
-                                <td className="px-4 py-3">
-                                  <div className="flex flex-wrap gap-2">
+                                <td className="px-4 py-3 relative z-20">
+                                  <div className="flex flex-wrap gap-2 pointer-events-auto">
                                     {statut === 'Nouvelle' && (
                                       <>
                                         <button
                                           type="button"
-                                          disabled={busy || !sheetRow}
-                                          onClick={() => void updateStatut(sheetRow, 'Validée')}
-                                          className="rounded-full bg-emerald-600 px-3 py-1.5 text-xs font-bold text-white disabled:opacity-50"
+                                          disabled={busy}
+                                          onClick={() => void updateStatut(row, 'Validée')}
+                                          className="relative z-20 cursor-pointer rounded-full bg-emerald-600 px-4 py-2 text-xs font-bold text-white hover:brightness-110 disabled:opacity-50"
                                         >
                                           Valider
                                         </button>
                                         <button
                                           type="button"
-                                          disabled={busy || !sheetRow}
-                                          onClick={() => void updateStatut(sheetRow, 'Annulée')}
-                                          className="rounded-full bg-slate-500 px-3 py-1.5 text-xs font-bold text-white disabled:opacity-50"
+                                          disabled={busy}
+                                          onClick={() => void updateStatut(row, 'Annulée')}
+                                          className="relative z-20 cursor-pointer rounded-full bg-slate-500 px-4 py-2 text-xs font-bold text-white hover:brightness-110 disabled:opacity-50"
                                         >
                                           Annuler
                                         </button>
@@ -275,9 +330,9 @@ export default function DemandesPage() {
                                     {statut === 'Validée' && (
                                       <button
                                         type="button"
-                                        disabled={busy || !sheetRow}
-                                        onClick={() => void updateStatut(sheetRow, 'En cours')}
-                                        className="rounded-full bg-red-600 px-3 py-1.5 text-xs font-bold text-white disabled:opacity-50"
+                                        disabled={busy}
+                                        onClick={() => void updateStatut(row, 'En cours')}
+                                        className="relative z-20 cursor-pointer rounded-full bg-red-600 px-4 py-2 text-xs font-bold text-white hover:brightness-110 disabled:opacity-50"
                                       >
                                         En cours
                                       </button>
@@ -285,9 +340,9 @@ export default function DemandesPage() {
                                     {statut === 'En cours' && (
                                       <button
                                         type="button"
-                                        disabled={busy || !sheetRow}
-                                        onClick={() => void updateStatut(sheetRow, 'Terminée')}
-                                        className="rounded-full bg-sky-600 px-3 py-1.5 text-xs font-bold text-white disabled:opacity-50"
+                                        disabled={busy}
+                                        onClick={() => void updateStatut(row, 'Terminée')}
+                                        className="relative z-20 cursor-pointer rounded-full bg-sky-600 px-4 py-2 text-xs font-bold text-white hover:brightness-110 disabled:opacity-50"
                                       >
                                         Terminer
                                       </button>
