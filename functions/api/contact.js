@@ -107,6 +107,7 @@ export async function onRequest(context) {
     telephone: phone,
     service: serviceLabel,
     message,
+    statut: 'Nouvelle',
   })
 
   const sheetPromise = sheetUrl

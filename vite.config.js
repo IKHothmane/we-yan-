@@ -2,6 +2,7 @@ import { copyFileSync, mkdirSync, existsSync } from 'node:fs'
 import { dirname, join } from 'node:path'
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
+import { devApiPlugin } from './scripts/devApiPlugin.js'
 
 /** Routes React (hors accueil) : un index.html physique par URL pour OVH sans rewrite. */
 const SPA_ROUTES = [
@@ -41,6 +42,7 @@ export default defineConfig({
   },
   plugins: [
     react(),
+    devApiPlugin(),
     {
       name: 'defer-build-css',
       apply: 'build',
