@@ -11,7 +11,7 @@ export default function BlogPrixGoogleAdsMarocPage() {
   return (
     <BlogArticleLayout
       seoConfig={pageSeo.blogPrixGoogleAdsMaroc2026}
-      heroImage="/images/advertising/data-preview.jpg"
+      heroImage="/images/advertising/data-preview.webp"
       heroAlt="Prix Google Ads Maroc 2026 - CPC Search Display YouTube We Yan Digital Casablanca"
       badgeCategory="Prix Google Ads · Maroc 2026"
       badgeColor={{ bg: '#DBEAFE', text: '#1D4ED8', border: '#93C5FD' }}

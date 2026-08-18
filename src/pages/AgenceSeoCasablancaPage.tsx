@@ -7,8 +7,8 @@ import useScrollReveal from '../hooks/useScrollReveal'
 import { pageSeo } from '../lib/pageSeo'
 import Icon from '../components/Icon'
 
-const heroImage = '/images/seo/hero.jpg'
-const authorityImage = '/images/seo/authority.jpg'
+const heroImage = '/images/seo/hero.webp'
+const authorityImage = '/images/seo/authority.webp'
 
 const avantages = [
   {
@@ -63,7 +63,9 @@ export default function AgenceSeoCasablancaPage() {
               alt="Agence SEO Casablanca - Equipe We Yan Digital travail référencement naturel Maroc"
               src={heroImage}
               className="h-full w-full object-cover object-center opacity-20"
-              loading="eager"
+                    width={800}
+                    height={600}
+                    loading="eager"
               decoding="async"
             />
             <div className="absolute inset-0 bg-gradient-to-br from-white via-white to-[#EEF2FF]" />
@@ -115,7 +117,9 @@ export default function AgenceSeoCasablancaPage() {
                   alt="Dashboard SEO We Yan Digital - positions Google, trafic organique, leads conversions PME maroc"
                   src={authorityImage}
                   className="w-full h-auto block"
-                  loading="lazy"
+                    width={800}
+                    height={600}
+                    loading="lazy"
                   decoding="async"
                 />
               </div>

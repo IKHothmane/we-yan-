@@ -5,7 +5,7 @@ export default function BlogBrandingMarocPage() {
   return (
     <BlogArticleLayout
       seoConfig={pageSeo.blogBrandingMaroc}
-      heroImage="/images/strategy/approach.jpg"
+      heroImage="/images/strategy/approach.webp"
       heroAlt="Branding Maroc creation identite visuelle Casablanca agence We Yan Digital logo charte graphique marque"
       badgeCategory="Branding · Identité de marque · 2026"
       badgeColor={{ bg: '#FEF3C7', text: '#B45309', border: '#FCD34D' }}

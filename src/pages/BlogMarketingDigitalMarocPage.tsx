@@ -5,7 +5,7 @@ export default function BlogMarketingDigitalMarocPage() {
   return (
     <BlogArticleLayout
       seoConfig={pageSeo.blogMarketingDigitalMaroc}
-      heroImage="/images/content/hero-main.jpg"
+      heroImage="/images/content/hero-main.webp"
       heroAlt="Tendances marketing digital Maroc 2026 agence digitale We Yan Casablanca social commerce SEO IA"
       badgeCategory="Marketing digital · Tendances 2026 · Maroc"
       badgeColor={{ bg: '#FCE7F3', text: '#9D174D', border: '#F9A8D4' }}

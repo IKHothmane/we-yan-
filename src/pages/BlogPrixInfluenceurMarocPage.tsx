@@ -11,7 +11,7 @@ export default function BlogPrixInfluenceurMarocPage() {
   return (
     <BlogArticleLayout
       seoConfig={pageSeo.blogPrixInfluenceurMaroc2026}
-      heroImage="/images/content/gallery-lifestyle.jpg"
+      heroImage="/images/content/gallery-lifestyle.webp"
       heroAlt="Prix influenceur Maroc 2026 - tarifs story reel post nano micro macro We Yan Digital Casablanca"
       badgeCategory="Prix influenceur · Maroc 2026"
       badgeColor={{ bg: '#EDE9FE', text: '#5B21B6', border: '#C4B5FD' }}

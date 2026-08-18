@@ -6,11 +6,11 @@ import SiteFooter from '../components/SiteFooter'
 import useScrollReveal from '../hooks/useScrollReveal'
 import { pageSeo } from '../lib/pageSeo'
 
-const heroImage = '/images/offline/hero-custom.jpg'
+const heroImage = '/images/offline/hero-custom.webp'
 
-const oohImage = '/images/offline/ooh.jpg'
+const oohImage = '/images/offline/ooh.webp'
 
-const cinemaImage = '/images/offline/cinema.jpg'
+const cinemaImage = '/images/offline/cinema.webp'
 
 const bridgeFeatures = [
   {
@@ -103,7 +103,10 @@ export default function OfflineMediaPage() {
             <div className="relative" data-reveal data-reveal-delay="100">
               <div className="absolute -bottom-8 -left-8 h-64 w-64 rounded-full bg-primary/15 blur-3xl" />
               <div className="relative h-[420px] overflow-hidden rounded-[2rem] shadow-2xl md:h-[600px] md:rotate-3 md:scale-105">
-                <img className="h-full w-full object-cover" src={heroImage} alt="Grand panneau publicitaire urbain" />
+                <img className="h-full w-full object-cover" src={heroImage} alt="Grand panneau publicitaire urbain"
+                    width={800}
+                    height={600}
+                  />
               </div>
             </div>
           </div>
@@ -132,7 +135,9 @@ export default function OfflineMediaPage() {
                   className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
                   src={oohImage}
                   alt="Affichage urbain OOH"
-                />
+                    width={800}
+                    height={600}
+                  />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
               </div>
               <span className="mb-4 w-fit rounded-full bg-secondary px-3 py-1 text-xs font-bold uppercase tracking-[0.18em] text-white">
@@ -186,7 +191,10 @@ export default function OfflineMediaPage() {
               data-reveal-delay="300"
             >
               <div className="absolute inset-0 -z-10">
-                <img className="h-full w-full object-cover" src={cinemaImage} alt="Publicité TV et cinéma" />
+                <img className="h-full w-full object-cover" src={cinemaImage} alt="Publicité TV et cinéma"
+                    width={800}
+                    height={600}
+                  />
                 <div className="absolute inset-0 bg-primary/30 mix-blend-multiply" />
               </div>
               <div className="flex h-full flex-col justify-between">

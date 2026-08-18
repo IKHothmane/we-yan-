@@ -16,7 +16,7 @@
     <meta property="og:url" content="https://weyandigital.ma/services/strategie-marketing-rebranding" />
     <meta
       property="og:image"
-      content="https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt=premium%20Moroccan%20digital%20agency%20website%20cover%2C%20orange%20and%20periwinkle%20brand%20palette%2C%20elegant%20editorial%20layout%2C%20creative%20workspace%2C%20luxury%20branding%20mood%2C%20cinematic%20lighting%2C%20realistic%2C%20clean%20marketing%20hero&image_size=landscape_16_9"
+      content="https://weyandigital.ma/hero.webp"
     />
     <meta property="og:image:alt" content="Apercu premium de We Yan Digital, agence digitale marocaine specialisee en branding et communication." />
     <meta name="twitter:card" content="summary_large_image" />
@@ -24,7 +24,7 @@
     <meta name="twitter:description" content="Ranker sur « agence branding casablanca » et convertir (page money)." />
     <meta
       name="twitter:image"
-      content="https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt=creative%20digital%20agency%20social%20preview%2C%20premium%20Moroccan%20branding%20studio%2C%20orange%20and%20periwinkle%20palette%2C%20bold%20typography%2C%20laptop%20mockup%2C%20refined%20marketing%20visuals%2C%20realistic%2C%20polished%20composition&image_size=landscape_4_3"
+      content="https://weyandigital.ma/hero.webp"
     />
     <meta name="twitter:image:alt" content="Apercu premium de We Yan Digital, agence digitale marocaine specialisee en branding et communication." />
     <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
@@ -93,18 +93,23 @@
             "@type": "Organization",
             "@id": "https://weyandigital.ma/#organization",
             "name": "We Yan Digital",
-            "alternateName": ["We Yan", "We Yan Digital", "WeYanDigital"],
+            "alternateName": ["We Yan", "WeYanDigital"],
             "url": "https://weyandigital.ma/",
             "logo": "https://weyandigital.ma/Logo%20weyan.png",
-            "description": "Agence digitale marocaine à Casablanca spécialisée en SEO, SEA Google Ads, Branding, Création de sites web, Social Media, Media Buying et Influence Marketing.",
+            "description": "We Yan Digital est une agence SEO à Casablanca (Maarif) : référencement naturel, community management, branding, publicité digitale, marketing d’influence et média offline au Maroc.",
             "address": {
               "@type": "PostalAddress",
               "streetAddress": "Quartier Maarif",
               "addressLocality": "Casablanca",
+              "postalCode": "20100",
+              "addressRegion": "Casablanca-Settat",
               "addressCountry": "MA"
             },
             "areaServed": [
               { "@type": "AdministrativeArea", "name": "Casablanca" },
+              { "@type": "AdministrativeArea", "name": "Rabat" },
+              { "@type": "AdministrativeArea", "name": "Marrakech" },
+              { "@type": "AdministrativeArea", "name": "Tanger" },
               { "@type": "Country", "name": "Maroc" }
             ],
             "contactPoint": {
@@ -113,25 +118,23 @@
               "contactType": "customer support",
               "email": "contact@weyandigital.ma",
               "availableLanguage": ["French", "English", "Arabic"]
-            },
-            "sameAs": [
-              "https://instagram.com",
-              "https://linkedin.com",
-              "https://facebook.com"
-            ]
+            }
           },
           {
-            "@type": "ProfessionalService",
-            "@id": "https://weyandigital.ma/#professional-service",
+            "@type": ["LocalBusiness", "ProfessionalService"],
+            "@id": "https://weyandigital.ma/#localbusiness",
             "name": "We Yan Digital",
             "image": "https://weyandigital.ma/Logo%20weyan.png",
             "url": "https://weyandigital.ma/",
             "telephone": "+212-6-91-56-72-46",
             "email": "contact@weyandigital.ma",
+            "priceRange": "$$",
             "address": {
               "@type": "PostalAddress",
               "streetAddress": "Quartier Maarif",
               "addressLocality": "Casablanca",
+              "postalCode": "20100",
+              "addressRegion": "Casablanca-Settat",
               "addressCountry": "MA"
             },
             "geo": {
@@ -139,16 +142,74 @@
               "latitude": 33.59,
               "longitude": -7.62
             },
-            "openingHours": "Mo-Fr 09:00-18:00",
-            "priceRange": "$$",
+            "openingHoursSpecification": {
+              "@type": "OpeningHoursSpecification",
+              "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+              "opens": "09:00",
+              "closes": "18:00"
+            },
+            "hasOfferCatalog": {
+              "@type": "OfferCatalog",
+              "name": "Services We Yan Digital Casablanca",
+              "itemListElement": [
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Référencement Naturel (SEO)",
+                    "url": "https://weyandigital.ma/agence-seo-casablanca"
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Création de Contenu & Community Management",
+                    "url": "https://weyandigital.ma/community-management-casablanca"
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Stratégie Marketing & Rebranding",
+                    "url": "https://weyandigital.ma/services/strategie-marketing-rebranding"
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Publicité Digitale (Google Ads & Meta Ads)",
+                    "url": "https://weyandigital.ma/services/publicite-digitale"
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Marketing d’Influence",
+                    "url": "https://weyandigital.ma/services/marketing-influence"
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Média Publicité Offline",
+                    "url": "https://weyandigital.ma/projets"
+                  }
+                }
+              ]
+            },
             "knowsAbout": [
+              "Agence SEO Casablanca",
               "Agence digitale Casablanca",
-              "SEO Maroc",
-              "SEA Google Ads Maroc",
-              "Référencement Casablanca",
-              "Branding Maroc",
-              "Création site web Casablanca",
-              "Social Media Maroc"
+              "Référencement naturel Maroc",
+              "Community management Casablanca",
+              "Agence branding Casablanca",
+              "Agence Google Ads Maroc",
+              "Agence influenceur Maroc"
             ]
           },
           {
@@ -202,10 +263,10 @@
         ]
       }
     </script>
-    <script type="module" crossorigin src="/assets/index-3qQPatiC.js" crossorigin="anonymous"></script>
-    <link rel="preload" as="style" crossorigin="anonymous" href="/assets/index-DbzBlLWE.css" />
-    <link rel="stylesheet" crossorigin="anonymous" crossorigin href="/assets/index-DbzBlLWE.css" media="print" onload="this.media='all'">
-    <noscript><link rel="stylesheet" crossorigin="anonymous" href="/assets/index-DbzBlLWE.css"></noscript>
+    <script type="module" crossorigin src="/assets/index-Doy30ljD.js" crossorigin="anonymous"></script>
+    <link rel="preload" as="style" crossorigin="anonymous" href="/assets/index-pcY6cD7S.css" />
+    <link rel="stylesheet" crossorigin="anonymous" crossorigin href="/assets/index-pcY6cD7S.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" crossorigin="anonymous" href="/assets/index-pcY6cD7S.css"></noscript>
       <script type="application/ld+json" id="breadcrumb-jsonld">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://weyandigital.ma/"},{"@type":"ListItem","position":2,"name":"Services","item":"https://weyandigital.ma/services"},{"@type":"ListItem","position":3,"name":"Agence branding Casablanca","item":"https://weyandigital.ma/services/strategie-marketing-rebranding"}]}</script>
       <script type="application/ld+json" id="faq-jsonld">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Quelle est la différence entre branding et rebranding ?","acceptedAnswer":{"@type":"Answer","text":"Le branding construit une marque qui n’existe pas encore : nom, promesse, identité de marque, premiers points de contact. Le rebranding corrige une marque déjà en marché — perception datée, fusion, nouveau positionnement, ou décalage avec Casablanca et le Maroc 2026. Chez We Yan Digital, les deux passent par un audit, une stratégie, puis une identité visuelle. On ne « change pas de logo » pour le plaisir : on décide d’abord ce que la marque doit dire, ensuite on dessine."}},{"@type":"Question","name":"Combien de temps dure un rebranding à Casablanca ?","acceptedAnswer":{"@type":"Answer","text":"Un pack Starter (logo + charte) se livre en 3 à 5 semaines, avec ateliers à Maarif. Un Growth (identité + site + community) prend 8 à 12 semaines. Un Premium (SEO + Ads + déploiement) s’étale sur 4 à 6 mois, le temps d’aligner tous les points de contact. Le délai dépend surtout de vos validations internes : plus l’équipe est claire, plus c’est rapide."}},{"@type":"Question","name":"Quel est le prix d’une agence branding à Casablanca ?","acceptedAnswer":{"@type":"Answer","text":"Chez We Yan Digital, le Starter démarre à 15 000 MAD HT (logo + charte). Le Growth (site + community management) est à 35 000 MAD HT. Le Premium (SEO + Ads + lancement) est à 70 000 MAD HT. Devis détaillé sous 24h, sans pack caché. Ces tarifs 2026 couvrent Casablanca, Rabat, Marrakech et Tanger. Un logo à 2 000 MAD n’inclut ni positionnement ni déploiement : comparez le livrable, pas le chiffre."}},{"@type":"Question","name":"Faut-il refaire son site lors d’un rebranding ?","acceptedAnswer":{"@type":"Answer","text":"Pas toujours. Si le site est lent, non SEO, ou visuellement déconnecté de la nouvelle charte, oui. Sinon on peut d’abord poser l’identité, puis migrer le site. Un site cher sans positionnement rate : d’abord la marque, ensuite les pages. Le pack Growth inclut déjà un site vitrine aligné. Le Premium ajoute le SEO pour que Google voie la même promesse que vos visiteurs."}},{"@type":"Question","name":"Une PME à Casablanca a-t-elle besoin d’un rebranding ?","acceptedAnswer":{"@type":"Answer","text":"Oui, dès que vos devis se comparent au prix, que vos équipes expliquent mal l’offre, ou que votre concurrent Maarif / Anfa paraît plus clair. Le rebranding n’est pas réservé aux grands comptes : c’est un levier de conversion locale. Une TPE food, une clinique, un cabinet B2B : dès que le client hésite à cause de l’image, pas du métier, il faut recadrer."}},{"@type":"Question","name":"Rebranding ou community management : par quoi commencer ?","acceptedAnswer":{"@type":"Answer","text":"Si votre promesse n’est pas claire, commencez par le branding. Si la marque est claire mais invisible sur Instagram et TikTok, commencez par le community management. Les deux ensemble évitent de publier une identité qui n’existe pas encore. Le pack Growth couple les deux. Un community manager seul ne répare pas un positionnement flou ; une charte seule ne remplit pas le feed."}},{"@type":"Question","name":"Intervenez-vous à Rabat, Marrakech et Tanger ?","acceptedAnswer":{"@type":"Answer","text":"Oui. L’agence est basée à Casablanca Maarif, avec ateliers en présentiel. Nous accompagnons aussi Rabat, Marrakech, Tanger et le reste du Maroc en visio, avec la même méthode et les mêmes livrables. Le signal local (Google, vitrine, langue) s’adapte à votre ville ; le process reste We Yan : audit, stratégie, identité, déploiement."}},{"@type":"Question","name":"Comment se passe un audit branding gratuit ?","acceptedAnswer":{"@type":"Answer","text":"Vous remplissez le formulaire contact. Sous 24h ouvrées, un humain vous rappelle : perception actuelle, concurrence Casa, et 3 chantiers priorisés. Sans engagement. L’audit oriente ensuite Starter, Growth ou Premium. Préparez site, réseaux, et 3 concurrents. Plus vous êtes factuels, plus la reco est utile — ce n’est pas un appel commercial générique."}}]}</script>
   </head>

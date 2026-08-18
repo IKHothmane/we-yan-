@@ -49,6 +49,9 @@ export default function Navbar({ variant = 'light', serviceTitle }: NavbarProps)
                   alt="We Yan Digital"
                   className="absolute left-0 top-1/2 w-full h-auto max-h-[clamp(3.5rem,9vw,5.5rem)] object-contain z-[60]"
                   style={{ transform: 'translate3d(0, -50%, 0) rotate(-6deg)' }}
+                  width={448}
+                  height={88}
+                  decoding="async"
                 />
               </div>
               {serviceTitle ? (

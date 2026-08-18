@@ -47,7 +47,10 @@ export default function SiteFooter({ revealDelay }: SiteFooterProps) {
                   src="/Logo%20weyan.png"
                   alt="We Yan Digital · Agence digitale à Casablanca"
                   className="h-[clamp(2.75rem,7vw,4rem)] w-auto object-contain drop-shadow-[0_14px_34px_-12px_rgba(15,23,42,0.35)]"
+                  width={448}
+                  height={88}
                   loading="lazy"
+                  decoding="async"
                 />
               </Link>
               <p className="text-white text-[0.95rem] leading-relaxed max-w-[18rem] mb-8">

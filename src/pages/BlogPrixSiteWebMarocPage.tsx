@@ -5,7 +5,7 @@ export default function BlogPrixSiteWebMarocPage() {
   return (
     <BlogArticleLayout
       seoConfig={pageSeo.blogPrixSiteWebMaroc2026}
-      heroImage="/images/advertising/data-preview.jpg"
+      heroImage="/images/advertising/data-preview.webp"
       heroAlt="Tarifs création site web Maroc 2026 - weyan digital agence casablanca prix forfait vitrine ecommerce"
       badgeCategory="Prix & Tarifs · Casablanca 2026"
       badgeColor={{ bg: '#FEF3C7', text: '#B45309', border: '#FCD34D' }}

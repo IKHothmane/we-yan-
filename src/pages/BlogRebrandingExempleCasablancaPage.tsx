@@ -13,7 +13,7 @@ export default function BlogRebrandingExempleCasablancaPage() {
   return (
     <BlogArticleLayout
       seoConfig={pageSeo.blogRebrandingExempleCasablanca}
-      heroImage="/images/strategy/hero.jpg"
+      heroImage="/images/strategy/hero.webp"
       heroAlt="Exemple rebranding Casablanca 2026 - avant après identité de marque We Yan Digital"
       badgeCategory="Rebranding · Casablanca 2026"
       badgeColor={{ bg: '#FFEDD5', text: '#C2410C', border: '#FDBA74' }}

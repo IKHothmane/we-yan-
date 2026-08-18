@@ -1,4 +1,4 @@
-﻿﻿import { Link } from 'react-router-dom'
+﻿import { Link } from 'react-router-dom'
 import Icon from '../components/Icon'
 import Navbar from '../components/Navbar'
 import PageSeo from '../components/PageSeo'
@@ -8,7 +8,7 @@ import { pageSeo } from '../lib/pageSeo'
 
 const analyticsPreview = '/images/home/dashboard.webp?v=20260623-ad'
 
-const dataPreview = '/images/advertising/data-preview.jpg'
+const dataPreview = '/images/advertising/data-preview.webp'
 
 const platforms = [
   {
@@ -153,7 +153,6 @@ const omniChannelCards = [
     title: 'Video Strategy',
     description: 'YouTube & Reels pour une notoriété massive et des contenus qui captent vite l’attention.',
     icon: 'movie_filter',
-    video: '/videos/premium-landscape-video-for-digital-advertising-ag.mp4',
     image: analyticsPreview,
     imageAlt: 'Video Strategy',
     cardClassName: 'bg-brand-charcoal text-white',
@@ -333,24 +332,16 @@ export default function AdvertisingPage() {
                   data-reveal
                   data-reveal-delay={String(index * 100)}
                 >
-                  {'video' in card && card.video ? (
-                    <video
-                      aria-hidden="true"
-                      className={card.imageClassName}
-                      src={card.video}
-                      autoPlay
-                      loop
-                      muted
-                      playsInline
-                      preload="metadata"
-                      poster={card.image}
-                    />
-                  ) : (
-                    <img alt={card.imageAlt} className={card.imageClassName} src={card.image} />
-                  )}
-                  {'video' in card && card.video ? null : (
-                    <div className={`absolute inset-0 z-10 ${card.overlayClassName}`} />
-                  )}
+                  <img
+                    alt={card.imageAlt}
+                    className={card.imageClassName}
+                    src={card.image}
+                    width={800}
+                    height={600}
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <div className={`absolute inset-0 z-10 ${card.overlayClassName}`} />
                   <div className={`relative z-20 ${card.contentClassName}`}>
                     <div className={`mb-4 flex h-10 w-10 items-center justify-center rounded-lg ${card.iconWrapperClassName}`}>
                       <Icon name={card.icon} className="text-[20px]" />
@@ -403,6 +394,10 @@ export default function AdvertisingPage() {
               alt="Dashboard analytics premium"
               className="h-full w-full object-cover object-center"
               src={analyticsPreview}
+              width={800}
+              height={600}
+              loading="lazy"
+              decoding="async"
             />
           </div>
           <div aria-hidden="true" className="absolute inset-0 bg-white/25" />

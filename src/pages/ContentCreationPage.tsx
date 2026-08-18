@@ -15,35 +15,35 @@ interface GalleryItem {
 }
 
 // Images
-const heroImage = '/images/content/hero-user.jpg?v=20260623e'
-const videoIconImage = '/images/content/icon-video.jpg?v=20260623d'
-const communityIconImage = '/images/content/icon-community.jpg?v=20260623d'
+const heroImage = '/images/content/hero-user.webp?v=20260623e'
+const videoIconImage = '/images/content/icon-video.webp?v=20260623d'
+const communityIconImage = '/images/content/icon-community.webp?v=20260623d'
 
 const galleryItems: GalleryItem[] = [
   {
     title: 'LIFESTYLE ADVERTISING',
-    image: '/images/content/gallery-lifestyle.jpg?v=20260623d',
+    image: '/images/content/gallery-lifestyle.webp?v=20260623d',
     overlayClassName: 'from-on-surface/90 via-on-surface/20 to-transparent',
     textClassName: 'text-surface',
     offset: false,
   },
   {
     title: 'MOTION GRAPHICS',
-    image: '/images/content/gallery-motion.jpg?v=20260623d',
+    image: '/images/content/gallery-motion.webp?v=20260623d',
     overlayClassName: 'from-primary/90 via-primary/20 to-transparent',
     textClassName: 'text-on-primary',
     offset: true,
   },
   {
     title: 'CULINARY CONTENT',
-    image: '/images/content/gallery-culinary.jpg?v=20260623d',
+    image: '/images/content/gallery-culinary.webp?v=20260623d',
     overlayClassName: 'from-secondary/90 via-secondary/20 to-transparent',
     textClassName: 'text-on-secondary',
     offset: false,
   },
   {
     title: 'ARCHITECTURAL SHOOT',
-    image: '/images/content/gallery-architecture.jpg?v=20260623d',
+    image: '/images/content/gallery-architecture.webp?v=20260623d',
     overlayClassName: 'from-primary/90 via-primary/20 to-transparent',
     textClassName: 'text-on-primary',
     offset: true,
@@ -69,7 +69,9 @@ export default function ContentCreationPage() {
               src={heroImage}
               alt="Studio premium de création de contenu"
               className="h-full w-full scale-105 object-cover transition-transform duration-1000"
-            />
+                    width={800}
+                    height={600}
+                  />
             <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.92)_0%,rgba(255,255,255,0.68)_42%,rgba(255,255,255,0)_100%)]" />
             <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(249,249,249,0)_0%,rgba(249,249,249,1)_100%)]" />
           </div>
@@ -152,6 +154,8 @@ export default function ContentCreationPage() {
                     src={videoIconImage}
                     alt="Icône video production"
                     className="h-full w-full object-contain mix-blend-multiply"
+                    width={800}
+                    height={600}
                   />
                 </div>
                 <h3 className="rigot-headline mb-4 text-2xl text-on-surface">
@@ -173,6 +177,8 @@ export default function ContentCreationPage() {
                     src={communityIconImage}
                     alt="Icône community management"
                     className="h-full w-full object-contain mix-blend-multiply"
+                    width={800}
+                    height={600}
                   />
                 </div>
                 <h3 className="rigot-headline mb-4 text-2xl text-on-surface">
@@ -242,6 +248,8 @@ export default function ContentCreationPage() {
                     src={item.image}
                     alt={item.title}
                     className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    width={800}
+                    height={600}
                   />
                   <div
                     className={`absolute inset-0 flex items-end bg-gradient-to-t p-6 opacity-0 transition-opacity duration-300 group-hover:opacity-100 ${item.overlayClassName}`}

@@ -5,7 +5,7 @@ export default function BlogSeoVsSeaPage() {
   return (
     <BlogArticleLayout
       seoConfig={pageSeo.blogSeoVsSea}
-      heroImage="/images/seo/hero.jpg"
+      heroImage="/images/seo/hero.webp"
       heroAlt="SEO vs SEA Maroc Casablanca agence We Yan Digital comparatif strategie acquisition Google Ads referencement"
       badgeCategory="SEO · Google Ads · Stratégie"
       badgeColor={{ bg: '#DBEAFE', text: '#1D4ED8', border: '#93C5FD' }}

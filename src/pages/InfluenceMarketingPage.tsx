@@ -8,9 +8,9 @@ import useScrollReveal from '../hooks/useScrollReveal'
 import { getPageLinking } from '../lib/internalLinking'
 import { pageSeo } from '../lib/pageSeo'
 
-const heroImage = '/images/content/studio-content-v2.jpg'
-const approachImage = '/images/content/gallery-lifestyle.jpg'
-const sideImage = '/images/content/gallery-culinary.jpg'
+const heroImage = '/images/content/studio-content-v2.webp'
+const approachImage = '/images/content/gallery-lifestyle.webp'
+const sideImage = '/images/content/gallery-culinary.webp'
 
 const pageLinking = getPageLinking('/services/marketing-influence')
 const faq = pageLinking?.faq ?? []
@@ -49,21 +49,21 @@ const realisations = [
     titre: 'Retail Casablanca',
     avant: 'Boost Meta sans visage local, CPL haut, zéro preuve sociale.',
     apres: '8 micros Casa, code magasin, +22 % de trafic boutique sur 6 semaines.',
-    image: '/images/projects/project-3.jpg',
+    image: '/images/projects/project-3.webp',
   },
   {
     nom: 'food-maarif',
     titre: 'Food Maarif',
     avant: 'Photos stock, stories internes peu vues.',
     apres: '4 nanos + 2 reels UGC, files d’attente week-end, WhatsApp saturé.',
-    image: '/images/content/gallery-culinary.jpg',
+    image: '/images/content/gallery-culinary.webp',
   },
   {
     nom: 'beauty-anfa',
     titre: 'Beauty Anfa',
     avant: 'Un macro one-shot, spike d’un jour, zéro relance.',
     apres: 'Série micro + whitelist ads, CPA stable 8 semaines.',
-    image: '/images/content/gallery-lifestyle.jpg',
+    image: '/images/content/gallery-lifestyle.webp',
   },
 ] as const
 
@@ -82,7 +82,9 @@ export default function InfluenceMarketingPage() {
               alt="Agence marketing d’influence Casablanca - créateurs Instagram TikTok We Yan Digital"
               src={heroImage}
               className="h-full w-full object-cover object-center opacity-20"
-              loading="eager"
+                    width={800}
+                    height={600}
+                    loading="eager"
               decoding="async"
             />
             <div className="absolute inset-0 bg-gradient-to-br from-white via-white to-[#EEF2FF]" />
@@ -161,7 +163,9 @@ export default function InfluenceMarketingPage() {
                   alt="Casting influenceurs Casablanca - campagne Instagram TikTok We Yan Digital"
                   src={approachImage}
                   className="block h-auto w-full"
-                  loading="lazy"
+                    width={800}
+                    height={600}
+                    loading="lazy"
                   decoding="async"
                 />
               </div>
@@ -290,7 +294,9 @@ export default function InfluenceMarketingPage() {
                 src={sideImage}
                 alt="Campagne influence food Casablanca - UGC We Yan Digital"
                 className="mb-6 h-28 w-full rounded-2xl object-cover"
-                loading="lazy"
+                    width={800}
+                    height={600}
+                    loading="lazy"
               />
               <h3 className="mb-5 text-[1.3rem] font-black tracking-tight">Casting offert cette semaine</h3>
               <ul className="mb-8 space-y-4">
@@ -416,6 +422,8 @@ export default function InfluenceMarketingPage() {
                     src={item.image}
                     alt={`campagne-influence-casablanca-${item.nom}`}
                     className="h-52 w-full object-cover"
+                    width={800}
+                    height={600}
                     loading="lazy"
                   />
                   <div className="p-6">

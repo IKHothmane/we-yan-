@@ -46,7 +46,7 @@ export default {
         'margin-tablet': '40px',
       },
       fontFamily: {
-        sans: ['Hanken Grotesk', 'Poppins', 'sans-serif'],
+        sans: ['Poppins', 'sans-serif'],
         heading: ['Rigot', 'sans-serif'],
         rigot: ['Rigot', 'sans-serif'],
         headline: ['Syne', 'Bricolage Grotesque', 'sans-serif'],

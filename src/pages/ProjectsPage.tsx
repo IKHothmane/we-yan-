@@ -25,7 +25,7 @@ const projects: Project[] = [
     category: 'Branding',
     year: '2024',
     description: "Refonte d'identité visuelle pour une enseigne retail en quête de distinction.",
-    image: '/images/projects/project-1.jpg',
+    image: '/images/projects/project-1.webp',
     size: 'large',
   },
   {
@@ -33,7 +33,7 @@ const projects: Project[] = [
     category: 'Branding',
     year: '2024',
     description: 'Univers premium et direction artistique pour une marque orientée désirabilité.',
-    image: '/images/projects/project-2.jpg',
+    image: '/images/projects/project-2.webp',
     size: 'medium',
     secondary: true,
   },
@@ -42,7 +42,7 @@ const projects: Project[] = [
     category: 'Influence',
     year: '2024',
     description: 'Campagne créateurs Instagram / TikTok : casting, brief et reporting pour un lancement marque.',
-    image: '/images/projects/project-3.jpg',
+    image: '/images/projects/project-3.webp',
     size: 'small',
   },
   {
@@ -50,7 +50,7 @@ const projects: Project[] = [
     category: 'Stratégie digitale',
     year: '2023',
     description: 'Plateforme B2B conçue pour soutenir la croissance et la conversion.',
-    image: '/images/projects/project-4.jpg',
+    image: '/images/projects/project-4.webp',
     size: 'small',
   },
   {
@@ -58,7 +58,7 @@ const projects: Project[] = [
     category: 'Création de contenu',
     year: '2024',
     description: 'Production photo et vidéo pour nourrir une présence de marque cohérente.',
-    image: '/images/projects/project-5.jpg',
+    image: '/images/projects/project-5.webp',
     size: 'small',
   },
 ]
@@ -208,7 +208,9 @@ export default function ProjectsPage() {
                       alt={project.title}
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-103"
                       src={project.image}
-                      loading="lazy"
+                    width={800}
+                    height={600}
+                    loading="lazy"
                     />
                   </div>
                   <div className="p-8">

@@ -8,9 +8,9 @@ import useScrollReveal from '../hooks/useScrollReveal'
 import { getPageLinking } from '../lib/internalLinking'
 import { pageSeo } from '../lib/pageSeo'
 
-const heroImage = '/images/strategy/hero.jpg'
-const approachImage = '/images/strategy/approach.jpg'
-const positioningImage = '/images/strategy/positioning.jpg'
+const heroImage = '/images/strategy/hero.webp'
+const approachImage = '/images/strategy/approach.webp'
+const positioningImage = '/images/strategy/positioning.webp'
 
 const pageLinking = getPageLinking('/services/strategie-marketing-rebranding')
 const faq = pageLinking?.faq ?? []
@@ -43,21 +43,21 @@ const realisations = [
     titre: 'Atlas Retail',
     avant: 'Enseigne perçue « discount 2014 », logo illisible en vitrine Maarif.',
     apres: 'Système visuel 2026, signalétique unifiée, +31 % de trafic magasin sur 4 mois.',
-    image: '/images/projects/project-1.jpg',
+    image: '/images/projects/project-1.webp',
   },
   {
     nom: 'luxe-care',
     titre: 'Luxe Care',
     avant: 'Marque cosmétique confondue avec l’import, aucun univers premium.',
     apres: 'Positionnement « rituel Casablanca », packagings, site et stories alignés.',
-    image: '/images/projects/project-2.jpg',
+    image: '/images/projects/project-2.webp',
   },
   {
     nom: 'maison-anfa',
     titre: 'Maison Anfa',
     avant: 'Hospitalité haut de gamme, site générique, zéro fil rouge photo.',
     apres: 'Charte photo, ton de voix, booking et Google Business cohérents.',
-    image: '/images/projects/project-3.jpg',
+    image: '/images/projects/project-3.webp',
   },
 ] as const
 
@@ -76,7 +76,9 @@ export default function StrategieMarketingPage() {
               alt="Agence branding Casablanca - studio We Yan Digital identité de marque et rebranding"
               src={heroImage}
               className="h-full w-full object-cover object-center opacity-20"
-              loading="eager"
+                    width={800}
+                    height={600}
+                    loading="eager"
               decoding="async"
             />
             <div className="absolute inset-0 bg-gradient-to-br from-white via-white to-[#FFF7ED]" />
@@ -153,7 +155,9 @@ export default function StrategieMarketingPage() {
                   alt="Atelier identité de marque Casablanca - charte, logo et positionnement We Yan Digital"
                   src={approachImage}
                   className="block h-auto w-full"
-                  loading="lazy"
+                    width={800}
+                    height={600}
+                    loading="lazy"
                   decoding="async"
                 />
               </div>
@@ -300,7 +304,9 @@ export default function StrategieMarketingPage() {
                 src={positioningImage}
                 alt="Positionnement de marque Casablanca - stratégie marketing We Yan Digital"
                 className="mb-6 h-28 w-full rounded-2xl object-cover"
-                loading="lazy"
+                    width={800}
+                    height={600}
+                    loading="lazy"
               />
               <h3 className="mb-5 text-[1.3rem] font-black tracking-tight">Audit branding gratuit cette semaine</h3>
               <ul className="mb-8 space-y-4">
@@ -427,6 +433,8 @@ export default function StrategieMarketingPage() {
                     src={item.image}
                     alt={`rebranding-casablanca-${item.nom}`}
                     className="h-52 w-full object-cover"
+                    width={800}
+                    height={600}
                     loading="lazy"
                   />
                   <div className="p-6">

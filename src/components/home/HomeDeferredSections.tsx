@@ -58,8 +58,7 @@ const homeImages = {
   dashboard: '/images/home/dashboard.webp?v=20260619',
 }
 
-const solutionsCardsBackground =
-  'https://lh3.googleusercontent.com/aida-public/AB6AXuA26cTrzHWhr1lAl33fd3Ki70zwSUi4OF6NjvcmIZ76Ga7-B-FjhQoLQtGZcbTdkiBFBnDeDM5_JRbgc_X94ePyxv64rKgjS7XfUkwJuIMzIENhqM1PpaK7RoethVHVm8di6c_IbAx7F-BB6NczMfoLzkMUeRiJ_K_cjdVe0s3vP6gWa8PXNUBIy5mhVNAtHC7--WgbqpaXlN1mq7vEhIVL9FZQN8rWrTrYlU634k6EKU8XO-Rm8y-Hu66NwWKW2iAryuhp5f9Z7lM'
+const solutionsCardsBackground = '/images/agency/story.webp'
 
 const deferredSectionStyle: CSSProperties = {
   contentVisibility: 'auto',
@@ -112,8 +111,7 @@ const services = [
     tone: 'primary',
     layoutClassName: 'min-h-[300px] md:min-h-[320px]',
     to: '/services/strategie-marketing-rebranding',
-    image:
-      'https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt=premium%20marketing%20strategy%20and%20rebranding%20workshop%2C%20brand%20board%2C%20positioning%20notes%2C%20creative%20agency%20desk%2C%20orange%20and%20periwinkle%20palette%2C%20realistic&image_size=portrait_4_3',
+    image: '/images/strategy/approach.webp',
   },
   {
     icon: 'edit_document',
@@ -122,8 +120,7 @@ const services = [
     tone: 'secondary',
     layoutClassName: 'min-h-[300px] md:min-h-[320px] md:mt-16 lg:mt-20',
     to: '/services/creation-contenu-community-management',
-    image:
-      'https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt=premium%20content%20creation%20studio%2C%20camera%2C%20reels%20storyboard%2C%20softbox%20lights%2C%20stylish%20set%20design%2C%20orange%20and%20periwinkle%20accents%2C%20realistic&image_size=portrait_4_3',
+    image: '/images/content/studio-content-v2.webp',
   },
   {
     icon: 'ads_click',
@@ -132,8 +129,7 @@ const services = [
     tone: 'primary',
     layoutClassName: 'min-h-[300px] md:min-h-[320px]',
     to: '/services/publicite-digitale',
-    image:
-      'https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt=meta%20ads%20and%20google%20ads%20dashboard%2C%20performance%20campaign%20charts%2C%20premium%20digital%20marketing%20workspace%2C%20orange%20and%20periwinkle%20palette%2C%20realistic&image_size=portrait_4_3',
+    image: '/images/home/dashboard.webp',
   },
   {
     icon: 'search',
@@ -142,8 +138,7 @@ const services = [
     tone: 'secondary',
     layoutClassName: 'min-h-[300px] md:min-h-[320px] md:mt-16 lg:mt-20',
     to: '/services/seo',
-    image:
-      'https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt=seo%20search%20ranking%20dashboard%2C%20organic%20traffic%20analytics%2C%20premium%20laptop%20workspace%2C%20orange%20and%20periwinkle%20brand%20palette%2C%20realistic&image_size=portrait_4_3',
+    image: '/images/seo/authority.webp',
   },
   {
     icon: 'campaign',
@@ -152,8 +147,7 @@ const services = [
     tone: 'primary',
     layoutClassName: 'min-h-[300px] md:min-h-[320px]',
     to: '/services/marketing-influence',
-    image:
-      'https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt=influencer%20marketing%20campaign%20planning%2C%20creator%20collaboration%20meeting%2C%20premium%20brand%20partnership%20scene%2C%20stylish%20studio%2C%20orange%20and%20periwinkle%20accents%2C%20realistic&image_size=portrait_4_3',
+    image: '/images/content/gallery-lifestyle.webp',
   },
   {
     icon: 'palette',
@@ -162,8 +156,7 @@ const services = [
     tone: 'secondary',
     layoutClassName: 'min-h-[300px] md:min-h-[320px] md:mt-16 lg:mt-20',
     to: '/services/media-publicite-offline',
-    image:
-      'https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt=offline%20advertising%20media%20mockups%2C%20billboard%2C%20flyer%2C%20poster%20and%20print%20campaign%2C%20premium%20branding%20presentation%2C%20orange%20and%20periwinkle%20palette%2C%20realistic&image_size=portrait_4_3',
+    image: '/images/offline/ooh.webp',
   },
 ] as const
 
@@ -179,8 +172,7 @@ const projects = [
   {
     title: 'E-COMMERCE - LUXE',
     client: 'C Opticiens',
-    image:
-      'https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt=premium%20ecommerce%20mobile%20mockup%20for%20luxury%20eyewear%20brand%2C%20orange%20background%2C%20realistic%20smartphone%20product%20ui%2C%20clean%20editorial%20lighting&image_size=portrait_4_3',
+    image: '/images/projects/project-2.webp',
     bg: 'bg-primary',
     height: 'h-[380px] md:h-[420px]',
     offset: 'md:mt-8',
@@ -196,8 +188,7 @@ const projects = [
   {
     title: 'BRANDING - LIFESTYLE',
     client: 'Biget',
-    image:
-      'https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt=dark%20premium%20branding%20mobile%20mockup%2C%20luxury%20product%20presentation%2C%20black%20studio%20background%2C%20realistic%20editorial%20lighting&image_size=portrait_4_3',
+    image: '/images/projects/project-1.webp',
     bg: 'bg-[#0F172A]',
     height: 'h-[280px] md:h-[300px]',
     offset: 'md:-mt-6',
@@ -213,8 +204,7 @@ const projects = [
   {
     title: 'BRANDING - LIFESTYLE',
     client: 'Bigor',
-    image:
-      'https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt=luxury%20branding%20print%20mockup%2C%20editorial%20stationery%2C%20brochure%20and%20business%20cards%2C%20warm%20beige%20background%2C%20realistic%20top%20view&image_size=portrait_4_3',
+    image: '/images/strategy/positioning.webp',
     bg: 'bg-[#E8DCC8]',
     height: 'h-[320px] md:h-[360px]',
     offset: 'md:-mt-4',
@@ -339,6 +329,8 @@ export default function HomeDeferredSections() {
                     aria-hidden="true"
                     className="absolute inset-0 h-full w-full rounded-[inherit] object-cover opacity-95"
                     src={solutionsCardsBackground}
+                    width={512}
+                    height={512}
                     loading="lazy"
                     decoding="async"
                   />
@@ -348,6 +340,8 @@ export default function HomeDeferredSections() {
                     aria-hidden="true"
                     className="absolute inset-0 h-full w-full rounded-[inherit] scale-105 transform-gpu object-cover opacity-0 transition-all duration-700 ease-out group-hover:scale-100 group-hover:opacity-100"
                     src={service.image}
+                    width={800}
+                    height={600}
                     loading="lazy"
                     decoding="async"
                   />
@@ -422,7 +416,9 @@ export default function HomeDeferredSections() {
                   alt={`${project.title} ${project.client}`}
                   className="absolute inset-0 h-full w-full object-contain p-4 transition-transform duration-700 ease-out group-hover:scale-105"
                   src={project.image}
-                  loading="lazy"
+                    width={800}
+                    height={600}
+                    loading="lazy"
                   decoding="async"
                 />
                 <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
@@ -528,7 +524,10 @@ export default function HomeDeferredSections() {
                 </p>
                 <div className="flex items-center gap-4">
                   <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-white shadow-md">
-                    <img alt={t.author} className="w-full h-full object-cover" src={t.avatar} loading="lazy" />
+                    <img alt={t.author} className="w-full h-full object-cover" src={t.avatar}
+                    width={800}
+                    height={600}
+                    loading="lazy" />
                   </div>
                   <div>
                     <p className="font-bold text-lg text-slate-900">{t.author}</p>

@@ -16,7 +16,7 @@
     <meta property="og:url" content="https://weyandigital.ma/contact" />
     <meta
       property="og:image"
-      content="https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt=premium%20Moroccan%20digital%20agency%20website%20cover%2C%20orange%20and%20periwinkle%20brand%20palette%2C%20elegant%20editorial%20layout%2C%20creative%20workspace%2C%20luxury%20branding%20mood%2C%20cinematic%20lighting%2C%20realistic%2C%20clean%20marketing%20hero&image_size=landscape_16_9"
+      content="https://weyandigital.ma/hero.webp"
     />
     <meta property="og:image:alt" content="Apercu premium de We Yan Digital, agence digitale marocaine specialisee en branding et communication." />
     <meta name="twitter:card" content="summary_large_image" />
@@ -24,7 +24,7 @@
     <meta name="twitter:description" content="Page de conversion : ne doit PAS donner de jus ailleurs." />
     <meta
       name="twitter:image"
-      content="https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt=creative%20digital%20agency%20social%20preview%2C%20premium%20Moroccan%20branding%20studio%2C%20orange%20and%20periwinkle%20palette%2C%20bold%20typography%2C%20laptop%20mockup%2C%20refined%20marketing%20visuals%2C%20realistic%2C%20polished%20composition&image_size=landscape_4_3"
+      content="https://weyandigital.ma/hero.webp"
     />
     <meta name="twitter:image:alt" content="Apercu premium de We Yan Digital, agence digitale marocaine specialisee en branding et communication." />
     <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
@@ -93,18 +93,23 @@
             "@type": "Organization",
             "@id": "https://weyandigital.ma/#organization",
             "name": "We Yan Digital",
-            "alternateName": ["We Yan", "We Yan Digital", "WeYanDigital"],
+            "alternateName": ["We Yan", "WeYanDigital"],
             "url": "https://weyandigital.ma/",
             "logo": "https://weyandigital.ma/Logo%20weyan.png",
-            "description": "Agence digitale marocaine à Casablanca spécialisée en SEO, SEA Google Ads, Branding, Création de sites web, Social Media, Media Buying et Influence Marketing.",
+            "description": "We Yan Digital est une agence SEO à Casablanca (Maarif) : référencement naturel, community management, branding, publicité digitale, marketing d’influence et média offline au Maroc.",
             "address": {
               "@type": "PostalAddress",
               "streetAddress": "Quartier Maarif",
               "addressLocality": "Casablanca",
+              "postalCode": "20100",
+              "addressRegion": "Casablanca-Settat",
               "addressCountry": "MA"
             },
             "areaServed": [
               { "@type": "AdministrativeArea", "name": "Casablanca" },
+              { "@type": "AdministrativeArea", "name": "Rabat" },
+              { "@type": "AdministrativeArea", "name": "Marrakech" },
+              { "@type": "AdministrativeArea", "name": "Tanger" },
               { "@type": "Country", "name": "Maroc" }
             ],
             "contactPoint": {
@@ -113,25 +118,23 @@
               "contactType": "customer support",
               "email": "contact@weyandigital.ma",
               "availableLanguage": ["French", "English", "Arabic"]
-            },
-            "sameAs": [
-              "https://instagram.com",
-              "https://linkedin.com",
-              "https://facebook.com"
-            ]
+            }
           },
           {
-            "@type": "ProfessionalService",
-            "@id": "https://weyandigital.ma/#professional-service",
+            "@type": ["LocalBusiness", "ProfessionalService"],
+            "@id": "https://weyandigital.ma/#localbusiness",
             "name": "We Yan Digital",
             "image": "https://weyandigital.ma/Logo%20weyan.png",
             "url": "https://weyandigital.ma/",
             "telephone": "+212-6-91-56-72-46",
             "email": "contact@weyandigital.ma",
+            "priceRange": "$$",
             "address": {
               "@type": "PostalAddress",
               "streetAddress": "Quartier Maarif",
               "addressLocality": "Casablanca",
+              "postalCode": "20100",
+              "addressRegion": "Casablanca-Settat",
               "addressCountry": "MA"
             },
             "geo": {
@@ -139,16 +142,74 @@
               "latitude": 33.59,
               "longitude": -7.62
             },
-            "openingHours": "Mo-Fr 09:00-18:00",
-            "priceRange": "$$",
+            "openingHoursSpecification": {
+              "@type": "OpeningHoursSpecification",
+              "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+              "opens": "09:00",
+              "closes": "18:00"
+            },
+            "hasOfferCatalog": {
+              "@type": "OfferCatalog",
+              "name": "Services We Yan Digital Casablanca",
+              "itemListElement": [
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Référencement Naturel (SEO)",
+                    "url": "https://weyandigital.ma/agence-seo-casablanca"
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Création de Contenu & Community Management",
+                    "url": "https://weyandigital.ma/community-management-casablanca"
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Stratégie Marketing & Rebranding",
+                    "url": "https://weyandigital.ma/services/strategie-marketing-rebranding"
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Publicité Digitale (Google Ads & Meta Ads)",
+                    "url": "https://weyandigital.ma/services/publicite-digitale"
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Marketing d’Influence",
+                    "url": "https://weyandigital.ma/services/marketing-influence"
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Média Publicité Offline",
+                    "url": "https://weyandigital.ma/projets"
+                  }
+                }
+              ]
+            },
             "knowsAbout": [
+              "Agence SEO Casablanca",
               "Agence digitale Casablanca",
-              "SEO Maroc",
-              "SEA Google Ads Maroc",
-              "Référencement Casablanca",
-              "Branding Maroc",
-              "Création site web Casablanca",
-              "Social Media Maroc"
+              "Référencement naturel Maroc",
+              "Community management Casablanca",
+              "Agence branding Casablanca",
+              "Agence Google Ads Maroc",
+              "Agence influenceur Maroc"
             ]
           },
           {
@@ -202,10 +263,10 @@
         ]
       }
     </script>
-    <script type="module" crossorigin src="/assets/index-3qQPatiC.js" crossorigin="anonymous"></script>
-    <link rel="preload" as="style" crossorigin="anonymous" href="/assets/index-DbzBlLWE.css" />
-    <link rel="stylesheet" crossorigin="anonymous" crossorigin href="/assets/index-DbzBlLWE.css" media="print" onload="this.media='all'">
-    <noscript><link rel="stylesheet" crossorigin="anonymous" href="/assets/index-DbzBlLWE.css"></noscript>
+    <script type="module" crossorigin src="/assets/index-Doy30ljD.js" crossorigin="anonymous"></script>
+    <link rel="preload" as="style" crossorigin="anonymous" href="/assets/index-pcY6cD7S.css" />
+    <link rel="stylesheet" crossorigin="anonymous" crossorigin href="/assets/index-pcY6cD7S.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" crossorigin="anonymous" href="/assets/index-pcY6cD7S.css"></noscript>
       <script type="application/ld+json" id="breadcrumb-jsonld">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://weyandigital.ma/"},{"@type":"ListItem","position":2,"name":"Contact We Yan Digital","item":"https://weyandigital.ma/contact"}]}</script>
   </head>
   <body>

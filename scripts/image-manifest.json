@@ -1,0 +1,289 @@
+[
+  {
+    "from": "images/advertising/analytics-preview.jpg",
+    "to": "images/advertising/analytics-preview.webp",
+    "in": "1832x1832",
+    "out": "1832x1832",
+    "kb": 19
+  },
+  {
+    "from": "images/advertising/data-preview.jpg",
+    "to": "images/advertising/data-preview.webp",
+    "in": "512x512",
+    "out": "512x512",
+    "kb": 7
+  },
+  {
+    "from": "images/agency/story.jpg",
+    "to": "images/agency/story.webp",
+    "in": "512x512",
+    "out": "512x512",
+    "kb": 16
+  },
+  {
+    "from": "images/contact/hero.jpg",
+    "to": "images/contact/hero.webp",
+    "in": "512x512",
+    "out": "512x512",
+    "kb": 20
+  },
+  {
+    "from": "images/content/community-team.jpg",
+    "to": "images/content/community-team.webp",
+    "in": "512x512",
+    "out": "512x512",
+    "kb": 15
+  },
+  {
+    "from": "images/content/gallery-architecture.jpg",
+    "to": "images/content/gallery-architecture.webp",
+    "in": "512x512",
+    "out": "512x512",
+    "kb": 8
+  },
+  {
+    "from": "images/content/gallery-culinary.jpg",
+    "to": "images/content/gallery-culinary.webp",
+    "in": "512x512",
+    "out": "512x512",
+    "kb": 24
+  },
+  {
+    "from": "images/content/gallery-lifestyle.jpg",
+    "to": "images/content/gallery-lifestyle.webp",
+    "in": "512x512",
+    "out": "512x512",
+    "kb": 12
+  },
+  {
+    "from": "images/content/gallery-motion.jpg",
+    "to": "images/content/gallery-motion.webp",
+    "in": "512x512",
+    "out": "512x512",
+    "kb": 19
+  },
+  {
+    "from": "images/content/hero-content-v2.jpg",
+    "to": "images/content/hero-content-v2.webp",
+    "in": "1024x1024",
+    "out": "1024x1024",
+    "kb": 19
+  },
+  {
+    "from": "images/content/hero-main.jpg",
+    "to": "images/content/hero-main.webp",
+    "in": "512x512",
+    "out": "512x512",
+    "kb": 12
+  },
+  {
+    "from": "images/content/hero-premium.jpg",
+    "to": "images/content/hero-premium.webp",
+    "in": "512x512",
+    "out": "512x512",
+    "kb": 12
+  },
+  {
+    "from": "images/content/hero-user.jpg",
+    "to": "images/content/hero-user.webp",
+    "in": "1376x768",
+    "out": "1376x768",
+    "kb": 65
+  },
+  {
+    "from": "images/content/icon-community.jpg",
+    "to": "images/content/icon-community.webp",
+    "in": "512x512",
+    "out": "512x512",
+    "kb": 10
+  },
+  {
+    "from": "images/content/icon-video.jpg",
+    "to": "images/content/icon-video.webp",
+    "in": "512x512",
+    "out": "512x512",
+    "kb": 7
+  },
+  {
+    "from": "images/content/pillar-photo.jpg",
+    "to": "images/content/pillar-photo.webp",
+    "in": "512x512",
+    "out": "512x512",
+    "kb": 10
+  },
+  {
+    "from": "images/content/studio-content-v2.jpg",
+    "to": "images/content/studio-content-v2.webp",
+    "in": "1024x1024",
+    "out": "1024x1024",
+    "kb": 14
+  },
+  {
+    "from": "images/content/studio-premium.jpg",
+    "to": "images/content/studio-premium.webp",
+    "in": "512x512",
+    "out": "512x512",
+    "kb": 15
+  },
+  {
+    "from": "images/content/studio.jpg",
+    "to": "images/content/studio.webp",
+    "in": "1832x1832",
+    "out": "1832x1832",
+    "kb": 19
+  },
+  {
+    "from": "images/home/hero-custom.jpg",
+    "to": "images/home/hero-custom.webp",
+    "in": "1376x768",
+    "out": "1376x768",
+    "kb": 61
+  },
+  {
+    "from": "images/influence/creator-1.jpg",
+    "to": "images/influence/creator-1.webp",
+    "in": "512x512",
+    "out": "512x512",
+    "kb": 18
+  },
+  {
+    "from": "images/influence/creator-2.jpg",
+    "to": "images/influence/creator-2.webp",
+    "in": "512x512",
+    "out": "512x512",
+    "kb": 12
+  },
+  {
+    "from": "images/influence/creator-3.jpg",
+    "to": "images/influence/creator-3.webp",
+    "in": "512x512",
+    "out": "512x512",
+    "kb": 11
+  },
+  {
+    "from": "images/influence/culture.jpg",
+    "to": "images/influence/culture.webp",
+    "in": "512x512",
+    "out": "512x512",
+    "kb": 31
+  },
+  {
+    "from": "images/influence/hero-user.jpg",
+    "to": "images/influence/hero-user.webp",
+    "in": "1376x768",
+    "out": "1376x768",
+    "kb": 81
+  },
+  {
+    "from": "images/offline/cinema.jpg",
+    "to": "images/offline/cinema.webp",
+    "in": "512x512",
+    "out": "512x512",
+    "kb": 15
+  },
+  {
+    "from": "images/offline/hero-custom.jpg",
+    "to": "images/offline/hero-custom.webp",
+    "in": "1376x768",
+    "out": "1376x768",
+    "kb": 110
+  },
+  {
+    "from": "images/offline/hero.jpg",
+    "to": "images/offline/hero.webp",
+    "in": "512x512",
+    "out": "512x512",
+    "kb": 23
+  },
+  {
+    "from": "images/offline/ooh.jpg",
+    "to": "images/offline/ooh.webp",
+    "in": "512x512",
+    "out": "512x512",
+    "kb": 25
+  },
+  {
+    "from": "images/projects/project-1.jpg",
+    "to": "images/projects/project-1.webp",
+    "in": "500x500",
+    "out": "500x500",
+    "kb": 6
+  },
+  {
+    "from": "images/projects/project-2.jpg",
+    "to": "images/projects/project-2.webp",
+    "in": "512x512",
+    "out": "512x512",
+    "kb": 4
+  },
+  {
+    "from": "images/projects/project-3.jpg",
+    "to": "images/projects/project-3.webp",
+    "in": "512x512",
+    "out": "512x512",
+    "kb": 7
+  },
+  {
+    "from": "images/projects/project-4.jpg",
+    "to": "images/projects/project-4.webp",
+    "in": "512x512",
+    "out": "512x512",
+    "kb": 13
+  },
+  {
+    "from": "images/projects/project-5.jpg",
+    "to": "images/projects/project-5.webp",
+    "in": "512x512",
+    "out": "512x512",
+    "kb": 15
+  },
+  {
+    "from": "images/seo/authority.jpg",
+    "to": "images/seo/authority.webp",
+    "in": "512x512",
+    "out": "512x512",
+    "kb": 8
+  },
+  {
+    "from": "images/seo/hero-user.jpg",
+    "to": "images/seo/hero-user.webp",
+    "in": "1376x768",
+    "out": "1376x768",
+    "kb": 29
+  },
+  {
+    "from": "images/seo/hero.jpg",
+    "to": "images/seo/hero.webp",
+    "in": "512x512",
+    "out": "512x512",
+    "kb": 8
+  },
+  {
+    "from": "images/seo/testimonial.jpg",
+    "to": "images/seo/testimonial.webp",
+    "in": "512x512",
+    "out": "512x512",
+    "kb": 12
+  },
+  {
+    "from": "images/strategy/approach.jpg",
+    "to": "images/strategy/approach.webp",
+    "in": "512x512",
+    "out": "512x512",
+    "kb": 9
+  },
+  {
+    "from": "images/strategy/hero.jpg",
+    "to": "images/strategy/hero.webp",
+    "in": "512x512",
+    "out": "512x512",
+    "kb": 8
+  },
+  {
+    "from": "images/strategy/positioning.jpg",
+    "to": "images/strategy/positioning.webp",
+    "in": "1024x1024",
+    "out": "1024x1024",
+    "kb": 19
+  }
+]

@@ -7,9 +7,9 @@ import useScrollReveal from '../hooks/useScrollReveal'
 import { pageSeo } from '../lib/pageSeo'
 import Icon from '../components/Icon'
 
-const heroImage = '/images/content/studio-content-v2.jpg'
-const gallery1 = '/images/content/gallery-culinary.jpg'
-const gallery2 = '/images/content/gallery-lifestyle.jpg'
+const heroImage = '/images/content/studio-content-v2.webp'
+const gallery1 = '/images/content/gallery-culinary.webp'
+const gallery2 = '/images/content/gallery-lifestyle.webp'
 
 const services = [
   {
@@ -124,7 +124,9 @@ export default function CommunityManagementCasablancaPage() {
               alt="Community manager We Yan Digital Casablanca creation contenu studio reel photo marque marocaine"
               src={heroImage}
               className="h-full w-full object-cover object-center opacity-20"
-              loading="eager"
+                    width={800}
+                    height={600}
+                    loading="eager"
             />
             <div className="absolute inset-0 bg-gradient-to-br from-white via-white to-[#FEF2F2]" />
           </div>
@@ -176,6 +178,8 @@ export default function CommunityManagementCasablancaPage() {
                     alt="Creation contenu culinaire Maroc studio photo We Yan Digital community management Casablanca"
                     src={gallery1}
                     className="w-full h-auto"
+                    width={800}
+                    height={600}
                     loading="lazy"
                   />
                 </div>
@@ -186,6 +190,8 @@ export default function CommunityManagementCasablancaPage() {
                     alt="Lifestyle content creation Maroc Instagram reels TikTok agence digitale Casablanca We Yan"
                     src={gallery2}
                     className="w-full h-auto"
+                    width={800}
+                    height={600}
                     loading="lazy"
                   />
                 </div>

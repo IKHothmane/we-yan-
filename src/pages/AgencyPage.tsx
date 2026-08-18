@@ -79,7 +79,7 @@ export default function AgencyPage() {
                   <img
                     alt="Notre univers créatif"
                     className="w-full h-full object-cover"
-                    src="/images/agency/story.jpg"
+                    src="/images/agency/story.webp"
                     loading="lazy"
                     width={800}
                     height={1000}

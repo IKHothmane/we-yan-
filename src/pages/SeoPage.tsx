@@ -7,9 +7,9 @@ import SiteFooter from '../components/SiteFooter'
 import useScrollReveal from '../hooks/useScrollReveal'
 import { pageSeo } from '../lib/pageSeo'
 
-const heroImage = '/images/seo/hero-user.jpg?v=20260623'
-const authorityImage = '/images/seo/authority.jpg'
-const testimonialImage = '/images/seo/testimonial.jpg'
+const heroImage = '/images/seo/hero-user.webp?v=20260623'
+const authorityImage = '/images/seo/authority.webp'
+const testimonialImage = '/images/seo/testimonial.webp'
 
 const growthSteps = [
   {
@@ -47,7 +47,9 @@ export default function SeoPage() {
               alt="Luminous office background"
               className="h-full w-full object-cover object-center opacity-40"
               src={heroImage}
-            />
+                    width={800}
+                    height={600}
+                  />
             <div className="absolute inset-0 bg-white/80 backdrop-blur-md" />
           </div>
 
@@ -98,7 +100,9 @@ export default function SeoPage() {
                 alt="Dashboard SEO premium"
                 className="h-full w-full rounded-2xl object-cover"
                 src={heroImage}
-              />
+                    width={800}
+                    height={600}
+                  />
               <div className="absolute -bottom-6 -left-6 w-[220px] max-w-[220px]">
                 <div className="absolute inset-0 translate-x-4 translate-y-4 rounded-[1rem] border-[3px] border-brand-orange bg-transparent shadow-[0_18px_45px_-18px_rgba(252,151,0,0.65)]" />
                 <div className="relative rounded-[1rem] bg-secondary px-5 py-4 text-white shadow-xl">
@@ -231,7 +235,9 @@ export default function SeoPage() {
                       alt="Autorite SEO et netlinking"
                       className="rounded-xl shadow-lg mix-blend-luminosity opacity-80"
                       src={authorityImage}
-                    />
+                    width={800}
+                    height={600}
+                  />
                   </div>
                 </div>
               </article>
@@ -285,7 +291,9 @@ export default function SeoPage() {
                       alt="Marc Lambert"
                       className="h-full w-full object-cover"
                       src={testimonialImage}
-                    />
+                    width={800}
+                    height={600}
+                  />
                   </div>
                   <div>
                     <p className="font-bold text-brand-charcoal">Marc Lambert</p>

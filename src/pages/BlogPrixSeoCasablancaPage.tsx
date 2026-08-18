@@ -10,7 +10,7 @@ export default function BlogPrixSeoCasablancaPage() {
   return (
     <BlogArticleLayout
       seoConfig={pageSeo.blogPrixSeoCasablanca2026}
-      heroImage="/images/seo/hero.jpg"
+      heroImage="/images/seo/hero.webp"
       heroAlt="Prix SEO Casablanca 2026 - tarifs référencement naturel We Yan Digital agence Maroc"
       badgeCategory="Prix SEO · Casablanca 2026"
       badgeColor={{ bg: '#DBEAFE', text: '#1D4ED8', border: '#93C5FD' }}

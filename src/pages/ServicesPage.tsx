@@ -7,8 +7,7 @@ import SiteFooter from '../components/SiteFooter'
 import useScrollReveal from '../hooks/useScrollReveal'
 import { pageSeo } from '../lib/pageSeo'
 
-const solutionsCardsBackground =
-  'https://lh3.googleusercontent.com/aida-public/AB6AXuA26cTrzHWhr1lAl33fd3Ki70zwSUi4OF6NjvcmIZ76Ga7-B-FjhQoLQtGZcbTdkiBFBnDeDM5_JRbgc_X94ePyxv64rKgjS7XfUkwJuIMzIENhqM1PpaK7RoethVHVm8di6c_IbAx7F-BB6NczMfoLzkMUeRiJ_K_cjdVe0s3vP6gWa8PXNUBIy5mhVNAtHC7--WgbqpaXlN1mq7vEhIVL9FZQN8rWrTrYlU634k6EKU8XO-Rm8y-Hu66NwWKW2iAryuhp5f9Z7lM'
+const solutionsCardsBackground = '/images/agency/story.webp'
 
 const services = [
   {
@@ -18,8 +17,7 @@ const services = [
     tone: 'primary',
     layoutClassName: 'min-h-[300px] md:min-h-[320px]',
     to: '/services/strategie-marketing-rebranding',
-    image:
-      'https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt=premium%20marketing%20strategy%20and%20rebranding%20workshop%2C%20brand%20board%2C%20positioning%20notes%2C%20creative%20agency%20desk%2C%20orange%20and%20periwinkle%20palette%2C%20realistic&image_size=portrait_4_3',
+    image: '/images/strategy/approach.webp',
   },
   {
     icon: 'edit_document',
@@ -28,8 +26,7 @@ const services = [
     tone: 'secondary',
     layoutClassName: 'min-h-[300px] md:min-h-[320px] md:mt-16 lg:mt-20',
     to: '/services/creation-contenu-community-management',
-    image:
-      'https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt=premium%20content%20creation%20studio%2C%20camera%2C%20reels%20storyboard%2C%20softbox%20lights%2C%20stylish%20set%20design%2C%20orange%20and%20periwinkle%20accents%2C%20realistic&image_size=portrait_4_3',
+    image: '/images/content/studio-content-v2.webp',
   },
   {
     icon: 'ads_click',
@@ -38,8 +35,7 @@ const services = [
     tone: 'primary',
     layoutClassName: 'min-h-[300px] md:min-h-[320px]',
     to: '/services/publicite-digitale',
-    image:
-      'https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt=meta%20ads%20and%20google%20ads%20dashboard%2C%20performance%20campaign%20charts%2C%20premium%20digital%20marketing%20workspace%2C%20orange%20and%20periwinkle%20palette%2C%20realistic&image_size=portrait_4_3',
+    image: '/images/home/dashboard.webp',
   },
   {
     icon: 'search',
@@ -48,8 +44,7 @@ const services = [
     tone: 'secondary',
     layoutClassName: 'min-h-[300px] md:min-h-[320px] md:mt-16 lg:mt-20',
     to: '/services/seo',
-    image:
-      'https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt=seo%20search%20ranking%20dashboard%2C%20organic%20traffic%20analytics%2C%20premium%20laptop%20workspace%2C%20orange%20and%20periwinkle%20brand%20palette%2C%20realistic&image_size=portrait_4_3',
+    image: '/images/seo/authority.webp',
   },
   {
     icon: 'campaign',
@@ -58,8 +53,7 @@ const services = [
     tone: 'primary',
     layoutClassName: 'min-h-[300px] md:min-h-[320px]',
     to: '/services/marketing-influence',
-    image:
-      'https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt=influencer%20marketing%20campaign%20planning%2C%20creator%20collaboration%20meeting%2C%20premium%20brand%20partnership%20scene%2C%20stylish%20studio%2C%20orange%20and%20periwinkle%20accents%2C%20realistic&image_size=portrait_4_3',
+    image: '/images/content/gallery-lifestyle.webp',
   },
   {
     icon: 'palette',
@@ -68,8 +62,7 @@ const services = [
     tone: 'secondary',
     layoutClassName: 'min-h-[300px] md:min-h-[320px] md:mt-16 lg:mt-20',
     to: '/services/media-publicite-offline',
-    image:
-      'https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt=offline%20advertising%20media%20mockups%2C%20billboard%2C%20flyer%2C%20poster%20and%20print%20campaign%2C%20premium%20branding%20presentation%2C%20orange%20and%20periwinkle%20palette%2C%20realistic&image_size=portrait_4_3',
+    image: '/images/offline/ooh.webp',
   },
 ] as const
 
@@ -102,6 +95,8 @@ function ServiceCard({
         aria-hidden="true"
         className="absolute inset-0 h-full w-full rounded-[inherit] object-cover opacity-95"
         src={solutionsCardsBackground}
+        width={512}
+        height={512}
         loading="lazy"
         decoding="async"
       />
@@ -111,6 +106,8 @@ function ServiceCard({
         aria-hidden="true"
         className="absolute inset-0 h-full w-full rounded-[inherit] scale-105 transform-gpu object-cover opacity-0 transition-all duration-700 ease-out group-hover:scale-100 group-hover:opacity-100"
         src={image}
+        width={512}
+        height={512}
         loading="lazy"
         decoding="async"
       />
@@ -188,11 +185,14 @@ export default function ServicesPage() {
             data-reveal-delay="180"
           >
             <img
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuA26cTrzHWhr1lAl33fd3Ki70zwSUi4OF6NjvcmIZ76Ga7-B-FjhQoLQtGZcbTdkiBFBnDeDM5_JRbgc_X94ePyxv64rKgjS7XfUkwJuIMzIENhqM1PpaK7RoethVHVm8di6c_IbAx7F-BB6NczMfoLzkMUeRiJ_K_cjdVe0s3vP6gWa8PXNUBIy5mhVNAtHC7--WgbqpaXlN1mq7vEhIVL9FZQN8rWrTrYlU634k6EKU8XO-Rm8y-Hu66NwWKW2iAryuhp5f9Z7lM"
+              src="/images/agency/story.webp"
               alt="Agence digitale We Yan Digital à Casablanca - Équipe réunion stratégie marketing Maroc SEO site web branding publicité"
               className="w-full h-auto object-cover block"
+              width={512}
+              height={512}
               loading="eager"
               decoding="async"
+              fetchPriority="high"
             />
             <figcaption className="sr-only">
               Équipe We Yan Digital agence digitale Casablanca travaillant sur une stratégie SEO, branding et création de site web pour un client marocain.

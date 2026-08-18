@@ -7,6 +7,7 @@ import SiteFooter from './SiteFooter'
 import useScrollReveal from '../hooks/useScrollReveal'
 import type { PageSeoConfig } from '../lib/pageSeo'
 import Icon from './Icon'
+import OptimizedImage from './OptimizedImage'
 
 export type BlogArticleProps = {
   seoConfig: PageSeoConfig
@@ -99,12 +100,13 @@ export default function BlogArticleLayout(props: BlogArticleProps) {
               data-reveal
               data-reveal-delay="140"
             >
-              <img
+              <OptimizedImage
                 src={props.heroImage}
                 alt={props.heroAlt}
+                width={1200}
+                height={800}
                 className="w-full h-auto block object-cover"
-                loading="eager"
-                decoding="async"
+                priority
               />
             </figure>
           </div>
