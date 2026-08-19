@@ -89,6 +89,56 @@ function badgeClass(statut: Statut) {
   return 'bg-slate-800 text-white'
 }
 
+function DemandeActions({ statut, busy, onUpdate }: { statut: Statut; busy: boolean; onUpdate: (s: Statut) => void }) {
+  return (
+    <div className="flex flex-wrap gap-2">
+      {statut === 'Nouvelle' && (
+        <>
+          <button
+            type="button"
+            disabled={busy}
+            onClick={() => onUpdate('Validée')}
+            className="rounded-full bg-emerald-600 px-4 py-2 text-xs font-bold text-white hover:brightness-110 disabled:opacity-50"
+          >
+            Valider
+          </button>
+          <button
+            type="button"
+            disabled={busy}
+            onClick={() => onUpdate('Annulée')}
+            className="rounded-full bg-slate-500 px-4 py-2 text-xs font-bold text-white hover:brightness-110 disabled:opacity-50"
+          >
+            Annuler
+          </button>
+        </>
+      )}
+      {statut === 'Validée' && (
+        <button
+          type="button"
+          disabled={busy}
+          onClick={() => onUpdate('En cours')}
+          className="rounded-full bg-red-600 px-4 py-2 text-xs font-bold text-white hover:brightness-110 disabled:opacity-50"
+        >
+          En cours
+        </button>
+      )}
+      {statut === 'En cours' && (
+        <button
+          type="button"
+          disabled={busy}
+          onClick={() => onUpdate('Terminée')}
+          className="rounded-full bg-sky-600 px-4 py-2 text-xs font-bold text-white hover:brightness-110 disabled:opacity-50"
+        >
+          Terminer
+        </button>
+      )}
+      {(statut === 'Terminée' || statut === 'Annulée') && (
+        <span className="text-xs font-semibold text-slate-400">—</span>
+      )}
+    </div>
+  )
+}
+
 export default function DemandesPage() {
   const [key, setKey] = useState('')
   const [unlocked, setUnlocked] = useState(false)
@@ -232,14 +282,14 @@ export default function DemandesPage() {
               type="password"
               value={key}
               onChange={(e) => setKey(e.target.value)}
-              className="mt-2 w-full rounded-xl border border-slate-200 px-4 py-3 focus:border-[#6483F0] focus:outline-none"
+              className="mt-2 w-full rounded-xl border border-slate-200 px-4 py-3 focus:border-primary focus:outline-none"
               placeholder="Clé d’accès"
               required
             />
             <button
               type="submit"
               disabled={loading}
-              className="mt-4 w-full rounded-xl bg-[#6483F0] px-4 py-3 font-bold text-white disabled:opacity-70"
+              className="mt-4 w-full rounded-xl bg-primary px-4 py-3 font-bold text-white disabled:opacity-70"
             >
               {loading ? 'Vérification…' : 'Ouvrir le tableau'}
             </button>
@@ -300,7 +350,8 @@ export default function DemandesPage() {
                       </div>
                     </div>
 
-                    <div className="overflow-x-auto rounded-2xl border border-white/70 bg-white/80">
+                    {/* Desktop table */}
+                    <div className="hidden md:block overflow-x-auto rounded-2xl border border-white/70 bg-white/80">
                       <table className="min-w-full text-left text-sm">
                         <thead className="bg-white/90 text-slate-600">
                           <tr>
@@ -332,7 +383,7 @@ export default function DemandesPage() {
                                 <td className="px-4 py-3 font-semibold">{row.nom || '—'}</td>
                                 <td className="px-4 py-3">
                                   {row.email ? (
-                                    <a href={`mailto:${row.email}`} className="text-[#6483F0] hover:underline">
+                                    <a href={`mailto:${row.email}`} className="text-primary hover:underline">
                                       {row.email}
                                     </a>
                                   ) : (
@@ -348,57 +399,56 @@ export default function DemandesPage() {
                                   </span>
                                 </td>
                                 <td className="px-4 py-3 relative z-20">
-                                  <div className="flex flex-wrap gap-2 pointer-events-auto">
-                                    {statut === 'Nouvelle' && (
-                                      <>
-                                        <button
-                                          type="button"
-                                          disabled={busy}
-                                          onClick={() => void updateStatut(row, 'Validée')}
-                                          className="relative z-20 cursor-pointer rounded-full bg-emerald-600 px-4 py-2 text-xs font-bold text-white hover:brightness-110 disabled:opacity-50"
-                                        >
-                                          Valider
-                                        </button>
-                                        <button
-                                          type="button"
-                                          disabled={busy}
-                                          onClick={() => void updateStatut(row, 'Annulée')}
-                                          className="relative z-20 cursor-pointer rounded-full bg-slate-500 px-4 py-2 text-xs font-bold text-white hover:brightness-110 disabled:opacity-50"
-                                        >
-                                          Annuler
-                                        </button>
-                                      </>
-                                    )}
-                                    {statut === 'Validée' && (
-                                      <button
-                                        type="button"
-                                        disabled={busy}
-                                        onClick={() => void updateStatut(row, 'En cours')}
-                                        className="relative z-20 cursor-pointer rounded-full bg-red-600 px-4 py-2 text-xs font-bold text-white hover:brightness-110 disabled:opacity-50"
-                                      >
-                                        En cours
-                                      </button>
-                                    )}
-                                    {statut === 'En cours' && (
-                                      <button
-                                        type="button"
-                                        disabled={busy}
-                                        onClick={() => void updateStatut(row, 'Terminée')}
-                                        className="relative z-20 cursor-pointer rounded-full bg-sky-600 px-4 py-2 text-xs font-bold text-white hover:brightness-110 disabled:opacity-50"
-                                      >
-                                        Terminer
-                                      </button>
-                                    )}
-                                    {(statut === 'Terminée' || statut === 'Annulée') && (
-                                      <span className="text-xs font-semibold text-slate-400">—</span>
-                                    )}
-                                  </div>
+                                  <DemandeActions statut={statut} busy={busy} onUpdate={(s) => void updateStatut(row, s)} />
                                 </td>
                               </tr>
                             )
                           })}
                         </tbody>
                       </table>
+                    </div>
+
+                    {/* Mobile cards */}
+                    <div className="md:hidden space-y-3">
+                      {sectionRows.length === 0 && (
+                        <p className="py-6 text-center text-slate-400 text-sm">Aucune demande dans cette catégorie.</p>
+                      )}
+                      {sectionRows.map((row, index) => {
+                        const statut = normalizeStatut(row.statut)
+                        const sheetRow = Number(row.row)
+                        const busy = updatingRow !== null && (updatingRow === sheetRow || updatingRow === row.email)
+                        return (
+                          <div
+                            key={`m-${sheetRow || row.email}-${index}`}
+                            className={`rounded-2xl border border-white/70 p-4 ${rowClass(statut)}`}
+                          >
+                            <div className="flex items-center justify-between gap-2 mb-3">
+                              <span className="font-bold text-base truncate">{row.nom || '—'}</span>
+                              <span className={`shrink-0 inline-flex rounded-full px-2.5 py-1 text-[0.65rem] font-black uppercase tracking-wide ${badgeClass(statut)}`}>
+                                {statut}
+                              </span>
+                            </div>
+                            <div className="space-y-1.5 text-sm text-slate-600">
+                              <p className="text-xs text-slate-400">{formatDate(String(row.date || ''))}</p>
+                              {row.email && (
+                                <p>
+                                  <a href={`mailto:${row.email}`} className="text-primary hover:underline break-all">{row.email}</a>
+                                </p>
+                              )}
+                              {row.telephone && <p>{row.telephone}</p>}
+                              {row.service && (
+                                <p><span className="font-semibold text-slate-700">Service :</span> {row.service}</p>
+                              )}
+                              {row.message && (
+                                <p className="text-slate-500 line-clamp-3">{row.message}</p>
+                              )}
+                            </div>
+                            <div className="mt-3 pt-3 border-t border-slate-100">
+                              <DemandeActions statut={statut} busy={busy} onUpdate={(s) => void updateStatut(row, s)} />
+                            </div>
+                          </div>
+                        )
+                      })}
                     </div>
                   </section>
                 )
