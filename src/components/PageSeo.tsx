@@ -8,6 +8,7 @@ import {
   buildPageMetaDescription,
   getPageLinking,
 } from '../lib/internalLinking'
+import { withTrailingSlash } from '../lib/paths'
 
 type PageSeoProps = {
   title: string
@@ -76,8 +77,7 @@ function setFaqJsonLd(pathname: string) {
 }
 
 function normalizePath(pathname: string) {
-  if (pathname === '/') return '/'
-  return pathname.replace(/\/+$/, '')
+  return withTrailingSlash(pathname)
 }
 
 export default function PageSeo({

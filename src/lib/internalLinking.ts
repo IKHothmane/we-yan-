@@ -1,3 +1,5 @@
+import { stripTrailingSlash, withTrailingSlash } from './paths'
+
 export type Cluster =
   | 'home'
   | 'hub'
@@ -974,8 +976,7 @@ export const FOOTER_PILIERS = [
 ] as const
 
 function normalizePath(pathname: string) {
-  if (pathname === '/') return '/'
-  return pathname.replace(/\/+$/, '')
+  return stripTrailingSlash(pathname)
 }
 
 export function getPageLinking(pathname: string) {
@@ -1018,7 +1019,7 @@ export function buildPageMetaDescription(page: PageLinking) {
 }
 
 export function buildPageCanonical(page: PageLinking) {
-  return page.slug === '/' ? `${SITE_URL}/` : `${SITE_URL}${page.slug}`
+  return `${SITE_URL}${withTrailingSlash(page.slug)}`
 }
 
 export function buildBreadcrumbJsonLd(page: PageLinking) {
@@ -1032,7 +1033,7 @@ export function buildBreadcrumbJsonLd(page: PageLinking) {
         '@type': 'ListItem',
         position: index + 1,
         name: item.label,
-        item: `${SITE_URL}${path === '/' ? '/' : path}`,
+        item: `${SITE_URL}${withTrailingSlash(path)}`,
       }
     }),
   }

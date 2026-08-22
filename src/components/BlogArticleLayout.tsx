@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react'
-import { Link } from 'react-router-dom'
+import AppLink from './AppLink'
 import Navbar from './Navbar'
 import PageSeo from './PageSeo'
 import PageBreadcrumb from './PageBreadcrumb'
@@ -36,6 +36,7 @@ export default function BlogArticleLayout(props: BlogArticleProps) {
   useScrollReveal()
 
   const accent = '#6483F0'
+  const firstRelatedLink = props.relatedLinks?.[0]
 
   return (
     <div className="min-h-screen w-full overflow-x-hidden bg-white font-body text-slate-800">
@@ -186,21 +187,21 @@ export default function BlogArticleLayout(props: BlogArticleProps) {
                 'Chez We Yan Digital agence à Casablanca Maarif, nous aidons les marques marocaines à construire une présence digitale forte, avec du contenu unique, du SEO et des campagnes Ads mesurables. Devis gratuit en moins de 24h.'}
             </p>
             <div className="flex flex-col gap-5 sm:flex-row justify-center">
-              <Link
-                to="/contact"
+              <AppLink
+                to="/contact/"
                 className="inline-flex items-center justify-center gap-2 rounded-2xl px-8 py-4 text-[0.82rem] font-black uppercase tracking-[0.2em] transition-all hover:-translate-y-0.5 hover:brightness-110"
                 style={{ backgroundColor: '#FC9700', color: '#0F172A', boxShadow: '0 22px 50px -18px rgba(252,151,0,0.6)' }}
               >
                 Demander un devis gratuit
                 <Icon name="arrow_forward" className="h-4 w-4" />
-              </Link>
-              {(props.relatedLinks ?? []).length > 0 && (
-                <Link
-                  to={props.relatedLinks[0].to}
+              </AppLink>
+              {firstRelatedLink && (
+                <AppLink
+                  to={firstRelatedLink.to}
                   className="inline-flex items-center justify-center gap-2 rounded-2xl border border-white/25 bg-white/5 px-8 py-4 text-[0.82rem] font-black uppercase tracking-[0.18em] text-white transition-all hover:bg-white/10"
                 >
-                  {props.relatedLinks[0].label}
-                </Link>
+                  {firstRelatedLink.label}
+                </AppLink>
               )}
             </div>
           </div>
