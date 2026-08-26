@@ -23,8 +23,13 @@ export async function pingIndexNow(urls) {
     return { skipped: true }
   }
 
-  if (!urls.length) {
-    console.log('[indexnow] aucune URL à soumettre')
+  // Uniquement https://weyandigital.ma/… (pas www, pas http)
+  const urlList = [...new Set(urls)]
+    .map((u) => String(u).trim())
+    .filter((u) => /^https:\/\/weyandigital\.ma\//i.test(u))
+
+  if (!urlList.length) {
+    console.log('[indexnow] aucune URL https://weyandigital.ma/ à soumettre')
     return { skipped: true }
   }
 
@@ -32,8 +37,12 @@ export async function pingIndexNow(urls) {
     host: INDEXNOW_HOST,
     key: INDEXNOW_KEY,
     keyLocation: INDEXNOW_KEY_LOCATION,
-    urlList: urls,
+    urlList,
   }
+
+  console.log(
+    `[indexnow] host=${body.host} key=${body.key} keyLocation=${body.keyLocation} urls=${urlList.length}`,
+  )
 
   const endpoints = [
     'https://api.indexnow.org/indexnow',
@@ -50,13 +59,13 @@ export async function pingIndexNow(urls) {
       })
       const text = await res.text().catch(() => '')
       results.push({ endpoint, status: res.status, ok: res.ok || res.status === 202, body: text.slice(0, 120) })
-      console.log(`[indexnow] ${endpoint} → ${res.status} (${urls.length} URL)`)
+      console.log(`[indexnow] ${endpoint} → ${res.status} (${urlList.length} URL)`)
     } catch (err) {
       results.push({ endpoint, status: 0, ok: false, body: String(err?.message || err) })
       console.warn(`[indexnow] ${endpoint} échec:`, err?.message || err)
     }
   }
-  return { urls: urls.length, results }
+  return { urls: urlList.length, results }
 }
 
 async function main() {

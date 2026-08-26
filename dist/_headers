@@ -56,6 +56,17 @@
   Cache-Control: no-store
 
 # ——————————————————————————————————————————————————————————
+# 3c. Clé IndexNow (Bing) — hors CORP same-site du catch-all /*
+# ——————————————————————————————————————————————————————————
+/d2c0f6283c819f112fa5e785db583cbe.txt
+  Content-Type: text/plain; charset=utf-8
+  X-Robots-Tag: noindex
+  Access-Control-Allow-Origin: *
+  Cross-Origin-Resource-Policy: cross-origin
+  Cache-Control: no-cache, no-store, must-revalidate
+  X-Content-Type-Options: nosniff
+
+# ——————————————————————————————————————————————————————————
 # 4. TOUTES les réponses HTML (routes SPA, index.html, 404)
 #    -> Pas de cache navigateur, toujours fresh après déploiement
 # ——————————————————————————————————————————————————————————
