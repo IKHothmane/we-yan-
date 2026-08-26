@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import AppLink from './AppLink'
 
 type NavbarProps = {
   variant?: 'light' | 'hero'
@@ -42,7 +42,7 @@ export default function Navbar({ variant = 'light', serviceTitle }: NavbarProps)
           className={`max-w-7xl mx-auto rounded-full px-[clamp(0.8rem,3vw,2rem)] py-[clamp(0.65rem,1.8vw,0.85rem)] transition-all bg-white/95 border border-slate-200 shadow-lg overflow-visible`}
         >
           <div className="hidden md:flex items-center justify-between gap-6">
-            <Link to="/" className="flex items-center gap-4 overflow-visible">
+            <AppLink to="/" className="flex items-center gap-4 overflow-visible">
               <div className="relative h-0 overflow-visible flex-shrink-0 w-[clamp(9rem,22vw,14rem)]">
                 <img
                   src="/Logo%20weyan.png"
@@ -63,20 +63,20 @@ export default function Navbar({ variant = 'light', serviceTitle }: NavbarProps)
               ) : (
                 <span className="sr-only">We Yan Digital</span>
               )}
-            </Link>
+            </AppLink>
 
             <div
               className={`hidden md:flex items-center space-x-[clamp(1.25rem,2.6vw,2.5rem)] font-medium text-[clamp(0.9rem,1.2vw,1rem)] text-slate-700`}
             >
               {links.slice(0, 4).map((link) => (
-                <Link key={link.to} className="hover:text-[#FC9700] transition-colors" to={link.to}>
+                <AppLink key={link.to} className="hover:text-[#FC9700] transition-colors" to={link.to}>
                   {link.label}
-                </Link>
+                </AppLink>
               ))}
               <div className="flex items-center gap-4">
-                <Link className="hover:text-[#FC9700] transition-colors" to={links[4].to}>
+                <AppLink className="hover:text-[#FC9700] transition-colors" to={links[4].to}>
                   {links[4].label}
-                </Link>
+                </AppLink>
                 <div className="flex items-center gap-2">
                   {socialLinks.map((socialLink) => (
                     <a
@@ -98,13 +98,13 @@ export default function Navbar({ variant = 'light', serviceTitle }: NavbarProps)
 
           <div className="grid grid-cols-5 gap-1 md:hidden">
             {links.map((link) => (
-              <Link
+              <AppLink
                 key={link.to}
                 className={`flex min-h-[48px] items-center justify-center rounded-2xl px-2 py-3 text-center text-[0.68rem] font-semibold transition-colors text-slate-700 hover:bg-slate-100`}
                 to={link.to}
               >
                 {link.label}
-              </Link>
+              </AppLink>
             ))}
           </div>
         </div>

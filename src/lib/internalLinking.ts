@@ -1,3 +1,7 @@
+import { stripTrailingSlash, withTrailingSlash } from './paths'
+
+export { withTrailingSlash } from './paths'
+
 export type Cluster =
   | 'home'
   | 'hub'
@@ -974,14 +978,7 @@ export const FOOTER_PILIERS = [
 ] as const
 
 function normalizePath(pathname: string) {
-  if (pathname === '/') return '/'
-  return pathname.replace(/\/+$/, '')
-}
-
-/** Chemin public pour liens internes : toujours avec slash final (sauf `/`). */
-export function withTrailingSlash(pathname: string) {
-  const slug = normalizePath(pathname)
-  return slug === '/' ? '/' : `${slug}/`
+  return stripTrailingSlash(pathname)
 }
 
 export function getPageLinking(pathname: string) {
@@ -993,8 +990,7 @@ const SITE_URL = 'https://weyandigital.ma'
 
 /** URL canonique officielle : https + non-www + slash final. */
 export function toAbsoluteCanonical(pathname: string) {
-  const slug = normalizePath(pathname)
-  return slug === '/' ? `${SITE_URL}/` : `${SITE_URL}${slug}/`
+  return `${SITE_URL}${withTrailingSlash(pathname)}`
 }
 
 export function buildFaqJsonLd(page: PageLinking) {

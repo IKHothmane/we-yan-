@@ -1,5 +1,6 @@
 import { useState, type CSSProperties, type FormEvent } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
+import AppLink from '../AppLink'
 import Icon from '../Icon'
 import SiteFooter from '../SiteFooter'
 import useScrollReveal from '../../hooks/useScrollReveal'
@@ -305,13 +306,13 @@ export default function HomeDeferredSections() {
             <p className="text-slate-600 text-[clamp(1rem,2.3vw,1.125rem)] max-w-2xl mx-auto mb-5">
               Nous avons ce qu'il vous faut, de la création de logo à la campagne publicitaire.
             </p>
-            <Link
+            <AppLink
               to="/services/"
               className="inline-flex items-center gap-2 text-slate-700 font-bold text-[0.78rem] uppercase tracking-[0.2em] border-b-2 border-slate-900/70 pb-1 hover:text-primary hover:border-primary transition-colors"
             >
               Voir toutes nos expertises (SEO, Site Web, Branding, Ads…)
               <span aria-hidden="true">↗</span>
-            </Link>
+            </AppLink>
           </div>
 
           <div className="grid grid-cols-1 items-start md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8" data-reveal data-reveal-delay="100">
@@ -374,9 +375,9 @@ export default function HomeDeferredSections() {
                     animationDelay: `${index * 0.35}s`,
                   }}
                 >
-                  <Link to={service.to} className={cardClasses} aria-label={`Découvrir ${service.title}`}>
+                  <AppLink to={service.to} className={cardClasses} aria-label={`Découvrir ${service.title}`}>
                     {cardContent}
-                  </Link>
+                  </AppLink>
                 </div>
               )
             })}
@@ -398,12 +399,12 @@ export default function HomeDeferredSections() {
                 Dernières campagnes et créations pour nos partenaires
               </p>
             </div>
-            <Link
+            <AppLink
               to="/projets/"
               className="text-primary font-bold text-sm border-b-2 border-primary pb-1 hover:text-primary/80 hover:border-primary/80 transition-colors uppercase tracking-[0.2em]"
             >
               Tout voir
-            </Link>
+            </AppLink>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6" data-reveal data-reveal-delay="100">
@@ -761,7 +762,7 @@ export default function HomeDeferredSections() {
                 Tarifs, comparatifs, stratégie, branding : tous nos guides 100% dédiés au marché marocain. Données réelles 2026, contenu unique, aucun contenu IA brut.
               </p>
             </div>
-            <Link
+            <AppLink
               to="/blog/prix-site-web-maroc-2026/"
               className="group inline-flex items-center gap-2.5 rounded-full px-6 py-3.5 text-[0.9rem] font-bold uppercase tracking-wider shadow-xl shadow-[#6483F0]/20 hover:shadow-2xl hover:shadow-[#6483F0]/30 hover:scale-[1.01] transition-all whitespace-nowrap"
               style={{ backgroundColor: '#6483F0', color: '#FFF' }}
@@ -773,7 +774,7 @@ export default function HomeDeferredSections() {
                 <path d="M5 12h14" />
                 <path d="M13 6l6 6-6 6" />
               </svg>
-            </Link>
+            </AppLink>
           </div>
 
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-4">
@@ -810,7 +811,7 @@ export default function HomeDeferredSections() {
                   <p className="text-[0.93rem] leading-[1.65] text-slate-500 line-clamp-4 mb-6 flex-1">
                     {card.excerpt}
                   </p>
-                  <Link
+                  <AppLink
                     to={card.to}
                     aria-label={`Lire l'article : ${card.title}`}
                     className="mt-auto inline-flex items-center gap-2 rounded-xl px-4 py-2.5 text-[0.85rem] font-bold transition-all group-hover:text-white"
@@ -821,7 +822,7 @@ export default function HomeDeferredSections() {
                       <path d="M5 12h14" />
                       <path d="M13 6l6 6-6 6" />
                     </svg>
-                  </Link>
+                  </AppLink>
                 </div>
               </article>
             ))}
@@ -919,7 +920,7 @@ export default function HomeDeferredSections() {
             <p className="text-slate-500 text-[0.92rem] mb-5">
               Vous n'avez pas trouvé votre réponse ?
             </p>
-            <Link
+            <AppLink
               to="/contact/"
               className="inline-flex items-center gap-3 rounded-2xl px-7 py-4 text-[0.8rem] font-black uppercase tracking-[0.2em] text-white shadow-xl transition-all hover:brightness-110 hover:-translate-y-0.5"
               style={{ backgroundColor: '#6483F0', boxShadow: '0 22px 45px -16px rgba(100,131,240,0.55)' }}
@@ -928,7 +929,7 @@ export default function HomeDeferredSections() {
               <span className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-white/20 text-sm">
                 →
               </span>
-            </Link>
+            </AppLink>
           </div>
         </div>
       </section>

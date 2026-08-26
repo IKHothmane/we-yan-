@@ -1,5 +1,7 @@
-import { Link, useLocation } from 'react-router-dom'
-import { getPageLinking, withTrailingSlash, type PageLinking } from '../lib/internalLinking'
+import AppLink from './AppLink'
+import { getPageLinking, type PageLinking } from '../lib/internalLinking'
+import { withTrailingSlash } from '../lib/paths'
+import { useLocation } from 'react-router-dom'
 
 type PageBreadcrumbProps = {
   page?: PageLinking
@@ -21,9 +23,9 @@ export default function PageBreadcrumb({ page, className = '' }: PageBreadcrumbP
             {last || !item.to ? (
               <span className="font-medium text-slate-700">{item.label}</span>
             ) : (
-              <Link to={withTrailingSlash(item.to)} className="hover:text-[#6483F0] transition-colors">
+              <AppLink to={withTrailingSlash(item.to)} className="hover:text-[#6483F0] transition-colors">
                 {item.label}
-              </Link>
+              </AppLink>
             )}
           </span>
         )

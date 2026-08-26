@@ -1,6 +1,6 @@
-import { Link } from 'react-router-dom'
+import AppLink from './AppLink'
 import RelatedPages from './RelatedPages'
-import { FOOTER_PILIERS, withTrailingSlash } from '../lib/internalLinking'
+import { FOOTER_PILIERS } from '../lib/internalLinking'
 
 const socialLinks = [
   { href: 'https://instagram.com', label: 'Instagram', icon: '/icons/instagram.svg' },
@@ -42,7 +42,7 @@ export default function SiteFooter({ revealDelay }: SiteFooterProps) {
           <h2 className="sr-only">Pied de page</h2>
           <div className="w-full grid grid-cols-1 gap-[clamp(2.5rem,6vw,4rem)] md:grid-cols-3 items-start">
             <div className="flex flex-col h-full">
-              <Link to="/" className="flex items-center gap-3 mb-6 hover:brightness-110 transition-all w-fit">
+              <AppLink to="/" className="flex items-center gap-3 mb-6 hover:brightness-110 transition-all w-fit">
                 <img
                   src="/Logo%20weyan.png"
                   alt="We Yan Digital · Agence digitale à Casablanca"
@@ -52,7 +52,7 @@ export default function SiteFooter({ revealDelay }: SiteFooterProps) {
                   loading="lazy"
                   decoding="async"
                 />
-              </Link>
+              </AppLink>
               <p className="text-white text-[0.95rem] leading-relaxed max-w-[18rem] mb-8">
                 Agence digitale à Casablanca qui transforme les marques avec créativité et stratégie.
               </p>
@@ -79,21 +79,21 @@ export default function SiteFooter({ revealDelay }: SiteFooterProps) {
               <ul className="space-y-3">
                 {FOOTER_PILIERS.map((item) => (
                   <li key={item.to}>
-                    <Link
+                    <AppLink
                       className="text-white hover:text-white/85 transition-colors text-[1rem] font-semibold inline-block"
-                      to={withTrailingSlash(item.to)}
+                      to={item.to}
                     >
                       {item.label}
-                    </Link>
+                    </AppLink>
                   </li>
                 ))}
                 <li className="pt-4">
-                  <Link
+                  <AppLink
                     className="text-white hover:text-white/85 transition-colors text-[1rem] font-semibold inline-block"
                     to="/contact/"
                   >
                     Contact / devis gratuit
-                  </Link>
+                  </AppLink>
                 </li>
               </ul>
             </div>
@@ -114,21 +114,21 @@ export default function SiteFooter({ revealDelay }: SiteFooterProps) {
                   </a>
                 </li>
               </ul>
-              <Link
+              <AppLink
                 to="/contact/"
                 className="inline-flex w-full items-center justify-center rounded-full bg-white px-6 py-4 font-black uppercase tracking-wider text-[#6483F0] hover:scale-[1.01] transition-all"
               >
                 Commencer maintenant
-              </Link>
+              </AppLink>
             </div>
           </div>
 
           <div className="mt-12 pt-6 border-t border-white/20 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between text-[0.78rem] text-white/80">
             <p>© 2026 We Yan Digital. Tous droits réservés.</p>
             <div className="flex flex-wrap gap-x-4 gap-y-2">
-              <Link to="/mentions-legales/" className="hover:text-white">Mentions légales</Link>
-              <Link to="/politique-de-confidentialite/" className="hover:text-white">Confidentialité</Link>
-              <Link to="/conditions-generales/" className="hover:text-white">CGV</Link>
+              <AppLink to="/mentions-legales/" className="hover:text-white">Mentions légales</AppLink>
+              <AppLink to="/politique-de-confidentialite/" className="hover:text-white">Confidentialité</AppLink>
+              <AppLink to="/conditions-generales/" className="hover:text-white">CGV</AppLink>
             </div>
           </div>
         </div>

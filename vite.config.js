@@ -9,14 +9,20 @@ function validateInternalLinksPlugin() {
   return {
     name: 'validate-internal-links',
     async buildStart() {
-      const { transformSync } = await import('esbuild')
+      const { buildSync } = await import('esbuild')
       const srcPath = join(process.cwd(), 'src/lib/internalLinking.ts')
-      const src = readFileSync(srcPath, 'utf8')
-      const { code } = transformSync(src, { loader: 'ts', format: 'esm' })
       const cacheDir = join(process.cwd(), 'node_modules', '.cache')
       if (!existsSync(cacheDir)) mkdirSync(cacheDir, { recursive: true })
       const tmp = join(cacheDir, 'validate-internal-links.mjs')
-      writeFileSync(tmp, code)
+      // Bundle so relative imports (e.g. ./paths) resolve; transformSync alone leaves them broken in .cache
+      const result = buildSync({
+        entryPoints: [srcPath],
+        bundle: true,
+        write: false,
+        format: 'esm',
+        platform: 'node',
+      })
+      writeFileSync(tmp, result.outputFiles[0].text)
       const mod = await import(`${pathToFileURL(tmp).href}?t=${Date.now()}`)
       mod.validateInternalLinks()
     },
