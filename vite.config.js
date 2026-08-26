@@ -331,18 +331,7 @@ export default defineConfig({
         const sitemap = writeCanonicalSitemap()
         writeFileSync(join(dist, 'sitemap.xml'), sitemap, 'utf8')
         writeFileSync(join(process.cwd(), 'public/sitemap.xml'), sitemap, 'utf8')
-
-        // IndexNow : notifie Bing/Yandex après chaque build (sauf INDEXNOW_SUBMIT=false)
-        try {
-          const { pingIndexNow } = await import('./scripts/pingIndexNow.mjs')
-          const urls = sitemap
-            .match(/<loc>\s*([^<\s]+)\s*<\/loc>/gi)
-            ?.map((tag) => tag.replace(/<\/?loc>/gi, '').trim())
-            .filter(Boolean)
-          await pingIndexNow(urls || [])
-        } catch (err) {
-          console.warn('[indexnow] ping non bloquant:', err?.message || err)
-        }
+        // IndexNow : via Cloudflare Crawler Hints (plus de ping local — bloqué sur Pages)
       },
     },
   ],
