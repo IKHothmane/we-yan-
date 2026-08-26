@@ -117,13 +117,13 @@ export const PAGES_LINKING: PageLinking[] = [
   {
     slug: '/services/seo',
     titre: 'Référencement Naturel (SEO)',
-    intention: 'Vendre le service SEO et renforcer le cluster vers la page long tail Casablanca.',
+    intention: 'Vendre le service SEO (audit, prestation, optimisation) et renvoyer vers l’agence locale Casablanca.',
     mot_cle_principal: 'referencement naturel maroc',
     cluster_semantique: 'seo',
     pageRank_voulu: 8,
     breadcrumb: [
       { label: 'Accueil', to: '/' },
-      { label: 'Services', to: '/services' },
+      { label: 'Services', to: '/services/' },
       { label: 'Référencement naturel SEO Maroc' },
     ],
     liens_sortants: [
@@ -160,13 +160,13 @@ export const PAGES_LINKING: PageLinking[] = [
   {
     slug: '/agence-seo-casablanca',
     titre: 'Agence SEO Casablanca',
-    intention: 'Ranker sur « agence SEO Casablanca » et convertir (page money).',
+    intention: 'Ranker sur agence SEO Casablanca / expert SEO Casablanca, distinct du service SEO générique.',
     mot_cle_principal: 'agence seo casablanca',
     cluster_semantique: 'seo',
     pageRank_voulu: 9,
     breadcrumb: [
       { label: 'Accueil', to: '/' },
-      { label: 'Services', to: '/services' },
+      { label: 'Services', to: '/services/' },
       { label: 'Agence SEO Casablanca' },
     ],
     liens_sortants: [
@@ -237,7 +237,7 @@ export const PAGES_LINKING: PageLinking[] = [
     ],
     breadcrumb: [
       { label: 'Accueil', to: '/' },
-      { label: 'Services', to: '/services' },
+      { label: 'Services', to: '/services/' },
       { label: 'Agence branding Casablanca' },
     ],
     liens_sortants: [
@@ -287,7 +287,7 @@ export const PAGES_LINKING: PageLinking[] = [
     pageRank_voulu: 8,
     breadcrumb: [
       { label: 'Accueil', to: '/' },
-      { label: 'Services', to: '/services' },
+      { label: 'Services', to: '/services/' },
       { label: 'Création de contenu et community management' },
     ],
     liens_sortants: [
@@ -323,7 +323,7 @@ export const PAGES_LINKING: PageLinking[] = [
     pageRank_voulu: 9,
     breadcrumb: [
       { label: 'Accueil', to: '/' },
-      { label: 'Services', to: '/services' },
+      { label: 'Services', to: '/services/' },
       { label: 'Community management Casablanca' },
     ],
     liens_sortants: [
@@ -360,7 +360,7 @@ export const PAGES_LINKING: PageLinking[] = [
     title_serp: 'Agence Google Ads Maroc & Meta Ads Casablanca | We Yan Digital',
     breadcrumb: [
       { label: 'Accueil', to: '/' },
-      { label: 'Services', to: '/services' },
+      { label: 'Services', to: '/services/' },
       { label: 'Publicité digitale Meta Ads et Google Ads' },
     ],
     liens_sortants: [
@@ -438,7 +438,7 @@ export const PAGES_LINKING: PageLinking[] = [
     ],
     breadcrumb: [
       { label: 'Accueil', to: '/' },
-      { label: 'Services', to: '/services' },
+      { label: 'Services', to: '/services/' },
       { label: 'Agence influenceur Maroc' },
     ],
     liens_sortants: [
@@ -495,7 +495,7 @@ export const PAGES_LINKING: PageLinking[] = [
     pageRank_voulu: 5,
     breadcrumb: [
       { label: 'Accueil', to: '/' },
-      { label: 'Services', to: '/services' },
+      { label: 'Services', to: '/services/' },
       { label: 'Média publicité offline Maroc' },
     ],
     liens_sortants: [
@@ -531,7 +531,7 @@ export const PAGES_LINKING: PageLinking[] = [
     pageRank_voulu: 4,
     breadcrumb: [
       { label: 'Accueil', to: '/' },
-      { label: 'Services', to: '/services' },
+      { label: 'Services', to: '/services/' },
       { label: 'Prix site web Maroc 2026' },
     ],
     liens_sortants: [
@@ -567,7 +567,7 @@ export const PAGES_LINKING: PageLinking[] = [
     pageRank_voulu: 4,
     breadcrumb: [
       { label: 'Accueil', to: '/' },
-      { label: 'Services', to: '/services' },
+      { label: 'Services', to: '/services/' },
       { label: 'SEO vs SEA au Maroc' },
     ],
     liens_sortants: [
@@ -603,7 +603,7 @@ export const PAGES_LINKING: PageLinking[] = [
     pageRank_voulu: 4,
     breadcrumb: [
       { label: 'Accueil', to: '/' },
-      { label: 'Services', to: '/services' },
+      { label: 'Services', to: '/services/' },
       { label: 'Prix SEO Casablanca 2026' },
     ],
     liens_sortants: [
@@ -639,7 +639,7 @@ export const PAGES_LINKING: PageLinking[] = [
     pageRank_voulu: 3,
     breadcrumb: [
       { label: 'Accueil', to: '/' },
-      { label: 'Services', to: '/services' },
+      { label: 'Services', to: '/services/' },
       { label: 'Créer une marque au Maroc' },
     ],
     liens_sortants: [
@@ -676,7 +676,7 @@ export const PAGES_LINKING: PageLinking[] = [
     pageRank_voulu: 4,
     breadcrumb: [
       { label: 'Accueil', to: '/' },
-      { label: 'Services', to: '/services' },
+      { label: 'Services', to: '/services/' },
       { label: 'Exemple rebranding Casablanca 2026' },
     ],
     liens_sortants: [
@@ -705,7 +705,7 @@ export const PAGES_LINKING: PageLinking[] = [
     pageRank_voulu: 4,
     breadcrumb: [
       { label: 'Accueil', to: '/' },
-      { label: 'Services', to: '/services' },
+      { label: 'Services', to: '/services/' },
       { label: 'Prix Google Ads Maroc 2026' },
     ],
     liens_sortants: [
@@ -734,7 +734,7 @@ export const PAGES_LINKING: PageLinking[] = [
     pageRank_voulu: 4,
     breadcrumb: [
       { label: 'Accueil', to: '/' },
-      { label: 'Services', to: '/services' },
+      { label: 'Services', to: '/services/' },
       { label: 'Prix Meta Ads Casablanca 2026' },
     ],
     liens_sortants: [
@@ -763,7 +763,7 @@ export const PAGES_LINKING: PageLinking[] = [
     pageRank_voulu: 4,
     breadcrumb: [
       { label: 'Accueil', to: '/' },
-      { label: 'Services', to: '/services' },
+      { label: 'Services', to: '/services/' },
       { label: 'Prix influenceur Maroc 2026' },
     ],
     liens_sortants: [
@@ -792,7 +792,7 @@ export const PAGES_LINKING: PageLinking[] = [
     pageRank_voulu: 3,
     breadcrumb: [
       { label: 'Accueil', to: '/' },
-      { label: 'Services', to: '/services' },
+      { label: 'Services', to: '/services/' },
       { label: 'Marketing digital au Maroc 2026' },
     ],
     liens_sortants: [
@@ -966,16 +966,22 @@ export const PAGES_LINKING: PageLinking[] = [
 ]
 
 export const FOOTER_PILIERS = [
-  { to: '/agence-seo-casablanca', label: 'Agence SEO Casablanca' },
-  { to: '/community-management-casablanca', label: 'Community Management Casablanca' },
-  { to: '/services/strategie-marketing-rebranding', label: 'Stratégie & Rebranding' },
-  { to: '/services/publicite-digitale', label: 'Google Ads & Meta Ads' },
-  { to: '/services/marketing-influence', label: 'Marketing d’influence' },
+  { to: '/agence-seo-casablanca/', label: 'Agence SEO Casablanca' },
+  { to: '/community-management-casablanca/', label: 'Community Management Casablanca' },
+  { to: '/services/strategie-marketing-rebranding/', label: 'Stratégie & Rebranding' },
+  { to: '/services/publicite-digitale/', label: 'Google Ads & Meta Ads' },
+  { to: '/services/marketing-influence/', label: 'Marketing d’influence' },
 ] as const
 
 function normalizePath(pathname: string) {
   if (pathname === '/') return '/'
   return pathname.replace(/\/+$/, '')
+}
+
+/** Chemin public pour liens internes : toujours avec slash final (sauf `/`). */
+export function withTrailingSlash(pathname: string) {
+  const slug = normalizePath(pathname)
+  return slug === '/' ? '/' : `${slug}/`
 }
 
 export function getPageLinking(pathname: string) {
@@ -984,6 +990,12 @@ export function getPageLinking(pathname: string) {
 }
 
 const SITE_URL = 'https://weyandigital.ma'
+
+/** URL canonique officielle : https + non-www + slash final. */
+export function toAbsoluteCanonical(pathname: string) {
+  const slug = normalizePath(pathname)
+  return slug === '/' ? `${SITE_URL}/` : `${SITE_URL}${slug}/`
+}
 
 export function buildFaqJsonLd(page: PageLinking) {
   if (!page.faq?.length) return null
@@ -1018,7 +1030,7 @@ export function buildPageMetaDescription(page: PageLinking) {
 }
 
 export function buildPageCanonical(page: PageLinking) {
-  return page.slug === '/' ? `${SITE_URL}/` : `${SITE_URL}${page.slug}`
+  return toAbsoluteCanonical(page.slug)
 }
 
 export function buildBreadcrumbJsonLd(page: PageLinking) {
@@ -1032,7 +1044,7 @@ export function buildBreadcrumbJsonLd(page: PageLinking) {
         '@type': 'ListItem',
         position: index + 1,
         name: item.label,
-        item: `${SITE_URL}${path === '/' ? '/' : path}`,
+        item: toAbsoluteCanonical(path),
       }
     }),
   }
@@ -1065,7 +1077,8 @@ export function validateInternalLinks() {
       if (apres < 8) {
         errors.push(`${page.slug} → ${lien.cible} : contexte_apres a ${apres} mot(s) (min 8) — « ${lien.contexte_apres} »`)
       }
-      const cible = bySlug.get(lien.cible)
+      const cibleSlug = normalizePath(lien.cible)
+      const cible = bySlug.get(cibleSlug)
       if (!cible) {
         errors.push(`${page.slug} → ${lien.cible} introuvable.`)
         continue
@@ -1074,7 +1087,7 @@ export function validateInternalLinks() {
       const allowed =
         UNIVERSAL_CLUSTERS.includes(cible.cluster_semantique) ||
         UNIVERSAL_CLUSTERS.includes(page.cluster_semantique) ||
-        MONEY_SLUGS.includes(lien.cible)
+        MONEY_SLUGS.includes(cibleSlug)
       if (!same && !allowed) {
         errors.push(
           `ALERTE SILO: ${page.slug} (${page.cluster_semantique}) → ${lien.cible} (${cible.cluster_semantique})`,

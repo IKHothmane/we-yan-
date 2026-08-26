@@ -244,7 +244,7 @@ export default function AdvertisingPage() {
                 </p>
                 <div className="flex flex-col gap-4 sm:flex-row sm:gap-4">
                   <Link
-                    to="/contact"
+                    to="/contact/"
                     className="inline-flex min-h-[52px] w-fit items-center justify-center whitespace-nowrap rounded-full border border-brand-orange bg-brand-orange px-8 py-3.5 text-center text-base font-medium leading-tight text-brand-charcoal shadow-lg shadow-orange-500/30 transition-colors hover:bg-orange-600 hover:text-brand-charcoal"
                   >
                     Démarrer une campagne →
@@ -460,7 +460,7 @@ export default function AdvertisingPage() {
             <div className="pt-8">
               <Link
                 className="inline-flex min-h-[56px] w-fit items-center justify-center whitespace-nowrap rounded-full border border-brand-orange bg-brand-orange px-10 py-4 text-center text-base font-medium leading-tight text-brand-charcoal shadow-lg shadow-orange-500/30 transition-colors hover:bg-orange-600 hover:text-brand-charcoal"
-                to="/contact"
+                to="/contact/"
               >
                 Réserver un audit publicitaire
               </Link>

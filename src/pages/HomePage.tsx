@@ -179,13 +179,13 @@ export default function HomePage() {
               </p>
               <div className="flex flex-col sm:flex-row gap-[clamp(0.75rem,2vw,1rem)]">
                 <Link
-                  to="/contact"
+                  to="/contact/"
                   className="bg-[#FC9700] text-[#0F172A] px-[clamp(1.5rem,4vw,2.5rem)] py-[clamp(0.85rem,2vw,1rem)] rounded-full font-bold text-[clamp(0.95rem,2vw,1.125rem)] hover:scale-105 transition-transform shadow-lg shadow-orange-500/20 text-center"
                 >
                   Demander un devis
                 </Link>
                 <Link
-                  to="/projets"
+                  to="/projets/"
                   className="border-2 border-slate-900/80 text-slate-900 px-[clamp(1.5rem,4vw,2.5rem)] py-[clamp(0.85rem,2vw,1rem)] rounded-full font-bold text-[clamp(0.95rem,2vw,1.125rem)] hover:bg-slate-900 hover:text-white transition-all text-center"
                 >
                   Voir nos projets

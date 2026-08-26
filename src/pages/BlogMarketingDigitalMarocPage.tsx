@@ -206,7 +206,7 @@ export default function BlogMarketingDigitalMarocPage() {
       ]}
       ctaTitle="Vous n'avez pas de stratégie marketing digital claire en 2026 ?"
       ctaSubtitle="On construit avec vous votre plan stratégique digital 2026 sur-mesure : quels leviers, quels budgets, quel planning. RDV gratuit 30min avec notre équipe stratégie à Casablanca."
-      relatedLinks={[{ label: 'Plan stratégique 2026 gratuit', to: '/contact' }]}
+      relatedLinks={[{ label: 'Plan stratégique 2026 gratuit', to: '/contact/' }]}
     />
   )
 }

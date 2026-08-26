@@ -288,7 +288,7 @@ export default function BlogPrixGoogleAdsMarocPage() {
       ]}
       ctaTitle="Besoin d’un media plan Google Ads calé sur votre CPC réel ?"
       ctaSubtitle="Nous chiffrons média, gestion et tracking selon votre secteur à Casablanca. Réponse d’un humain sous 24h ouvrées, sans pack magique."
-      relatedLinks={[{ label: 'Voir l’agence Google Ads & Meta Ads', to: '/services/publicite-digitale' }]}
+      relatedLinks={[{ label: 'Voir l’agence Google Ads & Meta Ads', to: '/services/publicite-digitale/' }]}
     />
   )
 }

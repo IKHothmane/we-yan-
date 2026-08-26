@@ -23,6 +23,55 @@ function validateInternalLinksPlugin() {
   }
 }
 
+const SITEMAP_SKIP = new Set(['demandes', 'merci'])
+const SITEMAP_META = {
+  '': { changefreq: 'weekly', priority: '1.0' },
+  'agence-seo-casablanca': { changefreq: 'weekly', priority: '0.98' },
+  'community-management-casablanca': { changefreq: 'weekly', priority: '0.95' },
+  services: { changefreq: 'weekly', priority: '0.94' },
+  'services/seo': { changefreq: 'monthly', priority: '0.92' },
+  'services/strategie-marketing-rebranding': { changefreq: 'weekly', priority: '0.95' },
+  'services/creation-contenu-community-management': { changefreq: 'monthly', priority: '0.9' },
+  'services/publicite-digitale': { changefreq: 'weekly', priority: '0.9' },
+  'services/marketing-influence': { changefreq: 'weekly', priority: '0.85' },
+  'services/media-publicite-offline': { changefreq: 'monthly', priority: '0.88' },
+  projets: { changefreq: 'weekly', priority: '0.86' },
+  agence: { changefreq: 'monthly', priority: '0.84' },
+  contact: { changefreq: 'monthly', priority: '0.83' },
+  'blog/rebranding-exemple-casablanca-2026': { changefreq: 'monthly', priority: '0.82' },
+  'blog/prix-seo-casablanca-2026': { changefreq: 'monthly', priority: '0.8' },
+  'blog/prix-google-ads-maroc-2026': { changefreq: 'monthly', priority: '0.8' },
+  'blog/prix-meta-ads-casablanca-2026': { changefreq: 'monthly', priority: '0.78' },
+  'blog/prix-site-web-maroc-2026': { changefreq: 'monthly', priority: '0.8' },
+  'blog/prix-influenceur-maroc-2026': { changefreq: 'monthly', priority: '0.76' },
+  'blog/branding-creation-marque-maroc': { changefreq: 'monthly', priority: '0.75' },
+  'blog/seo-vs-sea-maroc': { changefreq: 'monthly', priority: '0.74' },
+  'blog/marketing-digital-tendances-maroc-2026': { changefreq: 'monthly', priority: '0.72' },
+  'mentions-legales': { changefreq: 'yearly', priority: '0.3' },
+  'politique-de-confidentialite': { changefreq: 'yearly', priority: '0.3' },
+  'conditions-generales': { changefreq: 'yearly', priority: '0.3' },
+}
+
+function writeCanonicalSitemap() {
+  const lastmod = '2026-08-26'
+  const routes = ['', ...SPA_ROUTES.filter((route) => !SITEMAP_SKIP.has(route))]
+  const urls = routes.map((route) => {
+    const loc = route === '' ? 'https://weyandigital.ma/' : `https://weyandigital.ma/${route}/`
+    const meta = SITEMAP_META[route] || { changefreq: 'monthly', priority: '0.7' }
+    return `  <url>
+    <loc>${loc}</loc>
+    <lastmod>${lastmod}</lastmod>
+    <changefreq>${meta.changefreq}</changefreq>
+    <priority>${meta.priority}</priority>
+  </url>`
+  })
+  return `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${urls.join('\n')}
+</urlset>
+`
+}
+
 /** Routes React (hors accueil) : un index.html physique par URL pour OVH sans rewrite. */
 const SPA_ROUTES = [
   'services',
@@ -110,9 +159,22 @@ export default defineConfig({
 
         const html = readFileSync(indexFile, 'utf8')
         const linkingModule = join(process.cwd(), 'node_modules', '.cache', 'validate-internal-links.mjs')
-        const { getPageLinking, buildBreadcrumbJsonLd, buildFaqJsonLd, buildPageDocumentTitle, buildPageMetaDescription, buildPageCanonical } = await import(
+        const { getPageLinking, buildBreadcrumbJsonLd, buildFaqJsonLd, buildPageDocumentTitle, buildPageCanonical } = await import(
           `${pathToFileURL(linkingModule).href}?emit=${Date.now()}`
         )
+
+        const { buildSync } = await import('esbuild')
+        const cacheDir = join(process.cwd(), 'node_modules', '.cache')
+        if (!existsSync(cacheDir)) mkdirSync(cacheDir, { recursive: true })
+        const seoOut = join(cacheDir, 'page-seo.mjs')
+        buildSync({
+          entryPoints: [join(process.cwd(), 'src/lib/pageSeo.ts')],
+          bundle: true,
+          format: 'esm',
+          platform: 'node',
+          outfile: seoOut,
+        })
+        const { PAGE_SEO_BY_SLUG } = await import(`${pathToFileURL(seoOut).href}?emit=${Date.now()}`)
 
         const escapeHtml = (value) =>
           String(value)
@@ -123,7 +185,7 @@ export default defineConfig({
 
         const applyPageHead = (sourceHtml, slug) => {
           let next = sourceHtml
-          if (slug === '/demandes') {
+          if (slug === '/demandes' || slug === '/merci') {
             next = next.replace(
               /<meta name="robots" content="[^"]*" \/>/,
               '<meta name="robots" content="noindex, nofollow" />',
@@ -133,8 +195,9 @@ export default defineConfig({
           const page = getPageLinking(slug)
           if (!page) return next
 
+          const seo = PAGE_SEO_BY_SLUG[page.slug]
           const title = buildPageDocumentTitle(page)
-          const description = buildPageMetaDescription(page)
+          const description = seo?.description || page.intention
           const canonical = buildPageCanonical(page)
           const safeTitle = escapeHtml(title)
           const safeDescription = escapeHtml(description)
@@ -191,6 +254,10 @@ export default defineConfig({
           mkdirSync(dirname(target), { recursive: true })
           writeFileSync(target, applyPageHead(html, `/${route}`))
         }
+
+        const sitemap = writeCanonicalSitemap()
+        writeFileSync(join(dist, 'sitemap.xml'), sitemap)
+        writeFileSync(join(process.cwd(), 'public/sitemap.xml'), sitemap)
       },
     },
   ],

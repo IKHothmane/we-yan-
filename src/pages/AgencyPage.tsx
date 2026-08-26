@@ -105,7 +105,7 @@ export default function AgencyPage() {
                   ) : (
                     <p className="text-on-surface-variant">
                       Le travail d’identité, du positionnement à la charte, est porté par notre{' '}
-                      <Link to="/services/strategie-marketing-rebranding" className="font-bold text-primary underline-offset-4 hover:underline">
+                      <Link to="/services/strategie-marketing-rebranding/" className="font-bold text-primary underline-offset-4 hover:underline">
                         agence branding à Casablanca
                       </Link>{' '}
                       avec ateliers en présentiel à Maarif et un plan de lancement.

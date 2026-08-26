@@ -5,7 +5,6 @@ import {
   buildFaqJsonLd,
   buildPageCanonical,
   buildPageDocumentTitle,
-  buildPageMetaDescription,
   getPageLinking,
 } from '../lib/internalLinking'
 
@@ -93,8 +92,10 @@ export default function PageSeo({
   useLayoutEffect(() => {
     const page = getPageLinking(location.pathname)
     const documentTitle = page ? buildPageDocumentTitle(page) : title
-    const metaDescription = page ? buildPageMetaDescription(page) : description
-    const canonicalUrl = page ? buildPageCanonical(page) : `${SITE_URL}${normalizePath(location.pathname)}`
+    const metaDescription = description
+    const canonicalUrl = page
+      ? buildPageCanonical(page)
+      : `${SITE_URL}${normalizePath(location.pathname) === '/' ? '/' : `${normalizePath(location.pathname)}/`}`
 
     document.title = documentTitle
 

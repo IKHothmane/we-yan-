@@ -233,7 +233,7 @@ export default function BlogPrixInfluenceurMarocPage() {
       ]}
       ctaTitle="Besoin d’un devis influence calé sur des cachets réels ?"
       ctaSubtitle="Trois profils, fourchette MAD, calendrier. Réponse d’un humain sous 24h ouvrées, sans pack magique."
-      relatedLinks={[{ label: 'Voir l’agence influenceur Maroc', to: '/services/marketing-influence' }]}
+      relatedLinks={[{ label: 'Voir l’agence influenceur Maroc', to: '/services/marketing-influence/' }]}
     />
   )
 }

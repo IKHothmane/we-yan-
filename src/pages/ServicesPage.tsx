@@ -16,7 +16,7 @@ const services = [
     description: 'Positionnement, relance de marque et plan d’action pour accélérer votre croissance.',
     tone: 'primary',
     layoutClassName: 'min-h-[300px] md:min-h-[320px]',
-    to: '/services/strategie-marketing-rebranding',
+    to: '/services/strategie-marketing-rebranding/',
     image: '/images/strategy/approach.webp',
   },
   {
@@ -25,7 +25,7 @@ const services = [
     description: 'Photos, vidéos, reels et gestion quotidienne de vos réseaux sociaux.',
     tone: 'secondary',
     layoutClassName: 'min-h-[300px] md:min-h-[320px] md:mt-16 lg:mt-20',
-    to: '/services/creation-contenu-community-management',
+    to: '/services/creation-contenu-community-management/',
     image: '/images/content/studio-content-v2.webp',
   },
   {
@@ -34,7 +34,7 @@ const services = [
     description: 'Campagnes sponsorisées pour générer trafic, leads et ventes qualifiées.',
     tone: 'primary',
     layoutClassName: 'min-h-[300px] md:min-h-[320px]',
-    to: '/services/publicite-digitale',
+    to: '/services/publicite-digitale/',
     image: '/images/home/dashboard.webp',
   },
   {
@@ -43,7 +43,7 @@ const services = [
     description: 'Optimisation SEO pour améliorer votre visibilité Google sur le long terme.',
     tone: 'secondary',
     layoutClassName: 'min-h-[300px] md:min-h-[320px] md:mt-16 lg:mt-20',
-    to: '/services/seo',
+    to: '/services/seo/',
     image: '/images/seo/authority.webp',
   },
   {
@@ -52,7 +52,7 @@ const services = [
     description: 'Collaborez avec les bons créateurs pour amplifier votre marque.',
     tone: 'primary',
     layoutClassName: 'min-h-[300px] md:min-h-[320px]',
-    to: '/services/marketing-influence',
+    to: '/services/marketing-influence/',
     image: '/images/content/gallery-lifestyle.webp',
   },
   {
@@ -61,7 +61,7 @@ const services = [
     description: 'Affichage, print et supports publicitaires pour renforcer votre présence terrain.',
     tone: 'secondary',
     layoutClassName: 'min-h-[300px] md:min-h-[320px] md:mt-16 lg:mt-20',
-    to: '/services/media-publicite-offline',
+    to: '/services/media-publicite-offline/',
     image: '/images/offline/ooh.webp',
   },
 ] as const
@@ -291,7 +291,7 @@ export default function ServicesPage() {
                   Demande de devis → réponse détaillée sous 24h ouvrées
                 </p>
                 <Link
-                  to="/contact"
+                  to="/contact/"
                   className="inline-flex w-full items-center justify-center gap-2 rounded-2xl px-5 py-3.5 text-[0.8rem] font-black uppercase tracking-[0.18em] text-white shadow-lg transition-all hover:brightness-110 hover:-translate-y-0.5"
                   style={{ backgroundColor: '#6483F0', boxShadow: '0 20px 44px -18px rgba(100,131,240,0.6)' }}
                 >
@@ -315,7 +315,7 @@ export default function ServicesPage() {
               </h2>
               <Link
                 className="inline-flex rounded-full bg-[#fe5e1e] px-8 py-4 text-[0.95rem] font-extrabold uppercase tracking-[0.18em] text-white shadow-[0_20px_40px_-20px_rgba(254,94,30,0.8)] transition-all duration-300 hover:scale-[1.03] hover:bg-[#ab3600]"
-                to="/contact"
+                to="/contact/"
               >
                 Discutons de votre projet
               </Link>
@@ -347,7 +347,7 @@ export default function ServicesPage() {
             <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
               {/* Carte 1 : Agence SEO Casablanca */}
               <Link
-                to="/agence-seo-casablanca"
+                to="/agence-seo-casablanca/"
                 data-reveal
                 className="group relative overflow-hidden rounded-[2rem] p-[clamp(1.5rem,3.5vw,2.25rem)] text-white shadow-[0_30px_60px_-30px_rgba(99,102,241,0.55)] hover:shadow-[0_45px_75px_-30px_rgba(99,102,241,0.75)] hover:-translate-y-1 transition-all duration-300"
                 style={{ backgroundColor: '#6483F0' }}
@@ -387,7 +387,7 @@ export default function ServicesPage() {
 
               {/* Carte 2 : Community Management Casablanca */}
               <Link
-                to="/community-management-casablanca"
+                to="/community-management-casablanca/"
                 data-reveal
                 data-reveal-delay="120"
                 className="group relative overflow-hidden rounded-[2rem] p-[clamp(1.5rem,3.5vw,2.25rem)] text-white shadow-[0_30px_60px_-30px_rgba(252,151,0,0.6)] hover:shadow-[0_45px_75px_-30px_rgba(252,151,0,0.8)] hover:-translate-y-1 transition-all duration-300"

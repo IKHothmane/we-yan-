@@ -10,10 +10,10 @@ export default function Navbar({ variant = 'light', serviceTitle }: NavbarProps)
 
   const links = [
     { to: '/', label: 'Home' },
-    { to: '/services', label: 'Services' },
-    { to: '/projets', label: 'Projets' },
-    { to: '/agence', label: 'About' },
-    { to: '/contact', label: 'Contacte' },
+    { to: '/services/', label: 'Services' },
+    { to: '/projets/', label: 'Projets' },
+    { to: '/agence/', label: 'About' },
+    { to: '/contact/', label: 'Contacte' },
   ] as const
 
   const socialLinks = [

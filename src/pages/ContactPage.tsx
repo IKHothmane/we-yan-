@@ -74,7 +74,7 @@ export default function ContactPage() {
         website,
       })
       markLeadReadyToTrack()
-      navigate('/merci')
+      navigate('/merci/')
     } catch (error) {
       setStatus('error')
       setErrorMessage(error instanceof Error ? error.message : 'Envoi impossible.')

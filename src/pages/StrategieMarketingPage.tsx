@@ -109,13 +109,13 @@ export default function StrategieMarketingPage() {
                 implantée à Maarif, qui construit et relance des marques marocaines pour qu’elles soient comprises, désirées et
                 choisies. Nous ne livrons pas un logo isolé : nous alignons promesse, identité visuelle, site et activation
                 commerciale. We Yan Digital n’est pas qu’un studio graphique : c’est une{' '}
-                <Link to="/agence-seo-casablanca" className="font-bold text-[#6483F0] underline-offset-4 hover:underline">
+                <Link to="/agence-seo-casablanca/" className="font-bold text-[#6483F0] underline-offset-4 hover:underline">
                   agence digitale à Casablanca
                 </Link>{' '}
                 qui aligne marque, Google et conversion sur le marché marocain. Une charte sans animation quotidienne
                 s’éteint : couplez le rebranding au{' '}
                 <Link
-                  to="/community-management-casablanca"
+                  to="/community-management-casablanca/"
                   className="font-bold text-[#6483F0] underline-offset-4 hover:underline"
                 >
                   community management à Casablanca
@@ -133,7 +133,7 @@ export default function StrategieMarketingPage() {
               </p>
               <div className="flex flex-col gap-5 sm:flex-row">
                 <Link
-                  to="/contact"
+                  to="/contact/"
                   className="inline-flex items-center justify-center gap-2 rounded-2xl px-8 py-4 text-[0.82rem] font-black uppercase tracking-[0.2em] text-white transition-all hover:-translate-y-0.5 hover:brightness-110"
                   style={{ backgroundColor: '#FC9700', boxShadow: '0 22px 50px -18px rgba(252,151,0,0.65)' }}
                 >
@@ -208,7 +208,7 @@ export default function StrategieMarketingPage() {
                 les marques qui clarifient d’abord le positionnement convertissent mieux ensuite, y compris en SEA. Pour
                 le déroulé décisions, charte et déploiement, lisez notre{' '}
                 <Link
-                  to="/blog/rebranding-exemple-casablanca-2026"
+                  to="/blog/rebranding-exemple-casablanca-2026/"
                   className="font-bold text-[#6483F0] underline-offset-4 hover:underline"
                 >
                   exemple de rebranding à Casablanca
@@ -231,7 +231,7 @@ export default function StrategieMarketingPage() {
               <p className="mb-8 text-[clamp(0.95rem,2vw,1.08rem)] leading-8 text-slate-600">
                 Chaque mission d’agence branding à Casablanca suit le même ordre : comprendre, décider, dessiner,
                 déployer. Inverser l’ordre (logo d’abord) coûte deux fois le budget. La preuve se lit dans nos{' '}
-                <Link to="/projets" className="font-bold text-[#6483F0] underline-offset-4 hover:underline">
+                <Link to="/projets/" className="font-bold text-[#6483F0] underline-offset-4 hover:underline">
                   réalisations rebranding
                 </Link>
                 , avant / après livrées pour des marques de Casablanca et du Maroc.
@@ -246,7 +246,7 @@ export default function StrategieMarketingPage() {
                     image. Livrable : diagnostic priorisé, pas un roman. Nous regardons aussi les avis, le NAP et les
                     templates ads existants : souvent le « problème logo » est un problème de message. La méthode se lit
                     concrètement dans nos{' '}
-                    <Link to="/projets" className="font-bold text-[#6483F0] underline-offset-4 hover:underline">
+                    <Link to="/projets/" className="font-bold text-[#6483F0] underline-offset-4 hover:underline">
                       réalisations rebranding
                     </Link>{' '}
                     où l’audit a précédé chaque pixel.
@@ -261,7 +261,7 @@ export default function StrategieMarketingPage() {
                     n’est que décoration. Nous tranchons aussi le niveau de prix perçu : premium accessible, expert,
                     voisinage — pour que charte et offre ne se contredisent pas. Voyez le positionnement appliqué dans
                     nos{' '}
-                    <Link to="/projets" className="font-bold text-[#6483F0] underline-offset-4 hover:underline">
+                    <Link to="/projets/" className="font-bold text-[#6483F0] underline-offset-4 hover:underline">
                       réalisations rebranding
                     </Link>{' '}
                     retail, cosmétique et hospitalité.
@@ -273,7 +273,7 @@ export default function StrategieMarketingPage() {
                     Logo, palette, typographie, règles photo, déclinaisons print et digital. Charte utilisable par
                     votre imprimeur, votre community manager et votre développeur — pas un moodboard Pinterest. Nous
                     testons la lisibilité vitrine, mobile et Google Business. Les systèmes livrés apparaissent dans nos{' '}
-                    <Link to="/projets" className="font-bold text-[#6483F0] underline-offset-4 hover:underline">
+                    <Link to="/projets/" className="font-bold text-[#6483F0] underline-offset-4 hover:underline">
                       réalisations rebranding
                     </Link>{' '}
                     avec avant / après packagings et interfaces.
@@ -285,7 +285,7 @@ export default function StrategieMarketingPage() {
                     Site, templates réseaux, signatures, parfois SEO et ads de lancement. Un rebranding qui reste dans
                     un dossier Drive n’existe pas pour le client Casablanca. Nous planifions le bascule : date, assets,
                     formation interne, premiers contenus. Le déploiement se voit dans nos{' '}
-                    <Link to="/projets" className="font-bold text-[#6483F0] underline-offset-4 hover:underline">
+                    <Link to="/projets/" className="font-bold text-[#6483F0] underline-offset-4 hover:underline">
                       réalisations rebranding
                     </Link>{' '}
                     : site, stories et fiche Google qui parlent enfin la même langue.
@@ -328,7 +328,7 @@ export default function StrategieMarketingPage() {
                 ))}
               </ul>
               <Link
-                to="/contact"
+                to="/contact/"
                 className="inline-flex w-full items-center justify-center gap-2 rounded-2xl px-6 py-4 text-[0.82rem] font-black uppercase tracking-[0.2em] transition-all hover:-translate-y-0.5 hover:brightness-110"
                 style={{ backgroundColor: '#FC9700', color: '#0F172A' }}
               >
@@ -393,7 +393,7 @@ export default function StrategieMarketingPage() {
               Un Starter mal cadré coûte plus cher qu’un Growth bien cadré : on refait le site six mois plus tard. Dites-nous
               où vous en êtes, nous recommandons le pack — pas le plus cher. Pour cadrer pack, délais et budget en MAD à
               Casablanca,{' '}
-              <Link to="/contact" className="font-bold text-[#6483F0] underline-offset-4 hover:underline">
+              <Link to="/contact/" className="font-bold text-[#6483F0] underline-offset-4 hover:underline">
                 demander un audit branding gratuit
               </Link>{' '}
               : nous répondons sous 24h ouvrées, sans aucun engagement.
@@ -414,7 +414,7 @@ export default function StrategieMarketingPage() {
                 méthode, pas un style unique copié-collé. Les visuels ci-dessous sont des extraits de tournage et de
                 direction artistique : le fil rouge, c’est la cohérence logo / photo / interface, pas un effet de mode.
                 Pour la galerie complète et d’autres silos (SEO, social), ouvrez nos{' '}
-                <Link to="/projets" className="font-bold text-[#6483F0] underline-offset-4 hover:underline">
+                <Link to="/projets/" className="font-bold text-[#6483F0] underline-offset-4 hover:underline">
                   réalisations rebranding
                 </Link>
                 . Si votre secteur n’apparaît pas, le process reste le même : audit, positionnement, identité,
@@ -463,7 +463,7 @@ export default function StrategieMarketingPage() {
                 branding, c’est du contenu qui change de visage chaque semaine. À Casablanca, les deux silos se tiennent :
                 d’abord une identité de marque claire, ensuite une{' '}
                 <Link
-                  to="/services/creation-contenu-community-management"
+                  to="/services/creation-contenu-community-management/"
                   className="font-bold text-[#6483F0] underline-offset-4 hover:underline"
                 >
                   creation de contenu maroc
@@ -476,7 +476,7 @@ export default function StrategieMarketingPage() {
                 Règle simple : branding d’abord si vos équipes ne savent pas expliquer l’offre, si le logo fait fuir, si
                 le site contredit la vitrine. Community ensuite — ou en parallèle dès le pack Growth — via le{' '}
                 <Link
-                  to="/community-management-casablanca"
+                  to="/community-management-casablanca/"
                   className="font-bold text-[#6483F0] underline-offset-4 hover:underline"
                 >
                   community management casablanca
@@ -535,7 +535,7 @@ export default function StrategieMarketingPage() {
               24h ouvrées.
             </p>
             <Link
-              to="/contact"
+              to="/contact/"
               className="inline-flex items-center justify-center gap-2 rounded-2xl px-10 py-5 text-[0.82rem] font-black uppercase tracking-[0.2em] text-white shadow-[0_22px_50px_-18px_rgba(252,151,0,0.65)] transition-all hover:-translate-y-0.5 hover:brightness-110"
               style={{ backgroundColor: '#FC9700' }}
             >

@@ -232,7 +232,7 @@ export default function ProjectsPage() {
             </div>
 
           <div className="flex justify-center mt-20" data-reveal data-reveal-delay="500">
-            <Link to="/contact" className="group flex items-center gap-4 text-on-surface font-bold text-[16px] border-b-2 border-secondary pb-2 hover:gap-6 transition-all duration-300 font-display">
+            <Link to="/contact/" className="group flex items-center gap-4 text-on-surface font-bold text-[16px] border-b-2 border-secondary pb-2 hover:gap-6 transition-all duration-300 font-display">
               Parlons de votre projet
               <Icon name="arrow_forward" className="w-5 h-5 text-secondary" />
             </Link>
@@ -251,7 +251,7 @@ export default function ProjectsPage() {
                 <p className="font-body text-[clamp(1rem,2.5vw,1.25rem)] text-white/60 max-w-2xl mx-auto">
                   Nous accompagnons les marques qui veulent allier clarté stratégique, exécution soignée et impact durable.
                 </p>
-                <Link to="/contact" className="bg-secondary text-white px-12 py-5 rounded-full font-bold text-[18px] hover:scale-105 hover:brightness-110 shadow-2xl shadow-secondary/40 transition-all duration-300 active:scale-95 mt-4 font-display inline-block">
+                <Link to="/contact/" className="bg-secondary text-white px-12 py-5 rounded-full font-bold text-[18px] hover:scale-105 hover:brightness-110 shadow-2xl shadow-secondary/40 transition-all duration-300 active:scale-95 mt-4 font-display inline-block">
                   Contactez-nous
                 </Link>
               </div>

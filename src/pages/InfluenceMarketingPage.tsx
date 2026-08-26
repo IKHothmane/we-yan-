@@ -117,18 +117,18 @@ export default function InfluenceMarketingPage() {
                 qui vendent — stories, reels, TikTok, droits d’usage ads. Une campagne sans animation de marque s’éteint :
                 couplez-la au{' '}
                 <Link
-                  to="/community-management-casablanca"
+                  to="/community-management-casablanca/"
                   className="font-bold text-[#6483F0] underline-offset-4 hover:underline"
                 >
                   community management à Casablanca
                 </Link>{' '}
                 pour que le feed officiel et les créateurs parlent la même langue. Quand l’intention Search est déjà
                 chaude, couplez l’influence à une{' '}
-                <Link to="/services/publicite-digitale" className="font-bold text-[#6483F0] underline-offset-4 hover:underline">
+                <Link to="/services/publicite-digitale/" className="font-bold text-[#6483F0] underline-offset-4 hover:underline">
                   agence Google Ads Maroc
                 </Link>{' '}
                 et une{' '}
-                <Link to="/services/publicite-digitale" className="font-bold text-[#6483F0] underline-offset-4 hover:underline">
+                <Link to="/services/publicite-digitale/" className="font-bold text-[#6483F0] underline-offset-4 hover:underline">
                   agence Meta Ads Casablanca
                 </Link>{' '}
                 : les UGC se scalent, le trafic se convertit.
@@ -141,7 +141,7 @@ export default function InfluenceMarketingPage() {
               </p>
               <div className="flex flex-col gap-5 sm:flex-row">
                 <Link
-                  to="/contact"
+                  to="/contact/"
                   className="inline-flex items-center justify-center gap-2 rounded-2xl px-8 py-4 text-[0.82rem] font-black uppercase tracking-[0.2em] text-white transition-all hover:-translate-y-0.5 hover:brightness-110"
                   style={{ backgroundColor: '#6483F0', boxShadow: '0 22px 50px -18px rgba(100,131,240,0.65)' }}
                 >
@@ -207,7 +207,7 @@ export default function InfluenceMarketingPage() {
                 We Yan Digital travaille le marketing influence Casablanca comme un media : audience, brief, droits,
                 KPI. Pas un DM Instagram à 23h. Pour le détail des cachets story / reel / post, lisez notre{' '}
                 <Link
-                  to="/blog/prix-influenceur-maroc-2026"
+                  to="/blog/prix-influenceur-maroc-2026/"
                   className="font-bold text-[#6483F0] underline-offset-4 hover:underline"
                 >
                   prix d’un influenceur au Maroc
@@ -230,7 +230,7 @@ export default function InfluenceMarketingPage() {
               <p className="mb-8 text-[clamp(0.95rem,2vw,1.08rem)] leading-8 text-slate-600">
                 Casting, négociation, brief, reporting. Inverser l’ordre (payer d’abord, brief ensuite) brûle le budget.
                 Le déroulé se lit dans nos{' '}
-                <Link to="/projets" className="font-bold text-[#6483F0] underline-offset-4 hover:underline">
+                <Link to="/projets/" className="font-bold text-[#6483F0] underline-offset-4 hover:underline">
                   campagnes d’influence
                 </Link>
                 , livrées pour des marques de Casablanca et du Maroc.
@@ -242,7 +242,7 @@ export default function InfluenceMarketingPage() {
                   <p className="leading-8 text-slate-600">
                     Ville, langue, âge, affinité offre, engagement réel, commentaires, historique pubs. On écarte les
                     comptes gonflés. Short-list 8–12, vous validez 4–8. Le casting se voit dans nos{' '}
-                    <Link to="/projets" className="font-bold text-[#6483F0] underline-offset-4 hover:underline">
+                    <Link to="/projets/" className="font-bold text-[#6483F0] underline-offset-4 hover:underline">
                       campagnes d’influence
                     </Link>{' '}
                     retail, food et beauty.
@@ -253,7 +253,7 @@ export default function InfluenceMarketingPage() {
                   <p className="leading-8 text-slate-600">
                     Cachet, formats, dates, exclusivité concurrentielle, droits ads 30–90 jours, usage site. Contrat
                     We Yan, pas un vocal WhatsApp. Les conditions apparaissent dans nos{' '}
-                    <Link to="/projets" className="font-bold text-[#6483F0] underline-offset-4 hover:underline">
+                    <Link to="/projets/" className="font-bold text-[#6483F0] underline-offset-4 hover:underline">
                       campagnes d’influence
                     </Link>{' '}
                     avec un CPL lisible, pas un « on verra ».
@@ -264,7 +264,7 @@ export default function InfluenceMarketingPage() {
                   <p className="leading-8 text-slate-600">
                     Promesse, interdits, hooks, CTA (code, WhatsApp, magasin), mentions légales. Le créateur garde sa
                     voix : un script robot tue le reach. Validation avant mise en ligne. Exemples de briefs dans nos{' '}
-                    <Link to="/projets" className="font-bold text-[#6483F0] underline-offset-4 hover:underline">
+                    <Link to="/projets/" className="font-bold text-[#6483F0] underline-offset-4 hover:underline">
                       campagnes d’influence
                     </Link>
                     .
@@ -275,7 +275,7 @@ export default function InfluenceMarketingPage() {
                   <p className="leading-8 text-slate-600">
                     Portée, engagement, clics, codes, leads, CPA vs ads. Recommandation : recaster, booster en ads, ou
                     arrêter. Le reporting se lit dans nos{' '}
-                    <Link to="/projets" className="font-bold text-[#6483F0] underline-offset-4 hover:underline">
+                    <Link to="/projets/" className="font-bold text-[#6483F0] underline-offset-4 hover:underline">
                       campagnes d’influence
                     </Link>
                     , pas dans un album de captures d’écran.
@@ -318,7 +318,7 @@ export default function InfluenceMarketingPage() {
                 ))}
               </ul>
               <Link
-                to="/contact"
+                to="/contact/"
                 className="inline-flex w-full items-center justify-center gap-2 rounded-2xl px-6 py-4 text-[0.82rem] font-black uppercase tracking-[0.2em] transition-all hover:-translate-y-0.5 hover:brightness-110"
                 style={{ backgroundColor: '#FC9700', color: '#0F172A' }}
               >
@@ -387,7 +387,7 @@ export default function InfluenceMarketingPage() {
               Un CPL story n’est pas le cachet : c’est cachet / leads attribués. Un nano à 1 200 MAD qui amène 15
               WhatsApp utiles bat un macro à 40 000 MAD qui amène des likes. Pour un casting et un brief à Casablanca
               sans engagement,{' '}
-              <Link to="/contact" className="font-bold text-[#6483F0] underline-offset-4 hover:underline">
+              <Link to="/contact/" className="font-bold text-[#6483F0] underline-offset-4 hover:underline">
                 lancer ma campagne influence
               </Link>{' '}
               : nous répondons sous 24h ouvrées, avec trois profils proposés.
@@ -403,7 +403,7 @@ export default function InfluenceMarketingPage() {
               </h2>
               <p className="text-[clamp(0.95rem,2vw,1.08rem)] leading-8 text-slate-600">
                 Trois extraits. Le détail (casting, brief, chiffres) est dans le portfolio. Pour la galerie, ouvrez nos{' '}
-                <Link to="/projets" className="font-bold text-[#6483F0] underline-offset-4 hover:underline">
+                <Link to="/projets/" className="font-bold text-[#6483F0] underline-offset-4 hover:underline">
                   campagnes d’influence
                 </Link>
                 . Offline (affichage, print) reste dans le même portfolio : on ne crée pas de money page média hors
@@ -450,12 +450,12 @@ export default function InfluenceMarketingPage() {
               <p>
                 Ads achète l’intention. Influence crée la preuve. Si votre client tape déjà « clinique esthétique
                 Casablanca », commencez par une{' '}
-                <Link to="/services/publicite-digitale" className="font-bold text-[#6483F0] underline-offset-4 hover:underline">
+                <Link to="/services/publicite-digitale/" className="font-bold text-[#6483F0] underline-offset-4 hover:underline">
                   agence Google Ads Maroc
                 </Link>
                 . Si personne ne vous connaît et que le CPM Meta grimpe, commencez par 4 micros, puis scalez le UGC via
                 une{' '}
-                <Link to="/services/publicite-digitale" className="font-bold text-[#6483F0] underline-offset-4 hover:underline">
+                <Link to="/services/publicite-digitale/" className="font-bold text-[#6483F0] underline-offset-4 hover:underline">
                   agence Meta Ads Casablanca
                 </Link>
                 . Les deux pages, c’est la même money ads : le silo se boucle, zéro fuite vers le SEO.
@@ -514,7 +514,7 @@ export default function InfluenceMarketingPage() {
               Casting : 3 profils, fourchette MAD, calendrier. Réponse sous 24h ouvrées.
             </p>
             <Link
-              to="/contact"
+              to="/contact/"
               className="inline-flex items-center justify-center gap-2 rounded-2xl px-10 py-5 text-[0.82rem] font-black uppercase tracking-[0.2em] text-white shadow-[0_22px_50px_-18px_rgba(100,131,240,0.65)] transition-all hover:-translate-y-0.5 hover:brightness-110"
               style={{ backgroundColor: '#6483F0' }}
             >

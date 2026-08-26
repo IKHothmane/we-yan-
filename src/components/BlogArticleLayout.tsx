@@ -6,6 +6,7 @@ import PageBreadcrumb from './PageBreadcrumb'
 import SiteFooter from './SiteFooter'
 import useScrollReveal from '../hooks/useScrollReveal'
 import type { PageSeoConfig } from '../lib/pageSeo'
+import { withTrailingSlash } from '../lib/internalLinking'
 import Icon from './Icon'
 import OptimizedImage from './OptimizedImage'
 
@@ -187,7 +188,7 @@ export default function BlogArticleLayout(props: BlogArticleProps) {
             </p>
             <div className="flex flex-col gap-5 sm:flex-row justify-center">
               <Link
-                to="/contact"
+                to="/contact/"
                 className="inline-flex items-center justify-center gap-2 rounded-2xl px-8 py-4 text-[0.82rem] font-black uppercase tracking-[0.2em] transition-all hover:-translate-y-0.5 hover:brightness-110"
                 style={{ backgroundColor: '#FC9700', color: '#0F172A', boxShadow: '0 22px 50px -18px rgba(252,151,0,0.6)' }}
               >
@@ -196,7 +197,7 @@ export default function BlogArticleLayout(props: BlogArticleProps) {
               </Link>
               {(props.relatedLinks ?? []).length > 0 && (
                 <Link
-                  to={props.relatedLinks[0].to}
+                  to={withTrailingSlash(props.relatedLinks[0].to)}
                   className="inline-flex items-center justify-center gap-2 rounded-2xl border border-white/25 bg-white/5 px-8 py-4 text-[0.82rem] font-black uppercase tracking-[0.18em] text-white transition-all hover:bg-white/10"
                 >
                   {props.relatedLinks[0].label}

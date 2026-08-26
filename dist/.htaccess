@@ -1,10 +1,12 @@
 # We Yan Digital · Apache OVH
+# URL officielle unique : https://weyandigital.ma/{chemin}/
 # Les pages existent aussi en dossiers physiques :
 #   /mentions-legales/index.html
 #   /services/seo/index.html
-# etc. → HTTP 200 même sans mod_rewrite.
+# etc. → HTTP 200 sans fallback SPA (les 404 restent de vrais 404).
 
 DirectoryIndex index.html
+DirectorySlash Off
 
 <IfModule mod_headers.c>
   SetEnvIf Request_URI "^/demandes" DEMANDES_NOINDEX
@@ -15,24 +17,41 @@ DirectoryIndex index.html
   RewriteEngine On
   RewriteBase /
 
-  # API PHP : ne jamais réécrire vers la SPA
+  # API PHP : ne jamais réécrire vers le site
   RewriteRule ^api/ - [L]
 
-  # Anciens slugs → 301
-  RewriteRule ^creation-site-web-casablanca/?$ /contact [R=301,L]
-  RewriteRule ^seo/?$ /services/seo [R=301,L]
-  RewriteRule ^agence-seo/?$ /agence-seo-casablanca [R=301,L]
-  RewriteRule ^about/?$ /agence [R=301,L]
-  RewriteRule ^projects/?$ /projets [R=301,L]
-  RewriteRule ^blog/?$ /blog/prix-seo-casablanca-2026 [R=301,L]
-  RewriteRule ^services/creation-contenu/?$ /services/creation-contenu-community-management [R=301,L]
-  RewriteRule ^services/community-management/?$ /community-management-casablanca [R=301,L]
+  # www → https://weyandigital.ma/… en UN seul 301 (slash inclus, sauf fichiers)
+  RewriteCond %{HTTP_HOST} ^www\.weyandigital\.ma$ [NC]
+  RewriteRule ^$ https://weyandigital.ma/ [R=301,L]
+  RewriteCond %{HTTP_HOST} ^www\.weyandigital\.ma$ [NC]
+  RewriteCond %{REQUEST_URI} \.[a-zA-Z0-9]{2,5}$ [NC]
+  RewriteRule ^(.*)$ https://weyandigital.ma/$1 [R=301,L]
+  RewriteCond %{HTTP_HOST} ^www\.weyandigital\.ma$ [NC]
+  RewriteRule ^(.*?)/?$ https://weyandigital.ma/$1/ [R=301,L]
+
+  # Anciens slugs → URL finale (slash) en un seul 301
+  RewriteRule ^creation-site-web-casablanca/?$ /contact/ [R=301,L]
+  RewriteRule ^seo/?$ /services/seo/ [R=301,L]
+  RewriteRule ^agence-seo/?$ /agence-seo-casablanca/ [R=301,L]
+  RewriteRule ^about/?$ /agence/ [R=301,L]
+  RewriteRule ^projects/?$ /projets/ [R=301,L]
+  RewriteRule ^blog/?$ /blog/prix-seo-casablanca-2026/ [R=301,L]
+  RewriteRule ^services/creation-contenu/?$ /services/creation-contenu-community-management/ [R=301,L]
+  RewriteRule ^services/community-management/?$ /community-management-casablanca/ [R=301,L]
+  RewriteRule ^blog/marketing-digital-tendances-maroc-2025/?$ /blog/marketing-digital-tendances-maroc-2026/ [R=301,L]
+
+  # /page → /page/  (évite le 308 DirectorySlash et les chaînes GSC)
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_URI} !^/api/
+  RewriteCond %{REQUEST_URI} !\.[a-zA-Z0-9]{2,5}$ [NC]
+  RewriteCond %{REQUEST_URI} !/$
+  RewriteRule ^(.*)$ /$1/ [R=301,L]
 
   # Fichiers existants : ne pas réécrire
   RewriteCond %{REQUEST_FILENAME} -f
   RewriteRule ^ - [L]
 
-  # Dossier existant : servir son index.html (URL avec ou sans slash)
+  # Dossier existant : servir son index.html
   RewriteCond %{REQUEST_FILENAME} -d
   RewriteRule ^(.*?)/?$ $1/index.html [L]
 
@@ -40,7 +59,4 @@ DirectoryIndex index.html
   RewriteCond %{REQUEST_URI} ^/assets/ [NC,OR]
   RewriteCond %{REQUEST_URI} \.(js|mjs|css|webp|png|jpe?g|svg|ico|woff2?|map|xml|txt)$ [NC]
   RewriteRule ^ - [R=404,L]
-
-  # Autres URLs : SPA
-  RewriteRule ^ /index.html [L]
 </IfModule>

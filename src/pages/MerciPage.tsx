@@ -34,7 +34,7 @@ export default function MerciPage() {
             Retour à l’accueil
           </Link>
           <Link
-            to="/contact"
+            to="/contact/"
             className="inline-flex items-center justify-center rounded-xl border border-slate-200 px-6 py-3 font-semibold text-slate-700 hover:bg-slate-50 transition-all"
           >
             Nouvelle demande

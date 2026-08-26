@@ -279,7 +279,7 @@ export default function BlogPrixMetaAdsCasablancaPage() {
       ]}
       ctaTitle="Besoin d’un media plan Meta Ads calé sur votre CPL à Casablanca ?"
       ctaSubtitle="Nous chiffrons média, creatives et gestion selon votre offre. Réponse d’un humain sous 24h ouvrées, sans boost magique."
-      relatedLinks={[{ label: 'Voir l’agence Google Ads & Meta Ads', to: '/services/publicite-digitale' }]}
+      relatedLinks={[{ label: 'Voir l’agence Google Ads & Meta Ads', to: '/services/publicite-digitale/' }]}
     />
   )
 }

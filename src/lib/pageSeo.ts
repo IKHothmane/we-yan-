@@ -56,8 +56,8 @@ export const pageSeo = {
     seoImages.influenceMarketing,
   ),
   seo: createPageSeoConfig(
-    'Référencement Naturel (SEO) | We Yan Digital',
-    'Découvrez notre service SEO pour améliorer votre visibilité Google, renforcer votre autorité et transformer le trafic organique en croissance durable.',
+    'Service SEO Maroc | Audit, optimisation et référencement naturel',
+    'Prestation SEO au Maroc : audit technique, optimisation on-page, suivi des positions et netlinking. Service de référencement naturel We Yan Digital, devis sous 24h.',
     seoImages.seo,
   ),
   offlineMedia: createPageSeoConfig(
@@ -87,13 +87,13 @@ export const pageSeo = {
   ),
 
   agenceSeoCasablanca: createPageSeoConfig(
-    'Agence SEO Casablanca | We Yan Digital - Agence SEO à Casablanca',
-    'Ranker sur « agence SEO Casablanca » et convertir (page money).',
+    'Agence SEO Casablanca | Référencement local et expert SEO Maroc',
+    'Agence SEO à Casablanca : référencement local Google Business, expert SEO Casablanca, audit et accompagnement mensuel. We Yan Digital — devis sous 24h.',
     seoImages.seo,
   ),
   communityManagementCasablanca: createPageSeoConfig(
-    'Community Management Casablanca | We Yan Digital - Community Management à Casablanca',
-    'Ranker sur « community management Casablanca » et convertir.',
+    'Community Management Casablanca | Contenu et réseaux sociaux',
+    'Community management à Casablanca : création de contenu Instagram, TikTok et LinkedIn, animation quotidienne et conversion. Agence We Yan Digital, devis sous 24h.',
     seoImages.contentCreation,
   ),
 
@@ -160,3 +160,32 @@ export const pageSeo = {
     seoImages.contact,
   ),
 } as const
+
+export const PAGE_SEO_BY_SLUG: Record<string, PageSeoConfig> = {
+  '/': pageSeo.home,
+  '/services': pageSeo.services,
+  '/services/strategie-marketing-rebranding': pageSeo.strategyMarketing,
+  '/services/creation-contenu-community-management': pageSeo.contentCreation,
+  '/services/publicite-digitale': pageSeo.advertising,
+  '/services/marketing-influence': pageSeo.influenceMarketing,
+  '/services/seo': pageSeo.seo,
+  '/services/media-publicite-offline': pageSeo.offlineMedia,
+  '/projets': pageSeo.projects,
+  '/agence': pageSeo.agency,
+  '/contact': pageSeo.contact,
+  '/merci': pageSeo.merci,
+  '/agence-seo-casablanca': pageSeo.agenceSeoCasablanca,
+  '/community-management-casablanca': pageSeo.communityManagementCasablanca,
+  '/blog/prix-site-web-maroc-2026': pageSeo.blogPrixSiteWebMaroc2026,
+  '/blog/prix-seo-casablanca-2026': pageSeo.blogPrixSeoCasablanca2026,
+  '/blog/prix-google-ads-maroc-2026': pageSeo.blogPrixGoogleAdsMaroc2026,
+  '/blog/prix-meta-ads-casablanca-2026': pageSeo.blogPrixMetaAdsCasablanca2026,
+  '/blog/prix-influenceur-maroc-2026': pageSeo.blogPrixInfluenceurMaroc2026,
+  '/blog/seo-vs-sea-maroc': pageSeo.blogSeoVsSea,
+  '/blog/branding-creation-marque-maroc': pageSeo.blogBrandingMaroc,
+  '/blog/rebranding-exemple-casablanca-2026': pageSeo.blogRebrandingExempleCasablanca,
+  '/blog/marketing-digital-tendances-maroc-2026': pageSeo.blogMarketingDigitalMaroc,
+  '/conditions-generales': pageSeo.conditionsGenerales,
+  '/politique-de-confidentialite': pageSeo.politiqueConfidentialite,
+  '/mentions-legales': pageSeo.mentionsLegales,
+}

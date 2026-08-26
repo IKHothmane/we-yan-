@@ -85,7 +85,7 @@ export default function OfflineMediaPage() {
               </p>
               <div className="flex flex-wrap gap-4">
                 <Link
-                  to="/contact"
+                  to="/contact/"
                   className="inline-flex items-center gap-2 rounded-2xl bg-secondary px-8 py-4 text-base font-bold text-white shadow-lg shadow-secondary/20 transition-all hover:translate-y-[-2px] hover:shadow-xl"
                 >
                   Découvrir nos solutions
@@ -296,13 +296,13 @@ export default function OfflineMediaPage() {
               </p>
               <div className="flex flex-col justify-center gap-4 sm:flex-row">
                 <Link
-                  to="/contact"
+                  to="/contact/"
                   className="rounded-2xl bg-secondary px-10 py-5 text-lg font-bold text-white transition-colors hover:brightness-95"
                 >
                   Lancer mon projet
                 </Link>
                 <Link
-                  to="/projets"
+                  to="/projets/"
                   className="rounded-2xl border border-primary/15 bg-white/70 px-10 py-5 text-lg font-bold text-primary backdrop-blur-md transition-colors hover:bg-white"
                 >
                   Consulter nos cas

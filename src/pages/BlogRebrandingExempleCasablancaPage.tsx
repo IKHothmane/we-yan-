@@ -132,7 +132,7 @@ export default function BlogRebrandingExempleCasablancaPage() {
           r: 'Pack Growth : 8 à 12 semaines. Starter (logo + charte) : 3 à 5 semaines. Premium avec SEO et ads de lancement : 4 à 6 mois.',
         },
       ]}
-      relatedLinks={[{ label: 'Agence branding & rebranding Casablanca', to: '/services/strategie-marketing-rebranding' }]}
+      relatedLinks={[{ label: 'Agence branding & rebranding Casablanca', to: '/services/strategie-marketing-rebranding/' }]}
     />
   )
 }

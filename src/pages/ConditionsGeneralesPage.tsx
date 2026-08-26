@@ -117,7 +117,7 @@ export default function ConditionsGeneralesPage() {
             </p>
           </div>
           <Link
-            to="/contact"
+            to="/contact/"
             className="inline-flex items-center justify-center gap-2 rounded-full bg-white px-7 py-4 text-[0.95rem] font-black uppercase tracking-wider shadow-xl hover:scale-[1.02] transition-all whitespace-nowrap"
             style={{ color: '#6483F0' }}
           >

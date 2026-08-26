@@ -200,7 +200,7 @@ export default function BlogPrixSeoCasablancaPage() {
       ]}
       ctaTitle="Besoin d’un devis SEO calé sur votre concurrence à Casablanca ?"
       ctaSubtitle="Nous chiffrons l’audit, le retainer et les livrables mois par mois. Réponse d’un humain sous 24h ouvrées, sans pack magique."
-      relatedLinks={[{ label: 'Voir l’agence SEO Casablanca', to: '/agence-seo-casablanca' }]}
+      relatedLinks={[{ label: 'Voir l’agence SEO Casablanca', to: '/agence-seo-casablanca/' }]}
     />
   )
 }

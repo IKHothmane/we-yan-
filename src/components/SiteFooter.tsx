@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import RelatedPages from './RelatedPages'
-import { FOOTER_PILIERS } from '../lib/internalLinking'
+import { FOOTER_PILIERS, withTrailingSlash } from '../lib/internalLinking'
 
 const socialLinks = [
   { href: 'https://instagram.com', label: 'Instagram', icon: '/icons/instagram.svg' },
@@ -81,7 +81,7 @@ export default function SiteFooter({ revealDelay }: SiteFooterProps) {
                   <li key={item.to}>
                     <Link
                       className="text-white hover:text-white/85 transition-colors text-[1rem] font-semibold inline-block"
-                      to={item.to}
+                      to={withTrailingSlash(item.to)}
                     >
                       {item.label}
                     </Link>
@@ -90,7 +90,7 @@ export default function SiteFooter({ revealDelay }: SiteFooterProps) {
                 <li className="pt-4">
                   <Link
                     className="text-white hover:text-white/85 transition-colors text-[1rem] font-semibold inline-block"
-                    to="/contact"
+                    to="/contact/"
                   >
                     Contact / devis gratuit
                   </Link>
@@ -115,7 +115,7 @@ export default function SiteFooter({ revealDelay }: SiteFooterProps) {
                 </li>
               </ul>
               <Link
-                to="/contact"
+                to="/contact/"
                 className="inline-flex w-full items-center justify-center rounded-full bg-white px-6 py-4 font-black uppercase tracking-wider text-[#6483F0] hover:scale-[1.01] transition-all"
               >
                 Commencer maintenant
@@ -126,9 +126,9 @@ export default function SiteFooter({ revealDelay }: SiteFooterProps) {
           <div className="mt-12 pt-6 border-t border-white/20 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between text-[0.78rem] text-white/80">
             <p>© 2026 We Yan Digital. Tous droits réservés.</p>
             <div className="flex flex-wrap gap-x-4 gap-y-2">
-              <Link to="/mentions-legales" className="hover:text-white">Mentions légales</Link>
-              <Link to="/politique-de-confidentialite" className="hover:text-white">Confidentialité</Link>
-              <Link to="/conditions-generales" className="hover:text-white">CGV</Link>
+              <Link to="/mentions-legales/" className="hover:text-white">Mentions légales</Link>
+              <Link to="/politique-de-confidentialite/" className="hover:text-white">Confidentialité</Link>
+              <Link to="/conditions-generales/" className="hover:text-white">CGV</Link>
             </div>
           </div>
         </div>

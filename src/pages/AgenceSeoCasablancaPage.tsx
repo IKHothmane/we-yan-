@@ -91,11 +91,15 @@ export default function AgenceSeoCasablancaPage() {
                 Spécialiste du référencement naturel local et national au <strong className="font-semibold text-slate-800">Maroc</strong>, notre agence SEO basée à Casablanca, quartier Maarif, met votre entreprise en <strong className="font-semibold text-slate-900">première page Google</strong> sur les mots-clés qui génèrent du chiffre d'affaires.
               </p>
               <p className="text-[clamp(0.95rem,2vw,1.08rem)] leading-8 text-slate-600 max-w-2xl mb-9">
-                Contrairement aux généralistes, nous combinons <strong>SEO local</strong> (fictive Google Business, avis, proximité Casablanca), <strong>SEO technique</strong> (vitesse, Core Web Vitals, Schema.org), <strong>SEO sémantique</strong> (500+ mots par page, intentions de recherche marocaines FR/Darija) et <strong>netlinking local</strong> — la méthode qui a déjà fait monter plus de 30 clients marocains en Top 3 Google.
+                Contrairement aux généralistes, nous combinons <strong>SEO local</strong> (fiche Google Business, avis, proximité Casablanca), <strong>SEO technique</strong> (vitesse, Core Web Vitals, Schema.org), <strong>SEO sémantique</strong> (intentions de recherche marocaines FR/Darija) et <strong>netlinking local</strong>. Le détail opérationnel de la{' '}
+                <Link to="/services/seo/" className="font-bold text-[#6483F0] underline-offset-4 hover:underline">
+                  prestation SEO
+                </Link>
+                {' '}(audit, optimisation, suivi) est décrit à part — cette page cible l’agence et l’expertise à Casablanca.
               </p>
               <div className="flex flex-col gap-5 sm:flex-row">
                 <Link
-                  to="/contact"
+                  to="/contact/"
                   className="inline-flex items-center justify-center gap-2 rounded-2xl px-8 py-4 text-[0.82rem] font-black uppercase tracking-[0.2em] text-white transition-all hover:-translate-y-0.5 hover:brightness-110"
                   style={{ backgroundColor: '#6483F0', boxShadow: '0 22px 50px -18px rgba(100,131,240,0.65)' }}
                 >
@@ -224,7 +228,7 @@ export default function AgenceSeoCasablancaPage() {
                 ))}
               </ul>
               <Link
-                to="/contact"
+                to="/contact/"
                 className="inline-flex w-full items-center justify-center gap-2 rounded-2xl px-6 py-4 text-[0.82rem] font-black uppercase tracking-[0.2em] transition-all hover:-translate-y-0.5 hover:brightness-110"
                 style={{ backgroundColor: '#FC9700', color: '#0F172A' }}
               >
@@ -274,7 +278,7 @@ export default function AgenceSeoCasablancaPage() {
                 Vous avez d'autres questions ? Nous répondons sous 24h ouvrées.
               </p>
               <Link
-                to="/contact"
+                to="/contact/"
                 className="inline-flex items-center justify-center gap-2 rounded-2xl px-8 py-4 text-[0.82rem] font-black uppercase tracking-[0.2em] text-white shadow-[0_22px_50px_-18px_rgba(100,131,240,0.65)] transition-all hover:-translate-y-0.5 hover:brightness-110"
                 style={{ backgroundColor: '#6483F0' }}
               >

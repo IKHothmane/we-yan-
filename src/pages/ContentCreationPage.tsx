@@ -97,7 +97,7 @@ export default function ContentCreationPage() {
               </p>
               <div className="mt-10 flex flex-wrap gap-4" data-reveal data-reveal-delay="200">
                 <Link
-                  to="/contact"
+                  to="/contact/"
                   className="inline-flex items-center justify-center rounded-full bg-secondary px-8 py-4 text-lg font-bold text-white shadow-[0_18px_40px_-18px_rgba(252,151,0,0.65)] transition-all duration-300 hover:bg-[#e68900]"
                 >
                   Démarrer un projet
@@ -281,7 +281,7 @@ export default function ContentCreationPage() {
                 percutant.
               </p>
               <Link
-                to="/contact"
+                to="/contact/"
                 className="group inline-flex items-center justify-center gap-4 rounded-full bg-secondary px-10 py-5 text-lg font-bold text-on-secondary shadow-xl shadow-secondary/20 transition-all hover:bg-secondary-container"
               >
                 Parlez à un Expert

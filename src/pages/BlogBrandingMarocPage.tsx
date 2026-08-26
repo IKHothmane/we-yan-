@@ -200,7 +200,7 @@ export default function BlogBrandingMarocPage() {
           r: "D'ABORD LA MARQUE. Sans positionnement, nom, couleurs, typo, valeurs, ton, on ne peut pas faire un site web cohérent. Sinon vous ferez un site générique qu'il faudra refaire intégralement après. Ordre : Stratégie → Identité → Site web & digital → Lancement.",
         },
       ]}
-      relatedLinks={[{ label: 'Nos offres branding & stratégie', to: '/services/strategie-marketing-rebranding' }]}
+      relatedLinks={[{ label: 'Nos offres branding & stratégie', to: '/services/strategie-marketing-rebranding/' }]}
     />
   )
 }

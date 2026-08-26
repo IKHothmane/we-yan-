@@ -182,7 +182,7 @@ export default function BlogSeoVsSeaPage() {
       ]}
       ctaTitle="Besoin d'un plan SEO + SEA sur-mesure pour votre entreprise Marocaine ?"
       ctaSubtitle="Nous proposons un audit SEO + un plan de campagnes Ads personnalisé selon votre secteur et votre budget. Réponse sous 24h à Casablanca."
-      relatedLinks={[{ label: 'Demander audit SEO gratuit', to: '/agence-seo-casablanca' }]}
+      relatedLinks={[{ label: 'Demander audit SEO gratuit', to: '/agence-seo-casablanca/' }]}
     />
   )
 }

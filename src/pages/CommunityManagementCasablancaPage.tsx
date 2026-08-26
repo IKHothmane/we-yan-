@@ -155,7 +155,7 @@ export default function CommunityManagementCasablancaPage() {
               </p>
               <div className="flex flex-col gap-5 sm:flex-row">
                 <Link
-                  to="/contact"
+                  to="/contact/"
                   className="inline-flex items-center justify-center gap-2 rounded-2xl px-8 py-4 text-[0.82rem] font-black uppercase tracking-[0.2em] text-white transition-all hover:-translate-y-0.5 hover:brightness-110"
                   style={{ backgroundColor: '#6483F0', boxShadow: '0 22px 50px -18px rgba(100,131,240,0.65)' }}
                 >
@@ -285,7 +285,7 @@ export default function CommunityManagementCasablancaPage() {
                     ))}
                   </ul>
                   <Link
-                    to="/contact"
+                    to="/contact/"
                     className="inline-flex w-full items-center justify-center gap-2 rounded-2xl px-6 py-3.5 text-[0.78rem] font-black uppercase tracking-[0.2em] transition-all hover:-translate-y-0.5"
                     style={{
                       backgroundColor: f.featured ? '#FC9700' : f.accent,
@@ -335,7 +335,7 @@ export default function CommunityManagementCasablancaPage() {
             </div>
             <div className="mt-14 text-center" data-reveal>
               <Link
-                to="/contact"
+                to="/contact/"
                 className="inline-flex items-center justify-center gap-2 rounded-2xl px-8 py-4 text-[0.82rem] font-black uppercase tracking-[0.2em] text-white shadow-[0_22px_50px_-18px_rgba(100,131,240,0.65)] transition-all hover:-translate-y-0.5 hover:brightness-110"
                 style={{ backgroundColor: '#6483F0' }}
               >

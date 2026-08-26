@@ -69,14 +69,22 @@ export default function SeoPage() {
                   Naturel (SEO).
                 </span>
               </h1>
-              <p className="mb-12 max-w-xl text-xl font-light leading-relaxed text-brand-charcoal/70 md:text-2xl">
-                Dominez les resultats de recherche et transformez votre visibilite organique en
-                levier de croissance durable grace a une methodologie scientifique et une approche
-                axee sur les donnees.
+              <p className="mb-8 max-w-xl text-xl font-light leading-relaxed text-brand-charcoal/70 md:text-2xl">
+                Cette page décrit notre <strong className="font-semibold text-brand-charcoal">prestation SEO</strong> :
+                audit technique, optimisation on-page, suivi des positions et netlinking. Objectif : un
+                service de référencement naturel mesurable, pas une page vitrine générique.
+              </p>
+              <p className="mb-12 max-w-xl text-lg font-light leading-relaxed text-brand-charcoal/70">
+                Pour un accompagnement local (Google Business, pack local Maarif, expert SEO à Casablanca),
+                voyez aussi notre{' '}
+                <Link to="/agence-seo-casablanca/" className="font-bold text-brand-blue underline-offset-4 hover:underline">
+                  agence SEO à Casablanca
+                </Link>
+                . Les deux pages se complètent : ici la méthode de service, là l’ancrage local.
               </p>
               <div className="flex flex-col gap-6 sm:flex-row">
                 <Link
-                  to="/contact"
+                  to="/contact/"
                   className="flex items-center justify-center gap-3 rounded-xl bg-secondary px-8 py-4 text-lg font-bold text-on-secondary transition-all hover:bg-secondary/90 hover:shadow-xl hover:shadow-secondary/20"
                 >
                   Audit Gratuit
@@ -223,7 +231,7 @@ export default function SeoPage() {
                       envers votre marque.
                     </p>
                     <Link
-                      to="/contact"
+                      to="/contact/"
                       className="inline-flex items-center gap-2 font-bold text-white transition-all hover:gap-4"
                     >
                       En savoir plus
@@ -330,13 +338,13 @@ export default function SeoPage() {
               </p>
               <div className="flex flex-col justify-center gap-6 sm:flex-row">
                 <Link
-                  to="/contact"
+                  to="/contact/"
                   className="rounded-2xl bg-secondary px-10 py-5 text-lg font-bold text-on-secondary shadow-xl shadow-secondary/30 transition-transform hover:scale-105 hover:bg-secondary/90"
                 >
                   Prendre RDV
                 </Link>
                 <Link
-                  to="/projets"
+                  to="/projets/"
                   className="rounded-2xl border border-brand-blue/20 bg-white px-10 py-5 text-lg font-bold text-brand-charcoal shadow-sm transition-all hover:bg-surface-container"
                 >
                   Consulter nos cas

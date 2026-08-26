@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { getPageLinking, type Cluster, type LienSortant } from '../lib/internalLinking'
+import { getPageLinking, withTrailingSlash, type Cluster, type LienSortant } from '../lib/internalLinking'
 
 type SemanticLinkProps = {
   lien: LienSortant
@@ -14,7 +14,7 @@ export default function SemanticLink({ lien, clusterSource, className = '' }: Se
     <p className={`leading-relaxed text-slate-600 ${className}`}>
       {lien.contexte_avant}{' '}
       <Link
-        to={lien.cible}
+        to={withTrailingSlash(lien.cible)}
         className="font-bold text-[#6483F0] underline-offset-4 hover:underline"
         data-cluster-source={clusterSource}
         data-cluster-cible={cible?.cluster_semantique}

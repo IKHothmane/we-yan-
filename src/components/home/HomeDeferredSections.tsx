@@ -13,7 +13,7 @@ const blogResources = [
     title: 'Prix création site web au Maroc 2026',
     excerpt: 'Vitrine, e-commerce, sur-mesure : tarifs MAD détaillés, fourchettes réelles freelance vs agence, coûts récurrents et 5 pièges à éviter avant de signer un devis.',
     readingTime: '9 min',
-    to: '/blog/prix-site-web-maroc-2026',
+    to: '/blog/prix-site-web-maroc-2026/',
     accent: '#6483F0',
   },
   {
@@ -21,7 +21,7 @@ const blogResources = [
     title: 'SEO vs SEA au Maroc : lequel prioriser ?',
     excerpt: 'Tableau comparatif 7 critères, cas d\'usage seul, coût CPA Casablanca, et la stratégie We Yan gagnante combo SEO+SEA qui fait +162% de CA en 9 mois.',
     readingTime: '8 min',
-    to: '/blog/seo-vs-sea-maroc',
+    to: '/blog/seo-vs-sea-maroc/',
     accent: '#FC9700',
   },
   {
@@ -29,7 +29,7 @@ const blogResources = [
     title: 'Branding Maroc : créer une marque qui dure',
     excerpt: '6 étapes (de la stratégie avant design au playbook lancement), budget branding 2026, recherche OMPIC, 10 marques marocaines inspirantes.',
     readingTime: '11 min',
-    to: '/blog/branding-creation-marque-maroc',
+    to: '/blog/branding-creation-marque-maroc/',
     accent: '#4F46E5',
   },
   {
@@ -37,7 +37,7 @@ const blogResources = [
     title: 'Marketing digital au Maroc : 6 tendances 2026',
     excerpt: 'TikTok Shop, SEO local Google Business, IA générative contenu, micro-influenceurs 10k-100k, budgets PME tableau, et ce qu\'il faut arrêter.',
     readingTime: '10 min',
-    to: '/blog/marketing-digital-tendances-maroc-2026',
+    to: '/blog/marketing-digital-tendances-maroc-2026/',
     accent: '#10B981',
   },
 ] as const
@@ -110,7 +110,7 @@ const services = [
     description: 'Positionnement, relance de marque et plan d’action pour accélérer votre croissance.',
     tone: 'primary',
     layoutClassName: 'min-h-[300px] md:min-h-[320px]',
-    to: '/services/strategie-marketing-rebranding',
+    to: '/services/strategie-marketing-rebranding/',
     image: '/images/strategy/approach.webp',
   },
   {
@@ -119,7 +119,7 @@ const services = [
     description: 'Photos, vidéos, reels et gestion quotidienne de vos réseaux sociaux.',
     tone: 'secondary',
     layoutClassName: 'min-h-[300px] md:min-h-[320px] md:mt-16 lg:mt-20',
-    to: '/services/creation-contenu-community-management',
+    to: '/services/creation-contenu-community-management/',
     image: '/images/content/studio-content-v2.webp',
   },
   {
@@ -128,7 +128,7 @@ const services = [
     description: 'Campagnes sponsorisées pour générer trafic, leads et ventes qualifiées.',
     tone: 'primary',
     layoutClassName: 'min-h-[300px] md:min-h-[320px]',
-    to: '/services/publicite-digitale',
+    to: '/services/publicite-digitale/',
     image: '/images/home/dashboard.webp',
   },
   {
@@ -137,7 +137,7 @@ const services = [
     description: 'Optimisation SEO pour améliorer votre visibilité Google sur le long terme.',
     tone: 'secondary',
     layoutClassName: 'min-h-[300px] md:min-h-[320px] md:mt-16 lg:mt-20',
-    to: '/services/seo',
+    to: '/services/seo/',
     image: '/images/seo/authority.webp',
   },
   {
@@ -146,7 +146,7 @@ const services = [
     description: 'Collaborez avec les bons créateurs pour amplifier votre marque.',
     tone: 'primary',
     layoutClassName: 'min-h-[300px] md:min-h-[320px]',
-    to: '/services/marketing-influence',
+    to: '/services/marketing-influence/',
     image: '/images/content/gallery-lifestyle.webp',
   },
   {
@@ -155,7 +155,7 @@ const services = [
     description: 'Affichage, print et supports publicitaires pour renforcer votre présence terrain.',
     tone: 'secondary',
     layoutClassName: 'min-h-[300px] md:min-h-[320px] md:mt-16 lg:mt-20',
-    to: '/services/media-publicite-offline',
+    to: '/services/media-publicite-offline/',
     image: '/images/offline/ooh.webp',
   },
 ] as const
@@ -252,7 +252,7 @@ export default function HomeDeferredSections() {
         website: homeWebsite,
       })
       markLeadReadyToTrack()
-      navigate('/merci')
+      navigate('/merci/')
     } catch (error) {
       setHomeStatus('error')
       setHomeError(error instanceof Error ? error.message : 'Envoi impossible.')
@@ -306,7 +306,7 @@ export default function HomeDeferredSections() {
               Nous avons ce qu'il vous faut, de la création de logo à la campagne publicitaire.
             </p>
             <Link
-              to="/services"
+              to="/services/"
               className="inline-flex items-center gap-2 text-slate-700 font-bold text-[0.78rem] uppercase tracking-[0.2em] border-b-2 border-slate-900/70 pb-1 hover:text-primary hover:border-primary transition-colors"
             >
               Voir toutes nos expertises (SEO, Site Web, Branding, Ads…)
@@ -399,7 +399,7 @@ export default function HomeDeferredSections() {
               </p>
             </div>
             <Link
-              to="/projets"
+              to="/projets/"
               className="text-primary font-bold text-sm border-b-2 border-primary pb-1 hover:text-primary/80 hover:border-primary/80 transition-colors uppercase tracking-[0.2em]"
             >
               Tout voir
@@ -762,7 +762,7 @@ export default function HomeDeferredSections() {
               </p>
             </div>
             <Link
-              to="/blog/prix-site-web-maroc-2026"
+              to="/blog/prix-site-web-maroc-2026/"
               className="group inline-flex items-center gap-2.5 rounded-full px-6 py-3.5 text-[0.9rem] font-bold uppercase tracking-wider shadow-xl shadow-[#6483F0]/20 hover:shadow-2xl hover:shadow-[#6483F0]/30 hover:scale-[1.01] transition-all whitespace-nowrap"
               style={{ backgroundColor: '#6483F0', color: '#FFF' }}
               data-reveal
@@ -920,7 +920,7 @@ export default function HomeDeferredSections() {
               Vous n'avez pas trouvé votre réponse ?
             </p>
             <Link
-              to="/contact"
+              to="/contact/"
               className="inline-flex items-center gap-3 rounded-2xl px-7 py-4 text-[0.8rem] font-black uppercase tracking-[0.2em] text-white shadow-xl transition-all hover:brightness-110 hover:-translate-y-0.5"
               style={{ backgroundColor: '#6483F0', boxShadow: '0 22px 45px -16px rgba(100,131,240,0.55)' }}
             >
