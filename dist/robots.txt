@@ -2,4 +2,15 @@ User-agent: *
 Allow: /
 Disallow: /demandes
 Disallow: /merci
+
+User-agent: Bingbot
+Allow: /
+Disallow: /demandes
+Disallow: /merci
+
+User-agent: bingbot
+Allow: /
+Disallow: /demandes
+Disallow: /merci
+
 Sitemap: https://weyandigital.ma/sitemap.xml

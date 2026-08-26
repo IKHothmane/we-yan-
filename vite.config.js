@@ -165,7 +165,7 @@ export default defineConfig({
 
         const html = readFileSync(indexFile, 'utf8')
         const linkingModule = join(process.cwd(), 'node_modules', '.cache', 'validate-internal-links.mjs')
-        const { getPageLinking, buildBreadcrumbJsonLd, buildFaqJsonLd, buildPageDocumentTitle, buildPageCanonical } = await import(
+        const { getPageLinking, buildBreadcrumbJsonLd, buildFaqJsonLd, buildPageDocumentTitle, buildPageCanonical, withTrailingSlash } = await import(
           `${pathToFileURL(linkingModule).href}?emit=${Date.now()}`
         )
 
@@ -188,6 +188,35 @@ export default defineConfig({
             .replace(/</g, '&lt;')
             .replace(/>/g, '&gt;')
             .replace(/"/g, '&quot;')
+
+        const buildStaticBody = (page, description) => {
+          const h1 = escapeHtml(page.titre)
+          const intro = escapeHtml(description || page.intention)
+          const links = (page.liens_sortants || [])
+            .map((lien) => {
+              const href = escapeHtml(withTrailingSlash(lien.cible))
+              const ancre = escapeHtml(lien.ancre)
+              const avant = escapeHtml(lien.contexte_avant)
+              const apres = escapeHtml(lien.contexte_apres)
+              return `<p>${avant} <a href="${href}">${ancre}</a> ${apres}</p>`
+            })
+            .join('\n')
+          const faq =
+            page.faq?.length > 0
+              ? `<section aria-label="FAQ"><h2>FAQ</h2>${page.faq
+                  .map(
+                    (item) =>
+                      `<article><h3>${escapeHtml(item.q)}</h3><p>${escapeHtml(item.r)}</p></article>`,
+                  )
+                  .join('\n')}</section>`
+              : ''
+          return `<main data-seo-static="1">
+  <h1>${h1}</h1>
+  <p>${intro}</p>
+  <nav aria-label="Liens utiles">${links}</nav>
+  ${faq}
+</main>`
+        }
 
         const applyPageHead = (sourceHtml, slug) => {
           let next = sourceHtml
@@ -250,6 +279,13 @@ export default defineConfig({
             next = next.replace('</head>', `${tag}  </head>`)
           }
 
+          // Contenu HTML visible pour Bing / crawlers sans JS (remplacé par React au hydrate)
+          const staticBody = buildStaticBody(page, description)
+          next = next.replace(
+            /<div id="root"><\/div>/,
+            `<div id="root">${staticBody}</div>`,
+          )
+
           return next
         }
 
@@ -264,6 +300,18 @@ export default defineConfig({
         const sitemap = writeCanonicalSitemap()
         writeFileSync(join(dist, 'sitemap.xml'), sitemap)
         writeFileSync(join(process.cwd(), 'public/sitemap.xml'), sitemap)
+
+        // IndexNow : notifie Bing/Yandex après chaque build (sauf INDEXNOW_SUBMIT=false)
+        try {
+          const { pingIndexNow } = await import('./scripts/pingIndexNow.mjs')
+          const urls = sitemap
+            .match(/<loc>\s*([^<\s]+)\s*<\/loc>/gi)
+            ?.map((tag) => tag.replace(/<\/?loc>/gi, '').trim())
+            .filter(Boolean)
+          await pingIndexNow(urls || [])
+        } catch (err) {
+          console.warn('[indexnow] ping non bloquant:', err?.message || err)
+        }
       },
     },
   ],
