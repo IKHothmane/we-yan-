@@ -182,6 +182,18 @@ export default defineConfig({
         })
         const { PAGE_SEO_BY_SLUG } = await import(`${pathToFileURL(seoOut).href}?emit=${Date.now()}`)
 
+        const jsonLdOut = join(cacheDir, 'json-ld.mjs')
+        buildSync({
+          entryPoints: [join(process.cwd(), 'src/lib/jsonLd.ts')],
+          bundle: true,
+          format: 'esm',
+          platform: 'node',
+          outfile: jsonLdOut,
+        })
+        const { buildServiceJsonLd, buildSiteGraphJsonLd } = await import(
+          `${pathToFileURL(jsonLdOut).href}?emit=${Date.now()}`
+        )
+
         const escapeHtml = (value) =>
           String(value)
             .replace(/&/g, '&amp;')
@@ -279,6 +291,12 @@ export default defineConfig({
             next = next.replace('</head>', `${tag}  </head>`)
           }
 
+          const serviceJson = buildServiceJsonLd(page)
+          if (serviceJson) {
+            const tag = `    <script type="application/ld+json" id="service-jsonld">${JSON.stringify(serviceJson)}</script>\n`
+            next = next.replace('</head>', `${tag}  </head>`)
+          }
+
           // Contenu HTML visible pour Bing / crawlers sans JS (remplacé par React au hydrate)
           const staticBody = buildStaticBody(page, description)
           next = next.replace(
@@ -289,12 +307,19 @@ export default defineConfig({
           return next
         }
 
-        writeFileSync(indexFile, applyPageHead(html, '/'))
+        // Aligne le graph Organization + LocalBusiness du template HTML
+        const siteGraphTag = `<script type="application/ld+json" id="site-graph-jsonld">${JSON.stringify(buildSiteGraphJsonLd())}</script>`
+        const htmlWithGraph = html.replace(
+          /<script type="application\/ld\+json">[\s\S]*?<\/script>/,
+          siteGraphTag,
+        )
+
+        writeFileSync(indexFile, applyPageHead(htmlWithGraph, '/'))
 
         for (const route of SPA_ROUTES) {
           const target = join(dist, route, 'index.html')
           mkdirSync(dirname(target), { recursive: true })
-          writeFileSync(target, applyPageHead(html, `/${route}`))
+          writeFileSync(target, applyPageHead(htmlWithGraph, `/${route}`))
         }
 
         const sitemap = writeCanonicalSitemap()

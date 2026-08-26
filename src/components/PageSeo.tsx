@@ -7,6 +7,7 @@ import {
   buildPageDocumentTitle,
   getPageLinking,
 } from '../lib/internalLinking'
+import { buildServiceJsonLd } from '../lib/jsonLd'
 import { withTrailingSlash } from '../lib/paths'
 
 type PageSeoProps = {
@@ -75,6 +76,26 @@ function setFaqJsonLd(pathname: string) {
   script.textContent = JSON.stringify(json)
 }
 
+function setServiceJsonLd(pathname: string) {
+  const id = 'service-jsonld'
+  const page = getPageLinking(pathname)
+  const existing = document.getElementById(id)
+  const json = page ? buildServiceJsonLd(page) : null
+  if (!json) {
+    existing?.remove()
+    return
+  }
+
+  let script = existing as HTMLScriptElement | null
+  if (!script) {
+    script = document.createElement('script')
+    script.id = id
+    script.type = 'application/ld+json'
+    document.head.appendChild(script)
+  }
+  script.textContent = JSON.stringify(json)
+}
+
 function normalizePath(pathname: string) {
   return withTrailingSlash(pathname)
 }
@@ -121,6 +142,7 @@ export default function PageSeo({
     }
     setBreadcrumbJsonLd(location.pathname)
     setFaqJsonLd(location.pathname)
+    setServiceJsonLd(location.pathname)
   }, [description, location.pathname, ogImage, ogImageAlt, title, twitterImage, twitterImageAlt])
 
   return null

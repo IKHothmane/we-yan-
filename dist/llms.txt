@@ -1,25 +1,24 @@
 # We Yan Digital
 
-Site officiel de We Yan Digital, agence digitale a Casablanca (Maroc) : SEO, community management, branding, publicite digitale.
+> Agence digitale a Casablanca specialisee SEO, Community Management, Branding, Google Ads et Influence.
 
-## Pages a indexer
+## Services
+- [Agence SEO Casablanca](https://weyandigital.ma/agence-seo-casablanca/): audit, SEO local, contenu — a partir de 3500 MAD/mois
+- [Community Management Casablanca](https://weyandigital.ma/community-management-casablanca/): Instagram, TikTok, LinkedIn
+- [Strategie Marketing & Rebranding](https://weyandigital.ma/services/strategie-marketing-rebranding/): packs des 15000 MAD
+- [Publicite Digitale](https://weyandigital.ma/services/publicite-digitale/): Google Ads & Meta Ads
+- [Marketing d'Influence](https://weyandigital.ma/services/marketing-influence/): nano, micro, macro Maroc
+- [Referencement naturel SEO](https://weyandigital.ma/services/seo/): audit technique, on-page, netlinking
 
-- [Accueil](https://weyandigital.ma/)
-- [Agence SEO Casablanca](https://weyandigital.ma/agence-seo-casablanca)
-- [Community Management Casablanca](https://weyandigital.ma/community-management-casablanca)
-- [Services](https://weyandigital.ma/services)
-- [Referencement naturel SEO](https://weyandigital.ma/services/seo)
-- [Strategie et rebranding](https://weyandigital.ma/services/strategie-marketing-rebranding)
-- [Publicite digitale Google Ads et Meta Ads](https://weyandigital.ma/services/publicite-digitale)
-- [Marketing d'influence Casablanca](https://weyandigital.ma/services/marketing-influence)
-- [Prix Google Ads Maroc 2026](https://weyandigital.ma/blog/prix-google-ads-maroc-2026)
-- [Prix Meta Ads Casablanca 2026](https://weyandigital.ma/blog/prix-meta-ads-casablanca-2026)
-- [Exemple rebranding Casablanca 2026](https://weyandigital.ma/blog/rebranding-exemple-casablanca-2026)
-- [Projets](https://weyandigital.ma/projets)
-- [Agence](https://weyandigital.ma/agence)
+## Guides 2026
+- [Prix SEO Casablanca 2026](https://weyandigital.ma/blog/prix-seo-casablanca-2026/)
+- [Prix Google Ads Maroc 2026](https://weyandigital.ma/blog/prix-google-ads-maroc-2026/)
+- [Prix Meta Ads Casablanca 2026](https://weyandigital.ma/blog/prix-meta-ads-casablanca-2026/)
+- [SEO vs SEA au Maroc](https://weyandigital.ma/blog/seo-vs-sea-maroc/)
 
-## Notes
+## Contact
+Agence a Maarif, Casablanca. Tel. +212 6 91 56 72 46. Devis sous 24h ouvrees : https://weyandigital.ma/contact/
 
-- Langue principale : francais
-- Zone geographique : Casablanca, Maroc
-- Ne pas indexer /demandes ni /merci
+## Optional
+- Langue : francais (marche Maroc)
+- Ne pas indexer : /demandes/, /merci/

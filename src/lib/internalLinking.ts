@@ -175,16 +175,16 @@ export const PAGES_LINKING: PageLinking[] = [
     ],
     faq: [
       {
-        q: 'Combien coûte une prestation SEO au Maroc en 2026 ?',
-        r: 'Chez We Yan Digital à Casablanca, nos accompagnements SEO démarrent à partir de 3 500 MAD/mois pour une PME ciblant Casablanca sur 10-20 mots-clés. Un package national complet avec stratégie éditoriale et netlinking se situe entre 7 000 et 15 000 MAD/mois. Audit unique ponctuel : à partir de 2 500 MAD.',
+        q: 'Combien coûte une agence SEO à Casablanca ?',
+        r: 'À Casablanca en 2026, une agence SEO facture entre 3 500 et 15 000 MAD/mois selon la concurrence. Chez We Yan Digital, l’audit est offert sous 24h.',
       },
       {
-        q: "En combien de temps voit-on les résultats d'une agence SEO à Casablanca ?",
-        r: 'Nos clients voient généralement les premières améliorations de positions entre 4 à 8 semaines. Les résultats de première page Google et de trafic organique qualifié se matérialisent sur 3 à 6 mois pour les requêtes locales, 6 à 12 mois sur des requêtes nationales très concurrentielles.',
+        q: 'En combien de temps voit-on les résultats SEO à Casablanca ?',
+        r: 'Premières hausses de positions en 4 à 8 semaines. Trafic local utile : 3 à 6 mois. Requêtes nationales : 6 à 12 mois. We Yan couple souvent SEO + Ads dès la semaine 1.',
       },
       {
-        q: 'Travaillez-vous avec des entreprises hors Casablanca ?',
-        r: 'Oui. Nous accompagnons des entreprises à Rabat, Marrakech, Tanger, Fès et dans tout le Maroc, avec la même qualité d’accompagnement à distance.',
+        q: 'Travaillez-vous hors Casablanca ?',
+        r: 'Oui. Basés à Maarif, nous accompagnons Rabat, Marrakech, Tanger et tout le Maroc à distance, avec le même reporting SEO mensuel.',
       },
     ],
     liens_sortants: [
@@ -222,35 +222,19 @@ export const PAGES_LINKING: PageLinking[] = [
     faq: [
       {
         q: 'Quelle est la différence entre branding et rebranding ?',
-        r: 'Le branding construit une marque qui n’existe pas encore : nom, promesse, identité de marque, premiers points de contact. Le rebranding corrige une marque déjà en marché — perception datée, fusion, nouveau positionnement, ou décalage avec Casablanca et le Maroc 2026. Chez We Yan Digital, les deux passent par un audit, une stratégie, puis une identité visuelle. On ne « change pas de logo » pour le plaisir : on décide d’abord ce que la marque doit dire, ensuite on dessine.',
+        r: 'Le branding crée une marque neuve (nom, promesse, identité). Le rebranding corrige une marque déjà en marché. Chez We Yan Digital à Casablanca, les deux passent par audit → stratégie → identité.',
       },
       {
         q: 'Combien de temps dure un rebranding à Casablanca ?',
-        r: 'Un pack Starter (logo + charte) se livre en 3 à 5 semaines, avec ateliers à Maarif. Un Growth (identité + site + community) prend 8 à 12 semaines. Un Premium (SEO + Ads + déploiement) s’étale sur 4 à 6 mois, le temps d’aligner tous les points de contact. Le délai dépend surtout de vos validations internes : plus l’équipe est claire, plus c’est rapide.',
+        r: 'Starter (logo + charte) : 3 à 5 semaines. Growth (identité + site + community) : 8 à 12 semaines. Premium : 4 à 6 mois. Ateliers possibles à Maarif.',
       },
       {
         q: 'Quel est le prix d’une agence branding à Casablanca ?',
-        r: 'Chez We Yan Digital, le Starter démarre à 15 000 MAD HT (logo + charte). Le Growth (site + community management) est à 35 000 MAD HT. Le Premium (SEO + Ads + lancement) est à 70 000 MAD HT. Devis détaillé sous 24h, sans pack caché. Ces tarifs 2026 couvrent Casablanca, Rabat, Marrakech et Tanger. Un logo à 2 000 MAD n’inclut ni positionnement ni déploiement : comparez le livrable, pas le chiffre.',
-      },
-      {
-        q: 'Faut-il refaire son site lors d’un rebranding ?',
-        r: 'Pas toujours. Si le site est lent, non SEO, ou visuellement déconnecté de la nouvelle charte, oui. Sinon on peut d’abord poser l’identité, puis migrer le site. Un site cher sans positionnement rate : d’abord la marque, ensuite les pages. Le pack Growth inclut déjà un site vitrine aligné. Le Premium ajoute le SEO pour que Google voie la même promesse que vos visiteurs.',
+        r: 'Chez We Yan Digital en 2026 : Starter 15 000 MAD HT, Growth 35 000 MAD HT, Premium 70 000 MAD HT. Devis sous 24h, Casablanca et Maroc.',
       },
       {
         q: 'Une PME à Casablanca a-t-elle besoin d’un rebranding ?',
-        r: 'Oui, dès que vos devis se comparent au prix, que vos équipes expliquent mal l’offre, ou que votre concurrent Maarif / Anfa paraît plus clair. Le rebranding n’est pas réservé aux grands comptes : c’est un levier de conversion locale. Une TPE food, une clinique, un cabinet B2B : dès que le client hésite à cause de l’image, pas du métier, il faut recadrer.',
-      },
-      {
-        q: 'Rebranding ou community management : par quoi commencer ?',
-        r: 'Si votre promesse n’est pas claire, commencez par le branding. Si la marque est claire mais invisible sur Instagram et TikTok, commencez par le community management. Les deux ensemble évitent de publier une identité qui n’existe pas encore. Le pack Growth couple les deux. Un community manager seul ne répare pas un positionnement flou ; une charte seule ne remplit pas le feed.',
-      },
-      {
-        q: 'Intervenez-vous à Rabat, Marrakech et Tanger ?',
-        r: 'Oui. L’agence est basée à Casablanca Maarif, avec ateliers en présentiel. Nous accompagnons aussi Rabat, Marrakech, Tanger et le reste du Maroc en visio, avec la même méthode et les mêmes livrables. Le signal local (Google, vitrine, langue) s’adapte à votre ville ; le process reste We Yan : audit, stratégie, identité, déploiement.',
-      },
-      {
-        q: 'Comment se passe un audit branding gratuit ?',
-        r: 'Vous remplissez le formulaire contact. Sous 24h ouvrées, un humain vous rappelle : perception actuelle, concurrence Casa, et 3 chantiers priorisés. Sans engagement. L’audit oriente ensuite Starter, Growth ou Premium. Préparez site, réseaux, et 3 concurrents. Plus vous êtes factuels, plus la reco est utile — ce n’est pas un appel commercial générique.',
+        r: 'Oui si vos devis se comparent au prix ou si un concurrent Maarif paraît plus clair. Le rebranding n’est pas réservé aux grands comptes : c’est un levier de conversion locale.',
       },
     ],
     breadcrumb: [
@@ -344,6 +328,20 @@ export const PAGES_LINKING: PageLinking[] = [
       { label: 'Services', to: '/services/' },
       { label: 'Community management Casablanca' },
     ],
+    faq: [
+      {
+        q: 'Combien coûte le community management à Casablanca ?',
+        r: 'À Casablanca en 2026, un community management pro tourne souvent entre 4 000 et 12 000 MAD/mois selon le volume. Chez We Yan Digital, devis sous 24h avec planning éditorial.',
+      },
+      {
+        q: 'Quels réseaux gérez-vous à Casablanca ?',
+        r: 'Instagram, TikTok, LinkedIn et Facebook, avec contenus FR/darija adaptés au marché marocain. Reporting mensuel : portée, engagement, clics et leads.',
+      },
+      {
+        q: 'Faut-il coupler community management et Meta Ads ?',
+        r: 'Oui pour convertir. Le contenu organique crée la preuve sociale ; Meta Ads amplifie les posts qui marchent déjà à Casablanca.',
+      },
+    ],
     liens_sortants: [
       {
         cible: '/services/creation-contenu-community-management',
@@ -376,6 +374,20 @@ export const PAGES_LINKING: PageLinking[] = [
     cluster_semantique: 'ads',
     pageRank_voulu: 9,
     title_serp: 'Agence Google Ads Maroc & Meta Ads Casablanca | We Yan Digital',
+    faq: [
+      {
+        q: 'Quel budget Google Ads minimum au Maroc en 2026 ?',
+        r: 'En Search Casablanca, comptez souvent 3 000 à 8 000 MAD/mois de média + frais d’agence. We Yan Digital livre un media plan sous 24h.',
+      },
+      {
+        q: 'Combien coûtent les Meta Ads à Casablanca ?',
+        r: 'CPC et CPL varient par offre. Budgets utiles dès 2 000–5 000 MAD/mois de média. L’agence We Yan pilote tracking, créas et ROAS.',
+      },
+      {
+        q: 'SEO ou Google Ads : par quoi commencer ?',
+        r: 'Ads pour des leads dès la semaine 1 ; SEO pour capitaliser en 3–6 mois. La stratégie gagnante We Yan à Casablanca est SEO + SEA mixte.',
+      },
+    ],
     breadcrumb: [
       { label: 'Accueil', to: '/' },
       { label: 'Services', to: '/services/' },
@@ -423,35 +435,19 @@ export const PAGES_LINKING: PageLinking[] = [
     faq: [
       {
         q: 'Quel est le prix d’une story influenceur au Maroc en 2026 ?',
-        r: 'Une story nano (10k–50k) se négocie souvent entre 800 et 2 500 MAD. Micro (50k–200k) : 2 500 à 8 000 MAD. Macro (200k+) : 8 000 à 25 000 MAD et plus selon la ville (Casablanca vs intérieur) et l’exclusivité. Le CPL réel dépend du brief, pas seulement du tarif brut.',
+        r: 'Nano (10k–50k) : 800 à 2 500 MAD. Micro : 2 500 à 8 000 MAD. Macro : 8 000 à 25 000 MAD+. À Casablanca, le CPL dépend du brief, pas seulement du tarif.',
       },
       {
         q: 'Combien coûte un reel d’influenceur au Maroc ?',
-        r: 'Nano : 1 500 à 5 000 MAD. Micro : 5 000 à 18 000 MAD. Macro : 18 000 à 60 000 MAD. Un reel usage ads (droits 3–6 mois) se facture 30 à 80 % de plus. Chez We Yan, le devis sépare cachet, droits et production.',
+        r: 'Nano : 1 500–5 000 MAD. Micro : 5 000–18 000 MAD. Macro : 18 000–60 000 MAD. Droits ads 3–6 mois : +30 à 80 %. Devis We Yan sous 24h.',
       },
       {
         q: 'Comment choisir un influenceur à Casablanca ?',
-        r: 'On regarde l’audience réelle (ville, âge, langue), le taux d’engagement, les commentaires (pas les vues achetées), l’alignement offre, et les scandales. Un micro Casa qui vend en darija bat souvent un macro générique. Le casting We Yan refuse les faux followers.',
-      },
-      {
-        q: 'Nano, micro ou macro : par quoi commencer ?',
-        r: 'PME locale : 4 à 8 nanos / micros Casablanca, pas un seul macro. Le macro sert à la notoriété nationale une fois l’offre et le brief rodés. Un premier test We Yan tient en 15 000 à 35 000 MAD de cachets + gestion.',
+        r: 'Audience réelle (ville, âge, langue), engagement, commentaires authentiques, alignement offre. Un micro Casa en darija bat souvent un macro générique.',
       },
       {
         q: 'Faut-il coupler influence et Meta Ads ?',
-        r: 'Oui dès que le UGC convertit. On whitelist le contenu, on le booste via l’agence Meta Ads Casablanca. Sans ads, la campagne meurt en 48h. Sans influence, les ads manquent de preuve sociale marocaine.',
-      },
-      {
-        q: 'Comment mesurer le ROI d’une campagne influence ?',
-        r: 'Codes promo, UTM, lien in-bio, screens WhatsApp, ventes attributées, et CPM/CPL vs ads. We Yan livre un reporting : livrables, portée, engagement, leads, CPA. Pas un PDF de screenshots sans chiffres.',
-      },
-      {
-        q: 'Intervenez-vous à Rabat, Marrakech et Tanger ?',
-        r: 'Oui. L’agence est à Casablanca Maarif. Casting et brief en visio ou présentiel. Les créateurs peuvent être Casa, Rabat, Marrakech, Tanger selon la cible. Le contrat et le reporting restent We Yan.',
-      },
-      {
-        q: 'Comment lancer une campagne influence avec We Yan ?',
-        r: 'Formulaire contact. Sous 24h : 3 profils, fourchette MAD, calendrier. Puis contrat, brief, validation contenus, mise en ligne, reporting. CTA : lancer ma campagne influence — sans engagement sur le premier échange.',
+        r: 'Oui dès que le UGC convertit. On whitelist le contenu puis on le booste en Meta Ads Casablanca. Sans ads, la campagne meurt en 48h.',
       },
     ],
     breadcrumb: [

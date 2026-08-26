@@ -35,16 +35,16 @@ const avantages = [
 
 const faq = [
   {
-    q: 'Combien coûte une prestation SEO au Maroc en 2026 ?',
-    r: 'Chez We Yan Digital à Casablanca, nos accompagnements SEO démarrent à partir de 3 500 MAD/mois pour une PME ciblant Casablanca sur 10-20 mots-clés. Un package national complet avec stratégie éditoriale et netlinking se situe entre 7 000 et 15 000 MAD/mois. Audit unique ponctuel : à partir de 2 500 MAD.',
+    q: 'Combien coûte une agence SEO à Casablanca ?',
+    r: 'À Casablanca en 2026, une agence SEO facture entre 3 500 et 15 000 MAD/mois selon la concurrence. Chez We Yan Digital, l’audit est offert sous 24h.',
   },
   {
-    q: "En combien de temps voit-on les résultats d'une agence SEO à Casablanca ?",
-    r: "Nos clients voient généralement les premières améliorations de positions entre 4 à 8 semaines. Les résultats de première page Google et de trafic organique qualifié se matérialisent sur 3 à 6 mois pour les requêtes locales, 6 à 12 mois sur des requêtes nationales très concurrentielles. Nous pilotons toujours en parallèle une campagne SEA pour obtenir des leads dès la première semaine.",
+    q: 'En combien de temps voit-on les résultats SEO à Casablanca ?',
+    r: 'Premières hausses de positions en 4 à 8 semaines. Trafic local utile : 3 à 6 mois. Requêtes nationales : 6 à 12 mois. We Yan couple souvent SEO + Ads dès la semaine 1.',
   },
   {
-    q: "Travaillez-vous avec des entreprises hors Casablanca ?",
-    r: "Oui, bien sûr. Nous accompagnons des entreprises à Rabat, Marrakech, Tanger, Fès et dans tout le Maroc. Grâce aux outils SEO internationaux (Ahrefs, Semrush, Screaming Frog) et à nos réunions à distance (Teams, Google Meet), nous avons la même qualité d'accompagnement pour tous nos clients marocains, peu importe leur ville.",
+    q: 'Travaillez-vous hors Casablanca ?',
+    r: 'Oui. Basés à Maarif, nous accompagnons Rabat, Marrakech, Tanger et tout le Maroc à distance, avec le même reporting SEO mensuel.',
   },
 ] as const
 

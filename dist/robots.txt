@@ -14,3 +14,6 @@ Disallow: /demandes
 Disallow: /merci
 
 Sitemap: https://weyandigital.ma/sitemap.xml
+
+# GEO / AI crawlers
+# https://weyandigital.ma/llms.txt
