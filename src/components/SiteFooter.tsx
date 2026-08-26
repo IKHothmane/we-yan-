@@ -44,7 +44,7 @@ export default function SiteFooter({ revealDelay }: SiteFooterProps) {
             <div className="flex flex-col h-full">
               <AppLink to="/" className="flex items-center gap-3 mb-6 hover:brightness-110 transition-all w-fit">
                 <img
-                  src="/Logo%20weyan.png"
+                  src="/logo.png"
                   alt="We Yan Digital · Agence digitale à Casablanca"
                   className="h-[clamp(2.75rem,7vw,4rem)] w-auto object-contain drop-shadow-[0_14px_34px_-12px_rgba(15,23,42,0.35)]"
                   width={448}

@@ -7,15 +7,23 @@
 
 DirectoryIndex index.html
 DirectorySlash Off
+AddDefaultCharset UTF-8
 
 <IfModule mod_headers.c>
   SetEnvIf Request_URI "^/demandes" DEMANDES_NOINDEX
   Header always set X-Robots-Tag "noindex, nofollow" env=DEMANDES_NOINDEX
+  # Bing GEO : force charset UTF-8 sur le HTML (évite og:description en Ã)
+  <FilesMatch "\.(html?|php)$">
+    Header set Content-Type "text/html; charset=utf-8"
+  </FilesMatch>
 </IfModule>
 
 <IfModule mod_rewrite.c>
   RewriteEngine On
   RewriteBase /
+
+  # Ancien logo avec espace → logo.png (Knowledge Panel / Organization)
+  RewriteRule ^Logo(?:\ |%20)weyan\.png$ /logo.png [R=301,L,NC]
 
   # API PHP : ne jamais réécrire vers le site
   RewriteRule ^api/ - [L]

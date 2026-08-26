@@ -201,6 +201,10 @@ export default defineConfig({
             .replace(/>/g, '&gt;')
             .replace(/"/g, '&quot;')
 
+        // Bing lit parfois les metas sans charset HTTP → Ã. Entités numériques = ASCII sûr.
+        const escapeMetaAttr = (value) =>
+          escapeHtml(value).replace(/[^\x20-\x7E]/g, (ch) => `&#${ch.codePointAt(0)};`)
+
         const buildStaticBody = (page, description) => {
           const h1 = escapeHtml(page.titre)
           const intro = escapeHtml(description || page.intention)
@@ -248,6 +252,8 @@ export default defineConfig({
           const canonical = buildPageCanonical(page)
           const safeTitle = escapeHtml(title)
           const safeDescription = escapeHtml(description)
+          const safeOgDescription = escapeMetaAttr(description)
+          const safeOgTitle = escapeMetaAttr(title)
 
           next = next.replace(/<title>[^<]*<\/title>/, `<title>${safeTitle}</title>`)
           next = next.replace(
@@ -256,11 +262,11 @@ export default defineConfig({
           )
           next = next.replace(
             /<meta property="og:title" content="[^"]*" \/>/,
-            `<meta property="og:title" content="${safeTitle}" />`,
+            `<meta property="og:title" content="${safeOgTitle}" />`,
           )
           next = next.replace(
             /<meta property="og:description" content="[^"]*" \/>/,
-            `<meta property="og:description" content="${safeDescription}" />`,
+            `<meta property="og:description" content="${safeOgDescription}" />`,
           )
           next = next.replace(
             /<link rel="canonical" href="[^"]*" \/>/,
@@ -272,11 +278,11 @@ export default defineConfig({
           )
           next = next.replace(
             /<meta name="twitter:title" content="[^"]*" \/>/,
-            `<meta name="twitter:title" content="${safeTitle}" />`,
+            `<meta name="twitter:title" content="${safeOgTitle}" />`,
           )
           next = next.replace(
             /<meta name="twitter:description" content="[^"]*" \/>/,
-            `<meta name="twitter:description" content="${safeDescription}" />`,
+            `<meta name="twitter:description" content="${safeOgDescription}" />`,
           )
 
           if (page.breadcrumb.length >= 2) {
@@ -314,17 +320,17 @@ export default defineConfig({
           siteGraphTag,
         )
 
-        writeFileSync(indexFile, applyPageHead(htmlWithGraph, '/'))
+        writeFileSync(indexFile, applyPageHead(htmlWithGraph, '/'), 'utf8')
 
         for (const route of SPA_ROUTES) {
           const target = join(dist, route, 'index.html')
           mkdirSync(dirname(target), { recursive: true })
-          writeFileSync(target, applyPageHead(htmlWithGraph, `/${route}`))
+          writeFileSync(target, applyPageHead(htmlWithGraph, `/${route}`), 'utf8')
         }
 
         const sitemap = writeCanonicalSitemap()
-        writeFileSync(join(dist, 'sitemap.xml'), sitemap)
-        writeFileSync(join(process.cwd(), 'public/sitemap.xml'), sitemap)
+        writeFileSync(join(dist, 'sitemap.xml'), sitemap, 'utf8')
+        writeFileSync(join(process.cwd(), 'public/sitemap.xml'), sitemap, 'utf8')
 
         // IndexNow : notifie Bing/Yandex après chaque build (sauf INDEXNOW_SUBMIT=false)
         try {

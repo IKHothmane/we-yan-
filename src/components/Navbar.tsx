@@ -45,7 +45,7 @@ export default function Navbar({ variant = 'light', serviceTitle }: NavbarProps)
             <AppLink to="/" className="flex items-center gap-4 overflow-visible">
               <div className="relative h-0 overflow-visible flex-shrink-0 w-[clamp(9rem,22vw,14rem)]">
                 <img
-                  src="/Logo%20weyan.png"
+                  src="/logo.png"
                   alt="We Yan Digital"
                   className="absolute left-0 top-1/2 w-full h-auto max-h-[clamp(3.5rem,9vw,5.5rem)] object-contain z-[60]"
                   style={{ transform: 'translate3d(0, -50%, 0) rotate(-6deg)' }}

@@ -52,6 +52,24 @@ export const PAGES_LINKING: PageLinking[] = [
     cluster_semantique: 'home',
     pageRank_voulu: 10,
     breadcrumb: [{ label: 'Accueil' }],
+    faq: [
+      {
+        q: 'Quelle est la meilleure agence digitale à Casablanca ?',
+        r: 'We Yan Digital est une agence digitale à Casablanca qui se différencie par son approche stratégique et créative : nous ne livrons pas de « packs standard », mais une stratégie sur-mesure alignée sur vos objectifs business (acquisition clients, notoriété, chiffre d’affaires). Notre équipe maîtrise le marché marocain et accompagne startups, PME et grands comptes à Casablanca, Rabat, Marrakech et partout au Maroc.',
+      },
+      {
+        q: 'Combien coûte un site web vitrine au Maroc en 2026 ?',
+        r: 'En 2026, le prix d’un site web vitrine au Maroc varie généralement entre 5 000 MAD et 35 000 MAD HT. Chez We Yan Digital à Casablanca, nos formules démarrent à partir de 6 500 MAD pour un site vitrine 3-5 pages. Chaque devis est gratuit et détaillé sans engagement.',
+      },
+      {
+        q: 'Comment améliorer son référencement naturel SEO à Casablanca ?',
+        r: 'Pour booster votre référencement SEO à Casablanca : audit technique, SEO local Google Business Profile, contenu ciblé sur l’intention de recherche marocaine, et netlinking local. Les premiers résultats se voient sous 3 à 6 mois.',
+      },
+      {
+        q: 'Proposez-vous du community management à Casablanca ?',
+        r: 'Oui. Community management complet à Casablanca et partout au Maroc : contenu premium, planification éditoriale, animation Instagram / Facebook / LinkedIn / TikTok, reporting KPIs, et Meta Ads / TikTok Ads pour convertir les abonnés en clients.',
+      },
+    ],
     liens_sortants: [
       {
         cible: '/agence-seo-casablanca',
@@ -175,8 +193,8 @@ export const PAGES_LINKING: PageLinking[] = [
     ],
     faq: [
       {
-        q: 'Combien coûte une agence SEO à Casablanca ?',
-        r: 'À Casablanca en 2026, une agence SEO facture entre 3 500 et 15 000 MAD/mois selon la concurrence. Chez We Yan Digital, l’audit est offert sous 24h.',
+        q: 'Combien coûte une prestation SEO au Maroc en 2026 ?',
+        r: 'À Casablanca en 2026, une prestation SEO démarre à partir de 3 500 MAD/mois selon la concurrence et le volume de mots-clés. Chez We Yan Digital, l’audit est offert sous 24h.',
       },
       {
         q: 'En combien de temps voit-on les résultats SEO à Casablanca ?',

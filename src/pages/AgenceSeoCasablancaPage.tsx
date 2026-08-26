@@ -35,8 +35,8 @@ const avantages = [
 
 const faq = [
   {
-    q: 'Combien coûte une agence SEO à Casablanca ?',
-    r: 'À Casablanca en 2026, une agence SEO facture entre 3 500 et 15 000 MAD/mois selon la concurrence. Chez We Yan Digital, l’audit est offert sous 24h.',
+    q: 'Combien coûte une prestation SEO au Maroc en 2026 ?',
+    r: 'À Casablanca en 2026, une prestation SEO démarre à partir de 3 500 MAD/mois selon la concurrence et le volume de mots-clés. Chez We Yan Digital, l’audit est offert sous 24h.',
   },
   {
     q: 'En combien de temps voit-on les résultats SEO à Casablanca ?',

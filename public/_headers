@@ -14,7 +14,7 @@
   Referrer-Policy: strict-origin-when-cross-origin
 
 # ——————————————————————————————————————————————————————————
-# 2. Images locales / Logo weyan / hero.webp / modern_office_scene
+# 2. Images locales / logo.png / hero.webp / modern_office_scene
 # ——————————————————————————————————————————————————————————
 /*.webp
   Cache-Control: public, max-age=2592000, stale-while-revalidate=604800
