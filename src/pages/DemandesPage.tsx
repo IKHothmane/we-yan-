@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
 import appsScriptSource from '../../scripts/google-apps-script.js?raw'
+import Icon from '../components/Icon'
 
 type Statut = 'Nouvelle' | 'Validée' | 'En cours' | 'Terminée' | 'Annulée'
 
@@ -148,6 +149,7 @@ export default function DemandesPage() {
   const [error, setError] = useState('')
   const [scriptReady, setScriptReady] = useState(true)
   const [copied, setCopied] = useState(false)
+  const [showKey, setShowKey] = useState(false)
 
   useEffect(() => {
     document.title = 'Demandes | We Yan Digital'
@@ -277,15 +279,26 @@ export default function DemandesPage() {
             <label htmlFor="admin-key" className="text-sm font-semibold text-slate-700">
               Mot de passe
             </label>
-            <input
-              id="admin-key"
-              type="password"
-              value={key}
-              onChange={(e) => setKey(e.target.value)}
-              className="mt-2 w-full rounded-xl border border-slate-200 px-4 py-3 focus:border-primary focus:outline-none"
-              placeholder="Clé d’accès"
-              required
-            />
+            <div className="relative mt-2">
+              <input
+                id="admin-key"
+                type={showKey ? 'text' : 'password'}
+                value={key}
+                onChange={(e) => setKey(e.target.value)}
+                className="w-full rounded-xl border border-slate-200 px-4 py-3 pr-12 focus:border-primary focus:outline-none"
+                placeholder="Clé d’accès"
+                required
+              />
+              <button
+                type="button"
+                onClick={() => setShowKey((visible) => !visible)}
+                className="absolute inset-y-0 right-0 flex w-12 items-center justify-center text-slate-500 hover:text-slate-800"
+                aria-label={showKey ? 'Masquer le mot de passe' : 'Afficher le mot de passe'}
+                aria-pressed={showKey}
+              >
+                <Icon name={showKey ? 'visibility_off' : 'visibility'} className="text-[22px] leading-none" />
+              </button>
+            </div>
             <button
               type="submit"
               disabled={loading}

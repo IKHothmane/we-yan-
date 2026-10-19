@@ -12,7 +12,7 @@ function toSheetStatut(statut) {
   if (statut === 'Annulée' || statut === 'Annulé' || statut === 'Annuler') return 'Annuler'
   return ''
 }
-const TO_EMAILS = ['meriemflyer@gmail.com', 'ikhlef.othmane@gmail.com']
+const TO_EMAILS = ['meriemflyer@gmail.com', 'ikhlef.othmane@gmail.com', 'alounane.latifa@gmail.com']
 
 const FROM_EMAIL = 'We Yan Digital <contact@weyandigital.ma>'
 

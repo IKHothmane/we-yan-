@@ -1,4 +1,4 @@
-const TO_EMAILS = ['meriemflyer@gmail.com', 'ikhlef.othmane@gmail.com']
+const TO_EMAILS = ['meriemflyer@gmail.com', 'ikhlef.othmane@gmail.com', 'alounane.latifa@gmail.com']
 const FROM_EMAIL = 'We Yan Digital <contact@weyandigital.ma>'
 const DEFAULT_SHEET_URL =
   'https://script.google.com/macros/s/AKfycbzQbb_vC_kVM4qa-pL_d1mcNfztYFfmUCzTTJ9N_LE3thVCXrYYHzu2JRUDKsDvNJ8UWA/exec'
