@@ -96,11 +96,11 @@ export default function Navbar({ variant = 'light', serviceTitle }: NavbarProps)
 
           </div>
 
-          <div className="grid grid-cols-5 gap-1 md:hidden">
+          <div className="grid grid-cols-5 gap-0.5 min-[400px]:gap-1 md:hidden">
             {links.map((link) => (
               <AppLink
                 key={link.to}
-                className={`flex min-h-[48px] items-center justify-center rounded-2xl px-2 py-3 text-center text-[0.68rem] font-semibold transition-colors text-slate-700 hover:bg-slate-100`}
+                className={`flex min-h-[44px] min-w-0 items-center justify-center rounded-2xl px-1 py-2.5 text-center text-[clamp(0.58rem,2.8vw,0.72rem)] font-semibold leading-tight transition-colors text-slate-700 hover:bg-slate-100 sm:min-h-[48px] sm:px-2 sm:py-3`}
                 to={link.to}
               >
                 {link.label}

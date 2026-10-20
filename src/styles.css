@@ -10,6 +10,16 @@
   font-display: swap;
 }
 
+/*
+  Échelle globale −20 % : toutes les unités rem (Tailwind) et une grande
+  partie du design se réduisent sans toucher chaque page.
+*/
+html {
+  font-size: 80%;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
 body {
   font-family: Poppins, sans-serif;
 }
@@ -17,10 +27,56 @@ body {
 html,
 body {
   scroll-behavior: smooth;
-  overflow-x: hidden;
+  overflow-x: clip;
   width: 100%;
+  max-width: 100%;
   margin: 0;
   padding: 0;
+}
+
+#root {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  overflow-x: clip;
+}
+
+img,
+video,
+canvas,
+svg {
+  max-width: 100%;
+  height: auto;
+}
+
+iframe {
+  max-width: 100%;
+}
+
+/* Textes longs : pas de débordement horizontal */
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+li,
+td,
+th {
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+/* Tables larges : scroll horizontal natif sur mobile */
+table {
+  max-width: 100%;
+}
+
+@media (max-width: 767px) {
+  .platform-carousel-track {
+    gap: 2.5rem;
+  }
 }
 
 ::selection {
