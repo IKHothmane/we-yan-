@@ -90,6 +90,14 @@ export const localBusinessJsonLd = {
         '@type': 'Offer',
         itemOffered: {
           '@type': 'Service',
+          name: 'Création de Site Web',
+          url: `${SITE_URL}/creation-site-web-casablanca/`,
+        },
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
           name: 'Création de Contenu & Community Management',
           url: `${SITE_URL}/community-management-casablanca/`,
         },
@@ -158,6 +166,7 @@ export function buildSiteGraphJsonLd() {
 
 const MONEY_SERVICE_SLUGS = new Set([
   '/agence-seo-casablanca',
+  '/creation-site-web-casablanca',
   '/community-management-casablanca',
   '/services/strategie-marketing-rebranding',
   '/services/publicite-digitale',

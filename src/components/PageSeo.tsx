@@ -112,7 +112,8 @@ export default function PageSeo({
 
   useLayoutEffect(() => {
     const page = getPageLinking(location.pathname)
-    const documentTitle = page ? buildPageDocumentTitle(page) : title
+    // pageSeo.title = source de vérité SERP ; title_serp peut surcharger si défini
+    const documentTitle = page?.title_serp || title || (page ? buildPageDocumentTitle(page) : SITE_NAME)
     const metaDescription = description
     const canonicalUrl = page
       ? buildPageCanonical(page)

@@ -33,6 +33,7 @@ const SITEMAP_SKIP = new Set(['demandes', 'merci'])
 const SITEMAP_META = {
   '': { changefreq: 'weekly', priority: '1.0' },
   'agence-seo-casablanca': { changefreq: 'weekly', priority: '0.98' },
+  'creation-site-web-casablanca': { changefreq: 'weekly', priority: '0.97' },
   'community-management-casablanca': { changefreq: 'weekly', priority: '0.95' },
   services: { changefreq: 'weekly', priority: '0.94' },
   'services/seo': { changefreq: 'monthly', priority: '0.92' },
@@ -58,12 +59,42 @@ const SITEMAP_META = {
   'conditions-generales': { changefreq: 'yearly', priority: '0.3' },
 }
 
+/** lastmod par URL (date de contenu réelle) — ne pas utiliser la date de build pour toutes les pages */
+const SITEMAP_LASTMOD = {
+  '': '2026-10-20',
+  'agence-seo-casablanca': '2026-10-20',
+  'creation-site-web-casablanca': '2026-10-20',
+  'community-management-casablanca': '2026-08-26',
+  services: '2026-08-26',
+  'services/seo': '2026-08-26',
+  'services/strategie-marketing-rebranding': '2026-08-26',
+  'services/creation-contenu-community-management': '2026-08-26',
+  'services/publicite-digitale': '2026-08-26',
+  'services/marketing-influence': '2026-08-26',
+  'services/media-publicite-offline': '2026-08-26',
+  projets: '2026-08-26',
+  agence: '2026-08-26',
+  contact: '2026-08-26',
+  'blog/rebranding-exemple-casablanca-2026': '2026-08-26',
+  'blog/prix-seo-casablanca-2026': '2026-08-26',
+  'blog/prix-google-ads-maroc-2026': '2026-08-26',
+  'blog/prix-meta-ads-casablanca-2026': '2026-08-26',
+  'blog/prix-site-web-maroc-2026': '2026-08-26',
+  'blog/prix-influenceur-maroc-2026': '2026-08-26',
+  'blog/branding-creation-marque-maroc': '2026-08-26',
+  'blog/seo-vs-sea-maroc': '2026-10-20',
+  'blog/marketing-digital-tendances-maroc-2026': '2026-08-26',
+  'mentions-legales': '2026-10-20',
+  'politique-de-confidentialite': '2026-08-26',
+  'conditions-generales': '2026-08-26',
+}
+
 function writeCanonicalSitemap() {
-  const lastmod = '2026-08-26'
   const routes = ['', ...SPA_ROUTES.filter((route) => !SITEMAP_SKIP.has(route))]
   const urls = routes.map((route) => {
     const loc = route === '' ? 'https://weyandigital.ma/' : `https://weyandigital.ma/${route}/`
     const meta = SITEMAP_META[route] || { changefreq: 'monthly', priority: '0.7' }
+    const lastmod = SITEMAP_LASTMOD[route] || '2026-08-26'
     return `  <url>
     <loc>${loc}</loc>
     <lastmod>${lastmod}</lastmod>
@@ -91,6 +122,7 @@ const SPA_ROUTES = [
   'agence',
   'contact',
   'agence-seo-casablanca',
+  'creation-site-web-casablanca',
   'community-management-casablanca',
   'blog/prix-site-web-maroc-2026',
   'blog/prix-seo-casablanca-2026',

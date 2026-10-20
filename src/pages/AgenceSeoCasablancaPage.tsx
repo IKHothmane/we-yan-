@@ -85,10 +85,10 @@ export default function AgenceSeoCasablancaPage() {
                 Agence SEO à{' '}
                 <span className="italic" style={{ color: '#FC9700' }}>Casablanca</span>
                 <br />
-                <span style={{ color: '#6483F0' }}>Premier sur Google</span> en 2026
+                <span style={{ color: '#6483F0' }}>Visibilité Google</span> mesurable
               </h1>
               <p className="text-[clamp(1rem,2.1vw,1.15rem)] leading-8 text-slate-600 max-w-2xl mb-5">
-                Spécialiste du référencement naturel local et national au <strong className="font-semibold text-slate-800">Maroc</strong>, notre agence SEO basée à Casablanca, quartier Maarif, met votre entreprise en <strong className="font-semibold text-slate-900">première page Google</strong> sur les mots-clés qui génèrent du chiffre d'affaires.
+                Spécialiste du référencement naturel local et national au <strong className="font-semibold text-slate-800">Maroc</strong>, notre agence SEO basée à Casablanca (Maarif) vous aide à progresser sur les mots-clés qui génèrent des demandes et du chiffre d’affaires — avec un suivi Search Console transparent.
               </p>
               <p className="text-[clamp(0.95rem,2vw,1.08rem)] leading-8 text-slate-600 max-w-2xl mb-9">
                 Contrairement aux généralistes, nous combinons <strong>SEO local</strong> (fiche Google Business, avis, proximité Casablanca), <strong>SEO technique</strong> (vitesse, Core Web Vitals, Schema.org), <strong>SEO sémantique</strong> (intentions de recherche marocaines FR/Darija) et <strong>netlinking local</strong>. Le détail opérationnel de la{' '}
@@ -103,16 +103,30 @@ export default function AgenceSeoCasablancaPage() {
                   className="inline-flex items-center justify-center gap-2 rounded-2xl px-8 py-4 text-[0.82rem] font-black uppercase tracking-[0.2em] text-white transition-all hover:-translate-y-0.5 hover:brightness-110"
                   style={{ backgroundColor: '#6483F0', boxShadow: '0 22px 50px -18px rgba(100,131,240,0.65)' }}
                 >
-                  Devis SEO gratuit · 24h
+                  Demander un audit SEO
                   <Icon name="arrow_forward" className="h-4 w-4" />
                 </Link>
                 <a
                   href="#audit"
                   className="inline-flex items-center justify-center gap-2 rounded-2xl border border-slate-900/20 bg-white px-8 py-4 text-[0.82rem] font-black uppercase tracking-[0.18em] text-slate-800 transition-all hover:bg-slate-50"
                 >
-                  Comment on travaille
+                  Voir la méthode
                 </a>
               </div>
+              <p className="mt-6 text-[0.9rem] text-slate-500">
+                Voir aussi :{' '}
+                <Link to="/blog/prix-seo-casablanca-2026/" className="font-semibold text-[#6483F0] underline-offset-4 hover:underline">
+                  prix SEO Casablanca 2026
+                </Link>
+                {' · '}
+                <Link to="/projets/" className="font-semibold text-[#6483F0] underline-offset-4 hover:underline">
+                  réalisations
+                </Link>
+                {' · '}
+                <Link to="/creation-site-web-casablanca/" className="font-semibold text-[#6483F0] underline-offset-4 hover:underline">
+                  création de site web
+                </Link>
+              </p>
             </div>
 
             <figure data-reveal data-reveal-delay="120" className="relative">
@@ -127,11 +141,13 @@ export default function AgenceSeoCasablancaPage() {
                   decoding="async"
                 />
               </div>
-              <div className="absolute -bottom-5 -left-5 max-w-[230px] rounded-[1.25rem] bg-white border border-slate-200 p-4 shadow-[0_18px_40px_-18px_rgba(15,23,42,0.55)]">
-                <p className="text-[0.7rem] font-bold uppercase tracking-[0.2em] text-slate-500 mb-1.5">Résultat client</p>
-                <p className="font-black text-[2rem] leading-none" style={{ color: '#6483F0' }}>+218%</p>
+              <div className="absolute -bottom-5 -left-5 max-w-[250px] rounded-[1.25rem] bg-white border border-slate-200 p-4 shadow-[0_18px_40px_-18px_rgba(15,23,42,0.55)]">
+                <p className="text-[0.7rem] font-bold uppercase tracking-[0.2em] text-slate-500 mb-1.5">Preuve de travail</p>
+                <p className="font-black text-[1.15rem] leading-snug" style={{ color: '#6483F0' }}>
+                  Reporting Search Console
+                </p>
                 <p className="text-[0.85rem] text-slate-600 font-semibold leading-snug mt-1.5">
-                  Trafic organique sur 9 mois · Client Casablanca e-commerce mode
+                  Positions, impressions et clics suivis chaque mois — cas clients détaillés sur devis.
                 </p>
               </div>
             </figure>
@@ -142,10 +158,10 @@ export default function AgenceSeoCasablancaPage() {
           <div className="mx-auto max-w-[1200px]">
             <div className="text-center max-w-3xl mx-auto mb-14" data-reveal>
               <h2 className="font-black tracking-tight text-[clamp(1.75rem,4.6vw,2.75rem)] text-slate-900 mb-4">
-                Pourquoi We Yan est <span style={{ color: '#FC9700' }}>LA meilleure agence SEO</span> à Casablanca ?
+                Pourquoi une <span style={{ color: '#FC9700' }}>agence SEO locale</span> à Casablanca ?
               </h2>
               <p className="text-[clamp(0.95rem,2vw,1.1rem)] leading-8 text-slate-600">
-                Parce que nous sommes implantés à Casablanca et nous maîtrisons VRAIMENT les spécificités du marché marocain : les habitudes des internautes darijaophones, la concurrence dans votre secteur, les annuaires locaux, les expressions populaires et les pièges à éviter pour ne pas se faire pénaliser par Google.
+                Parce que le marché marocain a ses propres habitudes de recherche (FR / Darija), ses annuaires locaux et une concurrence locale spécifique. Nous combinons SEO local Google Business, technique, contenus et netlinking cohérent — sans promesse de « 1ʳᵉ place garantie ».
               </p>
             </div>
 
@@ -239,12 +255,40 @@ export default function AgenceSeoCasablancaPage() {
           </div>
         </section>
 
+        <section className="border-t border-slate-200 px-[clamp(1rem,4vw,2rem)] py-20 sm:px-8 lg:py-24">
+          <div className="mx-auto max-w-[1100px]" data-reveal>
+            <h2 className="font-black tracking-tight text-[clamp(1.6rem,4vw,2.4rem)] text-slate-900 mb-4 text-center">
+              Livrables concrets de l’accompagnement SEO
+            </h2>
+            <p className="text-center text-slate-600 max-w-2xl mx-auto mb-10 leading-7">
+              Vous savez exactement ce que vous recevez chaque mois — pas un « pack mystère ».
+            </p>
+            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-[0.98rem] text-slate-700">
+              {[
+                'Audit technique initial + plan d’actions priorisées',
+                'Suivi des positions et impressions (Search Console)',
+                'Optimisation on-page des pages money (title, H1, maillage)',
+                'Calendrier éditorial et briefs contenus locaux',
+                'Actions SEO local Google Business Profile',
+                'Rapport mensuel + appel de suivi avec votre expert',
+              ].map((item) => (
+                <li
+                  key={item}
+                  className="rounded-2xl border border-slate-200 bg-white px-5 py-4 font-semibold shadow-[0_10px_24px_-18px_rgba(15,23,42,0.3)]"
+                >
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+
         {/* FAQ — Schema.org FAQPage est dans le <head> global + Questions/Réponses visuelles */}
         <section className="bg-[#EFF6FF] border-y border-[#BFDBFE] px-[clamp(1rem,4vw,2rem)] py-20 sm:px-8 lg:py-28">
           <div className="mx-auto max-w-3xl">
             <div className="text-center mb-12" data-reveal>
               <span className="inline-flex items-center gap-2 rounded-full bg-white text-[#1D4ED8] border border-[#BFDBFE] px-3.5 py-1.5 text-[0.7rem] font-bold uppercase tracking-[0.2em] mb-5">
-                FAQ SEO Maroc · Rich Snippet
+                FAQ SEO Maroc
               </span>
               <h2 className="font-black tracking-tight text-[clamp(1.75rem,4.6vw,2.6rem)] text-slate-900">
                 Questions fréquentes · Agence SEO Casablanca

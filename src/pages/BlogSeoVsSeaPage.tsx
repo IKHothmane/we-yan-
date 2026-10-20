@@ -139,12 +139,12 @@ export default function BlogSeoVsSeaPage() {
             </>,
             <>
               <div className="rounded-2xl border border-[#FCD34D] bg-[#FFFBEB] p-6 mt-5 text-[0.98rem] leading-8 text-slate-700">
-                <p className="font-bold text-slate-900 mb-2">📊 Résultat typique client We Yan mix SEO+SEA après 9 mois :</p>
+                <p className="font-bold text-slate-900 mb-2">Résultat attendu d’un mix SEO + SEA bien piloté :</p>
                 <ul className="space-y-1 ml-5 list-disc">
-                  <li>Trafic organique Google +180% → 45% du trafic total (gratuit)</li>
-                  <li>Trafic payant Google Ads reste stable</li>
-                  <li>Coût d'acquisition global client (CPA) <strong className="font-bold text-[#B45309]">-38%</strong></li>
-                  <li>Chiffre d'affaires digital <strong className="font-bold text-[#B45309]">+162%</strong></li>
+                  <li>Part croissante du trafic organique sur les requêtes à intention commerciale</li>
+                  <li>SEA concentré sur les mots-clés où le SEO n’est pas encore en top 3</li>
+                  <li>Baisse progressive du coût d’acquisition global (CPA) quand le SEO prend le relais</li>
+                  <li>Reporting mensuel Search Console + Google Ads pour ajuster le budget</li>
                 </ul>
               </div>
             </>,

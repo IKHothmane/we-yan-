@@ -26,6 +26,7 @@ const ContactPage = lazyWithRetry(() => import('./pages/ContactPage'))
 
 // Pages SEO dédiées long tail (Casablanca)
 const AgenceSeoCasablancaPage = lazyWithRetry(() => import('./pages/AgenceSeoCasablancaPage'))
+const CreationSiteWebCasablancaPage = lazyWithRetry(() => import('./pages/CreationSiteWebCasablancaPage'))
 const CommunityManagementCasablancaPage = lazyWithRetry(() => import('./pages/CommunityManagementCasablancaPage'))
 
 // Articles Blog
@@ -59,6 +60,7 @@ const APP_PAGE_ROUTES = [
   { path: '/agence', element: <AgencyPage /> },
   { path: '/contact', element: <ContactPage /> },
   { path: '/agence-seo-casablanca', element: <AgenceSeoCasablancaPage /> },
+  { path: '/creation-site-web-casablanca', element: <CreationSiteWebCasablancaPage /> },
   { path: '/community-management-casablanca', element: <CommunityManagementCasablancaPage /> },
   { path: '/blog/prix-site-web-maroc-2026', element: <BlogPrixSiteWebMarocPage /> },
   { path: '/blog/prix-seo-casablanca-2026', element: <BlogPrixSeoCasablancaPage /> },

@@ -5,7 +5,11 @@ import PageSeo from '../components/PageSeo'
 import PageBreadcrumb from '../components/PageBreadcrumb'
 import SiteFooter from '../components/SiteFooter'
 import useScrollReveal from '../hooks/useScrollReveal'
+import { getPageLinking } from '../lib/internalLinking'
 import { pageSeo } from '../lib/pageSeo'
+
+const pageLinking = getPageLinking('/services/seo')
+const faq = pageLinking?.faq ?? []
 
 const heroImage = '/images/seo/hero-user.webp?v=20260623'
 const authorityImage = '/images/seo/authority.webp'
@@ -314,6 +318,38 @@ export default function SeoPage() {
             </div>
           </div>
         </section>
+
+        {faq.length > 0 && (
+          <section className="px-[clamp(1rem,4vw,2rem)] py-24 md:px-margin-desktop md:py-32">
+            <div className="mx-auto max-w-3xl">
+              <h2 className="mb-10 font-rigot text-4xl font-bold text-brand-charcoal md:text-5xl" data-reveal>
+                Questions fréquentes sur le SEO
+              </h2>
+              <div className="space-y-4">
+                {faq.map((item, index) => (
+                  <details
+                    key={item.q}
+                    open={index === 0}
+                    className="group rounded-2xl border border-brand-blue/10 bg-white p-6 shadow-sm open:border-secondary"
+                    data-reveal
+                    data-reveal-delay={String(index * 50)}
+                  >
+                    <summary className="flex cursor-pointer list-none items-center justify-between gap-6 marker:content-none">
+                      <h3 className="text-base font-bold leading-snug text-brand-charcoal">{item.q}</h3>
+                      <span
+                        className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-xl border border-brand-blue/15 text-brand-charcoal/50 transition-transform group-open:rotate-45 group-open:border-secondary group-open:bg-secondary group-open:text-on-secondary"
+                        aria-hidden="true"
+                      >
+                        +
+                      </span>
+                    </summary>
+                    <p className="mt-5 text-[0.98rem] leading-8 text-brand-charcoal/70">{item.r}</p>
+                  </details>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
 
         <section className="px-[clamp(1rem,4vw,2rem)] py-32 md:px-margin-desktop">
           <div className="relative w-full overflow-hidden rounded-[3rem] border border-brand-blue/10 bg-surface-container p-16 text-center shadow-2xl md:p-24">

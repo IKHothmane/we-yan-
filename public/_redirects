@@ -38,8 +38,6 @@
 # 3b)  ANCIENS SLUGS / LIENS MORTS → 301 (GSC Introuvable)
 #      Avant le fallback SPA, sinon Google garde un 404.
 # ——————————————————————————————————————————————————————————
-/creation-site-web-casablanca                      /contact/ 301
-/creation-site-web-casablanca/                     /contact/ 301
 /seo                                               /services/seo/ 301
 /seo/                                              /services/seo/ 301
 /agence-seo                                        /agence-seo-casablanca/ 301

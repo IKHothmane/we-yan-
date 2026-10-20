@@ -1,8 +1,9 @@
 import { Link } from 'react-router-dom'
 import Navbar from '../components/Navbar'
 import PageSeo from '../components/PageSeo'
-import { pageSeo } from '../lib/pageSeo'
 import SiteFooter from '../components/SiteFooter'
+import { hasOfficialCompanyIds, legalIdentity } from '../lib/legalIdentity'
+import { pageSeo } from '../lib/pageSeo'
 
 export default function MentionsLegalesPage() {
 
@@ -38,12 +39,12 @@ export default function MentionsLegalesPage() {
             <div className="grid grid-cols-1 sm:grid-cols-2 divide-y sm:divide-y-0 sm:divide-x divide-slate-100">
               <div className="px-6 py-5 bg-white">
                 <p className="text-[0.75rem] uppercase tracking-widest text-slate-400 font-bold mb-2">Raison sociale</p>
-                <p className="text-slate-800 font-bold text-[1.08rem] leading-snug">We Yan Digital</p>
+                <p className="text-slate-800 font-bold text-[1.08rem] leading-snug">{legalIdentity.raisonSociale}</p>
                 <p className="text-slate-500 text-sm mt-1">Agence digitale full-service · Casablanca Maroc</p>
               </div>
               <div className="px-6 py-5 bg-white">
                 <p className="text-[0.75rem] uppercase tracking-widest text-slate-400 font-bold mb-2">Forme juridique</p>
-                <p className="text-slate-800 font-bold text-[1.08rem] leading-snug">Société à Responsabilité Limitée (S.A.R.L. — Maroc)</p>
+                <p className="text-slate-800 font-bold text-[1.08rem] leading-snug">{legalIdentity.formeJuridique}</p>
                 <p className="text-slate-500 text-sm mt-1">Capital social (indiqué sur demande)</p>
               </div>
             </div>
@@ -51,24 +52,51 @@ export default function MentionsLegalesPage() {
               <div className="px-6 py-5">
                 <p className="text-[0.75rem] uppercase tracking-widest text-slate-400 font-bold mb-2">Identifiants fiscaux & commerce</p>
                 <ul className="space-y-1 text-slate-700 text-[0.98rem] leading-relaxed">
-                  <li className="flex items-start justify-between gap-3"><span className="text-slate-500">Identifiant Fiscal (IF)</span><span className="font-semibold">— — — —</span></li>
-                  <li className="flex items-start justify-between gap-3"><span className="text-slate-500">Registre de Commerce (RC) Casablanca</span><span className="font-semibold">— — — —</span></li>
-                  <li className="flex items-start justify-between gap-3"><span className="text-slate-500">Identifiant Commun de l'Entreprise (ICE)</span><span className="font-semibold">— — — —</span></li>
-                  <li className="flex items-start justify-between gap-3"><span className="text-slate-500">Patente / Taxe professionnelle</span><span className="font-semibold">— — — —</span></li>
-                  <li className="flex items-start justify-between gap-3"><span className="text-slate-500">CNSS</span><span className="font-semibold">— — — —</span></li>
+                  <li className="flex items-start justify-between gap-3">
+                    <span className="text-slate-500">Identifiant Fiscal (IF)</span>
+                    <span className="font-semibold">{legalIdentity.identifiantFiscal || 'En cours de publication'}</span>
+                  </li>
+                  <li className="flex items-start justify-between gap-3">
+                    <span className="text-slate-500">Registre de Commerce (RC) Casablanca</span>
+                    <span className="font-semibold">{legalIdentity.registreCommerce || 'En cours de publication'}</span>
+                  </li>
+                  <li className="flex items-start justify-between gap-3">
+                    <span className="text-slate-500">Identifiant Commun de l'Entreprise (ICE)</span>
+                    <span className="font-semibold">{legalIdentity.ice || 'En cours de publication'}</span>
+                  </li>
                 </ul>
-                <p className="text-[0.8rem] text-slate-400 mt-3 leading-snug">* Ces champs seront complétés sur production du certificat RC final. Pour toute vérification, contactez notre équipe juridique.</p>
+                {!hasOfficialCompanyIds() ? (
+                  <p className="text-[0.8rem] text-slate-500 mt-3 leading-snug">
+                    Les identifiants officiels seront publiés dès réception du certificat RC. Vérification anticipée :{' '}
+                    <a href={`mailto:${legalIdentity.email}`} className="font-semibold text-[#6483F0] hover:underline">
+                      {legalIdentity.email}
+                    </a>
+                    .
+                  </p>
+                ) : null}
               </div>
               <div className="px-6 py-5">
                 <p className="text-[0.75rem] uppercase tracking-widest text-slate-400 font-bold mb-2">Siège social</p>
                 <p className="text-slate-800 font-medium text-[1rem] leading-relaxed">
-                  We Yan Digital<br />
-                  Quartier Maarif, Casablanca 20100<br />
-                  Royaume du Maroc
+                  {legalIdentity.raisonSociale}
+                  <br />
+                  {legalIdentity.siege.quartier}, {legalIdentity.siege.ville} 20100
+                  <br />
+                  {legalIdentity.siege.pays}
                 </p>
                 <div className="mt-4 space-y-2">
-                  <p className="flex items-center gap-2 text-slate-700 text-[0.95rem]"><span className="text-[#6483F0]">📞</span> <a href="tel:+212691567246" className="font-semibold hover:underline">+212 6 91 56 72 46</a></p>
-                  <p className="flex items-center gap-2 text-slate-700 text-[0.95rem]"><span className="text-[#6483F0]">✉️</span> <a href="mailto:contact@weyandigital.ma" className="font-semibold hover:underline">contact@weyandigital.ma</a></p>
+                  <p className="flex items-center gap-2 text-slate-700 text-[0.95rem]">
+                    <span className="text-[#6483F0]">📞</span>{' '}
+                    <a href={legalIdentity.telephoneHref} className="font-semibold hover:underline">
+                      {legalIdentity.telephone}
+                    </a>
+                  </p>
+                  <p className="flex items-center gap-2 text-slate-700 text-[0.95rem]">
+                    <span className="text-[#6483F0]">✉️</span>{' '}
+                    <a href={`mailto:${legalIdentity.email}`} className="font-semibold hover:underline">
+                      {legalIdentity.email}
+                    </a>
+                  </p>
                 </div>
               </div>
             </div>

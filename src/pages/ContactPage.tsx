@@ -99,10 +99,7 @@ export default function ContactPage() {
 
       <main className="max-w-[1280px] mx-auto px-8 md:px-margin-desktop py-section-padding">
         <header className="mb-20 animate-fade-in text-center max-w-4xl mx-auto" data-reveal>
-          <h1 className="font-rigot text-6xl md:text-7xl font-extrabold mb-6 hidden md:block">
-            Parlons de votre prochain grand projet.
-          </h1>
-          <h1 className="font-rigot text-4xl font-bold mb-4 md:hidden">
+          <h1 className="font-rigot text-4xl md:text-6xl lg:text-7xl font-extrabold mb-4 md:mb-6">
             Parlons de votre prochain grand projet.
           </h1>
           <p className="text-body-lg text-on-surface-variant">

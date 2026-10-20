@@ -37,6 +37,7 @@ const UNIVERSAL_CLUSTERS: Cluster[] = ['home', 'hub', 'conversion']
 
 const MONEY_SLUGS = [
   '/agence-seo-casablanca',
+  '/creation-site-web-casablanca',
   '/community-management-casablanca',
   '/services/strategie-marketing-rebranding',
   '/services/publicite-digitale',
@@ -86,6 +87,13 @@ export const PAGES_LINKING: PageLinking[] = [
         pourquoi: 'Pilier création / social',
       },
       {
+        cible: '/creation-site-web-casablanca',
+        ancre: 'création de site web à Casablanca',
+        contexte_avant: 'Pour une présence web professionnelle et convertissante, découvrez notre',
+        contexte_apres: 'avec sites vitrines, e-commerce et délais réalistes pour le Maroc.',
+        pourquoi: 'Money page création web',
+      },
+      {
         cible: '/services/strategie-marketing-rebranding',
         ancre: 'stratégie marketing et rebranding',
         contexte_avant: 'Avant les campagnes, clarifiez votre marque avec une',
@@ -121,6 +129,13 @@ export const PAGES_LINKING: PageLinking[] = [
         pourquoi: 'Silo SEO',
       },
       {
+        cible: '/creation-site-web-casablanca',
+        ancre: 'création de site web à Casablanca',
+        contexte_avant: 'Pour une présence en ligne propre et convertissante, démarrez par la',
+        contexte_apres: 'vitrine ou e-commerce, puis activez SEO et acquisition.',
+        pourquoi: 'Silo web / hub',
+      },
+      {
         cible: '/community-management-casablanca',
         ancre: 'création de contenu et community management',
         contexte_avant: 'La visibilité sociale d’une marque à Casablanca passe par la',
@@ -147,6 +162,20 @@ export const PAGES_LINKING: PageLinking[] = [
       { label: 'Accueil', to: '/' },
       { label: 'Services', to: '/services/' },
       { label: 'Référencement naturel SEO Maroc' },
+    ],
+    faq: [
+      {
+        q: 'Que comprend une prestation SEO We Yan Digital ?',
+        r: 'Audit technique, optimisation on-page, plan de contenus, suivi des positions et netlinking ciblé. Reporting mensuel avec priorités claires pour le marché marocain.',
+      },
+      {
+        q: 'Différence entre service SEO et agence SEO Casablanca ?',
+        r: 'La page service détaille la méthode et les livrables. L’agence SEO Casablanca couvre le pack local (Google Business, requêtes ville) et l’accompagnement de proximité à Maarif.',
+      },
+      {
+        q: 'Combien de temps pour des résultats SEO au Maroc ?',
+        r: 'Premières hausses souvent en 4 à 8 semaines. Trafic utile : 3 à 6 mois. We Yan couple parfois SEO + Ads dès le premier mois pour ne pas attendre le seul organique.',
+      },
     ],
     liens_sortants: [
       {
@@ -221,11 +250,76 @@ export const PAGES_LINKING: PageLinking[] = [
         pourquoi: 'Article du cluster',
       },
       {
+        cible: '/creation-site-web-casablanca',
+        ancre: 'création de site web à Casablanca',
+        contexte_avant: 'Si votre site freine le référencement, commencez par une',
+        contexte_apres: 'propre, rapide et structurée pour Google, puis l’accompagnement SEO.',
+        pourquoi: 'Complément technique cross-sell',
+      },
+      {
         cible: '/contact',
         ancre: 'demander un audit SEO à Casablanca',
         contexte_avant: 'Pour un plan d’action chiffré sur vos mots-clés Casablanca,',
         contexte_apres: '— réponse d’un expert SEO sous 24h ouvrées à Maarif.',
         pourquoi: 'Conversion, ne pas diluer vers d’autres silos',
+      },
+    ],
+  },
+  {
+    slug: '/creation-site-web-casablanca',
+    titre: 'Création site web Casablanca',
+    intention: 'Ranker sur création site web Casablanca / agence web Casablanca, convertir en devis.',
+    mot_cle_principal: 'creation site web casablanca',
+    cluster_semantique: 'hub',
+    pageRank_voulu: 9,
+    title_serp: 'Création site web Casablanca | We Yan Digital',
+    breadcrumb: [
+      { label: 'Accueil', to: '/' },
+      { label: 'Services', to: '/services/' },
+      { label: 'Création site web Casablanca' },
+    ],
+    faq: [
+      {
+        q: 'Combien coûte un site vitrine à Casablanca en 2026 ?',
+        r: 'Un site vitrine 3–5 pages démarre généralement à partir de 6 500 MAD chez We Yan Digital. E-commerce et sur-mesure se chiffrent selon le catalogue et les intégrations.',
+      },
+      {
+        q: 'Quels sont les délais de création d’un site web à Casablanca ?',
+        r: 'Vitrine simple : 3 à 6 semaines après brief et contenus. E-commerce ou multi-langue : souvent 6 à 12 semaines selon validations.',
+      },
+      {
+        q: 'Le site est-il prêt pour le référencement Google ?',
+        r: 'Oui : structure technique, balises de base et mobile. Pour ranker durablement, couplez avec notre agence SEO Casablanca après la mise en ligne.',
+      },
+    ],
+    liens_sortants: [
+      {
+        cible: '/blog/prix-site-web-maroc-2026',
+        ancre: 'guide des prix site web au Maroc en 2026',
+        contexte_avant: 'Pour comparer les fourchettes avant le devis, consultez notre',
+        contexte_apres: 'puis validez le périmètre exact avec l’équipe We Yan Digital.',
+        pourquoi: 'Éducation prix → money page',
+      },
+      {
+        cible: '/agence-seo-casablanca',
+        ancre: 'agence SEO à Casablanca',
+        contexte_avant: 'Après la mise en ligne, boostez le trafic organique avec une',
+        contexte_apres: 'qui pilote audit, contenus locaux et suivi Search Console.',
+        pourquoi: 'Cross-sell SEO',
+      },
+      {
+        cible: '/projets',
+        ancre: 'exemples de projets digitaux',
+        contexte_avant: 'Pour voir le niveau de finition attendu, parcourez nos',
+        contexte_apres: 'réalisés pour des marques et PME basées à Casablanca.',
+        pourquoi: 'Preuve sociale',
+      },
+      {
+        cible: '/contact',
+        ancre: 'demander un devis site web',
+        contexte_avant: 'Prêt à lancer votre projet web à Casablanca ? Vous pouvez',
+        contexte_apres: '— réponse sous 24h ouvrées avec une fourchette réaliste.',
+        pourquoi: 'Conversion',
       },
     ],
   },
@@ -236,7 +330,7 @@ export const PAGES_LINKING: PageLinking[] = [
     mot_cle_principal: 'agence branding casablanca',
     cluster_semantique: 'branding',
     pageRank_voulu: 9,
-    title_serp: 'Agence Branding & Rebranding Casablanca | Stratégie Marketing - We Yan Digital',
+    title_serp: 'Agence branding Casablanca | Rebranding – We Yan Digital',
     faq: [
       {
         q: 'Quelle est la différence entre branding et rebranding ?',
@@ -341,6 +435,7 @@ export const PAGES_LINKING: PageLinking[] = [
     mot_cle_principal: 'community management casablanca',
     cluster_semantique: 'creation',
     pageRank_voulu: 9,
+    title_serp: 'Community management Casablanca | We Yan Digital',
     breadcrumb: [
       { label: 'Accueil', to: '/' },
       { label: 'Services', to: '/services/' },
@@ -391,7 +486,7 @@ export const PAGES_LINKING: PageLinking[] = [
     mot_cle_principal: 'agence google ads maroc',
     cluster_semantique: 'ads',
     pageRank_voulu: 9,
-    title_serp: 'Agence Google Ads Maroc & Meta Ads Casablanca | We Yan Digital',
+    title_serp: 'Google Ads Maroc & Meta Ads Casablanca | We Yan',
     faq: [
       {
         q: 'Quel budget Google Ads minimum au Maroc en 2026 ?',
@@ -449,7 +544,7 @@ export const PAGES_LINKING: PageLinking[] = [
     mot_cle_principal: 'agence influenceur maroc',
     cluster_semantique: 'ads',
     pageRank_voulu: 9,
-    title_serp: 'Agence Influenceur Maroc | Marketing d’Influence Casablanca - We Yan Digital',
+    title_serp: 'Agence influenceur Maroc | Influence Casablanca',
     faq: [
       {
         q: 'Quel est le prix d’une story influenceur au Maroc en 2026 ?',
@@ -867,14 +962,14 @@ export const PAGES_LINKING: PageLinking[] = [
         cible: '/agence-seo-casablanca',
         ancre: 'projets SEO à Casablanca',
         contexte_avant: 'Parmi nos réalisations pour des marques marocaines, nos',
-        contexte_apres: 'ont généré +180% de trafic organique en 6 mois.',
+        contexte_apres: 'illustrent une croissance organique mesurée via Search Console sur plusieurs mois.',
         pourquoi: 'Redistribuer PR6 du portfolio vers money page SEO',
       },
       {
         cible: '/community-management-casablanca',
         ancre: 'nos campagnes social media',
         contexte_avant: 'Et côté contenu social, stories, reels et community,',
-        contexte_apres: 'ont dépassé deux millions de vues organiques en douze mois.',
+        contexte_apres: 'montrent l’impact des contenus et du community management sur l’engagement local.',
         pourquoi: 'Redistribuer PR6 vers money page CM',
       },
       {
@@ -999,6 +1094,7 @@ export const PAGES_LINKING: PageLinking[] = [
 
 export const FOOTER_PILIERS = [
   { to: '/agence-seo-casablanca/', label: 'Agence SEO Casablanca' },
+  { to: '/creation-site-web-casablanca/', label: 'Création site web Casablanca' },
   { to: '/community-management-casablanca/', label: 'Community Management Casablanca' },
   { to: '/services/strategie-marketing-rebranding/', label: 'Stratégie & Rebranding' },
   { to: '/services/publicite-digitale/', label: 'Google Ads & Meta Ads' },

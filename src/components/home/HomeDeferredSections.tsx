@@ -504,7 +504,7 @@ export default function HomeDeferredSections() {
                 avatar: avatarImage('SB', '#6483F0', '#FFFFFF'),
               },
               {
-                quote: 'Collaboration parfaite. Nos ventes ont augmenté de 180% en 6 mois grâce à leur stratégie social media.',
+                quote: 'Collaboration fluide et reporting clair. Leur stratégie social media a nettement amélioré notre génération de leads locaux.',
                 author: 'Mehdi Alaoui',
                 role: 'CEO, TechNova Morocco',
                 avatar: avatarImage('MA', '#6483F0', '#FFFFFF'),
