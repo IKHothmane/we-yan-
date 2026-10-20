@@ -1,4 +1,4 @@
-﻿﻿﻿﻿﻿﻿import { Link } from 'react-router-dom'
+﻿import { Link } from 'react-router-dom'
 import Icon from '../components/Icon'
 import Navbar from '../components/Navbar'
 import PageSeo from '../components/PageSeo'
@@ -102,7 +102,7 @@ export default function OfflineMediaPage() {
 
             <div className="relative" data-reveal data-reveal-delay="100">
               <div className="absolute -bottom-8 -left-8 h-64 w-64 rounded-full bg-primary/15 blur-3xl" />
-              <div className="relative h-[420px] overflow-hidden rounded-[2rem] shadow-2xl md:h-[600px] md:rotate-3 md:scale-105">
+              <div className="relative h-[26.25rem] overflow-hidden rounded-[2rem] shadow-2xl md:h-[37.5rem] md:rotate-3 md:scale-105">
                 <img className="h-full w-full object-cover" src={heroImage} alt="Grand panneau publicitaire urbain"
                     width={800}
                     height={600}
@@ -125,7 +125,7 @@ export default function OfflineMediaPage() {
             </p>
           </div>
 
-          <div className="grid h-auto grid-cols-1 gap-6 md:grid-cols-12 md:h-[800px]">
+          <div className="grid h-auto grid-cols-1 gap-6 md:grid-cols-12 md:h-[50rem]">
             <article
               className="group relative flex flex-col justify-end overflow-hidden rounded-[1.5rem] border border-white/20 bg-white/70 p-8 backdrop-blur-md md:col-span-8"
               data-reveal

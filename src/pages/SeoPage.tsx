@@ -115,7 +115,7 @@ export default function SeoPage() {
                     width={800}
                     height={600}
                   />
-              <div className="absolute -bottom-6 -left-6 w-[220px] max-w-[220px]">
+              <div className="absolute -bottom-6 -left-6 w-[13.75rem] max-w-[13.75rem]">
                 <div className="absolute inset-0 translate-x-4 translate-y-4 rounded-[1rem] border-[3px] border-brand-orange bg-transparent shadow-[0_18px_45px_-18px_rgba(252,151,0,0.65)]" />
                 <div className="relative rounded-[1rem] bg-secondary px-5 py-4 text-white shadow-xl">
                   <p className="mb-2 font-rigot text-4xl leading-none tracking-tight">40%</p>

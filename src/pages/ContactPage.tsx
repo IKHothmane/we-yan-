@@ -97,9 +97,12 @@ export default function ContactPage() {
       <PageSeo {...pageSeo.contact} />
       <Navbar />
 
-      <main className="max-w-[1280px] mx-auto px-8 md:px-margin-desktop py-section-padding">
-        <header className="mb-20 animate-fade-in text-center max-w-4xl mx-auto" data-reveal>
-          <h1 className="font-rigot text-4xl md:text-6xl lg:text-7xl font-extrabold mb-4 md:mb-6">
+      <main className="max-w-[1280px] mx-auto px-8 md:px-margin-desktop pt-[clamp(7.5rem,16vw,9.5rem)] pb-section-padding">
+        <header className="mb-16 text-center max-w-4xl mx-auto">
+          <h1
+            className="font-rigot text-4xl md:text-5xl lg:text-6xl font-extrabold mb-4 md:mb-6 tracking-[-0.02em] text-on-surface"
+            style={{ lineHeight: 1.28 }}
+          >
             Parlons de votre prochain grand projet.
           </h1>
           <p className="text-body-lg text-on-surface-variant">
@@ -115,9 +118,12 @@ export default function ContactPage() {
 
             <div className="relative z-10">
               <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-12">
-                <aside className="space-y-10 lg:col-span-4">
-                  <div>
-                    <h3 className="font-rigot text-2xl font-bold leading-tight md:text-3xl mb-8">
+                <aside className="min-w-0 space-y-10 lg:col-span-4">
+                  <div className="min-w-0">
+                    <h3
+                      className="mb-8 max-w-full font-semibold text-xl tracking-tight text-on-surface sm:text-2xl"
+                      style={{ lineHeight: 1.3 }}
+                    >
                       Informations de contact
                     </h3>
                     <div className="space-y-6">
@@ -170,7 +176,7 @@ export default function ContactPage() {
                   </div>
                 </aside>
 
-                <div className="lg:col-span-8">
+                <div className="min-w-0 lg:col-span-8">
                   <form className="relative space-y-6" onSubmit={handleSubmit}>
                     <div className="space-y-2 group">
                       <label

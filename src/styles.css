@@ -11,9 +11,15 @@
 }
 
 /*
-  Échelle globale −20 % : toutes les unités rem (Tailwind) et une grande
-  partie du design se réduisent sans toucher chaque page.
+  Échelle globale −20 % : unités rem (Tailwind) + cadres média en rem
+  (voir hauteurs d’images converties px → rem dans les pages).
+  Les héros full-bleed restent edge-to-edge (100% du conteneur).
 */
+:root {
+  --ui-scale: 0.8;
+  --media-scale: 0.8;
+}
+
 html {
   font-size: 80%;
   -webkit-text-size-adjust: 100%;
@@ -53,7 +59,7 @@ iframe {
   max-width: 100%;
 }
 
-/* Textes longs : pas de débordement horizontal */
+/* Textes longs : coupe uniquement si un mot dépasse la largeur (pas au milieu des mots) */
 p,
 h1,
 h2,
@@ -65,7 +71,7 @@ li,
 td,
 th {
   overflow-wrap: break-word;
-  word-break: break-word;
+  word-break: normal;
 }
 
 /* Tables larges : scroll horizontal natif sur mobile */

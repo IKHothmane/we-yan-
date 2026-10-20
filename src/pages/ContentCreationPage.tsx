@@ -63,7 +63,7 @@ export default function ContentCreationPage() {
 
       <main>
         {/* Hero Section */}
-        <section className="relative flex min-h-[921px] items-center overflow-hidden bg-surface-container-lowest">
+        <section className="relative flex min-h-[57.5625rem] items-center overflow-hidden bg-surface-container-lowest">
           <div className="absolute inset-0">
             <img
               src={heroImage}

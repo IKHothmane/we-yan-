@@ -328,7 +328,7 @@ export default function AdvertisingPage() {
               {omniChannelCards.map((card, index) => (
                 <article
                   key={card.title}
-                  className={`group relative flex h-[300px] flex-col justify-end overflow-hidden rounded-[2rem] p-8 ${card.cardClassName}`}
+                  className={`group relative flex h-[18.75rem] flex-col justify-end overflow-hidden rounded-[2rem] p-8 ${card.cardClassName}`}
                   data-reveal
                   data-reveal-delay={String(index * 100)}
                 >

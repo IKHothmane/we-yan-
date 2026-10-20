@@ -41,6 +41,20 @@ export default function useScrollReveal() {
             const target = entry.target as HTMLElement
             target.classList.remove('opacity-0', 'translate-y-8')
             target.classList.add('opacity-100', 'translate-y-0')
+            // Après l’anim : retirer le transform (évite texte flou / « double » sur GPU)
+            const clearTransform = () => {
+              target.classList.remove(
+                'translate-y-0',
+                'translate-y-8',
+                'transition-transform',
+                'transition-opacity',
+                'duration-700',
+                'ease-out',
+              )
+              target.style.transitionDelay = ''
+              target.removeEventListener('transitionend', clearTransform)
+            }
+            target.addEventListener('transitionend', clearTransform)
             observer.unobserve(target)
           })
         },
