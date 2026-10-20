@@ -239,8 +239,15 @@ export default function AdvertisingPage() {
                 </h1>
                 <p className="mb-8 max-w-lg text-lg leading-relaxed text-gray-600">
                   Transformez votre budget publicitaire en moteur de croissance. Nous orchestrons des
-                  campagnes multi-leviers omni-canales sur Meta Ads et Google Ads avec une exécution
-                  chirurgicale, rentable et pilotée par la donnée.
+                  campagnes multi-leviers sur Meta Ads et Google Ads, pilotées par la donnée. Pour une
+                  offre 100&nbsp;% Search, voir aussi notre{' '}
+                  <Link
+                    to="/agence-google-ads-casablanca/"
+                    className="font-semibold text-brand-blue underline-offset-4 hover:underline"
+                  >
+                    gestion de campagnes Google Ads à Casablanca
+                  </Link>
+                  .
                 </p>
                 <div className="flex flex-col gap-4 sm:flex-row sm:gap-4">
                   <Link

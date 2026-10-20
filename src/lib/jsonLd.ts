@@ -114,6 +114,14 @@ export const localBusinessJsonLd = {
         '@type': 'Offer',
         itemOffered: {
           '@type': 'Service',
+          name: 'Agence Google Ads Casablanca',
+          url: `${SITE_URL}/agence-google-ads-casablanca/`,
+        },
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
           name: 'Publicité Digitale (Google Ads & Meta Ads)',
           url: `${SITE_URL}/services/publicite-digitale/`,
         },
@@ -142,6 +150,7 @@ export const localBusinessJsonLd = {
     'Référencement naturel Maroc',
     'Community management Casablanca',
     'Agence branding Casablanca',
+    'Agence Google Ads Casablanca',
     'Agence Google Ads Maroc',
     'Agence influenceur Maroc',
   ],
@@ -166,6 +175,7 @@ export function buildSiteGraphJsonLd() {
 
 const MONEY_SERVICE_SLUGS = new Set([
   '/agence-seo-casablanca',
+  '/agence-google-ads-casablanca',
   '/creation-site-web-casablanca',
   '/community-management-casablanca',
   '/services/strategie-marketing-rebranding',

@@ -4,7 +4,7 @@ import { getPageLinking } from '../lib/internalLinking'
 import { pageSeo } from '../lib/pageSeo'
 
 const pageLinking = getPageLinking('/blog/prix-google-ads-maroc-2026')
-const lienAds = pageLinking?.liens_sortants.find((lien) => lien.cible === '/services/publicite-digitale')
+const lienAds = pageLinking?.liens_sortants.find((lien) => lien.cible === '/agence-google-ads-casablanca')
 const lienContact = pageLinking?.liens_sortants.find((lien) => lien.cible === '/contact')
 
 export default function BlogPrixGoogleAdsMarocPage() {
@@ -288,7 +288,10 @@ export default function BlogPrixGoogleAdsMarocPage() {
       ]}
       ctaTitle="Besoin d’un media plan Google Ads calé sur votre CPC réel ?"
       ctaSubtitle="Nous chiffrons média, gestion et tracking selon votre secteur à Casablanca. Réponse d’un humain sous 24h ouvrées, sans pack magique."
-      relatedLinks={[{ label: 'Voir l’agence Google Ads & Meta Ads', to: '/services/publicite-digitale/' }]}
+      relatedLinks={[
+        { label: 'Agence Google Ads Casablanca', to: '/agence-google-ads-casablanca/' },
+        { label: 'Publicité digitale multi-leviers', to: '/services/publicite-digitale/' },
+      ]}
     />
   )
 }

@@ -37,6 +37,7 @@ const UNIVERSAL_CLUSTERS: Cluster[] = ['home', 'hub', 'conversion']
 
 const MONEY_SLUGS = [
   '/agence-seo-casablanca',
+  '/agence-google-ads-casablanca',
   '/creation-site-web-casablanca',
   '/community-management-casablanca',
   '/services/strategie-marketing-rebranding',
@@ -92,6 +93,13 @@ export const PAGES_LINKING: PageLinking[] = [
         contexte_avant: 'Pour une présence web professionnelle et convertissante, découvrez notre',
         contexte_apres: 'avec sites vitrines, e-commerce et délais réalistes pour le Maroc.',
         pourquoi: 'Money page création web',
+      },
+      {
+        cible: '/agence-google-ads-casablanca',
+        ancre: 'Google Ads à Casablanca',
+        contexte_avant: 'Pour des leads Search dès les premières semaines, activez',
+        contexte_apres: 'avec suivi des conversions et optimisation du budget média.',
+        pourquoi: 'Money page SEA locale',
       },
       {
         cible: '/services/strategie-marketing-rebranding',
@@ -483,23 +491,24 @@ export const PAGES_LINKING: PageLinking[] = [
   {
     slug: '/services/publicite-digitale',
     titre: 'Publicité Digitale',
-    intention: 'Ranker sur « agence google ads maroc » / « agence meta ads casablanca » et convertir (page money).',
-    mot_cle_principal: 'agence google ads maroc',
+    intention:
+      'Hub multi-leviers : Google Ads + Meta Ads + data. Renvoyer vers la money page Google Ads Casablanca pour l’intention Search pure.',
+    mot_cle_principal: 'publicite digitale casablanca',
     cluster_semantique: 'ads',
-    pageRank_voulu: 9,
-    title_serp: 'Google Ads Maroc & Meta Ads Casablanca | We Yan',
+    pageRank_voulu: 8,
+    title_serp: 'Publicité digitale Casablanca | Google & Meta Ads',
     faq: [
       {
-        q: 'Quel budget Google Ads minimum au Maroc en 2026 ?',
-        r: 'En Search Casablanca, comptez souvent 3 000 à 8 000 MAD/mois de média + frais d’agence. We Yan Digital livre un media plan sous 24h.',
+        q: 'Google Ads et Meta Ads : faut-il les coupler ?',
+        r: 'Souvent oui : Search capture l’intention, Meta amplifie et retarget. We Yan Digital à Casablanca pilote le mix selon votre offre et votre budget.',
       },
       {
         q: 'Combien coûtent les Meta Ads à Casablanca ?',
         r: 'CPC et CPL varient par offre. Budgets utiles dès 2 000–5 000 MAD/mois de média. L’agence We Yan pilote tracking, créas et ROAS.',
       },
       {
-        q: 'SEO ou Google Ads : par quoi commencer ?',
-        r: 'Ads pour des leads dès la semaine 1 ; SEO pour capitaliser en 3–6 mois. La stratégie gagnante We Yan à Casablanca est SEO + SEA mixte.',
+        q: 'Où trouver une offre 100 % Google Ads ?',
+        r: 'Pour une gestion Search / Performance Max dédiée à Casablanca, voyez notre page Agence Google Ads Casablanca. Cette page couvre l’approche multi-leviers.',
       },
     ],
     breadcrumb: [
@@ -508,6 +517,13 @@ export const PAGES_LINKING: PageLinking[] = [
       { label: 'Publicité digitale Meta Ads et Google Ads' },
     ],
     liens_sortants: [
+      {
+        cible: '/agence-google-ads-casablanca',
+        ancre: 'gestion de campagnes Google Ads à Casablanca',
+        contexte_avant: 'Pour une offre spécialisée Search et conversions Google, voyez notre',
+        contexte_apres: 'page dédiée, distincte de l’approche multi-leviers présentée ici.',
+        pourquoi: 'Hub ads → money Google Ads locale',
+      },
       {
         cible: '/blog/prix-google-ads-maroc-2026',
         ancre: 'prix Google Ads au Maroc',
@@ -523,17 +539,77 @@ export const PAGES_LINKING: PageLinking[] = [
         pourquoi: 'Article PR4 du silo ads',
       },
       {
-        cible: '/services/marketing-influence',
-        ancre: 'marketing d’influence',
-        contexte_avant: 'Les campagnes social ads se couplent souvent au',
-        contexte_apres: 'pour la preuve sociale et les UGC qui convertissent vraiment.',
+        cible: '/contact',
+        ancre: 'lancer une campagne publicitaire',
+        contexte_avant: 'Pour un media plan Google et Meta à Casablanca,',
+        contexte_apres: 'avec suivi des conversions, ROAS et reporting hebdomadaire.',
+        pourquoi: 'Conversion',
+      },
+    ],
+  },
+  {
+    slug: '/agence-google-ads-casablanca',
+    titre: 'Agence Google Ads Casablanca',
+    intention:
+      'Ranker sur agence Google Ads Casablanca / gestion Google Ads Casablanca, distinct du hub multi-leviers publicité digitale.',
+    mot_cle_principal: 'agence google ads casablanca',
+    cluster_semantique: 'ads',
+    pageRank_voulu: 9,
+    title_serp: 'Agence Google Ads Casablanca | Gestion de campagnes – We Yan Digital',
+    faq: [
+      {
+        q: 'Quel budget publicitaire faut-il prévoir ?',
+        r: 'En Search à Casablanca, un budget média utile démarre souvent autour de 3 000 à 8 000 MAD/mois selon le secteur, hors honoraires de gestion. We Yan Digital propose un media plan sous 24h.',
+      },
+      {
+        q: 'Combien coûtent les frais de gestion Google Ads ?',
+        r: 'Les honoraires dépendent du volume média, du nombre de campagnes et du niveau de reporting. Le devis détaille média Google vs frais d’agence, sans mélange volontaire.',
+      },
+      {
+        q: 'Quand peut-on mesurer les premiers résultats ?',
+        r: 'Des signaux (clics, CPC, premières conversions) apparaissent souvent dès les premières semaines si le tracking est en place. Stabiliser un CPA fiable demande en général plusieurs cycles d’optimisation.',
+      },
+      {
+        q: 'Google Ads ou référencement naturel : que choisir ?',
+        r: 'Google Ads pour des leads rapides ; SEO pour capitaliser en 3–6 mois. La stratégie gagnante à Casablanca reste souvent un mix SEO + SEA. Voir aussi notre comparatif SEO vs SEA.',
+      },
+      {
+        q: 'Puis-je conserver mon propre compte Google Ads ?',
+        r: 'Oui. Nous recommandons que le compte reste à votre nom. We Yan Digital intervient en accès administrateur, avec transparence sur les dépenses et les optimisations.',
+      },
+    ],
+    breadcrumb: [
+      { label: 'Accueil', to: '/' },
+      { label: 'Services', to: '/services/' },
+      { label: 'Agence Google Ads Casablanca' },
+    ],
+    liens_sortants: [
+      {
+        cible: '/services/publicite-digitale',
+        ancre: 'campagnes Meta Ads',
+        contexte_avant: 'Pour amplifier aussi sur Facebook et Instagram, découvrez nos',
+        contexte_apres: 'dans l’offre complète de publicité digitale multi-leviers We Yan.',
+        pourquoi: 'Money Google → hub multi-canal',
+      },
+      {
+        cible: '/blog/prix-google-ads-maroc-2026',
+        ancre: 'prix Google Ads au Maroc en 2026',
+        contexte_avant: 'Pour calibrer CPC et budget média avant le devis, lisez le',
+        contexte_apres: 'puis validez le plan avec l’équipe We Yan Digital à Casablanca.',
+        pourquoi: 'Éducation prix → money',
+      },
+      {
+        cible: '/blog/prix-meta-ads-casablanca-2026',
+        ancre: 'prix Meta Ads à Casablanca',
+        contexte_avant: 'Si vous comparez aussi le social paid local, lisez le guide',
+        contexte_apres: 'avec CPC, CPL WhatsApp et budgets utiles pour 2026.',
         pourquoi: 'Même silo ads',
       },
       {
         cible: '/contact',
-        ancre: 'lancer une campagne Google Ads',
-        contexte_avant: 'Pour un media plan Google et Meta à Casablanca,',
-        contexte_apres: 'avec suivi des conversions, ROAS et reporting hebdomadaire.',
+        ancre: 'demander un devis',
+        contexte_avant: 'Prêt à lancer ou reprendre Google Ads à Casablanca ? Vous pouvez',
+        contexte_apres: 'obtenir une réponse sous 24h ouvrées avec lecture budget et objectifs.',
         pourquoi: 'Conversion',
       },
     ],
@@ -827,7 +903,7 @@ export const PAGES_LINKING: PageLinking[] = [
   {
     slug: '/blog/prix-google-ads-maroc-2026',
     titre: 'Prix Google Ads Maroc 2026',
-    intention: 'Informer sur les tarifs CPC Google Ads au Maroc, puis pousser vers la money ads.',
+    intention: 'Informer sur les tarifs CPC Google Ads au Maroc, puis pousser vers la money Google Ads Casablanca.',
     mot_cle_principal: 'prix google ads maroc',
     cluster_semantique: 'ads',
     pageRank_voulu: 4,
@@ -838,11 +914,18 @@ export const PAGES_LINKING: PageLinking[] = [
     ],
     liens_sortants: [
       {
+        cible: '/agence-google-ads-casablanca',
+        ancre: 'obtenir un devis de gestion Google Ads',
+        contexte_avant: 'Une fois les fourchettes tarifaires bien comprises, vous pouvez',
+        contexte_apres: 'auprès de We Yan Digital à Casablanca — media plan sous 24h ouvrées.',
+        pourquoi: 'Article PR4 → money Google Ads Casablanca',
+      },
+      {
         cible: '/services/publicite-digitale',
-        ancre: 'agence Google Ads Maroc',
-        contexte_avant: 'Pour un media plan Search et un suivi ROAS à Casablanca, notre',
-        contexte_apres: 'pilote le budget, le tracking conversions et un reporting hebdomadaire.',
-        pourquoi: 'Article PR4 → money ads PR9',
+        ancre: 'offre publicité digitale multi-leviers',
+        contexte_avant: 'Si vous couplez aussi Meta Ads au Search, voyez notre',
+        contexte_apres: 'approche Google et Meta pilotés ensemble sur un même media plan.',
+        pourquoi: 'Hub ads complémentaire',
       },
       {
         cible: '/contact',
@@ -1095,11 +1178,11 @@ export const PAGES_LINKING: PageLinking[] = [
 
 export const FOOTER_PILIERS = [
   { to: '/agence-seo-casablanca/', label: 'Agence SEO Casablanca' },
+  { to: '/agence-google-ads-casablanca/', label: 'Agence Google Ads Casablanca' },
   { to: '/creation-site-web-casablanca/', label: 'Création site web Casablanca' },
   { to: '/community-management-casablanca/', label: 'Community Management Casablanca' },
   { to: '/services/strategie-marketing-rebranding/', label: 'Stratégie & Rebranding' },
-  { to: '/services/publicite-digitale/', label: 'Google Ads & Meta Ads' },
-  { to: '/services/marketing-influence/', label: 'Marketing d’influence' },
+  { to: '/services/publicite-digitale/', label: 'Publicité digitale (Meta & multi)' },
 ] as const
 
 function normalizePath(pathname: string) {

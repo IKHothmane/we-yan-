@@ -46,8 +46,13 @@ export const pageSeo = {
     seoImages.contentCreation,
   ),
   advertising: createPageSeoConfig(
-    'Google Ads Maroc & Meta Ads Casablanca | We Yan',
-    'Agence Google Ads Maroc et Meta Ads Casablanca : media plan, CPC, tracking ROAS. Search, Facebook, Instagram. Devis sous 24h.',
+    'Publicité digitale Casablanca | Google & Meta Ads',
+    'Offre multi-leviers We Yan Digital : Google Ads, Meta Ads et pilotage data à Casablanca. Media plan et devis sous 24h.',
+    seoImages.advertising,
+  ),
+  agenceGoogleAdsCasablanca: createPageSeoConfig(
+    'Agence Google Ads Casablanca | Gestion de campagnes – We Yan Digital',
+    'We Yan Digital accompagne les entreprises de Casablanca sur Google Ads : stratégie, gestion des campagnes, suivi des conversions et optimisation du budget. Demandez un devis.',
     seoImages.advertising,
   ),
   influenceMarketing: createPageSeoConfig(
@@ -171,6 +176,7 @@ export const PAGE_SEO_BY_SLUG: Record<string, PageSeoConfig> = {
   '/services/strategie-marketing-rebranding': pageSeo.strategyMarketing,
   '/services/creation-contenu-community-management': pageSeo.contentCreation,
   '/services/publicite-digitale': pageSeo.advertising,
+  '/agence-google-ads-casablanca': pageSeo.agenceGoogleAdsCasablanca,
   '/services/marketing-influence': pageSeo.influenceMarketing,
   '/services/seo': pageSeo.seo,
   '/services/media-publicite-offline': pageSeo.offlineMedia,

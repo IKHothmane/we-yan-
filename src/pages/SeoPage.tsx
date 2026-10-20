@@ -84,7 +84,15 @@ export default function SeoPage() {
                 <Link to="/agence-seo-casablanca/" className="font-bold text-brand-blue underline-offset-4 hover:underline">
                   agence SEO à Casablanca
                 </Link>
-                . Les deux pages se complètent : ici la méthode de service, là l’ancrage local.
+                . Les deux pages se complètent : ici la méthode de service, là l’ancrage local. Pour comparer SEO et
+                payant, voir aussi{' '}
+                <Link
+                  to="/agence-google-ads-casablanca/"
+                  className="font-bold text-brand-blue underline-offset-4 hover:underline"
+                >
+                  Google Ads à Casablanca
+                </Link>
+                .
               </p>
               <div className="flex flex-col gap-6 sm:flex-row">
                 <Link
