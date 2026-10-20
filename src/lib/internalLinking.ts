@@ -215,6 +215,7 @@ export const PAGES_LINKING: PageLinking[] = [
     mot_cle_principal: 'agence seo casablanca',
     cluster_semantique: 'seo',
     pageRank_voulu: 9,
+    title_serp: 'Agence SEO Casablanca | Référencement – We Yan',
     breadcrumb: [
       { label: 'Accueil', to: '/' },
       { label: 'Services', to: '/services/' },

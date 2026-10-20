@@ -279,7 +279,8 @@ export default defineConfig({
           if (!page) return next
 
           const seo = PAGE_SEO_BY_SLUG[page.slug]
-          const title = buildPageDocumentTitle(page)
+          // Aligné sur PageSeo : title_serp > pageSeo.title > fallback linking
+          const title = page.title_serp || seo?.title || buildPageDocumentTitle(page)
           const description = seo?.description || page.intention
           const canonical = buildPageCanonical(page)
           const safeTitle = escapeHtml(title)
