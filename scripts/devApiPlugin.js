@@ -68,27 +68,42 @@ async function postToSheet(sheetUrl, payload) {
   return response.json().catch(() => ({}))
 }
 
-function isAuthorized(url, req, adminKey) {
-  const fromQuery = url.searchParams.get('key') || ''
-  const fromHeader = req.headers['x-admin-key'] || ''
-  return fromQuery === adminKey || fromHeader === adminKey
+function isAuthorized(req, adminKey) {
+  const fromHeader = String(req.headers['x-admin-key'] || '').trim()
+  return fromHeader.length > 0 && fromHeader === adminKey
+}
+
+function resolveDevAdminKey(env) {
+  const configured = String(env.ADMIN_DEMANDES_KEY || '').trim()
+  if (configured) return configured
+  // Clé « dev » uniquement si explicitement autorisée en local
+  if (String(env.ALLOW_DEV_ADMIN_KEY || '').toLowerCase() === 'true') return 'dev'
+  return ''
 }
 
 function attachApi(server, env) {
   const sheetUrl = String(env.GOOGLE_SHEET_URL || DEFAULT_SHEET_URL).trim()
-  const adminKey = String(env.ADMIN_DEMANDES_KEY || 'dev').trim()
+  const adminKey = resolveDevAdminKey(env)
   const resendKey = String(env.RESEND_API_KEY || '').trim()
 
   server.middlewares.use(async (req, res, next) => {
     const path = (req.url || '').split('?')[0]
     if (path !== '/api/demandes' && path !== '/api/contact') return next()
 
-    const url = new URL(req.url || '/', 'http://localhost')
-
     try {
       if (path === '/api/demandes') {
-        if (!isAuthorized(url, req, adminKey)) {
-          return sendJson(res, 401, { ok: false, error: 'Accès refusé. En local, utilisez le mot de passe : dev' })
+        if (!adminKey) {
+          return sendJson(res, 503, {
+            ok: false,
+            error:
+              'ADMIN_DEMANDES_KEY manquante. Définissez-la dans .env.local, ou ALLOW_DEV_ADMIN_KEY=true pour utiliser « dev » en local uniquement.',
+          })
+        }
+        if (!isAuthorized(req, adminKey)) {
+          return sendJson(res, 401, {
+            ok: false,
+            error: 'Accès refusé. Envoyez le header X-Admin-Key (pas de ?key= dans l’URL).',
+          })
         }
 
         if (req.method === 'GET') {

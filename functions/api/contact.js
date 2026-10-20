@@ -116,8 +116,15 @@ export async function onRequest(context) {
         redirect: 'follow',
         headers: { 'Content-Type': 'text/plain;charset=utf-8' },
         body: sheetPayload,
-      }).catch(() => null)
-    : Promise.resolve(null)
+      })
+        .then(async (res) => {
+          if (!res || !res.ok) return { ok: false }
+          const body = await res.json().catch(() => ({}))
+          if (body && typeof body === 'object' && body.ok === false) return { ok: false }
+          return { ok: true }
+        })
+        .catch(() => ({ ok: false }))
+    : Promise.resolve({ ok: true, skipped: true })
 
   let resendRes
   try {
@@ -148,7 +155,17 @@ export async function onRequest(context) {
     return json({ ok: false, error: resendError }, 502)
   }
 
-  await sheetPromise
+  const sheetResult = await sheetPromise
+  const sheetSaved = Boolean(sheetResult?.ok)
 
-  return json({ ok: true })
+  if (!sheetSaved) {
+    return json({
+      ok: true,
+      emailSent: true,
+      sheetSaved: false,
+      warning: 'E-mail envoyé, mais l’enregistrement Google Sheets a échoué. Vérifiez GOOGLE_SHEET_URL.',
+    })
+  }
+
+  return json({ ok: true, emailSent: true, sheetSaved: true })
 }

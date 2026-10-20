@@ -24,11 +24,9 @@ function json(body, status = 200) {
 function isAuthorized(request, env) {
   const expected = String(env.ADMIN_DEMANDES_KEY || '').trim()
   if (!expected) return false
-
-  const url = new URL(request.url)
-  const fromQuery = url.searchParams.get('key') || ''
-  const fromHeader = request.headers.get('x-admin-key') || ''
-  return fromQuery === expected || fromHeader === expected
+  // Jamais via ?key= (logs, historique, Referer) — header uniquement
+  const fromHeader = String(request.headers.get('x-admin-key') || '').trim()
+  return fromHeader.length > 0 && fromHeader === expected
 }
 
 function normalizeRows(rows) {

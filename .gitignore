@@ -1,3 +1,24 @@
-node_modules
+# Dépendances & build
+node_modules/
+dist/
+
+# Secrets & environnement
+.env
+.env.*
+!.env.example
+
+# Secrets PHP (OVH)
 public/api/secrets.php
 dist/api/secrets.php
+
+# Logs / OS / IDE
+*.log
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Caches
+.cache/
+node_modules/.cache/
+*.tsbuildinfo

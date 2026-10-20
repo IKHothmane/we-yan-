@@ -73,6 +73,20 @@ function saveStatut(item: Demande, statut: Statut) {
   localStorage.setItem(STATUTS_KEY, JSON.stringify(all))
 }
 
+function clearSavedStatut(item: Demande) {
+  const all = readSavedStatuts()
+  delete all[demandeKey(item)]
+  localStorage.setItem(STATUTS_KEY, JSON.stringify(all))
+}
+
+function adminHeaders(adminKey: string, extra?: HeadersInit): HeadersInit {
+  return {
+    Accept: 'application/json',
+    'X-Admin-Key': adminKey,
+    ...extra,
+  }
+}
+
 function mergeSavedStatuts(rows: Demande[], scriptReady: boolean) {
   const saved = readSavedStatuts()
   return rows.map((row) => {
@@ -161,8 +175,8 @@ export default function DemandesPage() {
     setLoading(true)
     setError('')
     try {
-      const response = await fetch(`/api/demandes?key=${encodeURIComponent(adminKey)}`, {
-        headers: { Accept: 'application/json' },
+      const response = await fetch('/api/demandes', {
+        headers: adminHeaders(adminKey),
       })
       const data = (await response.json().catch(() => ({}))) as {
         ok?: boolean
@@ -179,6 +193,7 @@ export default function DemandesPage() {
       sessionStorage.setItem(STORAGE_KEY, adminKey)
     } catch (err) {
       setUnlocked(false)
+      sessionStorage.removeItem(STORAGE_KEY)
       setError(err instanceof Error ? err.message : 'Accès refusé.')
     } finally {
       setLoading(false)
@@ -195,9 +210,10 @@ export default function DemandesPage() {
 
   const updateStatut = async (item: Demande, statut: Statut) => {
     const sheetRow = Number(item.row) || 0
+    const previous = normalizeStatut(item.statut)
     setUpdatingRow(sheetRow || item.email || item.message || 'row')
     setError('')
-    saveStatut(item, statut)
+    // Optimistic UI — annulé si l’API échoue
     setRows((current) =>
       current.map((entry) =>
         (sheetRow && entry.row === sheetRow) ||
@@ -207,12 +223,9 @@ export default function DemandesPage() {
       ),
     )
     try {
-      const response = await fetch(`/api/demandes?key=${encodeURIComponent(key)}`, {
+      const response = await fetch('/api/demandes', {
         method: 'POST',
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
-        },
+        headers: adminHeaders(key, { 'Content-Type': 'application/json' }),
         body: JSON.stringify({
           row: sheetRow,
           email: item.email || '',
@@ -227,12 +240,33 @@ export default function DemandesPage() {
         scriptReady?: boolean
         sheetUpdated?: boolean
       }
-      if (data.scriptReady === false || data.sheetUpdated === false) setScriptReady(false)
-      if (data.ok === false) {
-        setError(data.error || 'Google Sheets n’a pas été modifié.')
+      if (!response.ok || data.ok === false || data.sheetUpdated === false) {
+        setScriptReady(false)
+        clearSavedStatut(item)
+        setRows((current) =>
+          current.map((entry) =>
+            (sheetRow && entry.row === sheetRow) ||
+            (entry.email === item.email && entry.message === item.message)
+              ? { ...entry, statut: previous }
+              : entry,
+          ),
+        )
+        setError(data.error || data.warning || 'Google Sheets n’a pas été modifié. Statut non enregistré.')
+        return
       }
+      saveStatut(item, statut)
+      if (data.scriptReady === false) setScriptReady(false)
     } catch (err) {
       setScriptReady(false)
+      clearSavedStatut(item)
+      setRows((current) =>
+        current.map((entry) =>
+          (sheetRow && entry.row === sheetRow) ||
+          (entry.email === item.email && entry.message === item.message)
+            ? { ...entry, statut: previous }
+            : entry,
+        ),
+      )
       setError(err instanceof Error ? err.message : 'Google Sheets n’a pas été modifié.')
     } finally {
       setUpdatingRow(null)
@@ -266,7 +300,7 @@ export default function DemandesPage() {
   }, [rows.length])
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-900 px-4 py-10">
+    <div className="min-h-screen w-full overflow-x-hidden bg-slate-50 text-slate-900 px-4 py-10">
       <div className="mx-auto w-full max-w-6xl">
         <header className="mb-8">
           <p className="text-xs font-bold uppercase tracking-[0.2em] text-slate-500 mb-2">Espace interne</p>
