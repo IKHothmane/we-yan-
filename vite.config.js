@@ -218,14 +218,24 @@ export default defineConfig({
         if (!existsSync(indexFile)) return
 
         const html = readFileSync(indexFile, 'utf8')
-        const linkingModule = join(process.cwd(), 'node_modules', '.cache', 'validate-internal-links.mjs')
+        const { buildSync } = await import('esbuild')
+        const cacheDir = join(process.cwd(), 'node_modules', '.cache')
+        if (!existsSync(cacheDir)) mkdirSync(cacheDir, { recursive: true })
+
+        // Toujours rebundler internalLinking ici (pas seulement en buildStart) :
+        // un cache node_modules Cloudflare peut sinon servir d’anciens H1 statiques.
+        const linkingModule = join(cacheDir, 'validate-internal-links.mjs')
+        buildSync({
+          entryPoints: [join(process.cwd(), 'src/lib/internalLinking.ts')],
+          bundle: true,
+          format: 'esm',
+          platform: 'node',
+          outfile: linkingModule,
+        })
         const { getPageLinking, buildBreadcrumbJsonLd, buildFaqJsonLd, buildPageDocumentTitle, buildPageCanonical, withTrailingSlash } = await import(
           `${pathToFileURL(linkingModule).href}?emit=${Date.now()}`
         )
 
-        const { buildSync } = await import('esbuild')
-        const cacheDir = join(process.cwd(), 'node_modules', '.cache')
-        if (!existsSync(cacheDir)) mkdirSync(cacheDir, { recursive: true })
         const seoOut = join(cacheDir, 'page-seo.mjs')
         buildSync({
           entryPoints: [join(process.cwd(), 'src/lib/pageSeo.ts')],
