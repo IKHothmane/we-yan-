@@ -14,17 +14,20 @@ const offres = [
   {
     t: 'Site vitrine professionnel',
     d: '3 à 8 pages : accueil, services, à propos, contact, blog. Design responsive, formulaires, SEO de base et mise en ligne à Casablanca.',
-    prix: 'À partir de 6 500 MAD',
+    prix: 'Sur devis',
+    delai: 'Délai communiqué au devis',
   },
   {
     t: 'Site e-commerce',
     d: 'Catalogue, panier, paiement CMI / virement, fiches produits, tracking conversions. Idéal commerces et marques D2C au Maroc.',
     prix: 'Sur devis',
+    delai: 'Délai communiqué au devis',
   },
   {
     t: 'Site sur-mesure / multi-langue',
     d: 'FR / AR / EN, back-office, intégrations CRM ou WhatsApp Business, performances Core Web Vitals et structure SEO avancée.',
     prix: 'Sur devis',
+    delai: 'Délai communiqué au devis',
   },
 ] as const
 
@@ -62,15 +65,15 @@ const facteursPrix = [
 const faq = [
   {
     q: 'Combien coûte un site vitrine à Casablanca en 2026 ?',
-    r: 'Chez We Yan Digital, un site vitrine 3–5 pages démarre généralement à partir de 6 500 MAD. Les projets intermédiaires et e-commerce se chiffrent selon le catalogue et les intégrations. Voir aussi notre guide prix site web Maroc 2026.',
+    r: 'Chaque projet est chiffré sur devis selon le nombre de pages, le design et les intégrations. Pour des fourchettes de marché, consultez notre guide prix site web Maroc 2026, puis demandez un devis We Yan Digital adapté à votre brief.',
   },
   {
     q: 'Quels sont les délais réalistes ?',
-    r: 'Vitrine simple : souvent 3 à 6 semaines après validation du brief et des contenus. E-commerce ou sur-mesure : 6 à 12 semaines selon le volume produits et les validations.',
+    r: 'Le délai dépend du brief, des contenus fournis et des validations. Nous communiquons un planning réaliste dans le devis, après cadrage du périmètre.',
   },
   {
     q: 'Le site est-il optimisé pour Google ?',
-    r: 'Oui : structure technique propre, pages indexables, balises de base et performances mobiles. Pour ranker sur « création site web Casablanca » ou vos services, un accompagnement SEO mensuel reste recommandé après la mise en ligne.',
+    r: 'Oui : structure technique propre, pages indexables, balises de base et performances mobiles. Pour ranker sur vos services à Casablanca, un accompagnement SEO mensuel reste recommandé après la mise en ligne.',
   },
 ] as const
 
@@ -165,10 +168,14 @@ export default function CreationSiteWebCasablancaPage() {
           <div className="mx-auto max-w-[1200px]">
             <div className="mx-auto mb-14 max-w-3xl text-center" data-reveal>
               <h2 className="mb-4 font-black tracking-tight text-[clamp(1.75rem,4.6vw,2.75rem)] text-slate-900">
-                Trois types de sites pour les entreprises à Casablanca
+                Trois types de sites — devis selon votre brief
               </h2>
               <p className="text-[clamp(0.95rem,2vw,1.1rem)] leading-8 text-slate-600">
-                On ne vend pas un « pack template » : on dimensionne le projet selon votre activité et votre budget.
+                Prix et délais sont établis après cadrage. Pour des ordres de grandeur du marché, voir le{' '}
+                <Link to="/blog/prix-site-web-maroc-2026/" className="font-semibold text-[#6483F0] underline-offset-4 hover:underline">
+                  guide prix site web Maroc 2026
+                </Link>
+                .
               </p>
             </div>
             <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
@@ -180,10 +187,11 @@ export default function CreationSiteWebCasablancaPage() {
                   data-reveal-delay={String(i * 80)}
                 >
                   <h3 className="mb-3 text-[1.15rem] font-bold text-slate-900">{offre.t}</h3>
-                  <p className="mb-5 text-[0.95rem] leading-7 text-slate-600">{offre.d}</p>
-                  <p className="text-[0.85rem] font-black uppercase tracking-[0.14em]" style={{ color: '#FC9700' }}>
+                  <p className="mb-4 text-[0.95rem] leading-7 text-slate-600">{offre.d}</p>
+                  <p className="mb-2 text-[0.85rem] font-black uppercase tracking-[0.14em]" style={{ color: '#FC9700' }}>
                     {offre.prix}
                   </p>
+                  <p className="text-[0.88rem] font-semibold text-slate-500">{offre.delai}</p>
                 </article>
               ))}
             </div>

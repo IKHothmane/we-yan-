@@ -193,7 +193,7 @@ export default function BlogBrandingMarocPage() {
         },
         {
           q: "Combien de temps pour créer une marque complète ?",
-          r: "Chez We Yan Digital agence Casablanca : 4 → 12 semaines selon complexité. Brand Sprint stratégique : 2 semaines, Identité visuelle + charte : 2-4 semaines, Déclinaisons digitales (site web + réseaux + lancement) : 4 → 8 semaines.",
+          r: "Chez We Yan Digital à Casablanca, le délai est communiqué au devis selon la complexité (Brand Sprint, identité visuelle, déclinaisons digitales). Chaque étape est planifiée après cadrage du brief.",
         },
         {
           q: "Dois-je créer d'abord ma marque OU mon site web ?",

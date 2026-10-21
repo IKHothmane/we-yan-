@@ -65,7 +65,7 @@ export default function BlogPrixInfluenceurMarocPage() {
                   <strong>Droits</strong> : ads, site, point de vente, 30–90 jours, parfois 6 mois.
                 </li>
                 <li>
-                  <strong>Gestion We Yan</strong> : 6 000 à 15 000 MAD selon le nombre de profils, hors cachets.
+                  <strong>Gestion We Yan</strong> : sur devis selon le nombre de profils, hors cachets.
                 </li>
               </ul>
             </>,
@@ -200,9 +200,10 @@ export default function BlogPrixInfluenceurMarocPage() {
           paragraphs: [
             <>
               <p>
-                PME Casa : <strong>5 micros</strong>, mix story + reel, droits ads 60 jours, budget cachets{' '}
-                <strong>20 000 à 40 000 MAD</strong>, gestion <strong>7 000 MAD</strong>, huit semaines. Si le CPA tient,
-                on scale ou on whitelist. Si l’offre ne convertit pas, on arrête — pas un deuxième macro « pour voir ».
+                PME Casa : <strong>5 micros</strong>, mix story + reel, droits ads 60 jours, budget cachets indicatif
+                marché souvent <strong>20 000 à 40 000 MAD</strong>, gestion We Yan <strong>sur devis</strong>. Si le
+                CPA tient, on scale ou on whitelist. Si l’offre ne convertit pas, on arrête — pas un deuxième macro «
+                pour voir ».
               </p>
             </>,
             <>

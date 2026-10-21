@@ -169,7 +169,7 @@ export default function BlogSeoVsSeaPage() {
       faq={[
         {
           q: "Quel budget minimum SEO + SEA chez une agence à Casablanca ?",
-          r: "Chez We Yan Digital, accompagnement SEO + SEA combiné démarre à partir de 10 000 MAD/mois (3 500 MAD SEO + 6 500 MAD budget SEA + honoraires). Pour un vrai impact, nous conseillons 15 000 → 25 000 MAD/mois. Devis gratuit et détaillé sous 24h.",
+          r: "Chez We Yan Digital, l’accompagnement SEO + SEA combiné est chiffré sur devis selon retainer SEO, budget média et honoraires. Devis gratuit et détaillé sous 24h.",
         },
         {
           q: "Est-ce que le SEO est mort en 2026 à cause des IA comme ChatGPT ?",

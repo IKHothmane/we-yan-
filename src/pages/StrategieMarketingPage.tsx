@@ -19,20 +19,20 @@ const packs = [
   {
     nom: 'Starter',
     inclus: 'Logo + charte',
-    prix: '15 000 MAD',
+    prix: 'Sur devis',
     detail: 'Audit court, naming si besoin, logo, palette, typo, mini-charte PDF. Idéal pour poser une identité de marque à Casablanca sans tout reconstruire.',
   },
   {
     nom: 'Growth',
     inclus: 'Site + community management',
-    prix: '35 000 MAD',
+    prix: 'Sur devis',
     detail: 'Starter + site vitrine aligné charte + 2 mois de création de contenu. La marque se voit en ligne et sur Instagram / TikTok.',
     featured: true,
   },
   {
     nom: 'Premium',
     inclus: 'SEO + Ads',
-    prix: '70 000 MAD',
+    prix: 'Sur devis',
     detail: 'Growth + plan SEO local + campagnes Google / Meta de lancement. Rebranding, visibilité et leads sur le même trimestre.',
   },
 ] as const
@@ -346,10 +346,9 @@ export default function StrategieMarketingPage() {
                 Combien coûte un rebranding à Casablanca ?
               </h2>
               <p className="text-[clamp(0.95rem,2vw,1.08rem)] leading-8 text-slate-600">
-                Les fourchettes « à partir de 3 000 MAD » cachent un logo Canva. Chez We Yan Digital, le prix d’une
-                agence branding à Casablanca est publié. Starter, Growth et Premium sont HT, sans pack surprise. Le
-                devis final dépend du nombre de déclinaisons, de la reprise du site et du volume de contenus. Tableau
-                indicatif 2026, valable pour Casablanca, Rabat, Marrakech et Tanger.
+                Les fourchettes « à partir de 3 000 MAD » cachent souvent un logo Canva. Chez We Yan Digital, Starter,
+                Growth et Premium sont chiffrés sur devis HT selon déclinaisons, reprise du site et volume de contenus —
+                sans pack surprise. Valable pour Casablanca, Rabat, Marrakech et Tanger.
               </p>
             </div>
 

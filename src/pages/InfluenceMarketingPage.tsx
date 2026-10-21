@@ -19,20 +19,20 @@ const packs = [
   {
     nom: 'Nano',
     inclus: '10k – 50k abonnés',
-    prix: '800 → 5 000 MAD / livrable',
+    prix: 'Sur devis',
     detail: 'Stories et reels locaux Casablanca. Idéal pour tester une offre, un code promo, un point de vente Maarif / Anfa.',
   },
   {
     nom: 'Micro',
     inclus: '50k – 200k abonnés',
-    prix: '2 500 → 18 000 MAD / livrable',
+    prix: 'Sur devis',
     detail: 'Meilleur rapport preuve / coût au Maroc 2026. Audience encore conversationnelle, CPL souvent plus sain que le macro.',
     featured: true,
   },
   {
     nom: 'Macro',
     inclus: '200k+ abonnés',
-    prix: '8 000 → 60 000 MAD / livrable',
+    prix: 'Sur devis',
     detail: 'Notoriété nationale, lancement, saison. Se justifie quand l’offre et le brief sont déjà rodés sur du nano / micro.',
   },
 ] as const
@@ -336,9 +336,9 @@ export default function InfluenceMarketingPage() {
                 Tableau prix influence Maroc 2026
               </h2>
               <p className="text-[clamp(0.95rem,2vw,1.08rem)] leading-8 text-slate-600">
-                Cachets indicatifs HT, créateurs Maroc, 2026. Casablanca et Rabat souvent au haut de fourchette.
-                Droits ads et exclusivité s’ajoutent. We Yan facture la gestion à part (brief, contrat, relances,
-                reporting) : 6 000 à 15 000 MAD selon le nombre de profils — pas un % opaque sur le cachet.
+                Cachets indicatifs marché HT, créateurs Maroc, 2026. Casablanca et Rabat souvent au haut de fourchette.
+                Droits ads et exclusivité s’ajoutent. La gestion We Yan (brief, contrat, relances, reporting) est
+                chiffrée sur devis selon le nombre de profils — pas un % opaque sur le cachet.
               </p>
             </div>
 

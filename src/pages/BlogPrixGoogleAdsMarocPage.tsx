@@ -175,15 +175,15 @@ export default function BlogPrixGoogleAdsMarocPage() {
             <>
               <ul className="mt-2 ml-5 list-disc space-y-2.5 text-[0.98rem] leading-8 text-slate-700">
                 <li>
-                  <strong>Test Search local</strong> : 8 000 à 12 000 MAD média + 5 000 MAD gestion. 15–25 mots-clés, 2
-                  landing, conversions appel + formulaire.
+                  <strong>Test Search local</strong> : 8 000 à 12 000 MAD média + gestion We Yan sur devis. 15–25
+                  mots-clés, 2 landing, conversions appel + formulaire.
                 </li>
                 <li>
-                  <strong>PME en croissance</strong> : 15 000 à 30 000 MAD média + 7 000 à 10 000 MAD gestion. Search +
+                  <strong>PME en croissance</strong> : 15 000 à 30 000 MAD média + gestion sur devis. Search +
                   Remarketing + YouTube court.
                 </li>
                 <li>
-                  <strong>E-commerce / national</strong> : 40 000 MAD+ média, gestion au % (12–15 %). Feed marchand,
+                  <strong>E-commerce / national</strong> : 40 000 MAD+ média, gestion au % ou sur devis. Feed marchand,
                   PMax, Search marque protégée.
                 </li>
               </ul>
@@ -252,9 +252,9 @@ export default function BlogPrixGoogleAdsMarocPage() {
           paragraphs: [
             <>
               <p>
-                Pour une PME ou un cabinet à Casablanca : <strong>setup 3 500 à 6 000 MAD</strong>, puis{' '}
-                <strong>8 000 à 15 000 MAD de média</strong> et <strong>5 000 à 8 000 MAD de gestion</strong> pendant 8
-                semaines de test. Si le CPA est dans votre fourchette, on scale. Si non, on arrête ou on change d’offre
+                Pour une PME ou un cabinet à Casablanca : budget média souvent <strong>8 000 à 15 000 MAD</strong> pour
+                un test lisible, setup et gestion We Yan <strong>sur devis</strong>, sur plusieurs cycles
+                d’optimisation. Si le CPA est dans votre fourchette, on scale. Si non, on arrête ou on change d’offre
                 — pas de retainer ads éternel « pour voir ».
               </p>
             </>,
@@ -271,7 +271,7 @@ export default function BlogPrixGoogleAdsMarocPage() {
       faq={[
         {
           q: 'Quel budget Google Ads minimum au Maroc en 2026 ?',
-          r: 'En Search local Casablanca, 8 000 MAD / mois de média est le plancher pour un test lisible. En dessous, Google n’apprend pas et vous concluez à tort que le canal est mort. La gestion We Yan démarre à 5 000 MAD HT / mois en plus du média.',
+          r: 'En Search local Casablanca, 8 000 MAD / mois de média est souvent le plancher marché pour un test lisible. En dessous, Google n’apprend pas et vous concluez à tort que le canal est mort. La gestion We Yan Digital est chiffrée sur devis HT, en plus du média.',
         },
         {
           q: 'Le CPC Google Ads est-il plus cher à Casablanca qu’à Rabat ?',

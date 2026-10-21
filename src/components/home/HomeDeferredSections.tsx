@@ -20,7 +20,7 @@ const blogResources = [
   {
     eyebrow: 'SEO vs SEA · Comparatif',
     title: 'SEO vs SEA au Maroc : lequel prioriser ?',
-    excerpt: 'Tableau comparatif 7 critères, cas d\'usage seul, coût CPA Casablanca, et la stratégie We Yan gagnante combo SEO+SEA qui fait +162% de CA en 9 mois.',
+    excerpt: 'Tableau comparatif 7 critères, cas d’usage, coût CPA à Casablanca, et quand mixer SEO + Google Ads selon vos délais et votre budget.',
     readingTime: '8 min',
     to: '/blog/seo-vs-sea-maroc/',
     accent: '#FC9700',
@@ -73,7 +73,7 @@ const faqItems = [
   },
   {
     q: 'Combien coûte un site web vitrine au Maroc en 2026 ?',
-    a: 'En 2026, le prix d\'un site web vitrine au Maroc varie généralement entre 5 000 MAD et 35 000 MAD HT selon la complexité. Chez We Yan Digital à Casablanca, nos formules démarrent à partir de 6 500 MAD pour un site vitrine 3-5 pages (responsive, optimisé SEO mobile, hébergement 1 an inclus). Un site intermédiaire avec back-office, formulaires avancés et optimisation SEO complète se situe entre 12 000 et 22 000 MAD. Un site premium, sur-mesure, multi-langue (FR / AR / EN) et optimisé pour la conversion, dépasse généralement 25 000 MAD. Chaque devis est gratuit et détaillé sans engagement.',
+    a: 'En 2026, les tarifs de marché pour un site vitrine au Maroc varient souvent entre 5 000 MAD et 35 000 MAD HT selon la complexité. Chez We Yan Digital à Casablanca, chaque projet (vitrine, e-commerce ou sur-mesure) est chiffré sur devis gratuit et détaillé, sans engagement — après cadrage de vos pages, design et intégrations.',
   },
   {
     q: 'Comment améliorer son référencement naturel SEO à Casablanca ?',

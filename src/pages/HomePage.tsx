@@ -204,6 +204,33 @@ export default function HomePage() {
                   Voir nos projets
                 </Link>
               </div>
+              <nav aria-label="Nos expertises à Casablanca" className="mt-[clamp(1.25rem,3vw,2rem)]">
+                <p className="mb-3 text-[0.8rem] font-bold uppercase tracking-[0.18em] text-slate-500">
+                  Pages commerciales
+                </p>
+                <ul className="flex flex-wrap gap-x-4 gap-y-2 text-[0.95rem] font-semibold text-slate-700">
+                  <li>
+                    <Link to="/agence-seo-casablanca/" className="underline-offset-4 hover:text-[#6483F0] hover:underline">
+                      Agence SEO Casablanca
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/agence-google-ads-casablanca/" className="underline-offset-4 hover:text-[#6483F0] hover:underline">
+                      Google Ads Casablanca
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/creation-site-web-casablanca/" className="underline-offset-4 hover:text-[#6483F0] hover:underline">
+                      Création site web
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/community-management-casablanca/" className="underline-offset-4 hover:text-[#6483F0] hover:underline">
+                      Community management
+                    </Link>
+                  </li>
+                </ul>
+              </nav>
             </div>
           </div>
         </section>

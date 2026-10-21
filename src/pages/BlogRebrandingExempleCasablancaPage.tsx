@@ -129,7 +129,7 @@ export default function BlogRebrandingExempleCasablancaPage() {
         },
         {
           q: 'Combien de temps pour un cas comparable ?',
-          r: 'Pack Growth : 8 à 12 semaines. Starter (logo + charte) : 3 à 5 semaines. Premium avec SEO et ads de lancement : 4 à 6 mois.',
+          r: 'Le délai est communiqué au devis selon le pack (Starter, Growth ou Premium) et le périmètre (identité, site, contenus, SEO, ads).',
         },
       ]}
       relatedLinks={[{ label: 'Agence branding & rebranding Casablanca', to: '/services/strategie-marketing-rebranding/' }]}

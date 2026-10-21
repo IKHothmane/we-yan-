@@ -106,7 +106,7 @@ export default function BlogPrixSeoCasablancaPage() {
             </>,
             <>
               <p className="mt-6">
-                Chez We Yan Digital, un accompagnement SEO sérieux pour une PME casablancaise démarre en pratique <strong className="font-semibold text-slate-900">autour de 8 000 MAD HT / mois</strong> sur un engagement de 6 mois : en dessous, on coupe soit le technique, soit le contenu, soit le local. C’est exactement ce que font les devis « trop beaux ».
+                Chez We Yan Digital, un accompagnement SEO sérieux pour une PME casablancaise est <strong className="font-semibold text-slate-900">chiffré sur devis</strong> selon technique, contenus et local — souvent sur un engagement de plusieurs mois. En dessous d’un budget réaliste de marché, on coupe soit le technique, soit le contenu, soit le local. C’est exactement ce que font les devis « trop beaux ».
               </p>
             </>,
           ],
@@ -169,12 +169,12 @@ export default function BlogPrixSeoCasablancaPage() {
           paragraphs: [
             <>
               <p>
-                Pour une PME ou un cabinet à Casablanca : <strong>audit 4 500 à 7 000 MAD</strong>, puis <strong>8 000 à 12 000 MAD / mois</strong> pendant 6 mois si vous visez des requêtes locales business (avocat, clinique, agence, restaurant premium, B2B). Pour un e-commerce national, prévoyez le haut de fourchette et un volet contenus produits.
+                Pour une PME ou un cabinet à Casablanca, le marché 2026 situe souvent un audit et un retainer mensuel dans les fourchettes du tableau ci-dessus si vous visez des requêtes locales business (avocat, clinique, agence, restaurant premium, B2B). Pour un e-commerce national, prévoyez le haut de fourchette et un volet contenus produits.
               </p>
             </>,
             <>
               <p>
-                Si vous voulez un chiffrage calé sur votre concurrence réelle (pas une grille générique), nous envoyons un plan d’action et un tarif sous 24h ouvrées. Le prix sert à décider. L’agence sert à ranker.
+                Chez We Yan Digital, le chiffrage est sur devis, calé sur votre concurrence réelle — plan d’action et tarif sous 24h ouvrées. Le prix sert à décider. L’agence sert à ranker.
               </p>
             </>,
           ],
@@ -183,7 +183,7 @@ export default function BlogPrixSeoCasablancaPage() {
       faq={[
         {
           q: 'Quel est le prix d’un audit SEO à Casablanca en 2026 ?',
-          r: 'Chez We Yan Digital, un audit technique + sémantique + local démarre à 3 500 MAD HT pour un site vitrine, et monte vers 9 000 MAD HT pour un e-commerce ou un site de 80+ pages. Le livrable inclut priorités, effort et impact — pas un PDF de 80 pages illisible.',
+          r: 'Chez We Yan Digital, l’audit technique + sémantique + local est chiffré sur devis HT selon la taille du site. Le livrable inclut priorités, effort et impact — pas un PDF de 80 pages illisible.',
         },
         {
           q: 'Combien de mois faut-il budgéter avant de voir des positions ?',

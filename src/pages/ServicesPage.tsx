@@ -158,13 +158,21 @@ export default function ServicesPage() {
             We Yan Digital · Agence digitale basée à Casablanca, Maarif
           </span>
           <h1
-            className="max-w-5xl break-words text-[clamp(2rem,7.5vw,5.5rem)] font-black uppercase leading-[0.9] tracking-[-0.035em] text-slate-900 sm:tracking-[-0.05em]"
+            className="max-w-5xl break-words text-[clamp(1.85rem,6vw,3.75rem)] font-black uppercase leading-[1.05] tracking-[-0.03em] text-slate-900"
             data-reveal
           >
-            Agence digitale à <span className="italic" style={{ color: '#FC9700' }}>Casablanca</span>
-            <br />
-            <span style={{ color: '#6483F0' }}>Services</span> SEO, Site Web, Branding & Ads
+            Services digitaux à{' '}
+            <span className="italic" style={{ color: '#FC9700' }}>
+              Casablanca
+            </span>
           </h1>
+          <p
+            className="mt-5 max-w-3xl text-[clamp(1.05rem,2.4vw,1.35rem)] font-bold text-slate-700"
+            data-reveal
+            data-reveal-delay="60"
+          >
+            SEO, site web, branding, publicité et community — un hub vers chaque prestation
+          </p>
           <div
             className="mt-8 max-w-3xl text-[clamp(0.95rem,2vw,1.15rem)] leading-8 text-slate-600 space-y-4"
             data-reveal
@@ -336,92 +344,100 @@ export default function ServicesPage() {
                   Expertises dédiées · Casablanca
                 </span>
                 <h2 className="font-black text-[clamp(1.9rem,5vw,3rem)] tracking-tight text-slate-900 mb-3 leading-[1.05]">
-                  Nos pages <span style={{ color: '#6483F0' }}>expertise dédiée</span> SEO Casablanca & Community Management
+                  Pages <span style={{ color: '#6483F0' }}>commerciales</span> à ouvrir selon votre besoin
                 </h2>
                 <p className="text-slate-500 text-[clamp(0.95rem,2vw,1.1rem)] max-w-2xl leading-relaxed">
-                  Pour Google : des pages spécialisées ultra-longues, positionnées sur les requêtes longues traînes que tapent vos prospects marocains tous les jours.
+                  Chaque page cible une intention précise : agence locale, prestation nationale ou offre dédiée — puis un devis.
                 </p>
               </div>
             </div>
 
             <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-              {/* Carte 1 : Agence SEO Casablanca */}
               <Link
                 to="/agence-seo-casablanca/"
                 data-reveal
                 className="group relative overflow-hidden rounded-[2rem] p-[clamp(1.5rem,3.5vw,2.25rem)] text-white shadow-[0_30px_60px_-30px_rgba(99,102,241,0.55)] hover:shadow-[0_45px_75px_-30px_rgba(99,102,241,0.75)] hover:-translate-y-1 transition-all duration-300"
                 style={{ backgroundColor: '#6483F0' }}
               >
-                <div aria-hidden="true" className="pointer-events-none absolute -right-24 -top-24 h-64 w-64 rounded-full blur-3xl opacity-50" style={{ background: 'radial-gradient(circle,#4F46E5 0%,transparent 65%)' }} />
-                <div aria-hidden="true" className="pointer-events-none absolute -bottom-20 -left-20 h-60 w-60 rounded-full blur-3xl opacity-40" style={{ background: 'radial-gradient(circle,#818CF8 0%,transparent 65%)' }} />
-
                 <div className="relative z-10">
-                  <div className="flex items-center justify-between mb-7">
-                    <span className="inline-flex items-center gap-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/15 px-4 py-1.5 text-[0.72rem] font-bold uppercase tracking-[0.18em] text-white">
-                      ☝️ Requête #1 Google : Agence SEO Casablanca
-                    </span>
-                    <span aria-hidden="true" className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-white/15 backdrop-blur-sm text-white text-xl">
-                      🔎
-                    </span>
-                  </div>
+                  <span className="mb-5 inline-flex rounded-full bg-white/10 border border-white/15 px-4 py-1.5 text-[0.72rem] font-bold uppercase tracking-[0.18em]">
+                    SEO local
+                  </span>
                   <h3 className="text-[clamp(1.5rem,4vw,2.1rem)] font-black leading-[1.08] mb-4">
-                    Agence SEO à Casablanca<br />· Premier sur Google en 2026
+                    Agence SEO à Casablanca
                   </h3>
                   <p className="text-white/85 leading-relaxed mb-7 max-w-xl text-[0.98rem]">
-                    4 avantages We Yan, méthode 4 étapes, tarifs audit SEO gratuit, FAQ 3 questions, +1 600 mots uniques. Parfaite pour ranker #1 sur les requêtes SEO marocaines.
+                    SEO local Google Business, technique, contenus et reporting Search Console — pour les entreprises de Casablanca.
                   </p>
-                  <div className="flex flex-wrap items-center gap-2.5 mb-8 text-[0.8rem] font-semibold text-white/90">
-                    <span className="rounded-full bg-white/10 backdrop-blur-sm border border-white/15 px-3 py-1">SEO Local GBP</span>
-                    <span className="rounded-full bg-white/10 backdrop-blur-sm border border-white/15 px-3 py-1">Tech Audit Core Web Vitals</span>
-                    <span className="rounded-full bg-white/10 backdrop-blur-sm border border-white/15 px-3 py-1">Netlinking Maroc</span>
-                  </div>
-                  <span className="group inline-flex items-center gap-2.5 rounded-full bg-white px-6 py-3.5 text-[0.88rem] font-black uppercase tracking-wider shadow-xl shadow-black/15 hover:scale-[1.02] transition-transform" style={{ color: '#6483F0' }}>
-                    Découvrir l'agence SEO
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="h-4 w-4 transition-transform group-hover:translate-x-0.5" fill="none" stroke="currentColor" strokeWidth={2.5} strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M5 12h14" />
-                      <path d="M13 6l6 6-6 6" />
-                    </svg>
+                  <span className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3.5 text-[0.88rem] font-black uppercase tracking-wider" style={{ color: '#6483F0' }}>
+                    Voir l’agence SEO
+                    <Icon name="arrow_forward" className="h-4 w-4" />
+                  </span>
+                </div>
+              </Link>
+              <Link
+                to="/agence-google-ads-casablanca/"
+                data-reveal
+                className="group relative overflow-hidden rounded-[2rem] p-[clamp(1.5rem,3.5vw,2.25rem)] text-white shadow-[0_30px_60px_-30px_rgba(66,133,244,0.45)] hover:-translate-y-1 transition-all duration-300"
+                style={{ backgroundColor: '#1F2937' }}
+              >
+                <div className="relative z-10">
+                  <span className="mb-5 inline-flex rounded-full bg-white/10 border border-white/15 px-4 py-1.5 text-[0.72rem] font-bold uppercase tracking-[0.18em]">
+                    Google Ads
+                  </span>
+                  <h3 className="text-[clamp(1.5rem,4vw,2.1rem)] font-black leading-[1.08] mb-4">
+                    Agence Google Ads Casablanca
+                  </h3>
+                  <p className="text-white/85 leading-relaxed mb-7 max-w-xl text-[0.98rem]">
+                    Campagnes Search, suivi des conversions et optimisation du budget média — distinct de l’offre multi-ads.
+                  </p>
+                  <span className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3.5 text-[0.88rem] font-black uppercase tracking-wider text-[#1F2937]">
+                    Voir Google Ads
+                    <Icon name="arrow_forward" className="h-4 w-4" />
+                  </span>
+                </div>
+              </Link>
+              <Link
+                to="/creation-site-web-casablanca/"
+                data-reveal
+                className="group relative overflow-hidden rounded-[2rem] p-[clamp(1.5rem,3.5vw,2.25rem)] border border-slate-200 bg-white text-slate-900 shadow-[0_20px_50px_-28px_rgba(15,23,42,0.35)] hover:-translate-y-1 transition-all duration-300"
+              >
+                <div className="relative z-10">
+                  <span className="mb-5 inline-flex rounded-full border border-[#FED7AA] bg-[#FFF7ED] px-4 py-1.5 text-[0.72rem] font-bold uppercase tracking-[0.18em] text-[#C2410C]">
+                    Création web
+                  </span>
+                  <h3 className="text-[clamp(1.5rem,4vw,2.1rem)] font-black leading-[1.08] mb-4">
+                    Création de site web à Casablanca
+                  </h3>
+                  <p className="text-slate-600 leading-relaxed mb-7 max-w-xl text-[0.98rem]">
+                    Vitrine, e-commerce ou sur-mesure — process, délais réalistes et devis calé sur votre brief.
+                  </p>
+                  <span className="inline-flex items-center gap-2 rounded-full bg-[#FC9700] px-6 py-3.5 text-[0.88rem] font-black uppercase tracking-wider text-[#0F172A]">
+                    Voir création site web
+                    <Icon name="arrow_forward" className="h-4 w-4" />
                   </span>
                 </div>
               </Link>
 
-              {/* Carte 2 : Community Management Casablanca */}
               <Link
                 to="/community-management-casablanca/"
                 data-reveal
-                data-reveal-delay="120"
-                className="group relative overflow-hidden rounded-[2rem] p-[clamp(1.5rem,3.5vw,2.25rem)] text-white shadow-[0_30px_60px_-30px_rgba(252,151,0,0.6)] hover:shadow-[0_45px_75px_-30px_rgba(252,151,0,0.8)] hover:-translate-y-1 transition-all duration-300"
+                className="group relative overflow-hidden rounded-[2rem] p-[clamp(1.5rem,3.5vw,2.25rem)] text-white shadow-[0_30px_60px_-30px_rgba(252,151,0,0.55)] hover:-translate-y-1 transition-all duration-300"
                 style={{ backgroundColor: '#FC9700' }}
               >
-                <div aria-hidden="true" className="pointer-events-none absolute -right-24 -top-24 h-64 w-64 rounded-full blur-3xl opacity-50" style={{ background: 'radial-gradient(circle,#F97316 0%,transparent 65%)' }} />
-                <div aria-hidden="true" className="pointer-events-none absolute -bottom-20 -left-20 h-60 w-60 rounded-full blur-3xl opacity-40" style={{ background: 'radial-gradient(circle,#FBBF24 0%,transparent 65%)' }} />
-
                 <div className="relative z-10">
-                  <div className="flex items-center justify-between mb-7">
-                    <span className="inline-flex items-center gap-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/15 px-4 py-1.5 text-[0.72rem] font-bold uppercase tracking-[0.18em] text-white">
-                      📱 Community Management · Casablanca & Maroc
-                    </span>
-                    <span aria-hidden="true" className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-white/15 backdrop-blur-sm text-white text-xl">
-                      🎬
-                    </span>
-                  </div>
+                  <span className="mb-5 inline-flex rounded-full bg-white/15 border border-white/20 px-4 py-1.5 text-[0.72rem] font-bold uppercase tracking-[0.18em]">
+                    Social media
+                  </span>
                   <h3 className="text-[clamp(1.5rem,4vw,2.1rem)] font-black leading-[1.08] mb-4">
-                    Community management à<br />Casablanca · Contenu + Ads
+                    Community management à Casablanca
                   </h3>
                   <p className="text-white/90 leading-relaxed mb-7 max-w-xl text-[0.98rem]">
-                    6 expertises, galerie studio We Yan, 3 forfaits Essentiel / Performance / Premium tarifs MAD / mois, budget Meta/TikTok Ads inclus, FAQ 3 questions.
+                    Animation Instagram, TikTok, LinkedIn et forfaits mensuels — distinct de la page création de contenu &amp; CM générale.
                   </p>
-                  <div className="flex flex-wrap items-center gap-2.5 mb-8 text-[0.8rem] font-semibold text-white/95">
-                    <span className="rounded-full bg-white/10 backdrop-blur-sm border border-white/15 px-3 py-1">Studio photo Casablanca</span>
-                    <span className="rounded-full bg-white/10 backdrop-blur-sm border border-white/15 px-3 py-1">Reels / TikTok</span>
-                    <span className="rounded-full bg-white/10 backdrop-blur-sm border border-white/15 px-3 py-1">Meta & TikTok Ads</span>
-                  </div>
-                  <span className="group inline-flex items-center gap-2.5 rounded-full bg-white px-6 py-3.5 text-[0.88rem] font-black uppercase tracking-wider shadow-xl shadow-black/15 hover:scale-[1.02] transition-transform" style={{ color: '#FC9700' }}>
-                    Voir les forfaits CM
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="h-4 w-4 transition-transform group-hover:translate-x-0.5" fill="none" stroke="currentColor" strokeWidth={2.5} strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M5 12h14" />
-                      <path d="M13 6l6 6-6 6" />
-                    </svg>
+                  <span className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3.5 text-[0.88rem] font-black uppercase tracking-wider text-[#C2410C]">
+                    Voir le community management
+                    <Icon name="arrow_forward" className="h-4 w-4" />
                   </span>
                 </div>
               </Link>

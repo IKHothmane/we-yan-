@@ -181,11 +181,11 @@ export default function BlogPrixSiteWebMarocPage() {
       faq={[
         {
           q: "Quel est le prix d'un site vitrine 5 pages à Casablanca en 2026 ?",
-          r: "Chez We Yan Digital, un site vitrine 5 pages premium et optimisé SEO démarre à 6 500 MAD HT (livraison 15 jours, design responsive, formulaire contact, hébergement 1 an offert, support 2 mois inclus). Selon design et fonctionnalités (blog, back-office, etc.), comptez entre 8 000 et 18 000 MAD HT.",
+          r: "Chez We Yan Digital, chaque site vitrine (pages, design, SEO, hébergement, support) est chiffré sur devis HT selon le brief. Pour des fourchettes de marché 2026, reportez-vous au tableau ci-dessus.",
         },
         {
           q: "Combien coûte un site e-commerce WooCommerce au Maroc ?",
-          r: "Prestation We Yan Digital e-commerce WooCommerce standard : à partir de 22 000 MAD HT (moins de 500 produits, catalogue Facebook, paiements CMI/Paypal/Stripe, SEO, relance panier, formation). Pour un site premium 1 000+ produits multi-langue, prévoyez 35 000 → 80 000 MAD HT.",
+          r: "Chez We Yan Digital, l’e-commerce WooCommerce (catalogue, paiements, SEO, formation) est chiffré sur devis HT selon le nombre de produits et les intégrations. Les fourchettes de marché figurent dans le tableau e-commerce de cet article.",
         },
         {
           q: "Faut-il choisir WordPress, PrestaShop ou un site sur-mesure React ?",
@@ -193,7 +193,7 @@ export default function BlogPrixSiteWebMarocPage() {
         },
         {
           q: "Quels délais de livraison pour un site web à Casablanca ?",
-          r: "Site vitrine : 10 → 20 jours ouvrés en moyenne. E-commerce standard : 30 → 45 jours. Site sur-mesure : 2 → 6 mois selon complexité. Nous livrons toujours un planning Gantt partagé au démarrage.",
+          r: "Le délai est communiqué dans le devis après cadrage du brief, des contenus et des validations. Nous partageons un planning dès le démarrage.",
         },
       ]}
       relatedLinks={[{ label: 'Demander un devis site web', to: '/contact/' }]}

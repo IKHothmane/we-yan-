@@ -61,7 +61,7 @@ export const PAGES_LINKING: PageLinking[] = [
       },
       {
         q: 'Combien coûte un site web vitrine au Maroc en 2026 ?',
-        r: 'En 2026, le prix d’un site web vitrine au Maroc varie généralement entre 5 000 MAD et 35 000 MAD HT. Chez We Yan Digital à Casablanca, nos formules démarrent à partir de 6 500 MAD pour un site vitrine 3-5 pages. Chaque devis est gratuit et détaillé sans engagement.',
+        r: 'En 2026, les tarifs de marché pour un site vitrine au Maroc varient souvent entre 5 000 MAD et 35 000 MAD HT selon la complexité. Chez We Yan Digital à Casablanca, chaque projet est chiffré sur devis gratuit et détaillé, sans engagement.',
       },
       {
         q: 'Comment améliorer son référencement naturel SEO à Casablanca ?',
@@ -119,14 +119,14 @@ export const PAGES_LINKING: PageLinking[] = [
   },
   {
     slug: '/services',
-    titre: 'Services',
-    intention: 'Hub : ranker sur agence digitale Casablanca / services, puis envoyer vers les piliers.',
+    titre: 'Services digitaux à Casablanca',
+    intention: 'Hub : présenter les prestations puis envoyer vers les money pages et services détaillés.',
     mot_cle_principal: 'agence digitale casablanca services',
     cluster_semantique: 'hub',
     pageRank_voulu: 8,
     breadcrumb: [
       { label: 'Accueil', to: '/' },
-      { label: 'Services agence digitale Casablanca' },
+      { label: 'Services digitaux à Casablanca' },
     ],
     liens_sortants: [
       {
@@ -144,11 +144,18 @@ export const PAGES_LINKING: PageLinking[] = [
         pourquoi: 'Silo web / hub',
       },
       {
+        cible: '/agence-google-ads-casablanca',
+        ancre: 'agence Google Ads à Casablanca',
+        contexte_avant: 'Pour générer des demandes via Search, voyez notre',
+        contexte_apres: 'dédiée aux campagnes Search, distincte de l’offre publicité digitale multi-leviers.',
+        pourquoi: 'Money page SEA',
+      },
+      {
         cible: '/community-management-casablanca',
-        ancre: 'création de contenu et community management',
-        contexte_avant: 'La visibilité sociale d’une marque à Casablanca passe par la',
-        contexte_apres: 'conçue pour des marques qui vendent réellement au Maroc.',
-        pourquoi: 'Silo création',
+        ancre: 'community management à Casablanca',
+        contexte_avant: 'La visibilité sociale d’une marque à Casablanca passe par le',
+        contexte_apres: 'dédié aux réseaux locaux, distinct de la page création de contenu générale.',
+        pourquoi: 'Silo création / CM local',
       },
       {
         cible: '/contact',
@@ -236,7 +243,7 @@ export const PAGES_LINKING: PageLinking[] = [
       },
       {
         q: 'Combien coûte une prestation SEO au Maroc en 2026 ?',
-        r: 'À Casablanca en 2026, un accompagnement SEO démarre en général à partir de 3 500 MAD/mois selon la concurrence et le volume de mots-clés. L’audit initial est offert sous 24h.',
+        r: 'À Casablanca en 2026, les fourchettes de marché SEO varient selon concurrence et volume de mots-clés. Chez We Yan Digital, l’accompagnement est chiffré sur devis ; l’audit initial est offert sous 24h.',
       },
       {
         q: 'En combien de temps voit-on les résultats SEO à Casablanca ?',
@@ -284,7 +291,7 @@ export const PAGES_LINKING: PageLinking[] = [
   },
   {
     slug: '/creation-site-web-casablanca',
-    titre: 'Création site web Casablanca',
+    titre: 'Création de site web à Casablanca',
     intention: 'Ranker sur création site web Casablanca / agence web Casablanca, convertir en devis.',
     mot_cle_principal: 'creation site web casablanca',
     cluster_semantique: 'hub',
@@ -298,11 +305,11 @@ export const PAGES_LINKING: PageLinking[] = [
     faq: [
       {
         q: 'Combien coûte un site vitrine à Casablanca en 2026 ?',
-        r: 'Un site vitrine 3–5 pages démarre généralement à partir de 6 500 MAD chez We Yan Digital. E-commerce et sur-mesure se chiffrent selon le catalogue et les intégrations.',
+        r: 'Chaque projet We Yan Digital est chiffré sur devis selon le périmètre. Pour des fourchettes de marché, consultez notre guide prix site web Maroc 2026.',
       },
       {
         q: 'Quels sont les délais de création d’un site web à Casablanca ?',
-        r: 'Vitrine simple : 3 à 6 semaines après brief et contenus. E-commerce ou multi-langue : souvent 6 à 12 semaines selon validations.',
+        r: 'Le délai est communiqué dans le devis après cadrage du brief, des contenus et des validations nécessaires.',
       },
       {
         q: 'Le site est-il prêt pour le référencement Google ?',
@@ -313,7 +320,7 @@ export const PAGES_LINKING: PageLinking[] = [
       {
         cible: '/blog/prix-site-web-maroc-2026',
         ancre: 'guide des prix site web au Maroc en 2026',
-        contexte_avant: 'Pour comparer les fourchettes avant le devis, consultez notre',
+        contexte_avant: 'Pour comparer les fourchettes de marché avant le devis, consultez notre',
         contexte_apres: 'puis validez le périmètre exact avec l’équipe We Yan Digital.',
         pourquoi: 'Éducation prix → money page',
       },
@@ -355,11 +362,11 @@ export const PAGES_LINKING: PageLinking[] = [
       },
       {
         q: 'Combien de temps dure un rebranding à Casablanca ?',
-        r: 'Starter (logo + charte) : 3 à 5 semaines. Growth (identité + site + community) : 8 à 12 semaines. Premium : 4 à 6 mois. Ateliers possibles à Maarif.',
+        r: 'Le délai est communiqué au devis selon le pack (Starter, Growth ou Premium), le volume de déclinaisons et les validations. Ateliers possibles à Maarif.',
       },
       {
         q: 'Quel est le prix d’une agence branding à Casablanca ?',
-        r: 'Chez We Yan Digital en 2026 : Starter 15 000 MAD HT, Growth 35 000 MAD HT, Premium 70 000 MAD HT. Devis sous 24h, Casablanca et Maroc.',
+        r: 'Chez We Yan Digital, Starter, Growth et Premium sont chiffrés sur devis HT selon le périmètre. Devis sous 24h, Casablanca et Maroc.',
       },
       {
         q: 'Une PME à Casablanca a-t-elle besoin d’un rebranding ?',
@@ -447,12 +454,12 @@ export const PAGES_LINKING: PageLinking[] = [
   },
   {
     slug: '/community-management-casablanca',
-    titre: 'Community Management Casablanca',
-    intention: 'Ranker sur « community management Casablanca » et convertir.',
+    titre: 'Community management à Casablanca',
+    intention: 'Ranker sur « community management Casablanca » (local), distinct du service contenu+CM général.',
     mot_cle_principal: 'community management casablanca',
     cluster_semantique: 'creation',
     pageRank_voulu: 9,
-    title_serp: 'Community management Casablanca | We Yan Digital',
+    title_serp: 'Community management Casablanca | Animation & forfaits',
     breadcrumb: [
       { label: 'Accueil', to: '/' },
       { label: 'Services', to: '/services/' },
@@ -557,13 +564,13 @@ export const PAGES_LINKING: PageLinking[] = [
   },
   {
     slug: '/agence-google-ads-casablanca',
-    titre: 'Agence Google Ads Casablanca',
+    titre: 'Agence Google Ads à Casablanca',
     intention:
       'Ranker sur agence Google Ads Casablanca / gestion Google Ads Casablanca, distinct du hub multi-leviers publicité digitale.',
     mot_cle_principal: 'agence google ads casablanca',
     cluster_semantique: 'ads',
     pageRank_voulu: 9,
-    title_serp: 'Agence Google Ads Casablanca | Gestion de campagnes – We Yan Digital',
+    title_serp: 'Agence Google Ads Casablanca | Search & conversions',
     faq: [
       {
         q: 'Quel budget publicitaire faut-il prévoir ?',

@@ -47,7 +47,7 @@ const services = [
 const forfaits = [
   {
     nom: 'Essentiel',
-    prix: '3 500 MAD/mois',
+    prix: 'Sur devis',
     public: 'PME & Jeune marque',
     features: [
       'Plateformes : Instagram + Facebook (2)',
@@ -61,7 +61,7 @@ const forfaits = [
   },
   {
     nom: 'Performance',
-    prix: '7 500 MAD/mois',
+    prix: 'Sur devis',
     public: 'Marque en croissance · Populaire',
     featured: true,
     features: [
@@ -69,7 +69,7 @@ const forfaits = [
       '24 posts/mois dont 8 reels vidéo',
       '24 stories animées + sondages hebdos',
       '2 shooting premium + 1 video reel pack',
-      'Meta Ads inclus (jusqu\'à 15 000 MAD budget/mois)',
+      'Meta Ads inclus (budget média défini au devis)',
       'Community manager 6j/7 + optimisation weekly',
       'Suivi conversion GA4 + Meta Pixel CAPI',
       'Reporting live dashboard 24/7 + 2 rendez-vous/mois',
@@ -97,15 +97,15 @@ const forfaits = [
 const faq = [
   {
     q: 'Combien coûte un community manager à Casablanca en 2026 ?',
-    r: "Les tarifs community manager Maroc varient de 2 500 MAD/mois pour un freelance junior jusqu'à 15 000+ MAD/mois pour une agence premium avec équipe dédiée + production vidéo + publicité Ads. Chez We Yan Digital agence de Casablanca Maarif, nos forfaits community management complets commencent à 3 500 MAD/mois (Essentiel PME).",
+    r: "Les tarifs community manager Maroc varient souvent de 2 500 MAD/mois pour un freelance junior jusqu'à 15 000+ MAD/mois pour une agence premium avec équipe dédiée + production vidéo + publicité Ads. Chez We Yan Digital (Casablanca Maarif), chaque forfait community management est chiffré sur devis selon plateformes, volume et Ads.",
   },
   {
     q: 'Quels réseaux sociaux privilégier pour une marque marocaine ?',
     r: "La réponse dépend de votre audience et votre secteur. En 2026 au Maroc : Instagram reste incontournable (mode, beauté, food, lifestyle), TikTok explose pour les marques D2C, services, restaurant, divertissement, Facebook est toujours très fort pour les commerces locaux et classes populaires, LinkedIn pour les B2B / services professionnels / formations, WhatsApp Business pour la relation client directe. Nous vous guidons selon votre cible.",
   },
   {
-    q: "Quel taux d'engagement peut-on espérer avec votre agence ?",
-    r: "Chez un client qui démarre, nous visons dès le premier trimestre un taux d'engagement minimum de 2% sur Instagram et 3% sur TikTok, avec un contenu créatif, authentique et régulièrement testé. Pour les marques déjà établies, nous optimisons la croissance et la conversion. Tous les KPI sont suivis chaque semaine.",
+    q: "Quels indicateurs suivez-vous en community management ?",
+    r: "Portée, impressions, taux d’engagement, clics vers le site ou WhatsApp, et leads lorsque le tracking le permet. Les objectifs sont fixés avec vous selon le point de départ — sans engagement minimum garanti sur un pourcentage d’engagement.",
   },
 ] as const
 
@@ -141,17 +141,26 @@ export default function CommunityManagementCasablancaPage() {
                 <span className="h-1.5 w-1.5 rounded-full" style={{ backgroundColor: '#FC9700' }} />
                 Community Management · Casablanca · We Yan Digital
               </span>
-              <h1 className="font-black uppercase tracking-[-0.03em] leading-[0.95] text-[clamp(2rem,7vw,4.75rem)] text-slate-900 mb-7">
+              <h1 className="font-black uppercase tracking-[-0.03em] leading-[0.95] text-[clamp(2rem,7vw,4.75rem)] text-slate-900 mb-4">
                 Community management à{' '}
                 <span className="italic" style={{ color: '#FC9700' }}>Casablanca</span>
-                <br />
-                <span style={{ color: '#6483F0' }}>Contenu premium + Ads</span> performant
               </h1>
+              <p className="mb-7 text-[clamp(1.1rem,2.6vw,1.45rem)] font-bold text-[#6483F0]">
+                Animation locale, contenu utile et reporting clair
+              </p>
               <p className="text-[clamp(1rem,2.1vw,1.15rem)] leading-8 text-slate-600 max-w-2xl mb-5">
-                Vous voulez une communauté <strong className="font-semibold text-slate-900">engagée, réelle et qui achète</strong> sur Instagram, Facebook, TikTok et LinkedIn ? Notre agence We Yan Digital à Casablanca Maarif anime vos réseaux sociaux avec du contenu premium, du community management humain et des campagnes publicitaires Meta + TikTok Ads optimisées pour <strong className="font-semibold text-slate-800">maximiser vos ventes</strong>.
+                Page dédiée aux entreprises de Casablanca qui cherchent un <strong className="font-semibold text-slate-900">community management</strong> opérationnel :
+                calendrier éditorial, publication, réponses aux commentaires / DM, et option Meta ou TikTok Ads selon le forfait.
               </p>
               <p className="text-[clamp(0.95rem,2vw,1.08rem)] leading-8 text-slate-600 max-w-2xl mb-9">
-                Nous ne faisons pas de « followers achetés » ni de fake engagement. Chaque publication, chaque reel, chaque DM répondu est pensée pour renforcer votre image de marque et <strong className="font-semibold text-slate-900">rapporter des leads qualifiés</strong>. Devis gratuit et réponse sous 24h.
+                Pour la prestation plus large (studio, production de contenu et CM combinés), voir aussi{' '}
+                <Link
+                  to="/services/creation-contenu-community-management/"
+                  className="font-bold text-[#6483F0] underline-offset-4 hover:underline"
+                >
+                  création de contenu &amp; community management
+                </Link>
+                . Ici, l’intention est locale : trouver une agence de community management à Casablanca. Devis sous 24h.
               </p>
               <div className="flex flex-col gap-5 sm:flex-row">
                 <Link

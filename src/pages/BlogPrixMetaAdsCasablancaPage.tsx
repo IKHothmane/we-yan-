@@ -70,7 +70,7 @@ export default function BlogPrixMetaAdsCasablancaPage() {
                   <strong className="font-semibold">Média</strong> : ce que Meta encaisse (enchères + TVA selon facturation).
                 </li>
                 <li>
-                  <strong className="font-semibold">Gestion We Yan</strong> : 4 500 à 10 000 MAD / mois, ou 12–16 % du
+                  <strong className="font-semibold">Gestion We Yan</strong> : sur devis / mois, ou 12–16 % du
                   média au-delà de 35 000 MAD.
                 </li>
                 <li>
@@ -168,22 +168,22 @@ export default function BlogPrixMetaAdsCasablancaPage() {
               <p>
                 En dessous de 4 000 MAD / mois de média, Meta n’a pas assez d’événements pour sortir de la phase
                 d’apprentissage. Vous voyez des CPM qui dansent. Ce n’est pas « l’algorithme contre vous » : c’est un
-                échantillon trop petit. Les paliers We Yan 2026 :
+                échantillon trop petit. Les paliers média indicatifs 2026 (gestion We Yan sur devis) :
               </p>
             </>,
             <>
               <ul className="mt-2 ml-5 list-disc space-y-2.5 text-[0.98rem] leading-8 text-slate-700">
                 <li>
-                  <strong>Starter local</strong> : 5 000 à 8 000 MAD média + 4 500 MAD gestion. 1 objectif (WhatsApp ou
+                  <strong>Starter local</strong> : 5 000 à 8 000 MAD média + gestion sur devis. 1 objectif (WhatsApp ou
                   leads), 4 creatives, zone Casablanca.
                 </li>
                 <li>
-                  <strong>Croissance</strong> : 12 000 à 25 000 MAD média + 7 000 MAD gestion. Prospecting + remarketing +
+                  <strong>Croissance</strong> : 12 000 à 25 000 MAD média + gestion sur devis. Prospecting + remarketing +
                   tests Reels / stories chaque semaine.
                 </li>
                 <li>
-                  <strong>E-commerce</strong> : 30 000 MAD+ média, gestion au %. Catalogue, CAPI, exclusions acheteurs,
-                  creatives UGC.
+                  <strong>E-commerce</strong> : 30 000 MAD+ média, gestion au % ou sur devis. Catalogue, CAPI, exclusions
+                  acheteurs, creatives UGC.
                 </li>
               </ul>
             </>,
@@ -243,10 +243,10 @@ export default function BlogPrixMetaAdsCasablancaPage() {
           paragraphs: [
             <>
               <p>
-                Pour une PME casablancaise : <strong>5 000 à 10 000 MAD de média</strong>,{' '}
-                <strong>4 500 à 7 000 MAD de gestion</strong>, 4 à 6 creatives, CAPI branché, objectif WhatsApp ou leads
-                site. Huit semaines. Si le CPA tient, on scale. Si l’offre ne convertit pas, on arrête le média plutôt
-                que d’ajouter 20 000 MAD sur une landing confuse.
+                Pour une PME casablancaise : souvent <strong>5 000 à 10 000 MAD de média</strong>, gestion We Yan{' '}
+                <strong>sur devis</strong>, 4 à 6 creatives, CAPI branché, objectif WhatsApp ou leads site. Si le CPA
+                tient, on scale. Si l’offre ne convertit pas, on arrête le média plutôt que d’ajouter du budget sur une
+                landing confuse.
               </p>
             </>,
             <>
@@ -262,7 +262,7 @@ export default function BlogPrixMetaAdsCasablancaPage() {
       faq={[
         {
           q: 'Quel budget Meta Ads minimum à Casablanca en 2026 ?',
-          r: '5 000 MAD / mois de média pour un test leads ou WhatsApp lisible. 3 000 MAD peuvent suffire en remarketing seul si vous avez déjà du trafic. La gestion We Yan démarre à 4 500 MAD HT / mois en plus du média.',
+          r: '5 000 MAD / mois de média pour un test leads ou WhatsApp lisible est une fourchette marché courante. 3 000 MAD peuvent suffire en remarketing seul si vous avez déjà du trafic. La gestion We Yan Digital est chiffrée sur devis HT, en plus du média.',
         },
         {
           q: 'Pourquoi mon CPL Instant Form est bas mais aucun client n’achète ?',

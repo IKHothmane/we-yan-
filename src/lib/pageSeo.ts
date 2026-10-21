@@ -34,7 +34,7 @@ export const pageSeo = {
   ),
   strategyMarketing: createPageSeoConfig(
     'Agence branding Casablanca | Rebranding – We Yan Digital',
-    'Agence branding à Casablanca : rebranding, identité et stratégie marketing. Packs dès 15 000 MAD. Audit gratuit, Maroc entier.',
+    'Agence branding à Casablanca : rebranding, identité et stratégie marketing. Packs sur devis. Audit gratuit, Maroc entier.',
     seoImages.strategyMarketing,
   ),
   contentCreation: createPageSeoConfig(
@@ -48,8 +48,8 @@ export const pageSeo = {
     seoImages.advertising,
   ),
   agenceGoogleAdsCasablanca: createPageSeoConfig(
-    'Agence Google Ads Casablanca | Gestion de campagnes – We Yan Digital',
-    'We Yan Digital accompagne les entreprises de Casablanca sur Google Ads : stratégie, gestion des campagnes, suivi des conversions et optimisation du budget. Demandez un devis.',
+    'Agence Google Ads Casablanca | Search & conversions',
+    'Agence Google Ads à Casablanca : campagnes Search, suivi des conversions, optimisation du budget. Devis We Yan Digital sous 24h.',
     seoImages.advertising,
   ),
   influenceMarketing: createPageSeoConfig(
@@ -101,12 +101,12 @@ export const pageSeo = {
   ),
   creationSiteWebCasablanca: createPageSeoConfig(
     'Création site web Casablanca | We Yan Digital',
-    'Création de site web à Casablanca : vitrine, e-commerce et sur-mesure. Délais, prix réalistes et devis gratuit sous 24h.',
+    'Création de site web à Casablanca : vitrine, e-commerce et sur-mesure. Devis et délais selon brief — guide prix marché 2026. We Yan Digital, réponse sous 24h.',
     seoImages.services,
   ),
   communityManagementCasablanca: createPageSeoConfig(
-    'Community management Casablanca | We Yan Digital',
-    'Community management à Casablanca : Instagram, TikTok, LinkedIn, animation et conversion. Agence We Yan Digital, devis 24h.',
+    'Community management Casablanca | Animation & forfaits',
+    'Community management à Casablanca : Instagram, TikTok, LinkedIn, forfaits mensuels et reporting. Devis We Yan Digital sous 24h.',
     seoImages.contentCreation,
   ),
 

@@ -75,17 +75,17 @@ export default function AgenceGoogleAdsCasablancaPage() {
                 Google Ads · Search · Casablanca Maarif
               </span>
               <h1
-                className="mb-7 font-black uppercase tracking-[-0.03em] text-slate-900"
+                className="mb-4 font-black uppercase tracking-[-0.03em] text-slate-900"
                 style={{ lineHeight: 1.12, fontSize: 'clamp(1.75rem, 5.5vw, 3.25rem)' }}
               >
                 Agence Google Ads à{' '}
                 <span className="italic" style={{ color: '#FC9700' }}>
                   Casablanca
                 </span>
-                <span className="mt-2 block normal-case tracking-[-0.02em]" style={{ color: '#4285F4' }}>
-                  Transformez vos recherches en clients
-                </span>
               </h1>
+              <p className="mb-7 text-[clamp(1.15rem,2.8vw,1.65rem)] font-bold tracking-tight text-[#4285F4]">
+                Transformez vos recherches Google en demandes utiles
+              </p>
               <p className="mb-5 max-w-2xl text-[clamp(1rem,2.1vw,1.15rem)] leading-8 text-slate-600">
                 Accompagnement <strong className="font-semibold text-slate-800">Google Ads</strong> pour les
                 entreprises de Casablanca : stratégie, campagnes Search, mesure des conversions et optimisation des
@@ -221,6 +221,34 @@ export default function AgenceGoogleAdsCasablancaPage() {
                 </li>
               ))}
             </ol>
+          </div>
+        </section>
+
+        <section className="border-t border-slate-200 px-[clamp(1rem,4vw,2rem)] py-16 sm:px-8">
+          <div className="mx-auto max-w-[1100px]" data-reveal>
+            <h2 className="mb-4 text-center font-black tracking-tight text-[clamp(1.6rem,4vw,2.3rem)] text-slate-900">
+              Livrables de l’accompagnement Google Ads
+            </h2>
+            <p className="mx-auto mb-8 max-w-2xl text-center text-slate-600 leading-7">
+              Ce que vous recevez concrètement — sans promesse de position ou de CPA garanti.
+            </p>
+            <ul className="grid grid-cols-1 gap-3 sm:grid-cols-2 text-[0.98rem] text-slate-700">
+              {[
+                'Audit du compte (ou cadrage de lancement) + priorités',
+                'Structure Search (campagnes, groupes, extensions)',
+                'Plan de suivi des conversions adapté à votre site',
+                'Optimisations hebdomadaires documentées',
+                'Reporting clair : dépenses, clics, conversions, CPL',
+                'Recommandations budget média en MAD',
+              ].map((item) => (
+                <li
+                  key={item}
+                  className="rounded-2xl border border-slate-200 bg-white px-5 py-4 font-semibold shadow-[0_10px_24px_-18px_rgba(15,23,42,0.25)]"
+                >
+                  {item}
+                </li>
+              ))}
+            </ul>
           </div>
         </section>
 

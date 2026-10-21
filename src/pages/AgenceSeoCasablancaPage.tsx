@@ -71,7 +71,7 @@ const faq = [
   },
   {
     q: 'Combien coûte une prestation SEO au Maroc en 2026 ?',
-    r: 'À Casablanca en 2026, un accompagnement SEO démarre en général à partir de 3 500 MAD/mois selon la concurrence et le volume de mots-clés. L’audit initial est offert sous 24h. Détail des fourchettes : voir notre guide prix SEO Casablanca 2026.',
+    r: 'À Casablanca en 2026, les fourchettes de marché SEO varient selon concurrence et volume de mots-clés — voir notre guide prix SEO Casablanca 2026. Chez We Yan Digital, l’accompagnement est chiffré sur devis ; l’audit initial est offert sous 24h.',
   },
   {
     q: 'En combien de temps voit-on les résultats SEO à Casablanca ?',
