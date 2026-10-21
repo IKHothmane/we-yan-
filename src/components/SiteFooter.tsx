@@ -126,6 +126,7 @@ export default function SiteFooter({ revealDelay }: SiteFooterProps) {
           <div className="mt-12 pt-6 border-t border-white/25 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between text-[0.78rem] text-white">
             <p>© 2026 We Yan Digital. Tous droits réservés.</p>
             <div className="flex flex-wrap gap-x-4 gap-y-2">
+              <AppLink to="/blog/" className="text-white hover:opacity-90">Blog</AppLink>
               <AppLink to="/mentions-legales/" className="text-white hover:opacity-90">Mentions légales</AppLink>
               <AppLink to="/politique-de-confidentialite/" className="text-white hover:opacity-90">Confidentialité</AppLink>
               <AppLink to="/conditions-generales/" className="text-white hover:opacity-90">CGV</AppLink>

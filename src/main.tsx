@@ -32,6 +32,7 @@ const CreationSiteWebCasablancaPage = lazyWithRetry(() => import('./pages/Creati
 const CommunityManagementCasablancaPage = lazyWithRetry(() => import('./pages/CommunityManagementCasablancaPage'))
 
 // Articles Blog
+const BlogIndexPage = lazyWithRetry(() => import('./pages/BlogIndexPage'))
 const BlogPrixSiteWebMarocPage = lazyWithRetry(() => import('./pages/BlogPrixSiteWebMarocPage'))
 const BlogPrixSeoCasablancaPage = lazyWithRetry(() => import('./pages/BlogPrixSeoCasablancaPage'))
 const BlogPrixGoogleAdsMarocPage = lazyWithRetry(() => import('./pages/BlogPrixGoogleAdsMarocPage'))
@@ -70,6 +71,7 @@ const APP_PAGE_ROUTES = [
   { path: '/agence-google-ads-casablanca', element: <AgenceGoogleAdsCasablancaPage /> },
   { path: '/creation-site-web-casablanca', element: <CreationSiteWebCasablancaPage /> },
   { path: '/community-management-casablanca', element: <CommunityManagementCasablancaPage /> },
+  { path: '/blog', element: <BlogIndexPage /> },
   { path: '/blog/prix-site-web-maroc-2026', element: <BlogPrixSiteWebMarocPage /> },
   { path: '/blog/prix-seo-casablanca-2026', element: <BlogPrixSeoCasablancaPage /> },
   { path: '/blog/prix-google-ads-maroc-2026', element: <BlogPrixGoogleAdsMarocPage /> },

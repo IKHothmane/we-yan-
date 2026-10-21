@@ -110,6 +110,11 @@ export const pageSeo = {
     seoImages.contentCreation,
   ),
 
+  blogIndex: createPageSeoConfig(
+    'Blog marketing digital Maroc 2026 | We Yan Digital',
+    'Guides prix, SEO, Google Ads, community et branding au Maroc. Articles We Yan Digital Casablanca pour choisir une agence et budgéter.',
+    seoImages.contentCreation,
+  ),
   blogPrixSiteWebMaroc2026: createPageSeoConfig(
     'Combien coûte un site web au Maroc 2026 ? | Prix',
     'Prix création site web Maroc 2026 : vitrine, e-commerce, sur-mesure. Fourchettes MAD indicatives et devis We Yan Digital Casablanca.',
@@ -210,6 +215,7 @@ export const PAGE_SEO_BY_SLUG: Record<string, PageSeoConfig> = {
   '/agence-seo-casablanca': pageSeo.agenceSeoCasablanca,
   '/creation-site-web-casablanca': pageSeo.creationSiteWebCasablanca,
   '/community-management-casablanca': pageSeo.communityManagementCasablanca,
+  '/blog': pageSeo.blogIndex,
   '/blog/prix-site-web-maroc-2026': pageSeo.blogPrixSiteWebMaroc2026,
   '/blog/prix-seo-casablanca-2026': pageSeo.blogPrixSeoCasablanca2026,
   '/blog/prix-google-ads-maroc-2026': pageSeo.blogPrixGoogleAdsMaroc2026,

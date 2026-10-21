@@ -742,6 +742,41 @@ export const PAGES_LINKING: PageLinking[] = [
     ],
   },
   {
+    slug: '/blog',
+    titre: 'Blog We Yan Digital — prix, SEO et marketing au Maroc',
+    intention: 'Hub blog : redistribuer le crawl vers tous les articles et les money pages.',
+    mot_cle_principal: 'blog marketing digital maroc',
+    cluster_semantique: 'hub',
+    pageRank_voulu: 5,
+    breadcrumb: [
+      { label: 'Accueil', to: '/' },
+      { label: 'Blog We Yan Digital' },
+    ],
+    liens_sortants: [
+      {
+        cible: '/blog/prix-site-web-maroc-2026',
+        ancre: 'prix site web Maroc 2026',
+        contexte_avant: 'Pour budgéter une vitrine ou un e-commerce au Maroc,',
+        contexte_apres: 'détaille les fourchettes marché et les pièges de devis courants.',
+        pourquoi: 'Article prix',
+      },
+      {
+        cible: '/blog/ameliorer-visibilite-google-casablanca',
+        ancre: 'visibilité Google à Casablanca',
+        contexte_avant: 'Pour un plan SEO local actionnable à Casablanca, lisez',
+        contexte_apres: 'avec Google Business Profile, technique site et contenus locaux.',
+        pourquoi: 'Article SEO local',
+      },
+      {
+        cible: '/contact',
+        ancre: 'demander un devis',
+        contexte_avant: 'Après lecture des guides, pour un chiffrage We Yan Digital,',
+        contexte_apres: 'nous répondons sous 24 heures ouvrées depuis Casablanca Maarif.',
+        pourquoi: 'Conversion',
+      },
+    ],
+  },
+  {
     slug: '/blog/prix-site-web-maroc-2026',
     titre: 'Combien coûte un site web au Maroc 2026',
     intention: 'Informer sur les tarifs, puis pousser vers création site Casablanca / contact.',
