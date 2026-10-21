@@ -1,3 +1,4 @@
+import { homePageSeo } from './homePageSeo'
 import { seoImages } from './seoImages'
 
 export type PageSeoConfig = {
@@ -25,11 +26,7 @@ function createPageSeoConfig(
 }
 
 export const pageSeo = {
-  home: createPageSeoConfig(
-    'We Yan Digital | Agence digitale Casablanca',
-    'Agence digitale à Casablanca : branding, SEO, site web, ads et community management pour startups et PME au Maroc. Devis sous 24h.',
-    seoImages.home,
-  ),
+  home: homePageSeo,
   services: createPageSeoConfig(
     'Services agence digitale Casablanca | We Yan Digital',
     'SEO, site web, branding, Google Ads, community et influence à Casablanca. Packs We Yan Digital pour PME et marques marocaines. Devis gratuit.',
@@ -89,6 +86,12 @@ export const pageSeo = {
     'Demande envoyée | We Yan Digital',
     'Merci pour votre demande. We Yan Digital vous répond sous 24h ouvrées à Casablanca.',
     seoImages.contact,
+  ),
+
+  notFound: createPageSeoConfig(
+    'Page introuvable | We Yan Digital',
+    'Cette page n’existe pas ou a été déplacée. Retrouvez les services We Yan Digital à Casablanca.',
+    seoImages.home,
   ),
 
   agenceSeoCasablanca: createPageSeoConfig(

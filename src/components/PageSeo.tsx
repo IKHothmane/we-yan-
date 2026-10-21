@@ -1,13 +1,5 @@
-import { useLayoutEffect } from 'react'
+import { useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
-import {
-  buildBreadcrumbJsonLd,
-  buildFaqJsonLd,
-  buildPageCanonical,
-  buildPageDocumentTitle,
-  getPageLinking,
-} from '../lib/internalLinking'
-import { buildServiceJsonLd } from '../lib/jsonLd'
 import { withTrailingSlash } from '../lib/paths'
 
 type PageSeoProps = {
@@ -32,16 +24,25 @@ function setMeta(selector: string, attribute: 'name' | 'property', value: string
 
 function setCanonical(url: string) {
   const canonical = document.head.querySelector<HTMLLinkElement>('link[rel="canonical"]')
-  if (!canonical) return
+  if (canonical) {
+    canonical.href = url
+    return
+  }
 
-  canonical.href = url
+  const link = document.createElement('link')
+  link.setAttribute('rel', 'canonical')
+  link.href = url
+  document.head.appendChild(link)
 }
 
-function setBreadcrumbJsonLd(pathname: string) {
-  const id = 'breadcrumb-jsonld'
-  const page = getPageLinking(pathname)
+function buildFallbackCanonical(pathname: string) {
+  const normalized = withTrailingSlash(pathname)
+  return normalized === '/' ? `${SITE_URL}/` : `${SITE_URL}${normalized}`
+}
+
+function upsertJsonLd(id: string, data: unknown | null) {
   const existing = document.getElementById(id)
-  if (!page || page.breadcrumb.length < 2) {
+  if (!data) {
     existing?.remove()
     return
   }
@@ -53,51 +54,32 @@ function setBreadcrumbJsonLd(pathname: string) {
     script.type = 'application/ld+json'
     document.head.appendChild(script)
   }
-  script.textContent = JSON.stringify(buildBreadcrumbJsonLd(page))
+  script.textContent = JSON.stringify(data)
 }
 
-function setFaqJsonLd(pathname: string) {
-  const id = 'faq-jsonld'
-  const page = getPageLinking(pathname)
-  const existing = document.getElementById(id)
-  const json = page ? buildFaqJsonLd(page) : null
-  if (!json) {
-    existing?.remove()
-    return
-  }
+function applyBasicSeo({
+  title,
+  description,
+  ogImage,
+  twitterImage,
+  ogImageAlt,
+  twitterImageAlt,
+  canonicalUrl,
+}: PageSeoProps & { canonicalUrl: string }) {
+  document.title = title
 
-  let script = existing as HTMLScriptElement | null
-  if (!script) {
-    script = document.createElement('script')
-    script.id = id
-    script.type = 'application/ld+json'
-    document.head.appendChild(script)
-  }
-  script.textContent = JSON.stringify(json)
-}
-
-function setServiceJsonLd(pathname: string) {
-  const id = 'service-jsonld'
-  const page = getPageLinking(pathname)
-  const existing = document.getElementById(id)
-  const json = page ? buildServiceJsonLd(page) : null
-  if (!json) {
-    existing?.remove()
-    return
-  }
-
-  let script = existing as HTMLScriptElement | null
-  if (!script) {
-    script = document.createElement('script')
-    script.id = id
-    script.type = 'application/ld+json'
-    document.head.appendChild(script)
-  }
-  script.textContent = JSON.stringify(json)
-}
-
-function normalizePath(pathname: string) {
-  return withTrailingSlash(pathname)
+  setMeta('meta[name="description"]', 'name', 'description', description)
+  setMeta('meta[property="og:title"]', 'property', 'og:title', title)
+  setMeta('meta[property="og:description"]', 'property', 'og:description', description)
+  setMeta('meta[property="og:url"]', 'property', 'og:url', canonicalUrl)
+  setMeta('meta[property="og:site_name"]', 'property', 'og:site_name', SITE_NAME)
+  setMeta('meta[property="og:image"]', 'property', 'og:image', ogImage)
+  setMeta('meta[property="og:image:alt"]', 'property', 'og:image:alt', ogImageAlt)
+  setMeta('meta[name="twitter:title"]', 'name', 'twitter:title', title)
+  setMeta('meta[name="twitter:description"]', 'name', 'twitter:description', description)
+  setMeta('meta[name="twitter:image"]', 'name', 'twitter:image', twitterImage)
+  setMeta('meta[name="twitter:image:alt"]', 'name', 'twitter:image:alt', twitterImageAlt)
+  setCanonical(canonicalUrl)
 }
 
 export default function PageSeo({
@@ -110,40 +92,69 @@ export default function PageSeo({
 }: PageSeoProps) {
   const location = useLocation()
 
-  useLayoutEffect(() => {
-    const page = getPageLinking(location.pathname)
-    // pageSeo.title = source de vérité SERP ; title_serp peut surcharger si défini
-    const documentTitle = page?.title_serp || title || (page ? buildPageDocumentTitle(page) : SITE_NAME)
-    const metaDescription = description
-    const canonicalUrl = page
-      ? buildPageCanonical(page)
-      : `${SITE_URL}${normalizePath(location.pathname) === '/' ? '/' : `${normalizePath(location.pathname)}/`}`
+  // Chemin critique : props uniquement (pas de graphe internalLinking dans le bundle initial).
+  useEffect(() => {
+    applyBasicSeo({
+      title,
+      description,
+      ogImage,
+      twitterImage,
+      ogImageAlt,
+      twitterImageAlt,
+      canonicalUrl: buildFallbackCanonical(location.pathname),
+    })
+  }, [description, location.pathname, ogImage, ogImageAlt, title, twitterImage, twitterImageAlt])
 
-    document.title = documentTitle
+  // Affinage SERP + JSON-LD après idle / en chunk async.
+  useEffect(() => {
+    let cancelled = false
+    let idleId: number | null = null
+    let timeoutId = 0
 
-    setMeta('meta[name="description"]', 'name', 'description', metaDescription)
-    setMeta('meta[property="og:title"]', 'property', 'og:title', documentTitle)
-    setMeta('meta[property="og:description"]', 'property', 'og:description', metaDescription)
-    setMeta('meta[property="og:url"]', 'property', 'og:url', canonicalUrl)
-    setMeta('meta[property="og:site_name"]', 'property', 'og:site_name', SITE_NAME)
-    setMeta('meta[property="og:image"]', 'property', 'og:image', ogImage)
-    setMeta('meta[property="og:image:alt"]', 'property', 'og:image:alt', ogImageAlt)
-    setMeta('meta[name="twitter:title"]', 'name', 'twitter:title', documentTitle)
-    setMeta('meta[name="twitter:description"]', 'name', 'twitter:description', metaDescription)
-    setMeta('meta[name="twitter:image"]', 'name', 'twitter:image', twitterImage)
-    setMeta('meta[name="twitter:image:alt"]', 'name', 'twitter:image:alt', twitterImageAlt)
-    // Sécurité : si le link canonical n'existe pas (ex: template), on le crée.
-    if (document.head.querySelector<HTMLLinkElement>('link[rel="canonical"]')) {
-      setCanonical(canonicalUrl)
-    } else {
-      const link = document.createElement('link')
-      link.setAttribute('rel', 'canonical')
-      link.href = canonicalUrl
-      document.head.appendChild(link)
+    const run = () => {
+      void Promise.all([import('../lib/internalLinking'), import('../lib/jsonLd')]).then(
+        ([{ getPageLinking, buildBreadcrumbJsonLd, buildFaqJsonLd, buildPageCanonical, buildPageDocumentTitle }, { buildServiceJsonLd }]) => {
+          if (cancelled) return
+
+          const page = getPageLinking(location.pathname)
+          const documentTitle = page?.title_serp || title || (page ? buildPageDocumentTitle(page) : SITE_NAME)
+          const canonicalUrl = page ? buildPageCanonical(page) : buildFallbackCanonical(location.pathname)
+
+          applyBasicSeo({
+            title: documentTitle,
+            description,
+            ogImage,
+            twitterImage,
+            ogImageAlt,
+            twitterImageAlt,
+            canonicalUrl,
+          })
+
+          if (!page || page.breadcrumb.length < 2) {
+            upsertJsonLd('breadcrumb-jsonld', null)
+          } else {
+            upsertJsonLd('breadcrumb-jsonld', buildBreadcrumbJsonLd(page))
+          }
+
+          upsertJsonLd('faq-jsonld', page ? buildFaqJsonLd(page) : null)
+          upsertJsonLd('service-jsonld', page ? buildServiceJsonLd(page) : null)
+        },
+      )
     }
-    setBreadcrumbJsonLd(location.pathname)
-    setFaqJsonLd(location.pathname)
-    setServiceJsonLd(location.pathname)
+
+    if ('requestIdleCallback' in window) {
+      idleId = window.requestIdleCallback(run, { timeout: 1800 })
+    } else {
+      timeoutId = window.setTimeout(run, 1)
+    }
+
+    return () => {
+      cancelled = true
+      if (idleId !== null && 'cancelIdleCallback' in window) {
+        window.cancelIdleCallback(idleId)
+      }
+      window.clearTimeout(timeoutId)
+    }
   }, [description, location.pathname, ogImage, ogImageAlt, title, twitterImage, twitterImageAlt])
 
   return null

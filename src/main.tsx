@@ -1,15 +1,16 @@
 import { Suspense } from 'react'
-import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import ReactDOM from 'react-dom/client'
 import ScrollToTop from './components/ScrollToTop'
 import ChunkErrorBoundary from './components/ChunkErrorBoundary'
 import { lazyWithRetry } from './lib/lazyWithRetry'
-import { validateInternalLinks } from './lib/internalLinking'
 import HomePage from './pages/HomePage'
 import './styles.css'
 
 if (import.meta.env.DEV) {
-  validateInternalLinks()
+  void import('./lib/internalLinking').then(({ validateInternalLinks }) => {
+    validateInternalLinks()
+  })
 }
 
 // Page home (synchrone pour LCP le + rapide possible, pas lazy)
@@ -47,6 +48,7 @@ const PolitiqueConfidentialitePage = lazyWithRetry(() => import('./pages/Politiq
 const MentionsLegalesPage = lazyWithRetry(() => import('./pages/MentionsLegalesPage'))
 const DemandesPage = lazyWithRetry(() => import('./pages/DemandesPage'))
 const MerciPage = lazyWithRetry(() => import('./pages/MerciPage'))
+const NotFoundPage = lazyWithRetry(() => import('./pages/NotFoundPage'))
 
 const APP_PAGE_ROUTES = [
   { path: '/', element: <HomePage /> },
@@ -122,7 +124,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
                   <Route key={`${path}/`} path={`${path}/`} element={element} />,
                 ],
           )}
-          <Route path="*" element={<Navigate to="/" replace />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </Suspense>
     </BrowserRouter>

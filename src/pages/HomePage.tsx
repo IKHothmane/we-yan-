@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom'
 import Icon from '../components/Icon'
 import Navbar from '../components/Navbar'
 import PageSeo from '../components/PageSeo'
-import { HOME_HERO_SERVICES } from '../constants'
-import { pageSeo } from '../lib/pageSeo'
+import { HOME_HERO_SERVICES } from '../constants/homeHeroServices'
+import { homePageSeo } from '../lib/homePageSeo'
 
 const HomeDeferredSections = lazy(() => import('../components/home/HomeDeferredSections'))
 
@@ -92,7 +92,7 @@ export default function HomePage() {
 
   return (
     <div className="bg-white font-sans text-slate-900 overflow-hidden w-full">
-      <PageSeo {...pageSeo.home} />
+      <PageSeo {...homePageSeo} />
       <style>{`
         .font-rigot {
           font-family: 'Syne', 'Poppins', sans-serif;
@@ -106,7 +106,13 @@ export default function HomePage() {
         .hero-image-motion {
           animation: heroPan 18s ease-in-out infinite alternate;
           transform-origin: center center;
-          will-change: transform;
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .hero-image-motion,
+          .floating-tag,
+          .service-tag-enter {
+            animation: none !important;
+          }
         }
         .service-tag-enter {
           animation: tagSwap 420ms ease both;

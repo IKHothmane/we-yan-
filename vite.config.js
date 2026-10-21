@@ -148,10 +148,29 @@ export default defineConfig({
     cssCodeSplit: true,
     modulePreload: {
       polyfill: true,
+      resolveDependencies: (filename, deps, { hostId, hostType }) => {
+        // Ne pas modulepreload les chunks SEO / pages lazy depuis l'entrée critique.
+        if (hostType === 'html' || filename.includes('index')) {
+          return deps.filter(
+            (dep) =>
+              !dep.includes('internalLinking') &&
+              !dep.includes('jsonLd') &&
+              !dep.includes('HomeDeferred'),
+          )
+        }
+        void hostId
+        return deps
+      },
     },
     rollupOptions: {
       output: {
-        manualChunks: undefined,
+        manualChunks(id) {
+          if (!id.includes('node_modules')) return
+          if (id.includes('react-router')) return 'router'
+          if (id.includes('react-dom') || id.includes('/react/') || id.includes('\\react\\') || id.includes('scheduler')) {
+            return 'react-vendor'
+          }
+        },
       },
     },
   },

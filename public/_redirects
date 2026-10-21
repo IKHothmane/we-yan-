@@ -36,24 +36,27 @@
 
 # ——————————————————————————————————————————————————————————
 # 3b)  ANCIENS SLUGS / LIENS MORTS → 301 (GSC Introuvable)
-#      Avant le fallback SPA, sinon Google garde un 404.
+#      Destinations ABSOLUES (URL finale + slash) pour éviter
+#      les chaînes www→apex→slash détectées comme « erreur de redirection ».
 # ——————————————————————————————————————————————————————————
-/seo                                               /services/seo/ 301
-/seo/                                              /services/seo/ 301
-/agence-seo                                        /agence-seo-casablanca/ 301
-/agence-seo/                                       /agence-seo-casablanca/ 301
-/about                                             /agence/ 301
-/about/                                            /agence/ 301
-/projects                                          /projets/ 301
-/projects/                                         /projets/ 301
-/blog                                              /blog/prix-seo-casablanca-2026/ 301
-/blog/                                             /blog/prix-seo-casablanca-2026/ 301
-/services/creation-contenu                         /services/creation-contenu-community-management/ 301
-/services/creation-contenu/                        /services/creation-contenu-community-management/ 301
-/services/community-management                     /community-management-casablanca/ 301
-/services/community-management/                    /community-management-casablanca/ 301
-/blog/marketing-digital-tendances-maroc-2025       /blog/marketing-digital-tendances-maroc-2026/ 301
-/blog/marketing-digital-tendances-maroc-2025/      /blog/marketing-digital-tendances-maroc-2026/ 301
+/seo                                               https://weyandigital.ma/services/seo/ 301
+/seo/                                              https://weyandigital.ma/services/seo/ 301
+/agence-seo                                        https://weyandigital.ma/agence-seo-casablanca/ 301
+/agence-seo/                                       https://weyandigital.ma/agence-seo-casablanca/ 301
+/about                                             https://weyandigital.ma/agence/ 301
+/about/                                            https://weyandigital.ma/agence/ 301
+/projects                                          https://weyandigital.ma/projets/ 301
+/projects/                                         https://weyandigital.ma/projets/ 301
+/blog                                              https://weyandigital.ma/blog/prix-seo-casablanca-2026/ 301
+/blog/                                             https://weyandigital.ma/blog/prix-seo-casablanca-2026/ 301
+/services/creation-contenu                         https://weyandigital.ma/services/creation-contenu-community-management/ 301
+/services/creation-contenu/                        https://weyandigital.ma/services/creation-contenu-community-management/ 301
+/services/community-management                     https://weyandigital.ma/community-management-casablanca/ 301
+/services/community-management/                    https://weyandigital.ma/community-management-casablanca/ 301
+/blog/marketing-digital-tendances-maroc-2025       https://weyandigital.ma/blog/marketing-digital-tendances-maroc-2026/ 301
+/blog/marketing-digital-tendances-maroc-2025/      https://weyandigital.ma/blog/marketing-digital-tendances-maroc-2026/ 301
+/Logo%20weyan.png                                  https://weyandigital.ma/logo.png 301
+/Logo weyan.png                                    https://weyandigital.ma/logo.png 301
 
 # ——————————————————————————————————————————————————————————
 # 4)  META-FICHIERS CLOUDFLARE PAGES / _headers / _redirects

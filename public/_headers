@@ -36,10 +36,12 @@
 # 3. Sitemap + robots : 1 jour cache
 # ——————————————————————————————————————————————————————————
 /sitemap.xml
-  Cache-Control: public, max-age=86400, must-revalidate
+  Cache-Control: public, max-age=3600, must-revalidate
+  CDN-Cache-Control: max-age=3600
   X-Content-Type-Options: nosniff
 /robots.txt
-  Cache-Control: public, max-age=86400, must-revalidate
+  Cache-Control: public, max-age=3600, must-revalidate
+  CDN-Cache-Control: max-age=3600
   X-Content-Type-Options: nosniff
 
 # ——————————————————————————————————————————————————————————
@@ -82,5 +84,6 @@
   Cross-Origin-Resource-Policy: same-site
   Cross-Origin-Embedder-Policy: credentialless
   Cache-Control: no-cache, no-store, must-revalidate
+  CDN-Cache-Control: no-store
   Pragma: no-cache
   Expires: 0
