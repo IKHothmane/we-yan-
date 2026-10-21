@@ -29,6 +29,7 @@ function validateInternalLinksPlugin() {
   }
 }
 
+
 const SITEMAP_SKIP = new Set(['demandes', 'merci'])
 const SITEMAP_META = {
   '': { changefreq: 'weekly', priority: '1.0' },
