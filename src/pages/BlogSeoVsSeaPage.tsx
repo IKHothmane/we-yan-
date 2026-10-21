@@ -10,7 +10,7 @@ export default function BlogSeoVsSeaPage() {
       badgeCategory="SEO · Google Ads · Stratégie"
       badgeColor={{ bg: '#DBEAFE', text: '#1D4ED8', border: '#93C5FD' }}
       title={<>
-        SEO vs SEA au Maroc <span style={{ color: '#6483F0' }}>2026</span> : quelle stratégie d'acquisition choisir pour votre entreprise ?
+        SEO ou Google Ads : que choisir pour une entreprise au Maroc <span style={{ color: '#6483F0' }}>2026</span> ?
       </>}
       publishDate="06 Août 2026"
       readTime="8 minutes"

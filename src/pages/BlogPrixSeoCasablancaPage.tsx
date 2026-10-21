@@ -16,7 +16,7 @@ export default function BlogPrixSeoCasablancaPage() {
       badgeColor={{ bg: '#DBEAFE', text: '#1D4ED8', border: '#93C5FD' }}
       title={
         <>
-          Prix SEO Casablanca <span style={{ color: '#6483F0' }}>2026</span> : combien coûte un accompagnement référencement naturel ?
+          Combien coûte le référencement SEO au Maroc <span style={{ color: '#6483F0' }}>2026</span> ?
         </>
       }
       publishDate="17 Août 2026"

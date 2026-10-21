@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import Icon from '../components/Icon'
 import Navbar from '../components/Navbar'
+import PageBreadcrumb from '../components/PageBreadcrumb'
 import PageSeo from '../components/PageSeo'
 import SemanticLink from '../components/SemanticLink'
 import SiteFooter from '../components/SiteFooter'
@@ -63,15 +64,11 @@ const projects: Project[] = [
   },
 ]
 
-const filters = ['Tous', 'Branding', 'Création de contenu', 'Social Media', 'Influence', 'Stratégie digitale']
+const filters = ['Tous', 'Branding', 'Création de contenu', 'Influence', 'Stratégie digitale']
 
 const projetsLinking = getPageLinking('/projets')
-const lienBranding = projetsLinking?.liens_sortants.find(
-  (lien) => lien.cible === '/services/strategie-marketing-rebranding',
-)
-const lienInfluence = projetsLinking?.liens_sortants.find(
-  (lien) => lien.cible === '/services/marketing-influence',
-)
+const faq = projetsLinking?.faq ?? []
+const liens = projetsLinking?.liens_sortants ?? []
 
 export default function ProjectsPage() {
   const [activeFilter, setActiveFilter] = useState('Tous')
@@ -87,22 +84,20 @@ export default function ProjectsPage() {
       <main className="bg-[#F1F1F1] min-h-screen pt-24">
         <header className="w-full pt-[clamp(5rem,9vw,6rem)] pb-[clamp(3rem,7vw,4rem)] px-[clamp(1rem,4vw,2rem)] md:px-margin-desktop">
           <div className="flex flex-col gap-6 max-w-4xl" data-reveal>
+            <PageBreadcrumb />
             <span className="text-primary font-semibold text-[14px] uppercase tracking-[0.2em] flex items-center gap-3">
               <span className="w-8 h-[2px] bg-primary"></span>
-              Portfolio créatif
+              Portfolio · Casablanca
             </span>
-            <h1 className="font-display text-[clamp(2.9rem,8vw,5.25rem)] text-on-surface leading-[1.02] font-bold">
-              Nos Projets
+            <h1 className="font-display text-[clamp(2.2rem,6vw,4rem)] text-on-surface leading-[1.08] font-bold">
+              Réalisations agence digitale Casablanca
             </h1>
             <p className="font-body text-[clamp(1rem,2.5vw,1.25rem)] text-on-surface-variant leading-relaxed max-w-2xl">
-              Découvrez une sélection de projets où stratégie, identité et contenu se rencontrent pour faire rayonner des marques ambitieuses.
+              Branding, contenu, influence et stratégie digitale pour marques marocaines — sélection de projets We Yan Digital à Casablanca.
             </p>
-            {lienBranding ? (
-              <SemanticLink lien={lienBranding} clusterSource="hub" className="max-w-2xl text-on-surface-variant" />
-            ) : null}
-            {lienInfluence ? (
-              <SemanticLink lien={lienInfluence} clusterSource="hub" className="max-w-2xl text-on-surface-variant" />
-            ) : null}
+            {liens.slice(0, 4).map((lien) => (
+              <SemanticLink key={lien.cible} lien={lien} clusterSource="hub" className="max-w-2xl text-on-surface-variant" />
+            ))}
           </div>
         </header>
 
@@ -239,6 +234,32 @@ export default function ProjectsPage() {
           </div>
         </section>
 
+        {faq.length > 0 ? (
+          <section className="bg-white border-y border-slate-200 px-[clamp(1rem,4vw,2rem)] py-20 md:px-margin-desktop">
+            <div className="mx-auto max-w-3xl">
+              <h2 className="mb-10 text-center font-display text-[clamp(1.75rem,4vw,2.5rem)] font-bold text-on-surface" data-reveal>
+                Questions fréquentes · Réalisations
+              </h2>
+              <div className="space-y-4">
+                {faq.map((f, i) => (
+                  <details
+                    key={f.q}
+                    open={i === 0}
+                    className="group rounded-2xl border border-slate-200 bg-[#F8FAFC] p-6"
+                    data-reveal
+                  >
+                    <summary className="flex cursor-pointer list-none items-center justify-between gap-4 marker:content-none">
+                      <h3 className="font-bold text-on-surface">{f.q}</h3>
+                      <span className="text-primary group-open:rotate-45 transition-transform" aria-hidden="true">+</span>
+                    </summary>
+                    <p className="mt-4 text-on-surface-variant leading-7">{f.r}</p>
+                  </details>
+                ))}
+              </div>
+            </div>
+          </section>
+        ) : null}
+
         <section className="py-section-padding" data-reveal data-reveal-delay="600">
           <div className="w-full px-[clamp(1rem,4vw,2rem)] md:px-margin-desktop">
             <div className="relative bg-[#1b1b1b] overflow-hidden rounded-xl p-[clamp(1.75rem,5vw,7rem)] text-center">
@@ -251,8 +272,13 @@ export default function ProjectsPage() {
                 <p className="font-body text-[clamp(1rem,2.5vw,1.25rem)] text-white/60 max-w-2xl mx-auto">
                   Nous accompagnons les marques qui veulent allier clarté stratégique, exécution soignée et impact durable.
                 </p>
+                {liens
+                  .filter((l) => l.cible === '/contact' || l.cible === '/services')
+                  .map((lien) => (
+                    <SemanticLink key={lien.cible} lien={lien} clusterSource="hub" className="max-w-xl text-white/70" />
+                  ))}
                 <Link to="/contact/" className="bg-secondary text-white px-12 py-5 rounded-full font-bold text-[18px] hover:scale-105 hover:brightness-110 shadow-2xl shadow-secondary/40 transition-all duration-300 active:scale-95 mt-4 font-display inline-block">
-                  Contactez-nous
+                  Demander une étude de cas
                 </Link>
               </div>
             </div>

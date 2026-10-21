@@ -10,7 +10,7 @@ export default function BlogPrixSiteWebMarocPage() {
       badgeCategory="Prix & Tarifs · Casablanca 2026"
       badgeColor={{ bg: '#FEF3C7', text: '#B45309', border: '#FCD34D' }}
       title={<>
-        Prix site web Maroc <span style={{ color: '#FC9700' }}>2026</span> : combien coûte vraiment un site vitrine, e-commerce ou sur-mesure ?
+        Combien coûte la création d&apos;un site web au Maroc <span style={{ color: '#FC9700' }}>2026</span> ?
       </>}
       publishDate="06 Août 2026"
       readTime="9 minutes"
@@ -196,7 +196,10 @@ export default function BlogPrixSiteWebMarocPage() {
           r: "Le délai est communiqué dans le devis après cadrage du brief, des contenus et des validations. Nous partageons un planning dès le démarrage.",
         },
       ]}
-      relatedLinks={[{ label: 'Demander un devis site web', to: '/contact/' }]}
+      relatedLinks={[
+        { label: 'Création de site web à Casablanca', to: '/creation-site-web-casablanca/' },
+        { label: 'Demander un devis', to: '/contact/' },
+      ]}
     />
   )
 }

@@ -41,6 +41,10 @@ const BlogSeoVsSeaPage = lazyWithRetry(() => import('./pages/BlogSeoVsSeaPage'))
 const BlogBrandingMarocPage = lazyWithRetry(() => import('./pages/BlogBrandingMarocPage'))
 const BlogRebrandingExempleCasablancaPage = lazyWithRetry(() => import('./pages/BlogRebrandingExempleCasablancaPage'))
 const BlogMarketingDigitalMarocPage = lazyWithRetry(() => import('./pages/BlogMarketingDigitalMarocPage'))
+const BlogPrixCommunityManagementMarocPage = lazyWithRetry(() => import('./pages/BlogPrixCommunityManagementMarocPage'))
+const BlogPrixIdentiteVisuelleMarocPage = lazyWithRetry(() => import('./pages/BlogPrixIdentiteVisuelleMarocPage'))
+const BlogChoisirAgenceDigitaleCasablancaPage = lazyWithRetry(() => import('./pages/BlogChoisirAgenceDigitaleCasablancaPage'))
+const BlogAmeliorerVisibiliteGoogleCasablancaPage = lazyWithRetry(() => import('./pages/BlogAmeliorerVisibiliteGoogleCasablancaPage'))
 
 // Pages légales
 const ConditionsGeneralesPage = lazyWithRetry(() => import('./pages/ConditionsGeneralesPage'))
@@ -75,6 +79,10 @@ const APP_PAGE_ROUTES = [
   { path: '/blog/branding-creation-marque-maroc', element: <BlogBrandingMarocPage /> },
   { path: '/blog/rebranding-exemple-casablanca-2026', element: <BlogRebrandingExempleCasablancaPage /> },
   { path: '/blog/marketing-digital-tendances-maroc-2026', element: <BlogMarketingDigitalMarocPage /> },
+  { path: '/blog/prix-community-management-maroc-2026', element: <BlogPrixCommunityManagementMarocPage /> },
+  { path: '/blog/prix-identite-visuelle-maroc-2026', element: <BlogPrixIdentiteVisuelleMarocPage /> },
+  { path: '/blog/comment-choisir-agence-digitale-casablanca', element: <BlogChoisirAgenceDigitaleCasablancaPage /> },
+  { path: '/blog/ameliorer-visibilite-google-casablanca', element: <BlogAmeliorerVisibiliteGoogleCasablancaPage /> },
   { path: '/conditions-generales', element: <ConditionsGeneralesPage /> },
   { path: '/politique-de-confidentialite', element: <PolitiqueConfidentialitePage /> },
   { path: '/mentions-legales', element: <MentionsLegalesPage /> },

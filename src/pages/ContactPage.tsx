@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Icon from '../components/Icon'
 import Navbar from '../components/Navbar'
+import PageBreadcrumb from '../components/PageBreadcrumb'
 import PageSeo from '../components/PageSeo'
 import SiteFooter from '../components/SiteFooter'
 import useScrollReveal from '../hooks/useScrollReveal'
@@ -99,11 +100,12 @@ export default function ContactPage() {
 
       <main className="max-w-[1280px] mx-auto px-8 md:px-margin-desktop pt-[clamp(7.5rem,16vw,9.5rem)] pb-section-padding">
         <header className="mb-16 text-center max-w-4xl mx-auto">
+          <PageBreadcrumb className="mb-4" />
           <h1
             className="font-rigot text-4xl md:text-5xl lg:text-6xl font-extrabold mb-4 md:mb-6 tracking-[-0.02em] text-on-surface"
             style={{ lineHeight: 1.28 }}
           >
-            Parlons de votre prochain grand projet.
+            Contact agence digitale Casablanca — devis sous 24h.
           </h1>
           <p className="text-body-lg text-on-surface-variant">
             Prêt à transformer vos idées en réalité numérique ? Notre équipe d&apos;experts est à votre écoute pour

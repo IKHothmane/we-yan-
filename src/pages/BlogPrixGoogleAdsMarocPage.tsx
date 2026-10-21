@@ -17,7 +17,7 @@ export default function BlogPrixGoogleAdsMarocPage() {
       badgeColor={{ bg: '#DBEAFE', text: '#1D4ED8', border: '#93C5FD' }}
       title={
         <>
-          Prix Google Ads Maroc <span style={{ color: '#6483F0' }}>2026</span> : CPC, budget media et frais d’agence
+          Quel budget Google Ads prévoir au Maroc <span style={{ color: '#6483F0' }}>2026</span> ?
         </>
       }
       publishDate="17 Août 2026"

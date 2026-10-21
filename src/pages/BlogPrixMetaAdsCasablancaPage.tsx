@@ -17,7 +17,7 @@ export default function BlogPrixMetaAdsCasablancaPage() {
       badgeColor={{ bg: '#DBEAFE', text: '#1D4ED8', border: '#93C5FD' }}
       title={
         <>
-          Prix Meta Ads Casablanca <span style={{ color: '#0A66FF' }}>2026</span> : CPC, coût par lead et budget Facebook / Instagram
+          Quel budget Facebook et Instagram Ads au Maroc <span style={{ color: '#0A66FF' }}>2026</span> ?
         </>
       }
       publishDate="17 Août 2026"

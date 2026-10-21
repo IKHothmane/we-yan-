@@ -488,11 +488,11 @@ export const PAGES_LINKING: PageLinking[] = [
         pourquoi: 'Pilier du silo',
       },
       {
-        cible: '/blog/prix-site-web-maroc-2026',
-        ancre: 'coût d’un site et d’une présence digitale',
-        contexte_avant: 'Le budget CM se lit aussi via le',
-        contexte_apres: 'en 2026, pour caler site, contenus et budget d’animation.',
-        pourquoi: 'Article hub (autorisé)',
+        cible: '/blog/prix-community-management-maroc-2026',
+        ancre: 'prix community management au Maroc 2026',
+        contexte_avant: 'Pour comparer les fourchettes marché avant un devis,',
+        contexte_apres: 'détaille freelance vs agence, volume de posts et option Ads.',
+        pourquoi: 'Article prix CM → money',
       },
       {
         cible: '/contact',
@@ -743,8 +743,8 @@ export const PAGES_LINKING: PageLinking[] = [
   },
   {
     slug: '/blog/prix-site-web-maroc-2026',
-    titre: 'Prix site web Maroc 2026',
-    intention: 'Informer sur les tarifs, puis pousser vers services / contact (pas un silo isolé).',
+    titre: 'Combien coûte un site web au Maroc 2026',
+    intention: 'Informer sur les tarifs, puis pousser vers création site Casablanca / contact.',
     mot_cle_principal: 'prix site web maroc',
     cluster_semantique: 'hub',
     pageRank_voulu: 4,
@@ -755,11 +755,11 @@ export const PAGES_LINKING: PageLinking[] = [
     ],
     liens_sortants: [
       {
-        cible: '/services',
-        ancre: 'création de site avec une agence à Casablanca',
-        contexte_avant: 'Après le comparatif de prix, voyez plutôt la',
-        contexte_apres: 'plutôt qu’un freelance isolé, avec SEO et conversion inclus.',
-        pourquoi: 'Pilier hub',
+        cible: '/creation-site-web-casablanca',
+        ancre: 'création de site web à Casablanca',
+        contexte_avant: 'Après le comparatif de prix marché, passez à une offre concrète de',
+        contexte_apres: 'avec vitrine, e-commerce ou sur-mesure, devis We Yan sous 24h.',
+        pourquoi: 'Money page création site',
       },
       {
         cible: '/blog/branding-creation-marque-maroc',
@@ -779,9 +779,9 @@ export const PAGES_LINKING: PageLinking[] = [
   },
   {
     slug: '/blog/seo-vs-sea-maroc',
-    titre: 'SEO vs SEA Maroc',
+    titre: 'SEO ou Google Ads au Maroc',
     intention: 'Informer, puis pousser vers agence SEO et publicité digitale.',
-    mot_cle_principal: 'seo vs sea maroc',
+    mot_cle_principal: 'seo ou google ads maroc',
     cluster_semantique: 'seo',
     pageRank_voulu: 4,
     breadcrumb: [
@@ -815,9 +815,9 @@ export const PAGES_LINKING: PageLinking[] = [
   },
   {
     slug: '/blog/prix-seo-casablanca-2026',
-    titre: 'Prix SEO Casablanca 2026',
+    titre: 'Combien coûte le SEO au Maroc 2026',
     intention: 'Informer sur les tarifs SEO, puis glisser vers la money page agence SEO Casablanca.',
-    mot_cle_principal: 'prix seo casablanca',
+    mot_cle_principal: 'prix seo maroc',
     cluster_semantique: 'seo',
     pageRank_voulu: 4,
     breadcrumb: [
@@ -917,7 +917,7 @@ export const PAGES_LINKING: PageLinking[] = [
   },
   {
     slug: '/blog/prix-google-ads-maroc-2026',
-    titre: 'Prix Google Ads Maroc 2026',
+    titre: 'Quel budget Google Ads prévoir au Maroc',
     intention: 'Informer sur les tarifs CPC Google Ads au Maroc, puis pousser vers la money Google Ads Casablanca.',
     mot_cle_principal: 'prix google ads maroc',
     cluster_semantique: 'ads',
@@ -953,7 +953,7 @@ export const PAGES_LINKING: PageLinking[] = [
   },
   {
     slug: '/blog/prix-meta-ads-casablanca-2026',
-    titre: 'Prix Meta Ads Casablanca 2026',
+    titre: 'Budget Facebook Instagram Ads Maroc 2026',
     intention: 'Informer sur les tarifs CPC Meta Ads à Casablanca, puis pousser vers la money ads.',
     mot_cle_principal: 'prix meta ads casablanca',
     cluster_semantique: 'ads',
@@ -1010,6 +1010,185 @@ export const PAGES_LINKING: PageLinking[] = [
     ],
   },
   {
+    slug: '/blog/prix-community-management-maroc-2026',
+    titre: 'Combien coûte le community management au Maroc 2026',
+    intention: 'Informer sur les tarifs CM, puis pousser vers money community Casablanca.',
+    mot_cle_principal: 'prix community management maroc',
+    cluster_semantique: 'creation',
+    pageRank_voulu: 4,
+    faq: [
+      {
+        q: 'Combien de posts par mois pour un forfait correct ?',
+        r: 'Souvent 12 à 24 posts / mois + stories, selon la niche. En dessous de 8 posts réguliers, l’algorithme peine à pousser la marque.',
+      },
+      {
+        q: 'Le community management inclut-il la publicité ?',
+        r: 'Pas toujours. Chez We Yan, Ads Meta / TikTok peut être option — budget média et gestion précisés au devis.',
+      },
+      {
+        q: 'Quel délai pour voir de l’engagement ?',
+        r: 'Signaux souvent en 2 à 4 semaines si le rythme est tenu. Des leads stables demandent en général plusieurs mois + tracking.',
+      },
+    ],
+    breadcrumb: [
+      { label: 'Accueil', to: '/' },
+      { label: 'Services', to: '/services/' },
+      { label: 'Prix community management Maroc 2026' },
+    ],
+    liens_sortants: [
+      {
+        cible: '/community-management-casablanca',
+        ancre: 'community management à Casablanca',
+        contexte_avant: 'Pour un forfait Instagram TikTok LinkedIn cadré sur vos objectifs,',
+        contexte_apres: 'We Yan Digital propose planning, créas et reporting avec devis sous 24h.',
+        pourquoi: 'Money CM',
+      },
+      {
+        cible: '/contact',
+        ancre: 'demander un devis community',
+        contexte_avant: 'Pour un chiffrage selon plateformes, volume et option Ads,',
+        contexte_apres: 'nous envoyons un devis détaillé sous 24h ouvrées à Casablanca.',
+        pourquoi: 'Conversion',
+      },
+    ],
+  },
+  {
+    slug: '/blog/prix-identite-visuelle-maroc-2026',
+    titre: 'Combien coûte une identité visuelle au Maroc 2026',
+    intention: 'Informer sur les tarifs logo / charte, puis pousser vers branding Casablanca.',
+    mot_cle_principal: 'prix identite visuelle maroc',
+    cluster_semantique: 'branding',
+    pageRank_voulu: 4,
+    faq: [
+      {
+        q: 'Faut-il déposer sa marque à l’OMPIC avant le logo ?',
+        r: 'Idéalement oui : recherche d’antériorité puis dépôt. Les frais OMPIC sont distincts des honoraires design.',
+      },
+      {
+        q: 'Combien de temps pour une identité complète ?',
+        r: 'Le délai est communiqué au devis selon le pack et les validations.',
+      },
+      {
+        q: 'Peut-on rebrander sans changer de nom ?',
+        r: 'Oui : vous gardez avis Google et domaine, vous changez promesse et système visuel.',
+      },
+    ],
+    breadcrumb: [
+      { label: 'Accueil', to: '/' },
+      { label: 'Services', to: '/services/' },
+      { label: 'Prix identité visuelle Maroc 2026' },
+    ],
+    liens_sortants: [
+      {
+        cible: '/services/strategie-marketing-rebranding',
+        ancre: 'agence branding à Casablanca',
+        contexte_avant: 'Une fois le budget identité cadré, passez à une vraie',
+        contexte_apres: 'avec audit, positionnement, charte et plan de déploiement digital.',
+        pourquoi: 'Money branding',
+      },
+      {
+        cible: '/contact',
+        ancre: 'demander un devis identité',
+        contexte_avant: 'Pour un chiffrage logo, charte et déclinaisons selon votre marque,',
+        contexte_apres: 'nous envoyons un devis HT sous 24h ouvrées depuis Casablanca.',
+        pourquoi: 'Conversion',
+      },
+    ],
+  },
+  {
+    slug: '/blog/comment-choisir-agence-digitale-casablanca',
+    titre: 'Comment choisir une agence digitale à Casablanca',
+    intention: 'Guide décisionnel, puis pousser vers agence + projets + contact.',
+    mot_cle_principal: 'choisir agence digitale casablanca',
+    cluster_semantique: 'hub',
+    pageRank_voulu: 4,
+    faq: [
+      {
+        q: 'Agence locale ou freelance distant ?',
+        r: 'Pour SEO local, shooting ou ateliers branding, une équipe Casa accélère. Pour une tâche isolée, un freelance senior peut suffire.',
+      },
+      {
+        q: 'Faut-il choisir l’agence la moins chère ?',
+        r: 'Non. Comparez le coût par livrable et le risque d’un projet à refaire.',
+      },
+      {
+        q: 'Combien d’agences comparer ?',
+        r: 'Deux ou trois devis sérieux suffisent.',
+      },
+    ],
+    breadcrumb: [
+      { label: 'Accueil', to: '/' },
+      { label: 'Agence', to: '/agence/' },
+      { label: 'Choisir une agence digitale à Casablanca' },
+    ],
+    liens_sortants: [
+      {
+        cible: '/agence',
+        ancre: 'agence digitale We Yan à Casablanca',
+        contexte_avant: 'Pour juger la méthode et l’équipe derrière les livrables, découvrez notre',
+        contexte_apres: 'basée à Maarif, avec SEO, ads, site, branding et community.',
+        pourquoi: 'Hub E-E-A-T',
+      },
+      {
+        cible: '/projets',
+        ancre: 'réalisations We Yan Digital',
+        contexte_avant: 'Avant de signer un devis, regardez aussi nos',
+        contexte_apres: 'branding, contenu et campagnes livrées pour des marques marocaines.',
+        pourquoi: 'Preuve sociale',
+      },
+      {
+        cible: '/contact',
+        ancre: 'demander un premier échange',
+        contexte_avant: 'Pour comparer We Yan à d’autres devis sans engagement,',
+        contexte_apres: 'nous répondons sous 24h ouvrées avec un cadrage clair.',
+        pourquoi: 'Conversion',
+      },
+    ],
+  },
+  {
+    slug: '/blog/ameliorer-visibilite-google-casablanca',
+    titre: 'Améliorer sa visibilité Google à Casablanca',
+    intention: 'Guide SEO local, puis pousser vers agence SEO Casablanca.',
+    mot_cle_principal: 'visibilite google casablanca',
+    cluster_semantique: 'seo',
+    pageRank_voulu: 4,
+    faq: [
+      {
+        q: 'Combien de temps pour être visible sur Google à Casablanca ?',
+        r: 'Premières hausses souvent en 4 à 8 semaines. Trafic local utile : souvent 3 à 6 mois.',
+      },
+      {
+        q: 'SEO ou Google Ads pour démarrer ?',
+        r: 'Ads pour des leads rapides ; SEO pour un actif durable. Le mix reste le plus efficace.',
+      },
+      {
+        q: 'Le SEO local suffit-il sans site ?',
+        r: 'GMB peut générer des appels. Un site convertit mieux dès que l’offre est complexe.',
+      },
+    ],
+    breadcrumb: [
+      { label: 'Accueil', to: '/' },
+      { label: 'Services', to: '/services/' },
+      { label: 'Visibilité Google Casablanca' },
+    ],
+    liens_sortants: [
+      {
+        cible: '/agence-seo-casablanca',
+        ancre: 'agence SEO à Casablanca',
+        contexte_avant: 'Pour un plan local Google Business, technique et contenus,',
+        contexte_apres: 'We Yan Digital propose un accompagnement sur devis avec audit sous 24h.',
+        pourquoi: 'Money SEO',
+      },
+      {
+        cible: '/contact',
+        ancre: 'demander un audit SEO local',
+        contexte_avant: 'Pour un diagnostic positions et fiche Google Business à Casablanca,',
+        contexte_apres: 'nous envoyons les priorités et un devis sous 24h ouvrées.',
+        pourquoi: 'Conversion',
+      },
+    ],
+  },
+  {
     slug: '/blog/marketing-digital-tendances-maroc-2026',
     titre: 'Marketing digital Maroc 2026',
     intention: 'Informer sur les tendances, puis pousser ads / CM / contact.',
@@ -1047,11 +1226,25 @@ export const PAGES_LINKING: PageLinking[] = [
   },
   {
     slug: '/projets',
-    titre: 'Projets',
+    titre: 'Réalisations agence digitale Casablanca',
     intention: 'Preuve sociale PR6 : redistribuer le jus vers les money pages SEO et CM, puis convertir.',
     mot_cle_principal: 'agence digitale casablanca realisations',
     cluster_semantique: 'hub',
     pageRank_voulu: 6,
+    faq: [
+      {
+        q: 'Quels types de projets réalisez-vous à Casablanca ?',
+        r: 'Branding et rebranding, sites web, SEO local, community management, Google / Meta Ads et campagnes d’influence pour PME et marques marocaines.',
+      },
+      {
+        q: 'Puis-je voir une étude de cas proche de mon secteur ?',
+        r: 'Oui. Décrivez votre activité et vos objectifs : nous envoyons sous 24h ouvrées un dossier adapté et un devis, sans engagement.',
+      },
+      {
+        q: 'Travaillez-vous hors Casablanca ?',
+        r: 'Oui. Basés à Maarif, nous livrons aussi pour Rabat, Marrakech, Tanger et tout le Maroc, en présentiel ou à distance.',
+      },
+    ],
     breadcrumb: [
       { label: 'Accueil', to: '/' },
       { label: 'Projets We Yan Digital Casablanca' },
@@ -1103,11 +1296,25 @@ export const PAGES_LINKING: PageLinking[] = [
   },
   {
     slug: '/agence',
-    titre: 'Agence',
+    titre: 'Agence digitale à Casablanca',
     intention: 'Confiance / E-E-A-T, puis contact. Pas une page de listing de services.',
-    mot_cle_principal: 'agence we yan digital casablanca',
+    mot_cle_principal: 'agence digitale casablanca maarif',
     cluster_semantique: 'hub',
     pageRank_voulu: 6,
+    faq: [
+      {
+        q: 'Où se situe We Yan Digital à Casablanca ?',
+        r: 'Notre studio est à Maarif, Casablanca. Nous accueillons sur rendez-vous et accompagnons aussi Rabat, Marrakech, Tanger et le reste du Maroc à distance.',
+      },
+      {
+        q: 'Quels services propose votre agence digitale ?',
+        r: 'SEO, création de site web, Google Ads et Meta Ads, community management, branding / rebranding et marketing d’influence — chiffrés sur devis selon vos objectifs.',
+      },
+      {
+        q: 'Comment démarrer avec We Yan Digital ?',
+        r: 'Envoyez un brief via la page contact : nous répondons sous 24h ouvrées avec un premier cadrage et un devis gratuit, sans engagement.',
+      },
+    ],
     breadcrumb: [
       { label: 'Accueil', to: '/' },
       { label: 'Agence We Yan Digital Casablanca' },
@@ -1138,7 +1345,7 @@ export const PAGES_LINKING: PageLinking[] = [
   },
   {
     slug: '/contact',
-    titre: 'Contact',
+    titre: 'Contact agence digitale Casablanca',
     intention: 'Page de conversion : ne doit PAS donner de jus ailleurs.',
     mot_cle_principal: 'contact agence digitale casablanca',
     cluster_semantique: 'conversion',
