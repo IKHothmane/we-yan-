@@ -48,7 +48,7 @@ const MONEY_SLUGS = [
 export const PAGES_LINKING: PageLinking[] = [
   {
     slug: '/',
-    titre: 'Accueil',
+    titre: 'Agence digitale à Casablanca : SEO, publicité et création web',
     intention: 'Page de rang 10 : poser We Yan Digital Casablanca et pousser vers les 3 piliers + contact.',
     mot_cle_principal: 'agence digitale casablanca',
     cluster_semantique: 'home',
@@ -161,7 +161,7 @@ export const PAGES_LINKING: PageLinking[] = [
   },
   {
     slug: '/services/seo',
-    titre: 'Référencement Naturel (SEO)',
+    titre: 'Prestation SEO au Maroc : audit, optimisation et suivi',
     intention: 'Vendre le service SEO (audit, prestation, optimisation) et renvoyer vers l’agence locale Casablanca.',
     mot_cle_principal: 'referencement naturel maroc',
     cluster_semantique: 'seo',
@@ -218,7 +218,7 @@ export const PAGES_LINKING: PageLinking[] = [
   },
   {
     slug: '/agence-seo-casablanca',
-    titre: 'Agence SEO Casablanca',
+    titre: 'Agence SEO à Casablanca',
     intention: 'Ranker sur agence SEO Casablanca / expert SEO Casablanca, distinct du service SEO générique.',
     mot_cle_principal: 'agence seo casablanca',
     cluster_semantique: 'seo',
@@ -227,7 +227,7 @@ export const PAGES_LINKING: PageLinking[] = [
     breadcrumb: [
       { label: 'Accueil', to: '/' },
       { label: 'Services', to: '/services/' },
-      { label: 'Agence SEO Casablanca' },
+      { label: 'Agence SEO à Casablanca' },
     ],
     faq: [
       {

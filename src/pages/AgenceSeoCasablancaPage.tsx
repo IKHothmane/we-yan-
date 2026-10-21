@@ -120,12 +120,13 @@ export default function AgenceSeoCasablancaPage() {
                 <span className="h-1.5 w-1.5 rounded-full" style={{ backgroundColor: '#6483F0' }} />
                 Agence SEO · We Yan Digital · Casablanca Maarif
               </span>
-              <h1 className="font-black uppercase tracking-[-0.03em] leading-[0.95] text-[clamp(2rem,7vw,4.75rem)] text-slate-900 mb-7">
+              <h1 className="font-black uppercase tracking-[-0.03em] leading-[0.95] text-[clamp(2rem,7vw,4.75rem)] text-slate-900 mb-4">
                 Agence SEO à{' '}
                 <span className="italic" style={{ color: '#FC9700' }}>Casablanca</span>
-                <br />
-                <span style={{ color: '#6483F0' }}>Visibilité Google</span> mesurable
               </h1>
+              <p className="font-black tracking-tight text-[clamp(1.25rem,3.5vw,2rem)] text-slate-900 mb-7">
+                <span style={{ color: '#6483F0' }}>Visibilité Google</span> mesurable
+              </p>
               <p className="text-[clamp(1rem,2.1vw,1.15rem)] leading-8 text-slate-600 max-w-2xl mb-5">
                 Vous cherchez une <strong className="font-semibold text-slate-800">agence SEO à Casablanca</strong> pour apparaître sur Google quand vos clients recherchent vos services ?
                 We Yan Digital (Maarif) pilote SEO local, technique et contenus — avec un reporting Search Console clair chaque mois.

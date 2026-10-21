@@ -66,11 +66,10 @@ export default function SeoPage() {
                   Prestation SEO · Méthode
                 </span>
               </div>
-              <h1 className="mb-8 max-w-3xl font-rigot text-6xl font-extrabold leading-[1.05] text-brand-charcoal md:text-8xl">
-                Prestation SEO
-                <br />
+              <h1 className="mb-8 max-w-3xl font-rigot text-[clamp(2.2rem,5.5vw,4.25rem)] font-extrabold leading-[1.08] text-brand-charcoal">
+                Prestation SEO au Maroc :{' '}
                 <span className="block text-secondary italic drop-shadow-[0_10px_30px_rgba(252,151,0,0.28)]">
-                  au Maroc
+                  audit, optimisation et suivi
                 </span>
               </h1>
               <p className="mb-8 max-w-xl text-xl font-light leading-relaxed text-brand-charcoal/70 md:text-2xl">

@@ -70,8 +70,16 @@
 
 # ——————————————————————————————————————————————————————————
 # 4. TOUTES les réponses HTML (routes SPA, index.html, 404)
-#    -> Pas de cache navigateur, toujours fresh après déploiement
+#    -> Pas de cache navigateur / edge : toujours fresh après déploiement
+#    Si la prod renvoie encore max-age=2678400, le TTL navigateur Cloudflare
+#    (Caching → Configuration) écrase ces en-têtes : passer à
+#    « Respect Existing Headers », puis Purge Everything.
 # ——————————————————————————————————————————————————————————
+/
+  Cache-Control: no-cache, no-store, must-revalidate
+  CDN-Cache-Control: no-store
+  Pragma: no-cache
+  Expires: 0
 /*
   Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: https: blob:; connect-src 'self' https:; frame-ancestors 'self'; base-uri 'self'; form-action 'self' mailto: tel:
   Strict-Transport-Security: max-age=63072000; includeSubDomains; preload

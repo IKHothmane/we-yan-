@@ -176,15 +176,19 @@ export default function HomePage() {
           </div>
           <div className="relative z-10 w-full px-[clamp(1rem,4vw,1.5rem)]">
             <div className="max-w-3xl py-[clamp(1rem,3vw,2rem)]">
-              <h1 className="text-slate-900 text-[clamp(2.4rem,9vw,5.5rem)] font-rigot font-bold leading-[1.02] mb-[clamp(0.75rem,2vw,1rem)]">
+              <p className="text-slate-900 text-[clamp(2.4rem,9vw,5.5rem)] font-rigot font-bold leading-[1.02] mb-[clamp(0.5rem,1.5vw,0.75rem)]">
                 Make it <br /> Different
+              </p>
+              <h1 className="text-slate-900 text-[clamp(1.35rem,4.2vw,2.35rem)] font-bold leading-[1.15] mb-[clamp(0.85rem,2vw,1.25rem)] max-w-3xl">
+                Agence digitale à Casablanca : SEO, publicité et création web
               </h1>
-              <h2 className="text-slate-900 text-[clamp(1.35rem,5vw,3.125rem)] font-bold leading-[1.08] mb-[clamp(1.25rem,3vw,2rem)]">
+              <h2 className="text-slate-900 text-[clamp(1.2rem,3.5vw,2rem)] font-bold leading-[1.12] mb-[clamp(1.25rem,3vw,2rem)]">
                 Votre marque mérite de se <br className="hidden sm:block" />
                 <span className="text-[#FC9700]">démarquer.</span>
               </h2>
               <p className="text-slate-600 text-[clamp(0.95rem,2vw,1.25rem)] max-w-2xl leading-relaxed mb-[clamp(1.5rem,3vw,2.5rem)]">
-                <strong className="font-semibold text-slate-900">Agence digitale à Casablanca</strong>, We Yan Digital accompagne marques, startups et PME au Maroc dans leur croissance digitale : branding, création de contenu, influence marketing, SEO, SEA, création de site web et publicité digitale performante.
+                We Yan Digital accompagne marques, startups et PME au Maroc dans leur croissance digitale :
+                branding, création de contenu, influence marketing, SEO, SEA, création de site web et publicité digitale performante.
               </p>
               <div className="flex flex-col sm:flex-row gap-[clamp(0.75rem,2vw,1rem)]">
                 <Link
