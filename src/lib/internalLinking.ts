@@ -223,7 +223,7 @@ export const PAGES_LINKING: PageLinking[] = [
     mot_cle_principal: 'agence seo casablanca',
     cluster_semantique: 'seo',
     pageRank_voulu: 9,
-    title_serp: 'Agence SEO Casablanca | Référencement – We Yan',
+    title_serp: 'Agence SEO Casablanca | Audit gratuit & SEO local',
     breadcrumb: [
       { label: 'Accueil', to: '/' },
       { label: 'Services', to: '/services/' },
@@ -231,12 +231,20 @@ export const PAGES_LINKING: PageLinking[] = [
     ],
     faq: [
       {
+        q: 'Pourquoi choisir une agence SEO à Casablanca plutôt qu’un freelance distant ?',
+        r: 'Une agence locale connaît les habitudes de recherche (FR / Darija), les annuaires et la concurrence casablancaise. Chez We Yan Digital (Maarif), vous avez un interlocuteur, un reporting Search Console et un ancrage Google Business réel.',
+      },
+      {
         q: 'Combien coûte une prestation SEO au Maroc en 2026 ?',
-        r: 'À Casablanca en 2026, une prestation SEO démarre à partir de 3 500 MAD/mois selon la concurrence et le volume de mots-clés. Chez We Yan Digital, l’audit est offert sous 24h.',
+        r: 'À Casablanca en 2026, un accompagnement SEO démarre en général à partir de 3 500 MAD/mois selon la concurrence et le volume de mots-clés. L’audit initial est offert sous 24h.',
       },
       {
         q: 'En combien de temps voit-on les résultats SEO à Casablanca ?',
-        r: 'Premières hausses de positions en 4 à 8 semaines. Trafic local utile : 3 à 6 mois. Requêtes nationales : 6 à 12 mois. We Yan couple souvent SEO + Ads dès la semaine 1.',
+        r: 'Premières hausses de positions souvent en 4 à 8 semaines. Trafic local utile : 3 à 6 mois. Requêtes nationales : 6 à 12 mois. We Yan couple parfois SEO + Ads dès le premier mois.',
+      },
+      {
+        q: 'Quelle différence avec votre page prestation SEO ?',
+        r: 'La page service décrit la méthode et les livrables techniques. Cette page cible les entreprises qui cherchent une agence SEO à Casablanca : proximité Maarif, SEO local et pack Google Business.',
       },
       {
         q: 'Travaillez-vous hors Casablanca ?',

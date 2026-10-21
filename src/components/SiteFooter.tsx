@@ -35,7 +35,7 @@ export default function SiteFooter({ revealDelay }: SiteFooterProps) {
       <RelatedPages />
       <footer
         className="w-full py-[clamp(3.5rem,8vw,4.5rem)] text-white"
-        style={{ backgroundColor: '#6483F0' }}
+        style={{ backgroundColor: '#3D56C7' }}
         {...revealProps}
       >
         <div className="w-full max-w-[1280px] mx-auto px-[clamp(1rem,4vw,2.5rem)]">
@@ -73,14 +73,14 @@ export default function SiteFooter({ revealDelay }: SiteFooterProps) {
             </div>
 
             <div>
-              <h3 className="text-[0.8rem] font-bold uppercase tracking-[0.22em] mb-5 text-white/85">
+              <h3 className="text-[0.8rem] font-bold uppercase tracking-[0.22em] mb-5 text-white">
                 Piliers
               </h3>
               <ul className="space-y-3">
                 {FOOTER_PILIERS.map((item) => (
                   <li key={item.to}>
                     <AppLink
-                      className="text-white hover:text-white/85 transition-colors text-[1rem] font-semibold inline-block"
+                      className="text-white hover:text-white/90 transition-colors text-[1rem] font-semibold inline-block"
                       to={item.to}
                     >
                       {item.label}
@@ -89,7 +89,7 @@ export default function SiteFooter({ revealDelay }: SiteFooterProps) {
                 ))}
                 <li className="pt-4">
                   <AppLink
-                    className="text-white hover:text-white/85 transition-colors text-[1rem] font-semibold inline-block"
+                    className="text-white hover:text-white/90 transition-colors text-[1rem] font-semibold inline-block"
                     to="/contact/"
                   >
                     Contact / devis gratuit
@@ -99,7 +99,7 @@ export default function SiteFooter({ revealDelay }: SiteFooterProps) {
             </div>
 
             <div>
-              <h3 className="text-[0.8rem] font-bold uppercase tracking-[0.22em] mb-5 text-white/85">
+              <h3 className="text-[0.8rem] font-bold uppercase tracking-[0.22em] mb-5 text-white">
                 Contact
               </h3>
               <ul className="space-y-4 mb-6">
@@ -116,19 +116,19 @@ export default function SiteFooter({ revealDelay }: SiteFooterProps) {
               </ul>
               <AppLink
                 to="/contact/"
-                className="inline-flex w-full items-center justify-center rounded-full bg-white px-6 py-4 font-black uppercase tracking-wider text-[#6483F0] hover:scale-[1.01] transition-all"
+                className="inline-flex w-full items-center justify-center rounded-full bg-white px-6 py-4 font-black uppercase tracking-wider text-[#2F4FBF] hover:scale-[1.01] transition-all"
               >
                 Commencer maintenant
               </AppLink>
             </div>
           </div>
 
-          <div className="mt-12 pt-6 border-t border-white/20 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between text-[0.78rem] text-white/80">
+          <div className="mt-12 pt-6 border-t border-white/25 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between text-[0.78rem] text-white">
             <p>© 2026 We Yan Digital. Tous droits réservés.</p>
             <div className="flex flex-wrap gap-x-4 gap-y-2">
-              <AppLink to="/mentions-legales/" className="hover:text-white">Mentions légales</AppLink>
-              <AppLink to="/politique-de-confidentialite/" className="hover:text-white">Confidentialité</AppLink>
-              <AppLink to="/conditions-generales/" className="hover:text-white">CGV</AppLink>
+              <AppLink to="/mentions-legales/" className="text-white hover:opacity-90">Mentions légales</AppLink>
+              <AppLink to="/politique-de-confidentialite/" className="text-white hover:opacity-90">Confidentialité</AppLink>
+              <AppLink to="/conditions-generales/" className="text-white hover:opacity-90">CGV</AppLink>
             </div>
           </div>
         </div>

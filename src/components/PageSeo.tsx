@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 import { useLocation } from 'react-router-dom'
 import { withTrailingSlash } from '../lib/paths'
 
@@ -82,6 +82,30 @@ function applyBasicSeo({
   setCanonical(canonicalUrl)
 }
 
+async function applyEnrichedSeo(pathname: string, props: PageSeoProps) {
+  const [{ getPageLinking, buildBreadcrumbJsonLd, buildFaqJsonLd, buildPageCanonical, buildPageDocumentTitle }, { buildServiceJsonLd }] =
+    await Promise.all([import('../lib/internalLinking'), import('../lib/jsonLd')])
+
+  const page = getPageLinking(pathname)
+  const documentTitle = page?.title_serp || props.title || (page ? buildPageDocumentTitle(page) : SITE_NAME)
+  const canonicalUrl = page ? buildPageCanonical(page) : buildFallbackCanonical(pathname)
+
+  applyBasicSeo({
+    ...props,
+    title: documentTitle,
+    canonicalUrl,
+  })
+
+  if (!page || page.breadcrumb.length < 2) {
+    upsertJsonLd('breadcrumb-jsonld', null)
+  } else {
+    upsertJsonLd('breadcrumb-jsonld', buildBreadcrumbJsonLd(page))
+  }
+
+  upsertJsonLd('faq-jsonld', page ? buildFaqJsonLd(page) : null)
+  upsertJsonLd('service-jsonld', page ? buildServiceJsonLd(page) : null)
+}
+
 export default function PageSeo({
   title,
   description,
@@ -91,69 +115,29 @@ export default function PageSeo({
   twitterImageAlt,
 }: PageSeoProps) {
   const location = useLocation()
+  // Premier document : le HTML buildé porte déjà title / meta / JSON-LD → pas de chunk SEO critique.
+  const isFirstDocumentLoad = useRef(true)
 
-  // Chemin critique : props uniquement (pas de graphe internalLinking dans le bundle initial).
   useEffect(() => {
-    applyBasicSeo({
-      title,
-      description,
-      ogImage,
-      twitterImage,
-      ogImageAlt,
-      twitterImageAlt,
-      canonicalUrl: buildFallbackCanonical(location.pathname),
-    })
-  }, [description, location.pathname, ogImage, ogImageAlt, title, twitterImage, twitterImageAlt])
+    const props = { title, description, ogImage, twitterImage, ogImageAlt, twitterImageAlt }
 
-  // Affinage SERP + JSON-LD après idle / en chunk async.
-  useEffect(() => {
+    if (isFirstDocumentLoad.current) {
+      isFirstDocumentLoad.current = false
+      // Alignement léger sans télécharger internalLinking (évite la chaîne LCP).
+      applyBasicSeo({
+        ...props,
+        canonicalUrl: buildFallbackCanonical(location.pathname),
+      })
+      return
+    }
+
     let cancelled = false
-    let idleId: number | null = null
-    let timeoutId = 0
-
-    const run = () => {
-      void Promise.all([import('../lib/internalLinking'), import('../lib/jsonLd')]).then(
-        ([{ getPageLinking, buildBreadcrumbJsonLd, buildFaqJsonLd, buildPageCanonical, buildPageDocumentTitle }, { buildServiceJsonLd }]) => {
-          if (cancelled) return
-
-          const page = getPageLinking(location.pathname)
-          const documentTitle = page?.title_serp || title || (page ? buildPageDocumentTitle(page) : SITE_NAME)
-          const canonicalUrl = page ? buildPageCanonical(page) : buildFallbackCanonical(location.pathname)
-
-          applyBasicSeo({
-            title: documentTitle,
-            description,
-            ogImage,
-            twitterImage,
-            ogImageAlt,
-            twitterImageAlt,
-            canonicalUrl,
-          })
-
-          if (!page || page.breadcrumb.length < 2) {
-            upsertJsonLd('breadcrumb-jsonld', null)
-          } else {
-            upsertJsonLd('breadcrumb-jsonld', buildBreadcrumbJsonLd(page))
-          }
-
-          upsertJsonLd('faq-jsonld', page ? buildFaqJsonLd(page) : null)
-          upsertJsonLd('service-jsonld', page ? buildServiceJsonLd(page) : null)
-        },
-      )
-    }
-
-    if ('requestIdleCallback' in window) {
-      idleId = window.requestIdleCallback(run, { timeout: 1800 })
-    } else {
-      timeoutId = window.setTimeout(run, 1)
-    }
+    void applyEnrichedSeo(location.pathname, props).then(() => {
+      if (cancelled) return
+    })
 
     return () => {
       cancelled = true
-      if (idleId !== null && 'cancelIdleCallback' in window) {
-        window.cancelIdleCallback(idleId)
-      }
-      window.clearTimeout(timeoutId)
     }
   }, [description, location.pathname, ogImage, ogImageAlt, title, twitterImage, twitterImageAlt])
 

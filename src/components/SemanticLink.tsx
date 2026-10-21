@@ -16,7 +16,7 @@ export default function SemanticLink({ lien, clusterSource, className = '' }: Se
       {lien.contexte_avant}{' '}
       <AppLink
         to={withTrailingSlash(lien.cible)}
-        className="font-bold text-[#6483F0] underline-offset-4 hover:underline"
+        className="font-bold text-[#2F4FBF] underline-offset-4 hover:underline"
         data-cluster-source={clusterSource}
         data-cluster-cible={cible?.cluster_semantique}
       >

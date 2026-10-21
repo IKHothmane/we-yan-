@@ -282,11 +282,15 @@ export default function HomeDeferredSections() {
         }
 
         @keyframes homeBtnPulse {
-          0%, 100% { box-shadow: 0 20px 25px -5px rgba(252,151,0,0.35), 0 0 0 0 rgba(252,151,0,0.5); transform: scale(1); }
-          50% { box-shadow: 0 20px 25px -5px rgba(252,151,0,0.35), 0 0 0 14px rgba(252,151,0,0); transform: scale(1.015); }
+          0%, 100% { transform: translateZ(0) scale(1); }
+          50% { transform: translateZ(0) scale(1.02); }
         }
 
-        .home-submit-pulse { animation: homeBtnPulse 1.6s ease-in-out infinite; }
+        .home-submit-pulse {
+          animation: homeBtnPulse 1.6s ease-in-out infinite;
+          box-shadow: 0 20px 25px -5px rgba(252,151,0,0.35);
+          will-change: transform;
+        }
 
         @media (prefers-reduced-motion: reduce) {
           .home-service-float {

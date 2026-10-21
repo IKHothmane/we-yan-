@@ -63,20 +63,21 @@ export default function SeoPage() {
               <div className="mb-8 inline-flex items-center gap-3 rounded-full border border-brand-blue/20 bg-white px-5 py-2 text-brand-blue shadow-sm">
                 <span className="h-2 w-2 rounded-full bg-brand-orange" />
                 <span className="text-xs font-bold uppercase tracking-widest">
-                  Expertise Performance
+                  Prestation SEO · Méthode
                 </span>
               </div>
               <h1 className="mb-8 max-w-3xl font-rigot text-6xl font-extrabold leading-[1.05] text-brand-charcoal md:text-8xl">
-                Référencement
+                Prestation SEO
                 <br />
                 <span className="block text-secondary italic drop-shadow-[0_10px_30px_rgba(252,151,0,0.28)]">
-                  Naturel (SEO).
+                  au Maroc
                 </span>
               </h1>
               <p className="mb-8 max-w-xl text-xl font-light leading-relaxed text-brand-charcoal/70 md:text-2xl">
-                Cette page décrit notre <strong className="font-semibold text-brand-charcoal">prestation SEO</strong> :
-                audit technique, optimisation on-page, suivi des positions et netlinking. Objectif : un
-                service de référencement naturel mesurable, pas une page vitrine générique.
+                Cette page détaille notre <strong className="font-semibold text-brand-charcoal">service de référencement naturel</strong> :
+                audit technique, optimisation on-page, contenus, suivi des positions et netlinking.
+                Intention claire : comprendre la méthode et les livrables — pas chercher « une agence SEO à Casablanca »
+                (c’est le rôle de la page dédiée).
               </p>
               <p className="mb-12 max-w-xl text-lg font-light leading-relaxed text-brand-charcoal/70">
                 Pour un accompagnement local (Google Business, pack local Maarif, expert SEO à Casablanca),

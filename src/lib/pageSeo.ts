@@ -58,8 +58,8 @@ export const pageSeo = {
     seoImages.influenceMarketing,
   ),
   seo: createPageSeoConfig(
-    'Service SEO Maroc | Audit & référencement naturel',
-    'Prestation SEO au Maroc : audit technique, on-page, positions et netlinking. Référencement naturel We Yan Digital, devis sous 24h.',
+    'Prestation SEO Maroc | Méthode, audit & suivi',
+    'Service de référencement naturel au Maroc : audit technique, optimisation on-page, contenus et netlinking. Méthode We Yan Digital, devis sous 24h.',
     seoImages.seo,
   ),
   offlineMedia: createPageSeoConfig(
@@ -95,8 +95,8 @@ export const pageSeo = {
   ),
 
   agenceSeoCasablanca: createPageSeoConfig(
-    'Agence SEO Casablanca | Référencement – We Yan',
-    'Visibilité Google à Casablanca : audit SEO, technique, contenus locaux et stratégie. We Yan Digital Maarif — audit gratuit.',
+    'Agence SEO Casablanca | Audit gratuit & SEO local',
+    'Agence SEO à Casablanca (Maarif) : SEO local Google Business, technique, contenus et reporting Search Console. Audit offert sous 24h — We Yan Digital.',
     seoImages.seo,
   ),
   creationSiteWebCasablanca: createPageSeoConfig(

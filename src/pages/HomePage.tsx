@@ -102,10 +102,13 @@ export default function HomePage() {
         .floating-tag {
           background-color: rgba(255, 255, 255, 0.9);
           animation: float 4s ease-in-out infinite;
+          will-change: transform;
         }
         .hero-image-motion {
           animation: heroPan 18s ease-in-out infinite alternate;
           transform-origin: center center;
+          will-change: transform;
+          backface-visibility: hidden;
         }
         @media (prefers-reduced-motion: reduce) {
           .hero-image-motion,
@@ -118,17 +121,17 @@ export default function HomePage() {
           animation: tagSwap 420ms ease both;
         }
         @keyframes float {
-          0% { transform: translateY(0px); }
-          50% { transform: translateY(-15px); }
-          100% { transform: translateY(0px); }
+          0% { transform: translate3d(0, 0, 0); }
+          50% { transform: translate3d(0, -15px, 0); }
+          100% { transform: translate3d(0, 0, 0); }
         }
         @keyframes tagSwap {
-          0% { opacity: 0; transform: translate3d(0, 18px, 0) scale(0.96); }
-          100% { opacity: 1; transform: translate3d(0, 0, 0) scale(1); }
+          0% { opacity: 0; transform: translate3d(0, 18px, 0); }
+          100% { opacity: 1; transform: translate3d(0, 0, 0); }
         }
         @keyframes heroPan {
-          0% { transform: scale(1.02) translate3d(0, 0, 0); }
-          100% { transform: scale(1.1) translate3d(-1.5%, 1.5%, 0); }
+          0% { transform: translate3d(0, 0, 0) scale(1.02); }
+          100% { transform: translate3d(-1.5%, 1.5%, 0) scale(1.08); }
         }
       `}</style>
 

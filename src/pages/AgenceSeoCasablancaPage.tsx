@@ -14,37 +14,76 @@ const avantages = [
   {
     n: '01',
     t: 'SEO local Google Business Profile — Casablanca & Maroc',
-    d: "Optimisation complète de votre fiche Google Business : photos quartier Maarif, horaires, services, NAP cohérent, management d'avis clients 5 étoiles, posts hebdos — indispensable pour apparaître dans le pack local Google.",
+    d: "Optimisation complète de votre fiche Google Business : photos quartier Maarif, horaires, services, NAP cohérent, management d'avis clients, posts hebdos — indispensable pour le pack local Google.",
   },
   {
     n: '02',
-    t: "Audit technique sémantique + maillage interne d'autorité",
-    d: 'Vitesse mobile, Core Web Vitals, balises Schema.org (FAQPage, LocalBusiness, ProfessionalService), structure des URLs en /mot-cle-cible, maillage interne en silo SEO qui transmet le PageRank de la home vers vos pages services.',
+    t: 'Audit technique + maillage interne orienté conversion',
+    d: 'Vitesse mobile, Core Web Vitals, Schema.org (LocalBusiness, FAQPage), URLs propres, maillage en silo depuis l’accueil et le blog vers vos pages commerciales Casablanca.',
   },
   {
     n: '03',
-    t: 'Stratégie éditoriale — mots-clés FR / Darija / EN',
-    d: 'Plan éditorial mensuel ciblant les intentions de recherche tapées à Casablanca et au Maroc : prix, comparatif, guide, « près de chez moi », avis, etc. Chaque article 500+ mots, H1 optimisé, image ALT riche.',
+    t: 'Contenus sur l’intention locale (FR / Darija)',
+    d: 'Plan éditorial ciblant les recherches réelles à Casablanca : prix, comparatif, « près de chez moi », devis. Chaque page money a un objectif de requête clair — sans bourrage de mots-clés.',
   },
   {
     n: '04',
-    t: 'Netlinking local marocain + backlinks d’autorité',
-    d: "Backlinks depuis annuaires marocains, presse digital, portails secteur et sites autoritaires (DA 50+) pour augmenter la confiance Google en votre domaine. Nous privilégions toujours le naturel et la cohérence thématique.",
+    t: 'Netlinking local + reporting Search Console',
+    d: 'Liens cohérents (annuaires, partenaires, presse sectorielle) et suivi mensuel des impressions, clics et positions — les mêmes indicateurs que votre Search Console.',
+  },
+] as const
+
+const livrablesMois1 = [
+  'Audit technique + inventaire des pages indexées / exclues',
+  'Cartographie des requêtes locales prioritaires (Casablanca + Maroc)',
+  'Plan d’actions 30 / 60 / 90 jours classé par impact',
+  'Optimisation des balises title / meta / H1 des pages money',
+  'Check Google Business Profile + cohérence NAP',
+] as const
+
+const livrablesMensuels = [
+  'Suivi positions & impressions (Search Console)',
+  'Optimisations on-page et maillage interne',
+  'Briefs ou publications de contenus locaux',
+  'Actions SEO local (fiche, avis, posts)',
+  'Rapport mensuel + appel de suivi dédié',
+] as const
+
+const preuvesSuivi = [
+  {
+    t: 'Positions & CTR',
+    d: 'Évolution des requêtes commerciales (ex. agence SEO Casablanca, seo Casablanca) : impressions, clics, CTR moyen.',
+  },
+  {
+    t: 'Pages money',
+    d: 'Pages services et landing locales suivies séparément pour éviter la cannibalisation avec le blog.',
+  },
+  {
+    t: 'Leads organiques',
+    d: 'Formulaires et appels issus du trafic Google — rapportés chaque mois, sans promesse de « 1ʳᵉ place garantie ».',
   },
 ] as const
 
 const faq = [
   {
+    q: 'Pourquoi choisir une agence SEO à Casablanca plutôt qu’un freelance distant ?',
+    r: 'Une agence locale connaît les habitudes de recherche (FR / Darija), les annuaires et la concurrence casablancaise. Chez We Yan Digital (Maarif), vous avez un interlocuteur, un reporting Search Console et un ancrage Google Business réel — pas seulement des optimisations « template ».',
+  },
+  {
     q: 'Combien coûte une prestation SEO au Maroc en 2026 ?',
-    r: 'À Casablanca en 2026, une prestation SEO démarre à partir de 3 500 MAD/mois selon la concurrence et le volume de mots-clés. Chez We Yan Digital, l’audit est offert sous 24h.',
+    r: 'À Casablanca en 2026, un accompagnement SEO démarre en général à partir de 3 500 MAD/mois selon la concurrence et le volume de mots-clés. L’audit initial est offert sous 24h. Détail des fourchettes : voir notre guide prix SEO Casablanca 2026.',
   },
   {
     q: 'En combien de temps voit-on les résultats SEO à Casablanca ?',
-    r: 'Premières hausses de positions en 4 à 8 semaines. Trafic local utile : 3 à 6 mois. Requêtes nationales : 6 à 12 mois. We Yan couple souvent SEO + Ads dès la semaine 1.',
+    r: 'Premières hausses de positions souvent en 4 à 8 semaines. Trafic local utile : 3 à 6 mois. Requêtes nationales très concurrentielles : 6 à 12 mois. Nous couplons parfois SEO + Google Ads dès le premier mois pour ne pas attendre le seul organique.',
+  },
+  {
+    q: 'Quelle différence avec votre page « prestation SEO » ?',
+    r: 'La page service décrit la méthode et les livrables techniques. Cette page cible les entreprises qui cherchent une agence SEO à Casablanca : proximité Maarif, SEO local, pack Google Business et accompagnement commercial.',
   },
   {
     q: 'Travaillez-vous hors Casablanca ?',
-    r: 'Oui. Basés à Maarif, nous accompagnons Rabat, Marrakech, Tanger et tout le Maroc à distance, avec le même reporting SEO mensuel.',
+    r: 'Oui. Basés à Maarif, nous accompagnons aussi Rabat, Marrakech, Tanger et le reste du Maroc à distance, avec le même reporting mensuel.',
   },
 ] as const
 
@@ -88,14 +127,17 @@ export default function AgenceSeoCasablancaPage() {
                 <span style={{ color: '#6483F0' }}>Visibilité Google</span> mesurable
               </h1>
               <p className="text-[clamp(1rem,2.1vw,1.15rem)] leading-8 text-slate-600 max-w-2xl mb-5">
-                Spécialiste du référencement naturel local et national au <strong className="font-semibold text-slate-800">Maroc</strong>, notre agence SEO basée à Casablanca (Maarif) vous aide à progresser sur les mots-clés qui génèrent des demandes et du chiffre d’affaires — avec un suivi Search Console transparent.
+                Vous cherchez une <strong className="font-semibold text-slate-800">agence SEO à Casablanca</strong> pour apparaître sur Google quand vos clients recherchent vos services ?
+                We Yan Digital (Maarif) pilote SEO local, technique et contenus — avec un reporting Search Console clair chaque mois.
               </p>
               <p className="text-[clamp(0.95rem,2vw,1.08rem)] leading-8 text-slate-600 max-w-2xl mb-9">
-                Contrairement aux généralistes, nous combinons <strong>SEO local</strong> (fiche Google Business, avis, proximité Casablanca), <strong>SEO technique</strong> (vitesse, Core Web Vitals, Schema.org), <strong>SEO sémantique</strong> (intentions de recherche marocaines FR/Darija) et <strong>netlinking local</strong>. Le détail opérationnel de la{' '}
+                Nous ne vendons pas une « 1ʳᵉ place garantie ». Nous livrons un plan d’actions priorisé, des pages money structurées,
+                une fiche Google Business soignée et des indicateurs mesurables (impressions, clics, positions, demandes).
+                Le détail opérationnel de la{' '}
                 <Link to="/services/seo/" className="font-bold text-[#6483F0] underline-offset-4 hover:underline">
                   prestation SEO
                 </Link>
-                {' '}(audit, optimisation, suivi) est décrit à part — cette page cible l’agence et l’expertise à Casablanca.
+                {' '}(méthode & livrables techniques) est décrit à part — ici, l’intention est claire : trouver une agence SEO locale à Casablanca.
               </p>
               <div className="flex flex-col gap-5 sm:flex-row">
                 <Link
@@ -223,14 +265,14 @@ export default function AgenceSeoCasablancaPage() {
               data-reveal-delay="120"
             >
               <h3 className="font-black tracking-tight text-[1.3rem] mb-5">
-                💡 Audit SEO gratuit offert cette semaine
+                Audit SEO gratuit — sous 24h ouvrées
               </h3>
               <ul className="space-y-4 mb-8">
                 {[
-                  'États des positions de vos 50 mots-clés',
+                  'État des positions sur vos requêtes prioritaires',
                   'Check Core Web Vitals mobile & desktop',
-                  'Check NAP cohérent + Google Business (local)',
-                  '3 actions +ROI à mettre en place sous 7 jours',
+                  'Check NAP + Google Business Profile (local)',
+                  '3 actions à fort impact à lancer sous 7 jours',
                 ].map((p) => (
                   <li key={p} className="flex items-start gap-3">
                     <span
@@ -256,30 +298,82 @@ export default function AgenceSeoCasablancaPage() {
         </section>
 
         <section className="border-t border-slate-200 px-[clamp(1rem,4vw,2rem)] py-20 sm:px-8 lg:py-24">
-          <div className="mx-auto max-w-[1100px]" data-reveal>
-            <h2 className="font-black tracking-tight text-[clamp(1.6rem,4vw,2.4rem)] text-slate-900 mb-4 text-center">
-              Livrables concrets de l’accompagnement SEO
-            </h2>
-            <p className="text-center text-slate-600 max-w-2xl mx-auto mb-10 leading-7">
-              Vous savez exactement ce que vous recevez chaque mois — pas un « pack mystère ».
-            </p>
-            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-[0.98rem] text-slate-700">
-              {[
-                'Audit technique initial + plan d’actions priorisées',
-                'Suivi des positions et impressions (Search Console)',
-                'Optimisation on-page des pages money (title, H1, maillage)',
-                'Calendrier éditorial et briefs contenus locaux',
-                'Actions SEO local Google Business Profile',
-                'Rapport mensuel + appel de suivi avec votre expert',
-              ].map((item) => (
-                <li
-                  key={item}
-                  className="rounded-2xl border border-slate-200 bg-white px-5 py-4 font-semibold shadow-[0_10px_24px_-18px_rgba(15,23,42,0.3)]"
+          <div className="mx-auto max-w-[1100px]">
+            <div className="text-center max-w-2xl mx-auto mb-12" data-reveal>
+              <h2 className="font-black tracking-tight text-[clamp(1.6rem,4vw,2.4rem)] text-slate-900 mb-4">
+                Livrables concrets — mois 1 puis chaque mois
+              </h2>
+              <p className="text-slate-600 leading-7">
+                Vous savez exactement ce que vous recevez. Pour les fourchettes budgétaires, consultez aussi{' '}
+                <Link to="/blog/prix-seo-casablanca-2026/" className="font-semibold text-[#6483F0] underline-offset-4 hover:underline">
+                  prix SEO Casablanca 2026
+                </Link>
+                .
+              </p>
+            </div>
+            <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
+              <div
+                className="rounded-[1.75rem] border border-slate-200 bg-white p-7 shadow-[0_16px_36px_-20px_rgba(15,23,42,0.3)]"
+                data-reveal
+              >
+                <h3 className="font-black text-[1.15rem] text-slate-900 mb-5">Mois 1 — cadrage & quick wins</h3>
+                <ul className="space-y-3 text-[0.98rem] text-slate-700">
+                  {livrablesMois1.map((item) => (
+                    <li key={item} className="flex gap-3 leading-7">
+                      <span className="mt-2 h-2 w-2 shrink-0 rounded-full" style={{ backgroundColor: '#6483F0' }} />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div
+                className="rounded-[1.75rem] border border-slate-200 bg-[#F8FAFC] p-7 shadow-[0_16px_36px_-20px_rgba(15,23,42,0.3)]"
+                data-reveal
+                data-reveal-delay="80"
+              >
+                <h3 className="font-black text-[1.15rem] text-slate-900 mb-5">Chaque mois — exécution & suivi</h3>
+                <ul className="space-y-3 text-[0.98rem] text-slate-700">
+                  {livrablesMensuels.map((item) => (
+                    <li key={item} className="flex gap-3 leading-7">
+                      <span className="mt-2 h-2 w-2 shrink-0 rounded-full" style={{ backgroundColor: '#FC9700' }} />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="bg-[#0F172A] px-[clamp(1rem,4vw,2rem)] py-20 sm:px-8 lg:py-24 text-white">
+          <div className="mx-auto max-w-[1100px]">
+            <div className="text-center max-w-2xl mx-auto mb-12" data-reveal>
+              <h2 className="font-black tracking-tight text-[clamp(1.6rem,4vw,2.4rem)] mb-4">
+                Résultats suivis — pas de promesses creuses
+              </h2>
+              <p className="text-white/70 leading-7">
+                Nous mesurons ce que Google mesure déjà dans Search Console. Les études de cas détaillées
+                (secteurs, délais, hausses de clics) sont partagées sur devis, avec l’accord des clients.
+              </p>
+            </div>
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+              {preuvesSuivi.map((item, i) => (
+                <article
+                  key={item.t}
+                  className="rounded-[1.5rem] border border-white/10 bg-white/5 p-6"
+                  data-reveal
+                  data-reveal-delay={String(i * 70)}
                 >
-                  {item}
-                </li>
+                  <h3 className="font-bold text-[1.05rem] mb-3" style={{ color: '#FDE68A' }}>
+                    {item.t}
+                  </h3>
+                  <p className="text-white/75 text-[0.95rem] leading-7">{item.d}</p>
+                </article>
               ))}
-            </ul>
+            </div>
+            <p className="mt-10 text-center text-white/60 text-[0.95rem]" data-reveal>
+              Agence basée à Casablanca Maarif · Accompagnement aussi à Rabat, Marrakech et dans tout le Maroc
+            </p>
           </div>
         </section>
 

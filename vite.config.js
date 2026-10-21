@@ -63,12 +63,12 @@ const SITEMAP_META = {
 /** lastmod par URL (date de contenu réelle) — ne pas utiliser la date de build pour toutes les pages */
 const SITEMAP_LASTMOD = {
   '': '2026-10-20',
-  'agence-seo-casablanca': '2026-10-20',
+  'agence-seo-casablanca': '2026-10-21',
   'agence-google-ads-casablanca': '2026-10-20',
   'creation-site-web-casablanca': '2026-10-20',
   'community-management-casablanca': '2026-08-26',
   services: '2026-08-26',
-  'services/seo': '2026-08-26',
+  'services/seo': '2026-10-21',
   'services/strategie-marketing-rebranding': '2026-08-26',
   'services/creation-contenu-community-management': '2026-08-26',
   'services/publicite-digitale': '2026-10-20',
