@@ -1,113 +1,36 @@
 import { mkdirSync, existsSync, readFileSync, writeFileSync } from 'node:fs'
 import { dirname, join } from 'node:path'
-import { pathToFileURL } from 'node:url'
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import { devApiPlugin } from './scripts/devApiPlugin.js'
 
-function validateInternalLinksPlugin() {
-  return {
-    name: 'validate-internal-links',
-    async buildStart() {
-      const { buildSync } = await import('esbuild')
-      const srcPath = join(process.cwd(), 'src/lib/internalLinking.ts')
-      const cacheDir = join(process.cwd(), 'node_modules', '.cache')
-      if (!existsSync(cacheDir)) mkdirSync(cacheDir, { recursive: true })
-      const tmp = join(cacheDir, 'validate-internal-links.mjs')
-      // Bundle so relative imports (e.g. ./paths) resolve; transformSync alone leaves them broken in .cache
-      const result = buildSync({
-        entryPoints: [srcPath],
-        bundle: true,
-        write: false,
-        format: 'esm',
-        platform: 'node',
-      })
-      writeFileSync(tmp, result.outputFiles[0].text)
-      const mod = await import(`${pathToFileURL(tmp).href}?t=${Date.now()}`)
-      mod.validateInternalLinks()
-    },
-  }
-}
-
-
-const SITEMAP_SKIP = new Set(['demandes', 'merci'])
 const SITEMAP_META = {
   '': { changefreq: 'weekly', priority: '1.0' },
-  'agence-seo-casablanca': { changefreq: 'weekly', priority: '0.98' },
-  'agence-google-ads-casablanca': { changefreq: 'weekly', priority: '0.97' },
-  'creation-site-web-casablanca': { changefreq: 'weekly', priority: '0.97' },
-  'community-management-casablanca': { changefreq: 'weekly', priority: '0.95' },
   services: { changefreq: 'weekly', priority: '0.94' },
-  'services/seo': { changefreq: 'monthly', priority: '0.92' },
-  'services/strategie-marketing-rebranding': { changefreq: 'weekly', priority: '0.95' },
-  'services/creation-contenu-community-management': { changefreq: 'monthly', priority: '0.9' },
-  'services/publicite-digitale': { changefreq: 'weekly', priority: '0.88' },
-  'services/marketing-influence': { changefreq: 'weekly', priority: '0.85' },
-  'services/media-publicite-offline': { changefreq: 'monthly', priority: '0.88' },
   projets: { changefreq: 'weekly', priority: '0.86' },
+  'a-propos': { changefreq: 'monthly', priority: '0.84' },
   agence: { changefreq: 'monthly', priority: '0.84' },
   contact: { changefreq: 'monthly', priority: '0.83' },
-  blog: { changefreq: 'weekly', priority: '0.85' },
-  'blog/rebranding-exemple-casablanca-2026': { changefreq: 'monthly', priority: '0.82' },
-  'blog/prix-seo-casablanca-2026': { changefreq: 'monthly', priority: '0.8' },
-  'blog/prix-google-ads-maroc-2026': { changefreq: 'monthly', priority: '0.8' },
-  'blog/prix-meta-ads-casablanca-2026': { changefreq: 'monthly', priority: '0.78' },
-  'blog/prix-site-web-maroc-2026': { changefreq: 'monthly', priority: '0.8' },
-  'blog/prix-influenceur-maroc-2026': { changefreq: 'monthly', priority: '0.76' },
-  'blog/prix-community-management-maroc-2026': { changefreq: 'monthly', priority: '0.78' },
-  'blog/prix-identite-visuelle-maroc-2026': { changefreq: 'monthly', priority: '0.77' },
-  'blog/comment-choisir-agence-digitale-casablanca': { changefreq: 'monthly', priority: '0.79' },
-  'blog/ameliorer-visibilite-google-casablanca': { changefreq: 'monthly', priority: '0.8' },
-  'blog/branding-creation-marque-maroc': { changefreq: 'monthly', priority: '0.75' },
-  'blog/seo-vs-sea-maroc': { changefreq: 'monthly', priority: '0.74' },
-  'blog/marketing-digital-tendances-maroc-2026': { changefreq: 'monthly', priority: '0.72' },
-  'mentions-legales': { changefreq: 'yearly', priority: '0.3' },
-  'politique-de-confidentialite': { changefreq: 'yearly', priority: '0.3' },
-  'conditions-generales': { changefreq: 'yearly', priority: '0.3' },
 }
 
-/** lastmod par URL (date de contenu réelle) — ne pas utiliser la date de build pour toutes les pages */
 const SITEMAP_LASTMOD = {
-  '': '2026-10-21',
-  'agence-seo-casablanca': '2026-10-21',
-  'agence-google-ads-casablanca': '2026-10-21',
-  'creation-site-web-casablanca': '2026-10-21',
-  'community-management-casablanca': '2026-10-21',
-  services: '2026-10-21',
-  'services/seo': '2026-10-21',
-  'services/strategie-marketing-rebranding': '2026-08-26',
-  'services/creation-contenu-community-management': '2026-08-26',
-  'services/publicite-digitale': '2026-10-20',
-  'services/marketing-influence': '2026-08-26',
-  'services/media-publicite-offline': '2026-08-26',
-  projets: '2026-10-21',
-  agence: '2026-10-21',
-  contact: '2026-10-21',
-  blog: '2026-10-21',
-  'blog/rebranding-exemple-casablanca-2026': '2026-08-26',
-  'blog/prix-seo-casablanca-2026': '2026-10-21',
-  'blog/prix-google-ads-maroc-2026': '2026-10-21',
-  'blog/prix-meta-ads-casablanca-2026': '2026-10-21',
-  'blog/prix-site-web-maroc-2026': '2026-10-21',
-  'blog/prix-influenceur-maroc-2026': '2026-10-21',
-  'blog/prix-community-management-maroc-2026': '2026-10-21',
-  'blog/prix-identite-visuelle-maroc-2026': '2026-10-21',
-  'blog/comment-choisir-agence-digitale-casablanca': '2026-10-21',
-  'blog/ameliorer-visibilite-google-casablanca': '2026-10-21',
-  'blog/branding-creation-marque-maroc': '2026-08-26',
-  'blog/seo-vs-sea-maroc': '2026-10-21',
-  'blog/marketing-digital-tendances-maroc-2026': '2026-08-26',
-  'mentions-legales': '2026-10-20',
-  'politique-de-confidentialite': '2026-08-26',
-  'conditions-generales': '2026-08-26',
+  '': '2026-10-31',
+  services: '2026-10-31',
+  projets: '2026-10-31',
+  'a-propos': '2026-10-31',
+  agence: '2026-10-31',
+  contact: '2026-10-31',
 }
+
+/** Routes React (hors accueil) : un index.html physique par URL (Cloudflare / hébergeur sans rewrite). */
+const SPA_ROUTES = ['services', 'projets', 'a-propos', 'agence', 'contact']
 
 function writeCanonicalSitemap() {
-  const routes = ['', ...SPA_ROUTES.filter((route) => !SITEMAP_SKIP.has(route))]
+  const routes = ['', ...SPA_ROUTES]
   const urls = routes.map((route) => {
     const loc = route === '' ? 'https://weyandigital.ma/' : `https://weyandigital.ma/${route}/`
     const meta = SITEMAP_META[route] || { changefreq: 'monthly', priority: '0.7' }
-    const lastmod = SITEMAP_LASTMOD[route] || '2026-08-26'
+    const lastmod = SITEMAP_LASTMOD[route] || '2026-10-31'
     return `  <url>
     <loc>${loc}</loc>
     <lastmod>${lastmod}</lastmod>
@@ -122,61 +45,11 @@ ${urls.join('\n')}
 `
 }
 
-/** Routes React (hors accueil) : un index.html physique par URL pour OVH sans rewrite. */
-const SPA_ROUTES = [
-  'services',
-  'services/strategie-marketing-rebranding',
-  'services/creation-contenu-community-management',
-  'services/publicite-digitale',
-  'services/marketing-influence',
-  'services/seo',
-  'services/media-publicite-offline',
-  'projets',
-  'agence',
-  'contact',
-  'agence-seo-casablanca',
-  'agence-google-ads-casablanca',
-  'creation-site-web-casablanca',
-  'community-management-casablanca',
-  'blog',
-  'blog/prix-site-web-maroc-2026',
-  'blog/prix-seo-casablanca-2026',
-  'blog/prix-google-ads-maroc-2026',
-  'blog/prix-meta-ads-casablanca-2026',
-  'blog/prix-influenceur-maroc-2026',
-  'blog/prix-community-management-maroc-2026',
-  'blog/prix-identite-visuelle-maroc-2026',
-  'blog/comment-choisir-agence-digitale-casablanca',
-  'blog/ameliorer-visibilite-google-casablanca',
-  'blog/seo-vs-sea-maroc',
-  'blog/branding-creation-marque-maroc',
-  'blog/rebranding-exemple-casablanca-2026',
-  'blog/marketing-digital-tendances-maroc-2026',
-  'conditions-generales',
-  'politique-de-confidentialite',
-  'mentions-legales',
-  'demandes',
-  'merci',
-]
-
 export default defineConfig({
   build: {
     cssCodeSplit: true,
     modulePreload: {
       polyfill: true,
-      resolveDependencies: (filename, deps, { hostId, hostType }) => {
-        // Ne pas modulepreload les chunks SEO / pages lazy depuis l'entrée critique.
-        if (hostType === 'html' || filename.includes('index')) {
-          return deps.filter(
-            (dep) =>
-              !dep.includes('internalLinking') &&
-              !dep.includes('jsonLd') &&
-              !dep.includes('HomeDeferred'),
-          )
-        }
-        void hostId
-        return deps
-      },
     },
     rollupOptions: {
       output: {
@@ -193,7 +66,6 @@ export default defineConfig({
   plugins: [
     react(),
     devApiPlugin(),
-    validateInternalLinksPlugin(),
     {
       name: 'defer-build-css',
       apply: 'build',
@@ -228,191 +100,22 @@ export default defineConfig({
     {
       name: 'emit-spa-html-pages',
       apply: 'build',
-      async closeBundle() {
+      closeBundle() {
         const dist = join(process.cwd(), 'dist')
         const indexFile = join(dist, 'index.html')
         if (!existsSync(indexFile)) return
 
         const html = readFileSync(indexFile, 'utf8')
-        const { buildSync } = await import('esbuild')
-        const cacheDir = join(process.cwd(), 'node_modules', '.cache')
-        if (!existsSync(cacheDir)) mkdirSync(cacheDir, { recursive: true })
-
-        // Toujours rebundler internalLinking ici (pas seulement en buildStart) :
-        // un cache node_modules Cloudflare peut sinon servir d’anciens H1 statiques.
-        const linkingModule = join(cacheDir, 'validate-internal-links.mjs')
-        buildSync({
-          entryPoints: [join(process.cwd(), 'src/lib/internalLinking.ts')],
-          bundle: true,
-          format: 'esm',
-          platform: 'node',
-          outfile: linkingModule,
-        })
-        const { getPageLinking, buildBreadcrumbJsonLd, buildFaqJsonLd, buildPageDocumentTitle, buildPageCanonical, withTrailingSlash } = await import(
-          `${pathToFileURL(linkingModule).href}?emit=${Date.now()}`
-        )
-
-        const seoOut = join(cacheDir, 'page-seo.mjs')
-        buildSync({
-          entryPoints: [join(process.cwd(), 'src/lib/pageSeo.ts')],
-          bundle: true,
-          format: 'esm',
-          platform: 'node',
-          outfile: seoOut,
-        })
-        const { PAGE_SEO_BY_SLUG } = await import(`${pathToFileURL(seoOut).href}?emit=${Date.now()}`)
-
-        const jsonLdOut = join(cacheDir, 'json-ld.mjs')
-        buildSync({
-          entryPoints: [join(process.cwd(), 'src/lib/jsonLd.ts')],
-          bundle: true,
-          format: 'esm',
-          platform: 'node',
-          outfile: jsonLdOut,
-        })
-        const { buildServiceJsonLd, buildSiteGraphJsonLd } = await import(
-          `${pathToFileURL(jsonLdOut).href}?emit=${Date.now()}`
-        )
-
-        const escapeHtml = (value) =>
-          String(value)
-            .replace(/&/g, '&amp;')
-            .replace(/</g, '&lt;')
-            .replace(/>/g, '&gt;')
-            .replace(/"/g, '&quot;')
-
-        // Bing lit parfois les metas sans charset HTTP → Ã. Entités numériques = ASCII sûr.
-        const escapeMetaAttr = (value) =>
-          escapeHtml(value).replace(/[^\x20-\x7E]/g, (ch) => `&#${ch.codePointAt(0)};`)
-
-        const buildStaticBody = (page, description) => {
-          const h1 = escapeHtml(page.titre)
-          const intro = escapeHtml(description || page.intention)
-          const links = (page.liens_sortants || [])
-            .map((lien) => {
-              const href = escapeHtml(withTrailingSlash(lien.cible))
-              const ancre = escapeHtml(lien.ancre)
-              const avant = escapeHtml(lien.contexte_avant)
-              const apres = escapeHtml(lien.contexte_apres)
-              return `<p>${avant} <a href="${href}">${ancre}</a> ${apres}</p>`
-            })
-            .join('\n')
-          const faq =
-            page.faq?.length > 0
-              ? `<section aria-label="FAQ"><h2>FAQ</h2>${page.faq
-                  .map(
-                    (item) =>
-                      `<article><h3>${escapeHtml(item.q)}</h3><p>${escapeHtml(item.r)}</p></article>`,
-                  )
-                  .join('\n')}</section>`
-              : ''
-          return `<main data-seo-static="1">
-  <h1>${h1}</h1>
-  <p>${intro}</p>
-  <nav aria-label="Liens utiles">${links}</nav>
-  ${faq}
-</main>`
-        }
-
-        const applyPageHead = (sourceHtml, slug) => {
-          let next = sourceHtml
-          if (slug === '/demandes' || slug === '/merci') {
-            next = next.replace(
-              /<meta name="robots" content="[^"]*" \/>/,
-              '<meta name="robots" content="noindex, nofollow" />',
-            )
-          }
-
-          const page = getPageLinking(slug)
-          if (!page) return next
-
-          const seo = PAGE_SEO_BY_SLUG[page.slug]
-          // Aligné sur PageSeo : title_serp > pageSeo.title > fallback linking
-          const title = page.title_serp || seo?.title || buildPageDocumentTitle(page)
-          const description = seo?.description || page.intention
-          const canonical = buildPageCanonical(page)
-          const safeTitle = escapeHtml(title)
-          const safeDescription = escapeHtml(description)
-          const safeOgDescription = escapeMetaAttr(description)
-          const safeOgTitle = escapeMetaAttr(title)
-
-          next = next.replace(/<title>[^<]*<\/title>/, `<title>${safeTitle}</title>`)
-          next = next.replace(
-            /<meta name="description" content="[^"]*" \/>/,
-            `<meta name="description" content="${safeDescription}" />`,
-          )
-          next = next.replace(
-            /<meta property="og:title" content="[^"]*" \/>/,
-            `<meta property="og:title" content="${safeOgTitle}" />`,
-          )
-          next = next.replace(
-            /<meta property="og:description" content="[^"]*" \/>/,
-            `<meta property="og:description" content="${safeOgDescription}" />`,
-          )
-          next = next.replace(
-            /<link rel="canonical" href="[^"]*" \/>/,
-            `<link rel="canonical" href="${canonical}" />`,
-          )
-          next = next.replace(
-            /<meta property="og:url" content="[^"]*" \/>/,
-            `<meta property="og:url" content="${canonical}" />`,
-          )
-          next = next.replace(
-            /<meta name="twitter:title" content="[^"]*" \/>/,
-            `<meta name="twitter:title" content="${safeOgTitle}" />`,
-          )
-          next = next.replace(
-            /<meta name="twitter:description" content="[^"]*" \/>/,
-            `<meta name="twitter:description" content="${safeOgDescription}" />`,
-          )
-
-          if (page.breadcrumb.length >= 2) {
-            const json = JSON.stringify(buildBreadcrumbJsonLd(page))
-            const tag = `    <script type="application/ld+json" id="breadcrumb-jsonld">${json}</script>\n`
-            next = next.replace('</head>', `${tag}  </head>`)
-          }
-
-          const faqJson = buildFaqJsonLd(page)
-          if (faqJson) {
-            const tag = `    <script type="application/ld+json" id="faq-jsonld">${JSON.stringify(faqJson)}</script>\n`
-            next = next.replace('</head>', `${tag}  </head>`)
-          }
-
-          const serviceJson = buildServiceJsonLd(page)
-          if (serviceJson) {
-            const tag = `    <script type="application/ld+json" id="service-jsonld">${JSON.stringify(serviceJson)}</script>\n`
-            next = next.replace('</head>', `${tag}  </head>`)
-          }
-
-          // Contenu HTML visible pour Bing / crawlers sans JS (remplacé par React au hydrate)
-          const staticBody = buildStaticBody(page, description)
-          next = next.replace(
-            /<div id="root"><\/div>/,
-            `<div id="root">${staticBody}</div>`,
-          )
-
-          return next
-        }
-
-        // Aligne le graph Organization + LocalBusiness du template HTML
-        const siteGraphTag = `<script type="application/ld+json" id="site-graph-jsonld">${JSON.stringify(buildSiteGraphJsonLd())}</script>`
-        const htmlWithGraph = html.replace(
-          /<script type="application\/ld\+json">[\s\S]*?<\/script>/,
-          siteGraphTag,
-        )
-
-        writeFileSync(indexFile, applyPageHead(htmlWithGraph, '/'), 'utf8')
 
         for (const route of SPA_ROUTES) {
           const target = join(dist, route, 'index.html')
           mkdirSync(dirname(target), { recursive: true })
-          writeFileSync(target, applyPageHead(htmlWithGraph, `/${route}`), 'utf8')
+          writeFileSync(target, html, 'utf8')
         }
 
         const sitemap = writeCanonicalSitemap()
         writeFileSync(join(dist, 'sitemap.xml'), sitemap, 'utf8')
         writeFileSync(join(process.cwd(), 'public/sitemap.xml'), sitemap, 'utf8')
-        // IndexNow : via Cloudflare Crawler Hints (plus de ping local — bloqué sur Pages)
       },
     },
   ],
