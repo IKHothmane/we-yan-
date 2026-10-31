@@ -1,0 +1,12 @@
+.strategy-lamp-card__bulb {
+  position: absolute;
+  z-index: 1;
+  right: -6%;
+  bottom: -8%;
+  width: 62%;
+  height: 92%;
+  object-fit: contain;
+  object-position: right bottom;
+  pointer-events: none;
+  user-select: none;
+}

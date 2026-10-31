@@ -1,335 +1,361 @@
-import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-import Icon from '../components/Icon'
-import Navbar from '../components/Navbar'
-import PageBreadcrumb from '../components/PageBreadcrumb'
-import PageSeo from '../components/PageSeo'
-import SiteFooter from '../components/SiteFooter'
-import useScrollReveal from '../hooks/useScrollReveal'
-import { pageSeo } from '../lib/pageSeo'
-import ContactSendPopup from '../components/ContactSendPopup'
-import { sendContactMessage } from '../lib/sendContact'
-import { markLeadReadyToTrack } from '../lib/trackLead'
-
-const socialLinks = [
-  { href: 'https://instagram.com', label: 'Instagram', icon: '/icons/instagram.svg' },
-  { href: 'https://linkedin.com', label: 'LinkedIn', icon: '/icons/linkedin-in.svg' },
-  { href: 'https://facebook.com', label: 'Facebook', icon: '/icons/facebook-f.svg' },
-] as const
-
-const iconMaskStyle = (url: string) =>
-  ({
-    WebkitMaskImage: `url(${url})`,
-    maskImage: `url(${url})`,
-    WebkitMaskRepeat: 'no-repeat',
-    maskRepeat: 'no-repeat',
-    WebkitMaskPosition: 'center',
-    maskPosition: 'center',
-    WebkitMaskSize: 'contain',
-    maskSize: 'contain',
-    backgroundColor: 'currentColor',
-  }) as const
+import {
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+  type FormEvent,
+  type KeyboardEvent,
+  type PointerEvent as ReactPointerEvent,
+} from 'react'
+import { useSearchParams } from 'react-router-dom'
+import SiteLayout from '../components/layout/SiteLayout'
+import { legalIdentity } from '../lib/legalIdentity'
+import '../styles/contact-page.css'
 
 const services = [
-  'Stratégie Marketing & Rebranding',
-  'Création de Contenu & Community Management',
-  'Publicité Digitale (Meta Ads & Google Ads)',
-  'Référencement Naturel (SEO)',
-  'Marketing d’Influence',
-  'Média Publicité Offline',
+  { id: 'strategie', label: 'Stratégie marketing & rebranding' },
+  { id: 'community', label: 'Création de contenu & Community Management' },
+  { id: 'publicite', label: 'Publicité digitale (Meta Ads & Google Ads)' },
+  { id: 'seo', label: 'Référencement naturel (SEO)' },
+  { id: 'influence', label: 'Marketing d’influence' },
+  { id: 'offline', label: 'Média & publicité offline' },
+  { id: 'site-web', label: 'Création de site web' },
+  { id: 'autre', label: 'Autre demande' },
 ] as const
 
-type Service = (typeof services)[number]
+function PhoneIcon() {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M7 3.8 9.7 3l2 4.2-2 1.7a15 15 0 0 0 5.4 5.4l1.7-2 4.2 2-.8 2.7a2 2 0 0 1-2.2 1.4A16.5 16.5 0 0 1 5.6 6a2 2 0 0 1 1.4-2.2Z" />
+    </svg>
+  )
+}
 
-export default function ContactPage() {
-  useScrollReveal()
-  const navigate = useNavigate()
-  const [selectedServices, setSelectedServices] = useState<Service[]>([])
-  const [name, setName] = useState('')
-  const [email, setEmail] = useState('')
-  const [phone, setPhone] = useState('')
-  const [message, setMessage] = useState('')
-  const [website, setWebsite] = useState('')
-  const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle')
-  const [errorMessage, setErrorMessage] = useState('')
-  const [popupOpen, setPopupOpen] = useState(false)
+function MailIcon() {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <rect x="3.5" y="5.5" width="17" height="13" rx="1.8" />
+      <path d="m4.5 7 7.5 6 7.5-6" />
+    </svg>
+  )
+}
 
-  const toggleService = (service: Service) => {
-    setSelectedServices((current) =>
-      current.includes(service) ? current.filter((item) => item !== service) : [...current, service]
-    )
+function PinIcon() {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M19 10c0 5-7 11-7 11S5 15 5 10a7 7 0 1 1 14 0Z" />
+      <circle cx="12" cy="10" r="2.2" />
+    </svg>
+  )
+}
+
+function serviceFromParam(value: string | null) {
+  if (!value) return ''
+  const byId = services.find((item) => item.id === value)
+  if (byId) return byId.label
+  const byLabel = services.find((item) => item.label === value)
+  return byLabel?.label ?? ''
+}
+
+type SlideSubmitProps = {
+  complete: boolean
+  onComplete: () => boolean
+}
+
+function SlideSubmit({ complete, onComplete }: SlideSubmitProps) {
+  const trackRef = useRef<HTMLDivElement>(null)
+  const draggingRef = useRef(false)
+  const startXRef = useRef(0)
+  const startOffsetRef = useRef(0)
+  const [offset, setOffset] = useState(0)
+  const [maxOffset, setMaxOffset] = useState(0)
+  const [dragging, setDragging] = useState(false)
+
+  const measure = useCallback(() => {
+    const track = trackRef.current
+    if (!track) return
+    const knob = track.querySelector<HTMLElement>('.contact-slide-knob')
+    if (!knob) return
+    const styles = getComputedStyle(track)
+    const padLeft = Number.parseFloat(styles.paddingLeft) || 0
+    const padRight = Number.parseFloat(styles.paddingRight) || 0
+    setMaxOffset(Math.max(0, track.clientWidth - padLeft - padRight - knob.offsetWidth))
+  }, [])
+
+  useEffect(() => {
+    measure()
+    const track = trackRef.current
+    if (!track || typeof ResizeObserver === 'undefined') return
+    const observer = new ResizeObserver(measure)
+    observer.observe(track)
+    return () => observer.disconnect()
+  }, [measure])
+
+  useEffect(() => {
+    if (complete) setOffset(maxOffset)
+  }, [complete, maxOffset])
+
+  function finishIfNeeded(nextOffset: number) {
+    if (maxOffset <= 0) return
+    if (nextOffset >= maxOffset * 0.88) {
+      const accepted = onComplete()
+      setOffset(accepted ? maxOffset : 0)
+      return
+    }
+    setOffset(0)
   }
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setStatus('sending')
-    setErrorMessage('')
+  function onPointerDown(event: ReactPointerEvent<HTMLButtonElement>) {
+    if (complete) return
+    draggingRef.current = true
+    setDragging(true)
+    startXRef.current = event.clientX
+    startOffsetRef.current = offset
+    event.currentTarget.setPointerCapture(event.pointerId)
+  }
 
-    try {
-      await sendContactMessage({
-        name,
-        email,
-        phone,
-        message,
-        services: selectedServices,
-        website,
-      })
-      markLeadReadyToTrack()
-      navigate('/merci/')
-    } catch (error) {
-      setStatus('error')
-      setErrorMessage(error instanceof Error ? error.message : 'Envoi impossible.')
-      setPopupOpen(true)
+  function onPointerMove(event: ReactPointerEvent<HTMLButtonElement>) {
+    if (!draggingRef.current || complete) return
+    const next = Math.min(
+      maxOffset,
+      Math.max(0, startOffsetRef.current + (event.clientX - startXRef.current)),
+    )
+    setOffset(next)
+  }
+
+  function onPointerUp(event: ReactPointerEvent<HTMLButtonElement>) {
+    if (!draggingRef.current) return
+    draggingRef.current = false
+    setDragging(false)
+    if (event.currentTarget.hasPointerCapture(event.pointerId)) {
+      event.currentTarget.releasePointerCapture(event.pointerId)
+    }
+    const next = Math.min(
+      maxOffset,
+      Math.max(0, startOffsetRef.current + (event.clientX - startXRef.current)),
+    )
+    finishIfNeeded(next)
+  }
+
+  function onKeyDown(event: KeyboardEvent<HTMLButtonElement>) {
+    if (complete) return
+    if (event.key === 'Enter' || event.key === ' ' || event.key === 'ArrowRight') {
+      event.preventDefault()
+      const accepted = onComplete()
+      setOffset(accepted ? maxOffset : 0)
     }
   }
 
+  const progress = maxOffset > 0 ? offset / maxOffset : 0
+
   return (
-    <div className="bg-background min-h-screen font-body-md text-on-surface selection:bg-primary-container selection:text-on-primary-container overflow-hidden w-full">
-      <style>{`
-        @keyframes contactBtnPulse {
-          0%, 100% { box-shadow: 0 10px 15px -3px rgba(252,151,0,0.25), 0 0 0 0 rgba(252,151,0,0.45); transform: scale(1); }
-          50% { box-shadow: 0 10px 15px -3px rgba(252,151,0,0.25), 0 0 0 12px rgba(252,151,0,0); transform: scale(1.01); }
-        }
-        .contact-submit-pulse { animation: contactBtnPulse 1.6s ease-in-out infinite; }
-        @media (prefers-reduced-motion: reduce) {
-          .contact-submit-pulse { animation: none; }
-        }
-      `}</style>
-      <PageSeo {...pageSeo.contact} />
-      <Navbar />
+    <div
+      className={`contact-slide ${complete ? 'is-complete' : ''} ${dragging ? 'is-dragging' : ''}`}
+      ref={trackRef}
+      role="group"
+      aria-label="Glisser pour envoyer le message"
+    >
+      <span className="contact-slide-label" style={{ opacity: 1 - progress * 0.85 }}>
+        {complete ? 'Message prêt' : 'Discutons de votre projet'}
+      </span>
+      <button
+        type="button"
+        className="contact-slide-knob"
+        style={{ transform: `translateX(${offset}px)` }}
+        aria-label="Glisser vers la droite pour envoyer"
+        aria-valuemin={0}
+        aria-valuemax={100}
+        aria-valuenow={Math.round(progress * 100)}
+        onPointerDown={onPointerDown}
+        onPointerMove={onPointerMove}
+        onPointerUp={onPointerUp}
+        onPointerCancel={onPointerUp}
+        onKeyDown={onKeyDown}
+      >
+        →
+      </button>
+    </div>
+  )
+}
 
-      <main className="max-w-[1280px] mx-auto px-8 md:px-margin-desktop pt-[clamp(7.5rem,16vw,9.5rem)] pb-section-padding">
-        <header className="mb-16 text-center max-w-4xl mx-auto">
-          <PageBreadcrumb className="mb-4" />
-          <h1
-            className="font-rigot text-4xl md:text-5xl lg:text-6xl font-extrabold mb-4 md:mb-6 tracking-[-0.02em] text-on-surface"
-            style={{ lineHeight: 1.28 }}
-          >
-            Contact agence digitale Casablanca — devis sous 24h.
-          </h1>
-          <p className="text-body-lg text-on-surface-variant">
-            Prêt à transformer vos idées en réalité numérique ? Notre équipe d&apos;experts est à votre écoute pour
-            concevoir des solutions sur mesure.
-          </p>
-        </header>
+export default function ContactPage() {
+  const [searchParams] = useSearchParams()
+  const formRef = useRef<HTMLFormElement>(null)
+  const [name, setName] = useState('')
+  const [company, setCompany] = useState('')
+  const [email, setEmail] = useState('')
+  const [phone, setPhone] = useState('')
+  const [service, setService] = useState(() => serviceFromParam(searchParams.get('service')))
+  const [message, setMessage] = useState('')
+  const [feedback, setFeedback] = useState('')
+  const [slideComplete, setSlideComplete] = useState(false)
 
-        <div className="max-w-5xl mx-auto">
-          <div className="glass-card p-8 md:p-14 rounded-2xl shadow-sm border border-outline-variant/20 relative overflow-hidden">
-            <div aria-hidden="true" className="absolute -top-32 -left-32 w-64 h-64 bg-primary/10 rounded-full blur-3xl" />
-            <div aria-hidden="true" className="absolute -bottom-32 -right-32 w-64 h-64 bg-secondary/10 rounded-full blur-3xl" />
+  useEffect(() => {
+    setService(serviceFromParam(searchParams.get('service')))
+  }, [searchParams])
 
-            <div className="relative z-10">
-              <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-12">
-                <aside className="min-w-0 space-y-10 lg:col-span-4">
-                  <div className="min-w-0">
-                    <h3
-                      className="mb-8 max-w-full font-semibold text-xl tracking-tight text-on-surface sm:text-2xl"
-                      style={{ lineHeight: 1.3 }}
-                    >
-                      Informations de contact
-                    </h3>
-                    <div className="space-y-6">
-                      <div className="group">
-                        <div className="flex items-center gap-4 mb-1">
-                          <Icon name="mail" className="text-primary text-xl" />
-                          <span className="uppercase tracking-widest text-outline text-sm font-semibold">Email</span>
-                        </div>
-                        <a
-                          className="text-body-lg font-semibold hover:text-primary transition-colors duration-300 ml-9 block"
-                          href="mailto:contact@weyan.digital"
-                        >
-                          contact@weyan.digital
-                        </a>
-                      </div>
+  function sendMail() {
+    const subject = encodeURIComponent(`Demande de contact — ${name}`)
+    const body = encodeURIComponent(
+      `Nom : ${name}\nEntreprise : ${company || 'Non renseignée'}\nEmail : ${email}\nTéléphone : ${phone || 'Non renseigné'}\nService : ${service || 'Non précisé'}\n\nMessage :\n${message}`,
+    )
+    window.location.href = `mailto:${legalIdentity.email}?subject=${subject}&body=${body}`
+    setFeedback(
+      'Votre application e-mail va s’ouvrir avec votre message prérempli. Envoyez-le depuis votre messagerie pour finaliser la demande.',
+    )
+  }
 
-                      <div className="group">
-                        <div className="flex items-center gap-4 mb-1">
-                          <Icon name="phone_iphone" className="text-primary text-xl" />
-                          <span className="uppercase tracking-widest text-outline text-sm font-semibold">Téléphone</span>
-                        </div>
-                        <a
-                          className="text-body-lg font-semibold hover:text-primary transition-colors duration-300 ml-9 block"
-                          href="tel:+212691567246"
-                        >
-                          06 91 56 72 46
-                        </a>
-                      </div>
-                    </div>
-                  </div>
+  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault()
+    if (!slideComplete) return
+    sendMail()
+  }
 
-                  <div className="pt-8 border-t border-outline-variant/30">
-                    <span className="uppercase tracking-widest text-outline text-sm font-semibold mb-6 block">
-                      Suivez-nous
-                    </span>
-                    <div className="flex gap-4">
-                      {socialLinks.map((socialLink) => (
-                        <a
-                          key={socialLink.label}
-                          className="w-12 h-12 rounded-lg border border-outline-variant flex items-center justify-center hover:bg-primary hover:text-white transition-all duration-300 text-on-surface-variant"
-                          href={socialLink.href}
-                          target="_blank"
-                          rel="noreferrer"
-                          aria-label={`Visitez notre ${socialLink.label}`}
-                        >
-                          <span aria-hidden="true" className="h-5 w-5" style={iconMaskStyle(socialLink.icon)} />
-                        </a>
-                      ))}
-                    </div>
-                  </div>
-                </aside>
+  function handleSlideComplete() {
+    const form = formRef.current
+    if (!form) return false
+    if (!form.reportValidity()) {
+      setSlideComplete(false)
+      return false
+    }
+    setSlideComplete(true)
+    sendMail()
+    return true
+  }
 
-                <div className="min-w-0 lg:col-span-8">
-                  <form className="relative space-y-6" onSubmit={handleSubmit}>
-                    <div className="space-y-2 group">
-                      <label
-                        className="text-sm font-semibold text-on-surface-variant transition-colors group-focus-within:text-primary"
-                        htmlFor="name"
-                      >
-                        Nom complet
-                      </label>
-                      <input
-                        className="w-full bg-surface/50 border border-outline-variant rounded-lg p-4 focus:ring-0 focus:border-primary focus:outline-none focus:ring-4 focus:ring-primary/10 transition-all"
-                        id="name"
-                        placeholder="Jean Dupont"
-                        required
-                        type="text"
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
-                      />
-                    </div>
-
-                    <div className="space-y-2 group">
-                      <label
-                        className="text-sm font-semibold text-on-surface-variant transition-colors group-focus-within:text-primary"
-                        htmlFor="email"
-                      >
-                        Adresse email
-                      </label>
-                      <input
-                        className="w-full bg-surface/50 border border-outline-variant rounded-lg p-4 focus:ring-0 focus:border-primary focus:outline-none focus:ring-4 focus:ring-primary/10 transition-all"
-                        id="email"
-                        placeholder="jean@exemple.com"
-                        required
-                        type="email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                      />
-                    </div>
-
-                    <div className="space-y-2 group">
-                      <label
-                        className="text-sm font-semibold text-on-surface-variant transition-colors group-focus-within:text-primary"
-                        htmlFor="phone"
-                      >
-                        Téléphone
-                      </label>
-                      <input
-                        className="w-full bg-surface/50 border border-outline-variant rounded-lg p-4 focus:ring-0 focus:border-primary focus:outline-none focus:ring-4 focus:ring-primary/10 transition-all"
-                        id="phone"
-                        placeholder="06 00 00 00 00"
-                        type="tel"
-                        value={phone}
-                        onChange={(e) => setPhone(e.target.value)}
-                      />
-                    </div>
-
-                    <div className="space-y-2">
-                      <label className="text-sm font-semibold text-on-surface-variant">Service souhaité</label>
-                      <p className="text-xs text-on-surface-variant/80">
-                        Sélectionnez les services qui vous intéressent.
-                      </p>
-                      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-                        {services.map((s) => {
-                          const id = `service-${s.toLowerCase().replace(/[^\p{L}0-9]+/gu, '-')}`
-                          const isSelected = selectedServices.includes(s)
-                          return (
-                            <label key={s} htmlFor={id} className="block cursor-pointer">
-                              <input
-                                id={id}
-                                checked={isSelected}
-                                className="hidden"
-                                name="services"
-                                type="checkbox"
-                                onChange={() => toggleService(s)}
-                              />
-                              <span
-                                className={`flex min-h-[3.5rem] w-full items-center rounded-lg border px-4 py-3 text-sm font-semibold leading-snug transition-all whitespace-normal break-words ${
-                                  isSelected
-                                    ? 'border-primary-container bg-primary-container text-on-primary-container service-carousel-selected'
-                                    : 'border-outline-variant bg-surface/50 text-on-surface'
-                                }`}
-                              >
-                                {s}
-                              </span>
-                            </label>
-                          )
-                        })}
-                      </div>
-                    </div>
-
-                    <div className="space-y-2 group">
-                      <label
-                        className="text-sm font-semibold text-on-surface-variant transition-colors group-focus-within:text-primary"
-                        htmlFor="message"
-                      >
-                        Votre message
-                      </label>
-                      <textarea
-                        className="w-full bg-surface/50 border border-outline-variant rounded-lg p-4 focus:ring-0 focus:border-primary focus:outline-none focus:ring-4 focus:ring-primary/10 transition-all"
-                        id="message"
-                        placeholder="Parlez-nous de vos objectifs..."
-                        required
-                        rows={5}
-                        value={message}
-                        onChange={(e) => setMessage(e.target.value)}
-                      />
-                    </div>
-
-                    <input
-                      type="text"
-                      name="website"
-                      value={website}
-                      onChange={(e) => setWebsite(e.target.value)}
-                      tabIndex={-1}
-                      autoComplete="off"
-                      className="absolute left-[-9999px] h-0 w-0 opacity-0"
-                      aria-hidden="true"
-                    />
-
-                    <button
-                      className="w-full bg-secondary text-on-secondary font-semibold text-xl py-4 rounded-xl hover:shadow-lg hover:shadow-secondary/20 transition-all duration-300 flex items-center justify-center gap-3 group contact-submit-pulse disabled:cursor-not-allowed disabled:opacity-70"
-                      type="submit"
-                      disabled={status === 'sending'}
-                    >
-                      {status === 'sending' ? 'Envoi en cours…' : 'Envoyer le message'}
-                      <Icon name="arrow_forward" className="group-hover:translate-x-2 transition-transform" />
-                    </button>
-                    {status === 'success' && (
-                      <p className="sr-only" role="status">
-                        Message envoyé. Nous vous répondons sous 24h.
-                      </p>
-                    )}
-                    {status === 'error' && (
-                      <p className="sr-only" role="alert">
-                        {errorMessage}
-                      </p>
-                    )}
-                  </form>
-                </div>
-              </div>
+  return (
+    <SiteLayout>
+      <div className="contact-page">
+        <section className="contact-layout">
+          <div className="contact-photo-panel">
+            <img
+              src="/images/contact/contact-workspace.webp"
+              alt="Espace de travail chaleureux et créatif de WeYan Digital"
+            />
+            <div className="contact-photo-caption">
+              <span>WE MAKE IT DIFFERENT</span>
+              <i />
             </div>
           </div>
-        </div>
-      </main>
 
-      <ContactSendPopup
-        open={popupOpen}
-        status="error"
-        errorMessage={errorMessage}
-        onClose={() => setPopupOpen(false)}
-      />
+          <div className="contact-content">
+            <div className="contact-form-card" id="contact-form">
+              <div className="contact-form-heading">
+                <span>PARLONS DE VOTRE PROJET</span>
+                <h1>
+                  Faisons quelque chose <em>de différent.</em>
+                </h1>
+                <p>Présentez-nous votre idée. Notre équipe vous répondra pour en discuter.</p>
+              </div>
 
-      <SiteFooter revealDelay="200" />
-    </div>
+              <form ref={formRef} onSubmit={handleSubmit}>
+                <div className="contact-fields-grid">
+                  <label>
+                    <span className="sr-only">Votre nom</span>
+                    <input
+                      required
+                      value={name}
+                      onChange={(event) => setName(event.target.value)}
+                      placeholder="Votre nom"
+                      autoComplete="name"
+                    />
+                  </label>
+                  <label>
+                    <span className="sr-only">Votre entreprise</span>
+                    <input
+                      value={company}
+                      onChange={(event) => setCompany(event.target.value)}
+                      placeholder="Votre entreprise"
+                      autoComplete="organization"
+                    />
+                  </label>
+                  <label>
+                    <span className="sr-only">Votre e-mail</span>
+                    <input
+                      required
+                      type="email"
+                      value={email}
+                      onChange={(event) => setEmail(event.target.value)}
+                      placeholder="Votre email"
+                      autoComplete="email"
+                    />
+                  </label>
+                  <label>
+                    <span className="sr-only">Votre numéro</span>
+                    <input
+                      type="tel"
+                      value={phone}
+                      onChange={(event) => setPhone(event.target.value)}
+                      placeholder="Votre numéro"
+                      autoComplete="tel"
+                    />
+                  </label>
+                </div>
+
+                <label className="contact-select-label">
+                  <span className="sr-only">Quel service vous intéresse ?</span>
+                  <select value={service} onChange={(event) => setService(event.target.value)}>
+                    <option value="">Quel service vous intéresse ?</option>
+                    {services.map((item) => (
+                      <option key={item.id} value={item.label}>
+                        {item.label}
+                      </option>
+                    ))}
+                  </select>
+                </label>
+
+                <label className="contact-message-label">
+                  <span className="sr-only">Votre message</span>
+                  <textarea
+                    required
+                    rows={4}
+                    value={message}
+                    onChange={(event) => setMessage(event.target.value)}
+                    placeholder="Votre message ..."
+                  />
+                </label>
+
+                <SlideSubmit complete={slideComplete} onComplete={handleSlideComplete} />
+                {feedback ? (
+                  <p className="contact-feedback" role="status">
+                    {feedback}
+                  </p>
+                ) : null}
+              </form>
+            </div>
+
+            <aside className="contact-details" aria-label="Coordonnées">
+              <a className="contact-detail" href={legalIdentity.telephoneHref}>
+                <span className="contact-detail-icon">
+                  <PhoneIcon />
+                </span>
+                <span>{legalIdentity.telephone}</span>
+              </a>
+              <a className="contact-detail" href={`mailto:${legalIdentity.email}`}>
+                <span className="contact-detail-icon">
+                  <MailIcon />
+                </span>
+                <span>{legalIdentity.email}</span>
+              </a>
+              <div className="contact-detail">
+                <span className="contact-detail-icon">
+                  <PinIcon />
+                </span>
+                <span>
+                  {legalIdentity.siege.ville}, Maroc
+                </span>
+              </div>
+            </aside>
+          </div>
+        </section>
+
+        <div className="contact-decoration contact-decoration-orange" aria-hidden="true" />
+        <div className="contact-decoration contact-decoration-blue" aria-hidden="true" />
+        <svg className="contact-bottom-scribble" viewBox="0 0 260 180" aria-hidden="true">
+          <path d="M4 158 C45 115 78 20 115 24 C150 27 80 130 114 145 C150 163 184 30 256 4" />
+          <path d="M70 178 C105 125 158 90 255 50" />
+        </svg>
+      </div>
+    </SiteLayout>
   )
 }

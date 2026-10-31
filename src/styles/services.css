@@ -1,0 +1,230 @@
+.services-section {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(58px, 6vw, 92px) clamp(22px, 4.5vw, 70px);
+  background: #faf9f7;
+  color: #101010;
+}
+.services-grid {
+  width: min(100%, 1440px);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 20px;
+  align-items: stretch;
+  position: relative;
+  z-index: 1;
+}
+.services-intro {
+  grid-column: span 3;
+  grid-row: 1;
+  padding: 10px 10px 20px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  container-type: inline-size;
+}
+.section-kicker {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  color: #ed941f;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin-bottom: 25px;
+}
+.section-kicker i { width: 90px; height: 1px; background: #c9c6c0; }
+.services-intro h2 {
+  margin: 0 0 24px;
+  font-family: 'Shrikhand', cursive;
+  font-size: clamp(32px, 13.6cqi, 52px);
+  font-weight: 400;
+  line-height: 1.08;
+  letter-spacing: -1.3px;
+}
+.word-blue { color: #4d70ef; }
+.word-gradient {
+  background: linear-gradient(100deg, #ed9221 5%, #f2a11e 42%, #4e70f2 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.services-intro p {
+  max-width: 350px;
+  margin: 0;
+  color: #343434;
+  font-size: 13px;
+  line-height: 1.85;
+}
+.service-card {
+  min-height: 0;
+  position: relative;
+  overflow: hidden;
+  border-radius: 22px;
+  padding: 20px 18px 16px;
+  isolation: isolate;
+  box-shadow: 0 10px 24px rgba(28, 35, 60, .035);
+}
+.service-card-strategie,
+.service-card-community,
+.service-card-publicite { grid-column: span 3; grid-row: 1; }
+.service-card-seo,
+.service-card-influence,
+.service-card-offline { grid-column: span 4; grid-row: 2; }
+
+.service-card-blue { background: #e8edff; }
+.service-card-cream { background: #fff2e2; }
+.service-card-image {
+  position: absolute;
+  z-index: 1;
+  right: 0;
+  bottom: 0;
+  width: 48%;
+  height: 82%;
+  object-fit: contain;
+  object-position: right bottom;
+  pointer-events: none;
+  user-select: none;
+}
+.service-card-community .service-card-image { width: 56%; height: 98%; right: -4%; }
+.service-card-publicite .service-card-image { width: 52%; height: 86%; right: -2%; bottom: 8%; object-position: right bottom; }
+.service-card-seo .service-card-image { width: 50%; height: 90%; right: -6%; bottom: -4%; object-position: right bottom; }
+.service-card-influence .service-card-image { width: 58%; height: 100%; right: -4%; bottom: -4%; object-position: right center; }
+.service-card-offline .service-card-image { width: 54%; height: 100%; right: -4%; bottom: -2%; object-position: right bottom; }
+.service-card-content {
+  width: 62%;
+  height: 100%;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+  z-index: 2;
+}
+.service-number { display: flex; align-items: center; gap: 12px; margin-bottom: 21px; }
+.service-number span { font-size: 24px; font-weight: 500; }
+.service-number i { width: 48px; height: 1px; background: #aaa8a3; }
+.service-card h3 {
+  margin: 0 0 14px;
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(14px, 1.25vw, 19px);
+  line-height: 1.25;
+  font-weight: 700;
+  letter-spacing: -.55px;
+}
+.service-card p {
+  margin: 0;
+  color: #444;
+  font-size: 12.5px;
+  line-height: 1.55;
+  max-width: 16em;
+}
+.service-arrow {
+  width: 47px;
+  height: 47px;
+  margin-top: auto;
+  display: grid;
+  place-items: center;
+  border: 1px solid #222;
+  border-radius: 50%;
+  font-size: 25px;
+  line-height: 1;
+  color: inherit;
+  text-decoration: none;
+  transition: background .22s ease, color .22s ease, transform .22s ease;
+}
+.service-arrow:hover { color: #fff; background: #111; transform: translateX(4px); }
+.services-top-decoration {
+  position: absolute;
+  z-index: 3;
+  top: clamp(58px, 6vw, 92px);
+  right: clamp(20px, 4.5vw, 70px);
+  width: min(430px, 39vw);
+  height: 142px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  pointer-events: none;
+  overflow: visible;
+}
+.services-signature {
+  display: block;
+  flex: 1 1 auto;
+  width: 72%;
+  height: 142px;
+  overflow: visible;
+}
+.services-signature path {
+  fill: none;
+  stroke: #f39a25;
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.services-stamp {
+  display: block;
+  flex: 0 0 104px;
+  width: 104px;
+  height: 104px;
+  margin-top: 12px;
+  overflow: visible;
+  transform-origin: center;
+  animation: circleRotate 25s linear infinite;
+}
+.services-stamp text {
+  fill: #111;
+  font-family: 'Poppins', sans-serif;
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 2.1px;
+}
+.services-stamp .stamp-arrow {
+  fill: none;
+  stroke: #111;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+@media (min-width: 1151px) {
+  .service-card-strategie,
+  .service-card-community,
+  .service-card-publicite { margin-top: 128px; }
+}
+@media (min-width: 681px) and (max-width: 1150px) {
+  .services-section { padding-top: 160px; }
+  .services-top-decoration { top: 18px; }
+}
+@media (max-width: 1150px) {
+  .services-grid { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+  .services-intro { grid-column: span 3; grid-row: auto; }
+  .service-card-strategie,
+  .service-card-community,
+  .service-card-publicite,
+  .service-card-seo,
+  .service-card-influence,
+  .service-card-offline { grid-column: span 3; grid-row: auto; }
+}
+@media (max-width: 680px) {
+  .services-section { padding: 52px 18px; }
+  .services-grid { grid-template-columns: 1fr; gap: 15px; }
+  .services-intro { grid-column: 1; padding: 0 0 14px; }
+  .services-intro h2 { font-size: clamp(43px, 12vw, 60px); }
+  .service-card-strategie,
+  .service-card-community,
+  .service-card-publicite,
+  .service-card-seo,
+  .service-card-influence,
+  .service-card-offline { grid-column: 1; }
+  .service-card-content { width: 58%; }
+  .service-card h3 { font-size: 17px; }
+  .service-card p { font-size: 11px; }
+  .service-card-image,
+  .strategy-lamp-card__bulb { width: 48%; height: 78%; }
+  .services-top-decoration { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .service-arrow:hover { transform: none; }
+  .services-stamp { animation: none; }
+}

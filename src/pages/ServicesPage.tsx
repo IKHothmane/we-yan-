@@ -1,451 +1,264 @@
 import { Link } from 'react-router-dom'
-import Icon from '../components/Icon'
-import Navbar from '../components/Navbar'
-import PageSeo from '../components/PageSeo'
-import PageBreadcrumb from '../components/PageBreadcrumb'
-import SiteFooter from '../components/SiteFooter'
-import useScrollReveal from '../hooks/useScrollReveal'
-import { pageSeo } from '../lib/pageSeo'
+import type { ReactNode } from 'react'
+import SiteLayout from '../components/layout/SiteLayout'
+import { CONTACT_PATH } from '../constants/navigation'
+import '../styles/services-page.css'
 
-const solutionsCardsBackground = '/images/agency/story.webp'
-
-const services = [
-  {
-    icon: 'travel_explore',
-    title: 'Stratégie Marketing & Rebranding',
-    description: 'Positionnement, relance de marque et plan d’action pour accélérer votre croissance.',
-    tone: 'primary',
-    layoutClassName: 'min-h-[18.75rem] md:min-h-[20rem]',
-    to: '/services/strategie-marketing-rebranding/',
-    image: '/images/strategy/approach.webp',
-  },
-  {
-    icon: 'edit_document',
-    title: 'Création de Contenu & Community Management',
-    description: 'Photos, vidéos, reels et gestion quotidienne de vos réseaux sociaux.',
-    tone: 'secondary',
-    layoutClassName: 'min-h-[18.75rem] md:min-h-[20rem] md:mt-16 lg:mt-20',
-    to: '/services/creation-contenu-community-management/',
-    image: '/images/content/studio-content-v2.webp',
-  },
-  {
-    icon: 'ads_click',
-    title: 'Publicité Digitale (Meta Ads & Google Ads)',
-    description: 'Campagnes sponsorisées pour générer trafic, leads et ventes qualifiées.',
-    tone: 'primary',
-    layoutClassName: 'min-h-[18.75rem] md:min-h-[20rem]',
-    to: '/services/publicite-digitale/',
-    image: '/images/home/dashboard.webp',
-  },
-  {
-    icon: 'search',
-    title: 'Référencement Naturel (SEO)',
-    description: 'Optimisation SEO pour améliorer votre visibilité Google sur le long terme.',
-    tone: 'secondary',
-    layoutClassName: 'min-h-[18.75rem] md:min-h-[20rem] md:mt-16 lg:mt-20',
-    to: '/services/seo/',
-    image: '/images/seo/authority.webp',
-  },
-  {
-    icon: 'campaign',
-    title: 'Marketing d’Influence',
-    description: 'Collaborez avec les bons créateurs pour amplifier votre marque.',
-    tone: 'primary',
-    layoutClassName: 'min-h-[18.75rem] md:min-h-[20rem]',
-    to: '/services/marketing-influence/',
-    image: '/images/content/gallery-lifestyle.webp',
-  },
-  {
-    icon: 'palette',
-    title: 'Média Publicité Offline',
-    description: 'Affichage, print et supports publicitaires pour renforcer votre présence terrain.',
-    tone: 'secondary',
-    layoutClassName: 'min-h-[18.75rem] md:min-h-[20rem] md:mt-16 lg:mt-20',
-    to: '/services/media-publicite-offline/',
-    image: '/images/offline/ooh.webp',
-  },
-] as const
-
-function ServiceCard({
-  title,
-  description,
-  icon,
-  tone,
-  layoutClassName,
-  to,
-  image,
-  delay,
-}: (typeof services)[number] & { delay: number }) {
-  const cardClasses = `group relative isolate flex overflow-hidden rounded-3xl border border-white/15 p-[clamp(1.25rem,3vw,2rem)] text-white shadow-[0_14px_40px_-16px_rgba(15,23,42,0.55)] transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_24px_60px_-20px_rgba(15,23,42,0.7)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/70 focus-visible:ring-offset-2 ${layoutClassName}`
-  const toneGradient =
-    tone === 'secondary'
-      ? 'bg-[linear-gradient(135deg,rgba(252,151,0,0.32),rgba(15,23,42,0.82))]'
-      : 'bg-[linear-gradient(135deg,rgba(100,131,240,0.34),rgba(15,23,42,0.82))]'
-
-  return (
-    <Link
-      to={to}
-      aria-label={`Découvrir ${title}`}
-      className={cardClasses}
-      data-reveal
-      data-reveal-delay={String(delay)}
-    >
-      <img
-        alt=""
-        aria-hidden="true"
-        className="absolute inset-0 h-full w-full rounded-[inherit] object-cover opacity-95"
-        src={solutionsCardsBackground}
-        width={512}
-        height={512}
-        loading="lazy"
-        decoding="async"
-      />
-      <div className={`absolute inset-0 rounded-[inherit] ${toneGradient}`} />
-      <img
-        alt=""
-        aria-hidden="true"
-        className="absolute inset-0 h-full w-full rounded-[inherit] scale-105 transform-gpu object-cover opacity-0 transition-all duration-700 ease-out group-hover:scale-100 group-hover:opacity-100"
-        src={image}
-        width={512}
-        height={512}
-        loading="lazy"
-        decoding="async"
-      />
-      <div className="absolute inset-0 rounded-[inherit] bg-slate-950/20 opacity-0 transition-opacity duration-700 group-hover:opacity-100" />
-      <div className="absolute inset-0 rounded-[inherit] bg-gradient-to-t from-slate-950/55 via-slate-950/15 to-transparent transition-opacity duration-500 group-hover:opacity-95" />
-      <div className="absolute inset-0 rounded-[inherit] bg-white/0 transition-colors duration-500 group-hover:bg-white/5" />
-      <div className="relative z-10 flex min-h-full flex-col justify-end">
-        <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-white/12 text-white backdrop-blur-sm">
-          <Icon name={icon} className="text-[1.7rem] leading-none" />
-        </div>
-        <h3 className="mb-2 text-[clamp(1.3rem,3vw,1.5rem)] font-bold text-white transition-all duration-500 group-hover:translate-x-1 group-hover:text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.45)]">
-          {title}
-        </h3>
-        <p className="text-white/85 text-[clamp(0.92rem,1.8vw,1rem)] leading-relaxed transition-all duration-500 group-hover:translate-x-1 group-hover:text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.35)]">
-          {description}
-        </p>
-        <span className="mt-5 inline-flex items-center gap-2 text-[0.78rem] font-bold uppercase tracking-[0.22em] text-white/90">
-          Explorer
-          <Icon name="arrow_forward" className="h-4 w-4" />
-        </span>
-      </div>
-    </Link>
-  )
+type ServiceItem = {
+  number: string
+  id: string
+  title: ReactNode
+  description: string
+  bullets: string[]
+  image: string
+  imageAlt: string
+  imageSide: 'left' | 'right'
+  note?: string
 }
 
+const serviceItems: ServiceItem[] = [
+  {
+    number: '01',
+    id: 'strategie',
+    title: (
+      <>
+        Stratégie marketing
+        <br />
+        <span>& rebranding</span>
+      </>
+    ),
+    description:
+      'Nous construisons des stratégies sur mesure pour positionner votre marque, renforcer son identité et accélérer sa croissance.',
+    bullets: ['Positionnement de marque', 'Audit & étude de marché', 'Stratégie de contenu', 'Rebranding'],
+    image: '/images/services/service-strategy-board.webp',
+    imageAlt: 'Planche de stratégie de marque WeYan Digital',
+    imageSide: 'right',
+    note: 'Stratégie · Identité · Croissance',
+  },
+  {
+    number: '02',
+    id: 'community',
+    title: (
+      <>
+        Création de contenu
+        <br />
+        <span>& Community Management</span>
+      </>
+    ),
+    description:
+      'Des contenus créatifs et engageants pour développer votre communauté et renforcer votre présence en ligne.',
+    bullets: ['Plan de contenu mensuel', 'Création photo & vidéo', 'Gestion des réseaux sociaux', 'Interaction & modération'],
+    image: '/images/services/service-content-reels.webp',
+    imageAlt: 'Création de contenu et montage vidéo WeYan Digital',
+    imageSide: 'left',
+  },
+  {
+    number: '03',
+    id: 'publicite',
+    title: (
+      <>
+        Publicité digitale
+        <br />
+        <span>(Meta Ads & Google Ads)</span>
+      </>
+    ),
+    description:
+      'Des campagnes publicitaires performantes pour attirer les bonnes audiences et générer des résultats concrets.',
+    bullets: [
+      'Stratégie média',
+      'Création des visuels et vidéos Ads',
+      'Gestion et optimisation des campagnes',
+      'Reporting et analyse des résultats',
+    ],
+    image: '/images/services/service-ads-campaign.webp',
+    imageAlt: 'Campagne publicitaire digitale Meta Ads et Google Ads',
+    imageSide: 'right',
+    note: 'Plus de visibilité · Plus de résultats',
+  },
+  {
+    number: '04',
+    id: 'seo',
+    title: (
+      <>
+        Référencement naturel
+        <br />
+        <span>(SEO)</span>
+      </>
+    ),
+    description: 'Nous optimisons votre présence sur Google pour générer un trafic qualifié et durable.',
+    bullets: ['Audit SEO complet', 'Optimisation technique', 'Rédaction de contenu optimisé', 'Suivi des positions et performances'],
+    image: '/images/services/service-seo-google.webp',
+    imageAlt: 'Référencement SEO et visibilité Google',
+    imageSide: 'left',
+    note: 'Visibilité durable',
+  },
+  {
+    number: '05',
+    id: 'influence',
+    title: (
+      <>
+        Marketing d’<span>influence</span>
+      </>
+    ),
+    description:
+      'Nous collaborons avec les bons créateurs de contenu pour amplifier votre message et toucher de nouvelles audiences.',
+    bullets: ['Sélection des influenceurs', 'Gestion des collaborations', 'Briefs créatifs & coordination', 'Suivi des performances'],
+    image: '/images/services/service-workspace.webp',
+    imageAlt: 'Espace de travail créatif et marketing d’influence',
+    imageSide: 'right',
+    note: 'Des histoires qui engagent',
+  },
+  {
+    number: '06',
+    id: 'offline',
+    title: (
+      <>
+        Média & publicité <span>offline</span>
+      </>
+    ),
+    description:
+      'Des solutions d’affichage et de communication hors ligne pour maximiser votre visibilité sur le terrain.',
+    bullets: [
+      'Affichage urbain (panneaux, abribus…)',
+      'Impression (flyers, brochures, kakemonos…)',
+      'Événementiel et shootings',
+      'Stratégie média globale (online + offline)',
+    ],
+    image: '/images/services/service-branding-city.webp',
+    imageAlt: 'Identité visuelle WeYan Digital en ville',
+    imageSide: 'left',
+  },
+]
+
 export default function ServicesPage() {
-  useScrollReveal()
-
   return (
-    <div className="min-h-screen overflow-hidden bg-[#f9f9f9] text-slate-900">
-      <PageSeo {...pageSeo.services} />
-      <Navbar />
-
-      <main className="relative overflow-hidden pt-32">
-        <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10">
-          <div className="absolute left-[8%] top-[6%] h-[28rem] w-[28rem] rounded-full bg-[radial-gradient(circle,rgba(167,199,231,0.42)_0%,rgba(167,199,231,0.1)_36%,transparent_70%)]" />
-          <div className="absolute bottom-[8%] right-[6%] h-[24rem] w-[24rem] rounded-full bg-[radial-gradient(circle,rgba(254,94,30,0.16)_0%,rgba(254,94,30,0.08)_28%,transparent_68%)]" />
-        </div>
-
-        <section className="w-full flex flex-col items-center px-6 pb-10 text-center sm:px-8 lg:pb-14 pt-20">
-          <PageBreadcrumb className="mb-6 justify-center" />
-          <span
-            className="inline-flex items-center gap-2 rounded-full border px-4 py-2 text-[0.72rem] font-bold uppercase tracking-[0.22em] mb-8"
-            style={{ backgroundColor: '#EEF2FF', color: '#4338CA', borderColor: '#C7D2FE' }}
-            data-reveal
-          >
-            <span className="h-1.5 w-1.5 rounded-full" style={{ backgroundColor: '#6483F0' }} />
-            We Yan Digital · Agence digitale basée à Casablanca, Maarif
-          </span>
-          <h1
-            className="max-w-5xl break-words text-[clamp(1.85rem,6vw,3.75rem)] font-black uppercase leading-[1.05] tracking-[-0.03em] text-slate-900"
-            data-reveal
-          >
-            Services digitaux à{' '}
-            <span className="italic" style={{ color: '#FC9700' }}>
-              Casablanca
-            </span>
-          </h1>
-          <p
-            className="mt-5 max-w-3xl text-[clamp(1.05rem,2.4vw,1.35rem)] font-bold text-slate-700"
-            data-reveal
-            data-reveal-delay="60"
-          >
-            SEO, site web, branding, publicité et community — un hub vers chaque prestation
-          </p>
-          <div
-            className="mt-8 max-w-3xl text-[clamp(0.95rem,2vw,1.15rem)] leading-8 text-slate-600 space-y-4"
-            data-reveal
-            data-reveal-delay="100"
-          >
-            <p>
-              Nous accompagnons <strong className="font-semibold text-slate-800">startups, PME et grands comptes</strong> sur tout le territoire marocain (Casablanca, Rabat, Marrakech, Tanger, Fès…) et à l’international, pour transformer leur présence digitale en un véritable <em>levier de croissance business</em>.
-            </p>
-            <p>
-              Nos équipes maîtrisent aussi bien le <strong>référencement naturel SEO local</strong> sur des requêtes comme « agence digitale près de Casablanca », « SEO Maroc » ou « community management Casablanca », que les campagnes <strong>SEA Google Ads, Meta Ads et TikTok Ads</strong> qui génèrent des leads dès la première semaine. Notre promesse : <strong className="font-semibold">une stratégie sur-mesure, zéro pack standard, des résultats mesurables</strong> chaque mois.
-            </p>
-          </div>
-
-          {/* Image avec ALT obligatoire pour le SEO */}
-          <figure
-            className="mt-14 w-full max-w-[980px] rounded-[1.75rem] overflow-hidden border border-slate-200 shadow-[0_30px_70px_-28px_rgba(15,23,42,0.4)]"
-            data-reveal
-            data-reveal-delay="180"
-          >
-            <img
-              src="/images/agency/story.webp"
-              alt="Agence digitale We Yan Digital à Casablanca - Équipe réunion stratégie marketing Maroc SEO site web branding publicité"
-              className="w-full h-auto object-cover block"
-              width={512}
-              height={512}
-              loading="eager"
-              decoding="async"
-              fetchPriority="high"
-            />
-            <figcaption className="sr-only">
-              Équipe We Yan Digital agence digitale Casablanca travaillant sur une stratégie SEO, branding et création de site web pour un client marocain.
-            </figcaption>
-          </figure>
-        </section>
-
-        <section className="w-full px-6 pb-24 sm:px-8 lg:pb-32">
-          <div className="mx-auto max-w-5xl mb-16 text-center" data-reveal>
-            <h2 className="text-[clamp(1.8rem,4.5vw,3rem)] font-black tracking-tight text-slate-900 mb-5">
-              Nos 6 expertises digitales complémentaires
-            </h2>
-            <p className="text-[clamp(0.95rem,2vw,1.1rem)] leading-relaxed text-slate-600 max-w-2xl mx-auto">
-              Une seule agence digitale à Casablanca pour piloter <strong>tous vos leviers d’acquisition</strong> : du branding au référencement, en passant par la création de site web, la publicité payante, les réseaux sociaux et les influenceurs. Vous gardez un seul interlocuteur, nous gardons la cohérence globale de votre marque — et nous optimisons chaque mois votre retour sur investissement.
-            </p>
-          </div>
-          <div className="mx-auto grid max-w-[1400px] grid-cols-1 items-start gap-6 md:grid-cols-2 md:gap-8 lg:grid-cols-3">
-            {services.map((service, index) => (
-              <ServiceCard key={service.title} {...service} delay={index * 90} />
-            ))}
-          </div>
-        </section>
-
-        {/* Section « Pourquoi nous choisir » — contenu long SEO 500+ mots */}
-        <section
-          className="w-full px-6 pb-24 sm:px-8 lg:pb-32 bg-white border-y border-slate-200"
-          data-reveal
-          data-reveal-delay="250"
-        >
-          <div className="mx-auto max-w-[1200px] grid grid-cols-1 gap-10 md:grid-cols-[1.1fr_1fr] items-start">
-            <div>
-              <span
-                className="inline-flex items-center gap-2 rounded-full border px-3.5 py-1.5 text-[0.7rem] font-bold uppercase tracking-[0.2em] mb-6"
-                style={{ backgroundColor: '#FFF7ED', color: '#C2410C', borderColor: '#FED7AA' }}
-              >
-                Pourquoi We Yan
-                <span className="h-1.5 w-1.5 rounded-full" style={{ backgroundColor: '#FC9700' }} />
-              </span>
-              <h2 className="text-[clamp(1.8rem,4.2vw,2.75rem)] font-black leading-[1.05] tracking-tight text-slate-900 mb-6">
-                Pourquoi choisir <span style={{ color: '#6483F0' }}>We Yan Digital</span> comme agence digitale à Casablanca ?
-              </h2>
-
-              <div className="space-y-5 text-[clamp(0.95rem,1.9vw,1.05rem)] leading-8 text-slate-700">
-                <p>
-                  Contrairement aux freelances généralistes ou aux agences à l’étranger, <strong className="font-semibold text-slate-900">nous sommes implantés à Casablanca, quartier Maarif</strong>, au cœur de l’effervescence économique du Maroc. Cette proximité nous permet de <em>vraiment comprendre votre marché</em> : les habitudes d’achat des consommateurs marocains sur Meta, Instagram et TikTok, la concurrence dans votre secteur, les expressions de recherche locales tapées dans Google (en français, en darija ou en anglais), et les spécificités culturelles qui font qu’un message fonctionnera… ou pas.
-                </p>
-                <p>
-                  Nous privilégions toujours une <strong className="font-semibold text-slate-900">stratégie mixte SEO + SEA</strong> : le SEO pour construire une <em>visibilité durable</em> sur 3 à 6 mois (pages premièrs sur Google, contenu qui capitalise avec le temps), et les campagnes Google Ads / Meta Ads pour générer <em>des leads qualifiés dès la première semaine</em>. Chaque euro dépensé en publicité est suivi dans un dashboard que vous pouvez consulter à tout moment — <strong className="font-semibold">transparence totale, zéro zone grise</strong>.
-                </p>
-                <p>
-                  Enfin, notre <strong className="font-semibold text-slate-900">approche créative We Yan</strong> n’est jamais « un pack standard » : nous travaillons chaque mois une idée de marque forte, des visuels premium, un ton différentiant, pour que votre entreprise se démarque de <em>toutes</em> les autres agences et entreprises dans votre secteur à Casablanca. Branding, design, UX, storytelling : tout est pensé comme un <em>écosystème cohérent</em> — et nous nous adaptons à tous les budgets, de la startup qui démarre au grand compte qui veut accélérer son développement digital au Maroc et en Afrique.
-                </p>
-                <p className="pt-2">
-                  <strong className="font-semibold text-slate-900">Prêt à transformer votre présence digitale en moteur de chiffre d’affaires ?</strong> Répondez-nous en moins de 24h avec un devis gratuit, sans engagement, détaillé service par service.
-                </p>
-              </div>
+    <SiteLayout>
+      <div className="services-page">
+        <section className="services-page-hero">
+          <div className="services-page-hero-copy">
+            <div className="services-page-eyebrow">
+              <span>NOS SERVICES</span>
+              <i />
             </div>
+            <h1>
+              Des solutions
+              <br />
+              360° pour <span className="service-blue">votre</span>
+              <br />
+              <span className="service-orange">croissance.</span>
+            </h1>
+            <p>
+              Nous accompagnons les marques à chaque étape de leur développement avec des solutions
+              sur mesure, créatives et performantes.
+            </p>
+            <a href="#strategie" className="services-discover-link">
+              Découvrir nos expertises <span>↓</span>
+            </a>
+          </div>
 
-            <div className="space-y-5 md:sticky md:top-36">
-              <div
-                className="rounded-[1.75rem] p-7 text-white shadow-[0_25px_60px_-22px_rgba(15,23,42,0.65)]"
-                style={{ backgroundColor: '#1F2937' }}
-              >
-                <h3 className="text-[1.35rem] font-black tracking-tight mb-6">
-                  6 raisons de travailler avec nous
-                </h3>
-                <ul className="space-y-4">
-                  {[
-                    { n: '01', t: 'Agence 100% Casablanca, réactivité unique sur Maroc' },
-                    { n: '02', t: 'Dashboard live avec KPI trafic, leads, conversions & ROI' },
-                    { n: '03', t: 'Stratégie mixte SEO (long terme) + SEA (immédiat)' },
-                    { n: '04', t: 'Design premium & branding différenciant We Yan' },
-                    { n: '05', t: 'Accompagnement startups, PME & grands comptes' },
-                    { n: '06', t: 'Devis détaillé & réponse sous 24h chrono' },
-                  ].map((r) => (
-                    <li key={r.n} className="flex items-start gap-4">
-                      <span
-                        className="mt-0.5 flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-xl font-black text-[0.82rem]"
-                        style={{ backgroundColor: '#FC9700', color: '#0F172A' }}
-                      >
-                        {r.n}
-                      </span>
-                      <p className="text-white/85 text-[0.95rem] leading-7 pt-0.5">{r.t}</p>
+          <div className="services-page-hero-visual">
+            <span className="hero-orb hero-orb-orange" />
+            <img
+              src="/images/services/services-hero-casablanca.webp"
+              alt="Bureau WeYan Digital avec vue sur la mosquée Hassan II à Casablanca"
+              width={1672}
+              height={941}
+            />
+            <svg className="services-page-hero-scribble" viewBox="0 0 250 150" aria-hidden="true">
+              <path d="M8 122 C38 42 83 6 112 14 C145 24 72 92 60 116 C47 142 115 90 145 50 C174 10 190 1 203 15 C219 33 182 86 209 92 C225 96 237 70 246 48" />
+            </svg>
+            <div className="services-page-stamp">
+              WE MAKE
+              <br />
+              <b>IT DIFFERENT</b>
+              <span>→</span>
+            </div>
+            <div className="services-side-words">
+              STRATÉGIE
+              <br />
+              CRÉATIVITÉ
+              <br />
+              CONTENU
+              <br />
+              PUBLICITÉ
+              <br />
+              RÉSULTATS
+            </div>
+          </div>
+        </section>
+
+        <section className="services-list" aria-label="Nos expertises">
+          {serviceItems.map((service) => (
+            <article
+              className={`service-detail-row service-detail-${service.imageSide}`}
+              id={service.id}
+              key={service.number}
+            >
+              <div className="service-detail-copy">
+                <div className="service-detail-number">
+                  <span>{service.number}</span>
+                  <i />
+                </div>
+                <h2>{service.title}</h2>
+                <p>{service.description}</p>
+                <ul>
+                  {service.bullets.map((bullet) => (
+                    <li key={bullet}>
+                      <span>✓</span>
+                      {bullet}
                     </li>
                   ))}
                 </ul>
-              </div>
-              <div
-                className="rounded-[1.5rem] border border-slate-200 p-5"
-                style={{ backgroundColor: '#FFFFFF' }}
-              >
-                <p className="text-[0.78rem] font-bold uppercase tracking-[0.2em] text-slate-500 mb-3">
-                  ✉️ Réponse garantie
-                </p>
-                <p className="text-slate-800 font-bold text-[1.05rem] leading-snug mb-4">
-                  Demande de devis → réponse détaillée sous 24h ouvrées
-                </p>
                 <Link
-                  to="/contact/"
-                  className="inline-flex w-full items-center justify-center gap-2 rounded-2xl px-5 py-3.5 text-[0.8rem] font-black uppercase tracking-[0.18em] text-white shadow-lg transition-all hover:brightness-110 hover:-translate-y-0.5"
-                  style={{ backgroundColor: '#6483F0', boxShadow: '0 20px 44px -18px rgba(100,131,240,0.6)' }}
+                  to={`${CONTACT_PATH}?service=${service.id}`}
+                  className="service-detail-arrow"
+                  aria-label={`Parler de : ${service.imageAlt}`}
                 >
-                  Obtenir mon devis gratuit
-                  <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-white/15 text-xs font-black">→</span>
+                  →
                 </Link>
               </div>
-            </div>
-          </div>
-        </section>
 
-        <section className="w-full mb-24 px-6 sm:px-8 lg:mb-32" data-reveal data-reveal-delay="450">
-          <div className="relative overflow-hidden rounded-[1.75rem] bg-[#1a1c1c] px-8 py-14 text-center text-white sm:px-12 md:px-16 md:py-20">
-            <div
-              aria-hidden="true"
-              className="absolute inset-0 opacity-20 [background:radial-gradient(circle_at_20%_20%,rgba(167,199,231,0.55),transparent_34%),radial-gradient(circle_at_80%_75%,rgba(254,94,30,0.45),transparent_28%)]"
-            />
-            <div className="relative z-10">
-              <h2 className="mx-auto mb-8 max-w-4xl text-[clamp(2.4rem,6vw,4.5rem)] font-black uppercase leading-[0.92] tracking-[-0.05em]">
-                Prêt à transformer votre présence en ligne ?
-              </h2>
-              <Link
-                className="inline-flex rounded-full bg-[#fe5e1e] px-8 py-4 text-[0.95rem] font-extrabold uppercase tracking-[0.18em] text-white shadow-[0_20px_40px_-20px_rgba(254,94,30,0.8)] transition-all duration-300 hover:scale-[1.03] hover:bg-[#ab3600]"
-                to="/contact/"
-              >
-                Discutons de votre projet
-              </Link>
-            </div>
-          </div>
-        </section>
-
-        {/* PAGES LONG TAIL SEO · Maillage interne PageRank vers pages dédiées (hors /services/* wildcard) */}
-        <section className="relative overflow-hidden py-[clamp(4rem,8vw,6rem)] text-slate-900">
-          <div aria-hidden="true" className="pointer-events-none absolute -top-32 left-0 h-96 w-96 rounded-full blur-3xl opacity-40" style={{ background: 'radial-gradient(circle, #EEF2FF 0%, transparent 65%)' }} />
-          <div aria-hidden="true" className="pointer-events-none absolute -bottom-24 right-0 h-96 w-96 rounded-full blur-3xl opacity-40" style={{ background: 'radial-gradient(circle, #FFF7ED 0%, transparent 65%)' }} />
-
-          <div className="relative z-10 w-full max-w-[1180px] mx-auto px-[clamp(1rem,4vw,2rem)]">
-            <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-5 mb-[clamp(2.2rem,5.5vw,3rem)]">
-              <div data-reveal>
-                <span className="inline-flex items-center gap-2 rounded-full border px-3.5 py-1.5 text-[0.7rem] font-bold uppercase tracking-[0.2em] mb-4" style={{ backgroundColor: '#EEF2FF', color: '#4338CA', borderColor: '#C7D2FE' }}>
-                  <span className="h-1.5 w-1.5 rounded-full" style={{ backgroundColor: '#6483F0' }} />
-                  Expertises dédiées · Casablanca
-                </span>
-                <h2 className="font-black text-[clamp(1.9rem,5vw,3rem)] tracking-tight text-slate-900 mb-3 leading-[1.05]">
-                  Pages <span style={{ color: '#6483F0' }}>commerciales</span> à ouvrir selon votre besoin
-                </h2>
-                <p className="text-slate-500 text-[clamp(0.95rem,2vw,1.1rem)] max-w-2xl leading-relaxed">
-                  Chaque page cible une intention précise : agence locale, prestation nationale ou offre dédiée — puis un devis.
-                </p>
+              <div className="service-detail-visual">
+                {service.note ? (
+                  <span className="service-detail-note">
+                    {service.note}
+                    <b>↙</b>
+                  </span>
+                ) : null}
+                <span className="service-detail-orb" />
+                <img src={service.image} alt={service.imageAlt} loading="lazy" />
               </div>
-            </div>
+            </article>
+          ))}
+        </section>
 
-            <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-              <Link
-                to="/agence-seo-casablanca/"
-                data-reveal
-                className="group relative overflow-hidden rounded-[2rem] p-[clamp(1.5rem,3.5vw,2.25rem)] text-white shadow-[0_30px_60px_-30px_rgba(99,102,241,0.55)] hover:shadow-[0_45px_75px_-30px_rgba(99,102,241,0.75)] hover:-translate-y-1 transition-all duration-300"
-                style={{ backgroundColor: '#6483F0' }}
-              >
-                <div className="relative z-10">
-                  <span className="mb-5 inline-flex rounded-full bg-white/10 border border-white/15 px-4 py-1.5 text-[0.72rem] font-bold uppercase tracking-[0.18em]">
-                    SEO local
-                  </span>
-                  <h3 className="text-[clamp(1.5rem,4vw,2.1rem)] font-black leading-[1.08] mb-4">
-                    Agence SEO à Casablanca
-                  </h3>
-                  <p className="text-white/85 leading-relaxed mb-7 max-w-xl text-[0.98rem]">
-                    SEO local Google Business, technique, contenus et reporting Search Console — pour les entreprises de Casablanca.
-                  </p>
-                  <span className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3.5 text-[0.88rem] font-black uppercase tracking-wider" style={{ color: '#6483F0' }}>
-                    Voir l’agence SEO
-                    <Icon name="arrow_forward" className="h-4 w-4" />
-                  </span>
-                </div>
-              </Link>
-              <Link
-                to="/agence-google-ads-casablanca/"
-                data-reveal
-                className="group relative overflow-hidden rounded-[2rem] p-[clamp(1.5rem,3.5vw,2.25rem)] text-white shadow-[0_30px_60px_-30px_rgba(66,133,244,0.45)] hover:-translate-y-1 transition-all duration-300"
-                style={{ backgroundColor: '#1F2937' }}
-              >
-                <div className="relative z-10">
-                  <span className="mb-5 inline-flex rounded-full bg-white/10 border border-white/15 px-4 py-1.5 text-[0.72rem] font-bold uppercase tracking-[0.18em]">
-                    Google Ads
-                  </span>
-                  <h3 className="text-[clamp(1.5rem,4vw,2.1rem)] font-black leading-[1.08] mb-4">
-                    Agence Google Ads Casablanca
-                  </h3>
-                  <p className="text-white/85 leading-relaxed mb-7 max-w-xl text-[0.98rem]">
-                    Campagnes Search, suivi des conversions et optimisation du budget média — distinct de l’offre multi-ads.
-                  </p>
-                  <span className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3.5 text-[0.88rem] font-black uppercase tracking-wider text-[#1F2937]">
-                    Voir Google Ads
-                    <Icon name="arrow_forward" className="h-4 w-4" />
-                  </span>
-                </div>
-              </Link>
-              <Link
-                to="/creation-site-web-casablanca/"
-                data-reveal
-                className="group relative overflow-hidden rounded-[2rem] p-[clamp(1.5rem,3.5vw,2.25rem)] border border-slate-200 bg-white text-slate-900 shadow-[0_20px_50px_-28px_rgba(15,23,42,0.35)] hover:-translate-y-1 transition-all duration-300"
-              >
-                <div className="relative z-10">
-                  <span className="mb-5 inline-flex rounded-full border border-[#FED7AA] bg-[#FFF7ED] px-4 py-1.5 text-[0.72rem] font-bold uppercase tracking-[0.18em] text-[#C2410C]">
-                    Création web
-                  </span>
-                  <h3 className="text-[clamp(1.5rem,4vw,2.1rem)] font-black leading-[1.08] mb-4">
-                    Création de site web à Casablanca
-                  </h3>
-                  <p className="text-slate-600 leading-relaxed mb-7 max-w-xl text-[0.98rem]">
-                    Vitrine, e-commerce ou sur-mesure — process, délais réalistes et devis calé sur votre brief.
-                  </p>
-                  <span className="inline-flex items-center gap-2 rounded-full bg-[#FC9700] px-6 py-3.5 text-[0.88rem] font-black uppercase tracking-wider text-[#0F172A]">
-                    Voir création site web
-                    <Icon name="arrow_forward" className="h-4 w-4" />
-                  </span>
-                </div>
-              </Link>
-
-              <Link
-                to="/community-management-casablanca/"
-                data-reveal
-                className="group relative overflow-hidden rounded-[2rem] p-[clamp(1.5rem,3.5vw,2.25rem)] text-white shadow-[0_30px_60px_-30px_rgba(252,151,0,0.55)] hover:-translate-y-1 transition-all duration-300"
-                style={{ backgroundColor: '#FC9700' }}
-              >
-                <div className="relative z-10">
-                  <span className="mb-5 inline-flex rounded-full bg-white/15 border border-white/20 px-4 py-1.5 text-[0.72rem] font-bold uppercase tracking-[0.18em]">
-                    Social media
-                  </span>
-                  <h3 className="text-[clamp(1.5rem,4vw,2.1rem)] font-black leading-[1.08] mb-4">
-                    Community management à Casablanca
-                  </h3>
-                  <p className="text-white/90 leading-relaxed mb-7 max-w-xl text-[0.98rem]">
-                    Animation Instagram, TikTok, LinkedIn et forfaits mensuels — distinct de la page création de contenu &amp; CM générale.
-                  </p>
-                  <span className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3.5 text-[0.88rem] font-black uppercase tracking-wider text-[#C2410C]">
-                    Voir le community management
-                    <Icon name="arrow_forward" className="h-4 w-4" />
-                  </span>
-                </div>
-              </Link>
-            </div>
+        <section className="services-final-cta">
+          <div className="services-final-copy">
+            <span>UN PROJET EN TÊTE ?</span>
+            <h2>
+              Parlons de vos idées
+              <br />
+              et construisons ensemble
+              <br />
+              <em>votre prochaine histoire.</em>
+            </h2>
+          </div>
+          <div className="services-final-action">
+            <p>
+              Que vous souhaitiez lancer un nouveau projet, développer votre visibilité ou simplement
+              échanger des idées, notre équipe est là pour vous accompagner.
+            </p>
+            <Link to={CONTACT_PATH}>
+              Nous contacter <span>→</span>
+            </Link>
+          </div>
+          <div className="services-final-shapes" aria-hidden="true">
+            <i />
+            <b />
+            <span />
           </div>
         </section>
-      </main>
-      <SiteFooter revealDelay="500" />
-    </div>
+      </div>
+    </SiteLayout>
   )
 }
