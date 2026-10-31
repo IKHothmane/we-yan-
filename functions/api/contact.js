@@ -64,26 +64,32 @@ export async function onRequest(context) {
   const email = String(input.email || '').trim()
   const message = String(input.message || '').trim()
   const phone = String(input.phone || input.telephone || '').trim()
+  const company = String(input.company || input.entreprise || '').trim()
   const services = Array.isArray(input.services)
     ? input.services.map((item) => String(item).trim()).filter(Boolean)
     : []
 
-  if (!name || name.length > 120) {
-    return json({ ok: false, error: 'Nom invalide.' }, 422)
+  if (!name || name.length > 80) {
+    return json({ ok: false, error: 'Nom invalide (80 caractères max).' }, 422)
   }
-  if (!isEmail(email) || email.length > 180) {
+  if (!isEmail(email) || email.length > 120) {
     return json({ ok: false, error: 'Adresse email invalide.' }, 422)
   }
-  if (phone.length > 40) {
-    return json({ ok: false, error: 'Téléphone invalide.' }, 422)
+  if (phone && (phone.length > 10 || !/^[+\d\s().-]{8,10}$/.test(phone))) {
+    return json({ ok: false, error: 'Téléphone invalide (8 à 10 caractères).' }, 422)
   }
-  if (!message || message.length > 5000) {
-    return json({ ok: false, error: 'Message invalide.' }, 422)
+  if (!message || message.length > 1000) {
+    return json({ ok: false, error: 'Message invalide (1000 caractères max).' }, 422)
+  }
+
+  if (company.length > 100) {
+    return json({ ok: false, error: 'Entreprise invalide (100 caractères max).' }, 422)
   }
 
   const safeName = escapeHtml(name)
   const safeEmail = escapeHtml(email)
   const safePhone = escapeHtml(phone || 'Non précisé')
+  const safeCompany = escapeHtml(company || 'Non précisée')
   const safeMessage = escapeHtml(message).replace(/\n/g, '<br>')
   const serviceLabel = services.length ? services.join(', ') : 'Non précisé'
   const safeServices = escapeHtml(serviceLabel)
@@ -92,6 +98,7 @@ export async function onRequest(context) {
     <div style="font-family:Arial,sans-serif;line-height:1.6;color:#0f172a">
       <h1 style="font-size:20px;margin:0 0 16px">Nouveau message — We Yan Digital</h1>
       <p><strong>Nom :</strong> ${safeName}</p>
+      <p><strong>Entreprise :</strong> ${safeCompany}</p>
       <p><strong>Email :</strong> ${safeEmail}</p>
       <p><strong>Téléphone :</strong> ${safePhone}</p>
       <p><strong>Services :</strong> ${safeServices}</p>
@@ -101,12 +108,14 @@ export async function onRequest(context) {
   `
 
   const sheetUrl = String(env.GOOGLE_SHEET_URL || DEFAULT_SHEET_URL).trim()
+  const sheetMessage = company ? `Entreprise : ${company}\n\n${message}` : message
   const sheetPayload = JSON.stringify({
     nom: name,
     email,
     telephone: phone,
+    entreprise: company,
     service: serviceLabel,
-    message,
+    message: sheetMessage,
     statut: 'Nouvelle',
   })
 

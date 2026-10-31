@@ -152,7 +152,15 @@
   box-shadow: 0 0 0 3px #5274ef18;
 }
 .contact-select-label { display: block; margin-top: 15px; }
-.contact-message-label { display: block; margin-top: 15px; }
+.contact-message-label { display: block; margin-top: 15px; position: relative; }
+.contact-char-count {
+  display: block;
+  margin-top: 6px;
+  text-align: right;
+  color: #9a969f;
+  font-size: 10px;
+  font-variant-numeric: tabular-nums;
+}
 .contact-slide {
   position: relative;
   width: 100%;
@@ -219,6 +227,15 @@
   background: #ffe7c8;
 }
 .contact-feedback { margin: 12px 4px 0; color: #4d654f; font-size: 10px; line-height: 1.5; }
+.contact-feedback.is-error { color: #9b2c2c; }
+.contact-honeypot {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+.contact-slide.is-sending { opacity: 0.85; pointer-events: none; }
 .contact-details {
   position: relative;
   z-index: 3;

@@ -149,6 +149,7 @@ function attachApi(server, env) {
       const name = String(input.name || '').trim()
       const email = String(input.email || '').trim()
       const phone = String(input.phone || input.telephone || '').trim()
+      const company = String(input.company || input.entreprise || '').trim()
       const message = String(input.message || '').trim()
       const services = Array.isArray(input.services) ? input.services.map(String) : []
       const serviceLabel = services.filter(Boolean).join(', ') || 'Non précisé'
@@ -157,17 +158,21 @@ function attachApi(server, env) {
         return sendJson(res, 422, { ok: false, error: 'Champs incomplets.' })
       }
 
-      await postToSheet(sheetUrl, {
+      const sheetMessage = company ? `Entreprise : ${company}\n\n${message}` : message
+      const sheetBody = await postToSheet(sheetUrl, {
         nom: name,
         email,
         telephone: phone,
+        entreprise: company,
         service: serviceLabel,
-        message,
+        message: sheetMessage,
         statut: 'Nouvelle',
       })
+      const sheetSaved = Boolean(sheetBody && (sheetBody.ok === true || sheetBody.success === true || sheetBody.created === true))
 
+      let emailSent = false
       if (resendKey && !resendKey.startsWith('re_xxxx')) {
-        await fetch('https://api.resend.com/emails', {
+        const resendRes = await fetch('https://api.resend.com/emails', {
           method: 'POST',
           headers: {
             Authorization: `Bearer ${resendKey}`,
@@ -178,12 +183,35 @@ function attachApi(server, env) {
             to: TO_EMAILS,
             reply_to: email,
             subject: `Nouveau contact We Yan Digital — ${name}`,
-            html: `<p><b>${name}</b> — ${email} — ${phone}<br/>${serviceLabel}<br/>${message}</p>`,
+            html: `<p><b>${name}</b> — ${company || '—'} — ${email} — ${phone}<br/>${serviceLabel}<br/>${message}</p>`,
           }),
+        })
+        emailSent = resendRes.ok
+        if (!resendRes.ok) {
+          return sendJson(res, 502, {
+            ok: false,
+            error: 'E-mail non envoyé (Resend). Vérifiez RESEND_API_KEY et le domaine vérifié.',
+            sheetSaved,
+          })
+        }
+      } else {
+        return sendJson(res, 500, {
+          ok: false,
+          error: 'RESEND_API_KEY manquante dans .env.local',
+          sheetSaved,
         })
       }
 
-      return sendJson(res, 200, { ok: true })
+      if (!sheetSaved) {
+        return sendJson(res, 200, {
+          ok: true,
+          emailSent,
+          sheetSaved: false,
+          warning: 'E-mail envoyé, mais Google Sheets a échoué. Vérifiez GOOGLE_SHEET_URL.',
+        })
+      }
+
+      return sendJson(res, 200, { ok: true, emailSent: true, sheetSaved: true })
     } catch (error) {
       return sendJson(res, 502, {
         ok: false,

@@ -1,5 +1,6 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import ReactDOM from 'react-dom/client'
+import ScrollToTop from './components/ScrollToTop'
 import { ABOUT_PATH, CONTACT_PATH, PROJECTS_PATH, SECTION_PAGES, SERVICES_PATH } from './constants/navigation'
 import AboutPage from './pages/AboutPage'
 import ContactPage from './pages/ContactPage'
@@ -16,6 +17,7 @@ function withOptionalSlash(path: string) {
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <BrowserRouter>
+    <ScrollToTop />
     <Routes>
       <Route path="/" element={<HomePage />} />
       {SECTION_PAGES.flatMap((page) =>

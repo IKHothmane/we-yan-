@@ -10,6 +10,7 @@ import {
 import { useSearchParams } from 'react-router-dom'
 import SiteLayout from '../components/layout/SiteLayout'
 import { legalIdentity } from '../lib/legalIdentity'
+import { sendContactMessage } from '../lib/sendContact'
 import '../styles/contact-page.css'
 
 const services = [
@@ -22,6 +23,23 @@ const services = [
   { id: 'site-web', label: 'Création de site web' },
   { id: 'autre', label: 'Autre demande' },
 ] as const
+
+const LIMITS = {
+  name: 80,
+  company: 100,
+  email: 120,
+  phone: 10,
+  message: 1000,
+} as const
+
+function limitText(value: string, max: number) {
+  return value.slice(0, max)
+}
+
+/** Chiffres, espaces, +, ( ) et tirets uniquement. */
+function limitPhone(value: string) {
+  return value.replace(/[^\d+\s().-]/g, '').slice(0, LIMITS.phone)
+}
 
 function PhoneIcon() {
   return (
@@ -59,10 +77,11 @@ function serviceFromParam(value: string | null) {
 
 type SlideSubmitProps = {
   complete: boolean
-  onComplete: () => boolean
+  sending: boolean
+  onComplete: () => boolean | Promise<boolean>
 }
 
-function SlideSubmit({ complete, onComplete }: SlideSubmitProps) {
+function SlideSubmit({ complete, sending, onComplete }: SlideSubmitProps) {
   const trackRef = useRef<HTMLDivElement>(null)
   const draggingRef = useRef(false)
   const startXRef = useRef(0)
@@ -95,10 +114,10 @@ function SlideSubmit({ complete, onComplete }: SlideSubmitProps) {
     if (complete) setOffset(maxOffset)
   }, [complete, maxOffset])
 
-  function finishIfNeeded(nextOffset: number) {
-    if (maxOffset <= 0) return
+  async function finishIfNeeded(nextOffset: number) {
+    if (maxOffset <= 0 || sending) return
     if (nextOffset >= maxOffset * 0.88) {
-      const accepted = onComplete()
+      const accepted = await onComplete()
       setOffset(accepted ? maxOffset : 0)
       return
     }
@@ -106,7 +125,7 @@ function SlideSubmit({ complete, onComplete }: SlideSubmitProps) {
   }
 
   function onPointerDown(event: ReactPointerEvent<HTMLButtonElement>) {
-    if (complete) return
+    if (complete || sending) return
     draggingRef.current = true
     setDragging(true)
     startXRef.current = event.clientX
@@ -115,7 +134,7 @@ function SlideSubmit({ complete, onComplete }: SlideSubmitProps) {
   }
 
   function onPointerMove(event: ReactPointerEvent<HTMLButtonElement>) {
-    if (!draggingRef.current || complete) return
+    if (!draggingRef.current || complete || sending) return
     const next = Math.min(
       maxOffset,
       Math.max(0, startOffsetRef.current + (event.clientX - startXRef.current)),
@@ -134,14 +153,14 @@ function SlideSubmit({ complete, onComplete }: SlideSubmitProps) {
       maxOffset,
       Math.max(0, startOffsetRef.current + (event.clientX - startXRef.current)),
     )
-    finishIfNeeded(next)
+    void finishIfNeeded(next)
   }
 
-  function onKeyDown(event: KeyboardEvent<HTMLButtonElement>) {
-    if (complete) return
+  async function onKeyDown(event: KeyboardEvent<HTMLButtonElement>) {
+    if (complete || sending) return
     if (event.key === 'Enter' || event.key === ' ' || event.key === 'ArrowRight') {
       event.preventDefault()
-      const accepted = onComplete()
+      const accepted = await onComplete()
       setOffset(accepted ? maxOffset : 0)
     }
   }
@@ -150,13 +169,14 @@ function SlideSubmit({ complete, onComplete }: SlideSubmitProps) {
 
   return (
     <div
-      className={`contact-slide ${complete ? 'is-complete' : ''} ${dragging ? 'is-dragging' : ''}`}
+      className={`contact-slide ${complete ? 'is-complete' : ''} ${dragging ? 'is-dragging' : ''} ${sending ? 'is-sending' : ''}`}
       ref={trackRef}
       role="group"
       aria-label="Glisser pour envoyer le message"
+      aria-busy={sending}
     >
       <span className="contact-slide-label" style={{ opacity: 1 - progress * 0.85 }}>
-        {complete ? 'Message prêt' : 'Discutons de votre projet'}
+        {complete ? 'Message envoyé' : sending ? 'Envoi en cours…' : 'Discutons de votre projet'}
       </span>
       <button
         type="button"
@@ -166,6 +186,7 @@ function SlideSubmit({ complete, onComplete }: SlideSubmitProps) {
         aria-valuemin={0}
         aria-valuemax={100}
         aria-valuenow={Math.round(progress * 100)}
+        disabled={sending || complete}
         onPointerDown={onPointerDown}
         onPointerMove={onPointerMove}
         onPointerUp={onPointerUp}
@@ -187,40 +208,71 @@ export default function ContactPage() {
   const [phone, setPhone] = useState('')
   const [service, setService] = useState(() => serviceFromParam(searchParams.get('service')))
   const [message, setMessage] = useState('')
+  const [website, setWebsite] = useState('')
   const [feedback, setFeedback] = useState('')
+  const [feedbackError, setFeedbackError] = useState(false)
   const [slideComplete, setSlideComplete] = useState(false)
+  const [sending, setSending] = useState(false)
 
   useEffect(() => {
     setService(serviceFromParam(searchParams.get('service')))
   }, [searchParams])
 
-  function sendMail() {
-    const subject = encodeURIComponent(`Demande de contact — ${name}`)
-    const body = encodeURIComponent(
-      `Nom : ${name}\nEntreprise : ${company || 'Non renseignée'}\nEmail : ${email}\nTéléphone : ${phone || 'Non renseigné'}\nService : ${service || 'Non précisé'}\n\nMessage :\n${message}`,
-    )
-    window.location.href = `mailto:${legalIdentity.email}?subject=${subject}&body=${body}`
-    setFeedback(
-      'Votre application e-mail va s’ouvrir avec votre message prérempli. Envoyez-le depuis votre messagerie pour finaliser la demande.',
-    )
-  }
-
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault()
-    if (!slideComplete) return
-    sendMail()
-  }
-
-  function handleSlideComplete() {
+  async function submitContact() {
     const form = formRef.current
     if (!form) return false
     if (!form.reportValidity()) {
       setSlideComplete(false)
       return false
     }
-    setSlideComplete(true)
-    sendMail()
-    return true
+    if (sending || slideComplete) return slideComplete
+
+    setSending(true)
+    setFeedback('')
+    setFeedbackError(false)
+
+    try {
+      const result = await sendContactMessage({
+        name: name.trim(),
+        email: email.trim(),
+        phone: phone.trim(),
+        company: company.trim(),
+        message: message.trim(),
+        services: service ? [service] : [],
+        website,
+      })
+      setSlideComplete(true)
+      if (result.warning) {
+        setFeedbackError(true)
+        setFeedback(result.warning)
+      } else {
+        setFeedback(
+          'Merci ! Votre message a bien été envoyé et enregistré. Notre équipe vous répondra rapidement.',
+        )
+      }
+      return true
+    } catch (error) {
+      setSlideComplete(false)
+      setFeedbackError(true)
+      setFeedback(
+        error instanceof Error
+          ? error.message
+          : 'Impossible d’envoyer le message. Réessayez dans un instant.',
+      )
+      return false
+    } finally {
+      setSending(false)
+    }
+  }
+
+  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault()
+    if (slideComplete || sending) return
+    void submitContact()
+  }
+
+  function handleSlideComplete() {
+    return submitContact()
   }
 
   return (
@@ -255,18 +307,22 @@ export default function ContactPage() {
                     <input
                       required
                       value={name}
-                      onChange={(event) => setName(event.target.value)}
+                      onChange={(event) => setName(limitText(event.target.value, LIMITS.name))}
                       placeholder="Votre nom"
                       autoComplete="name"
+                      maxLength={LIMITS.name}
+                      disabled={sending || slideComplete}
                     />
                   </label>
                   <label>
                     <span className="sr-only">Votre entreprise</span>
                     <input
                       value={company}
-                      onChange={(event) => setCompany(event.target.value)}
+                      onChange={(event) => setCompany(limitText(event.target.value, LIMITS.company))}
                       placeholder="Votre entreprise"
                       autoComplete="organization"
+                      maxLength={LIMITS.company}
+                      disabled={sending || slideComplete}
                     />
                   </label>
                   <label>
@@ -275,26 +331,37 @@ export default function ContactPage() {
                       required
                       type="email"
                       value={email}
-                      onChange={(event) => setEmail(event.target.value)}
+                      onChange={(event) => setEmail(limitText(event.target.value, LIMITS.email))}
                       placeholder="Votre email"
                       autoComplete="email"
+                      maxLength={LIMITS.email}
+                      disabled={sending || slideComplete}
                     />
                   </label>
                   <label>
                     <span className="sr-only">Votre numéro</span>
                     <input
                       type="tel"
+                      inputMode="tel"
                       value={phone}
-                      onChange={(event) => setPhone(event.target.value)}
-                      placeholder="Votre numéro"
+                      onChange={(event) => setPhone(limitPhone(event.target.value))}
+                      placeholder="06 XX XX XX XX"
                       autoComplete="tel"
+                      maxLength={LIMITS.phone}
+                      pattern="^[+\d\s().-]{8,10}$"
+                      title="Numéro de téléphone (8 à 10 caractères)"
+                      disabled={sending || slideComplete}
                     />
                   </label>
                 </div>
 
                 <label className="contact-select-label">
                   <span className="sr-only">Quel service vous intéresse ?</span>
-                  <select value={service} onChange={(event) => setService(event.target.value)}>
+                  <select
+                    value={service}
+                    onChange={(event) => setService(event.target.value)}
+                    disabled={sending || slideComplete}
+                  >
                     <option value="">Quel service vous intéresse ?</option>
                     {services.map((item) => (
                       <option key={item.id} value={item.label}>
@@ -310,14 +377,36 @@ export default function ContactPage() {
                     required
                     rows={4}
                     value={message}
-                    onChange={(event) => setMessage(event.target.value)}
+                    onChange={(event) => setMessage(limitText(event.target.value, LIMITS.message))}
                     placeholder="Votre message ..."
+                    maxLength={LIMITS.message}
+                    disabled={sending || slideComplete}
+                  />
+                  <span className="contact-char-count" aria-live="polite">
+                    {message.length}/{LIMITS.message}
+                  </span>
+                </label>
+
+                <label className="contact-honeypot" aria-hidden="true">
+                  <span>Site web</span>
+                  <input
+                    tabIndex={-1}
+                    autoComplete="off"
+                    value={website}
+                    onChange={(event) => setWebsite(event.target.value)}
                   />
                 </label>
 
-                <SlideSubmit complete={slideComplete} onComplete={handleSlideComplete} />
+                <SlideSubmit
+                  complete={slideComplete}
+                  sending={sending}
+                  onComplete={handleSlideComplete}
+                />
                 {feedback ? (
-                  <p className="contact-feedback" role="status">
+                  <p
+                    className={`contact-feedback ${feedbackError ? 'is-error' : ''}`}
+                    role="status"
+                  >
                     {feedback}
                   </p>
                 ) : null}

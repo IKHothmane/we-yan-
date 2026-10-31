@@ -11,8 +11,13 @@ export default function SiteLayout({ children }: SiteLayoutProps) {
 
   useEffect(() => {
     const id = location.hash.replace('#', '')
-    if (!id) return
-    document.getElementById(id)?.scrollIntoView({ block: 'start' })
+    if (!id) {
+      window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
+      return
+    }
+    requestAnimationFrame(() => {
+      document.getElementById(id)?.scrollIntoView({ block: 'start' })
+    })
   }, [location.pathname, location.hash])
 
   return (
