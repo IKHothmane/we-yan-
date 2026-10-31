@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { motion, useReducedMotion } from 'framer-motion'
 import SiteLayout from '../components/layout/SiteLayout'
 import { CONTACT_PATH } from '../constants/navigation'
 import '../styles/about-page.css'
@@ -10,12 +11,24 @@ const stats = [
   { value: '100%', label: 'passion & engagement' },
 ]
 
+const revealViewport = { once: true, amount: 0.25, margin: '0px 0px -40px 0px' } as const
+
 export default function AboutPage() {
+  const reduceMotion = useReducedMotion()
+  const rise = reduceMotion ? 0 : 40
+  const duration = reduceMotion ? 0 : 0.75
+
   return (
     <SiteLayout>
       <div className="about-page">
         <section className="about-hero">
-          <div className="about-hero-copy">
+          <motion.div
+            className="about-hero-copy"
+            initial={{ opacity: 0, y: rise }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={revealViewport}
+            transition={{ duration, ease: 'easeOut' }}
+          >
             <div className="about-eyebrow">
               <span>À PROPOS DE NOUS</span>
               <i />
@@ -35,24 +48,19 @@ export default function AboutPage() {
               du sens et aux stratégies qui transforment. Nous accompagnons les marques dans leur
               croissance digitale en combinant créativité, expertise et résultats.
             </p>
-          </div>
+          </motion.div>
 
-          <div className="about-hero-visual">
-            <span className="about-hero-orb" />
+          <motion.div
+            className="about-hero-visual"
+            initial={{ opacity: 0, y: reduceMotion ? 0 : 28 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={revealViewport}
+            transition={{ duration: reduceMotion ? 0 : 0.9, delay: reduceMotion ? 0 : 0.1, ease: 'easeOut' }}
+          >
             <img
               src="/images/about/about-office.webp"
-              alt="Espace de travail créatif de WeYan Digital"
+              alt="Espace de travail moderne WeYan Digital — We Make It Different"
             />
-            <div className="about-hero-message">
-              We
-              <br />
-              Make
-              <br />
-              It
-              <br />
-              Different
-              <span>.</span>
-            </div>
             <div className="about-side-words">
               STRATÉGIE
               <br />
@@ -65,20 +73,37 @@ export default function AboutPage() {
               RÉSULTATS
               <i />
             </div>
-          </div>
+          </motion.div>
         </section>
 
         <section className="about-stats" aria-label="WeYan Digital en chiffres">
-          {stats.map((stat) => (
-            <div className="about-stat" key={stat.label}>
+          {stats.map((stat, index) => (
+            <motion.div
+              className="about-stat"
+              key={stat.label}
+              initial={{ opacity: 0, y: rise }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={revealViewport}
+              transition={{
+                duration,
+                delay: reduceMotion ? 0 : index * 0.08,
+                ease: 'easeOut',
+              }}
+            >
               <strong>{stat.value}</strong>
               <span>{stat.label}</span>
-            </div>
+            </motion.div>
           ))}
         </section>
 
         <section className="about-team">
-          <div className="about-team-copy">
+          <motion.div
+            className="about-team-copy"
+            initial={{ opacity: 0, y: rise }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={revealViewport}
+            transition={{ duration, ease: 'easeOut' }}
+          >
             <div className="about-eyebrow">
               <span>NOTRE ÉQUIPE</span>
               <i />
@@ -98,45 +123,32 @@ export default function AboutPage() {
             <Link className="about-outline-link" to={CONTACT_PATH}>
               Découvrir notre équipe <span>→</span>
             </Link>
-          </div>
+          </motion.div>
 
-          <div className="about-team-gallery">
-            <span className="about-team-script">Team</span>
+          <motion.div
+            className="about-team-gallery"
+            initial={{ opacity: 0, y: reduceMotion ? 0 : 28 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={revealViewport}
+            transition={{ duration: reduceMotion ? 0 : 0.85, delay: reduceMotion ? 0 : 0.1, ease: 'easeOut' }}
+          >
             <img
-              className="about-team-main"
-              src="/images/about/about-team.webp"
-              alt="Équipe WeYan Digital en collaboration"
+              className="about-team-collage"
+              src="/images/about/about-team-collage.webp"
+              alt="Collage d’équipe WeYan Digital en coulisses créatives"
               loading="lazy"
             />
-            <div className="about-team-side">
-              <img
-                src="/images/about/about-editing.webp"
-                alt="Création et montage de contenus vidéo"
-                loading="lazy"
-              />
-              <img
-                src="/images/about/about-behind-scenes.webp"
-                alt="Production de contenu en coulisses"
-                loading="lazy"
-              />
-              <span className="about-behind-note">
-                Behind
-                <br />
-                the scenes <b>↙</b>
-              </span>
-            </div>
-            <div className="about-team-tags">
-              <span>Créativité</span>
-              <b>+</b>
-              <span>Collaboration</span>
-              <b>+</b>
-              <span>Performance</span>
-            </div>
-          </div>
+          </motion.div>
         </section>
 
         <section className="about-engagement">
-          <div className="about-engagement-copy">
+          <motion.div
+            className="about-engagement-copy"
+            initial={{ opacity: 0, y: rise }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={revealViewport}
+            transition={{ duration, ease: 'easeOut' }}
+          >
             <div className="about-eyebrow">
               <span>NOTRE ENGAGEMENT</span>
               <i />
@@ -150,9 +162,15 @@ export default function AboutPage() {
               Nous plaçons l’humain, la créativité et la performance au cœur de tout ce que nous
               faisons, pour construire des collaborations durables et impactantes.
             </p>
-          </div>
+          </motion.div>
 
-          <div className="about-engagement-art">
+          <motion.div
+            className="about-engagement-art"
+            initial={{ opacity: 0, y: reduceMotion ? 0 : 28 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={revealViewport}
+            transition={{ duration: reduceMotion ? 0 : 0.85, delay: reduceMotion ? 0 : 0.1, ease: 'easeOut' }}
+          >
             <span className="engagement-orange" />
             <span className="engagement-blue" />
             <div className="engagement-message">
@@ -177,7 +195,7 @@ export default function AboutPage() {
             <svg viewBox="0 0 140 180" aria-hidden="true">
               <path d="M8 10 C50 35 70 70 40 98 C15 120 75 140 120 175" />
             </svg>
-          </div>
+          </motion.div>
         </section>
       </div>
     </SiteLayout>

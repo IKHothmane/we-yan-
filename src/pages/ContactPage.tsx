@@ -323,31 +323,31 @@ export default function ContactPage() {
                 ) : null}
               </form>
             </div>
-
-            <aside className="contact-details" aria-label="Coordonnées">
-              <a className="contact-detail" href={legalIdentity.telephoneHref}>
-                <span className="contact-detail-icon">
-                  <PhoneIcon />
-                </span>
-                <span>{legalIdentity.telephone}</span>
-              </a>
-              <a className="contact-detail" href={`mailto:${legalIdentity.email}`}>
-                <span className="contact-detail-icon">
-                  <MailIcon />
-                </span>
-                <span>{legalIdentity.email}</span>
-              </a>
-              <div className="contact-detail">
-                <span className="contact-detail-icon">
-                  <PinIcon />
-                </span>
-                <span>
-                  {legalIdentity.siege.ville}, Maroc
-                </span>
-              </div>
-            </aside>
           </div>
         </section>
+
+        <aside className="contact-details" aria-label="Coordonnées">
+          <a className="contact-detail" href={legalIdentity.telephoneHref}>
+            <span className="contact-detail-icon">
+              <PhoneIcon />
+            </span>
+            <span>{legalIdentity.telephone}</span>
+          </a>
+          <a className="contact-detail" href={`mailto:${legalIdentity.email}`}>
+            <span className="contact-detail-icon">
+              <MailIcon />
+            </span>
+            <span>{legalIdentity.email}</span>
+          </a>
+          <div className="contact-detail">
+            <span className="contact-detail-icon">
+              <PinIcon />
+            </span>
+            <span>
+              {legalIdentity.siege.ville}, Maroc
+            </span>
+          </div>
+        </aside>
 
         <div className="contact-decoration contact-decoration-orange" aria-hidden="true" />
         <div className="contact-decoration contact-decoration-blue" aria-hidden="true" />

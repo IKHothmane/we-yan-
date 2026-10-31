@@ -100,14 +100,22 @@ export default function Hero() {
       </div>
     </section>
 
-    <ul className="hero-clients" aria-label="Ils nous font confiance">
-        <li className="clients-indicator" aria-hidden="true" />
-        {clients.map((client) => (
-          <li className="client-logo" key={client.name}>
-            <img src={client.logo} alt={client.name} />
-          </li>
-        ))}
-      </ul>
+    <div className="hero-clients" aria-label="Ils nous font confiance">
+      <div className="clients-indicator" aria-hidden="true" />
+      <div className="clients-marquee">
+        <ul className="clients-track">
+          {[...clients, ...clients].map((client, index) => (
+            <li className="client-logo" key={`${client.name}-${index}`}>
+              <img
+                src={client.logo}
+                alt={index < clients.length ? client.name : ''}
+                aria-hidden={index >= clients.length ? true : undefined}
+              />
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
     </>
   )
 }

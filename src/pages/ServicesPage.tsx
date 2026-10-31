@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import type { ReactNode } from 'react'
+import { motion, useReducedMotion } from 'framer-motion'
 import SiteLayout from '../components/layout/SiteLayout'
 import { CONTACT_PATH } from '../constants/navigation'
 import '../styles/services-page.css'
@@ -130,12 +131,24 @@ const serviceItems: ServiceItem[] = [
   },
 ]
 
+const revealViewport = { once: true, amount: 0.25, margin: '0px 0px -40px 0px' } as const
+
 export default function ServicesPage() {
+  const reduceMotion = useReducedMotion()
+  const rise = reduceMotion ? 0 : 40
+  const duration = reduceMotion ? 0 : 0.75
+
   return (
     <SiteLayout>
       <div className="services-page">
         <section className="services-page-hero">
-          <div className="services-page-hero-copy">
+          <motion.div
+            className="services-page-hero-copy"
+            initial={{ opacity: 0, y: rise }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={revealViewport}
+            transition={{ duration, ease: 'easeOut' }}
+          >
             <div className="services-page-eyebrow">
               <span>NOS SERVICES</span>
               <i />
@@ -154,9 +167,15 @@ export default function ServicesPage() {
             <a href="#strategie" className="services-discover-link">
               Découvrir nos expertises <span>↓</span>
             </a>
-          </div>
+          </motion.div>
 
-          <div className="services-page-hero-visual">
+          <motion.div
+            className="services-page-hero-visual"
+            initial={{ opacity: 0, y: reduceMotion ? 0 : 28 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={revealViewport}
+            transition={{ duration: reduceMotion ? 0 : 0.9, delay: reduceMotion ? 0 : 0.1, ease: 'easeOut' }}
+          >
             <span className="hero-orb hero-orb-orange" />
             <img
               src="/images/services/services-hero-casablanca.webp"
@@ -184,15 +203,23 @@ export default function ServicesPage() {
               <br />
               RÉSULTATS
             </div>
-          </div>
+          </motion.div>
         </section>
 
         <section className="services-list" aria-label="Nos expertises">
-          {serviceItems.map((service) => (
-            <article
+          {serviceItems.map((service, index) => (
+            <motion.article
               className={`service-detail-row service-detail-${service.imageSide}`}
               id={service.id}
               key={service.number}
+              initial={{ opacity: 0, y: rise }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={revealViewport}
+              transition={{
+                duration,
+                delay: reduceMotion ? 0 : Math.min(index * 0.04, 0.12),
+                ease: 'easeOut',
+              }}
             >
               <div className="service-detail-copy">
                 <div className="service-detail-number">
@@ -218,7 +245,13 @@ export default function ServicesPage() {
                 </Link>
               </div>
 
-              <div className="service-detail-visual">
+              <motion.div
+                className="service-detail-visual"
+                initial={{ opacity: 0, y: reduceMotion ? 0 : 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={revealViewport}
+                transition={{ duration: reduceMotion ? 0 : 0.85, delay: reduceMotion ? 0 : 0.12, ease: 'easeOut' }}
+              >
                 {service.note ? (
                   <span className="service-detail-note">
                     {service.note}
@@ -227,12 +260,18 @@ export default function ServicesPage() {
                 ) : null}
                 <span className="service-detail-orb" />
                 <img src={service.image} alt={service.imageAlt} loading="lazy" />
-              </div>
-            </article>
+              </motion.div>
+            </motion.article>
           ))}
         </section>
 
-        <section className="services-final-cta">
+        <motion.section
+          className="services-final-cta"
+          initial={{ opacity: 0, y: rise }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={revealViewport}
+          transition={{ duration, ease: 'easeOut' }}
+        >
           <div className="services-final-copy">
             <span>UN PROJET EN TÊTE ?</span>
             <h2>
@@ -257,7 +296,7 @@ export default function ServicesPage() {
             <b />
             <span />
           </div>
-        </section>
+        </motion.section>
       </div>
     </SiteLayout>
   )

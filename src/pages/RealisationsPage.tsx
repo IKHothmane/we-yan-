@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
+import { motion, useReducedMotion } from 'framer-motion'
 import SiteLayout from '../components/layout/SiteLayout'
 import { PROJECTS_PATH } from '../constants/navigation'
 import '../styles/realisations-page.css'
@@ -57,6 +58,8 @@ const socialRows = [
   },
 ]
 
+const revealViewport = { once: true, amount: 0.25, margin: '0px 0px -40px 0px' } as const
+
 function projectFromHash(hash: string) {
   const id = hash.replace('#', '')
   return projects.some((project) => project.id === id) ? id : 'omnidoc'
@@ -65,6 +68,9 @@ function projectFromHash(hash: string) {
 export default function RealisationsPage() {
   const location = useLocation()
   const navigate = useNavigate()
+  const reduceMotion = useReducedMotion()
+  const rise = reduceMotion ? 0 : 40
+  const duration = reduceMotion ? 0 : 0.75
   const [activeProject, setActiveProject] = useState(() => projectFromHash(location.hash))
   const selected = projects.find((project) => project.id === activeProject) ?? projects[0]
 
@@ -76,18 +82,35 @@ export default function RealisationsPage() {
     <SiteLayout>
       <div className="realisations-page">
         <section className="realisations-intro">
-          <div className="realisations-kicker">
+          <motion.div
+            className="realisations-kicker"
+            initial={{ opacity: 0, y: reduceMotion ? 0 : 18 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={revealViewport}
+            transition={{ duration, ease: 'easeOut' }}
+          >
             <span>NOS RÉALISATIONS</span>
             <i />
-          </div>
+          </motion.div>
           <div className="realisations-intro-grid">
-            <h1>
+            <motion.h1
+              initial={{ opacity: 0, y: rise }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={revealViewport}
+              transition={{ duration, ease: 'easeOut' }}
+            >
               Des marques qui
               <br />
               <span className="realisations-blue">grandissent</span>{' '}
               <span className="realisations-orange">avec nous.</span>
-            </h1>
-            <div className="realisations-intro-aside">
+            </motion.h1>
+            <motion.div
+              className="realisations-intro-aside"
+              initial={{ opacity: 0, y: rise }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={revealViewport}
+              transition={{ duration, delay: reduceMotion ? 0 : 0.1, ease: 'easeOut' }}
+            >
               <p>
                 Stratégie, création de contenu, publicité, influence et plus encore. Découvrez
                 quelques projets qui illustrent notre savoir-faire.
@@ -96,16 +119,24 @@ export default function RealisationsPage() {
                 <span className="all-link-arrow">→</span>
                 <span>VOIR TOUS LES PROJETS</span>
               </a>
-            </div>
+            </motion.div>
           </div>
           <div className="project-tabs" id="tous-les-projets">
-            {projects.map((project) => (
-              <button
+            {projects.map((project, index) => (
+              <motion.button
                 type="button"
                 key={project.id}
                 className={`project-tab ${activeProject === project.id ? 'is-active' : ''}`}
                 onClick={() => navigate(`${PROJECTS_PATH}#${project.id}`)}
                 aria-pressed={activeProject === project.id}
+                initial={{ opacity: 0, y: rise }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={revealViewport}
+                transition={{
+                  duration,
+                  delay: reduceMotion ? 0 : index * 0.08,
+                  ease: 'easeOut',
+                }}
               >
                 <span className="project-tab-number">{project.number}</span>
                 <span className="project-tab-brand">
@@ -115,14 +146,20 @@ export default function RealisationsPage() {
                   <img src={project.image} alt="" />
                 </span>
                 <span className="project-tab-arrow">→</span>
-              </button>
+              </motion.button>
             ))}
           </div>
         </section>
 
         {activeProject === 'omnidoc' ? (
           <section className="case-study case-study-omnidoc" id="etude-de-cas">
-            <div className="case-brand-column">
+            <motion.div
+              className="case-brand-column"
+              initial={{ opacity: 0, y: rise }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={revealViewport}
+              transition={{ duration, ease: 'easeOut' }}
+            >
               <span className="case-index">01</span>
               <img
                 className="case-main-logo"
@@ -148,28 +185,51 @@ export default function RealisationsPage() {
                 <strong>+34</strong>
                 <small>villes au Maroc</small>
               </div>
-            </div>
+            </motion.div>
 
-            <div className="case-phone-column">
+            <motion.div
+              className="case-phone-column"
+              initial={{ opacity: 0, y: reduceMotion ? 0 : 28 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={revealViewport}
+              transition={{ duration: reduceMotion ? 0 : 0.85, delay: reduceMotion ? 0 : 0.08, ease: 'easeOut' }}
+            >
               <img
                 src="/images/realisations/omnidoc/omnidoc-phone.webp"
                 alt="Aperçu du compte Omnidoc Santé sur smartphone"
               />
-            </div>
+            </motion.div>
 
             <div className="case-content-column">
-              {socialRows.map((row) => (
-                <div className={`case-gallery-row ${row.className}`} key={row.label}>
+              {socialRows.map((row, index) => (
+                <motion.div
+                  className={`case-gallery-row ${row.className}`}
+                  key={row.label}
+                  initial={{ opacity: 0, y: rise }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={revealViewport}
+                  transition={{
+                    duration,
+                    delay: reduceMotion ? 0 : index * 0.08,
+                    ease: 'easeOut',
+                  }}
+                >
                   <div className="case-gallery-heading">
                     <span>{row.label}</span>
                     <i>→</i>
                   </div>
                   <img src={row.image} alt={row.label} loading="lazy" />
-                </div>
+                </motion.div>
               ))}
             </div>
 
-            <aside className="case-results">
+            <motion.aside
+              className="case-results"
+              initial={{ opacity: 0, y: rise }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={revealViewport}
+              transition={{ duration, delay: reduceMotion ? 0 : 0.1, ease: 'easeOut' }}
+            >
               <div className="results-icon">▥</div>
               <h2>
                 Résultats
@@ -192,10 +252,17 @@ export default function RealisationsPage() {
                 <strong>+40%</strong>
                 <span>des téléchargements de l’application</span>
               </div>
-            </aside>
+            </motion.aside>
           </section>
         ) : (
-          <section className="selected-project-preview" id="apercu-projet">
+          <motion.section
+            className="selected-project-preview"
+            id="apercu-projet"
+            key={selected.id}
+            initial={{ opacity: 0, y: rise }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration, ease: 'easeOut' }}
+          >
             <div className="selected-project-preview__brand">
               <span className="case-index">{selected.number} / 04</span>
               <img src={selected.logo} alt={selected.name} />
@@ -210,7 +277,7 @@ export default function RealisationsPage() {
               src={selected.image}
               alt={`Projet ${selected.name}`}
             />
-          </section>
+          </motion.section>
         )}
       </div>
     </SiteLayout>
