@@ -107,6 +107,26 @@
 .service-detail-visual { position: relative; min-height: 270px; display: flex; align-items: center; justify-content: center; }
 .service-detail-visual > img { position: relative; z-index: 1; display: block; width: min(100%, 620px); height: 290px; object-fit: contain; filter: drop-shadow(0 12px 17px #1c274018); transition: transform .45s ease; }
 .service-detail-row:hover .service-detail-visual > img { transform: translateY(-5px) scale(1.025); }
+
+/* Publicité (03) : forcer l’affichage Safari/macOS */
+.service-detail-publicite {
+  opacity: 1 !important;
+  visibility: visible;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+}
+.service-detail-publicite .service-detail-visual {
+  min-height: 290px;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+}
+.service-detail-publicite .service-detail-visual > img {
+  width: min(100%, 620px);
+  height: auto;
+  max-height: 320px;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+}
 .service-detail-orb { position: absolute; z-index: 0; width: 230px; height: 230px; border-radius: 50%; background: linear-gradient(140deg,#e8edff,#fff0dc); opacity: .9; }
 .service-detail-note { position: absolute; z-index: 2; right: 0; top: 15px; max-width: 130px; color: #666; font-family: 'Shrikhand', cursive; font-style: normal; font-size: 17px; transform: rotate(-7deg); }
 .service-detail-note b { display: block; margin-left: 20px; font-family: 'Poppins',sans-serif; font-size: 25px; font-weight: 400; }

@@ -207,62 +207,85 @@ export default function ServicesPage() {
         </section>
 
         <section className="services-list" aria-label="Nos expertises">
-          {serviceItems.map((service, index) => (
-            <motion.article
-              className={`service-detail-row service-detail-${service.imageSide}`}
-              id={service.id}
-              key={service.number}
-              initial={{ opacity: 0, y: rise }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={revealViewport}
-              transition={{
-                duration,
-                delay: reduceMotion ? 0 : Math.min(index * 0.04, 0.12),
-                ease: 'easeOut',
-              }}
-            >
-              <div className="service-detail-copy">
-                <div className="service-detail-number">
-                  <span>{service.number}</span>
-                  <i />
-                </div>
-                <h2>{service.title}</h2>
-                <p>{service.description}</p>
-                <ul>
-                  {service.bullets.map((bullet) => (
-                    <li key={bullet}>
-                      <span>✓</span>
-                      {bullet}
-                    </li>
-                  ))}
-                </ul>
-                <Link
-                  to={`${CONTACT_PATH}?service=${service.id}`}
-                  className="service-detail-arrow"
-                  aria-label={`Parler de : ${service.imageAlt}`}
-                >
-                  →
-                </Link>
-              </div>
+          {serviceItems.map((service, index) => {
+            // Safari/macOS : whileInView + overflow parent peut laisser Publicité à opacity 0
+            const isPublicite = service.id === 'publicite'
+            const rowInitial = isPublicite
+              ? { opacity: 1, y: 0 }
+              : { opacity: 0, y: rise }
+            const visualInitial = isPublicite
+              ? { opacity: 1, y: 0 }
+              : { opacity: 0, y: reduceMotion ? 0 : 24 }
+            const rowViewport = isPublicite
+              ? ({ once: true, amount: 0.01 } as const)
+              : revealViewport
 
-              <motion.div
-                className="service-detail-visual"
-                initial={{ opacity: 0, y: reduceMotion ? 0 : 24 }}
+            return (
+              <motion.article
+                className={`service-detail-row service-detail-${service.imageSide}${isPublicite ? ' service-detail-publicite' : ''}`}
+                id={service.id}
+                key={service.number}
+                initial={rowInitial}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={revealViewport}
-                transition={{ duration: reduceMotion ? 0 : 0.85, delay: reduceMotion ? 0 : 0.12, ease: 'easeOut' }}
+                viewport={rowViewport}
+                transition={{
+                  duration: reduceMotion || isPublicite ? 0 : duration,
+                  delay: reduceMotion || isPublicite ? 0 : Math.min(index * 0.04, 0.12),
+                  ease: 'easeOut',
+                }}
               >
-                {service.note ? (
-                  <span className="service-detail-note">
-                    {service.note}
-                    <b>↙</b>
-                  </span>
-                ) : null}
-                <span className="service-detail-orb" />
-                <img src={service.image} alt={service.imageAlt} loading="lazy" />
-              </motion.div>
-            </motion.article>
-          ))}
+                <div className="service-detail-copy">
+                  <div className="service-detail-number">
+                    <span>{service.number}</span>
+                    <i />
+                  </div>
+                  <h2>{service.title}</h2>
+                  <p>{service.description}</p>
+                  <ul>
+                    {service.bullets.map((bullet) => (
+                      <li key={bullet}>
+                        <span>✓</span>
+                        {bullet}
+                      </li>
+                    ))}
+                  </ul>
+                  <Link
+                    to={`${CONTACT_PATH}?service=${service.id}`}
+                    className="service-detail-arrow"
+                    aria-label={`Parler de : ${service.imageAlt}`}
+                  >
+                    →
+                  </Link>
+                </div>
+
+                <motion.div
+                  className="service-detail-visual"
+                  initial={visualInitial}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={rowViewport}
+                  transition={{
+                    duration: reduceMotion || isPublicite ? 0 : 0.85,
+                    delay: reduceMotion || isPublicite ? 0 : 0.12,
+                    ease: 'easeOut',
+                  }}
+                >
+                  {service.note ? (
+                    <span className="service-detail-note">
+                      {service.note}
+                      <b>↙</b>
+                    </span>
+                  ) : null}
+                  <span className="service-detail-orb" />
+                  <img
+                    src={service.image}
+                    alt={service.imageAlt}
+                    loading={isPublicite ? 'eager' : 'lazy'}
+                    decoding="async"
+                  />
+                </motion.div>
+              </motion.article>
+            )
+          })}
         </section>
 
         <motion.section
