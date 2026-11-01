@@ -7,7 +7,9 @@ const clients = [
   { name: 'Omnidoc Santé', logo: '/images/clients/omnidoc-officiel.webp' },
   { name: 'Meal Box', logo: '/images/clients/meal-box.webp' },
   { name: 'éveil Montessori', logo: '/images/clients/eveil-montessori-officiel.webp' },
-  { name: 'Himmat Alim', logo: '/images/clients/himmat-alim.webp' },
+  { name: 'Himmat Alim', logo: '/images/clients/himmat-alim.webp', large: true },
+  { name: 'Tawada lkihr', logo: '/images/clients/tawada.webp', large: true },
+  { name: 'Livrinou', logo: '/images/clients/livrinou.webp', large: true },
   { name: 'GITEX GLOBAL', logo: '/images/clients/gitex-transparent.webp' },
   { name: 'Planet Sport', logo: '/images/clients/planet.webp' },
 ]
@@ -105,7 +107,10 @@ export default function Hero() {
       <div className="clients-marquee">
         <ul className="clients-track">
           {[...clients, ...clients].map((client, index) => (
-            <li className="client-logo" key={`${client.name}-${index}`}>
+            <li
+              className={`client-logo${client.large ? ' client-logo--large' : ''}`}
+              key={`${client.name}-${index}`}
+            >
               <img
                 src={client.logo}
                 alt={index < clients.length ? client.name : ''}

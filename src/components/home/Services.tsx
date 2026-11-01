@@ -137,45 +137,64 @@ export default function Services() {
 
         <ServiceStrategyLamp />
 
-        {services.map((service) => (
-          <motion.article
-            className={`service-card service-card-${service.theme} service-card-${service.id}`}
-            id={service.id}
-            key={service.number}
-            initial={{ opacity: 0, y: rise }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={revealViewport}
-            transition={{ duration: reduceMotion ? 0 : 0.7, ease: 'easeOut' }}
-          >
-            <motion.img
-              className="service-card-image"
-              src={service.image}
-              alt=""
-              width={service.width}
-              height={service.height}
-              loading="lazy"
-              initial={{ opacity: 0, y: reduceMotion ? 0 : 22 }}
+        {services.map((service) => {
+          const isPublicite = service.id === 'publicite'
+          // Safari/macOS : whileInView + overflow parent peut laisser la carte 03 à opacity 0
+          const cardInitial = isPublicite
+            ? { opacity: 1, y: 0 }
+            : { opacity: 0, y: rise }
+          const imageInitial = isPublicite
+            ? { opacity: 1, y: 0 }
+            : { opacity: 0, y: reduceMotion ? 0 : 22 }
+          const cardViewport = isPublicite
+            ? ({ once: true, amount: 0.01 } as const)
+            : revealViewport
+
+          return (
+            <motion.article
+              className={`service-card service-card-${service.theme} service-card-${service.id}`}
+              id={service.id}
+              key={service.number}
+              initial={cardInitial}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={revealViewport}
-              transition={{ duration: reduceMotion ? 0 : 0.85, delay: reduceMotion ? 0 : 0.12, ease: 'easeOut' }}
-            />
-            <div className="service-card-content">
-              <div className="service-number">
-                <span>{service.number}</span>
-                <i />
+              viewport={cardViewport}
+              transition={{ duration: reduceMotion || isPublicite ? 0 : 0.7, ease: 'easeOut' }}
+            >
+              <motion.img
+                className="service-card-image"
+                src={service.image}
+                alt=""
+                width={service.width}
+                height={service.height}
+                loading={isPublicite ? 'eager' : 'lazy'}
+                decoding="async"
+                initial={imageInitial}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={cardViewport}
+                transition={{
+                  duration: reduceMotion || isPublicite ? 0 : 0.85,
+                  delay: reduceMotion || isPublicite ? 0 : 0.12,
+                  ease: 'easeOut',
+                }}
+              />
+              <div className="service-card-content">
+                <div className="service-number">
+                  <span>{service.number}</span>
+                  <i />
+                </div>
+                <h3>{service.title}</h3>
+                <p>{service.description}</p>
+                <Link
+                  className="service-arrow"
+                  to={`/services#${service.id}`}
+                  aria-label={`Découvrir : ${service.title}`}
+                >
+                  <span aria-hidden="true">→</span>
+                </Link>
               </div>
-              <h3>{service.title}</h3>
-              <p>{service.description}</p>
-              <Link
-                className="service-arrow"
-                to={`/services#${service.id}`}
-                aria-label={`Découvrir : ${service.title}`}
-              >
-                <span aria-hidden="true">→</span>
-              </Link>
-            </div>
-          </motion.article>
-        ))}
+            </motion.article>
+          )
+        })}
       </div>
     </section>
   )

@@ -65,6 +65,26 @@
   padding: 20px 18px 16px;
   isolation: isolate;
   box-shadow: 0 10px 24px rgba(28, 35, 60, .035);
+  transition:
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.35s ease,
+    background-color 0.35s ease;
+}
+.service-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 22px 40px rgba(28, 35, 60, .12);
+}
+.service-card-image {
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+  transform-origin: right bottom;
+}
+.service-card:hover .service-card-image {
+  transform: scale(1.05) translateY(-4px);
+}
+.service-card:hover .service-arrow {
+  color: #fff;
+  background: #111;
+  transform: translateX(4px);
 }
 .service-card-strategie,
 .service-card-community,
@@ -75,7 +95,7 @@
 
 .service-card-blue { background: #e8edff; }
 .service-card-cream { background: #fff2e2; }
-.service-card-image {
+.service-card > .service-card-image {
   position: absolute;
   z-index: 1;
   right: 0;
@@ -88,9 +108,74 @@
   user-select: none;
 }
 .service-card-community .service-card-image { width: 56%; height: 98%; right: -4%; }
-.service-card-publicite .service-card-image { width: 52%; height: 86%; right: -2%; bottom: 8%; object-position: right bottom; }
+
+/* Contenu & Community : le téléphone « s’allume » au survol */
+.service-card-community {
+  --phone-glow: 0;
+}
+.service-card-community::before {
+  content: '';
+  position: absolute;
+  z-index: 0;
+  right: 4%;
+  bottom: 12%;
+  width: min(62%, 230px);
+  height: min(70%, 260px);
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 150, 55, 0.55) 0%,
+    rgba(237, 148, 31, 0.28) 40%,
+    rgba(237, 148, 31, 0) 72%
+  );
+  opacity: var(--phone-glow);
+  transform: scale(0.75);
+  transition:
+    opacity 0.45s ease,
+    transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+  pointer-events: none;
+}
+.service-card-community .service-card-image {
+  filter: brightness(0.94) saturate(0.95);
+  transform-origin: 70% 55%;
+  transition:
+    transform 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.45s ease;
+}
+.service-card-community:hover {
+  --phone-glow: 1;
+  background-color: #ffe8cc;
+}
+.service-card-community:hover::before {
+  transform: scale(1.15);
+}
+.service-card-community:hover .service-card-image {
+  filter:
+    brightness(1.18)
+    saturate(1.25)
+    drop-shadow(0 0 16px rgba(255, 160, 50, 0.65))
+    drop-shadow(0 0 36px rgba(237, 148, 31, 0.4));
+  transform: scale(1.07) translateY(-8px) rotate(2deg);
+}
+
+/* Publicité (03) : hauteurs % + bottom cassent le rendu Safari/macOS */
+.service-card-publicite {
+  min-height: 290px;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+}
+.service-card-publicite .service-card-image {
+  width: 52%;
+  height: auto;
+  max-height: 82%;
+  right: -2%;
+  bottom: 8%;
+  object-position: right bottom;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+}
 .service-card-seo .service-card-image { width: 50%; height: 90%; right: -6%; bottom: -4%; object-position: right bottom; }
-.service-card-influence .service-card-image { width: 58%; height: 100%; right: -4%; bottom: -4%; object-position: right center; }
+.service-card-influence .service-card-image { width: 62%; height: 100%; right: -4%; bottom: 0; object-position: right bottom; }
 .service-card-offline .service-card-image { width: 54%; height: 100%; right: -4%; bottom: -2%; object-position: right bottom; }
 .service-card-content {
   width: 62%;
@@ -225,6 +310,19 @@
   .services-top-decoration { display: none; }
 }
 @media (prefers-reduced-motion: reduce) {
+  .service-card,
+  .service-card-image,
+  .service-card-community::before,
+  .service-card-community .service-card-image {
+    transition: none;
+  }
+  .service-card:hover {
+    transform: none;
+  }
+  .service-card:hover .service-card-image,
+  .service-card-community:hover .service-card-image {
+    transform: none;
+  }
   .service-arrow:hover { transform: none; }
   .services-stamp { animation: none; }
 }

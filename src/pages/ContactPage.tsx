@@ -14,14 +14,54 @@ import { sendContactMessage } from '../lib/sendContact'
 import '../styles/contact-page.css'
 
 const services = [
-  { id: 'strategie', label: 'Stratégie marketing & rebranding' },
-  { id: 'community', label: 'Création de contenu & Community Management' },
-  { id: 'publicite', label: 'Publicité digitale (Meta Ads & Google Ads)' },
-  { id: 'seo', label: 'Référencement naturel (SEO)' },
-  { id: 'influence', label: 'Marketing d’influence' },
-  { id: 'offline', label: 'Média & publicité offline' },
-  { id: 'site-web', label: 'Création de site web' },
-  { id: 'autre', label: 'Autre demande' },
+  {
+    id: 'strategie',
+    label: 'Stratégie marketing & rebranding',
+    short: 'Stratégie & rebranding',
+    hint: 'Positionnement, audit et identité de marque',
+  },
+  {
+    id: 'community',
+    label: 'Création de contenu & Community Management',
+    short: 'Contenu & community',
+    hint: 'Posts, reels, animation des réseaux',
+  },
+  {
+    id: 'publicite',
+    label: 'Publicité digitale (Meta Ads & Google Ads)',
+    short: 'Publicité digitale',
+    hint: 'Meta Ads, Google Ads et optimisation',
+  },
+  {
+    id: 'seo',
+    label: 'Référencement naturel (SEO)',
+    short: 'Référencement SEO',
+    hint: 'Visibilité Google et trafic qualifié',
+  },
+  {
+    id: 'influence',
+    label: 'Marketing d’influence',
+    short: 'Marketing d’influence',
+    hint: 'Créateurs, collabs et amplification',
+  },
+  {
+    id: 'offline',
+    label: 'Média & publicité offline',
+    short: 'Média offline',
+    hint: 'Affichage, print et événementiel',
+  },
+  {
+    id: 'site-web',
+    label: 'Création de site web',
+    short: 'Site web',
+    hint: 'Vitrine, e-commerce ou sur-mesure',
+  },
+  {
+    id: 'autre',
+    label: 'Autre demande',
+    short: 'Autre demande',
+    hint: 'Parlez-nous librement de votre besoin',
+  },
 ] as const
 
 const LIMITS = {
@@ -207,16 +247,40 @@ export default function ContactPage() {
   const [email, setEmail] = useState('')
   const [phone, setPhone] = useState('')
   const [service, setService] = useState(() => serviceFromParam(searchParams.get('service')))
+  const [serviceOpen, setServiceOpen] = useState(false)
   const [message, setMessage] = useState('')
   const [website, setWebsite] = useState('')
   const [feedback, setFeedback] = useState('')
   const [feedbackError, setFeedbackError] = useState(false)
   const [slideComplete, setSlideComplete] = useState(false)
   const [sending, setSending] = useState(false)
+  const serviceListRef = useRef<HTMLDivElement>(null)
+  const selectedService = services.find((item) => item.label === service)
 
   useEffect(() => {
     setService(serviceFromParam(searchParams.get('service')))
   }, [searchParams])
+
+  useEffect(() => {
+    if (!serviceOpen) return
+    function onPointerDown(event: MouseEvent | TouchEvent) {
+      const target = event.target as Node | null
+      if (serviceListRef.current && target && !serviceListRef.current.contains(target)) {
+        setServiceOpen(false)
+      }
+    }
+    function onKeyDown(event: globalThis.KeyboardEvent) {
+      if (event.key === 'Escape') setServiceOpen(false)
+    }
+    document.addEventListener('mousedown', onPointerDown)
+    document.addEventListener('touchstart', onPointerDown)
+    document.addEventListener('keydown', onKeyDown)
+    return () => {
+      document.removeEventListener('mousedown', onPointerDown)
+      document.removeEventListener('touchstart', onPointerDown)
+      document.removeEventListener('keydown', onKeyDown)
+    }
+  }, [serviceOpen])
 
   async function submitContact() {
     const form = formRef.current
@@ -355,12 +419,73 @@ export default function ContactPage() {
                   </label>
                 </div>
 
-                <label className="contact-select-label">
-                  <span className="sr-only">Quel service vous intéresse ?</span>
-                  <select
-                    value={service}
-                    onChange={(event) => setService(event.target.value)}
+                <div
+                  className={`contact-service-picker ${serviceOpen ? 'is-open' : ''} ${selectedService ? 'has-value' : ''}`}
+                  ref={serviceListRef}
+                >
+                  <span className="contact-service-label" id="contact-service-label">
+                    Quel service vous intéresse ?
+                  </span>
+                  <button
+                    type="button"
+                    className="contact-service-trigger"
+                    aria-haspopup="listbox"
+                    aria-expanded={serviceOpen}
+                    aria-labelledby="contact-service-label contact-service-value"
                     disabled={sending || slideComplete}
+                    onClick={() => setServiceOpen((open) => !open)}
+                  >
+                    <span id="contact-service-value" className="contact-service-value">
+                      {selectedService ? (
+                        <>
+                          <strong>{selectedService.short}</strong>
+                          <small>{selectedService.hint}</small>
+                        </>
+                      ) : (
+                        <strong className="is-placeholder">Choisir un service</strong>
+                      )}
+                    </span>
+                    <span className="contact-service-chevron" aria-hidden="true">
+                      ▾
+                    </span>
+                  </button>
+
+                  {serviceOpen ? (
+                    <ul className="contact-service-list" role="listbox" aria-labelledby="contact-service-label">
+                      {services.map((item) => {
+                        const active = service === item.label
+                        return (
+                          <li key={item.id} role="presentation">
+                            <button
+                              type="button"
+                              role="option"
+                              aria-selected={active}
+                              className={`contact-service-option ${active ? 'is-active' : ''}`}
+                              onClick={() => {
+                                setService(item.label)
+                                setServiceOpen(false)
+                              }}
+                            >
+                              <span className="contact-service-option-text">
+                                <strong>{item.short}</strong>
+                                <small>{item.hint}</small>
+                              </span>
+                              {active ? <span className="contact-service-check" aria-hidden="true">✓</span> : null}
+                            </button>
+                          </li>
+                        )
+                      })}
+                    </ul>
+                  ) : null}
+
+                  {/* Champ caché pour la validation / accessibilité formulaire */}
+                  <select
+                    className="contact-service-native"
+                    value={service}
+                    required
+                    tabIndex={-1}
+                    aria-hidden="true"
+                    onChange={(event) => setService(event.target.value)}
                   >
                     <option value="">Quel service vous intéresse ?</option>
                     {services.map((item) => (
@@ -369,7 +494,7 @@ export default function ContactPage() {
                       </option>
                     ))}
                   </select>
-                </label>
+                </div>
 
                 <label className="contact-message-label">
                   <span className="sr-only">Votre message</span>

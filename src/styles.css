@@ -424,6 +424,10 @@ body {
   object-position: center;
 }
 
+.client-logo--large img {
+  height: 78px;
+}
+
 .section-page {
   width: min(720px, 100%);
   margin: 0 auto;
@@ -608,6 +612,10 @@ body {
 
   .client-logo img {
     height: 36px;
+  }
+
+  .client-logo--large img {
+    height: 58px;
   }
 }
 

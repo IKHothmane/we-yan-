@@ -1,12 +1,81 @@
+.strategy-lamp-card {
+  --lamp-glow: 0;
+}
+
+.strategy-lamp-card::before {
+  content: '';
+  position: absolute;
+  z-index: 0;
+  right: 2%;
+  bottom: 18%;
+  width: min(58%, 210px);
+  height: min(58%, 210px);
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 214, 90, 0.55) 0%,
+    rgba(255, 176, 40, 0.28) 38%,
+    rgba(255, 176, 40, 0) 72%
+  );
+  opacity: var(--lamp-glow);
+  transform: scale(0.72);
+  transition:
+    opacity 0.45s ease,
+    transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+  pointer-events: none;
+}
+
 .strategy-lamp-card__bulb {
   position: absolute;
   z-index: 1;
   right: -6%;
   bottom: -8%;
-  width: 62%;
-  height: 92%;
+  width: auto;
+  height: auto;
+  max-width: 62%;
+  max-height: 92%;
   object-fit: contain;
   object-position: right bottom;
   pointer-events: none;
   user-select: none;
+  transform-origin: 70% 15%;
+  filter: brightness(0.92) saturate(0.9);
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  transition:
+    transform 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.45s ease,
+    drop-shadow 0.45s ease;
+}
+
+.strategy-lamp-card:hover {
+  --lamp-glow: 1;
+  background-color: #dfe7ff;
+}
+
+.strategy-lamp-card:hover::before {
+  transform: scale(1.12);
+}
+
+.strategy-lamp-card:hover .strategy-lamp-card__bulb {
+  filter:
+    brightness(1.22)
+    saturate(1.2)
+    drop-shadow(0 0 18px rgba(255, 200, 60, 0.75))
+    drop-shadow(0 0 42px rgba(255, 170, 30, 0.45));
+  -webkit-transform: scale(1.05) translateY(-6px) rotate(-2deg);
+  transform: scale(1.05) translateY(-6px) rotate(-2deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .strategy-lamp-card,
+  .strategy-lamp-card::before,
+  .strategy-lamp-card__bulb {
+    transition: none;
+  }
+
+  .strategy-lamp-card:hover .strategy-lamp-card__bulb {
+    -webkit-transform: none;
+    transform: none;
+  }
 }
