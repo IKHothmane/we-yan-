@@ -78,6 +78,17 @@ export default function RealisationsPage() {
     setActiveProject(projectFromHash(location.hash))
   }, [location.hash])
 
+  function selectProject(projectId: string) {
+    setActiveProject(projectId)
+    navigate(`${PROJECTS_PATH}#${projectId}`, { replace: false })
+    requestAnimationFrame(() => {
+      const target =
+        document.getElementById(projectId === 'omnidoc' ? 'etude-de-cas' : 'apercu-projet') ||
+        document.getElementById('tous-les-projets')
+      target?.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' })
+    })
+  }
+
   return (
     <SiteLayout>
       <div className="realisations-page">
@@ -121,33 +132,55 @@ export default function RealisationsPage() {
               </a>
             </motion.div>
           </div>
-          <div className="project-tabs" id="tous-les-projets">
-            {projects.map((project, index) => (
-              <motion.button
-                type="button"
-                key={project.id}
-                className={`project-tab ${activeProject === project.id ? 'is-active' : ''}`}
-                onClick={() => navigate(`${PROJECTS_PATH}#${project.id}`)}
-                aria-pressed={activeProject === project.id}
-                initial={{ opacity: 0, y: rise }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={revealViewport}
-                transition={{
-                  duration,
-                  delay: reduceMotion ? 0 : index * 0.08,
-                  ease: 'easeOut',
-                }}
-              >
-                <span className="project-tab-number">{project.number}</span>
-                <span className="project-tab-brand">
-                  <img src={project.logo} alt={project.name} />
-                </span>
-                <span className="project-tab-photo">
-                  <img src={project.image} alt="" />
-                </span>
-                <span className="project-tab-arrow">→</span>
-              </motion.button>
-            ))}
+          <div className="project-tabs" id="tous-les-projets" role="tablist" aria-label="Projets">
+            {projects.map((project, index) => {
+              const isActive = activeProject === project.id
+              return (
+                <motion.button
+                  type="button"
+                  key={project.id}
+                  role="tab"
+                  className={`project-tab ${isActive ? 'is-active' : ''}`}
+                  onClick={() => selectProject(project.id)}
+                  aria-pressed={isActive}
+                  aria-selected={isActive}
+                  aria-label={`Voir le projet ${project.name}`}
+                  initial={{ opacity: 0, y: rise }}
+                  whileInView={{ opacity: 1, y: isActive && !reduceMotion ? -12 : 0 }}
+                  animate={{
+                    y: reduceMotion ? 0 : isActive ? -12 : 0,
+                    scale: 1,
+                  }}
+                  whileHover={
+                    reduceMotion
+                      ? undefined
+                      : { y: isActive ? -16 : -8, scale: 1.015 }
+                  }
+                  whileTap={reduceMotion ? undefined : { scale: 0.985 }}
+                  viewport={revealViewport}
+                  transition={{
+                    duration: reduceMotion ? 0 : 0.35,
+                    delay: reduceMotion ? 0 : index * 0.08,
+                    ease: 'easeOut',
+                  }}
+                >
+                  <span className="project-tab-number">{project.number}</span>
+                  <span className="project-tab-copy">
+                    <span className="project-tab-brand">
+                      <img src={project.logo} alt="" />
+                    </span>
+                    <span className="project-tab-name">{project.name}</span>
+                    <span className="project-tab-category">{project.category}</span>
+                  </span>
+                  <span className="project-tab-photo" aria-hidden="true">
+                    <img src={project.image} alt="" />
+                  </span>
+                  <span className="project-tab-arrow" aria-hidden="true">
+                    →
+                  </span>
+                </motion.button>
+              )
+            })}
           </div>
         </section>
 

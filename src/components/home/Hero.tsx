@@ -63,7 +63,7 @@ export default function Hero() {
           <div className="hero-peach-shape" aria-hidden="true" />
 
           <motion.img
-            src="/images/clients/hero-woman.webp"
+            src="/images/hero-woman.webp"
             alt="Portrait artistique en noir et blanc"
             className="hero-portrait"
             width={PORTRAIT_WIDTH}

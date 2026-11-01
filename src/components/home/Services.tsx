@@ -104,7 +104,6 @@ export default function Services() {
               WE MAKE IT DIFFERENT • WE MAKE IT DIFFERENT •
             </textPath>
           </text>
-          <path className="stamp-arrow" d="M48 60 H72 M64 52 L72 60 L64 68" />
         </svg>
       </motion.div>
 
