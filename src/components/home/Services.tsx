@@ -139,9 +139,7 @@ export default function Services() {
         {services.map((service) => {
           const isPublicite = service.id === 'publicite'
           // Safari/macOS : whileInView + overflow parent peut laisser la carte 03 à opacity 0
-          const cardInitial = isPublicite
-            ? { opacity: 1, y: 0 }
-            : { opacity: 0, y: rise }
+          const cardInitial = isPublicite ? { opacity: 1, y: 0 } : { opacity: 0, y: rise }
           const imageInitial = isPublicite
             ? { opacity: 1, y: 0 }
             : { opacity: 0, y: reduceMotion ? 0 : 22 }

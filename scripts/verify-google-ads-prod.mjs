@@ -69,10 +69,7 @@ while (Date.now() - started < MAX_MS) {
     const sm = await (await fetch(`${ORIGIN}/sitemap.xml?v=${Date.now()}`)).text()
     const pub = await (await fetch(`${ORIGIN}/services/publicite-digitale/?v=${Date.now()}`)).text()
     console.log('sitemap has page', sm.includes('agence-google-ads-casablanca'))
-    console.log(
-      'hub links to money page',
-      pub.includes('/agence-google-ads-casablanca/'),
-    )
+    console.log('hub links to money page', pub.includes('/agence-google-ads-casablanca/'))
     console.log('DEPLOY_VERIFIED')
     process.exit(0)
   }

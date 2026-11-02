@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { motion, useReducedMotion } from 'framer-motion'
 import SiteLayout from '../components/layout/SiteLayout'
@@ -74,9 +74,12 @@ export default function RealisationsPage() {
   const [activeProject, setActiveProject] = useState(() => projectFromHash(location.hash))
   const selected = projects.find((project) => project.id === activeProject) ?? projects[0]
 
-  useEffect(() => {
+  // Synchronise le projet affiché avec le hash de l'URL (ajustement d'état pendant le rendu).
+  const [lastHash, setLastHash] = useState(location.hash)
+  if (location.hash !== lastHash) {
+    setLastHash(location.hash)
     setActiveProject(projectFromHash(location.hash))
-  }, [location.hash])
+  }
 
   function selectProject(projectId: string) {
     setActiveProject(projectId)
@@ -151,11 +154,7 @@ export default function RealisationsPage() {
                     y: reduceMotion ? 0 : isActive ? -12 : 0,
                     scale: 1,
                   }}
-                  whileHover={
-                    reduceMotion
-                      ? undefined
-                      : { y: isActive ? -16 : -8, scale: 1.015 }
-                  }
+                  whileHover={reduceMotion ? undefined : { y: isActive ? -16 : -8, scale: 1.015 }}
                   whileTap={reduceMotion ? undefined : { scale: 0.985 }}
                   viewport={revealViewport}
                   transition={{
@@ -205,14 +204,18 @@ export default function RealisationsPage() {
                 <span>B2C</span>
               </div>
               <p className="case-description">
-                Stratégie digitale, création de contenu, campagnes Meta Ads et gestion de
-                communauté pour renforcer la visibilité de la marque et promouvoir ses services à
-                l’échelle nationale.
+                Stratégie digitale, création de contenu, campagnes Meta Ads et gestion de communauté
+                pour renforcer la visibilité de la marque et promouvoir ses services à l’échelle
+                nationale.
               </p>
               <a className="case-project-link" href="#etude-de-cas">
                 Voir le projet complet <span>→</span>
               </a>
-              <img className="case-map" src="/images/realisations/omnidoc/omnidoc-map.webp" alt="" />
+              <img
+                className="case-map"
+                src="/images/realisations/omnidoc/omnidoc-map.webp"
+                alt=""
+              />
               <div className="case-map-caption">
                 <span>📍</span>
                 <strong>+34</strong>
@@ -225,7 +228,11 @@ export default function RealisationsPage() {
               initial={{ opacity: 0, y: reduceMotion ? 0 : 28 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={revealViewport}
-              transition={{ duration: reduceMotion ? 0 : 0.85, delay: reduceMotion ? 0 : 0.08, ease: 'easeOut' }}
+              transition={{
+                duration: reduceMotion ? 0 : 0.85,
+                delay: reduceMotion ? 0 : 0.08,
+                ease: 'easeOut',
+              }}
             >
               <img
                 src="/images/realisations/omnidoc/omnidoc-phone.webp"

@@ -1,25 +1,13 @@
-const DEFAULT_SHEET_URL =
-  'https://script.google.com/macros/s/AKfycbzQbb_vC_kVM4qa-pL_d1mcNfztYFfmUCzTTJ9N_LE3thVCXrYYHzu2JRUDKsDvNJ8UWA/exec'
-
-const ALLOWED_STATUSES = ['Nouvelle', 'Validée', 'Valider', 'En cours', 'Terminée', 'Terminer', 'Annulée', 'Annuler']
-
-function toSheetStatut(statut) {
-  if (statut === 'Validée' || statut === 'Validé' || statut === 'Valider') return 'Valider'
-  if (statut === 'En cours') return 'En cours'
-  if (statut === 'Terminée' || statut === 'Terminé' || statut === 'Terminer') return 'Terminer'
-  if (statut === 'Annulée' || statut === 'Annulé' || statut === 'Annuler') return 'Annuler'
-  return ''
-}
-
-function json(body, status = 200) {
-  return new Response(JSON.stringify(body), {
-    status,
-    headers: {
-      'Content-Type': 'application/json; charset=utf-8',
-      'Cache-Control': 'no-store',
-    },
-  })
-}
+import { json } from '../../shared/http.js'
+import {
+  ALLOWED_STATUSES,
+  SCRIPT_OUTDATED,
+  isScriptReady,
+  isUpdateSuccess,
+  normalizeRows,
+  toSheetStatut,
+  updateSheetStatus,
+} from '../../shared/sheet.js'
 
 function isAuthorized(request, env) {
   const expected = String(env.ADMIN_DEMANDES_KEY || '').trim()
@@ -27,49 +15,6 @@ function isAuthorized(request, env) {
   // Jamais via ?key= (logs, historique, Referer) — header uniquement
   const fromHeader = String(request.headers.get('x-admin-key') || '').trim()
   return fromHeader.length > 0 && fromHeader === expected
-}
-
-function normalizeRows(rows) {
-  if (!Array.isArray(rows)) return []
-  return rows.map((item, index, all) => {
-    const parsed = Number(item?.row)
-    return {
-      ...item,
-      row: Number.isInteger(parsed) && parsed >= 2 ? parsed : all.length + 1 - index,
-      statut: item?.statut || 'Nouvelle',
-    }
-  })
-}
-
-const SCRIPT_OUTDATED =
-  'Le script Google n’est pas à jour. Enregistrer ne suffit pas : dans Apps Script, Déployer → Gérer les déploiements → crayon → Version « Nouvelle version » → Déployer.'
-
-function isUpdateSuccess(body) {
-  if (!body || typeof body !== 'object') return false
-  if (Array.isArray(body.rows)) return false
-  return body.updated === true || body.success === true
-}
-
-function isScriptReady(body) {
-  if (Number(body?.version) >= 3) return true
-  const rows = body?.rows
-  if (!Array.isArray(rows) || rows.length === 0) return false
-  return rows.some((row) => row && typeof row === 'object' && ('statut' in row || 'row' in row))
-}
-
-async function updateSheetStatus(sheetUrl, payload) {
-  const url = new URL(sheetUrl)
-  url.searchParams.set('action', 'update')
-  url.searchParams.set('row', String(payload.row || ''))
-  url.searchParams.set('statut', String(payload.statut || ''))
-  url.searchParams.set('email', String(payload.email || ''))
-  url.searchParams.set('message', String(payload.message || ''))
-
-  const sheetRes = await fetch(url.toString(), {
-    method: 'GET',
-    redirect: 'follow',
-  })
-  return sheetRes.json().catch(() => ({}))
 }
 
 export async function onRequest(context) {
@@ -83,11 +28,14 @@ export async function onRequest(context) {
     return json({ ok: false, error: 'Accès refusé.' }, 401)
   }
 
-  const sheetUrl = String(env.GOOGLE_SHEET_URL || DEFAULT_SHEET_URL).trim()
+  const sheetUrl = String(env.GOOGLE_SHEET_URL || '').trim()
   if (!sheetUrl) {
     return json(
-      { ok: false, error: 'GOOGLE_SHEET_URL manquante dans Cloudflare Pages → Environment variables.' },
-      500,
+      {
+        ok: false,
+        error: 'GOOGLE_SHEET_URL manquante dans Cloudflare Pages → Environment variables.',
+      },
+      500
     )
   }
 
@@ -150,4 +98,3 @@ export async function onRequest(context) {
 export const onRequestGet = onRequest
 export const onRequestPost = onRequest
 export const onRequestOptions = onRequest
-

@@ -27,7 +27,10 @@ for (let i = 0; i < Math.max(jsonQa.length, visible.length); i++) {
   const vr = (visible[i]?.r || '').replace(/\s+/g, ' ').trim()
   console.log(`#${i + 1}`)
   console.log(' Q match', jq === vq, '|', jq.slice(0, 60))
-  console.log(' A match', jr === vr || (jr && vr && (jr.includes(vr.slice(0, 40)) || vr.includes(jr.slice(0, 40)))))
+  console.log(
+    ' A match',
+    jr === vr || (jr && vr && (jr.includes(vr.slice(0, 40)) || vr.includes(jr.slice(0, 40))))
+  )
   if (jr !== vr) {
     console.log('   json A:', jr.slice(0, 100))
     console.log('   vis  A:', vr.slice(0, 100))

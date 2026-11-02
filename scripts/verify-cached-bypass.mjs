@@ -1,4 +1,4 @@
-import { readFileSync, writeFileSync, mkdirSync } from 'fs'
+import { writeFileSync, mkdirSync } from 'fs'
 import { join } from 'path'
 import { tmpdir } from 'os'
 
@@ -11,7 +11,13 @@ async function get(path) {
   const url = `${ORIGIN}${path}${path.includes('?') ? '' : CB}`
   const res = await fetch(url, { redirect: 'manual' })
   const text = res.status === 200 ? await res.text() : ''
-  return { status: res.status, location: res.headers.get('location') || '', cache: res.headers.get('cf-cache-status'), text, url }
+  return {
+    status: res.status,
+    location: res.headers.get('location') || '',
+    cache: res.headers.get('cf-cache-status'),
+    text,
+    url,
+  }
 }
 
 function title(h) {
@@ -48,7 +54,15 @@ function faqH3(h) {
 }
 
 const bare = await fetch(`${ORIGIN}/creation-site-web-casablanca/`, { redirect: 'manual' })
-console.log('BARE creation', bare.status, bare.headers.get('location'), 'cf-cache', bare.headers.get('cf-cache-status'), 'age', bare.headers.get('age'))
+console.log(
+  'BARE creation',
+  bare.status,
+  bare.headers.get('location'),
+  'cf-cache',
+  bare.headers.get('cf-cache-status'),
+  'age',
+  bare.headers.get('age')
+)
 
 const creation = await get('/creation-site-web-casablanca/')
 const sitemap = await get('/sitemap.xml')
@@ -84,15 +98,27 @@ console.log('contact h1', h1n(contact.text))
 
 console.log('sitemap count', locs.length)
 console.log('sitemap creation', locs.includes(`${ORIGIN}/creation-site-web-casablanca/`))
-console.log('sitemap merci', locs.some((u) => u.includes('/merci')))
+console.log(
+  'sitemap merci',
+  locs.some((u) => u.includes('/merci'))
+)
 
 const checks = [
-  ['bare still cached 301 OR live 200', bare.status === 200 || (bare.status === 301 && bare.headers.get('cf-cache-status') === 'HIT')],
+  [
+    'bare still cached 301 OR live 200',
+    bare.status === 200 || (bare.status === 301 && bare.headers.get('cf-cache-status') === 'HIT'),
+  ],
   ['creation 200 (bypass)', creation.status === 200],
   ['creation title', /Création site web Casablanca/i.test(title(creation.text))],
   ['creation canonical', canon(creation.text) === `${ORIGIN}/creation-site-web-casablanca/`],
-  ['agence title short', /Agence SEO Casablanca/i.test(title(agence.text)) && title(agence.text).length <= 65],
-  ['seo FAQ json+visible', seoQ.length >= 3 && seoV.length >= 3 && seoQ.every((q) => seoV.includes(q))],
+  [
+    'agence title short',
+    /Agence SEO Casablanca/i.test(title(agence.text)) && title(agence.text).length <= 65,
+  ],
+  [
+    'seo FAQ json+visible',
+    seoQ.length >= 3 && seoV.length >= 3 && seoQ.every((q) => seoV.includes(q)),
+  ],
   ['contact 1 H1', h1n(contact.text) === 1],
   ['sitemap 26', locs.length === 26],
   ['sitemap has creation', locs.includes(`${ORIGIN}/creation-site-web-casablanca/`)],
@@ -104,9 +130,13 @@ for (const [name, ok] of checks) {
   console.log(`${ok ? 'OK' : 'FAIL'} ${name}`)
   if (!ok) fail++
 }
-console.log(fail ? `\n${fail} FAIL — purge Cloudflare cache for clean bare URLs` : '\nALL OK (bypass)')
+console.log(
+  fail ? `\n${fail} FAIL — purge Cloudflare cache for clean bare URLs` : '\nALL OK (bypass)'
+)
 if (bare.status === 301) {
-  console.log('\nACTION REQUISE: Purger le cache Cloudflare (URL /creation-site-web-casablanca/ ou tout le site).')
+  console.log(
+    '\nACTION REQUISE: Purger le cache Cloudflare (URL /creation-site-web-casablanca/ ou tout le site).'
+  )
   console.log('Le 301 vers /contact/ est encore en cache edge (cf-cache-status: HIT).')
   console.log('La nouvelle version est déjà déployée (bypass query string = 200).')
 }

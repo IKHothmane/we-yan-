@@ -19,14 +19,17 @@ function extractLocs(xml) {
 function metaContent(html, attr, name) {
   const re = new RegExp(
     `<meta[^>]+${attr}=["']${name}["'][^>]+content=["']([^"']*)["']|<meta[^>]+content=["']([^"']*)["'][^>]+${attr}=["']${name}["']`,
-    'i',
+    'i'
   )
   const m = html.match(re)
   return (m && (m[1] || m[2])) || ''
 }
 
 function linkHref(html, rel) {
-  const re = new RegExp(`<link[^>]+rel=["']${rel}["'][^>]+href=["']([^"']+)["']|<link[^>]+href=["']([^"']+)["'][^>]+rel=["']${rel}["']`, 'i')
+  const re = new RegExp(
+    `<link[^>]+rel=["']${rel}["'][^>]+href=["']([^"']+)["']|<link[^>]+href=["']([^"']+)["'][^>]+rel=["']${rel}["']`,
+    'i'
+  )
   const m = html.match(re)
   return (m && (m[1] || m[2])) || ''
 }
@@ -41,7 +44,9 @@ function countH1(html) {
 }
 
 function extractFaqJsonLd(html) {
-  const scripts = [...html.matchAll(/<script[^>]*type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi)]
+  const scripts = [
+    ...html.matchAll(/<script[^>]*type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi),
+  ]
   const faqs = []
   for (const s of scripts) {
     try {
@@ -84,8 +89,7 @@ async function fetchUrl(url, opts = {}) {
   const res = await fetch(url, {
     redirect: opts.redirect || 'manual',
     headers: {
-      'user-agent':
-        'Mozilla/5.0 (compatible; WeYanSEOAudit/1.0; +https://weyandigital.ma/)',
+      'user-agent': 'Mozilla/5.0 (compatible; WeYanSEOAudit/1.0; +https://weyandigital.ma/)',
       accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
     },
   })
@@ -111,7 +115,6 @@ function normalizeUrl(u) {
 
 async function auditSitemapUrl(url) {
   const head = await fetchUrl(url, { body: false })
-  let finalUrl = url
   let status = head.status
   let redirects = []
 
@@ -121,7 +124,6 @@ async function auditSitemapUrl(url) {
       ? head.location
       : new URL(head.location, ORIGIN).href
     const next = await fetchUrl(abs)
-    finalUrl = abs
     status = next.status
     const html = next.body
     return summarize(url, status, next, html, redirects)
@@ -137,8 +139,7 @@ function summarize(requested, status, res, html, redirects) {
   const robotsMeta = metaContent(html, 'name', 'robots')
   const canonical = linkHref(html, 'canonical')
   const h1 = countH1(html)
-  const noindex =
-    /noindex/i.test(robotsMeta) || /noindex/i.test(res.robots || '')
+  const noindex = /noindex/i.test(robotsMeta) || /noindex/i.test(res.robots || '')
   const canonNorm = canonical ? normalizeUrl(canonical) : ''
   const reqNorm = normalizeUrl(requested)
   const canonicalMatch = !canonical || canonNorm === reqNorm
@@ -226,7 +227,7 @@ async function main() {
   console.log('\n=== HTTP / INDEXABLE ===')
   console.log(
     'ok',
-    results.filter((r) => r.status === 200 && r.indexable).length + '/' + results.length,
+    results.filter((r) => r.status === 200 && r.indexable).length + '/' + results.length
   )
   if (bad.length) {
     console.log('issues:')
@@ -238,7 +239,7 @@ async function main() {
         'indexable=' + r.indexable,
         'canonMatch=' + r.canonicalMatch,
         'h1=' + r.h1,
-        'title=' + r.title,
+        'title=' + r.title
       )
     }
   } else {
@@ -248,9 +249,14 @@ async function main() {
   console.log('\n=== ALL URLS (summary) ===')
   for (const r of results) {
     console.log(
-      [r.status, r.indexable ? 'IDX' : 'NO', 'H1=' + r.h1, 'T=' + r.titleLen, 'D=' + r.descriptionLen, r.url].join(
-        ' | ',
-      ),
+      [
+        r.status,
+        r.indexable ? 'IDX' : 'NO',
+        'H1=' + r.h1,
+        'T=' + r.titleLen,
+        'D=' + r.descriptionLen,
+        r.url,
+      ].join(' | ')
     )
   }
 

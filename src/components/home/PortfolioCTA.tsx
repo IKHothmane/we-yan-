@@ -75,7 +75,11 @@ export default function PortfolioCTA() {
                 ease: 'easeOut',
               }}
             >
-              <Link to={`/projets#${project.id}`} className="portfolio-card-link" aria-label={project.name}>
+              <Link
+                to={`/projets#${project.id}`}
+                className="portfolio-card-link"
+                aria-label={project.name}
+              >
                 <div className="portfolio-image-wrap">
                   <img src={project.image} alt="" width={1400} height={933} loading="lazy" />
                 </div>

@@ -1,4 +1,5 @@
 <?php
+// LEGACY (hébergement OVH) : la version à jour est functions/api/contact.js (Cloudflare Pages).
 header('Content-Type: application/json; charset=utf-8');
 header('X-Content-Type-Options: nosniff');
 
@@ -22,10 +23,7 @@ if (!is_file($secretsFile)) {
 
 $secrets = require $secretsFile;
 $apiKey = trim((string) ($secrets['RESEND_API_KEY'] ?? ''));
-$toRaw = $secrets['CONTACT_TO'] ?? [
-  'meriemflyer@gmail.com',
-  'ikhlef.othmane@gmail.com',
-];
+$toRaw = $secrets['CONTACT_TO'] ?? [];
 if (is_string($toRaw)) {
   $toList = array_map('trim', explode(',', $toRaw));
 } elseif (is_array($toRaw)) {

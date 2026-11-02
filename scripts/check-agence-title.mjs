@@ -3,11 +3,18 @@ const res = await fetch(url, {
   headers: { 'Cache-Control': 'no-cache', Pragma: 'no-cache' },
 })
 const html = await res.text()
-console.log('status', res.status, 'cf-cache', res.headers.get('cf-cache-status'), 'age', res.headers.get('age'))
+console.log(
+  'status',
+  res.status,
+  'cf-cache',
+  res.headers.get('cf-cache-status'),
+  'age',
+  res.headers.get('age')
+)
 console.log('title', (html.match(/<title[^>]*>([^<]*)<\/title>/i) || [])[1])
 console.log(
   'expected new?',
-  html.includes('Référencement – We Yan') || html.includes('Référencement - We Yan'),
+  html.includes('Référencement – We Yan') || html.includes('Référencement - We Yan')
 )
 console.log('old pattern?', html.includes('We Yan Digital - Agence SEO'))
 // Also check the page chunk for title string

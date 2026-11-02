@@ -39,7 +39,7 @@ while (Date.now() - started < MAX_MS) {
     const p = await probe()
     const elapsed = Math.round((Date.now() - started) / 1000)
     console.log(
-      `[${elapsed}s] status=${p.status} loc=${p.location || '-'} title="${p.title}" hint=${p.bodyHint || '-'}`,
+      `[${elapsed}s] status=${p.status} loc=${p.location || '-'} title="${p.title}" hint=${p.bodyHint || '-'}`
     )
     if (p.ok) {
       console.log('DEPLOY_LIVE')

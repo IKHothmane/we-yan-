@@ -23,7 +23,7 @@ export const legalIdentity = {
 export function hasOfficialCompanyIds() {
   return Boolean(
     legalIdentity.identifiantFiscal.trim() &&
-      legalIdentity.registreCommerce.trim() &&
-      legalIdentity.ice.trim(),
+    legalIdentity.registreCommerce.trim() &&
+    legalIdentity.ice.trim()
   )
 }

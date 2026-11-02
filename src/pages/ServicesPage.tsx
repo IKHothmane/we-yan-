@@ -30,7 +30,12 @@ const serviceItems: ServiceItem[] = [
     ),
     description:
       'Nous construisons des stratégies sur mesure pour positionner votre marque, renforcer son identité et accélérer sa croissance.',
-    bullets: ['Positionnement de marque', 'Audit & étude de marché', 'Stratégie de contenu', 'Rebranding'],
+    bullets: [
+      'Positionnement de marque',
+      'Audit & étude de marché',
+      'Stratégie de contenu',
+      'Rebranding',
+    ],
     image: '/images/services/service-strategy-board.webp',
     imageAlt: 'Planche de stratégie de marque WeYan Digital',
     imageSide: 'right',
@@ -48,7 +53,12 @@ const serviceItems: ServiceItem[] = [
     ),
     description:
       'Des contenus créatifs et engageants pour développer votre communauté et renforcer votre présence en ligne.',
-    bullets: ['Plan de contenu mensuel', 'Création photo & vidéo', 'Gestion des réseaux sociaux', 'Interaction & modération'],
+    bullets: [
+      'Plan de contenu mensuel',
+      'Création photo & vidéo',
+      'Gestion des réseaux sociaux',
+      'Interaction & modération',
+    ],
     image: '/images/services/service-content-reels.webp',
     imageAlt: 'Création de contenu et montage vidéo WeYan Digital',
     imageSide: 'left',
@@ -86,8 +96,14 @@ const serviceItems: ServiceItem[] = [
         <span>(SEO)</span>
       </>
     ),
-    description: 'Nous optimisons votre présence sur Google pour générer un trafic qualifié et durable.',
-    bullets: ['Audit SEO complet', 'Optimisation technique', 'Rédaction de contenu optimisé', 'Suivi des positions et performances'],
+    description:
+      'Nous optimisons votre présence sur Google pour générer un trafic qualifié et durable.',
+    bullets: [
+      'Audit SEO complet',
+      'Optimisation technique',
+      'Rédaction de contenu optimisé',
+      'Suivi des positions et performances',
+    ],
     image: '/images/services/service-seo-google.webp',
     imageAlt: 'Référencement SEO et visibilité Google',
     imageSide: 'left',
@@ -103,7 +119,12 @@ const serviceItems: ServiceItem[] = [
     ),
     description:
       'Nous collaborons avec les bons créateurs de contenu pour amplifier votre message et toucher de nouvelles audiences.',
-    bullets: ['Sélection des influenceurs', 'Gestion des collaborations', 'Briefs créatifs & coordination', 'Suivi des performances'],
+    bullets: [
+      'Sélection des influenceurs',
+      'Gestion des collaborations',
+      'Briefs créatifs & coordination',
+      'Suivi des performances',
+    ],
     image: '/images/services/service-workspace.webp',
     imageAlt: 'Espace de travail créatif et marketing d’influence',
     imageSide: 'right',
@@ -174,7 +195,11 @@ export default function ServicesPage() {
             initial={{ opacity: 0, y: reduceMotion ? 0 : 28 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={revealViewport}
-            transition={{ duration: reduceMotion ? 0 : 0.9, delay: reduceMotion ? 0 : 0.1, ease: 'easeOut' }}
+            transition={{
+              duration: reduceMotion ? 0 : 0.9,
+              delay: reduceMotion ? 0 : 0.1,
+              ease: 'easeOut',
+            }}
           >
             <span className="hero-orb hero-orb-orange" />
             <img
@@ -210,9 +235,7 @@ export default function ServicesPage() {
           {serviceItems.map((service, index) => {
             // Safari/macOS : whileInView + overflow parent peut laisser Publicité à opacity 0
             const isPublicite = service.id === 'publicite'
-            const rowInitial = isPublicite
-              ? { opacity: 1, y: 0 }
-              : { opacity: 0, y: rise }
+            const rowInitial = isPublicite ? { opacity: 1, y: 0 } : { opacity: 0, y: rise }
             const visualInitial = isPublicite
               ? { opacity: 1, y: 0 }
               : { opacity: 0, y: reduceMotion ? 0 : 24 }
@@ -307,8 +330,8 @@ export default function ServicesPage() {
           </div>
           <div className="services-final-action">
             <p>
-              Que vous souhaitiez lancer un nouveau projet, développer votre visibilité ou simplement
-              échanger des idées, notre équipe est là pour vous accompagner.
+              Que vous souhaitiez lancer un nouveau projet, développer votre visibilité ou
+              simplement échanger des idées, notre équipe est là pour vous accompagner.
             </p>
             <Link to={CONTACT_PATH}>
               Nous contacter <span>→</span>

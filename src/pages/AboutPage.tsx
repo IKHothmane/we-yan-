@@ -55,7 +55,11 @@ export default function AboutPage() {
             initial={{ opacity: 0, y: reduceMotion ? 0 : 28 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={revealViewport}
-            transition={{ duration: reduceMotion ? 0 : 0.9, delay: reduceMotion ? 0 : 0.1, ease: 'easeOut' }}
+            transition={{
+              duration: reduceMotion ? 0 : 0.9,
+              delay: reduceMotion ? 0 : 0.1,
+              ease: 'easeOut',
+            }}
           >
             <img
               src="/images/about/about-office.webp"
@@ -130,7 +134,11 @@ export default function AboutPage() {
             initial={{ opacity: 0, y: reduceMotion ? 0 : 28 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={revealViewport}
-            transition={{ duration: reduceMotion ? 0 : 0.85, delay: reduceMotion ? 0 : 0.1, ease: 'easeOut' }}
+            transition={{
+              duration: reduceMotion ? 0 : 0.85,
+              delay: reduceMotion ? 0 : 0.1,
+              ease: 'easeOut',
+            }}
           >
             <img
               className="about-team-collage"
@@ -156,7 +164,8 @@ export default function AboutPage() {
             <h2>
               Des marques plus fortes,
               <br />
-              un digital <span className="about-blue">plus</span> <span className="about-orange">humain.</span>
+              un digital <span className="about-blue">plus</span>{' '}
+              <span className="about-orange">humain.</span>
             </h2>
             <p>
               Nous plaçons l’humain, la créativité et la performance au cœur de tout ce que nous
@@ -169,7 +178,11 @@ export default function AboutPage() {
             initial={{ opacity: 0, y: reduceMotion ? 0 : 28 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={revealViewport}
-            transition={{ duration: reduceMotion ? 0 : 0.85, delay: reduceMotion ? 0 : 0.1, ease: 'easeOut' }}
+            transition={{
+              duration: reduceMotion ? 0 : 0.85,
+              delay: reduceMotion ? 0 : 0.1,
+              ease: 'easeOut',
+            }}
           >
             <span className="engagement-orange" />
             <span className="engagement-blue" />

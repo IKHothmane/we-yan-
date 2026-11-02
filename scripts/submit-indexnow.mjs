@@ -56,10 +56,7 @@ function urlsFromSitemap() {
 
 async function submitBatch(urlList) {
   const body = JSON.stringify({ host, key, keyLocation, urlList })
-  const endpoints = [
-    'https://api.indexnow.org/indexnow',
-    'https://www.bing.com/indexnow',
-  ]
+  const endpoints = ['https://api.indexnow.org/indexnow', 'https://www.bing.com/indexnow']
   for (const endpoint of endpoints) {
     try {
       const res = await fetch(endpoint, {

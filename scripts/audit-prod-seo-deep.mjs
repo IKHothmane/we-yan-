@@ -43,8 +43,11 @@ async function inspectMoney(path) {
   console.log('title', (html.match(/<title[^>]*>([^<]*)<\/title>/i) || [])[1])
   console.log(
     'canonical',
-    (html.match(/rel=["']canonical["'][^>]*href=["']([^"']+)["']|href=["']([^"']+)["'][^>]*rel=["']canonical["']/i) || []).filter(Boolean)[1] ||
-      '',
+    (
+      html.match(
+        /rel=["']canonical["'][^>]*href=["']([^"']+)["']|href=["']([^"']+)["'][^>]*rel=["']canonical["']/i
+      ) || []
+    ).filter(Boolean)[1] || ''
   )
   console.log('details', (html.match(/<details/gi) || []).length)
   console.log('FAQPage', html.includes('FAQPage'))
@@ -52,14 +55,20 @@ async function inspectMoney(path) {
   // try button/accordion patterns
   const qCoste = html.includes('Combien coûte')
   console.log('contains Combien coûte', qCoste)
-  console.log('snippet FAQ:', snippetAround(html, 'Combien') || snippetAround(html, 'FAQ') || '(none)')
+  console.log(
+    'snippet FAQ:',
+    snippetAround(html, 'Combien') || snippetAround(html, 'FAQ') || '(none)'
+  )
   // list all h2/h3 near end
   const headings = [...html.matchAll(/<h[23][^>]*>([\s\S]*?)<\/h[23]>/gi)].map((m) =>
-    m[1].replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim(),
+    m[1]
+      .replace(/<[^>]+>/g, ' ')
+      .replace(/\s+/g, ' ')
+      .trim()
   )
   console.log(
     'h2/h3 sample:',
-    headings.filter((h) => /faq|question|co[uû]t|combien|résultat/i.test(h)).slice(0, 10),
+    headings.filter((h) => /faq|question|co[uû]t|combien|résultat/i.test(h)).slice(0, 10)
   )
 }
 
@@ -69,8 +78,14 @@ let m
 const re = /<loc>([^<]+)<\/loc>/g
 while ((m = re.exec(sm))) locs.push(m[1])
 console.log('live sitemap count', locs.length)
-console.log('has creation-site', locs.some((u) => u.includes('creation-site')))
-console.log('has community', locs.some((u) => u.includes('community-management')))
+console.log(
+  'has creation-site',
+  locs.some((u) => u.includes('creation-site'))
+)
+console.log(
+  'has community',
+  locs.some((u) => u.includes('community-management'))
+)
 
 await inspectMoney('/agence-seo-casablanca/')
 await inspectMoney('/services/seo/')
@@ -83,5 +98,5 @@ const home = await (await fetch(`${ORIGIN}/`)).text()
 console.log('home title', (home.match(/<title[^>]*>([^<]*)<\/title>/i) || [])[1])
 console.log(
   'home desc len',
-  ((home.match(/name=["']description["'][^>]*content=["']([^"']*)["']/i) || [])[1] || '').length,
+  ((home.match(/name=["']description["'][^>]*content=["']([^"']*)["']/i) || [])[1] || '').length
 )

@@ -1,30 +1,13 @@
-const TO_EMAILS = ['meriemflyer@gmail.com', 'ikhlef.othmane@gmail.com', 'alounane.latifa@gmail.com']
-const FROM_EMAIL = 'We Yan Digital <contact@weyandigital.ma>'
-const DEFAULT_SHEET_URL =
-  'https://script.google.com/macros/s/AKfycbzQbb_vC_kVM4qa-pL_d1mcNfztYFfmUCzTTJ9N_LE3thVCXrYYHzu2JRUDKsDvNJ8UWA/exec'
-
-function json(body, status = 200) {
-  return new Response(JSON.stringify(body), {
-    status,
-    headers: {
-      'Content-Type': 'application/json; charset=utf-8',
-      'Cache-Control': 'no-store',
-    },
-  })
-}
-
-function escapeHtml(value) {
-  return String(value)
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&#39;')
-}
-
-function isEmail(value) {
-  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)
-}
+import {
+  FROM_EMAIL,
+  buildEmailHtml,
+  buildSheetPayload,
+  parseRecipients,
+  resendErrorMessage,
+  validateContact,
+} from '../../shared/contact.js'
+import { json } from '../../shared/http.js'
+import { postToSheet } from '../../shared/sheet.js'
 
 export async function onRequest(context) {
   const { request, env } = context
@@ -40,8 +23,24 @@ export async function onRequest(context) {
   const apiKey = String(env.RESEND_API_KEY || '').trim()
   if (!apiKey || apiKey.startsWith('re_xxxx')) {
     return json(
-      { ok: false, error: 'Clé API Resend manquante. Ajoutez RESEND_API_KEY dans Cloudflare Pages → Settings → Environment variables.' },
-      500,
+      {
+        ok: false,
+        error:
+          'Clé API Resend manquante. Ajoutez RESEND_API_KEY dans Cloudflare Pages → Settings → Environment variables.',
+      },
+      500
+    )
+  }
+
+  const recipients = parseRecipients(env.CONTACT_TO_EMAILS)
+  if (recipients.length === 0) {
+    return json(
+      {
+        ok: false,
+        error:
+          'Destinataires manquants. Ajoutez CONTACT_TO_EMAILS (adresses séparées par des virgules) dans Cloudflare Pages → Settings → Environment variables.',
+      },
+      500
     )
   }
 
@@ -52,88 +51,22 @@ export async function onRequest(context) {
     return json({ ok: false, error: 'Requête invalide.' }, 400)
   }
 
-  if (!input || typeof input !== 'object') {
-    return json({ ok: false, error: 'Requête invalide.' }, 400)
-  }
-
-  if (String(input.website || '').trim() !== '') {
+  // Honeypot : on répond « ok » pour ne rien révéler aux robots.
+  if (input && typeof input === 'object' && String(input.website || '').trim() !== '') {
     return json({ ok: true })
   }
 
-  const name = String(input.name || '').trim()
-  const email = String(input.email || '').trim()
-  const message = String(input.message || '').trim()
-  const phone = String(input.phone || input.telephone || '').trim()
-  const company = String(input.company || input.entreprise || '').trim()
-  const services = Array.isArray(input.services)
-    ? input.services.map((item) => String(item).trim()).filter(Boolean)
-    : []
-
-  if (!name || name.length > 80) {
-    return json({ ok: false, error: 'Nom invalide (80 caractères max).' }, 422)
+  const result = validateContact(input)
+  if (!result.ok) {
+    return json(
+      { ok: false, error: result.error },
+      result.error === 'Requête invalide.' ? 400 : 422
+    )
   }
-  if (!isEmail(email) || email.length > 120) {
-    return json({ ok: false, error: 'Adresse email invalide.' }, 422)
-  }
-  if (phone && (phone.length > 10 || !/^[+\d\s().-]{8,10}$/.test(phone))) {
-    return json({ ok: false, error: 'Téléphone invalide (8 à 10 caractères).' }, 422)
-  }
-  if (!message || message.length > 1000) {
-    return json({ ok: false, error: 'Message invalide (1000 caractères max).' }, 422)
-  }
+  const contact = result.data
 
-  if (company.length > 100) {
-    return json({ ok: false, error: 'Entreprise invalide (100 caractères max).' }, 422)
-  }
-
-  const safeName = escapeHtml(name)
-  const safeEmail = escapeHtml(email)
-  const safePhone = escapeHtml(phone || 'Non précisé')
-  const safeCompany = escapeHtml(company || 'Non précisée')
-  const safeMessage = escapeHtml(message).replace(/\n/g, '<br>')
-  const serviceLabel = services.length ? services.join(', ') : 'Non précisé'
-  const safeServices = escapeHtml(serviceLabel)
-
-  const html = `
-    <div style="font-family:Arial,sans-serif;line-height:1.6;color:#0f172a">
-      <h1 style="font-size:20px;margin:0 0 16px">Nouveau message — We Yan Digital</h1>
-      <p><strong>Nom :</strong> ${safeName}</p>
-      <p><strong>Entreprise :</strong> ${safeCompany}</p>
-      <p><strong>Email :</strong> ${safeEmail}</p>
-      <p><strong>Téléphone :</strong> ${safePhone}</p>
-      <p><strong>Services :</strong> ${safeServices}</p>
-      <p><strong>Message :</strong></p>
-      <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:16px">${safeMessage}</div>
-    </div>
-  `
-
-  const sheetUrl = String(env.GOOGLE_SHEET_URL || DEFAULT_SHEET_URL).trim()
-  const sheetMessage = company ? `Entreprise : ${company}\n\n${message}` : message
-  const sheetPayload = JSON.stringify({
-    nom: name,
-    email,
-    telephone: phone,
-    entreprise: company,
-    service: serviceLabel,
-    message: sheetMessage,
-    statut: 'Nouvelle',
-  })
-
-  const sheetPromise = sheetUrl
-    ? fetch(sheetUrl, {
-        method: 'POST',
-        redirect: 'follow',
-        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-        body: sheetPayload,
-      })
-        .then(async (res) => {
-          if (!res || !res.ok) return { ok: false }
-          const body = await res.json().catch(() => ({}))
-          if (body && typeof body === 'object' && body.ok === false) return { ok: false }
-          return { ok: true }
-        })
-        .catch(() => ({ ok: false }))
-    : Promise.resolve({ ok: true, skipped: true })
+  const sheetUrl = String(env.GOOGLE_SHEET_URL || '').trim()
+  const sheetPromise = postToSheet(sheetUrl, buildSheetPayload(contact))
 
   let resendRes
   try {
@@ -145,36 +78,34 @@ export async function onRequest(context) {
       },
       body: JSON.stringify({
         from: FROM_EMAIL,
-        to: TO_EMAILS,
-        reply_to: email,
-        subject: `Nouveau contact We Yan Digital — ${name}`,
-        html,
+        to: recipients,
+        reply_to: contact.email,
+        subject: `Nouveau contact We Yan Digital — ${contact.name}`,
+        html: buildEmailHtml(contact),
       }),
     })
   } catch {
     return json({ ok: false, error: 'Erreur réseau vers Resend.' }, 502)
   }
 
-  const resendBody = await resendRes.json().catch(() => ({}))
   if (!resendRes.ok) {
-    const resendError =
-      (typeof resendBody.message === 'string' && resendBody.message) ||
-      (resendBody.error && typeof resendBody.error.message === 'string' && resendBody.error.message) ||
-      'Resend a refusé l’envoi.'
-    return json({ ok: false, error: resendError }, 502)
+    const resendBody = await resendRes.json().catch(() => ({}))
+    return json({ ok: false, error: resendErrorMessage(resendBody) }, 502)
   }
 
   const sheetResult = await sheetPromise
-  const sheetSaved = Boolean(sheetResult?.ok)
-
-  if (!sheetSaved) {
+  if (!sheetResult.ok) {
     return json({
       ok: true,
       emailSent: true,
       sheetSaved: false,
-      warning: 'E-mail envoyé, mais l’enregistrement Google Sheets a échoué. Vérifiez GOOGLE_SHEET_URL.',
+      warning:
+        'E-mail envoyé, mais l’enregistrement Google Sheets a échoué. Vérifiez GOOGLE_SHEET_URL.',
     })
   }
 
   return json({ ok: true, emailSent: true, sheetSaved: true })
 }
+
+export const onRequestPost = onRequest
+export const onRequestOptions = onRequest

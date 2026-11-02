@@ -9,8 +9,7 @@ return [
   'RESEND_API_KEY' => 're_xxxxxxxxxxxxxxxxxxxxxxxxxxxx',
   // Destinataires à chaque formulaire contact (les 2 recevront l'email)
   'CONTACT_TO' => [
-    'meriemflyer@gmail.com',
-    'ikhlef.othmane@gmail.com',
+    'contact@exemple.ma',
   ],
   // Expéditeur : domaine vérifié sur Resend (weyandigital.ma)
   'CONTACT_FROM' => 'We Yan Digital <contact@weyandigital.ma>',

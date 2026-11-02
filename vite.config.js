@@ -56,7 +56,12 @@ export default defineConfig({
         manualChunks(id) {
           if (!id.includes('node_modules')) return
           if (id.includes('react-router')) return 'router'
-          if (id.includes('react-dom') || id.includes('/react/') || id.includes('\\react\\') || id.includes('scheduler')) {
+          if (
+            id.includes('react-dom') ||
+            id.includes('/react/') ||
+            id.includes('\\react\\') ||
+            id.includes('scheduler')
+          ) {
             return 'react-vendor'
           }
         },
@@ -79,7 +84,7 @@ export default defineConfig({
             const deferred = `<link rel="stylesheet" crossorigin="anonymous"${beforeHref}href="${href}"${afterHref} media="print" onload="this.media='all'">`
             const noscript = `<noscript><link rel="stylesheet" crossorigin="anonymous" href="${href}"></noscript>`
             return `${preload}\n    ${deferred}\n    ${noscript}`
-          },
+          }
         )
       },
     },
@@ -89,11 +94,15 @@ export default defineConfig({
       enforce: 'post',
       transformIndexHtml(html) {
         return html
-          .replace(/<link\s+rel="modulepreload"(?![^>]*\bcrossorigin=)([^>]*?)href="(\/assets\/[^"]+\.js)"([^>]*)>/g,
-            (full, before, href, after) => `<link rel="modulepreload"${before}href="${href}" crossorigin="anonymous"${after}>`,
+          .replace(
+            /<link\s+rel="modulepreload"(?![^>]*\bcrossorigin=)([^>]*?)href="(\/assets\/[^"]+\.js)"([^>]*)>/g,
+            (full, before, href, after) =>
+              `<link rel="modulepreload"${before}href="${href}" crossorigin="anonymous"${after}>`
           )
-          .replace(/<script\s+type="module"(?![^>]*\bcrossorigin=)([^>]*?)src="(\/assets\/[^"]+\.js)"([^>]*)>/g,
-            (full, before, src, after) => `<script type="module"${before}src="${src}" crossorigin="anonymous"${after}>`,
+          .replace(
+            /<script\s+type="module"(?![^>]*\bcrossorigin=)([^>]*?)src="(\/assets\/[^"]+\.js)"([^>]*)>/g,
+            (full, before, src, after) =>
+              `<script type="module"${before}src="${src}" crossorigin="anonymous"${after}>`
           )
       },
     },

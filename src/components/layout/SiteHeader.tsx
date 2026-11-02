@@ -8,9 +8,13 @@ export default function SiteHeader() {
   const menuId = useId()
   const location = useLocation()
 
-  useEffect(() => {
+  // Ferme le menu à chaque navigation (ajustement d'état pendant le rendu, sans effet).
+  const locationKey = `${location.pathname}${location.hash}`
+  const [lastLocationKey, setLastLocationKey] = useState(locationKey)
+  if (locationKey !== lastLocationKey) {
+    setLastLocationKey(locationKey)
     setOpen(false)
-  }, [location.pathname, location.hash])
+  }
 
   useEffect(() => {
     if (!open) return
@@ -45,7 +49,12 @@ export default function SiteHeader() {
 
       <nav className="hero-nav" aria-label="Navigation principale">
         {NAV_ITEMS.map((item) => (
-          <HeaderLink key={item.path} path={item.path} hash={location.hash} pathname={location.pathname}>
+          <HeaderLink
+            key={item.path}
+            path={item.path}
+            hash={location.hash}
+            pathname={location.pathname}
+          >
             {item.label}
           </HeaderLink>
         ))}
@@ -69,7 +78,12 @@ export default function SiteHeader() {
 
       <nav id={menuId} className="hero-mobile-nav" aria-label="Navigation mobile" hidden={!open}>
         {NAV_ITEMS.map((item) => (
-          <HeaderLink key={item.path} path={item.path} hash={location.hash} pathname={location.pathname}>
+          <HeaderLink
+            key={item.path}
+            path={item.path}
+            hash={location.hash}
+            pathname={location.pathname}
+          >
             {item.label}
           </HeaderLink>
         ))}

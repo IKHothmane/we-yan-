@@ -1,5 +1,5 @@
 import { mkdirSync, readdirSync, statSync, writeFileSync } from 'node:fs'
-import { dirname, extname, join, relative } from 'node:path'
+import { dirname, join, relative } from 'node:path'
 import sharp from 'sharp'
 
 const root = join(process.cwd(), 'public')
@@ -39,6 +39,9 @@ for (const file of files) {
   })
 }
 
-writeFileSync(join(process.cwd(), 'scripts', 'image-manifest.json'), JSON.stringify(manifest, null, 2))
+writeFileSync(
+  join(process.cwd(), 'scripts', 'image-manifest.json'),
+  JSON.stringify(manifest, null, 2)
+)
 console.table(manifest)
 console.log('converted', manifest.length)

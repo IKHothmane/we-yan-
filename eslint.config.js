@@ -1,49 +1,49 @@
 import js from '@eslint/js'
-import { FlatCompat } from '@eslint/eslintrc'
-import path from 'node:path'
-import { fileURLToPath } from 'node:url'
+import globals from 'globals'
+import tseslint from 'typescript-eslint'
+import react from 'eslint-plugin-react'
+import reactHooks from 'eslint-plugin-react-hooks'
 import reactRefresh from 'eslint-plugin-react-refresh'
+import prettier from 'eslint-plugin-prettier/recommended'
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url))
-const compat = new FlatCompat({
-  baseDirectory: __dirname,
-  recommendedConfig: js.configs.recommended,
-})
-
-/** Scope aligné sur l’ancien `--ext js,jsx` (TS/config hors périmètre jusqu’à parser TS). */
-export default [
+export default tseslint.config(
+  { ignores: ['dist/**', 'node_modules/**'] },
+  js.configs.recommended,
+  ...tseslint.configs.recommended,
+  react.configs.flat.recommended,
+  react.configs.flat['jsx-runtime'],
+  reactHooks.configs.flat.recommended,
+  prettier,
   {
-    ignores: [
-      'dist/**',
-      'node_modules/**',
-      '.eslintrc.cjs',
-      'eslint.config.js',
-      'vite.config.js',
-      'scripts/**',
-      'functions/**',
-      '**/*.{ts,tsx}',
-    ],
-  },
-  ...compat.config({
-    env: { browser: true, es2020: true, node: true },
-    extends: [
-      'eslint:recommended',
-      'plugin:react/recommended',
-      'plugin:react/jsx-runtime',
-      'plugin:react-hooks/recommended',
-      'plugin:prettier/recommended',
-    ],
-    parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
     settings: { react: { version: '18.3' } },
     rules: {
       'react/jsx-no-target-blank': 'off',
+      'react/prop-types': 'off',
     },
-  }),
+  },
   {
-    files: ['**/*.{js,jsx}'],
+    files: ['src/**/*.{ts,tsx}'],
+    languageOptions: { globals: globals.browser },
     plugins: { 'react-refresh': reactRefresh },
     rules: {
       'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
     },
   },
-]
+  {
+    // Code serveur / outillage : Node, Cloudflare Workers
+    files: [
+      'functions/**/*.js',
+      'tests/**/*.js',
+      'shared/**/*.js',
+      'scripts/**/*.{js,mjs}',
+      'vite.config.js',
+    ],
+    languageOptions: { globals: { ...globals.node, ...globals.serviceworker } },
+  },
+  {
+    // Script exécuté dans Google Apps Script
+    files: ['scripts/google-apps-script.js'],
+    languageOptions: { globals: { ...globals.googleappsscript } },
+    rules: { '@typescript-eslint/no-unused-vars': 'off', 'no-undef': 'off' },
+  }
+)

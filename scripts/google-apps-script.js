@@ -11,9 +11,9 @@ var HEADERS = ['Date', 'Nom', 'Email', 'Téléphone', 'Service', 'Message', 'Sta
 var STATUT_LIST = ['Valider', 'En cours', 'Terminer', 'Annuler']
 
 function jsonOutput(obj) {
-  return ContentService
-    .createTextOutput(JSON.stringify(obj))
-    .setMimeType(ContentService.MimeType.JSON)
+  return ContentService.createTextOutput(JSON.stringify(obj)).setMimeType(
+    ContentService.MimeType.JSON
+  )
 }
 
 function sheetStatut(statut) {
@@ -102,7 +102,7 @@ function parseBody(e) {
   if (e && e.postData && e.postData.contents) {
     try {
       return JSON.parse(e.postData.contents)
-    } catch (err) {
+    } catch {
       return {}
     }
   }
@@ -110,7 +110,7 @@ function parseBody(e) {
 }
 
 function paramsFromGet(e) {
-  var p = (e && e.parameter) ? e.parameter : {}
+  var p = e && e.parameter ? e.parameter : {}
   return {
     action: p.action || '',
     row: p.row || '',
@@ -121,9 +121,7 @@ function paramsFromGet(e) {
 }
 
 function isUpdatePayload(data) {
-  return data.action === 'update' || (
-    data.statut && !data.nom && !data.telephone && !data.service
-  )
+  return data.action === 'update' || (data.statut && !data.nom && !data.telephone && !data.service)
 }
 
 function doPost(e) {
@@ -139,7 +137,11 @@ function doPost(e) {
     }
 
     if (!(data.nom || data.email)) {
-      return jsonOutput({ success: false, ok: false, error: 'Pas de nouvelle ligne : nom/email manquant' })
+      return jsonOutput({
+        success: false,
+        ok: false,
+        error: 'Pas de nouvelle ligne : nom/email manquant',
+      })
     }
 
     var statutNew = sheetStatut(data.statut)
@@ -172,18 +174,21 @@ function doGet(e) {
     }
 
     var values = sheet.getDataRange().getValues()
-    var rows = values.slice(1).map(function (row, index) {
-      return {
-        row: index + 2,
-        date: row[0],
-        nom: row[1],
-        email: row[2],
-        telephone: row[3],
-        service: row[4],
-        message: row[5],
-        statut: row[6] || '',
-      }
-    }).reverse()
+    var rows = values
+      .slice(1)
+      .map(function (row, index) {
+        return {
+          row: index + 2,
+          date: row[0],
+          nom: row[1],
+          email: row[2],
+          telephone: row[3],
+          service: row[4],
+          message: row[5],
+          statut: row[6] || '',
+        }
+      })
+      .reverse()
 
     return jsonOutput({ ok: true, version: 4, rows: rows })
   } catch (error) {

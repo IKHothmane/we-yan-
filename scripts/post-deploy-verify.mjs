@@ -29,13 +29,13 @@ function titleOf(html) {
 }
 function descOf(html) {
   const m = html.match(
-    /name=["']description["'][^>]*content=["']([^"']*)["']|content=["']([^"']*)["'][^>]*name=["']description["']/i,
+    /name=["']description["'][^>]*content=["']([^"']*)["']|content=["']([^"']*)["'][^>]*name=["']description["']/i
   )
   return (m && (m[1] || m[2])) || ''
 }
 function canonicalOf(html) {
   const m = html.match(
-    /rel=["']canonical["'][^>]*href=["']([^"']+)["']|href=["']([^"']+)["'][^>]*rel=["']canonical["']/i,
+    /rel=["']canonical["'][^>]*href=["']([^"']+)["']|href=["']([^"']+)["'][^>]*rel=["']canonical["']/i
   )
   return (m && (m[1] || m[2])) || ''
 }
@@ -94,7 +94,7 @@ for (const url of smoke) {
   pass(
     `smoke ${url.replace(ORIGIN, '')}`,
     r.status === 200 && !redirectedToContact,
-    redirectedToContact ? 'still → contact' : `final=${r.finalUrl}`,
+    redirectedToContact ? 'still → contact' : `final=${r.finalUrl}`
   )
 }
 
@@ -102,28 +102,36 @@ const creation = await follow(`${ORIGIN}/creation-site-web-casablanca/`)
 pass(
   'creation 200 no contact redirect',
   creation.status === 200 && creation.finalUrl.includes('creation-site-web-casablanca'),
-  `status=${creation.status} final=${creation.finalUrl}`,
+  `status=${creation.status} final=${creation.finalUrl}`
 )
 pass(
   'creation content',
   /création|vitrine|e-commerce/i.test(creation.body) &&
     /Création site web/i.test(titleOf(creation.body)),
-  `title=${titleOf(creation.body)}`,
+  `title=${titleOf(creation.body)}`
 )
 pass(
   'creation canonical',
   canonicalOf(creation.body) === `${ORIGIN}/creation-site-web-casablanca/`,
-  canonicalOf(creation.body),
+  canonicalOf(creation.body)
 )
 
 const agence = await follow(`${ORIGIN}/agence-seo-casablanca/`)
 pass(
   'agence title',
   /Agence SEO Casablanca/i.test(titleOf(agence.body)) && titleOf(agence.body).length <= 65,
-  titleOf(agence.body),
+  titleOf(agence.body)
 )
-pass('agence desc', descOf(agence.body).length >= 70 && descOf(agence.body).length <= 160, `len=${descOf(agence.body).length}`)
-pass('agence H1', h1Count(agence.body) === 1 && /Agence SEO/i.test(h1Text(agence.body)), h1Text(agence.body))
+pass(
+  'agence desc',
+  descOf(agence.body).length >= 70 && descOf(agence.body).length <= 160,
+  `len=${descOf(agence.body).length}`
+)
+pass(
+  'agence H1',
+  h1Count(agence.body) === 1 && /Agence SEO/i.test(h1Text(agence.body)),
+  h1Text(agence.body)
+)
 
 const seo = await follow(`${ORIGIN}/services/seo/`)
 const seoJson = faqJson(seo.body)
@@ -133,7 +141,7 @@ pass('seo FAQ visible', seoVis.length >= 3, `count=${seoVis.length}`)
 pass(
   'seo FAQ match',
   seoJson.length > 0 && seoJson.every((q) => seoVis.includes(q)),
-  `json=${seoJson.length} vis=${seoVis.length}`,
+  `json=${seoJson.length} vis=${seoVis.length}`
 )
 
 const contact = await follow(`${ORIGIN}/contact/`)
@@ -146,11 +154,7 @@ const re = /<loc>([^<]+)<\/loc>/g
 while ((m = re.exec(sm.body))) locs.push(m[1])
 pass('sitemap 26 urls', locs.length === 26, `count=${locs.length}`)
 pass('sitemap no merci', !locs.some((u) => u.includes('/merci')), '')
-pass(
-  'sitemap has creation',
-  locs.includes(`${ORIGIN}/creation-site-web-casablanca/`),
-  '',
-)
+pass('sitemap has creation', locs.includes(`${ORIGIN}/creation-site-web-casablanca/`), '')
 
 // All sitemap URLs 200
 let bad = 0

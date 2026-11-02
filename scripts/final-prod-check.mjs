@@ -55,21 +55,37 @@ const bare = await get('/creation-site-web-casablanca/', { follow: false, bustCa
 check(
   'création bare (sans query) ne redirige plus vers contact',
   bare.status === 200,
-  `status=${bare.status} loc=${bare.location} cache=${bare.cache} age=${bare.age}`,
+  `status=${bare.status} loc=${bare.location} cache=${bare.cache} age=${bare.age}`
 )
 
 const creation = await get('/creation-site-web-casablanca/')
-check('création contenu 200', creation.status === 200 && /Création site web Casablanca/i.test(title(creation.text)), title(creation.text))
-check('création canonical', canon(creation.text) === `${ORIGIN}/creation-site-web-casablanca/`, canon(creation.text))
+check(
+  'création contenu 200',
+  creation.status === 200 && /Création site web Casablanca/i.test(title(creation.text)),
+  title(creation.text)
+)
+check(
+  'création canonical',
+  canon(creation.text) === `${ORIGIN}/creation-site-web-casablanca/`,
+  canon(creation.text)
+)
 check('création H1', h1n(creation.text) === 1)
 
 const agence = await get('/agence-seo-casablanca/')
-check('agence title', title(agence.text) === 'Agence SEO Casablanca | Référencement – We Yan', title(agence.text))
+check(
+  'agence title',
+  title(agence.text) === 'Agence SEO Casablanca | Référencement – We Yan',
+  title(agence.text)
+)
 check('agence H1 unique', h1n(agence.text) === 1)
-check('agence desc length', (() => {
-  const d = (agence.text.match(/name=["']description["'][^>]*content=["']([^"']+)/i) || [])[1] || ''
-  return d.length >= 70 && d.length <= 160
-})())
+check(
+  'agence desc length',
+  (() => {
+    const d =
+      (agence.text.match(/name=["']description["'][^>]*content=["']([^"']+)/i) || [])[1] || ''
+    return d.length >= 70 && d.length <= 160
+  })()
+)
 
 const seo = await get('/services/seo/')
 const jq = faqJson(seo.text)

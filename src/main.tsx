@@ -1,7 +1,13 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import ReactDOM from 'react-dom/client'
 import ScrollToTop from './components/ScrollToTop'
-import { ABOUT_PATH, CONTACT_PATH, PROJECTS_PATH, SECTION_PAGES, SERVICES_PATH } from './constants/navigation'
+import {
+  ABOUT_PATH,
+  CONTACT_PATH,
+  PROJECTS_PATH,
+  SECTION_PAGES,
+  SERVICES_PATH,
+} from './constants/navigation'
 import AboutPage from './pages/AboutPage'
 import ContactPage from './pages/ContactPage'
 import HomePage from './pages/HomePage'
@@ -27,7 +33,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
             path={path}
             element={<SectionPage title={page.label} summary={page.summary} />}
           />
-        )),
+        ))
       )}
       {withOptionalSlash(SERVICES_PATH).map((path) => (
         <Route key={path} path={path} element={<ServicesPage />} />
@@ -46,5 +52,5 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
       ))}
       <Route path="*" element={<NotFoundPage />} />
     </Routes>
-  </BrowserRouter>,
+  </BrowserRouter>
 )
