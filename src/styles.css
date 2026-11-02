@@ -576,8 +576,9 @@ body {
   }
 
   .hero-portrait {
-    width: 95%;
-    left: 3%;
+    width: 84%;
+    left: 0;
+    object-position: left bottom;
   }
 
   .hero-blue-shape {
@@ -585,15 +586,19 @@ body {
     width: 60%;
   }
 
+  /* Texte circulaire et signature au-dessus du portrait (sinon masqués par le visage / les cheveux) */
   .hero-circle-text {
-    width: 112px;
+    width: 104px;
     left: 0;
+    top: 3%;
+    z-index: 11;
   }
 
   .hero-signature {
-    top: 42%;
-    right: 2%;
-    font-size: 26px;
+    top: 48%;
+    right: 1%;
+    font-size: 22px;
+    z-index: 12;
   }
 
   .hero-scribble {
