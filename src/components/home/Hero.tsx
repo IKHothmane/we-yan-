@@ -4,14 +4,31 @@ import { ArrowRight } from 'lucide-react'
 import { Link } from 'react-router-dom'
 
 const clients = [
-  { name: 'Omnidoc Santé', logo: '/images/clients/omnidoc-officiel.webp' },
-  { name: 'Meal Box', logo: '/images/clients/meal-box.webp' },
-  { name: 'éveil Montessori', logo: '/images/clients/eveil-montessori-officiel.webp' },
-  { name: 'Himmat Alim', logo: '/images/clients/himmat-alim.webp', large: true },
-  { name: 'Tawada lkihr', logo: '/images/clients/tawada.webp', large: true },
-  { name: 'Livrinou', logo: '/images/clients/livrinou.webp', large: true },
-  { name: 'GITEX GLOBAL', logo: '/images/clients/gitex-transparent.webp' },
-  { name: 'Planet Sport', logo: '/images/clients/planet.webp' },
+  { name: 'Omnidoc Santé', logo: '/images/clients/omnidoc-officiel.webp', width: 430, height: 186 },
+  { name: 'Meal Box', logo: '/images/clients/meal-box.webp', width: 300, height: 183 },
+  {
+    name: 'éveil Montessori',
+    logo: '/images/clients/eveil-montessori-officiel.webp',
+    width: 280,
+    height: 75,
+  },
+  {
+    name: 'Himmat Alim',
+    logo: '/images/clients/himmat-alim.webp',
+    width: 240,
+    height: 240,
+    large: true,
+  },
+  {
+    name: 'Tawada lkihr',
+    logo: '/images/clients/tawada.webp',
+    width: 240,
+    height: 240,
+    large: true,
+  },
+  { name: 'Livrinou', logo: '/images/clients/livrinou.webp', width: 240, height: 240, large: true },
+  { name: 'GITEX GLOBAL', logo: '/images/clients/gitex-transparent.webp', width: 470, height: 160 },
+  { name: 'Planet Sport', logo: '/images/clients/planet.webp', width: 532, height: 80 },
 ]
 
 const PORTRAIT_WIDTH = 1146
@@ -64,6 +81,8 @@ export default function Hero() {
 
             <motion.img
               src="/images/hero-woman.webp"
+              srcSet="/images/hero-woman-720.webp 720w, /images/hero-woman.webp 1146w"
+              sizes="(max-width: 700px) 100vw, 50vw"
               alt="Portrait artistique en noir et blanc"
               className="hero-portrait"
               width={PORTRAIT_WIDTH}

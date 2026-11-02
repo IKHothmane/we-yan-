@@ -30,6 +30,11 @@ export default tseslint.config(
     },
   },
   {
+    // Point d'entrée : pas d'export, le fast refresh n'y s'applique pas
+    files: ['src/main.tsx'],
+    rules: { 'react-refresh/only-export-components': 'off' },
+  },
+  {
     // Code serveur / outillage : Node, Cloudflare Workers
     files: [
       'functions/**/*.js',
